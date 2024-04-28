@@ -1,7 +1,7 @@
 "use client";
 
 import { signOut } from "aws-amplify/auth";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"
 
 export default function Logout() {
     const router = useRouter();

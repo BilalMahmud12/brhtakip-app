@@ -1,16 +1,38 @@
 'use client'
+import { Authenticator, Text, View, useAuthenticator } from "@aws-amplify/ui-react";
+import { redirect } from "next/navigation";
+import { useEffect } from "react";
 
-import Logout from "@/components/Logout";
-import { withAuthenticator } from "@aws-amplify/ui-react"
+const components = {
+  Header() {
+    return (
+      <View textAlign="center">
+        <Text><span style={{ color: "white" }}>Authenticator Header</span></Text>
+      </View>
+    );
+  },
+};
+
+function CustomAuthenticator() {
+  const { user } = useAuthenticator((context) => [context.user]);
+
+  useEffect(() => {
+    if (user) {
+      console.log("Redirecting to dashboard", user);
+      redirect("/dashboard");
+    }
+  }, [user]);
+
+  return <Authenticator components={components} />;
+}
 
 function App() {
 
   return (
-    <>
-      <h1>Hello, Amplify 👋</h1>
-      <Logout />
-    </>
+    <Authenticator.Provider>
+      <CustomAuthenticator />
+    </Authenticator.Provider>
   );
 }
 
-export default withAuthenticator(App);
+export default App
