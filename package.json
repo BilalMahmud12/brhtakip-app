@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-amplify/adapter-nextjs": "^1.1.4",
     "@aws-amplify/cli": "^12.11.1",
     "@aws-amplify/ui-react": "^6.1.8",
     "aws-amplify": "^6.1.4",
