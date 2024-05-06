@@ -1,0 +1,7 @@
+Application:
+  - Admin:
+    - Login Page: 
+      - url: /admin/login
+  - Client:
+    - Login Page: 
+      - url: /{client}/login

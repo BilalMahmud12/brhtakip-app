@@ -1,6 +1,6 @@
-'use client'
 import ConfigureAmplifyClientSide from '@/components/ConfigureAmplify'
-import { usePathname } from "next/navigation"
+//import { usePathname } from "next/navigation"
+//import { StoreProvider } from '../stores/StoreProvider'
 import '@aws-amplify/ui-react/styles.css'
 import './globals.css'
 
@@ -12,26 +12,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const path = usePathname();
-
+  const path = '/'
 
   return (
-    <html lang="tr">
-        <body>
-            {path === '/' && (
-              <div className="flex items-center justify-center">
-                    <div className="bg-white">
-                      <h1 className='text-3xl font-bold px-6 py-3'>
-                        <span className='text-black'>BRH</span>
-                        <span className='text-red-500'>Takip.</span>
-                      </h1>
-                      
-                    </div>
-                </div>            
-            )}
-          {children}
-          <ConfigureAmplifyClientSide />
-        </body>
-    </html>
+      <html lang="tr">
+          <body>
+            <ConfigureAmplifyClientSide />
+            {children}
+          </body>
+      </html>
   );
 }

@@ -15,4 +15,4 @@ function Dashboard() {
     );
 }
 
-export default withAuthenticator(Dashboard);
+export default Dashboard
