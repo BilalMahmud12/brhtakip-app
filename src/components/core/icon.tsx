@@ -14,7 +14,8 @@ import {
     FcConferenceCall,
     FcDataEncryption,
     FcDiploma1,
-    FcKey
+    FcKey,
+    FcSettings
 } from 'react-icons/fc'; // Import each icon you need
 import { MdInbox } from 'react-icons/md'; // Assuming 'inbox' corresponds to MdInbox or choose the correct icon
 
@@ -33,6 +34,7 @@ const iconMapping: Record<string, IconType> = {
     'FcDataEncryption': FcDataEncryption,
     'FcDiploma1': FcDiploma1,
     'FcKey': FcKey,
+    'FcSettings': FcSettings,
     'inbox': MdInbox, // Map the string from your array to the icon component
 };
 

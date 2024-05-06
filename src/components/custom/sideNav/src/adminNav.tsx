@@ -12,6 +12,17 @@ const adminNavigation = [
         ]
     },
     {
+        "section_name": "hizli_islemler",
+        "section_title": "Hızlı İşlemler",
+        show_title: true,
+        items: [
+            { name: 'Talep Ekle', href: '/requests/add', icon: 'FcAddDatabase' },
+            { name: 'Marka Ekle', href: '/brands/add', icon: 'FcAddDatabase' },
+            { name: 'Mağaza Ekle', href: '/branches/add', icon: 'FcAddDatabase' },
+            { name: 'Ürün Ekle', href: '/products/add', icon: 'FcAddDatabase' },
+        ]
+    },
+    {
         "section_name": "yonet",
         "section_title": "Yonet",
         show_title: true,
@@ -24,31 +35,13 @@ const adminNavigation = [
         ]
     },
     {
-        "section_name": "hizli_islemler",
-        "section_title": "Hızlı İşlemler",
-        show_title: true,
-        items: [
-            { name: 'Talep Ekle', href: '/requests/add', icon: 'FcAddDatabase' },
-            { name: 'Marka Ekle', href: '/brands/add', icon: 'FcAddDatabase' },
-            { name: 'Mağaza Ekle', href: '/branches/add', icon: 'FcAddDatabase' },
-            { name: 'Ürün Ekle', href: '/products/add', icon: 'FcAddDatabase' },
-        ]
-    },
-    {
         "section_name": "ayarlar",
         "section_title": "Ayarlar",
         show_title: true,
         items: [
+            { name: 'Sistem Ayarları', href: '/system-settings', icon: 'FcSettings' },
             { name: 'Kullanıcılar', href: '/users', icon: 'FcConferenceCall' },
             { name: 'Yetkiler', href: '/permissions', icon: 'FcKey' },
-        ]
-    },
-    {
-        "section_name": "destek",
-        "section_title": "Destek",
-        show_title: true,
-        items: [
-            { name: 'Destek Talepleri', href: '/support', icon: 'FcSupport' },
         ]
     }
 ]
@@ -69,7 +62,7 @@ const AdminNavigation: React.FC = () => {
                                     <li key={`${item.name}-${index}`}>
                                         <Link 
                                             href={item.href}
-                                            className='block px-5 py-2 text-gray-500 hover:text-gray-800 transition-all ease-in-out duration-300' 
+                                            className='block px-5 py-2 text-gray-500 hover:text-gray-800 hover:bg-zinc-100 transition-all ease-in-out duration-300' 
                                         >
                                             <div className='flex items-center space-x-2'>
                                                 <span>
