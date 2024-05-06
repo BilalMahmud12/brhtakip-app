@@ -1,9 +1,8 @@
-import ConfigureAmplifyClientSide from '@/components/ConfigureAmplify'
-//import { usePathname } from "next/navigation"
-//import { StoreProvider } from '../stores/StoreProvider'
+'use client';
+import ConfigureAmplifyClientSide from '@/utils/ConfigureAmplify'
+import { StoreProvider } from '../stores/StoreProvider'
 import '@aws-amplify/ui-react/styles.css'
 import './globals.css'
-
 
 
 export default function RootLayout({
@@ -11,15 +10,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  const path = '/'
-
   return (
       <html lang="tr">
+        <StoreProvider>
           <body>
             <ConfigureAmplifyClientSide />
             {children}
           </body>
+        </StoreProvider>
       </html>
   );
 }

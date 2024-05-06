@@ -1,16 +1,16 @@
-'use client'
+import { Metadata } from 'next'
 
-import { withAuthenticator } from "@aws-amplify/ui-react"
-import Head from 'next/head'
+export const metadata: Metadata = {
+    title: 'Panel Girişi - BRH Takip',
+}
 
 function Dashboard() {
 
     return (
         <>
-            <Head>
-                <title>About Us - BRH Takip</title>
-                <meta name="description" content="Learn more about BRH Takip and our mission." />
-            </Head>
+            <div>
+                <h1 className='text-2xl font-medium'>Panel Girişi</h1>
+            </div>
         </>
     );
 }

@@ -36,29 +36,6 @@ export async function middleware(request: NextRequest) {
     }
 
     return NextResponse.next();
-
-    
-    const response = NextResponse.next();
-
-    const authenticated2 = await runWithAmplifyServerContext({
-        nextServerContext: { request, response },
-        operation: async (contextSpec: AmplifyServer.ContextSpec) => {
-            try {
-                const session = await fetchAuthSession(contextSpec, {});
-                return session.tokens !== undefined;
-            } catch (error) {
-                console.error(error);
-                //console.info("from middleware pathname =>", request.nextUrl.pathname);   
-                return false;
-            }
-        },
-    });
-
-    if (authenticated) {
-        return response;
-    }
-
-    return NextResponse.redirect(new URL("/login", request.url));
 }
 
 export const config = {

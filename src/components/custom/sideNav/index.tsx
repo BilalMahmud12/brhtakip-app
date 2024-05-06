@@ -3,7 +3,7 @@ import AdminNavigation from './src/adminNav'
 
 const SideNav: React.FC = () => {
     return (
-        <div className='px-6 py-4 shadow h-screen'>
+        <div className='h-screen border-r border-gray-300'>
             <AdminNavigation />
         </div>
     )
