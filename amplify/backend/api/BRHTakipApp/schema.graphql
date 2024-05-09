@@ -1,0 +1,66 @@
+enum RequestStatus {
+  PENDING_APPROAL
+  WAITING_DESIGN
+  WAITING_PRESS
+  COMPLETE
+  CANCELLED
+}
+
+type Material @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+}
+
+type UserProfile @model @auth(rules: [{allow: public}]) {
+  id: ID!
+}
+
+type Area @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  districtID: ID! @index(name: "byDistrict")
+}
+
+type District @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  cityID: ID! @index(name: "byCity")
+  name: String
+  Areas: [Area] @hasMany(indexName: "byDistrict", fields: ["id"])
+}
+
+type City @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  Districts: [District] @hasMany(indexName: "byCity", fields: ["id"])
+}
+
+type ClientProfil @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Brands: [Brand] @hasMany(indexName: "byClientProfil", fields: ["id"])
+  Requests: [Request] @hasMany(indexName: "byClientProfil", fields: ["id"])
+}
+
+type Store @model @auth(rules: [{allow: public}]) {
+  id: ID!
+}
+
+type Product @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  brandID: ID! @index(name: "byBrand")
+}
+
+type Brand @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Products: [Product] @hasMany(indexName: "byBrand", fields: ["id"])
+  clientprofilID: ID! @index(name: "byClientProfil")
+}
+
+type Request @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  request_number: String
+  Brand: Brand @hasOne
+  Product: Product @hasOne
+  Store: Store @hasOne
+  clientprofilID: ID! @index(name: "byClientProfil")
+  status: RequestStatus
+}
+ 

@@ -1,14 +1,22 @@
 'use client'
 
+import { useEffect } from 'react';
 import AppHeader from '@/components/custom/header';
 import SideNav from "@/components/custom/sideNav";
-
+import { useStore } from '@/stores/useStore';
+import { requests } from '@/data';
 
 export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const { requestStore } = useStore();
+    requestStore.setRequests(requests);
+    useEffect(() => {
+        
+    }, []);
+    
     return (
         <>
             <AppHeader />

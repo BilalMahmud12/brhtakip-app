@@ -1,0 +1,12 @@
+{
+  "resourceName": "s3brhtakipstorage9c050d2c",
+  "bucketName": "brhtakip-storage-9c050d2c",
+  "policyUUID": "0760d991",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}
