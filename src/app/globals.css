@@ -21,3 +21,38 @@
     text-wrap: balance;
   }
 }
+
+.amplify-checkbox__button--focused::before {
+  outline: none !important;
+  border: none !important;
+  background-color: unset !important;
+}
+
+.amplify-checkbox__button::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    box-sizing: border-box;
+    width: var(--amplify-components-checkbox-button-before-width);
+    height: var(--amplify-components-checkbox-button-before-height);
+    border: none !important;
+    background-color: #e8e8e8;
+}
+
+.amplify-checkbox__button:focus {
+  outline: none;
+}
+
+.amplify-checkbox__icon {
+  background-color: #f28806 !important;
+}
+
+.amplify-checkbox__icon:focus {
+  background-color: #f28806 !important;
+  outline: none;
+}
+
+.amplify-checkbox__icon > svg:focus {
+  outline: none !important;
+}
+

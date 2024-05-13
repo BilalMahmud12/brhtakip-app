@@ -16,11 +16,14 @@ import {
     FcDiploma1,
     FcKey,
     FcSettings,
+    FcSerialTasks,
+    FcCancel
 } from 'react-icons/fc';
 import { IoMdRefresh } from "react-icons/io"
 import { GrRefresh } from "react-icons/gr"
 import { HiOutlineFilter } from "react-icons/hi"
-import { MdInbox } from 'react-icons/md'; // Assuming 'inbox' corresponds to MdInbox or choose the correct icon
+import { GoKebabHorizontal } from "react-icons/go"
+import { MdInbox, MdEdit, MdDelete } from 'react-icons/md'; // Assuming 'inbox' corresponds to MdInbox or choose the correct icon
 
 const iconMapping: Record<string, IconType> = {
     'FcTimeline': FcTimeline,
@@ -38,9 +41,14 @@ const iconMapping: Record<string, IconType> = {
     'FcDiploma1': FcDiploma1,
     'FcKey': FcKey,
     'FcSettings': FcSettings,
+    'FcSerialTasks': FcSerialTasks,
+    'FcCancel': FcCancel,
     'IoMdRefresh': IoMdRefresh,
     'GrRefresh': GrRefresh,
     'HiOutlineFilter': HiOutlineFilter,
+    'MdEdit': MdEdit,
+    'MdDelete': MdDelete,
+    'GoKebabHorizontal': GoKebabHorizontal,
     'inbox': MdInbox, // Map the string from your array to the icon component
 };
 

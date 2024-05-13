@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react';
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 import AppHeader from '@/components/custom/header';
 import SideNav from "@/components/custom/sideNav";
 import { useStore } from '@/stores/useStore';
@@ -12,9 +13,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     const { requestStore } = useStore();
-    requestStore.setRequests(requests);
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    
     useEffect(() => {
-        
+        requestStore.setRequests(requests);
     }, []);
     
     return (
@@ -25,11 +27,12 @@ export default function RootLayout({
                     <SideNav />
                 </div>
                 <div className="col-span-4 xl:col-span-5">
-                    <div className='px-8 py-6'>
+                    <div className='px-8 py-1.5'>
                         {children}
                     </div>
                 </div>
             </div>
+            
         </>
     );
 }
