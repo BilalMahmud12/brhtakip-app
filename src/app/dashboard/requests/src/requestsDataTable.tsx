@@ -3,33 +3,31 @@ import React from 'react';
 import DataTable from '@/components/core/dataTable'
 import { dataTables } from '@/config/dataTables';
 import getRequestsTableData from './getRequestsTableData';
-import { useStore } from '@/stores/useStore';
 
 interface RequestsDataTableProps {
+    dataPayload: any[];
     handleEdit?: (data: any) => void;
     handleDelete?: (data: any) => void;
     handleSelect?: (data: any) => void;
 }
 
 const RequestsDataTable: React.FC<RequestsDataTableProps> = (props) => {
-    const { 
+    const {
+        dataPayload = [], 
         handleEdit = () => { }, 
         handleDelete = () => { },
         handleSelect = () => { },
     } = props;
 
-    const { requestStore } = useStore();
     const { requests } = dataTables
 
     const tableData = getRequestsTableData(
-        requestStore.getAllRequests,
+        dataPayload,
         requests.columns,
         handleEdit,
         handleDelete,
         handleSelect
     );
-
-    console.log('tableData', tableData);
 
     return (
         <div>

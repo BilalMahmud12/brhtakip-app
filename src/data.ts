@@ -55,7 +55,7 @@ export const requests: Request[] = [
     {
         __typename: "Request",
         id: "80be3395-c63d-4f95-9c03-61a3d6464c2d",
-        request_number: "BRH-2021-1001",
+        request_number: "BRH-2021-1002",
         clientprofilID: "953ee90f-75a1-4c74-a620-41ff8102f133",
         status: "COMPLETE" as RequestStatus,
         Brand: {
@@ -90,7 +90,7 @@ export const requests: Request[] = [
     {
         "__typename": "Request",
         "id": "daa5b8ce-f207-44d8-b7a2-b03925739d49",
-        "request_number": "BRH-2021-1002",
+        "request_number": "BRH-2021-1003",
         "clientprofilID": "39721ac1-b62e-4f88-8526-652507c87199",
         "status": "WAITING_DESIGN" as RequestStatus,
         "Brand": {
@@ -332,8 +332,5 @@ export const requests: Request[] = [
         "createdAt": "2021-09-01T00:00:00.000Z",
         "updatedAt": "2021-09-01T00:00:00.000Z"
     }
-
-
-
 ]
 

@@ -8,23 +8,13 @@ export const adminNavItems = [
         ]
     },
     {
-        "section_name": "hizli_islemler",
-        "section_title": "Hızlı İşlemler",
-        show_title: true,
-        items: [
-            { name: 'Talep Ekle', href: '/requests/add', icon: 'FcAddDatabase' }
-        ]
-    },
-    {
         "section_name": "yonet",
         "section_title": "Yonet",
         show_title: true,
         items: [
-            { name: 'Müşteri Profiller', href: '/clients', icon: 'FcBriefcase' },
-            { name: 'Talepler', href: '/dashboard/requests', icon: 'FcFolder' },
-            { name: 'Markalar', href: '/brands', icon: 'FcTrademark' },
-            { name: 'Mağazalar', href: '/branches', icon: 'FcShop' },
-            { name: 'Ürün İşlemler', href: '/products', icon: 'FcSupport' },
+            { name: 'Müşteri Profilleri', href: '/clients', icon: 'FcBriefcase' },
+            { name: 'Müşteri Talepleri', href: '/dashboard/requests', icon: 'FcViewDetails' },
+            { name: 'Sistem Tanıtmaları', href: '/definitions', icon: 'FcFolder' },
         ]
     },
     {

@@ -41,6 +41,7 @@
 
 .amplify-checkbox__button:focus {
   outline: none;
+  box-shadow: unset;
 }
 
 .amplify-checkbox__icon {
@@ -54,5 +55,14 @@
 
 .amplify-checkbox__icon > svg:focus {
   outline: none !important;
+}
+
+.custom-input.amplify-input {
+  padding: 10px 0;
+}
+
+.custom-input.amplify-input:focus {
+  border-color: #f59e0b !important;
+  box-shadow: unset;
 }
 

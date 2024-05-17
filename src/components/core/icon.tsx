@@ -17,7 +17,8 @@ import {
     FcKey,
     FcSettings,
     FcSerialTasks,
-    FcCancel
+    FcCancel,
+    FcViewDetails
 } from 'react-icons/fc';
 import { IoMdRefresh } from "react-icons/io"
 import { GrRefresh } from "react-icons/gr"
@@ -49,6 +50,7 @@ const iconMapping: Record<string, IconType> = {
     'MdEdit': MdEdit,
     'MdDelete': MdDelete,
     'GoKebabHorizontal': GoKebabHorizontal,
+    'FcViewDetails': FcViewDetails,
     'inbox': MdInbox, // Map the string from your array to the icon component
 };
 

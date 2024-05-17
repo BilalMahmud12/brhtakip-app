@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '@/stores/useStore';
 import { useDataModal } from '@/contexts/DataModalContext';
@@ -9,17 +9,30 @@ import { SearchField, Button } from '@aws-amplify/ui-react'
 import Icon from '@/components/core/icon';
 
 const RequestsView: React.FC = observer((props) => {
+    const { requestStore } = useStore();
     const { showDataModal } = useDataModal();
+
+    const [requests, setRequests] = useState<any>([]);
+
+    useEffect(() => {
+        setRequests([...requestStore.getAllRequests || []]);
+    }, []);
 
     const handleRefresh = () => {
         console.log('Refresh')
+        // refresh data
+        setRequests([...requestStore.getAllRequests || []])
+        console.log('Refreshed', requests)
     }
 
     const handleCreate = () => {
         console.log('Create')
         showDataModal(
             'Talep Oluştur',
-            <CreateOrUpdateForm  />,
+            <CreateOrUpdateForm
+                isCreate={true}
+
+            />,
             <Button onClick={() => alert('Action!')}>Action</Button>
         )
     }
@@ -27,7 +40,7 @@ const RequestsView: React.FC = observer((props) => {
     const handleEdit = (data: any) => {
         console.log('Edit', data)
         showDataModal(
-            `${data.originalData.request_number} - Talep Güncelleme`,
+            `Talep Güncelleme`,
             <CreateOrUpdateForm
                 request={data.originalData}  
             />,
@@ -56,7 +69,7 @@ const RequestsView: React.FC = observer((props) => {
                             colorTheme="success"
                             size="small"
                             loadingText=""
-                            onClick={() => alert('hello')}
+                            onClick={handleRefresh}
                             className='rounded-none h-[35px] bg-white border border-gray-600 text-gray-700'
                         >
                             <span>
@@ -78,34 +91,9 @@ const RequestsView: React.FC = observer((props) => {
                 </div>
             </div>
 
-            {/* Search Field 
-            <div className='flex items-center px-6'>
-                <div className='flex items-center space-x-2'>
-                    <SearchField
-                        hasSearchButton={false}
-                        label="Search"
-                        size='small'
-                        placeholder="Talepler Ara"
-                        className='min-w-[400px] h-[35px] bg-white rounded-none'
-                    />
-                    <Button
-                        variation="primary"
-                        colorTheme="success"
-                        size="small"
-                        loadingText=""
-                        onClick={() => alert('hello')}
-                        className='rounded-none h-[35px] bg-white border border-gray-600 text-gray-700'
-                    >
-                        <span>
-                            <Icon iconName='HiOutlineFilter' className='text-lg' />
-                        </span>
-                    </Button>
-                </div>
-            </div>
-            */}
-
             <div className='mt-8'>
                 <RequestsDataTable
+                    dataPayload={requests}
                     handleEdit={handleEdit}
                     handleDelete={handleDelete}
                 />
