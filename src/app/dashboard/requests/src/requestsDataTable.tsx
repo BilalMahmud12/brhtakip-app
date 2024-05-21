@@ -14,9 +14,9 @@ interface RequestsDataTableProps {
 const RequestsDataTable: React.FC<RequestsDataTableProps> = (props) => {
     const {
         dataPayload = [], 
-        handleEdit = () => { }, 
-        handleDelete = () => { },
-        handleSelect = () => { },
+        handleEdit = () => {}, 
+        handleDelete = () => {},
+        handleSelect = () => {},
     } = props;
 
     const { requests } = dataTables

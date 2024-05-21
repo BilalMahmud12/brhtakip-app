@@ -6,7 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid } from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { getUserProfile } from "../graphql/queries";
@@ -24,12 +24,22 @@ export default function UserProfileUpdateForm(props) {
     overrides,
     ...rest
   } = props;
-  const initialValues = {};
+  const initialValues = {
+    first_name: "",
+    last_name: "",
+    email: "",
+  };
+  const [first_name, setFirst_name] = React.useState(initialValues.first_name);
+  const [last_name, setLast_name] = React.useState(initialValues.last_name);
+  const [email, setEmail] = React.useState(initialValues.email);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = userProfileRecord
       ? { ...initialValues, ...userProfileRecord }
       : initialValues;
+    setFirst_name(cleanValues.first_name);
+    setLast_name(cleanValues.last_name);
+    setEmail(cleanValues.email);
     setErrors({});
   };
   const [userProfileRecord, setUserProfileRecord] =
@@ -49,7 +59,11 @@ export default function UserProfileUpdateForm(props) {
     queryData();
   }, [idProp, userProfileModelProp]);
   React.useEffect(resetStateValues, [userProfileRecord]);
-  const validations = {};
+  const validations = {
+    first_name: [],
+    last_name: [],
+    email: [{ type: "Email" }],
+  };
   const runValidationTasks = async (
     fieldName,
     currentValue,
@@ -75,7 +89,11 @@ export default function UserProfileUpdateForm(props) {
       padding="20px"
       onSubmit={async (event) => {
         event.preventDefault();
-        let modelFields = {};
+        let modelFields = {
+          first_name: first_name ?? null,
+          last_name: last_name ?? null,
+          email: email ?? null,
+        };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
             if (Array.isArray(modelFields[fieldName])) {
@@ -126,6 +144,84 @@ export default function UserProfileUpdateForm(props) {
       {...getOverrideProps(overrides, "UserProfileUpdateForm")}
       {...rest}
     >
+      <TextField
+        label="First name"
+        isRequired={false}
+        isReadOnly={false}
+        value={first_name}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              first_name: value,
+              last_name,
+              email,
+            };
+            const result = onChange(modelFields);
+            value = result?.first_name ?? value;
+          }
+          if (errors.first_name?.hasError) {
+            runValidationTasks("first_name", value);
+          }
+          setFirst_name(value);
+        }}
+        onBlur={() => runValidationTasks("first_name", first_name)}
+        errorMessage={errors.first_name?.errorMessage}
+        hasError={errors.first_name?.hasError}
+        {...getOverrideProps(overrides, "first_name")}
+      ></TextField>
+      <TextField
+        label="Last name"
+        isRequired={false}
+        isReadOnly={false}
+        value={last_name}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              first_name,
+              last_name: value,
+              email,
+            };
+            const result = onChange(modelFields);
+            value = result?.last_name ?? value;
+          }
+          if (errors.last_name?.hasError) {
+            runValidationTasks("last_name", value);
+          }
+          setLast_name(value);
+        }}
+        onBlur={() => runValidationTasks("last_name", last_name)}
+        errorMessage={errors.last_name?.errorMessage}
+        hasError={errors.last_name?.hasError}
+        {...getOverrideProps(overrides, "last_name")}
+      ></TextField>
+      <TextField
+        label="Email"
+        isRequired={false}
+        isReadOnly={false}
+        value={email}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              first_name,
+              last_name,
+              email: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.email ?? value;
+          }
+          if (errors.email?.hasError) {
+            runValidationTasks("email", value);
+          }
+          setEmail(value);
+        }}
+        onBlur={() => runValidationTasks("email", email)}
+        errorMessage={errors.email?.errorMessage}
+        hasError={errors.email?.hasError}
+        {...getOverrideProps(overrides, "email")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

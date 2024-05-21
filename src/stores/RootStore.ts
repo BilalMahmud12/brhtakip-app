@@ -1,6 +1,7 @@
-// src/stores/RootStore.ts
 import { UserStore } from './UserStore';
 import { RequestStore } from './RequestStore';
+
+interface RootStoreInitialState {}
 
 export class RootStore {
     userStore: UserStore;

@@ -20,6 +20,10 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .appContainer {
+    @apply px-6 mx-auto max-w-7xl;
+  }
 }
 
 .amplify-checkbox__button--focused::before {
@@ -59,6 +63,20 @@
 
 .custom-input.amplify-input {
   padding: 10px 0;
+  height: 45px;
+  @apply text-sm;
+}
+
+.amplify-input--quiet {
+  padding: 10px 0 !important;
+  height: 45px;
+  @apply text-sm;
+}
+
+.amplify-input--quiet:disabled {
+  background-color: transparent !important;
+  border-color: #89949f !important;
+  @apply text-sm;
 }
 
 .custom-input.amplify-input:focus {
@@ -66,3 +84,33 @@
   box-shadow: unset;
 }
 
+.amplify-input--quiet:focus {
+  box-shadow: unset !important;
+  border-color: #f59e0b !important;
+}
+
+.amplify-autocomplete__menu {
+  background-color: #f9f9f9;
+  border-radius: 0%;
+  overflow-y: scroll;
+  /*max-height: 150px;*/
+}
+
+.amplify-field-group__inner-start {
+  display: none !important;
+}
+
+.amplify-field-group__icon-button {
+  background-color: transparent !important;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.amplify-field-group__icon-button:hover {
+  background-color: transparent !important;
+}
+
+.request_number_field {
+  
+}

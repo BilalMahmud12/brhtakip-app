@@ -1,8 +1,8 @@
 import { useDataModal } from '@/contexts/DataModalContext';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter } from '@nextui-org/react';
 
-
 const DataModal: React.FC = () => {
+
     const { isVisible, hideDataModal, content } = useDataModal();
 
     return (
@@ -10,21 +10,23 @@ const DataModal: React.FC = () => {
             isOpen={isVisible} 
             onClose={hideDataModal}
             radius="lg"
-            size="4xl"
+            size="3xl"
             isDismissable={false}
+            scrollBehavior="inside"
             closeButton={customCloseButton(hideDataModal)}
             classNames={{
-                closeButton: "top-4 right-4 rounded-lg bg-zinc-200 hover:bg-[#f59e0b] hover:text-white",
+                closeButton: "top-4 right-4 rounded-lg bg-zinc-200 hover:bg-[#f59e0b] hover:text-white hidden",
             }}
+            className='max-h-[60vh]'
         >
             <ModalContent>
-                <ModalHeader className='border-b border-zinc-200 bg-zinc-100 py-5'>
+                <ModalHeader className='bg-white py-5 border-b border-zinc-200'>
                     {content?.header}
                 </ModalHeader>
-                <ModalBody className='py-6'>
+                <ModalBody className='py-5'>
                     {content?.body}
                 </ModalBody>
-                <ModalFooter className='border-t border-zinc-200 bg-zinc-100 py-3.5'>
+                <ModalFooter className='bg-zinc-100 py-3.5 shadow'>
                     {content?.footer}
                 </ModalFooter>
             </ModalContent>

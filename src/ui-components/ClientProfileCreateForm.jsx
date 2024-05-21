@@ -9,9 +9,9 @@ import * as React from "react";
 import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
-import { createUserProfile } from "../graphql/mutations";
+import { createClientProfile } from "../graphql/mutations";
 const client = generateClient();
-export default function UserProfileCreateForm(props) {
+export default function ClientProfileCreateForm(props) {
   const {
     clearOnSuccess = true,
     onSuccess,
@@ -23,24 +23,16 @@ export default function UserProfileCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    first_name: "",
-    last_name: "",
-    email: "",
+    name: "",
   };
-  const [first_name, setFirst_name] = React.useState(initialValues.first_name);
-  const [last_name, setLast_name] = React.useState(initialValues.last_name);
-  const [email, setEmail] = React.useState(initialValues.email);
+  const [name, setName] = React.useState(initialValues.name);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setFirst_name(initialValues.first_name);
-    setLast_name(initialValues.last_name);
-    setEmail(initialValues.email);
+    setName(initialValues.name);
     setErrors({});
   };
   const validations = {
-    first_name: [],
-    last_name: [],
-    email: [{ type: "Email" }],
+    name: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -68,9 +60,7 @@ export default function UserProfileCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          first_name,
-          last_name,
-          email,
+          name,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -101,7 +91,7 @@ export default function UserProfileCreateForm(props) {
             }
           });
           await client.graphql({
-            query: createUserProfile.replaceAll("__typename", ""),
+            query: createClientProfile.replaceAll("__typename", ""),
             variables: {
               input: {
                 ...modelFields,
@@ -121,86 +111,32 @@ export default function UserProfileCreateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "UserProfileCreateForm")}
+      {...getOverrideProps(overrides, "ClientProfileCreateForm")}
       {...rest}
     >
       <TextField
-        label="First name"
+        label="Name"
         isRequired={false}
         isReadOnly={false}
-        value={first_name}
+        value={name}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              first_name: value,
-              last_name,
-              email,
+              name: value,
             };
             const result = onChange(modelFields);
-            value = result?.first_name ?? value;
+            value = result?.name ?? value;
           }
-          if (errors.first_name?.hasError) {
-            runValidationTasks("first_name", value);
+          if (errors.name?.hasError) {
+            runValidationTasks("name", value);
           }
-          setFirst_name(value);
+          setName(value);
         }}
-        onBlur={() => runValidationTasks("first_name", first_name)}
-        errorMessage={errors.first_name?.errorMessage}
-        hasError={errors.first_name?.hasError}
-        {...getOverrideProps(overrides, "first_name")}
-      ></TextField>
-      <TextField
-        label="Last name"
-        isRequired={false}
-        isReadOnly={false}
-        value={last_name}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              first_name,
-              last_name: value,
-              email,
-            };
-            const result = onChange(modelFields);
-            value = result?.last_name ?? value;
-          }
-          if (errors.last_name?.hasError) {
-            runValidationTasks("last_name", value);
-          }
-          setLast_name(value);
-        }}
-        onBlur={() => runValidationTasks("last_name", last_name)}
-        errorMessage={errors.last_name?.errorMessage}
-        hasError={errors.last_name?.hasError}
-        {...getOverrideProps(overrides, "last_name")}
-      ></TextField>
-      <TextField
-        label="Email"
-        isRequired={false}
-        isReadOnly={false}
-        value={email}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              first_name,
-              last_name,
-              email: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.email ?? value;
-          }
-          if (errors.email?.hasError) {
-            runValidationTasks("email", value);
-          }
-          setEmail(value);
-        }}
-        onBlur={() => runValidationTasks("email", email)}
-        errorMessage={errors.email?.errorMessage}
-        hasError={errors.email?.hasError}
-        {...getOverrideProps(overrides, "email")}
+        onBlur={() => runValidationTasks("name", name)}
+        errorMessage={errors.name?.errorMessage}
+        hasError={errors.name?.hasError}
+        {...getOverrideProps(overrides, "name")}
       ></TextField>
       <Flex
         justifyContent="space-between"

@@ -14,6 +14,9 @@
     "categories": {
       "auth": {
         "BRHTakipApp": {}
+      },
+      "storage": {
+        "s3brhtakipstorage9c050d2c": {}
       }
     }
   }

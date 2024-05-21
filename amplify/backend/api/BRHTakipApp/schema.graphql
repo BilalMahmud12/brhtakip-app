@@ -1,3 +1,15 @@
+type RequestItem {
+  brand: AWSJSON
+  product: AWSJSON
+  application_area: String
+  material: AWSJSON
+  branded: Boolean
+  quantity: Int
+  width: Float
+  height: Float
+  design_note: String
+}
+
 enum RequestStatus {
   PENDING_APPROAL
   WAITING_DESIGN
@@ -13,11 +25,17 @@ type Material @model @auth(rules: [{allow: public}]) {
 
 type UserProfile @model @auth(rules: [{allow: public}]) {
   id: ID!
+  first_name: String
+  last_name: String
+  email: AWSEmail
+  clientprofileID: ID @index(name: "byClientProfile")
 }
 
 type Area @model @auth(rules: [{allow: public}]) {
   id: ID!
   districtID: ID! @index(name: "byDistrict")
+  name: String
+  Stores: [Store] @hasMany(indexName: "byArea", fields: ["id"])
 }
 
 type District @model @auth(rules: [{allow: public}]) {
@@ -25,42 +43,61 @@ type District @model @auth(rules: [{allow: public}]) {
   cityID: ID! @index(name: "byCity")
   name: String
   Areas: [Area] @hasMany(indexName: "byDistrict", fields: ["id"])
+  Stores: [Store] @hasMany(indexName: "byDistrict", fields: ["id"])
 }
 
 type City @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
   Districts: [District] @hasMany(indexName: "byCity", fields: ["id"])
+  Stores: [Store] @hasMany(indexName: "byCity", fields: ["id"])
 }
 
-type ClientProfil @model @auth(rules: [{allow: public}]) {
+type ClientProfile @model @auth(rules: [{allow: public}]) {
   id: ID!
-  Brands: [Brand] @hasMany(indexName: "byClientProfil", fields: ["id"])
-  Requests: [Request] @hasMany(indexName: "byClientProfil", fields: ["id"])
+  name: String
+  UserProfiles: [UserProfile] @hasMany(indexName: "byClientProfile", fields: ["id"])
+  Requests: [Request] @hasMany(indexName: "byClientProfile", fields: ["id"])
+  Brands: [Brand] @hasMany(indexName: "byClientProfile", fields: ["id"])
 }
 
 type Store @model @auth(rules: [{allow: public}]) {
   id: ID!
+  cityID: ID! @index(name: "byCity")
+  districtID: ID! @index(name: "byDistrict")
+  areaID: ID! @index(name: "byArea")
+  name: String!
+  address: String
+  Requests: [Request] @hasMany(indexName: "byStore", fields: ["id"])
+  phones: String
+  email: [AWSJSON]
+  notes: String
+  created_by: ID
+  updated_by: ID
 }
 
 type Product @model @auth(rules: [{allow: public}]) {
   id: ID!
   brandID: ID! @index(name: "byBrand")
+  is_active: Boolean
+  name: String
 }
 
 type Brand @model @auth(rules: [{allow: public}]) {
   id: ID!
   Products: [Product] @hasMany(indexName: "byBrand", fields: ["id"])
-  clientprofilID: ID! @index(name: "byClientProfil")
+  clientprofileID: ID! @index(name: "byClientProfile")
+  is_active: Boolean
+  name: String
 }
 
 type Request @model @auth(rules: [{allow: public}]) {
   id: ID!
-  request_number: String
-  Brand: Brand @hasOne
-  Product: Product @hasOne
-  Store: Store @hasOne
-  clientprofilID: ID! @index(name: "byClientProfil")
-  status: RequestStatus
+  request_number: String!
+  clientprofileID: ID! @index(name: "byClientProfile")
+  storeID: ID! @index(name: "byStore")
+  status: RequestStatus!
+  client_details: AWSJSON
+  items: [RequestItem!]
 }
  
