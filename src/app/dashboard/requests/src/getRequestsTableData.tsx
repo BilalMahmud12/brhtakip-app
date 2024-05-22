@@ -23,8 +23,14 @@ const getStatus = (status: string) => {
     }
 }
 
+type RequestTempType = Request & {
+    Brand: { name: string },
+    Product: { name: string },
+    Store: { name: string }
+}
+
 export default function getRequestsTableData(
-    data: Request[], 
+    data: RequestTempType[], 
     columns: any, 
     handleEdit: (data: any) => void, 
     handleDelete: (data: any) => void,
@@ -54,7 +60,7 @@ export default function getRequestsTableData(
                         );
                         break;
                     case 'brand':
-                        row[column.key] = `${request.Brand?.name} - ${request.Product?.name}`;
+                        row[column.key] = `${request?.Brand?.name ? '' : ''} - ${request.Product?.name}`;
                         break;
                     case 'store':
                         row[column.key] = request.Store?.name;

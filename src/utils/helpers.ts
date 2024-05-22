@@ -10,5 +10,5 @@ export const formateDate = (dateString: string): string => {
 
 export const generateRequestNumber = () => {
     const Year = new Date().getFullYear();
-    return `BRH-${Year}-${Math.floor(Math.random() * 1000000)}`
+    return `BRH-${Year}-${Math.floor(Math.random() * 100000000)}`
 }
