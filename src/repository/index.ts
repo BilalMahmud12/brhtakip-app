@@ -8,5 +8,6 @@ export * as CityRepository from './city.repository'
 export * as ProductRepository from './product.repository'
 export * as BrandRepository from './brand.repository'
 export * as ClientProfileRepository from './clientProfile.repository'
+export * as StoreRepository from './store.repository'
 
 export const client = generateClient()
