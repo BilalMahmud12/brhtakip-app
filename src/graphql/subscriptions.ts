@@ -118,13 +118,40 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -134,8 +161,18 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -179,13 +216,40 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -195,8 +259,18 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -240,13 +314,40 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -256,8 +357,18 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -306,13 +417,27 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
               items {
                 id
                 request_number
-                clientprofileID
                 storeID
                 status
-                client_details
-                items {
-                  brand
-                  product
+                Brand {
+                  id
+                  clientprofileID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request_details {
                   application_area
                   material
                   branded
@@ -322,8 +447,18 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   design_note
                   __typename
                 }
+                Material {
+                  id
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
                 createdAt
                 updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
                 __typename
               }
               nextToken
@@ -360,13 +495,40 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -376,8 +538,18 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -426,13 +598,27 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
               items {
                 id
                 request_number
-                clientprofileID
                 storeID
                 status
-                client_details
-                items {
-                  brand
-                  product
+                Brand {
+                  id
+                  clientprofileID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request_details {
                   application_area
                   material
                   branded
@@ -442,8 +628,18 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   design_note
                   __typename
                 }
+                Material {
+                  id
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
                 createdAt
                 updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
                 __typename
               }
               nextToken
@@ -480,13 +676,40 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -496,8 +719,18 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -546,13 +779,27 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
               items {
                 id
                 request_number
-                clientprofileID
                 storeID
                 status
-                client_details
-                items {
-                  brand
-                  product
+                Brand {
+                  id
+                  clientprofileID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request_details {
                   application_area
                   material
                   branded
@@ -562,8 +809,18 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   design_note
                   __typename
                 }
+                Material {
+                  id
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
                 createdAt
                 updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
                 __typename
               }
               nextToken
@@ -600,13 +857,40 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -616,8 +900,18 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -701,13 +995,27 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
               items {
                 id
                 request_number
-                clientprofileID
                 storeID
                 status
-                client_details
-                items {
-                  brand
-                  product
+                Brand {
+                  id
+                  clientprofileID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request_details {
                   application_area
                   material
                   branded
@@ -717,8 +1025,18 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   design_note
                   __typename
                 }
+                Material {
+                  id
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
                 createdAt
                 updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
                 __typename
               }
               nextToken
@@ -755,13 +1073,40 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -771,8 +1116,18 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -856,13 +1211,27 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
               items {
                 id
                 request_number
-                clientprofileID
                 storeID
                 status
-                client_details
-                items {
-                  brand
-                  product
+                Brand {
+                  id
+                  clientprofileID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request_details {
                   application_area
                   material
                   branded
@@ -872,8 +1241,18 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   design_note
                   __typename
                 }
+                Material {
+                  id
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
                 createdAt
                 updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
                 __typename
               }
               nextToken
@@ -910,13 +1289,40 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -926,8 +1332,18 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -1011,13 +1427,27 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
               items {
                 id
                 request_number
-                clientprofileID
                 storeID
                 status
-                client_details
-                items {
-                  brand
-                  product
+                Brand {
+                  id
+                  clientprofileID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request_details {
                   application_area
                   material
                   branded
@@ -1027,8 +1457,18 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   design_note
                   __typename
                 }
+                Material {
+                  id
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
                 createdAt
                 updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
                 __typename
               }
               nextToken
@@ -1065,13 +1505,40 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -1081,8 +1548,18 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -1122,33 +1599,6 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
         last_name
         email
         clientprofileID
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    Requests {
-      items {
-        id
-        request_number
-        clientprofileID
-        storeID
-        status
-        client_details
-        items {
-          brand
-          product
-          application_area
-          material
-          branded
-          quantity
-          width
-          height
-          design_note
-          __typename
-        }
         createdAt
         updatedAt
         __typename
@@ -1211,33 +1661,6 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
       nextToken
       __typename
     }
-    Requests {
-      items {
-        id
-        request_number
-        clientprofileID
-        storeID
-        status
-        client_details
-        items {
-          brand
-          product
-          application_area
-          material
-          branded
-          quantity
-          width
-          height
-          design_note
-          __typename
-        }
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
     Brands {
       items {
         id
@@ -1293,33 +1716,6 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
       nextToken
       __typename
     }
-    Requests {
-      items {
-        id
-        request_number
-        clientprofileID
-        storeID
-        status
-        client_details
-        items {
-          brand
-          product
-          application_area
-          material
-          branded
-          quantity
-          width
-          height
-          design_note
-          __typename
-        }
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
     Brands {
       items {
         id
@@ -1367,13 +1763,40 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
       items {
         id
         request_number
-        clientprofileID
         storeID
         status
-        client_details
-        items {
-          brand
-          product
+        Brand {
+          id
+          Products {
+            items {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          clientprofileID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        Product {
+          id
+          brandID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        request_details {
           application_area
           material
           branded
@@ -1383,8 +1806,18 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
           design_note
           __typename
         }
+        Material {
+          id
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
         createdAt
         updatedAt
+        requestBrandId
+        requestProductId
+        requestMaterialId
         __typename
       }
       nextToken
@@ -1416,13 +1849,40 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
       items {
         id
         request_number
-        clientprofileID
         storeID
         status
-        client_details
-        items {
-          brand
-          product
+        Brand {
+          id
+          Products {
+            items {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          clientprofileID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        Product {
+          id
+          brandID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        request_details {
           application_area
           material
           branded
@@ -1432,8 +1892,18 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
           design_note
           __typename
         }
+        Material {
+          id
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
         createdAt
         updatedAt
+        requestBrandId
+        requestProductId
+        requestMaterialId
         __typename
       }
       nextToken
@@ -1465,13 +1935,40 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
       items {
         id
         request_number
-        clientprofileID
         storeID
         status
-        client_details
-        items {
-          brand
-          product
+        Brand {
+          id
+          Products {
+            items {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          clientprofileID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        Product {
+          id
+          brandID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        request_details {
           application_area
           material
           branded
@@ -1481,8 +1978,18 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
           design_note
           __typename
         }
+        Material {
+          id
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
         createdAt
         updatedAt
+        requestBrandId
+        requestProductId
+        requestMaterialId
         __typename
       }
       nextToken
@@ -1635,13 +2142,40 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
   onCreateRequest(filter: $filter) {
     id
     request_number
-    clientprofileID
     storeID
     status
-    client_details
-    items {
-      brand
-      product
+    Brand {
+      id
+      Products {
+        items {
+          id
+          brandID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      clientprofileID
+      is_active
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    Product {
+      id
+      brandID
+      is_active
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    request_details {
       application_area
       material
       branded
@@ -1651,8 +2185,18 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
       design_note
       __typename
     }
+    Material {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
+    requestBrandId
+    requestProductId
+    requestMaterialId
     __typename
   }
 }
@@ -1664,13 +2208,40 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
   onUpdateRequest(filter: $filter) {
     id
     request_number
-    clientprofileID
     storeID
     status
-    client_details
-    items {
-      brand
-      product
+    Brand {
+      id
+      Products {
+        items {
+          id
+          brandID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      clientprofileID
+      is_active
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    Product {
+      id
+      brandID
+      is_active
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    request_details {
       application_area
       material
       branded
@@ -1680,8 +2251,18 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
       design_note
       __typename
     }
+    Material {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
+    requestBrandId
+    requestProductId
+    requestMaterialId
     __typename
   }
 }
@@ -1693,13 +2274,40 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
   onDeleteRequest(filter: $filter) {
     id
     request_number
-    clientprofileID
     storeID
     status
-    client_details
-    items {
-      brand
-      product
+    Brand {
+      id
+      Products {
+        items {
+          id
+          brandID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      clientprofileID
+      is_active
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    Product {
+      id
+      brandID
+      is_active
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    request_details {
       application_area
       material
       branded
@@ -1709,8 +2317,18 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
       design_note
       __typename
     }
+    Material {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
+    requestBrandId
+    requestProductId
+    requestMaterialId
     __typename
   }
 }

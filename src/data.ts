@@ -21,7 +21,7 @@ export const requests: Request[] = [
         __typename: "Request",
         id: '93938ac7-4af2-42d1-8e47-1ea6e9d1cffd',
         request_number: 'BRH-2021-0001',
-        clientprofilID: 'c0dbfd8d-05d2-4f73-8364-61c157178379',
+        clientprofileID: 'c0dbfd8d-05d2-4f73-8364-61c157178379',
         status: 'PENDING_APPROAL' as RequestStatus,
         Brand: {
             __typename: "Brand",

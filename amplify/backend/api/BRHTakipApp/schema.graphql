@@ -1,7 +1,5 @@
 type RequestItem {
-  brand: AWSJSON
-  product: AWSJSON
-  application_area: String
+  application_area: AWSJSON
   material: AWSJSON
   branded: Boolean
   quantity: Int
@@ -57,7 +55,6 @@ type ClientProfile @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
   UserProfiles: [UserProfile] @hasMany(indexName: "byClientProfile", fields: ["id"])
-  Requests: [Request] @hasMany(indexName: "byClientProfile", fields: ["id"])
   Brands: [Brand] @hasMany(indexName: "byClientProfile", fields: ["id"])
 }
 
@@ -94,10 +91,11 @@ type Brand @model @auth(rules: [{allow: public}]) {
 type Request @model @auth(rules: [{allow: public}]) {
   id: ID!
   request_number: String!
-  clientprofileID: ID! @index(name: "byClientProfile")
   storeID: ID! @index(name: "byStore")
   status: RequestStatus!
-  client_details: AWSJSON
-  items: [RequestItem!]
+  Brand: Brand @hasOne
+  Product: Product @hasOne
+  request_details: RequestItem
+  Material: Material @hasOne
 }
  

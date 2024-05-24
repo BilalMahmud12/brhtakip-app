@@ -133,13 +133,40 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -149,8 +176,18 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -197,13 +234,40 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -213,8 +277,18 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -261,13 +335,40 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -277,8 +378,18 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -330,13 +441,27 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
               items {
                 id
                 request_number
-                clientprofileID
                 storeID
                 status
-                client_details
-                items {
-                  brand
-                  product
+                Brand {
+                  id
+                  clientprofileID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request_details {
                   application_area
                   material
                   branded
@@ -346,8 +471,18 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   design_note
                   __typename
                 }
+                Material {
+                  id
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
                 createdAt
                 updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
                 __typename
               }
               nextToken
@@ -384,13 +519,40 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -400,8 +562,18 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -453,13 +625,27 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
               items {
                 id
                 request_number
-                clientprofileID
                 storeID
                 status
-                client_details
-                items {
-                  brand
-                  product
+                Brand {
+                  id
+                  clientprofileID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request_details {
                   application_area
                   material
                   branded
@@ -469,8 +655,18 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   design_note
                   __typename
                 }
+                Material {
+                  id
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
                 createdAt
                 updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
                 __typename
               }
               nextToken
@@ -507,13 +703,40 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -523,8 +746,18 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -576,13 +809,27 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
               items {
                 id
                 request_number
-                clientprofileID
                 storeID
                 status
-                client_details
-                items {
-                  brand
-                  product
+                Brand {
+                  id
+                  clientprofileID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request_details {
                   application_area
                   material
                   branded
@@ -592,8 +839,18 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   design_note
                   __typename
                 }
+                Material {
+                  id
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
                 createdAt
                 updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
                 __typename
               }
               nextToken
@@ -630,13 +887,40 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -646,8 +930,18 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -734,13 +1028,27 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
               items {
                 id
                 request_number
-                clientprofileID
                 storeID
                 status
-                client_details
-                items {
-                  brand
-                  product
+                Brand {
+                  id
+                  clientprofileID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request_details {
                   application_area
                   material
                   branded
@@ -750,8 +1058,18 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   design_note
                   __typename
                 }
+                Material {
+                  id
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
                 createdAt
                 updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
                 __typename
               }
               nextToken
@@ -788,13 +1106,40 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -804,8 +1149,18 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -892,13 +1247,27 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
               items {
                 id
                 request_number
-                clientprofileID
                 storeID
                 status
-                client_details
-                items {
-                  brand
-                  product
+                Brand {
+                  id
+                  clientprofileID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request_details {
                   application_area
                   material
                   branded
@@ -908,8 +1277,18 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   design_note
                   __typename
                 }
+                Material {
+                  id
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
                 createdAt
                 updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
                 __typename
               }
               nextToken
@@ -946,13 +1325,40 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -962,8 +1368,18 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -1050,13 +1466,27 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
               items {
                 id
                 request_number
-                clientprofileID
                 storeID
                 status
-                client_details
-                items {
-                  brand
-                  product
+                Brand {
+                  id
+                  clientprofileID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request_details {
                   application_area
                   material
                   branded
@@ -1066,8 +1496,18 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   design_note
                   __typename
                 }
+                Material {
+                  id
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
                 createdAt
                 updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
                 __typename
               }
               nextToken
@@ -1104,13 +1544,40 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
           items {
             id
             request_number
-            clientprofileID
             storeID
             status
-            client_details
-            items {
-              brand
-              product
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  is_active
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            request_details {
               application_area
               material
               branded
@@ -1120,8 +1587,18 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
               design_note
               __typename
             }
+            Material {
+              id
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
             __typename
           }
           nextToken
@@ -1162,33 +1639,6 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
         last_name
         email
         clientprofileID
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    Requests {
-      items {
-        id
-        request_number
-        clientprofileID
-        storeID
-        status
-        client_details
-        items {
-          brand
-          product
-          application_area
-          material
-          branded
-          quantity
-          width
-          height
-          design_note
-          __typename
-        }
         createdAt
         updatedAt
         __typename
@@ -1252,33 +1702,6 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
       nextToken
       __typename
     }
-    Requests {
-      items {
-        id
-        request_number
-        clientprofileID
-        storeID
-        status
-        client_details
-        items {
-          brand
-          product
-          application_area
-          material
-          branded
-          quantity
-          width
-          height
-          design_note
-          __typename
-        }
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
     Brands {
       items {
         id
@@ -1328,33 +1751,6 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
         last_name
         email
         clientprofileID
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    Requests {
-      items {
-        id
-        request_number
-        clientprofileID
-        storeID
-        status
-        client_details
-        items {
-          brand
-          product
-          application_area
-          material
-          branded
-          quantity
-          width
-          height
-          design_note
-          __typename
-        }
         createdAt
         updatedAt
         __typename
@@ -1412,13 +1808,40 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
       items {
         id
         request_number
-        clientprofileID
         storeID
         status
-        client_details
-        items {
-          brand
-          product
+        Brand {
+          id
+          Products {
+            items {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          clientprofileID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        Product {
+          id
+          brandID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        request_details {
           application_area
           material
           branded
@@ -1428,8 +1851,18 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
           design_note
           __typename
         }
+        Material {
+          id
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
         createdAt
         updatedAt
+        requestBrandId
+        requestProductId
+        requestMaterialId
         __typename
       }
       nextToken
@@ -1464,13 +1897,40 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
       items {
         id
         request_number
-        clientprofileID
         storeID
         status
-        client_details
-        items {
-          brand
-          product
+        Brand {
+          id
+          Products {
+            items {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          clientprofileID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        Product {
+          id
+          brandID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        request_details {
           application_area
           material
           branded
@@ -1480,8 +1940,18 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
           design_note
           __typename
         }
+        Material {
+          id
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
         createdAt
         updatedAt
+        requestBrandId
+        requestProductId
+        requestMaterialId
         __typename
       }
       nextToken
@@ -1516,13 +1986,40 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
       items {
         id
         request_number
-        clientprofileID
         storeID
         status
-        client_details
-        items {
-          brand
-          product
+        Brand {
+          id
+          Products {
+            items {
+              id
+              brandID
+              is_active
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          clientprofileID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        Product {
+          id
+          brandID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        request_details {
           application_area
           material
           branded
@@ -1532,8 +2029,18 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
           design_note
           __typename
         }
+        Material {
+          id
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
         createdAt
         updatedAt
+        requestBrandId
+        requestProductId
+        requestMaterialId
         __typename
       }
       nextToken
@@ -1707,13 +2214,40 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
   createRequest(input: $input, condition: $condition) {
     id
     request_number
-    clientprofileID
     storeID
     status
-    client_details
-    items {
-      brand
-      product
+    Brand {
+      id
+      Products {
+        items {
+          id
+          brandID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      clientprofileID
+      is_active
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    Product {
+      id
+      brandID
+      is_active
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    request_details {
       application_area
       material
       branded
@@ -1723,8 +2257,18 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
       design_note
       __typename
     }
+    Material {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
+    requestBrandId
+    requestProductId
+    requestMaterialId
     __typename
   }
 }
@@ -1739,13 +2283,40 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
   updateRequest(input: $input, condition: $condition) {
     id
     request_number
-    clientprofileID
     storeID
     status
-    client_details
-    items {
-      brand
-      product
+    Brand {
+      id
+      Products {
+        items {
+          id
+          brandID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      clientprofileID
+      is_active
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    Product {
+      id
+      brandID
+      is_active
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    request_details {
       application_area
       material
       branded
@@ -1755,8 +2326,18 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
       design_note
       __typename
     }
+    Material {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
+    requestBrandId
+    requestProductId
+    requestMaterialId
     __typename
   }
 }
@@ -1771,13 +2352,40 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
   deleteRequest(input: $input, condition: $condition) {
     id
     request_number
-    clientprofileID
     storeID
     status
-    client_details
-    items {
-      brand
-      product
+    Brand {
+      id
+      Products {
+        items {
+          id
+          brandID
+          is_active
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      clientprofileID
+      is_active
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    Product {
+      id
+      brandID
+      is_active
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    request_details {
       application_area
       material
       branded
@@ -1787,8 +2395,18 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
       design_note
       __typename
     }
+    Material {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
+    requestBrandId
+    requestProductId
+    requestMaterialId
     __typename
   }
 }

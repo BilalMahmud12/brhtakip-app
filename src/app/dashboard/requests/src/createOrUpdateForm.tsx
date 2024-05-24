@@ -130,10 +130,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                 ...formData,
                 request_number,
                 status,
-                clientprofileID: request.clientprofileID,
                 storeID: request.storeID,
                 client_details: null,
-                items: request.items as RequestItem[]
             });
         }
     }, []);
