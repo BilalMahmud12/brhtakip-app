@@ -29,24 +29,6 @@ const Request: React.FC = observer(() => {
         fetchData();
     }, []);
 
-
-    //************************************************************************* */
-
-    useEffect(() => {
-        const fetchBrands = async () => {
-            try {
-                const brandsData = await Repo.BrandRepository.getAllBrands();
-                console.log('brands', brandsData);
-            } catch (error) {
-                console.error('Failed to fetch brands', error);
-            }
-        };
-        fetchBrands();
-    }, []);
-
-    //************************************************************************* */
-
-
     useEffect(() => {
         const fetchData = async () => {
             const { data } = await client.graphql({ query: listClientProfiles });
