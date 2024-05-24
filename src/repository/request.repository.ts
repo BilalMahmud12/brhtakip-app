@@ -64,7 +64,7 @@ const softDelete = async (id: string) => {
     }
 }
 
-export { 
+export {
     getAllRequests,
     getRequestById,
     create,

@@ -6,7 +6,8 @@ import { observer } from 'mobx-react-lite';
 import RequestsView from './src/requestsView';
 import { Breadcrumbs } from '@aws-amplify/ui-react'
 import { requests } from '@/data';
-import type { Request } from '@/API';
+import type { Brand, Request } from '@/API';
+
 
 import { generateRequestNumber } from '@/utils/helpers';
 
@@ -16,17 +17,35 @@ import { listClientProfiles } from '@/graphql/queries';
 
 const Request: React.FC = observer(() => {
     const { requestStore } = useStore();
-    
+
     useEffect(() => {
         const fetchData = async () => {
             const requestsData = await Repo.RequestRepository.getAllRequests();
             requestStore.initStore({ requests: [...requests, ...requestsData as unknown as Request[]] });
-            
+
             console.log('requests', [...requests, ...requestsData as unknown as Request[]]);
             console.log('requests Numer', generateRequestNumber());
         };
         fetchData();
     }, []);
+
+
+    //************************************************************************* */
+
+    useEffect(() => {
+        const fetchBrands = async () => {
+            try {
+                const brandsData = await Repo.BrandRepository.getAllBrands();
+                console.log('brands', brandsData);
+            } catch (error) {
+                console.error('Failed to fetch brands', error);
+            }
+        };
+        fetchBrands();
+    }, []);
+
+    //************************************************************************* */
+
 
     useEffect(() => {
         const fetchData = async () => {
