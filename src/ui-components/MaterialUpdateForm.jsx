@@ -6,7 +6,13 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import {
+  Button,
+  Flex,
+  Grid,
+  SwitchField,
+  TextField,
+} from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { getMaterial } from "../graphql/queries";
@@ -25,14 +31,17 @@ export default function MaterialUpdateForm(props) {
     ...rest
   } = props;
   const initialValues = {
+    isActive: false,
     name: "",
   };
+  const [isActive, setIsActive] = React.useState(initialValues.isActive);
   const [name, setName] = React.useState(initialValues.name);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = materialRecord
       ? { ...initialValues, ...materialRecord }
       : initialValues;
+    setIsActive(cleanValues.isActive);
     setName(cleanValues.name);
     setErrors({});
   };
@@ -53,6 +62,7 @@ export default function MaterialUpdateForm(props) {
   }, [idProp, materialModelProp]);
   React.useEffect(resetStateValues, [materialRecord]);
   const validations = {
+    isActive: [{ type: "Required" }],
     name: [],
   };
   const runValidationTasks = async (
@@ -81,6 +91,7 @@ export default function MaterialUpdateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
+          isActive,
           name: name ?? null,
         };
         const validationResponses = await Promise.all(
@@ -133,6 +144,31 @@ export default function MaterialUpdateForm(props) {
       {...getOverrideProps(overrides, "MaterialUpdateForm")}
       {...rest}
     >
+      <SwitchField
+        label="Is active"
+        defaultChecked={false}
+        isDisabled={false}
+        isChecked={isActive}
+        onChange={(e) => {
+          let value = e.target.checked;
+          if (onChange) {
+            const modelFields = {
+              isActive: value,
+              name,
+            };
+            const result = onChange(modelFields);
+            value = result?.isActive ?? value;
+          }
+          if (errors.isActive?.hasError) {
+            runValidationTasks("isActive", value);
+          }
+          setIsActive(value);
+        }}
+        onBlur={() => runValidationTasks("isActive", isActive)}
+        errorMessage={errors.isActive?.errorMessage}
+        hasError={errors.isActive?.hasError}
+        {...getOverrideProps(overrides, "isActive")}
+      ></SwitchField>
       <TextField
         label="Name"
         isRequired={false}
@@ -142,6 +178,7 @@ export default function MaterialUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
+              isActive,
               name: value,
             };
             const result = onChange(modelFields);

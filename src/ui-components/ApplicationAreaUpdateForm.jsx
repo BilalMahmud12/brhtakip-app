@@ -15,11 +15,13 @@ import {
 } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
-import { createClientProfile } from "../graphql/mutations";
+import { getApplicationArea } from "../graphql/queries";
+import { updateApplicationArea } from "../graphql/mutations";
 const client = generateClient();
-export default function ClientProfileCreateForm(props) {
+export default function ApplicationAreaUpdateForm(props) {
   const {
-    clearOnSuccess = true,
+    id: idProp,
+    applicationArea: applicationAreaModelProp,
     onSuccess,
     onError,
     onSubmit,
@@ -36,12 +38,33 @@ export default function ClientProfileCreateForm(props) {
   const [name, setName] = React.useState(initialValues.name);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setIsActive(initialValues.isActive);
-    setName(initialValues.name);
+    const cleanValues = applicationAreaRecord
+      ? { ...initialValues, ...applicationAreaRecord }
+      : initialValues;
+    setIsActive(cleanValues.isActive);
+    setName(cleanValues.name);
     setErrors({});
   };
+  const [applicationAreaRecord, setApplicationAreaRecord] = React.useState(
+    applicationAreaModelProp
+  );
+  React.useEffect(() => {
+    const queryData = async () => {
+      const record = idProp
+        ? (
+            await client.graphql({
+              query: getApplicationArea.replaceAll("__typename", ""),
+              variables: { id: idProp },
+            })
+          )?.data?.getApplicationArea
+        : applicationAreaModelProp;
+      setApplicationAreaRecord(record);
+    };
+    queryData();
+  }, [idProp, applicationAreaModelProp]);
+  React.useEffect(resetStateValues, [applicationAreaRecord]);
   const validations = {
-    isActive: [],
+    isActive: [{ type: "Required" }],
     name: [],
   };
   const runValidationTasks = async (
@@ -71,7 +94,7 @@ export default function ClientProfileCreateForm(props) {
         event.preventDefault();
         let modelFields = {
           isActive,
-          name,
+          name: name ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -102,18 +125,16 @@ export default function ClientProfileCreateForm(props) {
             }
           });
           await client.graphql({
-            query: createClientProfile.replaceAll("__typename", ""),
+            query: updateApplicationArea.replaceAll("__typename", ""),
             variables: {
               input: {
+                id: applicationAreaRecord.id,
                 ...modelFields,
               },
             },
           });
           if (onSuccess) {
             onSuccess(modelFields);
-          }
-          if (clearOnSuccess) {
-            resetStateValues();
           }
         } catch (err) {
           if (onError) {
@@ -122,7 +143,7 @@ export default function ClientProfileCreateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "ClientProfileCreateForm")}
+      {...getOverrideProps(overrides, "ApplicationAreaUpdateForm")}
       {...rest}
     >
       <SwitchField
@@ -180,13 +201,14 @@ export default function ClientProfileCreateForm(props) {
         {...getOverrideProps(overrides, "CTAFlex")}
       >
         <Button
-          children="Clear"
+          children="Reset"
           type="reset"
           onClick={(event) => {
             event.preventDefault();
             resetStateValues();
           }}
-          {...getOverrideProps(overrides, "ClearButton")}
+          isDisabled={!(idProp || applicationAreaModelProp)}
+          {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
         <Flex
           gap="15px"
@@ -196,7 +218,10 @@ export default function ClientProfileCreateForm(props) {
             children="Submit"
             type="submit"
             variation="primary"
-            isDisabled={Object.values(errors).some((e) => e?.hasError)}
+            isDisabled={
+              !(idProp || applicationAreaModelProp) ||
+              Object.values(errors).some((e) => e?.hasError)
+            }
             {...getOverrideProps(overrides, "SubmitButton")}
           ></Button>
         </Flex>

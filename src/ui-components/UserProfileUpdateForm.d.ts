@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { UserProfile } from "../API.ts";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
@@ -23,20 +23,23 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type UserProfileUpdateFormInputValues = {
-    first_name?: string;
-    last_name?: string;
+    isActive?: boolean;
+    firstName?: string;
+    lastName?: string;
     email?: string;
 };
 export declare type UserProfileUpdateFormValidationValues = {
-    first_name?: ValidationFunction<string>;
-    last_name?: ValidationFunction<string>;
+    isActive?: ValidationFunction<boolean>;
+    firstName?: ValidationFunction<string>;
+    lastName?: ValidationFunction<string>;
     email?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type UserProfileUpdateFormOverridesProps = {
     UserProfileUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    first_name?: PrimitiveOverrideProps<TextFieldProps>;
-    last_name?: PrimitiveOverrideProps<TextFieldProps>;
+    isActive?: PrimitiveOverrideProps<SwitchFieldProps>;
+    firstName?: PrimitiveOverrideProps<TextFieldProps>;
+    lastName?: PrimitiveOverrideProps<TextFieldProps>;
     email?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type UserProfileUpdateFormProps = React.PropsWithChildren<{

@@ -5,7 +5,8 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { ApplicationAre } from "../API.ts";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -21,28 +22,26 @@ export declare type ValidationResponse = {
     errorMessage?: string;
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
-export declare type MaterialCreateFormInputValues = {
-    isActive?: boolean;
+export declare type ApplicationAreUpdateFormInputValues = {
     name?: string;
 };
-export declare type MaterialCreateFormValidationValues = {
-    isActive?: ValidationFunction<boolean>;
+export declare type ApplicationAreUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type MaterialCreateFormOverridesProps = {
-    MaterialCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    isActive?: PrimitiveOverrideProps<SwitchFieldProps>;
+export declare type ApplicationAreUpdateFormOverridesProps = {
+    ApplicationAreUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     name?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
-export declare type MaterialCreateFormProps = React.PropsWithChildren<{
-    overrides?: MaterialCreateFormOverridesProps | undefined | null;
+export declare type ApplicationAreUpdateFormProps = React.PropsWithChildren<{
+    overrides?: ApplicationAreUpdateFormOverridesProps | undefined | null;
 } & {
-    clearOnSuccess?: boolean;
-    onSubmit?: (fields: MaterialCreateFormInputValues) => MaterialCreateFormInputValues;
-    onSuccess?: (fields: MaterialCreateFormInputValues) => void;
-    onError?: (fields: MaterialCreateFormInputValues, errorMessage: string) => void;
-    onChange?: (fields: MaterialCreateFormInputValues) => MaterialCreateFormInputValues;
-    onValidate?: MaterialCreateFormValidationValues;
+    id?: string;
+    applicationAre?: ApplicationAre;
+    onSubmit?: (fields: ApplicationAreUpdateFormInputValues) => ApplicationAreUpdateFormInputValues;
+    onSuccess?: (fields: ApplicationAreUpdateFormInputValues) => void;
+    onError?: (fields: ApplicationAreUpdateFormInputValues, errorMessage: string) => void;
+    onChange?: (fields: ApplicationAreUpdateFormInputValues) => ApplicationAreUpdateFormInputValues;
+    onValidate?: ApplicationAreUpdateFormValidationValues;
 } & React.CSSProperties>;
-export default function MaterialCreateForm(props: MaterialCreateFormProps): React.ReactElement;
+export default function ApplicationAreUpdateForm(props: ApplicationAreUpdateFormProps): React.ReactElement;

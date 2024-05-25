@@ -6,20 +6,16 @@
 
 /* eslint-disable */
 import * as React from "react";
-import {
-  Button,
-  Flex,
-  Grid,
-  SwitchField,
-  TextField,
-} from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
-import { createClientProfile } from "../graphql/mutations";
+import { getApplicationAre } from "../graphql/queries";
+import { updateApplicationAre } from "../graphql/mutations";
 const client = generateClient();
-export default function ClientProfileCreateForm(props) {
+export default function ApplicationAreUpdateForm(props) {
   const {
-    clearOnSuccess = true,
+    id: idProp,
+    applicationAre: applicationAreModelProp,
     onSuccess,
     onError,
     onSubmit,
@@ -29,19 +25,36 @@ export default function ClientProfileCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    isActive: false,
     name: "",
   };
-  const [isActive, setIsActive] = React.useState(initialValues.isActive);
   const [name, setName] = React.useState(initialValues.name);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setIsActive(initialValues.isActive);
-    setName(initialValues.name);
+    const cleanValues = applicationAreRecord
+      ? { ...initialValues, ...applicationAreRecord }
+      : initialValues;
+    setName(cleanValues.name);
     setErrors({});
   };
+  const [applicationAreRecord, setApplicationAreRecord] = React.useState(
+    applicationAreModelProp
+  );
+  React.useEffect(() => {
+    const queryData = async () => {
+      const record = idProp
+        ? (
+            await client.graphql({
+              query: getApplicationAre.replaceAll("__typename", ""),
+              variables: { id: idProp },
+            })
+          )?.data?.getApplicationAre
+        : applicationAreModelProp;
+      setApplicationAreRecord(record);
+    };
+    queryData();
+  }, [idProp, applicationAreModelProp]);
+  React.useEffect(resetStateValues, [applicationAreRecord]);
   const validations = {
-    isActive: [],
     name: [],
   };
   const runValidationTasks = async (
@@ -70,8 +83,7 @@ export default function ClientProfileCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          isActive,
-          name,
+          name: name ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -102,18 +114,16 @@ export default function ClientProfileCreateForm(props) {
             }
           });
           await client.graphql({
-            query: createClientProfile.replaceAll("__typename", ""),
+            query: updateApplicationAre.replaceAll("__typename", ""),
             variables: {
               input: {
+                id: applicationAreRecord.id,
                 ...modelFields,
               },
             },
           });
           if (onSuccess) {
             onSuccess(modelFields);
-          }
-          if (clearOnSuccess) {
-            resetStateValues();
           }
         } catch (err) {
           if (onError) {
@@ -122,34 +132,9 @@ export default function ClientProfileCreateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "ClientProfileCreateForm")}
+      {...getOverrideProps(overrides, "ApplicationAreUpdateForm")}
       {...rest}
     >
-      <SwitchField
-        label="Is active"
-        defaultChecked={false}
-        isDisabled={false}
-        isChecked={isActive}
-        onChange={(e) => {
-          let value = e.target.checked;
-          if (onChange) {
-            const modelFields = {
-              isActive: value,
-              name,
-            };
-            const result = onChange(modelFields);
-            value = result?.isActive ?? value;
-          }
-          if (errors.isActive?.hasError) {
-            runValidationTasks("isActive", value);
-          }
-          setIsActive(value);
-        }}
-        onBlur={() => runValidationTasks("isActive", isActive)}
-        errorMessage={errors.isActive?.errorMessage}
-        hasError={errors.isActive?.hasError}
-        {...getOverrideProps(overrides, "isActive")}
-      ></SwitchField>
       <TextField
         label="Name"
         isRequired={false}
@@ -159,7 +144,6 @@ export default function ClientProfileCreateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              isActive,
               name: value,
             };
             const result = onChange(modelFields);
@@ -180,13 +164,14 @@ export default function ClientProfileCreateForm(props) {
         {...getOverrideProps(overrides, "CTAFlex")}
       >
         <Button
-          children="Clear"
+          children="Reset"
           type="reset"
           onClick={(event) => {
             event.preventDefault();
             resetStateValues();
           }}
-          {...getOverrideProps(overrides, "ClearButton")}
+          isDisabled={!(idProp || applicationAreModelProp)}
+          {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
         <Flex
           gap="15px"
@@ -196,7 +181,10 @@ export default function ClientProfileCreateForm(props) {
             children="Submit"
             type="submit"
             variation="primary"
-            isDisabled={Object.values(errors).some((e) => e?.hasError)}
+            isDisabled={
+              !(idProp || applicationAreModelProp) ||
+              Object.values(errors).some((e) => e?.hasError)
+            }
             {...getOverrideProps(overrides, "SubmitButton")}
           ></Button>
         </Flex>
