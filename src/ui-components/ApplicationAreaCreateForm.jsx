@@ -15,9 +15,9 @@ import {
 } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
-import { createClientProfile } from "../graphql/mutations";
+import { createApplicationArea } from "../graphql/mutations";
 const client = generateClient();
-export default function ClientProfileCreateForm(props) {
+export default function ApplicationAreaCreateForm(props) {
   const {
     clearOnSuccess = true,
     onSuccess,
@@ -41,7 +41,7 @@ export default function ClientProfileCreateForm(props) {
     setErrors({});
   };
   const validations = {
-    isActive: [],
+    isActive: [{ type: "Required" }],
     name: [],
   };
   const runValidationTasks = async (
@@ -102,7 +102,7 @@ export default function ClientProfileCreateForm(props) {
             }
           });
           await client.graphql({
-            query: createClientProfile.replaceAll("__typename", ""),
+            query: createApplicationArea.replaceAll("__typename", ""),
             variables: {
               input: {
                 ...modelFields,
@@ -122,7 +122,7 @@ export default function ClientProfileCreateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "ClientProfileCreateForm")}
+      {...getOverrideProps(overrides, "ApplicationAreaCreateForm")}
       {...rest}
     >
       <SwitchField

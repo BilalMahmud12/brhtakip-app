@@ -4,6 +4,8 @@
  * Any changes to this file will be overwritten when running amplify pull. *
  **************************************************************************/
 
+export { default as ApplicationAreaCreateForm } from "./ApplicationAreaCreateForm";
+export { default as ApplicationAreaUpdateForm } from "./ApplicationAreaUpdateForm";
 export { default as CityCreateForm } from "./CityCreateForm";
 export { default as CityUpdateForm } from "./CityUpdateForm";
 export { default as ClientProfileCreateForm } from "./ClientProfileCreateForm";

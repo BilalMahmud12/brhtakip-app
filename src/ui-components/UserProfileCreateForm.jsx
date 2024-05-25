@@ -6,7 +6,13 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import {
+  Button,
+  Flex,
+  Grid,
+  SwitchField,
+  TextField,
+} from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { createUserProfile } from "../graphql/mutations";
@@ -23,23 +29,27 @@ export default function UserProfileCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    first_name: "",
-    last_name: "",
+    isActive: false,
+    firstName: "",
+    lastName: "",
     email: "",
   };
-  const [first_name, setFirst_name] = React.useState(initialValues.first_name);
-  const [last_name, setLast_name] = React.useState(initialValues.last_name);
+  const [isActive, setIsActive] = React.useState(initialValues.isActive);
+  const [firstName, setFirstName] = React.useState(initialValues.firstName);
+  const [lastName, setLastName] = React.useState(initialValues.lastName);
   const [email, setEmail] = React.useState(initialValues.email);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setFirst_name(initialValues.first_name);
-    setLast_name(initialValues.last_name);
+    setIsActive(initialValues.isActive);
+    setFirstName(initialValues.firstName);
+    setLastName(initialValues.lastName);
     setEmail(initialValues.email);
     setErrors({});
   };
   const validations = {
-    first_name: [],
-    last_name: [],
+    isActive: [],
+    firstName: [],
+    lastName: [],
     email: [{ type: "Email" }],
   };
   const runValidationTasks = async (
@@ -68,8 +78,9 @@ export default function UserProfileCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          first_name,
-          last_name,
+          isActive,
+          firstName,
+          lastName,
           email,
         };
         const validationResponses = await Promise.all(
@@ -124,57 +135,86 @@ export default function UserProfileCreateForm(props) {
       {...getOverrideProps(overrides, "UserProfileCreateForm")}
       {...rest}
     >
+      <SwitchField
+        label="Is active"
+        defaultChecked={false}
+        isDisabled={false}
+        isChecked={isActive}
+        onChange={(e) => {
+          let value = e.target.checked;
+          if (onChange) {
+            const modelFields = {
+              isActive: value,
+              firstName,
+              lastName,
+              email,
+            };
+            const result = onChange(modelFields);
+            value = result?.isActive ?? value;
+          }
+          if (errors.isActive?.hasError) {
+            runValidationTasks("isActive", value);
+          }
+          setIsActive(value);
+        }}
+        onBlur={() => runValidationTasks("isActive", isActive)}
+        errorMessage={errors.isActive?.errorMessage}
+        hasError={errors.isActive?.hasError}
+        {...getOverrideProps(overrides, "isActive")}
+      ></SwitchField>
       <TextField
         label="First name"
         isRequired={false}
         isReadOnly={false}
-        value={first_name}
+        value={firstName}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              first_name: value,
-              last_name,
+              isActive,
+              firstName: value,
+              lastName,
               email,
             };
             const result = onChange(modelFields);
-            value = result?.first_name ?? value;
+            value = result?.firstName ?? value;
           }
-          if (errors.first_name?.hasError) {
-            runValidationTasks("first_name", value);
+          if (errors.firstName?.hasError) {
+            runValidationTasks("firstName", value);
           }
-          setFirst_name(value);
+          setFirstName(value);
         }}
-        onBlur={() => runValidationTasks("first_name", first_name)}
-        errorMessage={errors.first_name?.errorMessage}
-        hasError={errors.first_name?.hasError}
-        {...getOverrideProps(overrides, "first_name")}
+        onBlur={() => runValidationTasks("firstName", firstName)}
+        errorMessage={errors.firstName?.errorMessage}
+        hasError={errors.firstName?.hasError}
+        {...getOverrideProps(overrides, "firstName")}
       ></TextField>
       <TextField
         label="Last name"
         isRequired={false}
         isReadOnly={false}
-        value={last_name}
+        value={lastName}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              first_name,
-              last_name: value,
+              isActive,
+              firstName,
+              lastName: value,
               email,
             };
             const result = onChange(modelFields);
-            value = result?.last_name ?? value;
+            value = result?.lastName ?? value;
           }
-          if (errors.last_name?.hasError) {
-            runValidationTasks("last_name", value);
+          if (errors.lastName?.hasError) {
+            runValidationTasks("lastName", value);
           }
-          setLast_name(value);
+          setLastName(value);
         }}
-        onBlur={() => runValidationTasks("last_name", last_name)}
-        errorMessage={errors.last_name?.errorMessage}
-        hasError={errors.last_name?.hasError}
-        {...getOverrideProps(overrides, "last_name")}
+        onBlur={() => runValidationTasks("lastName", lastName)}
+        errorMessage={errors.lastName?.errorMessage}
+        hasError={errors.lastName?.hasError}
+        {...getOverrideProps(overrides, "lastName")}
       ></TextField>
       <TextField
         label="Email"
@@ -185,8 +225,9 @@ export default function UserProfileCreateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              first_name,
-              last_name,
+              isActive,
+              firstName,
+              lastName,
               email: value,
             };
             const result = onChange(modelFields);

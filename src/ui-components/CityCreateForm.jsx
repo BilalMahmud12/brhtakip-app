@@ -6,7 +6,13 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import {
+  Button,
+  Flex,
+  Grid,
+  SwitchField,
+  TextField,
+} from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { createCity } from "../graphql/mutations";
@@ -23,16 +29,28 @@ export default function CityCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
+    isActive: false,
     name: "",
+    createdBy: "",
+    updatedBy: "",
   };
+  const [isActive, setIsActive] = React.useState(initialValues.isActive);
   const [name, setName] = React.useState(initialValues.name);
+  const [createdBy, setCreatedBy] = React.useState(initialValues.createdBy);
+  const [updatedBy, setUpdatedBy] = React.useState(initialValues.updatedBy);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
+    setIsActive(initialValues.isActive);
     setName(initialValues.name);
+    setCreatedBy(initialValues.createdBy);
+    setUpdatedBy(initialValues.updatedBy);
     setErrors({});
   };
   const validations = {
+    isActive: [{ type: "Required" }],
     name: [],
+    createdBy: [],
+    updatedBy: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -60,7 +78,10 @@ export default function CityCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
+          isActive,
           name,
+          createdBy,
+          updatedBy,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -114,6 +135,33 @@ export default function CityCreateForm(props) {
       {...getOverrideProps(overrides, "CityCreateForm")}
       {...rest}
     >
+      <SwitchField
+        label="Is active"
+        defaultChecked={false}
+        isDisabled={false}
+        isChecked={isActive}
+        onChange={(e) => {
+          let value = e.target.checked;
+          if (onChange) {
+            const modelFields = {
+              isActive: value,
+              name,
+              createdBy,
+              updatedBy,
+            };
+            const result = onChange(modelFields);
+            value = result?.isActive ?? value;
+          }
+          if (errors.isActive?.hasError) {
+            runValidationTasks("isActive", value);
+          }
+          setIsActive(value);
+        }}
+        onBlur={() => runValidationTasks("isActive", isActive)}
+        errorMessage={errors.isActive?.errorMessage}
+        hasError={errors.isActive?.hasError}
+        {...getOverrideProps(overrides, "isActive")}
+      ></SwitchField>
       <TextField
         label="Name"
         isRequired={false}
@@ -123,7 +171,10 @@ export default function CityCreateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
+              isActive,
               name: value,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -137,6 +188,60 @@ export default function CityCreateForm(props) {
         errorMessage={errors.name?.errorMessage}
         hasError={errors.name?.hasError}
         {...getOverrideProps(overrides, "name")}
+      ></TextField>
+      <TextField
+        label="Created by"
+        isRequired={false}
+        isReadOnly={false}
+        value={createdBy}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              isActive,
+              name,
+              createdBy: value,
+              updatedBy,
+            };
+            const result = onChange(modelFields);
+            value = result?.createdBy ?? value;
+          }
+          if (errors.createdBy?.hasError) {
+            runValidationTasks("createdBy", value);
+          }
+          setCreatedBy(value);
+        }}
+        onBlur={() => runValidationTasks("createdBy", createdBy)}
+        errorMessage={errors.createdBy?.errorMessage}
+        hasError={errors.createdBy?.hasError}
+        {...getOverrideProps(overrides, "createdBy")}
+      ></TextField>
+      <TextField
+        label="Updated by"
+        isRequired={false}
+        isReadOnly={false}
+        value={updatedBy}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              isActive,
+              name,
+              createdBy,
+              updatedBy: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.updatedBy ?? value;
+          }
+          if (errors.updatedBy?.hasError) {
+            runValidationTasks("updatedBy", value);
+          }
+          setUpdatedBy(value);
+        }}
+        onBlur={() => runValidationTasks("updatedBy", updatedBy)}
+        errorMessage={errors.updatedBy?.errorMessage}
+        hasError={errors.updatedBy?.hasError}
+        {...getOverrideProps(overrides, "updatedBy")}
       ></TextField>
       <Flex
         justifyContent="space-between"

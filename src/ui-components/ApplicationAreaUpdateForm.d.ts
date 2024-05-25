@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import { GridProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
-import { City } from "../API.ts";
+import { ApplicationArea } from "../API.ts";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -22,35 +22,29 @@ export declare type ValidationResponse = {
     errorMessage?: string;
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
-export declare type CityUpdateFormInputValues = {
+export declare type ApplicationAreaUpdateFormInputValues = {
     isActive?: boolean;
     name?: string;
-    createdBy?: string;
-    updatedBy?: string;
 };
-export declare type CityUpdateFormValidationValues = {
+export declare type ApplicationAreaUpdateFormValidationValues = {
     isActive?: ValidationFunction<boolean>;
     name?: ValidationFunction<string>;
-    createdBy?: ValidationFunction<string>;
-    updatedBy?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type CityUpdateFormOverridesProps = {
-    CityUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
+export declare type ApplicationAreaUpdateFormOverridesProps = {
+    ApplicationAreaUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     isActive?: PrimitiveOverrideProps<SwitchFieldProps>;
     name?: PrimitiveOverrideProps<TextFieldProps>;
-    createdBy?: PrimitiveOverrideProps<TextFieldProps>;
-    updatedBy?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
-export declare type CityUpdateFormProps = React.PropsWithChildren<{
-    overrides?: CityUpdateFormOverridesProps | undefined | null;
+export declare type ApplicationAreaUpdateFormProps = React.PropsWithChildren<{
+    overrides?: ApplicationAreaUpdateFormOverridesProps | undefined | null;
 } & {
     id?: string;
-    city?: City;
-    onSubmit?: (fields: CityUpdateFormInputValues) => CityUpdateFormInputValues;
-    onSuccess?: (fields: CityUpdateFormInputValues) => void;
-    onError?: (fields: CityUpdateFormInputValues, errorMessage: string) => void;
-    onChange?: (fields: CityUpdateFormInputValues) => CityUpdateFormInputValues;
-    onValidate?: CityUpdateFormValidationValues;
+    applicationArea?: ApplicationArea;
+    onSubmit?: (fields: ApplicationAreaUpdateFormInputValues) => ApplicationAreaUpdateFormInputValues;
+    onSuccess?: (fields: ApplicationAreaUpdateFormInputValues) => void;
+    onError?: (fields: ApplicationAreaUpdateFormInputValues, errorMessage: string) => void;
+    onChange?: (fields: ApplicationAreaUpdateFormInputValues) => ApplicationAreaUpdateFormInputValues;
+    onValidate?: ApplicationAreaUpdateFormValidationValues;
 } & React.CSSProperties>;
-export default function CityUpdateForm(props: CityUpdateFormProps): React.ReactElement;
+export default function ApplicationAreaUpdateForm(props: ApplicationAreaUpdateFormProps): React.ReactElement;

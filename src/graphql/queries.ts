@@ -8,9 +8,46 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
+export const getApplicationArea = /* GraphQL */ `query GetApplicationArea($id: ID!) {
+  getApplicationArea(id: $id) {
+    id
+    isActive
+    name
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetApplicationAreaQueryVariables,
+  APITypes.GetApplicationAreaQuery
+>;
+export const listApplicationAreas = /* GraphQL */ `query ListApplicationAreas(
+  $filter: ModelApplicationAreaFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listApplicationAreas(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      isActive
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListApplicationAreasQueryVariables,
+  APITypes.ListApplicationAreasQuery
+>;
 export const getMaterial = /* GraphQL */ `query GetMaterial($id: ID!) {
   getMaterial(id: $id) {
     id
+    isActive
     name
     createdAt
     updatedAt
@@ -29,6 +66,7 @@ export const listMaterials = /* GraphQL */ `query ListMaterials(
   listMaterials(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      isActive
       name
       createdAt
       updatedAt
@@ -45,10 +83,11 @@ export const listMaterials = /* GraphQL */ `query ListMaterials(
 export const getUserProfile = /* GraphQL */ `query GetUserProfile($id: ID!) {
   getUserProfile(id: $id) {
     id
-    first_name
-    last_name
-    email
+    isActive
     clientprofileID
+    firstName
+    lastName
+    email
     createdAt
     updatedAt
     __typename
@@ -66,10 +105,11 @@ export const listUserProfiles = /* GraphQL */ `query ListUserProfiles(
   listUserProfiles(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      first_name
-      last_name
-      email
+      isActive
       clientprofileID
+      firstName
+      lastName
+      email
       createdAt
       updatedAt
       __typename
@@ -98,10 +138,11 @@ export const userProfilesByClientprofileID = /* GraphQL */ `query UserProfilesBy
   ) {
     items {
       id
-      first_name
-      last_name
-      email
+      isActive
       clientprofileID
+      firstName
+      lastName
+      email
       createdAt
       updatedAt
       __typename
@@ -118,7 +159,7 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
   getArea(id: $id) {
     id
     districtID
-    name
+    isActive
     Stores {
       items {
         id
@@ -130,16 +171,16 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
         Requests {
           items {
             id
-            request_number
+            clientprofileID
             storeID
-            status
+            request_number
             Brand {
               id
               Products {
                 items {
                   id
                   brandID
-                  is_active
+                  isActive
                   name
                   createdAt
                   updatedAt
@@ -149,7 +190,7 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                 __typename
               }
               clientprofileID
-              is_active
+              isActive
               name
               createdAt
               updatedAt
@@ -158,27 +199,29 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
             Product {
               id
               brandID
-              is_active
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Material {
+              id
+              isActive
               name
               createdAt
               updatedAt
               __typename
             }
             request_details {
-              application_area
+              applicationArea
               material
               branded
               quantity
               width
               height
-              design_note
-              __typename
-            }
-            Material {
-              id
-              name
-              createdAt
-              updatedAt
+              designNote
               __typename
             }
             createdAt
@@ -203,6 +246,9 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
       nextToken
       __typename
     }
+    name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -218,7 +264,7 @@ export const listAreas = /* GraphQL */ `query ListAreas(
     items {
       id
       districtID
-      name
+      isActive
       Stores {
         items {
           id
@@ -230,9 +276,9 @@ export const listAreas = /* GraphQL */ `query ListAreas(
           Requests {
             items {
               id
-              request_number
+              clientprofileID
               storeID
-              status
+              request_number
               Brand {
                 id
                 Products {
@@ -240,7 +286,7 @@ export const listAreas = /* GraphQL */ `query ListAreas(
                   __typename
                 }
                 clientprofileID
-                is_active
+                isActive
                 name
                 createdAt
                 updatedAt
@@ -249,27 +295,29 @@ export const listAreas = /* GraphQL */ `query ListAreas(
               Product {
                 id
                 brandID
-                is_active
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Material {
+                id
+                isActive
                 name
                 createdAt
                 updatedAt
                 __typename
               }
               request_details {
-                application_area
+                applicationArea
                 material
                 branded
                 quantity
                 width
                 height
-                design_note
-                __typename
-              }
-              Material {
-                id
-                name
-                createdAt
-                updatedAt
+                designNote
                 __typename
               }
               createdAt
@@ -294,6 +342,9 @@ export const listAreas = /* GraphQL */ `query ListAreas(
         nextToken
         __typename
       }
+      name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -320,7 +371,7 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
     items {
       id
       districtID
-      name
+      isActive
       Stores {
         items {
           id
@@ -332,9 +383,9 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
           Requests {
             items {
               id
-              request_number
+              clientprofileID
               storeID
-              status
+              request_number
               Brand {
                 id
                 Products {
@@ -342,7 +393,7 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
                   __typename
                 }
                 clientprofileID
-                is_active
+                isActive
                 name
                 createdAt
                 updatedAt
@@ -351,27 +402,29 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
               Product {
                 id
                 brandID
-                is_active
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Material {
+                id
+                isActive
                 name
                 createdAt
                 updatedAt
                 __typename
               }
               request_details {
-                application_area
+                applicationArea
                 material
                 branded
                 quantity
                 width
                 height
-                design_note
-                __typename
-              }
-              Material {
-                id
-                name
-                createdAt
-                updatedAt
+                designNote
                 __typename
               }
               createdAt
@@ -396,6 +449,9 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
         nextToken
         __typename
       }
+      name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -412,12 +468,12 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
   getDistrict(id: $id) {
     id
     cityID
-    name
+    isActive
     Areas {
       items {
         id
         districtID
-        name
+        isActive
         Stores {
           items {
             id
@@ -429,13 +485,13 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
             Requests {
               items {
                 id
-                request_number
+                clientprofileID
                 storeID
-                status
+                request_number
                 Brand {
                   id
                   clientprofileID
-                  is_active
+                  isActive
                   name
                   createdAt
                   updatedAt
@@ -444,27 +500,29 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                 Product {
                   id
                   brandID
-                  is_active
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
                   name
                   createdAt
                   updatedAt
                   __typename
                 }
                 request_details {
-                  application_area
+                  applicationArea
                   material
                   branded
                   quantity
                   width
                   height
-                  design_note
-                  __typename
-                }
-                Material {
-                  id
-                  name
-                  createdAt
-                  updatedAt
+                  designNote
                   __typename
                 }
                 createdAt
@@ -489,6 +547,9 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
           nextToken
           __typename
         }
+        name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -507,16 +568,16 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
         Requests {
           items {
             id
-            request_number
+            clientprofileID
             storeID
-            status
+            request_number
             Brand {
               id
               Products {
                 items {
                   id
                   brandID
-                  is_active
+                  isActive
                   name
                   createdAt
                   updatedAt
@@ -526,7 +587,7 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                 __typename
               }
               clientprofileID
-              is_active
+              isActive
               name
               createdAt
               updatedAt
@@ -535,27 +596,29 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
             Product {
               id
               brandID
-              is_active
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Material {
+              id
+              isActive
               name
               createdAt
               updatedAt
               __typename
             }
             request_details {
-              application_area
+              applicationArea
               material
               branded
               quantity
               width
               height
-              design_note
-              __typename
-            }
-            Material {
-              id
-              name
-              createdAt
-              updatedAt
+              designNote
               __typename
             }
             createdAt
@@ -580,6 +643,9 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
       nextToken
       __typename
     }
+    name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -598,12 +664,12 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
     items {
       id
       cityID
-      name
+      isActive
       Areas {
         items {
           id
           districtID
-          name
+          isActive
           Stores {
             items {
               id
@@ -615,8 +681,9 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
               Requests {
                 items {
                   id
-                  request_number
+                  clientprofileID
                   storeID
+                  request_number
                   status
                   createdAt
                   updatedAt
@@ -640,6 +707,9 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
             nextToken
             __typename
           }
+          name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -658,9 +728,9 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
           Requests {
             items {
               id
-              request_number
+              clientprofileID
               storeID
-              status
+              request_number
               Brand {
                 id
                 Products {
@@ -668,7 +738,7 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
                   __typename
                 }
                 clientprofileID
-                is_active
+                isActive
                 name
                 createdAt
                 updatedAt
@@ -677,27 +747,29 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
               Product {
                 id
                 brandID
-                is_active
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Material {
+                id
+                isActive
                 name
                 createdAt
                 updatedAt
                 __typename
               }
               request_details {
-                application_area
+                applicationArea
                 material
                 branded
                 quantity
                 width
                 height
-                design_note
-                __typename
-              }
-              Material {
-                id
-                name
-                createdAt
-                updatedAt
+                designNote
                 __typename
               }
               createdAt
@@ -722,6 +794,9 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
         nextToken
         __typename
       }
+      name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -751,12 +826,12 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
     items {
       id
       cityID
-      name
+      isActive
       Areas {
         items {
           id
           districtID
-          name
+          isActive
           Stores {
             items {
               id
@@ -768,8 +843,9 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
               Requests {
                 items {
                   id
-                  request_number
+                  clientprofileID
                   storeID
+                  request_number
                   status
                   createdAt
                   updatedAt
@@ -793,6 +869,9 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
             nextToken
             __typename
           }
+          name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -811,9 +890,9 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
           Requests {
             items {
               id
-              request_number
+              clientprofileID
               storeID
-              status
+              request_number
               Brand {
                 id
                 Products {
@@ -821,7 +900,7 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
                   __typename
                 }
                 clientprofileID
-                is_active
+                isActive
                 name
                 createdAt
                 updatedAt
@@ -830,27 +909,29 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
               Product {
                 id
                 brandID
-                is_active
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Material {
+                id
+                isActive
                 name
                 createdAt
                 updatedAt
                 __typename
               }
               request_details {
-                application_area
+                applicationArea
                 material
                 branded
                 quantity
                 width
                 height
-                design_note
-                __typename
-              }
-              Material {
-                id
-                name
-                createdAt
-                updatedAt
+                designNote
                 __typename
               }
               createdAt
@@ -875,6 +956,9 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
         nextToken
         __typename
       }
+      name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -890,17 +974,17 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
 export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
   getCity(id: $id) {
     id
-    name
+    isActive
     Districts {
       items {
         id
         cityID
-        name
+        isActive
         Areas {
           items {
             id
             districtID
-            name
+            isActive
             Stores {
               items {
                 id
@@ -925,6 +1009,9 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
               nextToken
               __typename
             }
+            name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -943,13 +1030,13 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
             Requests {
               items {
                 id
-                request_number
+                clientprofileID
                 storeID
-                status
+                request_number
                 Brand {
                   id
                   clientprofileID
-                  is_active
+                  isActive
                   name
                   createdAt
                   updatedAt
@@ -958,27 +1045,29 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                 Product {
                   id
                   brandID
-                  is_active
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
                   name
                   createdAt
                   updatedAt
                   __typename
                 }
                 request_details {
-                  application_area
+                  applicationArea
                   material
                   branded
                   quantity
                   width
                   height
-                  design_note
-                  __typename
-                }
-                Material {
-                  id
-                  name
-                  createdAt
-                  updatedAt
+                  designNote
                   __typename
                 }
                 createdAt
@@ -1003,6 +1092,9 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
           nextToken
           __typename
         }
+        name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -1021,16 +1113,16 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
         Requests {
           items {
             id
-            request_number
+            clientprofileID
             storeID
-            status
+            request_number
             Brand {
               id
               Products {
                 items {
                   id
                   brandID
-                  is_active
+                  isActive
                   name
                   createdAt
                   updatedAt
@@ -1040,7 +1132,7 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                 __typename
               }
               clientprofileID
-              is_active
+              isActive
               name
               createdAt
               updatedAt
@@ -1049,27 +1141,29 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
             Product {
               id
               brandID
-              is_active
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Material {
+              id
+              isActive
               name
               createdAt
               updatedAt
               __typename
             }
             request_details {
-              application_area
+              applicationArea
               material
               branded
               quantity
               width
               height
-              design_note
-              __typename
-            }
-            Material {
-              id
-              name
-              createdAt
-              updatedAt
+              designNote
               __typename
             }
             createdAt
@@ -1094,6 +1188,9 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
       nextToken
       __typename
     }
+    name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -1108,17 +1205,17 @@ export const listCities = /* GraphQL */ `query ListCities(
   listCities(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      name
+      isActive
       Districts {
         items {
           id
           cityID
-          name
+          isActive
           Areas {
             items {
               id
               districtID
-              name
+              isActive
               Stores {
                 items {
                   id
@@ -1139,6 +1236,9 @@ export const listCities = /* GraphQL */ `query ListCities(
                 nextToken
                 __typename
               }
+              name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1157,8 +1257,9 @@ export const listCities = /* GraphQL */ `query ListCities(
               Requests {
                 items {
                   id
-                  request_number
+                  clientprofileID
                   storeID
+                  request_number
                   status
                   createdAt
                   updatedAt
@@ -1182,6 +1283,9 @@ export const listCities = /* GraphQL */ `query ListCities(
             nextToken
             __typename
           }
+          name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -1200,9 +1304,9 @@ export const listCities = /* GraphQL */ `query ListCities(
           Requests {
             items {
               id
-              request_number
+              clientprofileID
               storeID
-              status
+              request_number
               Brand {
                 id
                 Products {
@@ -1210,7 +1314,7 @@ export const listCities = /* GraphQL */ `query ListCities(
                   __typename
                 }
                 clientprofileID
-                is_active
+                isActive
                 name
                 createdAt
                 updatedAt
@@ -1219,27 +1323,29 @@ export const listCities = /* GraphQL */ `query ListCities(
               Product {
                 id
                 brandID
-                is_active
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Material {
+                id
+                isActive
                 name
                 createdAt
                 updatedAt
                 __typename
               }
               request_details {
-                application_area
+                applicationArea
                 material
                 branded
                 quantity
                 width
                 height
-                design_note
-                __typename
-              }
-              Material {
-                id
-                name
-                createdAt
-                updatedAt
+                designNote
                 __typename
               }
               createdAt
@@ -1264,6 +1370,9 @@ export const listCities = /* GraphQL */ `query ListCities(
         nextToken
         __typename
       }
+      name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -1279,14 +1388,15 @@ export const listCities = /* GraphQL */ `query ListCities(
 export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) {
   getClientProfile(id: $id) {
     id
-    name
+    isActive
     UserProfiles {
       items {
         id
-        first_name
-        last_name
-        email
+        isActive
         clientprofileID
+        firstName
+        lastName
+        email
         createdAt
         updatedAt
         __typename
@@ -1301,7 +1411,7 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
           items {
             id
             brandID
-            is_active
+            isActive
             name
             createdAt
             updatedAt
@@ -1311,7 +1421,7 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
           __typename
         }
         clientprofileID
-        is_active
+        isActive
         name
         createdAt
         updatedAt
@@ -1320,6 +1430,73 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
       nextToken
       __typename
     }
+    Requests {
+      items {
+        id
+        clientprofileID
+        storeID
+        request_number
+        Brand {
+          id
+          Products {
+            items {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          clientprofileID
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        Product {
+          id
+          brandID
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        status
+        Material {
+          id
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        request_details {
+          applicationArea
+          material
+          branded
+          quantity
+          width
+          height
+          designNote
+          __typename
+        }
+        createdAt
+        updatedAt
+        requestBrandId
+        requestProductId
+        requestMaterialId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    name
     createdAt
     updatedAt
     __typename
@@ -1337,14 +1514,15 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
   listClientProfiles(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      name
+      isActive
       UserProfiles {
         items {
           id
-          first_name
-          last_name
-          email
+          isActive
           clientprofileID
+          firstName
+          lastName
+          email
           createdAt
           updatedAt
           __typename
@@ -1359,7 +1537,7 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
             items {
               id
               brandID
-              is_active
+              isActive
               name
               createdAt
               updatedAt
@@ -1369,7 +1547,7 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
             __typename
           }
           clientprofileID
-          is_active
+          isActive
           name
           createdAt
           updatedAt
@@ -1378,6 +1556,73 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
         nextToken
         __typename
       }
+      Requests {
+        items {
+          id
+          clientprofileID
+          storeID
+          request_number
+          Brand {
+            id
+            Products {
+              items {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          Product {
+            id
+            brandID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          status
+          Material {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          request_details {
+            applicationArea
+            material
+            branded
+            quantity
+            width
+            height
+            designNote
+            __typename
+          }
+          createdAt
+          updatedAt
+          requestBrandId
+          requestProductId
+          requestMaterialId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      name
       createdAt
       updatedAt
       __typename
@@ -1401,16 +1646,16 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
     Requests {
       items {
         id
-        request_number
+        clientprofileID
         storeID
-        status
+        request_number
         Brand {
           id
           Products {
             items {
               id
               brandID
-              is_active
+              isActive
               name
               createdAt
               updatedAt
@@ -1420,7 +1665,7 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
             __typename
           }
           clientprofileID
-          is_active
+          isActive
           name
           createdAt
           updatedAt
@@ -1429,27 +1674,29 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
         Product {
           id
           brandID
-          is_active
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        status
+        Material {
+          id
+          isActive
           name
           createdAt
           updatedAt
           __typename
         }
         request_details {
-          application_area
+          applicationArea
           material
           branded
           quantity
           width
           height
-          design_note
-          __typename
-        }
-        Material {
-          id
-          name
-          createdAt
-          updatedAt
+          designNote
           __typename
         }
         createdAt
@@ -1489,16 +1736,16 @@ export const listStores = /* GraphQL */ `query ListStores(
       Requests {
         items {
           id
-          request_number
+          clientprofileID
           storeID
-          status
+          request_number
           Brand {
             id
             Products {
               items {
                 id
                 brandID
-                is_active
+                isActive
                 name
                 createdAt
                 updatedAt
@@ -1508,7 +1755,7 @@ export const listStores = /* GraphQL */ `query ListStores(
               __typename
             }
             clientprofileID
-            is_active
+            isActive
             name
             createdAt
             updatedAt
@@ -1517,27 +1764,29 @@ export const listStores = /* GraphQL */ `query ListStores(
           Product {
             id
             brandID
-            is_active
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          status
+          Material {
+            id
+            isActive
             name
             createdAt
             updatedAt
             __typename
           }
           request_details {
-            application_area
+            applicationArea
             material
             branded
             quantity
             width
             height
-            design_note
-            __typename
-          }
-          Material {
-            id
-            name
-            createdAt
-            updatedAt
+            designNote
             __typename
           }
           createdAt
@@ -1591,16 +1840,16 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
       Requests {
         items {
           id
-          request_number
+          clientprofileID
           storeID
-          status
+          request_number
           Brand {
             id
             Products {
               items {
                 id
                 brandID
-                is_active
+                isActive
                 name
                 createdAt
                 updatedAt
@@ -1610,7 +1859,7 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
               __typename
             }
             clientprofileID
-            is_active
+            isActive
             name
             createdAt
             updatedAt
@@ -1619,27 +1868,29 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
           Product {
             id
             brandID
-            is_active
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          status
+          Material {
+            id
+            isActive
             name
             createdAt
             updatedAt
             __typename
           }
           request_details {
-            application_area
+            applicationArea
             material
             branded
             quantity
             width
             height
-            design_note
-            __typename
-          }
-          Material {
-            id
-            name
-            createdAt
-            updatedAt
+            designNote
             __typename
           }
           createdAt
@@ -1693,16 +1944,16 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
       Requests {
         items {
           id
-          request_number
+          clientprofileID
           storeID
-          status
+          request_number
           Brand {
             id
             Products {
               items {
                 id
                 brandID
-                is_active
+                isActive
                 name
                 createdAt
                 updatedAt
@@ -1712,7 +1963,7 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
               __typename
             }
             clientprofileID
-            is_active
+            isActive
             name
             createdAt
             updatedAt
@@ -1721,27 +1972,29 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
           Product {
             id
             brandID
-            is_active
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          status
+          Material {
+            id
+            isActive
             name
             createdAt
             updatedAt
             __typename
           }
           request_details {
-            application_area
+            applicationArea
             material
             branded
             quantity
             width
             height
-            design_note
-            __typename
-          }
-          Material {
-            id
-            name
-            createdAt
-            updatedAt
+            designNote
             __typename
           }
           createdAt
@@ -1795,16 +2048,16 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
       Requests {
         items {
           id
-          request_number
+          clientprofileID
           storeID
-          status
+          request_number
           Brand {
             id
             Products {
               items {
                 id
                 brandID
-                is_active
+                isActive
                 name
                 createdAt
                 updatedAt
@@ -1814,7 +2067,7 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
               __typename
             }
             clientprofileID
-            is_active
+            isActive
             name
             createdAt
             updatedAt
@@ -1823,27 +2076,29 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
           Product {
             id
             brandID
-            is_active
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          status
+          Material {
+            id
+            isActive
             name
             createdAt
             updatedAt
             __typename
           }
           request_details {
-            application_area
+            applicationArea
             material
             branded
             quantity
             width
             height
-            design_note
-            __typename
-          }
-          Material {
-            id
-            name
-            createdAt
-            updatedAt
+            designNote
             __typename
           }
           createdAt
@@ -1877,7 +2132,7 @@ export const getProduct = /* GraphQL */ `query GetProduct($id: ID!) {
   getProduct(id: $id) {
     id
     brandID
-    is_active
+    isActive
     name
     createdAt
     updatedAt
@@ -1897,7 +2152,7 @@ export const listProducts = /* GraphQL */ `query ListProducts(
     items {
       id
       brandID
-      is_active
+      isActive
       name
       createdAt
       updatedAt
@@ -1928,7 +2183,7 @@ export const productsByBrandID = /* GraphQL */ `query ProductsByBrandID(
     items {
       id
       brandID
-      is_active
+      isActive
       name
       createdAt
       updatedAt
@@ -1949,7 +2204,7 @@ export const getBrand = /* GraphQL */ `query GetBrand($id: ID!) {
       items {
         id
         brandID
-        is_active
+        isActive
         name
         createdAt
         updatedAt
@@ -1959,7 +2214,7 @@ export const getBrand = /* GraphQL */ `query GetBrand($id: ID!) {
       __typename
     }
     clientprofileID
-    is_active
+    isActive
     name
     createdAt
     updatedAt
@@ -1979,7 +2234,7 @@ export const listBrands = /* GraphQL */ `query ListBrands(
         items {
           id
           brandID
-          is_active
+          isActive
           name
           createdAt
           updatedAt
@@ -1989,7 +2244,7 @@ export const listBrands = /* GraphQL */ `query ListBrands(
         __typename
       }
       clientprofileID
-      is_active
+      isActive
       name
       createdAt
       updatedAt
@@ -2023,7 +2278,7 @@ export const brandsByClientprofileID = /* GraphQL */ `query BrandsByClientprofil
         items {
           id
           brandID
-          is_active
+          isActive
           name
           createdAt
           updatedAt
@@ -2033,7 +2288,7 @@ export const brandsByClientprofileID = /* GraphQL */ `query BrandsByClientprofil
         __typename
       }
       clientprofileID
-      is_active
+      isActive
       name
       createdAt
       updatedAt
@@ -2050,16 +2305,16 @@ export const brandsByClientprofileID = /* GraphQL */ `query BrandsByClientprofil
 export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
   getRequest(id: $id) {
     id
-    request_number
+    clientprofileID
     storeID
-    status
+    request_number
     Brand {
       id
       Products {
         items {
           id
           brandID
-          is_active
+          isActive
           name
           createdAt
           updatedAt
@@ -2069,7 +2324,7 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
         __typename
       }
       clientprofileID
-      is_active
+      isActive
       name
       createdAt
       updatedAt
@@ -2078,27 +2333,29 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
     Product {
       id
       brandID
-      is_active
+      isActive
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    status
+    Material {
+      id
+      isActive
       name
       createdAt
       updatedAt
       __typename
     }
     request_details {
-      application_area
+      applicationArea
       material
       branded
       quantity
       width
       height
-      design_note
-      __typename
-    }
-    Material {
-      id
-      name
-      createdAt
-      updatedAt
+      designNote
       __typename
     }
     createdAt
@@ -2121,16 +2378,16 @@ export const listRequests = /* GraphQL */ `query ListRequests(
   listRequests(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      request_number
+      clientprofileID
       storeID
-      status
+      request_number
       Brand {
         id
         Products {
           items {
             id
             brandID
-            is_active
+            isActive
             name
             createdAt
             updatedAt
@@ -2140,7 +2397,7 @@ export const listRequests = /* GraphQL */ `query ListRequests(
           __typename
         }
         clientprofileID
-        is_active
+        isActive
         name
         createdAt
         updatedAt
@@ -2149,27 +2406,29 @@ export const listRequests = /* GraphQL */ `query ListRequests(
       Product {
         id
         brandID
-        is_active
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      status
+      Material {
+        id
+        isActive
         name
         createdAt
         updatedAt
         __typename
       }
       request_details {
-        application_area
+        applicationArea
         material
         branded
         quantity
         width
         height
-        design_note
-        __typename
-      }
-      Material {
-        id
-        name
-        createdAt
-        updatedAt
+        designNote
         __typename
       }
       createdAt
@@ -2187,6 +2446,90 @@ export const listRequests = /* GraphQL */ `query ListRequests(
   APITypes.ListRequestsQueryVariables,
   APITypes.ListRequestsQuery
 >;
+export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientprofileID(
+  $clientprofileID: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelRequestFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  requestsByClientprofileID(
+    clientprofileID: $clientprofileID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      clientprofileID
+      storeID
+      request_number
+      Brand {
+        id
+        Products {
+          items {
+            id
+            brandID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        clientprofileID
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      Product {
+        id
+        brandID
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      status
+      Material {
+        id
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      request_details {
+        applicationArea
+        material
+        branded
+        quantity
+        width
+        height
+        designNote
+        __typename
+      }
+      createdAt
+      updatedAt
+      requestBrandId
+      requestProductId
+      requestMaterialId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.RequestsByClientprofileIDQueryVariables,
+  APITypes.RequestsByClientprofileIDQuery
+>;
 export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
   $storeID: ID!
   $sortDirection: ModelSortDirection
@@ -2203,16 +2546,16 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
   ) {
     items {
       id
-      request_number
+      clientprofileID
       storeID
-      status
+      request_number
       Brand {
         id
         Products {
           items {
             id
             brandID
-            is_active
+            isActive
             name
             createdAt
             updatedAt
@@ -2222,7 +2565,7 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
           __typename
         }
         clientprofileID
-        is_active
+        isActive
         name
         createdAt
         updatedAt
@@ -2231,27 +2574,29 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
       Product {
         id
         brandID
-        is_active
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      status
+      Material {
+        id
+        isActive
         name
         createdAt
         updatedAt
         __typename
       }
       request_details {
-        application_area
+        applicationArea
         material
         branded
         quantity
         width
         height
-        design_note
-        __typename
-      }
-      Material {
-        id
-        name
-        createdAt
-        updatedAt
+        designNote
         __typename
       }
       createdAt
