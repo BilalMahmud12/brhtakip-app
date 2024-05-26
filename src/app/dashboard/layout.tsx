@@ -1,6 +1,11 @@
 'use client'
+import React, { useEffect } from 'react';
 import AppHeader from '@/components/custom/header';
 import SideNav from "@/components/custom/sideNav";
+
+import { client } from '@/repository';
+import { listClientProfiles } from '@/graphql/queries';
+import { useStore } from '@/stores/utils/useStore';
 
 export default function RootLayout({
     children,
@@ -8,6 +13,19 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
 
+    const { clientProfileStore } = useStore();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const { data } = await client.graphql({ query: listClientProfiles });
+            clientProfileStore.initStore({ clientProfiles: data.listClientProfiles.items });
+            console.log('listClientProfiles', data);
+        }
+
+        fetchData();
+    }
+        , []);
+        
     return (
         <>
             <AppHeader />

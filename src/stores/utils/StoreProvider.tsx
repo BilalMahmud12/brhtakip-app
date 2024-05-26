@@ -1,6 +1,6 @@
 // src/stores/StoreProvider.tsx
 import { FC, ReactNode } from 'react';
-import { RootStore } from './RootStore';
+import { RootStore } from '../RootStore';
 import { StoreContext } from './StoreContext';
 
 const store = new RootStore();
