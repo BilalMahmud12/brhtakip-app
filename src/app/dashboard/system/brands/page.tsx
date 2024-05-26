@@ -1,10 +1,25 @@
 'use client';
-import React from 'react';
+import * as Repo from '@/repository/index'
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Breadcrumbs } from '@aws-amplify/ui-react';
 import type { Brand } from '@/API';
+import BrandsView from './src/brandView';
 
 const Brand: React.FC = observer(() => {
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const brandsData = await Repo.BrandRepository.getAllBrands();
+                console.log('brands', brandsData);
+            } catch (error) {
+                console.error('Failed to fetch brands', error);
+            }
+        };
+        fetchData();
+    }, []);
+
 
     return (
         <div>
@@ -25,6 +40,8 @@ const Brand: React.FC = observer(() => {
                     className='text-sm font-medium'
                 />
             </div>
+
+            <BrandsView />
         </div>
     );
 });
