@@ -1,6 +1,7 @@
 'use client';
+import React, { useEffect } from 'react';
 import ConfigureAmplifyClientSide from '@/utils/ConfigureAmplify'
-import { StoreProvider } from '../stores/StoreProvider'
+import { StoreProvider } from '../stores/utils/StoreProvider'
 import { ThemeProvider } from '@aws-amplify/ui-react'
 import { DataModalProvider } from '@/contexts/DataModalContext';
 import DataModal from '@/components/core/dataModal';
@@ -9,11 +10,16 @@ import theme from './theme';
 import '@aws-amplify/ui-react/styles.css'
 import './globals.css'
 
+import { client } from '@/repository';
+import { listClientProfiles } from '@/graphql/queries';
+import { useStore } from '@/stores/utils/useStore';
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
       <html lang="tr">
         <StoreProvider>

@@ -1,7 +1,7 @@
 'use client';
 import * as Repo from '@/repository/index'
 import React, { useEffect } from 'react';
-import { useStore } from '@/stores/useStore';
+import { useStore } from '@/stores/utils/useStore';
 import { observer } from 'mobx-react-lite';
 import RequestsView from './src/requestsView';
 import { Breadcrumbs } from '@aws-amplify/ui-react'

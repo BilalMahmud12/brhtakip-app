@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import { useStore } from '@/stores/useStore';
+import { useStore } from '@/stores/utils/useStore';
 import { useDataModal } from '@/contexts/DataModalContext';
 import RequestsDataTable from './requestsDataTable';
 import CreateOrUpdateForm from './createOrUpdateForm';
