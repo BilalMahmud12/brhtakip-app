@@ -1,21 +1,21 @@
-import { listRequests, getRequest } from '@/graphql/queries';
-import { createRequest, updateRequest, deleteRequest } from '@/graphql/mutations';
+import { listApplicationAreas, getApplicationArea } from '@/graphql/queries'
+import { createApplicationArea, updateApplicationArea, deleteApplicationArea } from '@/graphql/mutations'
 import { client } from '@/repository';
-import type { Request } from '@/API';
+import type { ApplicationArea } from '@/API';
 
-const getAllRequests = async () => {
+const getApplicationAreas = async () => {
     try {
-        const { data } = await client.graphql({ query: listRequests });
-        return data.listRequests.items
+        const { data } = await client.graphql({ query: listApplicationAreas });
+        return data.listApplicationAreas.items
     } catch (error) {
         console.error(error);
     }
 }
 
-const getRequestById = async (id: string) => {
+const getApplicationAreaById = async (id: string) => {
     try {
         const { data } = await client.graphql({
-            query: getRequest,
+            query: getApplicationArea,
             variables: { id },
         });
 
@@ -25,10 +25,10 @@ const getRequestById = async (id: string) => {
     }
 }
 
-const create = async (request: Request) => {
+const create = async (request: ApplicationArea) => {
     try {
         const data = await client.graphql({
-            query: createRequest,
+            query: createApplicationArea,
             variables: { input: request },
         });
 
@@ -38,10 +38,10 @@ const create = async (request: Request) => {
     }
 }
 
-const update = async (request: Request) => {
+const update = async (request: ApplicationArea) => {
     try {
         const data = await client.graphql({
-            query: updateRequest,
+            query: updateApplicationArea,
             variables: { input: request },
         });
 
@@ -54,7 +54,7 @@ const update = async (request: Request) => {
 const softDelete = async (id: string) => {
     try {
         const data = await client.graphql({
-            query: deleteRequest,
+            query: deleteApplicationArea,
             variables: { input: { id } },
         });
 
@@ -65,8 +65,8 @@ const softDelete = async (id: string) => {
 }
 
 export {
-    getAllRequests,
-    getRequestById,
+    getApplicationAreas,
+    getApplicationAreaById,
     create,
     update,
     softDelete
