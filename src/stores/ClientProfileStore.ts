@@ -32,7 +32,7 @@ export class ClientProfileStore {
         this.clientProfiles = clientProfiles;
     }
 
-    get getAllClientProfiles() {
+    get getClientProfiles() {
         return this.clientProfiles;
     }
 

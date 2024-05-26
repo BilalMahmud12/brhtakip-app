@@ -9,6 +9,7 @@ import RequestItemsForm from './requestItemsForm';
 
 import { client } from '@/repository';
 import { listBrands, listProducts, listClientProfiles, listStores, listMaterials } from '@/graphql/queries';
+import { useStore } from '@/stores/utils/useStore';
 
 
 interface CreateOrUpdateFormProps {
@@ -71,21 +72,54 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         onSubmit = (data) => { console.log(data) }
     } = props;
 
+    const { clientProfileStore } = useStore();
+    const { getClientProfiles } = clientProfileStore;
+
     const {
         request_number,
         status,
     } = request as Request;
 
     const [formData, setFormData] = useState({
-        clientprofileID: '',
         request_number: '',
+        clientprofileID: '',
+        requestBrandId: '',
+        requestProductId: '',
+        requestMaterialId: '',
         status: '' as RequestStatus,
         storeID: '',
         client_details: null,
         items: [] as RequestItem[],
     });
 
-    const [clientsList, setClientsList] = useState<{ id: string, label: string }[]>([]);
+    const handleFormChange = (input: string, field: string) => {
+        console.log('input', input);
+        console.log('field', field);
+
+        setFormData({
+            ...formData,
+            [field]: input
+        });
+    }
+
+    const getClientsList = (): { id: string, label: string }[] => {
+        return getClientProfiles?.map((client) => ({
+            id: client.id,
+            label: client?.name as string || ''
+        }));
+    }
+
+    const getBrandsList = (clientID: string): { id: string, label: string }[] => {
+        return getClientProfiles.find(client => client.id === clientID)?.Brands?.items?.map(brand => ({
+            id: brand?.id as string,
+            label: brand?.name as string
+        })) || [];
+    }
+
+    const getProductsList = (): { id: string, label: string }[] => {
+        return [];
+    }
+
     const [storesList, setStoresList] = useState<{ id: string, label: string }[]>([]);
     const [brandsList, setBrandsList] = useState<{ id: string, label: string }[]>([]);
     const [productsList, setProductsList] = useState<{ id: string, label: string }[]>([]);
@@ -93,6 +127,14 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     const [materialsList, setMaterialsList] = useState<{ id: string, label: string }[]>([]);
 
     useEffect(() => {
+        console.log('formData.client_details', formData.client_details);
+        setBrandsList(getBrandsList(formData.clientprofileID));
+        setProductsList(getProductsList());
+    }, [formData.client_details]);
+
+    useEffect(() => {
+        console.log('getClientsList', getClientsList());
+
         const fetchData = async () => {
             const [
                 clientsData,
@@ -107,8 +149,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                 client.graphql({ query: listProducts }),
                 client.graphql({ query: listMaterials })
             ]);
-
-            setClientsList(clientsData.data.listClientProfiles.items.map((item: any) => ({ id: item.id, label: item.name })));
             setStoresList(storesData.data.listStores.items.map((item: any) => ({ id: item.id, label: item.name, description: item.address })));
             setBrandsList(brandsData.data.listBrands.items.map((item: any) => ({ id: item.id, label: item.name })));
             setProductsList(productsData.data.listProducts.items.map((item: any) => ({ id: item.id, label: item.name })));
@@ -128,6 +168,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         if (!isCreate) {
             setFormData({
                 ...formData,
+                clientprofileID: request.clientprofileID,
                 request_number,
                 status,
                 storeID: request.storeID,
@@ -163,6 +204,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                     variation="quiet"
                                     options={statusOptions}
                                     renderOption={renderStatusOption}
+                                    onChange={(e) => { console.log('selected status',  e.target.value) }}
                                     className='custom-input'
                                     value={status}
                                 />
@@ -175,8 +217,12 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                     label="Müşteri"
                                     placeholder='Müşteri Seç'
                                     variation="quiet"
-                                    options={clientsList}
-                                    value={clientsList.find(client => client.id === formData.clientprofileID)?.label}
+                                    options={getClientsList()}
+                                    value={getClientsList().find(client => client.id === formData.clientprofileID)?.label}
+                                    onSelect={(option) => handleFormChange(option.id, 'clientprofileID')}
+                                    onClear={() => { 
+                                        setFormData({ ...formData, clientprofileID: '' })
+                                    }}
                                     className='custom-input'
                                 />
                             </div>
@@ -224,6 +270,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                                 placeholder='Marka Seç'
                                                 variation="quiet"
                                                 options={brandsList}
+                                                onSelect={(option) => handleFormChange(option.id, 'requestBrandId')}
+                                                onClear={() => setFormData({ ...formData, requestBrandId: '' })}
                                                 className='custom-input'
                                             />
                                         </div>
@@ -235,6 +283,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                                 placeholder='Ürün Seç'
                                                 variation="quiet"
                                                 options={productsList}
+                                                onSelect={(option) => handleFormChange(option.id, 'requestProductId')}
+                                                onClear={() => setFormData({ ...formData, requestProductId: '' })}
                                                 className='custom-input'
                                             />
                                         </div>
