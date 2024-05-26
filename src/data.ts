@@ -7,7 +7,7 @@ export type RequestCopy = {
     Brand?: Brand | null,
     Product?: Product | null,
     Store?: Store | null,
-    clientprofilID: string,
+    clientprofileID: string,
     status?: RequestStatus | null,
     createdAt: string,
     updatedAt: string,
@@ -16,7 +16,7 @@ export type RequestCopy = {
     requestStoreId?: string | null,
 };
 
-export const requests: Request[] = [
+export const requests = [
     {
         __typename: "Request",
         id: '93938ac7-4af2-42d1-8e47-1ea6e9d1cffd',
@@ -27,7 +27,7 @@ export const requests: Request[] = [
             __typename: "Brand",
             id: 'e5b3c3b5-9e4a-4f8a-8f6b-4d9f0e7f3b4b',
             name: 'BIODERMA',
-            clientprofilID: 'c0dbfd8d-05d2-4f73-8364-61c157178379',
+            clientprofileID: 'c0dbfd8d-05d2-4f73-8364-61c157178379',
             createdAt: '2021-09-01T00:00:00.000Z',
             updatedAt: '2021-09-01T00:00:00.000Z',
         },
@@ -56,13 +56,13 @@ export const requests: Request[] = [
         __typename: "Request",
         id: "80be3395-c63d-4f95-9c03-61a3d6464c2d",
         request_number: "BRH-2021-1002",
-        clientprofilID: "953ee90f-75a1-4c74-a620-41ff8102f133",
+        clientprofileID: "953ee90f-75a1-4c74-a620-41ff8102f133",
         status: "COMPLETE" as RequestStatus,
         Brand: {
             "__typename": "Brand",
             "id": "b98affc9-4ef4-4539-be20-fd369aa9a67d",
             "name": "Nivea",
-            "clientprofilID": "953ee90f-75a1-4c74-a620-41ff8102f133",
+            "clientprofileID": "953ee90f-75a1-4c74-a620-41ff8102f133",
             "createdAt": "2021-09-01T00:00:00.000Z",
             "updatedAt": "2021-09-01T00:00:00.000Z"
         },
@@ -91,13 +91,13 @@ export const requests: Request[] = [
         "__typename": "Request",
         "id": "daa5b8ce-f207-44d8-b7a2-b03925739d49",
         "request_number": "BRH-2021-1003",
-        "clientprofilID": "39721ac1-b62e-4f88-8526-652507c87199",
+        "clientprofileID": "39721ac1-b62e-4f88-8526-652507c87199",
         "status": "WAITING_DESIGN" as RequestStatus,
         "Brand": {
             "__typename": "Brand",
             "id": "192e2249-3a6c-40f1-a82c-c44e604c0919",
             "name": "Nivea",
-            "clientprofilID": "39721ac1-b62e-4f88-8526-652507c87199",
+            "clientprofileID": "39721ac1-b62e-4f88-8526-652507c87199",
             "createdAt": "2021-09-01T00:00:00.000Z",
             "updatedAt": "2021-09-01T00:00:00.000Z"
         },
@@ -126,13 +126,13 @@ export const requests: Request[] = [
         "__typename": "Request",
         "id": "b16f7c19-df7a-42c6-a5d1-2bfb59b28589",
         "request_number": "BRH-2021-1004",
-        "clientprofilID": "3f8fb1bd-7a1f-42b6-ace8-c44544cb7d7e",
+        "clientprofileID": "3f8fb1bd-7a1f-42b6-ace8-c44544cb7d7e",
         "status": "COMPLETE" as RequestStatus,
         "Brand": {
             "__typename": "Brand",
             "id": "89967f7e-3db7-43b2-b92f-3685f4029b03",
             "name": "Vichy",
-            "clientprofilID": "3f8fb1bd-7a1f-42b6-ace8-c44544cb7d7e",
+            "clientprofileID": "3f8fb1bd-7a1f-42b6-ace8-c44544cb7d7e",
             "createdAt": "2021-09-01T00:00:00.000Z",
             "updatedAt": "2021-09-01T00:00:00.000Z"
         },
@@ -161,13 +161,13 @@ export const requests: Request[] = [
         "__typename": "Request",
         "id": "edf52876-f066-4445-a526-0c3d0b9ebe8f",
         "request_number": "BRH-2021-1005",
-        "clientprofilID": "856fd5a0-3138-448e-8830-a44d8e4c7c6c",
+        "clientprofileID": "856fd5a0-3138-448e-8830-a44d8e4c7c6c",
         "status": "WAITING_DESIGN" as RequestStatus,
         "Brand": {
             "__typename": "Brand",
             "id": "2c701f12-865f-44b3-a7d1-2f7879b17964",
             "name": "BIODERMA",
-            "clientprofilID": "856fd5a0-3138-448e-8830-a44d8e4c7c6c",
+            "clientprofileID": "856fd5a0-3138-448e-8830-a44d8e4c7c6c",
             "createdAt": "2021-09-01T00:00:00.000Z",
             "updatedAt": "2021-09-01T00:00:00.000Z"
         },
@@ -196,13 +196,13 @@ export const requests: Request[] = [
         "__typename": "Request",
         "id": "a3ef9924-46b2-4872-8b4a-edfdadeef5ac",
         "request_number": "BRH-2021-1006",
-        "clientprofilID": "658a948b-9837-473c-b702-3f12ffc88d16",
+        "clientprofileID": "658a948b-9837-473c-b702-3f12ffc88d16",
         "status": "PENDING_APPROAL" as RequestStatus,
         "Brand": {
             "__typename": "Brand",
             "id": "ca184524-b4e5-450c-95e2-2c073c6e1622",
             "name": "Avene",
-            "clientprofilID": "658a948b-9837-473c-b702-3f12ffc88d16",
+            "clientprofileID": "658a948b-9837-473c-b702-3f12ffc88d16",
             "createdAt": "2021-09-01T00:00:00.000Z",
             "updatedAt": "2021-09-01T00:00:00.000Z"
         },
@@ -231,13 +231,13 @@ export const requests: Request[] = [
         "__typename": "Request",
         "id": "8c04b1e4-bdac-4b14-a8d0-034bcf8f442a",
         "request_number": "BRH-2021-1007",
-        "clientprofilID": "7dbf490f-07e9-4cf0-9245-6b1503ab9755",
+        "clientprofileID": "7dbf490f-07e9-4cf0-9245-6b1503ab9755",
         "status": "CANCELLED" as RequestStatus,
         "Brand": {
             "__typename": "Brand",
             "id": "7df49d88-d0a9-490f-809d-06852060eb25",
             "name": "La Roche-Posay",
-            "clientprofilID": "7dbf490f-07e9-4cf0-9245-6b1503ab9755",
+            "clientprofileID": "7dbf490f-07e9-4cf0-9245-6b1503ab9755",
             "createdAt": "2021-09-01T00:00:00.000Z",
             "updatedAt": "2021-09-01T00:00:00.000Z"
         },
@@ -266,13 +266,13 @@ export const requests: Request[] = [
         "__typename": "Request",
         "id": "5fd04827-3081-4ebc-a9ec-c58165a89cff",
         "request_number": "BRH-2021-1008",
-        "clientprofilID": "550fe3bd-a8e7-4ea4-887b-8db016744c4c",
+        "clientprofileID": "550fe3bd-a8e7-4ea4-887b-8db016744c4c",
         "status": "COMPLETE" as RequestStatus,
         "Brand": {
             "__typename": "Brand",
             "id": "3dbb9421-392e-4efb-9fb0-faf719843bce",
             "name": "BIODERMA",
-            "clientprofilID": "550fe3bd-a8e7-4ea4-887b-8db016744c4c",
+            "clientprofileID": "550fe3bd-a8e7-4ea4-887b-8db016744c4c",
             "createdAt": "2021-09-01T00:00:00.000Z",
             "updatedAt": "2021-09-01T00:00:00.000Z"
         },
@@ -301,13 +301,13 @@ export const requests: Request[] = [
         "__typename": "Request",
         "id": "0d3cf61e-b5ca-4d22-971a-45638a3b2c83",
         "request_number": "BRH-2021-1009",
-        "clientprofilID": "a3843f93-6199-4b4b-8470-50bade75c2f5",
+        "clientprofileID": "a3843f93-6199-4b4b-8470-50bade75c2f5",
         "status": "WAITING_PRESS" as RequestStatus,
         "Brand": {
             "__typename": "Brand",
             "id": "bd42b5bd-3166-4d0b-8acf-77a73a0b9467",
             "name": "Nivea",
-            "clientprofilID": "a3843f93-6199-4b4b-8470-50bade75c2f5",
+            "clientprofileID": "a3843f93-6199-4b4b-8470-50bade75c2f5",
             "createdAt": "2021-09-01T00:00:00.000Z",
             "updatedAt": "2021-09-01T00:00:00.000Z"
         },

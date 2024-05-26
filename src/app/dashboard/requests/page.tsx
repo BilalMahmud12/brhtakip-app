@@ -21,7 +21,7 @@ const Request: React.FC = observer(() => {
     useEffect(() => {
         const fetchData = async () => {
             const requestsData = await Repo.RequestRepository.getAllRequests();
-            requestStore.initStore({ requests: [...requests, ...requestsData as unknown as Request[]] });
+            requestStore.initStore({ requests: [...requestsData as unknown as Request[]] });
 
             console.log('requests', [...requests, ...requestsData as unknown as Request[]]);
             console.log('requests Numer', generateRequestNumber());
