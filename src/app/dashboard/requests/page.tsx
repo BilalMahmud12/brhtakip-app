@@ -5,35 +5,21 @@ import { useStore } from '@/stores/utils/useStore';
 import { observer } from 'mobx-react-lite';
 import RequestsView from './src/requestsView';
 import { Breadcrumbs } from '@aws-amplify/ui-react'
-import { requests } from '@/data';
-import type { Brand, Request } from '@/API';
-
-
+import type { Request } from '@/API';
 import { generateRequestNumber } from '@/utils/helpers';
-
-import { client } from '@/repository';
-import { listClientProfiles } from '@/graphql/queries';
-
 
 const Request: React.FC = observer(() => {
     const { requestStore } = useStore();
 
     useEffect(() => {
+        const requestNumber: string = generateRequestNumber();
+        console.log('requestNumber', requestNumber);
+
         const fetchData = async () => {
             const requestsData = await Repo.RequestRepository.getAllRequests();
             requestStore.initStore({ requests: [...requestsData as unknown as Request[]] });
-
-            console.log('requests', [...requests, ...requestsData as unknown as Request[]]);
-            console.log('requests Numer', generateRequestNumber());
-        };
-        fetchData();
-    }, []);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const { data } = await client.graphql({ query: listClientProfiles });
-            console.log('listClientProfiles', data);
-        };
+            console.log('requests', requestsData)
+        }; 
         fetchData();
     }, []);
 

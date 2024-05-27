@@ -17,7 +17,7 @@ const DataModal: React.FC = () => {
             classNames={{
                 closeButton: "top-4 right-4 rounded-lg bg-zinc-200 hover:bg-[#f59e0b] hover:text-white hidden",
             }}
-            className='max-h-[60vh]'
+            className='min-h-[60vh]'
         >
             <ModalContent>
                 <ModalHeader className='bg-white py-5 border-b border-zinc-200'>

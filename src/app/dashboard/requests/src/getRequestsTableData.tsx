@@ -47,11 +47,12 @@ export default function getRequestsTableData(
 
             else {
                 switch (column.key) {
-                    case 'request_number':
+                    case 'requestNumber':
                         row[column.key] = (
-                            <span className='hover:underline hover:text-blue-700 hover:cursor-pointer'>{request.request_number}</span>
+                            <span className='hover:underline hover:text-blue-700 hover:cursor-pointer'>{request.requestNumber}</span>
                         )
                         break;
+
                     case 'status':
                         row[column.key] = (
                             <Badge variation={getStatus(request.status as string).color as BadgeVariations} size="small">
@@ -59,15 +60,19 @@ export default function getRequestsTableData(
                             </Badge>
                         );
                         break;
+
                     case 'brand':
                         row[column.key] = `${request?.Brand?.name ? '' : ''} - ${request.Product?.name}`;
                         break;
+
                     case 'store':
                         row[column.key] = request.Store?.name;
                         break;
+
                     case 'createdAt':
                         row[column.key] = formateDate(request.createdAt);
                         break;
+                        
                     case 'actions':
                         row[column.key] = (
                             <div className='flex justify-center'>

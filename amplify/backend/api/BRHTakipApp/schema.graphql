@@ -111,11 +111,11 @@ type Request @model @auth(rules: [{allow: public}]) {
   id: ID!
   clientprofileID: ID! @index(name: "byClientProfile")
   storeID: ID! @index(name: "byStore")
-  request_number: String!
+  requestNumber: String!
   Brand: Brand @hasOne
   Product: Product @hasOne
   status: RequestStatus!
   Material: Material @hasOne
-  request_details: RequestItem
+  requestDetails: RequestItem
 }
  

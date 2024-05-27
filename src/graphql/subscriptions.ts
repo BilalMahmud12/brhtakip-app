@@ -173,7 +173,7 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -214,7 +214,7 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -276,7 +276,7 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -317,7 +317,7 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -379,7 +379,7 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -420,7 +420,7 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -487,7 +487,7 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                 id
                 clientprofileID
                 storeID
-                request_number
+                requestNumber
                 Brand {
                   id
                   clientprofileID
@@ -515,7 +515,7 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   updatedAt
                   __typename
                 }
-                request_details {
+                requestDetails {
                   applicationArea
                   material
                   branded
@@ -570,7 +570,7 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -611,7 +611,7 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -678,7 +678,7 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                 id
                 clientprofileID
                 storeID
-                request_number
+                requestNumber
                 Brand {
                   id
                   clientprofileID
@@ -706,7 +706,7 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   updatedAt
                   __typename
                 }
-                request_details {
+                requestDetails {
                   applicationArea
                   material
                   branded
@@ -761,7 +761,7 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -802,7 +802,7 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -869,7 +869,7 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                 id
                 clientprofileID
                 storeID
-                request_number
+                requestNumber
                 Brand {
                   id
                   clientprofileID
@@ -897,7 +897,7 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   updatedAt
                   __typename
                 }
-                request_details {
+                requestDetails {
                   applicationArea
                   material
                   branded
@@ -952,7 +952,7 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -993,7 +993,7 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -1098,7 +1098,7 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                 id
                 clientprofileID
                 storeID
-                request_number
+                requestNumber
                 Brand {
                   id
                   clientprofileID
@@ -1126,7 +1126,7 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   updatedAt
                   __typename
                 }
-                request_details {
+                requestDetails {
                   applicationArea
                   material
                   branded
@@ -1181,7 +1181,7 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -1222,7 +1222,7 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -1327,7 +1327,7 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                 id
                 clientprofileID
                 storeID
-                request_number
+                requestNumber
                 Brand {
                   id
                   clientprofileID
@@ -1355,7 +1355,7 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   updatedAt
                   __typename
                 }
-                request_details {
+                requestDetails {
                   applicationArea
                   material
                   branded
@@ -1410,7 +1410,7 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -1451,7 +1451,7 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -1556,7 +1556,7 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                 id
                 clientprofileID
                 storeID
-                request_number
+                requestNumber
                 Brand {
                   id
                   clientprofileID
@@ -1584,7 +1584,7 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   updatedAt
                   __typename
                 }
-                request_details {
+                requestDetails {
                   applicationArea
                   material
                   branded
@@ -1639,7 +1639,7 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -1680,7 +1680,7 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -1776,7 +1776,7 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
         id
         clientprofileID
         storeID
-        request_number
+        requestNumber
         Brand {
           id
           Products {
@@ -1817,7 +1817,7 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
           updatedAt
           __typename
         }
-        request_details {
+        requestDetails {
           applicationArea
           material
           branded
@@ -1899,7 +1899,7 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
         id
         clientprofileID
         storeID
-        request_number
+        requestNumber
         Brand {
           id
           Products {
@@ -1940,7 +1940,7 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
           updatedAt
           __typename
         }
-        request_details {
+        requestDetails {
           applicationArea
           material
           branded
@@ -2022,7 +2022,7 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
         id
         clientprofileID
         storeID
-        request_number
+        requestNumber
         Brand {
           id
           Products {
@@ -2063,7 +2063,7 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
           updatedAt
           __typename
         }
-        request_details {
+        requestDetails {
           applicationArea
           material
           branded
@@ -2106,7 +2106,7 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
         id
         clientprofileID
         storeID
-        request_number
+        requestNumber
         Brand {
           id
           Products {
@@ -2147,7 +2147,7 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
           updatedAt
           __typename
         }
-        request_details {
+        requestDetails {
           applicationArea
           material
           branded
@@ -2194,7 +2194,7 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
         id
         clientprofileID
         storeID
-        request_number
+        requestNumber
         Brand {
           id
           Products {
@@ -2235,7 +2235,7 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
           updatedAt
           __typename
         }
-        request_details {
+        requestDetails {
           applicationArea
           material
           branded
@@ -2282,7 +2282,7 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
         id
         clientprofileID
         storeID
-        request_number
+        requestNumber
         Brand {
           id
           Products {
@@ -2323,7 +2323,7 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
           updatedAt
           __typename
         }
-        request_details {
+        requestDetails {
           applicationArea
           material
           branded
@@ -2491,7 +2491,7 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
     id
     clientprofileID
     storeID
-    request_number
+    requestNumber
     Brand {
       id
       Products {
@@ -2532,7 +2532,7 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
       updatedAt
       __typename
     }
-    request_details {
+    requestDetails {
       applicationArea
       material
       branded
@@ -2559,7 +2559,7 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
     id
     clientprofileID
     storeID
-    request_number
+    requestNumber
     Brand {
       id
       Products {
@@ -2600,7 +2600,7 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
       updatedAt
       __typename
     }
-    request_details {
+    requestDetails {
       applicationArea
       material
       branded
@@ -2627,7 +2627,7 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
     id
     clientprofileID
     storeID
-    request_number
+    requestNumber
     Brand {
       id
       Products {
@@ -2668,7 +2668,7 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
       updatedAt
       __typename
     }
-    request_details {
+    requestDetails {
       applicationArea
       material
       branded

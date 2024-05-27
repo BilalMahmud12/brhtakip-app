@@ -86,7 +86,7 @@ const DataTable: React.FC<DataTableProps> = (props) => {
                                 <td
                                     key={`row-${rowIndex}-col-${column.key}-${colIndex}`}
                                     className='text-left text-sm px-3 py-1.5 text-gray-600 border-r border-gray-200'
-                                    onClick={() => column.key === 'request_number' ? onEditRow(row) : () => {}}
+                                    onClick={() => column.key === 'requestNumber' ? onEditRow(row) : () => {}}
                                 >
                                     
 
@@ -107,6 +107,7 @@ const DataTable: React.FC<DataTableProps> = (props) => {
                     ))}
                 </tbody>
 
+                {/*
                 <tfoot>
                     <tr>
                         <td colSpan={columns.length} className='text-left text-sm px-3 py-1.5 text-gray-600 border-r border-gray-200'>
@@ -117,6 +118,7 @@ const DataTable: React.FC<DataTableProps> = (props) => {
                         </td>
                     </tr>
                 </tfoot>
+                */}
             </table>
         </div>
     );

@@ -11,6 +11,7 @@ export default function Login() {
     const { user } = useAuthenticator((context) => [context.user]);
     
     useEffect(() => {
+
         if (user) {
             setTimeout(() => {
                 router.push(DASHBOARD_URL)
@@ -53,7 +54,6 @@ export default function Login() {
                             <p className='text-gray-500 hidden'>
                                 Bu hizmete erişerek Kullanım Koşullarımızı kabul etmiş olursunuz ve Gizlilik Politikamızı kabul ettiğinizi beyan etmiş olursunuz. Daha fazla bilgi için web sitemizi ziyaret edin: www.brhreklam.com
                             </p>
-
 
                             <p className='text-gray-500'>
                                 Destek veya sorularınız için lütfen bize ulaşın:

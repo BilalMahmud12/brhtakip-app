@@ -70,12 +70,10 @@ const RequestsView: React.FC = observer((props) => {
     }
 
     const handleCreateForm = () => {
-        console.log('Create')
         showDataModal(
             <div><span className='text-base font-bold'>Talep Oluştur</span></div>,
             <CreateOrUpdateForm
                 isCreate={true}
-
             />,
             <ModalCustomFooter
                 type='create'
@@ -102,7 +100,15 @@ const RequestsView: React.FC = observer((props) => {
     }
 
     const handleCreateRequest = (data: any) => {
-        console.log('Create Request', data)
+        showDataModal(
+            <div><span className='text-sm font-bold'>Talep Güncelle</span></div>,
+            <div></div>,
+            <ModalCustomFooter
+                type='update'
+                handleUpdate={handleUpdateRequest}
+                handleCancel={handleCancelForm}
+            />
+        )
     }
 
     const handleUpdateRequest = (data: any) => {
@@ -123,8 +129,8 @@ const RequestsView: React.FC = observer((props) => {
                 </div>
 
                 <div className='flex items-center space-x-2'>
-
                     <div className='flex items-center space-x-2'>
+                        {/** 
                         <Button
                             variation="primary"
                             colorTheme="success"
@@ -137,6 +143,7 @@ const RequestsView: React.FC = observer((props) => {
                                 <Icon iconName='GrRefresh' className='text-lg' />
                             </span>
                         </Button>
+                        */}
 
                         <Button
                             variation="primary"

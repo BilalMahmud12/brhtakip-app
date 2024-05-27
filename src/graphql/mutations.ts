@@ -191,7 +191,7 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -232,7 +232,7 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -297,7 +297,7 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -338,7 +338,7 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -403,7 +403,7 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -444,7 +444,7 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -514,7 +514,7 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                 id
                 clientprofileID
                 storeID
-                request_number
+                requestNumber
                 Brand {
                   id
                   clientprofileID
@@ -542,7 +542,7 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   updatedAt
                   __typename
                 }
-                request_details {
+                requestDetails {
                   applicationArea
                   material
                   branded
@@ -597,7 +597,7 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -638,7 +638,7 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -708,7 +708,7 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                 id
                 clientprofileID
                 storeID
-                request_number
+                requestNumber
                 Brand {
                   id
                   clientprofileID
@@ -736,7 +736,7 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   updatedAt
                   __typename
                 }
-                request_details {
+                requestDetails {
                   applicationArea
                   material
                   branded
@@ -791,7 +791,7 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -832,7 +832,7 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -902,7 +902,7 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                 id
                 clientprofileID
                 storeID
-                request_number
+                requestNumber
                 Brand {
                   id
                   clientprofileID
@@ -930,7 +930,7 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   updatedAt
                   __typename
                 }
-                request_details {
+                requestDetails {
                   applicationArea
                   material
                   branded
@@ -985,7 +985,7 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -1026,7 +1026,7 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -1134,7 +1134,7 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                 id
                 clientprofileID
                 storeID
-                request_number
+                requestNumber
                 Brand {
                   id
                   clientprofileID
@@ -1162,7 +1162,7 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   updatedAt
                   __typename
                 }
-                request_details {
+                requestDetails {
                   applicationArea
                   material
                   branded
@@ -1217,7 +1217,7 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -1258,7 +1258,7 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -1366,7 +1366,7 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                 id
                 clientprofileID
                 storeID
-                request_number
+                requestNumber
                 Brand {
                   id
                   clientprofileID
@@ -1394,7 +1394,7 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   updatedAt
                   __typename
                 }
-                request_details {
+                requestDetails {
                   applicationArea
                   material
                   branded
@@ -1449,7 +1449,7 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -1490,7 +1490,7 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -1598,7 +1598,7 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                 id
                 clientprofileID
                 storeID
-                request_number
+                requestNumber
                 Brand {
                   id
                   clientprofileID
@@ -1626,7 +1626,7 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   updatedAt
                   __typename
                 }
-                request_details {
+                requestDetails {
                   applicationArea
                   material
                   branded
@@ -1681,7 +1681,7 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
             id
             clientprofileID
             storeID
-            request_number
+            requestNumber
             Brand {
               id
               Products {
@@ -1722,7 +1722,7 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
               updatedAt
               __typename
             }
-            request_details {
+            requestDetails {
               applicationArea
               material
               branded
@@ -1819,7 +1819,7 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
         id
         clientprofileID
         storeID
-        request_number
+        requestNumber
         Brand {
           id
           Products {
@@ -1860,7 +1860,7 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
           updatedAt
           __typename
         }
-        request_details {
+        requestDetails {
           applicationArea
           material
           branded
@@ -1943,7 +1943,7 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
         id
         clientprofileID
         storeID
-        request_number
+        requestNumber
         Brand {
           id
           Products {
@@ -1984,7 +1984,7 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
           updatedAt
           __typename
         }
-        request_details {
+        requestDetails {
           applicationArea
           material
           branded
@@ -2067,7 +2067,7 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
         id
         clientprofileID
         storeID
-        request_number
+        requestNumber
         Brand {
           id
           Products {
@@ -2108,7 +2108,7 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
           updatedAt
           __typename
         }
-        request_details {
+        requestDetails {
           applicationArea
           material
           branded
@@ -2154,7 +2154,7 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
         id
         clientprofileID
         storeID
-        request_number
+        requestNumber
         Brand {
           id
           Products {
@@ -2195,7 +2195,7 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
           updatedAt
           __typename
         }
-        request_details {
+        requestDetails {
           applicationArea
           material
           branded
@@ -2245,7 +2245,7 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
         id
         clientprofileID
         storeID
-        request_number
+        requestNumber
         Brand {
           id
           Products {
@@ -2286,7 +2286,7 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
           updatedAt
           __typename
         }
-        request_details {
+        requestDetails {
           applicationArea
           material
           branded
@@ -2336,7 +2336,7 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
         id
         clientprofileID
         storeID
-        request_number
+        requestNumber
         Brand {
           id
           Products {
@@ -2377,7 +2377,7 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
           updatedAt
           __typename
         }
-        request_details {
+        requestDetails {
           applicationArea
           material
           branded
@@ -2566,7 +2566,7 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
     id
     clientprofileID
     storeID
-    request_number
+    requestNumber
     Brand {
       id
       Products {
@@ -2607,7 +2607,7 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
       updatedAt
       __typename
     }
-    request_details {
+    requestDetails {
       applicationArea
       material
       branded
@@ -2637,7 +2637,7 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
     id
     clientprofileID
     storeID
-    request_number
+    requestNumber
     Brand {
       id
       Products {
@@ -2678,7 +2678,7 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
       updatedAt
       __typename
     }
-    request_details {
+    requestDetails {
       applicationArea
       material
       branded
@@ -2708,7 +2708,7 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
     id
     clientprofileID
     storeID
-    request_number
+    requestNumber
     Brand {
       id
       Products {
@@ -2749,7 +2749,7 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
       updatedAt
       __typename
     }
-    request_details {
+    requestDetails {
       applicationArea
       material
       branded

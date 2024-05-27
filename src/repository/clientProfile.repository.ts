@@ -6,7 +6,7 @@ import type { ClientProfile } from '@/API';
 const getClientProfiles = async () => {
     try {
         const { data } = await client.graphql({ query: listClientProfiles });
-        return data.listClientProfiles.items
+        return data.listClientProfiles.items as ClientProfile[];
     } catch (error) {
         console.error(error);
     }
