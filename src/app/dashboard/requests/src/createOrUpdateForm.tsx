@@ -72,35 +72,15 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         onSubmit = (data) => { console.log(data) }
     } = props;
 
-    const { clientProfileStore } = useStore();
+    const { clientProfileStore, requestStore } = useStore();
     const { getClientProfiles } = clientProfileStore;
-
+    
+    const { handleFormChange, getRequestFormValues } = requestStore;
+  
     const {
-        request_number,
+        requestNumber,
         status,
     } = request as Request;
-
-    const [formData, setFormData] = useState({
-        request_number: '',
-        clientprofileID: '',
-        requestBrandId: '',
-        requestProductId: '',
-        requestMaterialId: '',
-        status: '' as RequestStatus,
-        storeID: '',
-        client_details: null,
-        items: [] as RequestItem[],
-    });
-
-    const handleFormChange = (input: string, field: string) => {
-        console.log('input', input);
-        console.log('field', field);
-
-        setFormData({
-            ...formData,
-            [field]: input
-        });
-    }
 
     const getClientsList = (): { id: string, label: string }[] => {
         return getClientProfiles?.map((client) => ({
@@ -127,10 +107,11 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     const [materialsList, setMaterialsList] = useState<{ id: string, label: string }[]>([]);
 
     useEffect(() => {
-        console.log('formData.client_details', formData.client_details);
-        setBrandsList(getBrandsList(formData.clientprofileID));
+        setBrandsList(getBrandsList(getRequestFormValues.clientprofileID));
         setProductsList(getProductsList());
-    }, [formData.client_details]);
+
+        console.log('Brand List Updated', brandsList)
+    }, [getRequestFormValues]);
 
     useEffect(() => {
         console.log('getClientsList', getClientsList());
@@ -166,14 +147,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         fetchData();
 
         if (!isCreate) {
-            setFormData({
-                ...formData,
-                clientprofileID: request.clientprofileID,
-                request_number,
-                status,
-                storeID: request.storeID,
-                client_details: null,
-            });
+            
         }
     }, []);
 
@@ -184,13 +158,13 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                     <div className=''>
                         <div className='grid grid-cols-2 gap-8 mb-6'>
                             <div className='input-group'>
-                                <Label htmlFor="request_number" className='block text-xs font-medium mb-1.5'>Talep Numarası</Label>
+                                <Label htmlFor="requestNumber" className='block text-xs font-medium mb-1.5'>Talep Numarası</Label>
                                 <Input
-                                    id="request_number"
-                                    name="request_number"
+                                    id="requestNumber"
+                                    name="requestNumber"
                                     variation="quiet"
                                     className='custom-input'
-                                    defaultValue={isCreate ? generateRequestNumber() : request?.request_number}
+                                    defaultValue={isCreate ? generateRequestNumber() : request?.requestNumber}
                                     isDisabled
                                 />
                             </div>
@@ -218,11 +192,9 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                     placeholder='Müşteri Seç'
                                     variation="quiet"
                                     options={getClientsList()}
-                                    value={getClientsList().find(client => client.id === formData.clientprofileID)?.label}
+                                    value={getClientsList().find(client => client.id === getRequestFormValues.clientprofileID)?.label}
                                     onSelect={(option) => handleFormChange(option.id, 'clientprofileID')}
-                                    onClear={() => { 
-                                        setFormData({ ...formData, clientprofileID: '' })
-                                    }}
+                                    onClear={() => handleFormChange('', 'clientprofileID')}
                                     className='custom-input'
                                 />
                             </div>
@@ -246,7 +218,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                         variation="quiet"
                                         options={storesList}
                                         renderOption={renderStoreOption}
-                                        value={storesList.find(store => store.id === formData.storeID)?.label}
+                                        value={storesList.find(store => store.id === getRequestFormValues.storeID)?.label}
                                         className='custom-input'
                                     />
                                 </div>
@@ -269,9 +241,9 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                                 label="Marka"
                                                 placeholder='Marka Seç'
                                                 variation="quiet"
-                                                options={brandsList}
+                                                options={getBrandsList(getRequestFormValues.clientprofileID !== '' ? getRequestFormValues.clientprofileID : '')}
                                                 onSelect={(option) => handleFormChange(option.id, 'requestBrandId')}
-                                                onClear={() => setFormData({ ...formData, requestBrandId: '' })}
+                                                onClear={() => handleFormChange('', 'requestBrandId')}
                                                 className='custom-input'
                                             />
                                         </div>
@@ -284,7 +256,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                                 variation="quiet"
                                                 options={productsList}
                                                 onSelect={(option) => handleFormChange(option.id, 'requestProductId')}
-                                                onClear={() => setFormData({ ...formData, requestProductId: '' })}
+                                                onClear={() => handleFormChange('', 'requestProductId')}
                                                 className='custom-input'
                                             />
                                         </div>
@@ -402,47 +374,9 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                     )
                                 })*/}
                             </div>
-                        
-                            {/** 
-                            <div className='px-6 py-4 mt-3 bg-gray-100 rounded-md'>
-                                <Button
-                                    variation="primary"
-                                    colorTheme="success"
-                                    size="small"
-                                    loadingText=""
-                                    onClick={() => setFormData({
-                                        ...formData,
-                                        items: [
-                                            ...formData.items,
-                                            {
-                                                __typename: 'RequestItem',
-                                                brand: '',
-                                                product: '',
-                                                application_area: '',
-                                                material: '',
-                                                branded: false,
-                                                width: 0,
-                                                height: 0,
-                                                design_note: ''
-                                            }
-                                        ]
-                                    })}
-                                    className='rounded-md bg-amber-500 text-gray-800 px-4 py-1 text-xs'
-                                >
-                                    <span className='flex items-center justify-end space-x-2 w-full'>
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                                                <path fillRule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clipRule="evenodd" />
-                                            </svg>
-                                        </span>
-                                        <span>Yeni Ekle</span>
-                                    </span>
-                                </Button>
-                            </div>
-                            */}
                         </div>
                     </div>
-                </form>
+                </form> 
             </div>
         </div>
     );

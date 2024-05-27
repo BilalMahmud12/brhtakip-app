@@ -252,12 +252,12 @@ export type Request = {
   id: string,
   clientprofileID: string,
   storeID: string,
-  request_number: string,
+  requestNumber: string,
   Brand?: Brand | null,
   Product?: Product | null,
   status: RequestStatus,
   Material?: Material | null,
-  request_details?: RequestItem | null,
+  requestDetails?: RequestItem | null,
   createdAt: string,
   updatedAt: string,
   requestBrandId?: string | null,
@@ -593,9 +593,9 @@ export type CreateRequestInput = {
   id?: string | null,
   clientprofileID: string,
   storeID: string,
-  request_number: string,
+  requestNumber: string,
   status: RequestStatus,
-  request_details?: RequestItemInput | null,
+  requestDetails?: RequestItemInput | null,
   requestBrandId?: string | null,
   requestProductId?: string | null,
   requestMaterialId?: string | null,
@@ -614,7 +614,7 @@ export type RequestItemInput = {
 export type ModelRequestConditionInput = {
   clientprofileID?: ModelIDInput | null,
   storeID?: ModelIDInput | null,
-  request_number?: ModelStringInput | null,
+  requestNumber?: ModelStringInput | null,
   status?: ModelRequestStatusInput | null,
   and?: Array< ModelRequestConditionInput | null > | null,
   or?: Array< ModelRequestConditionInput | null > | null,
@@ -635,9 +635,9 @@ export type UpdateRequestInput = {
   id: string,
   clientprofileID?: string | null,
   storeID?: string | null,
-  request_number?: string | null,
+  requestNumber?: string | null,
   status?: RequestStatus | null,
-  request_details?: RequestItemInput | null,
+  requestDetails?: RequestItemInput | null,
   requestBrandId?: string | null,
   requestProductId?: string | null,
   requestMaterialId?: string | null,
@@ -812,7 +812,7 @@ export type ModelRequestFilterInput = {
   id?: ModelIDInput | null,
   clientprofileID?: ModelIDInput | null,
   storeID?: ModelIDInput | null,
-  request_number?: ModelStringInput | null,
+  requestNumber?: ModelStringInput | null,
   status?: ModelRequestStatusInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
@@ -984,7 +984,7 @@ export type ModelSubscriptionRequestFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   clientprofileID?: ModelSubscriptionIDInput | null,
   storeID?: ModelSubscriptionIDInput | null,
-  request_number?: ModelSubscriptionStringInput | null,
+  requestNumber?: ModelSubscriptionStringInput | null,
   status?: ModelSubscriptionStringInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
@@ -1176,7 +1176,7 @@ export type CreateAreaMutation = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -1217,7 +1217,7 @@ export type CreateAreaMutation = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -1281,7 +1281,7 @@ export type UpdateAreaMutation = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -1322,7 +1322,7 @@ export type UpdateAreaMutation = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -1386,7 +1386,7 @@ export type DeleteAreaMutation = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -1427,7 +1427,7 @@ export type DeleteAreaMutation = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -1498,7 +1498,7 @@ export type CreateDistrictMutation = {
                 id: string,
                 clientprofileID: string,
                 storeID: string,
-                request_number: string,
+                requestNumber: string,
                 Brand?:  {
                   __typename: "Brand",
                   id: string,
@@ -1526,7 +1526,7 @@ export type CreateDistrictMutation = {
                   createdAt: string,
                   updatedAt: string,
                 } | null,
-                request_details?:  {
+                requestDetails?:  {
                   __typename: "RequestItem",
                   applicationArea?: string | null,
                   material?: string | null,
@@ -1579,7 +1579,7 @@ export type CreateDistrictMutation = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -1620,7 +1620,7 @@ export type CreateDistrictMutation = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -1691,7 +1691,7 @@ export type UpdateDistrictMutation = {
                 id: string,
                 clientprofileID: string,
                 storeID: string,
-                request_number: string,
+                requestNumber: string,
                 Brand?:  {
                   __typename: "Brand",
                   id: string,
@@ -1719,7 +1719,7 @@ export type UpdateDistrictMutation = {
                   createdAt: string,
                   updatedAt: string,
                 } | null,
-                request_details?:  {
+                requestDetails?:  {
                   __typename: "RequestItem",
                   applicationArea?: string | null,
                   material?: string | null,
@@ -1772,7 +1772,7 @@ export type UpdateDistrictMutation = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -1813,7 +1813,7 @@ export type UpdateDistrictMutation = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -1884,7 +1884,7 @@ export type DeleteDistrictMutation = {
                 id: string,
                 clientprofileID: string,
                 storeID: string,
-                request_number: string,
+                requestNumber: string,
                 Brand?:  {
                   __typename: "Brand",
                   id: string,
@@ -1912,7 +1912,7 @@ export type DeleteDistrictMutation = {
                   createdAt: string,
                   updatedAt: string,
                 } | null,
-                request_details?:  {
+                requestDetails?:  {
                   __typename: "RequestItem",
                   applicationArea?: string | null,
                   material?: string | null,
@@ -1965,7 +1965,7 @@ export type DeleteDistrictMutation = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -2006,7 +2006,7 @@ export type DeleteDistrictMutation = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -2115,7 +2115,7 @@ export type CreateCityMutation = {
                 id: string,
                 clientprofileID: string,
                 storeID: string,
-                request_number: string,
+                requestNumber: string,
                 Brand?:  {
                   __typename: "Brand",
                   id: string,
@@ -2143,7 +2143,7 @@ export type CreateCityMutation = {
                   createdAt: string,
                   updatedAt: string,
                 } | null,
-                request_details?:  {
+                requestDetails?:  {
                   __typename: "RequestItem",
                   applicationArea?: string | null,
                   material?: string | null,
@@ -2196,7 +2196,7 @@ export type CreateCityMutation = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -2237,7 +2237,7 @@ export type CreateCityMutation = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -2346,7 +2346,7 @@ export type UpdateCityMutation = {
                 id: string,
                 clientprofileID: string,
                 storeID: string,
-                request_number: string,
+                requestNumber: string,
                 Brand?:  {
                   __typename: "Brand",
                   id: string,
@@ -2374,7 +2374,7 @@ export type UpdateCityMutation = {
                   createdAt: string,
                   updatedAt: string,
                 } | null,
-                request_details?:  {
+                requestDetails?:  {
                   __typename: "RequestItem",
                   applicationArea?: string | null,
                   material?: string | null,
@@ -2427,7 +2427,7 @@ export type UpdateCityMutation = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -2468,7 +2468,7 @@ export type UpdateCityMutation = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -2577,7 +2577,7 @@ export type DeleteCityMutation = {
                 id: string,
                 clientprofileID: string,
                 storeID: string,
-                request_number: string,
+                requestNumber: string,
                 Brand?:  {
                   __typename: "Brand",
                   id: string,
@@ -2605,7 +2605,7 @@ export type DeleteCityMutation = {
                   createdAt: string,
                   updatedAt: string,
                 } | null,
-                request_details?:  {
+                requestDetails?:  {
                   __typename: "RequestItem",
                   applicationArea?: string | null,
                   material?: string | null,
@@ -2658,7 +2658,7 @@ export type DeleteCityMutation = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -2699,7 +2699,7 @@ export type DeleteCityMutation = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -2793,7 +2793,7 @@ export type CreateClientProfileMutation = {
         id: string,
         clientprofileID: string,
         storeID: string,
-        request_number: string,
+        requestNumber: string,
         Brand?:  {
           __typename: "Brand",
           id: string,
@@ -2834,7 +2834,7 @@ export type CreateClientProfileMutation = {
           createdAt: string,
           updatedAt: string,
         } | null,
-        request_details?:  {
+        requestDetails?:  {
           __typename: "RequestItem",
           applicationArea?: string | null,
           material?: string | null,
@@ -2916,7 +2916,7 @@ export type UpdateClientProfileMutation = {
         id: string,
         clientprofileID: string,
         storeID: string,
-        request_number: string,
+        requestNumber: string,
         Brand?:  {
           __typename: "Brand",
           id: string,
@@ -2957,7 +2957,7 @@ export type UpdateClientProfileMutation = {
           createdAt: string,
           updatedAt: string,
         } | null,
-        request_details?:  {
+        requestDetails?:  {
           __typename: "RequestItem",
           applicationArea?: string | null,
           material?: string | null,
@@ -3039,7 +3039,7 @@ export type DeleteClientProfileMutation = {
         id: string,
         clientprofileID: string,
         storeID: string,
-        request_number: string,
+        requestNumber: string,
         Brand?:  {
           __typename: "Brand",
           id: string,
@@ -3080,7 +3080,7 @@ export type DeleteClientProfileMutation = {
           createdAt: string,
           updatedAt: string,
         } | null,
-        request_details?:  {
+        requestDetails?:  {
           __typename: "RequestItem",
           applicationArea?: string | null,
           material?: string | null,
@@ -3125,7 +3125,7 @@ export type CreateStoreMutation = {
         id: string,
         clientprofileID: string,
         storeID: string,
-        request_number: string,
+        requestNumber: string,
         Brand?:  {
           __typename: "Brand",
           id: string,
@@ -3166,7 +3166,7 @@ export type CreateStoreMutation = {
           createdAt: string,
           updatedAt: string,
         } | null,
-        request_details?:  {
+        requestDetails?:  {
           __typename: "RequestItem",
           applicationArea?: string | null,
           material?: string | null,
@@ -3215,7 +3215,7 @@ export type UpdateStoreMutation = {
         id: string,
         clientprofileID: string,
         storeID: string,
-        request_number: string,
+        requestNumber: string,
         Brand?:  {
           __typename: "Brand",
           id: string,
@@ -3256,7 +3256,7 @@ export type UpdateStoreMutation = {
           createdAt: string,
           updatedAt: string,
         } | null,
-        request_details?:  {
+        requestDetails?:  {
           __typename: "RequestItem",
           applicationArea?: string | null,
           material?: string | null,
@@ -3305,7 +3305,7 @@ export type DeleteStoreMutation = {
         id: string,
         clientprofileID: string,
         storeID: string,
-        request_number: string,
+        requestNumber: string,
         Brand?:  {
           __typename: "Brand",
           id: string,
@@ -3346,7 +3346,7 @@ export type DeleteStoreMutation = {
           createdAt: string,
           updatedAt: string,
         } | null,
-        request_details?:  {
+        requestDetails?:  {
           __typename: "RequestItem",
           applicationArea?: string | null,
           material?: string | null,
@@ -3526,7 +3526,7 @@ export type CreateRequestMutation = {
     id: string,
     clientprofileID: string,
     storeID: string,
-    request_number: string,
+    requestNumber: string,
     Brand?:  {
       __typename: "Brand",
       id: string,
@@ -3567,7 +3567,7 @@ export type CreateRequestMutation = {
       createdAt: string,
       updatedAt: string,
     } | null,
-    request_details?:  {
+    requestDetails?:  {
       __typename: "RequestItem",
       applicationArea?: string | null,
       material?: string | null,
@@ -3596,7 +3596,7 @@ export type UpdateRequestMutation = {
     id: string,
     clientprofileID: string,
     storeID: string,
-    request_number: string,
+    requestNumber: string,
     Brand?:  {
       __typename: "Brand",
       id: string,
@@ -3637,7 +3637,7 @@ export type UpdateRequestMutation = {
       createdAt: string,
       updatedAt: string,
     } | null,
-    request_details?:  {
+    requestDetails?:  {
       __typename: "RequestItem",
       applicationArea?: string | null,
       material?: string | null,
@@ -3666,7 +3666,7 @@ export type DeleteRequestMutation = {
     id: string,
     clientprofileID: string,
     storeID: string,
-    request_number: string,
+    requestNumber: string,
     Brand?:  {
       __typename: "Brand",
       id: string,
@@ -3707,7 +3707,7 @@ export type DeleteRequestMutation = {
       createdAt: string,
       updatedAt: string,
     } | null,
-    request_details?:  {
+    requestDetails?:  {
       __typename: "RequestItem",
       applicationArea?: string | null,
       material?: string | null,
@@ -3892,7 +3892,7 @@ export type GetAreaQuery = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -3933,7 +3933,7 @@ export type GetAreaQuery = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -4000,7 +4000,7 @@ export type ListAreasQuery = {
               id: string,
               clientprofileID: string,
               storeID: string,
-              request_number: string,
+              requestNumber: string,
               Brand?:  {
                 __typename: "Brand",
                 id: string,
@@ -4032,7 +4032,7 @@ export type ListAreasQuery = {
                 createdAt: string,
                 updatedAt: string,
               } | null,
-              request_details?:  {
+              requestDetails?:  {
                 __typename: "RequestItem",
                 applicationArea?: string | null,
                 material?: string | null,
@@ -4103,7 +4103,7 @@ export type AreasByDistrictIDQuery = {
               id: string,
               clientprofileID: string,
               storeID: string,
-              request_number: string,
+              requestNumber: string,
               Brand?:  {
                 __typename: "Brand",
                 id: string,
@@ -4135,7 +4135,7 @@ export type AreasByDistrictIDQuery = {
                 createdAt: string,
                 updatedAt: string,
               } | null,
-              request_details?:  {
+              requestDetails?:  {
                 __typename: "RequestItem",
                 applicationArea?: string | null,
                 material?: string | null,
@@ -4207,7 +4207,7 @@ export type GetDistrictQuery = {
                 id: string,
                 clientprofileID: string,
                 storeID: string,
-                request_number: string,
+                requestNumber: string,
                 Brand?:  {
                   __typename: "Brand",
                   id: string,
@@ -4235,7 +4235,7 @@ export type GetDistrictQuery = {
                   createdAt: string,
                   updatedAt: string,
                 } | null,
-                request_details?:  {
+                requestDetails?:  {
                   __typename: "RequestItem",
                   applicationArea?: string | null,
                   material?: string | null,
@@ -4288,7 +4288,7 @@ export type GetDistrictQuery = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -4329,7 +4329,7 @@ export type GetDistrictQuery = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -4403,7 +4403,7 @@ export type ListDistrictsQuery = {
                   id: string,
                   clientprofileID: string,
                   storeID: string,
-                  request_number: string,
+                  requestNumber: string,
                   status: RequestStatus,
                   createdAt: string,
                   updatedAt: string,
@@ -4448,7 +4448,7 @@ export type ListDistrictsQuery = {
               id: string,
               clientprofileID: string,
               storeID: string,
-              request_number: string,
+              requestNumber: string,
               Brand?:  {
                 __typename: "Brand",
                 id: string,
@@ -4480,7 +4480,7 @@ export type ListDistrictsQuery = {
                 createdAt: string,
                 updatedAt: string,
               } | null,
-              request_details?:  {
+              requestDetails?:  {
                 __typename: "RequestItem",
                 applicationArea?: string | null,
                 material?: string | null,
@@ -4558,7 +4558,7 @@ export type DistrictsByCityIDQuery = {
                   id: string,
                   clientprofileID: string,
                   storeID: string,
-                  request_number: string,
+                  requestNumber: string,
                   status: RequestStatus,
                   createdAt: string,
                   updatedAt: string,
@@ -4603,7 +4603,7 @@ export type DistrictsByCityIDQuery = {
               id: string,
               clientprofileID: string,
               storeID: string,
-              request_number: string,
+              requestNumber: string,
               Brand?:  {
                 __typename: "Brand",
                 id: string,
@@ -4635,7 +4635,7 @@ export type DistrictsByCityIDQuery = {
                 createdAt: string,
                 updatedAt: string,
               } | null,
-              request_details?:  {
+              requestDetails?:  {
                 __typename: "RequestItem",
                 applicationArea?: string | null,
                 material?: string | null,
@@ -4745,7 +4745,7 @@ export type GetCityQuery = {
                 id: string,
                 clientprofileID: string,
                 storeID: string,
-                request_number: string,
+                requestNumber: string,
                 Brand?:  {
                   __typename: "Brand",
                   id: string,
@@ -4773,7 +4773,7 @@ export type GetCityQuery = {
                   createdAt: string,
                   updatedAt: string,
                 } | null,
-                request_details?:  {
+                requestDetails?:  {
                   __typename: "RequestItem",
                   applicationArea?: string | null,
                   material?: string | null,
@@ -4826,7 +4826,7 @@ export type GetCityQuery = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -4867,7 +4867,7 @@ export type GetCityQuery = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -4975,7 +4975,7 @@ export type ListCitiesQuery = {
                   id: string,
                   clientprofileID: string,
                   storeID: string,
-                  request_number: string,
+                  requestNumber: string,
                   status: RequestStatus,
                   createdAt: string,
                   updatedAt: string,
@@ -5020,7 +5020,7 @@ export type ListCitiesQuery = {
               id: string,
               clientprofileID: string,
               storeID: string,
-              request_number: string,
+              requestNumber: string,
               Brand?:  {
                 __typename: "Brand",
                 id: string,
@@ -5052,7 +5052,7 @@ export type ListCitiesQuery = {
                 createdAt: string,
                 updatedAt: string,
               } | null,
-              request_details?:  {
+              requestDetails?:  {
                 __typename: "RequestItem",
                 applicationArea?: string | null,
                 material?: string | null,
@@ -5147,7 +5147,7 @@ export type GetClientProfileQuery = {
         id: string,
         clientprofileID: string,
         storeID: string,
-        request_number: string,
+        requestNumber: string,
         Brand?:  {
           __typename: "Brand",
           id: string,
@@ -5188,7 +5188,7 @@ export type GetClientProfileQuery = {
           createdAt: string,
           updatedAt: string,
         } | null,
-        request_details?:  {
+        requestDetails?:  {
           __typename: "RequestItem",
           applicationArea?: string | null,
           material?: string | null,
@@ -5273,7 +5273,7 @@ export type ListClientProfilesQuery = {
           id: string,
           clientprofileID: string,
           storeID: string,
-          request_number: string,
+          requestNumber: string,
           Brand?:  {
             __typename: "Brand",
             id: string,
@@ -5314,7 +5314,7 @@ export type ListClientProfilesQuery = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          request_details?:  {
+          requestDetails?:  {
             __typename: "RequestItem",
             applicationArea?: string | null,
             material?: string | null,
@@ -5360,7 +5360,7 @@ export type GetStoreQuery = {
         id: string,
         clientprofileID: string,
         storeID: string,
-        request_number: string,
+        requestNumber: string,
         Brand?:  {
           __typename: "Brand",
           id: string,
@@ -5401,7 +5401,7 @@ export type GetStoreQuery = {
           createdAt: string,
           updatedAt: string,
         } | null,
-        request_details?:  {
+        requestDetails?:  {
           __typename: "RequestItem",
           applicationArea?: string | null,
           material?: string | null,
@@ -5453,7 +5453,7 @@ export type ListStoresQuery = {
           id: string,
           clientprofileID: string,
           storeID: string,
-          request_number: string,
+          requestNumber: string,
           Brand?:  {
             __typename: "Brand",
             id: string,
@@ -5494,7 +5494,7 @@ export type ListStoresQuery = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          request_details?:  {
+          requestDetails?:  {
             __typename: "RequestItem",
             applicationArea?: string | null,
             material?: string | null,
@@ -5550,7 +5550,7 @@ export type StoresByCityIDQuery = {
           id: string,
           clientprofileID: string,
           storeID: string,
-          request_number: string,
+          requestNumber: string,
           Brand?:  {
             __typename: "Brand",
             id: string,
@@ -5591,7 +5591,7 @@ export type StoresByCityIDQuery = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          request_details?:  {
+          requestDetails?:  {
             __typename: "RequestItem",
             applicationArea?: string | null,
             material?: string | null,
@@ -5647,7 +5647,7 @@ export type StoresByDistrictIDQuery = {
           id: string,
           clientprofileID: string,
           storeID: string,
-          request_number: string,
+          requestNumber: string,
           Brand?:  {
             __typename: "Brand",
             id: string,
@@ -5688,7 +5688,7 @@ export type StoresByDistrictIDQuery = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          request_details?:  {
+          requestDetails?:  {
             __typename: "RequestItem",
             applicationArea?: string | null,
             material?: string | null,
@@ -5744,7 +5744,7 @@ export type StoresByAreaIDQuery = {
           id: string,
           clientprofileID: string,
           storeID: string,
-          request_number: string,
+          requestNumber: string,
           Brand?:  {
             __typename: "Brand",
             id: string,
@@ -5785,7 +5785,7 @@ export type StoresByAreaIDQuery = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          request_details?:  {
+          requestDetails?:  {
             __typename: "RequestItem",
             applicationArea?: string | null,
             material?: string | null,
@@ -5988,7 +5988,7 @@ export type GetRequestQuery = {
     id: string,
     clientprofileID: string,
     storeID: string,
-    request_number: string,
+    requestNumber: string,
     Brand?:  {
       __typename: "Brand",
       id: string,
@@ -6029,7 +6029,7 @@ export type GetRequestQuery = {
       createdAt: string,
       updatedAt: string,
     } | null,
-    request_details?:  {
+    requestDetails?:  {
       __typename: "RequestItem",
       applicationArea?: string | null,
       material?: string | null,
@@ -6061,7 +6061,7 @@ export type ListRequestsQuery = {
       id: string,
       clientprofileID: string,
       storeID: string,
-      request_number: string,
+      requestNumber: string,
       Brand?:  {
         __typename: "Brand",
         id: string,
@@ -6102,7 +6102,7 @@ export type ListRequestsQuery = {
         createdAt: string,
         updatedAt: string,
       } | null,
-      request_details?:  {
+      requestDetails?:  {
         __typename: "RequestItem",
         applicationArea?: string | null,
         material?: string | null,
@@ -6138,7 +6138,7 @@ export type RequestsByClientprofileIDQuery = {
       id: string,
       clientprofileID: string,
       storeID: string,
-      request_number: string,
+      requestNumber: string,
       Brand?:  {
         __typename: "Brand",
         id: string,
@@ -6179,7 +6179,7 @@ export type RequestsByClientprofileIDQuery = {
         createdAt: string,
         updatedAt: string,
       } | null,
-      request_details?:  {
+      requestDetails?:  {
         __typename: "RequestItem",
         applicationArea?: string | null,
         material?: string | null,
@@ -6215,7 +6215,7 @@ export type RequestsByStoreIDQuery = {
       id: string,
       clientprofileID: string,
       storeID: string,
-      request_number: string,
+      requestNumber: string,
       Brand?:  {
         __typename: "Brand",
         id: string,
@@ -6256,7 +6256,7 @@ export type RequestsByStoreIDQuery = {
         createdAt: string,
         updatedAt: string,
       } | null,
-      request_details?:  {
+      requestDetails?:  {
         __typename: "RequestItem",
         applicationArea?: string | null,
         material?: string | null,
@@ -6447,7 +6447,7 @@ export type OnCreateAreaSubscription = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -6488,7 +6488,7 @@ export type OnCreateAreaSubscription = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -6551,7 +6551,7 @@ export type OnUpdateAreaSubscription = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -6592,7 +6592,7 @@ export type OnUpdateAreaSubscription = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -6655,7 +6655,7 @@ export type OnDeleteAreaSubscription = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -6696,7 +6696,7 @@ export type OnDeleteAreaSubscription = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -6766,7 +6766,7 @@ export type OnCreateDistrictSubscription = {
                 id: string,
                 clientprofileID: string,
                 storeID: string,
-                request_number: string,
+                requestNumber: string,
                 Brand?:  {
                   __typename: "Brand",
                   id: string,
@@ -6794,7 +6794,7 @@ export type OnCreateDistrictSubscription = {
                   createdAt: string,
                   updatedAt: string,
                 } | null,
-                request_details?:  {
+                requestDetails?:  {
                   __typename: "RequestItem",
                   applicationArea?: string | null,
                   material?: string | null,
@@ -6847,7 +6847,7 @@ export type OnCreateDistrictSubscription = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -6888,7 +6888,7 @@ export type OnCreateDistrictSubscription = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -6958,7 +6958,7 @@ export type OnUpdateDistrictSubscription = {
                 id: string,
                 clientprofileID: string,
                 storeID: string,
-                request_number: string,
+                requestNumber: string,
                 Brand?:  {
                   __typename: "Brand",
                   id: string,
@@ -6986,7 +6986,7 @@ export type OnUpdateDistrictSubscription = {
                   createdAt: string,
                   updatedAt: string,
                 } | null,
-                request_details?:  {
+                requestDetails?:  {
                   __typename: "RequestItem",
                   applicationArea?: string | null,
                   material?: string | null,
@@ -7039,7 +7039,7 @@ export type OnUpdateDistrictSubscription = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -7080,7 +7080,7 @@ export type OnUpdateDistrictSubscription = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -7150,7 +7150,7 @@ export type OnDeleteDistrictSubscription = {
                 id: string,
                 clientprofileID: string,
                 storeID: string,
-                request_number: string,
+                requestNumber: string,
                 Brand?:  {
                   __typename: "Brand",
                   id: string,
@@ -7178,7 +7178,7 @@ export type OnDeleteDistrictSubscription = {
                   createdAt: string,
                   updatedAt: string,
                 } | null,
-                request_details?:  {
+                requestDetails?:  {
                   __typename: "RequestItem",
                   applicationArea?: string | null,
                   material?: string | null,
@@ -7231,7 +7231,7 @@ export type OnDeleteDistrictSubscription = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -7272,7 +7272,7 @@ export type OnDeleteDistrictSubscription = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -7380,7 +7380,7 @@ export type OnCreateCitySubscription = {
                 id: string,
                 clientprofileID: string,
                 storeID: string,
-                request_number: string,
+                requestNumber: string,
                 Brand?:  {
                   __typename: "Brand",
                   id: string,
@@ -7408,7 +7408,7 @@ export type OnCreateCitySubscription = {
                   createdAt: string,
                   updatedAt: string,
                 } | null,
-                request_details?:  {
+                requestDetails?:  {
                   __typename: "RequestItem",
                   applicationArea?: string | null,
                   material?: string | null,
@@ -7461,7 +7461,7 @@ export type OnCreateCitySubscription = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -7502,7 +7502,7 @@ export type OnCreateCitySubscription = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -7610,7 +7610,7 @@ export type OnUpdateCitySubscription = {
                 id: string,
                 clientprofileID: string,
                 storeID: string,
-                request_number: string,
+                requestNumber: string,
                 Brand?:  {
                   __typename: "Brand",
                   id: string,
@@ -7638,7 +7638,7 @@ export type OnUpdateCitySubscription = {
                   createdAt: string,
                   updatedAt: string,
                 } | null,
-                request_details?:  {
+                requestDetails?:  {
                   __typename: "RequestItem",
                   applicationArea?: string | null,
                   material?: string | null,
@@ -7691,7 +7691,7 @@ export type OnUpdateCitySubscription = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -7732,7 +7732,7 @@ export type OnUpdateCitySubscription = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -7840,7 +7840,7 @@ export type OnDeleteCitySubscription = {
                 id: string,
                 clientprofileID: string,
                 storeID: string,
-                request_number: string,
+                requestNumber: string,
                 Brand?:  {
                   __typename: "Brand",
                   id: string,
@@ -7868,7 +7868,7 @@ export type OnDeleteCitySubscription = {
                   createdAt: string,
                   updatedAt: string,
                 } | null,
-                request_details?:  {
+                requestDetails?:  {
                   __typename: "RequestItem",
                   applicationArea?: string | null,
                   material?: string | null,
@@ -7921,7 +7921,7 @@ export type OnDeleteCitySubscription = {
             id: string,
             clientprofileID: string,
             storeID: string,
-            request_number: string,
+            requestNumber: string,
             Brand?:  {
               __typename: "Brand",
               id: string,
@@ -7962,7 +7962,7 @@ export type OnDeleteCitySubscription = {
               createdAt: string,
               updatedAt: string,
             } | null,
-            request_details?:  {
+            requestDetails?:  {
               __typename: "RequestItem",
               applicationArea?: string | null,
               material?: string | null,
@@ -8055,7 +8055,7 @@ export type OnCreateClientProfileSubscription = {
         id: string,
         clientprofileID: string,
         storeID: string,
-        request_number: string,
+        requestNumber: string,
         Brand?:  {
           __typename: "Brand",
           id: string,
@@ -8096,7 +8096,7 @@ export type OnCreateClientProfileSubscription = {
           createdAt: string,
           updatedAt: string,
         } | null,
-        request_details?:  {
+        requestDetails?:  {
           __typename: "RequestItem",
           applicationArea?: string | null,
           material?: string | null,
@@ -8177,7 +8177,7 @@ export type OnUpdateClientProfileSubscription = {
         id: string,
         clientprofileID: string,
         storeID: string,
-        request_number: string,
+        requestNumber: string,
         Brand?:  {
           __typename: "Brand",
           id: string,
@@ -8218,7 +8218,7 @@ export type OnUpdateClientProfileSubscription = {
           createdAt: string,
           updatedAt: string,
         } | null,
-        request_details?:  {
+        requestDetails?:  {
           __typename: "RequestItem",
           applicationArea?: string | null,
           material?: string | null,
@@ -8299,7 +8299,7 @@ export type OnDeleteClientProfileSubscription = {
         id: string,
         clientprofileID: string,
         storeID: string,
-        request_number: string,
+        requestNumber: string,
         Brand?:  {
           __typename: "Brand",
           id: string,
@@ -8340,7 +8340,7 @@ export type OnDeleteClientProfileSubscription = {
           createdAt: string,
           updatedAt: string,
         } | null,
-        request_details?:  {
+        requestDetails?:  {
           __typename: "RequestItem",
           applicationArea?: string | null,
           material?: string | null,
@@ -8384,7 +8384,7 @@ export type OnCreateStoreSubscription = {
         id: string,
         clientprofileID: string,
         storeID: string,
-        request_number: string,
+        requestNumber: string,
         Brand?:  {
           __typename: "Brand",
           id: string,
@@ -8425,7 +8425,7 @@ export type OnCreateStoreSubscription = {
           createdAt: string,
           updatedAt: string,
         } | null,
-        request_details?:  {
+        requestDetails?:  {
           __typename: "RequestItem",
           applicationArea?: string | null,
           material?: string | null,
@@ -8473,7 +8473,7 @@ export type OnUpdateStoreSubscription = {
         id: string,
         clientprofileID: string,
         storeID: string,
-        request_number: string,
+        requestNumber: string,
         Brand?:  {
           __typename: "Brand",
           id: string,
@@ -8514,7 +8514,7 @@ export type OnUpdateStoreSubscription = {
           createdAt: string,
           updatedAt: string,
         } | null,
-        request_details?:  {
+        requestDetails?:  {
           __typename: "RequestItem",
           applicationArea?: string | null,
           material?: string | null,
@@ -8562,7 +8562,7 @@ export type OnDeleteStoreSubscription = {
         id: string,
         clientprofileID: string,
         storeID: string,
-        request_number: string,
+        requestNumber: string,
         Brand?:  {
           __typename: "Brand",
           id: string,
@@ -8603,7 +8603,7 @@ export type OnDeleteStoreSubscription = {
           createdAt: string,
           updatedAt: string,
         } | null,
-        request_details?:  {
+        requestDetails?:  {
           __typename: "RequestItem",
           applicationArea?: string | null,
           material?: string | null,
@@ -8776,7 +8776,7 @@ export type OnCreateRequestSubscription = {
     id: string,
     clientprofileID: string,
     storeID: string,
-    request_number: string,
+    requestNumber: string,
     Brand?:  {
       __typename: "Brand",
       id: string,
@@ -8817,7 +8817,7 @@ export type OnCreateRequestSubscription = {
       createdAt: string,
       updatedAt: string,
     } | null,
-    request_details?:  {
+    requestDetails?:  {
       __typename: "RequestItem",
       applicationArea?: string | null,
       material?: string | null,
@@ -8845,7 +8845,7 @@ export type OnUpdateRequestSubscription = {
     id: string,
     clientprofileID: string,
     storeID: string,
-    request_number: string,
+    requestNumber: string,
     Brand?:  {
       __typename: "Brand",
       id: string,
@@ -8886,7 +8886,7 @@ export type OnUpdateRequestSubscription = {
       createdAt: string,
       updatedAt: string,
     } | null,
-    request_details?:  {
+    requestDetails?:  {
       __typename: "RequestItem",
       applicationArea?: string | null,
       material?: string | null,
@@ -8914,7 +8914,7 @@ export type OnDeleteRequestSubscription = {
     id: string,
     clientprofileID: string,
     storeID: string,
-    request_number: string,
+    requestNumber: string,
     Brand?:  {
       __typename: "Brand",
       id: string,
@@ -8955,7 +8955,7 @@ export type OnDeleteRequestSubscription = {
       createdAt: string,
       updatedAt: string,
     } | null,
-    request_details?:  {
+    requestDetails?:  {
       __typename: "RequestItem",
       applicationArea?: string | null,
       material?: string | null,

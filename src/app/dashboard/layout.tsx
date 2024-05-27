@@ -1,10 +1,10 @@
 'use client'
 import React, { useEffect } from 'react';
+import { getCurrentUser } from 'aws-amplify/auth'
 import AppHeader from '@/components/custom/header';
 import SideNav from "@/components/custom/sideNav";
 
-import { client } from '@/repository';
-import { listClientProfiles } from '@/graphql/queries';
+import * as Repo from '@/repository/index';
 import { useStore } from '@/stores/utils/useStore';
 
 export default function RootLayout({
@@ -16,15 +16,19 @@ export default function RootLayout({
     const { clientProfileStore } = useStore();
 
     useEffect(() => {
+        const currentUser = async () => {
+            const user = await getCurrentUser();
+            console.log('currentUser', user);
+        }
         const fetchData = async () => {
-            const { data } = await client.graphql({ query: listClientProfiles });
-            clientProfileStore.initStore({ clientProfiles: data.listClientProfiles.items });
-            console.log('listClientProfiles', data);
+            const clientsData = await Repo.ClientProfileRepository.getClientProfiles();
+            clientProfileStore.initStore({ clientProfiles: clientsData || [] });
+            console.log('clientsData', clientsData);
         }
 
+        currentUser();
         fetchData();
-    }
-        , []);
+    }, []);
         
     return (
         <>
