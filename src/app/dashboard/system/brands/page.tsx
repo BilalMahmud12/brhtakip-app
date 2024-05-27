@@ -3,15 +3,19 @@ import * as Repo from '@/repository/index'
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Breadcrumbs } from '@aws-amplify/ui-react';
-import type { Brand } from '@/API';
+import type { Brand, ClientProfile } from '@/API';
 import BrandsView from './src/brandView';
+import { useStore } from '@/stores/utils/useStore';
+
 
 const Brand: React.FC = observer(() => {
+    const { brandStore } = useStore();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const brandsData = await Repo.BrandRepository.getAllBrands();
+                brandStore.initStore({ brands: brandsData as unknown as Brand[] });
                 console.log('brands', brandsData);
             } catch (error) {
                 console.error('Failed to fetch brands', error);

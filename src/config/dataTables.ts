@@ -15,10 +15,10 @@ export const dataTables = {
     brands: {
         columns: [
             { label: '', key: 'checkbox', width: '2%' },
-            { label: 'Marka', key: 'brand_name', width: '15%' },
-            { label: 'Durum', key: 'status', width: '13%' },
-            { label: 'Product', key: 'product_kount', width: '35%' },
-            { label: 'Müşteri', key: 'client', width: '20%' },
+            { label: 'Marka', key: 'name', width: '10%' },
+            { label: 'Durum', key: 'isActive', width: '4%' },
+            { label: 'Ürün Sayısı', key: 'Products', width: '2%' },
+            { label: 'Müşteri', key: 'clientprofileID', width: '20%' },
             { label: '', key: 'actions', width: '2%' },
         ]
     }

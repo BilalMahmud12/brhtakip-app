@@ -4,15 +4,14 @@ import DataTable from '@/components/core/dataTable'
 import { dataTables } from '@/config/dataTables';
 import getBrandsTableData from './getBrandsTableData';
 
-interface RequestsDataTableProps {
+interface BrandsDataTableProps {
     dataPayload: any[];
     handleEdit?: (data: any) => void;
     handleDelete?: (data: any) => void;
     handleSelect?: (data: any) => void;
 }
 
-const BrandsDataTable: React.FC<RequestsDataTableProps> = (props) => {
-
+const BrandsDataTable: React.FC<BrandsDataTableProps> = (props) => {
     const {
         dataPayload = [],
         handleEdit = () => { },
@@ -29,7 +28,7 @@ const BrandsDataTable: React.FC<RequestsDataTableProps> = (props) => {
         handleDelete,
         handleSelect
     );
-
+    console.log('tableData', tableData);
     return (
         <div>
             <DataTable
