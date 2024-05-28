@@ -6,6 +6,7 @@ import { useDataModal } from '@/contexts/DataModalContext';
 import { SearchField, Button } from '@aws-amplify/ui-react'
 import Icon from '@/components/core/icon';
 import BrandsDataTable from './brandsDataTable';
+import CreateOrUpdateForm from './createOrUpdateForm';
 
 
 const ModalCustomFooter = (
@@ -42,7 +43,7 @@ const ModalCustomFooter = (
                     colorTheme="success"
                     size="small"
                     loadingText=""
-                    onClick={type === 'create' ? handleCreate : handleUpdate}
+                    // onClick={type === 'create' ? handleCreate : handleUpdate}
                     className='rounded-none bg-amber-500 text-blue-900 font-bold px-6'
                 >
                     <span className='flex items-center space-x-2'>
@@ -71,20 +72,25 @@ const BrandsView: React.FC = observer((props) => {
         console.log('Delete')
     }
 
+    const handleCancelForm = () => {
+        console.log('Cancel')
+        hideDataModal()
+    }
+
     const handleCreateForm = () => {
         console.log('Create')
-        // showDataModal(
-        //     <div><span className='text-base font-bold'>Talep Oluştur</span></div>,
-        //     <CreateOrUpdateForm
-        //         isCreate={true}
+        showDataModal(
+            <div><span className='text-base font-bold'>Yeni Marka Ekle</span></div>,
+            <CreateOrUpdateForm
+                isCreate={true}
 
-        //     />,
-        //     <ModalCustomFooter
-        //         type='create'
-        //     // handleCreate={handleCreateBrand}
-        //     // handleCancel={handleCancelForm}
-        //     />
-        // )
+            />,
+            <ModalCustomFooter
+                type='create'
+                // handleCreate={handleCreateBrand}
+                handleCancel={handleCancelForm}
+            />
+        )
     }
 
     return (

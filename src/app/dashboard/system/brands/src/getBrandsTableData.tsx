@@ -1,20 +1,24 @@
 
-import type { Brand, ClientProfile } from '@/API'
+import type { Brand } from '@/API'
 import { formateDate } from '@/utils/helpers';
 import type { DataTableColumn } from '@/components/core/dataTable';
 import { Badge, BadgeVariations } from '@aws-amplify/ui-react'
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import Icon from '@/components/core/icon';
-
+import { useStore } from '@/stores/utils/useStore';
 
 export default function getBrandsTableData(
     data: Brand[],
     columns: any,
-    // clientData: ClientProfile,
     handleEdit: (data: any) => void,
     handleDelete: (data: any) => void,
     handleSelect: (data: any) => void
 ) {
+
+    const { clientProfileStore } = useStore();
+    const { getClientProfiles } = clientProfileStore;
+
+    console.log("Client Profiles:", getClientProfiles);
 
     return data.map((brand) => {
         const row: { [key: string]: any } = {};
@@ -45,8 +49,8 @@ export default function getBrandsTableData(
                         break;
 
                     case 'clientprofileID':
-                        // const clientProfile = clientData.find(profile => profile.id === brand.clientprofileID);
-                        // row[column.key] = clientProfile ? clientProfile.name : 'Unknown';
+                        const clientProfile = getClientProfiles.find(profile => profile.id === brand.clientprofileID);
+                        row[column.key] = clientProfile ? clientProfile.name : 'Unknown';
                         break;
 
                     case 'actions':

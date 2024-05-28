@@ -3,7 +3,7 @@ import React from 'react';
 import DataTable from '@/components/core/dataTable'
 import { dataTables } from '@/config/dataTables';
 import getBrandsTableData from './getBrandsTableData';
-
+import { useStore } from '@/stores/utils/useStore';
 interface BrandsDataTableProps {
     dataPayload: any[];
     handleEdit?: (data: any) => void;
@@ -20,6 +20,8 @@ const BrandsDataTable: React.FC<BrandsDataTableProps> = (props) => {
     } = props;
 
     const { brands } = dataTables
+    const { clientProfileStore } = useStore();
+    const { getClientProfiles } = clientProfileStore;
 
     const tableData = getBrandsTableData(
         dataPayload,
