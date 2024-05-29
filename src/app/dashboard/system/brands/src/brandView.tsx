@@ -3,10 +3,53 @@ import React, { useState, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '@/stores/utils/useStore';
 import { useDataModal } from '@/contexts/DataModalContext';
-import { SearchField, Button } from '@aws-amplify/ui-react'
+import { Button } from '@aws-amplify/ui-react'
 import Icon from '@/components/core/icon';
 import BrandsDataTable from './brandsDataTable';
-import CreateOrUpdateForm from './createOrUpdateForm';
+import ClientSelectForm from './clientSelectForm';
+import { useRouter } from 'next/navigation';
+
+const SelectClientModalFooter = (
+    props: {
+        handleConfirm: () => void
+        handleCancel?: () => void;
+    }
+) => {
+    const {
+        handleConfirm = () => { },
+        handleCancel = () => { },
+    } = props
+
+    return (
+        <div className='flex items-center justify-between'>
+            <div className='flex items-center space-x-3'>
+                <Button
+                    variation="primary"
+                    colorTheme="success"
+                    size="small"
+                    loadingText=""
+                    onClick={handleCancel}
+                    className='rounded-none bg-transparent text-gray-800 px-6 font-bold'
+                >
+                    <span>İptal Et</span>
+                </Button>
+
+                <Button
+                    variation="primary"
+                    colorTheme="success"
+                    size="small"
+                    loadingText=""
+                    onClick={handleConfirm}
+                    className='rounded-none bg-amber-500 text-gray-800 font-bold px-6'
+                >
+                    <span className='flex items-center space-x-2'>
+                        <span>Devam Et</span>
+                    </span>
+                </Button>
+            </div>
+        </div>
+    )
+}
 
 
 const ModalCustomFooter = (
@@ -59,6 +102,7 @@ const ModalCustomFooter = (
 const BrandsView: React.FC = observer((props) => {
     const { brandStore, clientProfileStore } = useStore();
     const { showDataModal, hideDataModal } = useDataModal();
+    const router = useRouter()
 
     const handleRefresh = () => {
         console.log('Refresh')
@@ -86,15 +130,21 @@ const BrandsView: React.FC = observer((props) => {
         console.log('Create')
         showDataModal(
             <div><span className='text-base font-bold'>Yeni Marka Ekle</span></div>,
-            <CreateOrUpdateForm
-                isCreate={true}
-            // onSubmit={handleCreateBrand}
-            />,
-            <ModalCustomFooter
-                type='create'
-                handleCreate={handleCreateBrand}
-                handleCancel={handleCancelForm}
-            />
+            <ClientSelectForm />,
+            <SelectClientModalFooter
+                handleConfirm={() => {
+                    hideDataModal();
+                    router.push('/dashboard/system/brands/create')
+                    // <CreateOrUpdateForm
+                    //     isCreate={true}
+                    // // onSubmit={handleCreateBrand}
+                    // />,
+                    // <ModalCustomFooter
+                    //     type='create'
+                    //     handleCreate={handleCreateBrand}
+                    //     handleCancel={handleCancelForm}
+                    // />
+                }} />
         )
     }
 
