@@ -1,6 +1,6 @@
 import { makeObservable, extendObservable, action } from 'mobx';
 import { RootStore } from './RootStore';
-import type { Brand } from '@/API'
+import type { Brand } from '@/API';
 
 interface BrandStoreInitialState {
     brands: Brand[];
@@ -8,10 +8,15 @@ interface BrandStoreInitialState {
 
 const initialState: BrandStoreInitialState = {
     brands: []
-}
+};
 
 export class BrandStore {
     brands: Brand[] = [];
+
+    requestForm = {
+        name: '',
+        clientprofileID: '',
+    };
 
     constructor(private rootStore: RootStore) {
         this.rootStore = rootStore;
@@ -19,7 +24,8 @@ export class BrandStore {
         makeObservable(this, {
             setBrands: action,
             addBrand: action,
-            removeBrand: action
+            removeBrand: action,
+            handleFormChange: action
         });
         extendObservable(this, initialState);
     }
@@ -43,5 +49,23 @@ export class BrandStore {
     removeBrand(brandId: string) {
         this.brands = this.brands.filter(brand => brand.id !== brandId);
     }
-}
 
+    setBrandFormValues(values: any) {
+        this.requestForm = {
+            ...this.requestForm,
+            ...values,
+        };
+    }
+
+    get getBrandFormValues() {
+        return this.requestForm;
+    }
+
+    handleFormChange = (input: string, field: keyof typeof this.requestForm) => {
+        this.requestForm = {
+            ...this.requestForm,
+            [field]: input,
+        };
+        console.log('request form', this.requestForm);
+    }
+}

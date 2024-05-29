@@ -18,8 +18,6 @@ export default function getBrandsTableData(
     const { clientProfileStore } = useStore();
     const { getClientProfiles } = clientProfileStore;
 
-    console.log("Client Profiles:", getClientProfiles);
-
     return data.map((brand) => {
         const row: { [key: string]: any } = {};
 
@@ -50,7 +48,7 @@ export default function getBrandsTableData(
 
                     case 'clientprofileID':
                         const clientProfile = getClientProfiles.find(profile => profile.id === brand.clientprofileID);
-                        row[column.key] = clientProfile ? clientProfile.name : 'Unknown';
+                        row[column.key] = clientProfile?.name || 'Unknown';
                         break;
 
                     case 'actions':

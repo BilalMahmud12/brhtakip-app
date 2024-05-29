@@ -43,7 +43,7 @@ const ModalCustomFooter = (
                     colorTheme="success"
                     size="small"
                     loadingText=""
-                    // onClick={type === 'create' ? handleCreate : handleUpdate}
+                    onClick={type === 'create' ? handleCreate : handleUpdate}
                     className='rounded-none bg-amber-500 text-blue-900 font-bold px-6'
                 >
                     <span className='flex items-center space-x-2'>
@@ -77,17 +77,22 @@ const BrandsView: React.FC = observer((props) => {
         hideDataModal()
     }
 
+    const handleCreateBrand = () => {
+        console.log('create')
+    }
+
+
     const handleCreateForm = () => {
         console.log('Create')
         showDataModal(
             <div><span className='text-base font-bold'>Yeni Marka Ekle</span></div>,
             <CreateOrUpdateForm
                 isCreate={true}
-
+            // onSubmit={handleCreateBrand}
             />,
             <ModalCustomFooter
                 type='create'
-                // handleCreate={handleCreateBrand}
+                handleCreate={handleCreateBrand}
                 handleCancel={handleCancelForm}
             />
         )
