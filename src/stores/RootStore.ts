@@ -1,6 +1,7 @@
 import { makeObservable, extendObservable, observable, action } from 'mobx';
 import { UserStore } from './UserStore';
 import { RequestStore } from './RequestStore';
+import { BrandStore } from './BrandStore';
 import { ClientProfileStore } from './ClientProfileStore';
 import type { ClientProfile } from '@/API';
 
@@ -31,6 +32,7 @@ export class RootStore {
         this.userStore = new UserStore(this);
         this.requestStore = new RequestStore(this);
         this.clientProfileStore = new ClientProfileStore(this);
+        this.brandStore = new BrandStore(this);
 
         makeObservable(this, {
             setCurrentClientProfile: action,
