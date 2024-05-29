@@ -4,10 +4,54 @@ import { observer } from 'mobx-react-lite';
 import { useStore } from '@/stores/utils/useStore';
 import { useDataModal } from '@/contexts/DataModalContext';
 import RequestsDataTable from './requestsDataTable';
+import ClientSelectForm from './clientSelectForm';
 import CreateOrUpdateForm from './createOrUpdateForm';
 import { SearchField, Button } from '@aws-amplify/ui-react'
 import Icon from '@/components/core/icon';
+import { useRouter } from 'next/navigation'
 
+
+const SelectClientModalFooter = (
+    props: {
+        handleConfirm: () => void
+        handleCancel?: () => void;
+    }
+) => {
+    const {
+        handleConfirm = () => {},
+        handleCancel = () => { },
+    } = props
+
+    return (
+        <div className='flex items-center justify-between'>
+            <div className='flex items-center space-x-3'>
+                <Button
+                    variation="primary"
+                    colorTheme="success"
+                    size="small"
+                    loadingText=""
+                    onClick={handleCancel}
+                    className='rounded-none bg-transparent text-gray-800 px-6 font-bold'
+                >
+                    <span>İptal Et</span>
+                </Button>
+
+                <Button
+                    variation="primary"
+                    colorTheme="success"
+                    size="small"
+                    loadingText=""
+                    onClick={handleConfirm}
+                    className='rounded-none bg-amber-500 text-gray-800 font-bold px-6'
+                >
+                    <span className='flex items-center space-x-2'>
+                        <span>Devam Et</span>
+                    </span>
+                </Button>                
+            </div>
+        </div>
+    )
+}
 
 const ModalCustomFooter = (
     props: {
@@ -57,7 +101,10 @@ const ModalCustomFooter = (
 
 
 const RequestsView: React.FC = observer((props) => {
-    const { requestStore } = useStore();
+    const router = useRouter()
+    const { requestStore, userStore } = useStore();
+    const { userData } = userStore;
+
     const { showDataModal, hideDataModal } = useDataModal();
 
     const handleRefresh = () => {
@@ -65,22 +112,38 @@ const RequestsView: React.FC = observer((props) => {
     }
 
     const handleCancelForm = () => {
-        console.log('Cancel')
+        requestStore.resetFormValues()
         hideDataModal()
     }
 
     const handleCreateForm = () => {
-        showDataModal(
-            <div><span className='text-base font-bold'>Talep Oluştur</span></div>,
-            <CreateOrUpdateForm
-                isCreate={true}
-            />,
-            <ModalCustomFooter
-                type='create'
-                handleCreate={handleCreateRequest}
-                handleCancel={handleCancelForm} 
-            />
-        )
+        if (userData.isClient) {
+            // @TODO apply client case logic
+        } else {
+            showDataModal(
+                <div><span className='text-sm font-bold'>Müşteri Seç</span></div>,
+                <ClientSelectForm />,
+                <SelectClientModalFooter
+                    handleConfirm={() => {
+                        hideDataModal()
+                        router.push('/dashboard/requests/create')
+                        /*
+                        showDataModal(
+                            <div><span className='text-base font-bold'>Talep Oluştur</span></div>,
+                            <CreateOrUpdateForm
+                                isCreate={true}
+                            />,
+                            <ModalCustomFooter
+                                type='create'
+                                handleCreate={handleCreateRequest}
+                                handleCancel={handleCancelForm}
+                            />
+                        )*/
+                    }} 
+                    handleCancel={handleCancelForm} 
+                />
+            )
+        }
     }
 
     const handleUpdateForm = (data: any) => {

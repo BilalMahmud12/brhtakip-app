@@ -1,4 +1,4 @@
-import { makeObservable, extendObservable, observable, action } from 'mobx';
+import { makeObservable, extendObservable, observable, action, toJS } from 'mobx';
 import { RootStore } from './RootStore';
 import type { Request, RequestStatus } from '@/API'
 
@@ -15,13 +15,22 @@ export class RequestStore {
     requests: Request[] = [];
 
     requestForm = {
-        request_number: '',
+        status: '' as RequestStatus,
+        requestNumber: '',
         clientprofileID: '',
+        storeID: '',
         requestBrandId: '',
         requestProductId: '',
         requestMaterialId: '',
-        status: '' as RequestStatus,
-        storeID: '',
+        requestDetails: {
+            applicationArea: '',
+            branded: false,
+            quantity: 0,
+            width: 0,
+            height: 0,
+            material: '',
+            designNote: '',
+        },
     }
 
     constructor(private rootStore: RootStore) {
@@ -32,6 +41,7 @@ export class RequestStore {
             setRequests: action,
             removeRequest: action,
             handleFormChange: action,
+            resetFormValues: action
         });
 
         extendObservable(this, initialState);
@@ -60,13 +70,116 @@ export class RequestStore {
         }
     }
 
-    handleFormChange = (input: string, field: keyof typeof this.requestForm) => {
-        this.requestForm = {
-            ...this.requestForm,
-            [field]: input,
+    handleFormChange = (input: string, field: string) => {
+        switch (field) {
+            case 'requestNumber':
+                this.requestForm = {
+                    ...this.requestForm,
+                    requestNumber: input,
+                }
+                break;
+            case 'requestDetails.applicationArea':
+                const currentFormValues = Object.assign({}, this.requestForm);
+
+                this.requestForm = {
+                    ...this.requestForm,
+                    requestDetails: {
+                        ...currentFormValues.requestDetails,
+                        applicationArea: JSON.stringify({
+                            id: input,
+                        }) as string,
+                    }
+                }
+                break;
+            case 'requestDetails.branded':
+                this.requestForm = {
+                    ...this.requestForm,
+                    requestDetails: {
+                        ...this.requestForm.requestDetails,
+                        branded: input === '1',
+                    }
+                }
+                break;
+            case 'requestDetails.quantity':
+                this.requestForm = {
+                    ...this.requestForm,
+                    requestDetails: {
+                        ...this.requestForm.requestDetails,
+                        quantity: parseInt(input),
+                    }
+                }
+                break
+            case 'requestDetails.width':
+                this.requestForm = {
+                    ...this.requestForm,
+                    requestDetails: {
+                        ...this.requestForm.requestDetails,
+                        width: parseInt(input),
+                    }
+                }
+                break;
+            case 'requestDetails.height':
+                this.requestForm = {
+                    ...this.requestForm,
+                    requestDetails: {
+                        ...this.requestForm.requestDetails,
+                        height: parseInt(input),
+                    }
+                }
+                break;
+            case 'requestDetails.material':
+                const currentFormValues2 = Object.assign({}, this.requestForm);
+
+                this.requestForm = {
+                    ...this.requestForm,
+                    requestDetails: {
+                        ...currentFormValues2.requestDetails,
+                        material: JSON.stringify({
+                            id: input,
+                        }) as string,
+                    }
+                }
+                break;
+
+            case 'requestDetails.designNote':
+                this.requestForm = {
+                    ...this.requestForm,
+                    requestDetails: {
+                        ...this.requestForm.requestDetails,
+                        designNote: input,
+                    }
+                }
+                break;
+            default:
+                this.requestForm = {
+                    ...this.requestForm,
+                    [field]: input,
+                }
+                break;
         }
 
-        console.log('request form' ,this.requestForm);
+        console.log('request form', toJS(this.requestForm));
+    }
+
+    resetFormValues = () => {
+        this.requestForm = {
+            status: '' as RequestStatus,
+            requestNumber: '',
+            clientprofileID: '',
+            storeID: '',
+            requestBrandId: '',
+            requestProductId: '',
+            requestMaterialId: '',
+            requestDetails: {
+                applicationArea: '',
+                branded: false,
+                quantity: 0,
+                width: 0,
+                height: 0,
+                material: '',
+                designNote: '',
+            },
+        };
     }
 
     get getAllRequests() {

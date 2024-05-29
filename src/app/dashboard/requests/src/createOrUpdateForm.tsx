@@ -1,22 +1,19 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { generateRequestNumber } from '@/utils/helpers';
-import type { Request, RequestStatus, RequestItem } from '@/API';
-import { Input, Label, Autocomplete, Button, Divider } from '@aws-amplify/ui-react';
-import Icon from '@/components/core/icon';
-import { Snippet, CheckboxGroup, Checkbox } from "@nextui-org/react"
-import RequestItemsForm from './requestItemsForm';
-
-import { client } from '@/repository';
-import { listBrands, listProducts, listClientProfiles, listStores, listMaterials } from '@/graphql/queries';
+import { observer } from 'mobx-react';
 import { useStore } from '@/stores/utils/useStore';
+import { listBrands, listProducts, listClientProfiles, listStores, listMaterials } from '@/graphql/queries';
+import { Input, Label, Autocomplete, ComboBoxOption } from '@aws-amplify/ui-react';
+import { generateRequestNumber } from '@/utils/helpers';
+import { client } from '@/repository';
+
+import type { Request} from '@/API';
 
 
 interface CreateOrUpdateFormProps {
     isCreate?: boolean;
     request?: Request;
     handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onSubmit?: (data: Request) => void;
 }
 
 const statusOptions = [
@@ -65,76 +62,34 @@ const renderStoreOption = (option: any, value: any) => {
     )
 }
 
-const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
+const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) => {
     const { 
         isCreate = true, 
-        request = {} as Request, 
-        onSubmit = (data) => { console.log(data) }
+        request = {} as Request
     } = props;
 
-    const { clientProfileStore, requestStore } = useStore();
+    const { userStore, clientProfileStore, requestStore } = useStore();
+    const { userData } = userStore;
     const { getClientProfiles } = clientProfileStore;
-    
     const { handleFormChange, getRequestFormValues } = requestStore;
-  
-    const {
-        requestNumber,
-        status,
-    } = request as Request;
-
-    const getClientsList = (): { id: string, label: string }[] => {
-        return getClientProfiles?.map((client) => ({
-            id: client.id,
-            label: client?.name as string || ''
-        }));
-    }
-
-    const getBrandsList = (clientID: string): { id: string, label: string }[] => {
-        return getClientProfiles.find(client => client.id === clientID)?.Brands?.items?.map(brand => ({
-            id: brand?.id as string,
-            label: brand?.name as string
-        })) || [];
-    }
-
-    const getProductsList = (): { id: string, label: string }[] => {
-        return [];
-    }
 
     const [storesList, setStoresList] = useState<{ id: string, label: string }[]>([]);
-    const [brandsList, setBrandsList] = useState<{ id: string, label: string }[]>([]);
     const [productsList, setProductsList] = useState<{ id: string, label: string }[]>([]);
     const [applicationAreasList, setApplicationAreasList] = useState<{ id: string, label: string }[]>([]);
     const [materialsList, setMaterialsList] = useState<{ id: string, label: string }[]>([]);
 
     useEffect(() => {
-        setBrandsList(getBrandsList(getRequestFormValues.clientprofileID));
-        setProductsList(getProductsList());
-
-        console.log('Brand List Updated', brandsList)
-    }, [getRequestFormValues]);
-
-    useEffect(() => {
-        console.log('getClientsList', getClientsList());
-
         const fetchData = async () => {
             const [
-                clientsData,
                 storesData,
-                brandsData,
-                productsData,
                 materialsData
             ] = await Promise.all([
-                client.graphql({ query: listClientProfiles }),
                 client.graphql({ query: listStores }),
-                client.graphql({ query: listBrands }),
-                client.graphql({ query: listProducts }),
                 client.graphql({ query: listMaterials })
             ]);
-            setStoresList(storesData.data.listStores.items.map((item: any) => ({ id: item.id, label: item.name, description: item.address })));
-            setBrandsList(brandsData.data.listBrands.items.map((item: any) => ({ id: item.id, label: item.name })));
-            setProductsList(productsData.data.listProducts.items.map((item: any) => ({ id: item.id, label: item.name })));
-            setMaterialsList(materialsData.data.listMaterials.items.map((item: any) => ({ id: item.id, label: item.name })));
 
+            setStoresList(storesData.data.listStores.items.map((item: any) => ({ id: item.id, label: item.name, description: item.address })));
+            setMaterialsList(materialsData.data.listMaterials.items.map((item: any) => ({ id: item.id, label: item.name })));
             setApplicationAreasList([
                 { id: 'INTERIOR', label: 'İç Mekan' },
                 { id: 'EXTERIOR', label: 'Dış Mekan' },
@@ -145,11 +100,51 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         };
 
         fetchData();
-
-        if (!isCreate) {
-            
-        }
+        if (!isCreate) {}
     }, []);
+  
+    // @TODO: isolate this function to a helper file
+    const getClientsList = (): { id: string, label: string }[] => {
+        return getClientProfiles?.map((client) => ({
+            id: client.id,
+            label: client?.name as string || ''
+        }));
+    }
+
+    // @TODO: isolate this function to a helper file
+    const getBrandsList = (clientID: string): { id: string, label: string }[] => {
+        return getClientProfiles
+                .find(client => client.id === clientID)
+                ?.Brands
+                ?.items
+                ?.map(brand => ({
+                    id: brand?.id as string,
+                    label: brand?.name as string
+                })) 
+                || [];
+    }
+
+    const handleOnBrandSelection = async (option: ComboBoxOption) => {
+        handleFormChange(option.id, 'requestBrandId')
+        setProductsList(await getProductsList(option.id));
+    }
+
+    const handleOnBrandClear = () => {
+        handleFormChange('', 'requestBrandId');
+        handleFormChange('', 'requestProductId');
+        setProductsList([]);
+    }
+
+    const getProductsList = async (brandId: string): Promise<{ id: string, label: string }[]> => {
+        if (!brandId || brandId === '') return [];
+
+        const productsData = await client.graphql({ 
+            query: listProducts,
+            variables: { filter: { brandID: { eq: brandId } } } 
+        });
+
+        return productsData.data.listProducts.items.map((item: any) => ({ id: item.id, label: item.name }));
+    }
 
     return (
         <div>
@@ -157,17 +152,23 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                 <form>
                     <div className=''>
                         <div className='grid grid-cols-2 gap-8 mb-6'>
-                            <div className='input-group'>
-                                <Label htmlFor="requestNumber" className='block text-xs font-medium mb-1.5'>Talep Numarası</Label>
-                                <Input
-                                    id="requestNumber"
-                                    name="requestNumber"
-                                    variation="quiet"
-                                    className='custom-input'
-                                    defaultValue={isCreate ? generateRequestNumber() : request?.requestNumber}
-                                    isDisabled
-                                />
-                            </div>
+                            {!userData.isClient && (
+                                <div className='input-group col-span-2'>
+                                    <Label htmlFor="client_name" className='block text-xs font-medium mb-1.5'>Müşteri</Label>
+                                    <Autocomplete
+                                        id="client_name"
+                                        label="Müşteri"
+                                        placeholder='Müşteri Seç'
+                                        variation="quiet"
+                                        options={getClientsList()}
+                                        value={getClientsList().find(client => client.id === getRequestFormValues.clientprofileID)?.label}
+                                        onSelect={(option) => handleFormChange(option.id, 'clientprofileID')}
+                                        onClear={() => handleFormChange('', 'clientprofileID')}
+                                        className='custom-input'
+                                        isDisabled
+                                    />
+                                </div>
+                            )}
 
                             <div className='input-group'>
                                 <Label htmlFor="status" className='block text-xs font-medium mb-1.5'>Talep Durumu</Label>
@@ -178,28 +179,25 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                     variation="quiet"
                                     options={statusOptions}
                                     renderOption={renderStatusOption}
-                                    onChange={(e) => { console.log('selected status',  e.target.value) }}
+                                    onChange={(e) => { console.log('selected status', e.target.value) }}
+                                    onSelect={(option) => handleFormChange(option.id, 'status')}
                                     className='custom-input'
-                                    value={status}
+                                    value={request.status}
                                 />
                             </div>
 
-                            <div className='input-group col-span-2'>
-                                <Label htmlFor="client_name" className='block text-xs font-medium mb-1.5'>Müşteri</Label>
-                                <Autocomplete
-                                    id="client_name"
-                                    label="Müşteri"
-                                    placeholder='Müşteri Seç'
+                            <div className='input-group'>
+                                <Label htmlFor="requestNumber" className='block text-xs font-medium mb-1.5'>Talep Numarası</Label>
+                                <Input
+                                    id="requestNumber"
+                                    name="requestNumber"
                                     variation="quiet"
-                                    options={getClientsList()}
-                                    value={getClientsList().find(client => client.id === getRequestFormValues.clientprofileID)?.label}
-                                    onSelect={(option) => handleFormChange(option.id, 'clientprofileID')}
-                                    onClear={() => handleFormChange('', 'clientprofileID')}
                                     className='custom-input'
+                                    defaultValue={getRequestFormValues.requestNumber}
+                                    isDisabled
                                 />
                             </div>
                         </div>
-                       
                     </div>
 
                     <div className='my-2 pt-5' />
@@ -207,7 +205,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                     <div>
                         <span className='block mb-3 text-xs font-medium'>Mağaza Bilgileri</span>
 
-                        <div className='bg-gray-100 px-6 py-8 rounded-md border border-zinc-200'>
+                        <div className='bg-white px-6 py-8 rounded-md shadow'>
                             <div className='grid grid-cols-2 gap-8'>
                                 <div className='input-group col-span-2'>
                                     <Label htmlFor="store_name" className='block text-xs font-medium mb-1.5'>Mağaza</Label>
@@ -219,6 +217,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                         options={storesList}
                                         renderOption={renderStoreOption}
                                         value={storesList.find(store => store.id === getRequestFormValues.storeID)?.label}
+                                        onSelect={(option) => handleFormChange(option.id, 'storeID')}
                                         className='custom-input'
                                     />
                                 </div>
@@ -227,12 +226,12 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                     </div>
 
                     <div className='my-2 pt-5' />
-
+                    
                     <div>
                         <span className='block mb-3 text-xs font-medium'>Talep Detaiları</span>
                         <div>
                             <div className='space-y-5'>
-                                <div className='bg-gray-100 px-6 py-8 rounded-md border border-zinc-200'>
+                                <div className='bg-white px-6 py-8 rounded-md shadow'>
                                     <div className='grid grid-cols-2 gap-8'>
                                         <div className='input-group'>
                                             <Label htmlFor="brand_name" className='block text-xs font-medium mb-1.5'>Marka</Label>
@@ -242,11 +241,12 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                                 placeholder='Marka Seç'
                                                 variation="quiet"
                                                 options={getBrandsList(getRequestFormValues.clientprofileID !== '' ? getRequestFormValues.clientprofileID : '')}
-                                                onSelect={(option) => handleFormChange(option.id, 'requestBrandId')}
-                                                onClear={() => handleFormChange('', 'requestBrandId')}
+                                                onSelect={(option) => handleOnBrandSelection(option)}
+                                                onClear={() => handleOnBrandClear}
                                                 className='custom-input'
                                             />
                                         </div>
+
                                         <div className='input-group'>
                                             <Label htmlFor="product_name" className='block text-xs font-medium mb-1.5'>Ürün</Label>
                                             <Autocomplete
@@ -255,13 +255,12 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                                 placeholder='Ürün Seç'
                                                 variation="quiet"
                                                 options={productsList}
+                                                value={productsList.find(product => product.id === getRequestFormValues.requestProductId)?.label || ''}
                                                 onSelect={(option) => handleFormChange(option.id, 'requestProductId')}
                                                 onClear={() => handleFormChange('', 'requestProductId')}
                                                 className='custom-input'
                                             />
                                         </div>
-
-                                        
                                     </div>
 
                                     <div className='grid grid-cols-3 gap-8 my-6'>
@@ -273,6 +272,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                                 placeholder='Uygulama Alanı Seç'
                                                 variation="quiet"
                                                 options={applicationAreasList}
+                                                onSelect={(option) => handleFormChange(option.id, 'requestDetails.applicationArea')}
                                                 className='custom-input'
                                             />
                                         </div>
@@ -284,6 +284,10 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                                 placeholder='Malzeme Seç'
                                                 variation="quiet"
                                                 options={materialsList}
+                                                onSelect={(option) => {
+                                                    handleFormChange(option.id, 'requestMaterialId')
+                                                    handleFormChange(option.id, 'requestDetails.material')
+                                                }}
                                                 className='custom-input'
                                             />
                                         </div>
@@ -298,6 +302,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                                     { id: '1', label: 'Evet' },
                                                     { id: '0', label: 'Hayır' }
                                                 ]}
+                                                onSelect={(option) => handleFormChange(option.id, 'requestDetails.branded')}
                                                 className='custom-input'
                                             />
                                         </div>
@@ -309,6 +314,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                                 name="quantity"
                                                 variation="quiet"
                                                 className='custom-input'
+                                                onChange={(e) => handleFormChange(e.target.value, 'requestDetails.quantity')}
                                             />
                                         </div>
 
@@ -319,6 +325,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                                 name="width"
                                                 variation="quiet"
                                                 className='custom-input'
+                                                onChange={(e) => handleFormChange(e.target.value, 'requestDetails.width')}
                                             />
                                         </div>
 
@@ -329,16 +336,18 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                                 name="height"
                                                 variation="quiet"
                                                 className='custom-input'
+                                                onChange={(e) => handleFormChange(e.target.value, 'requestDetails.height')}
                                             />
                                         </div>
 
                                         <div className='input-group col-span-3'>
-                                            <Label htmlFor="design_notes" className='block text-xs font-medium mb-1.5'>Tasarım Notu</Label>
+                                            <Label htmlFor="designNote" className='block text-xs font-medium mb-1.5'>Tasarım Notu</Label>
                                             <Input
-                                                id="design_notes"
-                                                name="design_notes"
+                                                id="designNote"
+                                                name="designNote"
                                                 variation="quiet"
                                                 className='custom-input'
+                                                onChange={(e) => handleFormChange(e.target.value, 'requestDetails.designNote')}
                                             />
                                         </div>
 
@@ -380,6 +389,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
             </div>
         </div>
     );
-}
+})
 
 export default CreateOrUpdateForm;

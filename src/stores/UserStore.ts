@@ -1,32 +1,73 @@
-// src/stores/UserStore.ts
-import { makeAutoObservable } from 'mobx';
+import { makeObservable, extendObservable, observable, action } from 'mobx';
 import { RootStore } from './RootStore';
 
-export interface UserProfile {
-    username: string;
-    email: string;
+type userData = {
+    id: string,
+    name: string,
+    email: string,
+    role: string,
+    status: string,
+    isClient: boolean,
+    clientId?: string | null,
+    permissions?: {
+        [key: string]: boolean,
+    }
+}
+
+type userPreferences = {
+    [key: string]: any,
+}
+
+interface userStoreInitialState {
+    userData: {},
+    userPreferences: {},
+}
+
+const initialState: userStoreInitialState = {
+    userData: {
+        id: '',
+        name: '',
+        email: '',
+        role: '',
+        status: '',
+        isClient: false,
+        clientId: null,
+    },
+    userPreferences: {
+        locale: 'tr',
+    }
 }
 
 export class UserStore {
-    userProfile: UserProfile | null = null;
-    user = null;
-    isAuthenticated = false;
+    userData: userData = {
+        id: '',
+        name: '',
+        email: '',
+        role: '',
+        status: '',
+        isClient: false,
+        clientId: null,
+    };
+
+    userPreferences: userPreferences = {
+        locale: 'tr',
+    };
 
     constructor(private rootStore: RootStore) {
-        makeAutoObservable(this);
         this.rootStore = rootStore;
+        makeObservable(this, {
+            setUserData: action,
+            setUserPreferences: action,
+        })
+
+        extendObservable(this, initialState);
     }
 
-    setUserProfile(profile: UserProfile) {
-        this.userProfile = profile;
+    setUserData(userData: userData) {
+        this.userData = userData;
     }
 
-    updateUserProfile(updatedFields: Partial<UserProfile>) {
-        if (this.userProfile) {
-            this.userProfile = {
-                ...this.userProfile,
-                ...updatedFields
-            };
-        }
+    setUserPreferences(userPreferences: userPreferences) {
+        this.userPreferences = userPreferences;
     }
 }

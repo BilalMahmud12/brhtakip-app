@@ -17,13 +17,13 @@ const DataModal: React.FC = () => {
             classNames={{
                 closeButton: "top-4 right-4 rounded-lg bg-zinc-200 hover:bg-[#f59e0b] hover:text-white hidden",
             }}
-            className='min-h-[60vh]'
+            className='max-h-[60vh] overflow-y-scroll'
         >
             <ModalContent>
                 <ModalHeader className='bg-white py-5 border-b border-zinc-200'>
                     {content?.header}
                 </ModalHeader>
-                <ModalBody className='py-5'>
+                <ModalBody className='py-5 z-50 overflow-y-auto'> 
                     {content?.body}
                 </ModalBody>
                 <ModalFooter className='bg-zinc-100 py-3.5 shadow'>

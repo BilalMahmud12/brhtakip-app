@@ -62,7 +62,7 @@ export default function getRequestsTableData(
                         break;
 
                     case 'brand':
-                        row[column.key] = `${request?.Brand?.name ? '' : ''} - ${request.Product?.name}`;
+                        row[column.key] = `${request.Brand?.name} - ${request.Product?.name}`;
                         break;
 
                     case 'store':
