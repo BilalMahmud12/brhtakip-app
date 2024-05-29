@@ -70,7 +70,7 @@
 .amplify-input--quiet {
   padding: 10px 0 !important;
   height: 45px;
-  @apply text-sm;
+  @apply text-sm text-blue-900;
 }
 
 .amplify-input--quiet:disabled {
@@ -111,6 +111,19 @@
   background-color: transparent !important;
 }
 
-.request_number_field {
-  
+.amplify-autocomplete__menu {
+  z-index: 9999 !important;
+  @apply border-gray-300;
+}
+
+.amplify-autocomplete__menu__option:hover	{
+  @apply bg-gray-200 text-gray-800 transition-all duration-300 ease-in-out;
+}
+
+.amplify-autocomplete__menu__option:focus {
+  @apply bg-gray-200 text-gray-800 transition-all duration-300 ease-in-out;
+}
+
+.amplify-autocomplete__menu__option:active {
+  @apply bg-gray-200 text-gray-800 transition-all duration-300 ease-in-out;
 }

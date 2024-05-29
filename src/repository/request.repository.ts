@@ -25,11 +25,13 @@ const getRequestById = async (id: string) => {
     }
 }
 
-const create = async (request: Request) => {
+const create = async (request: any) => {
     try {
         const data = await client.graphql({
             query: createRequest,
-            variables: { input: request },
+            variables: { 
+                input: { ...request } 
+            },
         });
 
         return data;

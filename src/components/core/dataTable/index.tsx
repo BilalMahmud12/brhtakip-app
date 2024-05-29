@@ -20,6 +20,7 @@ type DataTableProps = {
     onRowSelect?: (selectedRows: Set<number>) => void;
     onEditRow?: (data: any) => void;
     onDeleteRow?: (data: any) => void;
+    styles?: { [key: string] : string };
 }
 
 
@@ -30,6 +31,7 @@ const DataTable: React.FC<DataTableProps> = (props) => {
         onRowSelect = () => {},
         onEditRow = () => {},
         onDeleteRow = () => {}, 
+        styles = {}
     } = props;
 
     const [selectedRows, setSelectedRows] = useState<Set<number>>(new Set());

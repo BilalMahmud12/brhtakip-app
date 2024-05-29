@@ -13,13 +13,26 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
 
-    const { clientProfileStore } = useStore();
+    const {
+        userStore, 
+        clientProfileStore 
+    } = useStore();
 
     useEffect(() => {
         const currentUser = async () => {
             const user = await getCurrentUser();
-            console.log('currentUser', user);
+            
+            userStore.setUserData({
+                id: user?.userId,
+                name: '',
+                email: user?.signInDetails?.loginId || '',
+                role: '',
+                status: '',
+                isClient: false,
+                clientId: null,
+            });
         }
+
         const fetchData = async () => {
             const clientsData = await Repo.ClientProfileRepository.getClientProfiles();
             clientProfileStore.initStore({ clientProfiles: clientsData || [] });

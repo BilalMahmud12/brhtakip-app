@@ -41,8 +41,8 @@ export default function RootLayout({
 
             <ThemeProvider theme={theme}>
               <DataModalProvider>
-                <DataModal />
                 {children}
+                <DataModal />
               </DataModalProvider>
             </ThemeProvider>
           </body>
