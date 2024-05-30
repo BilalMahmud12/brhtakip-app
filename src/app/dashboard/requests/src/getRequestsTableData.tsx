@@ -53,6 +53,36 @@ export default function getRequestsTableData(
                         )
                         break;
 
+                    case 'detailed':
+                        row[column.key] = (
+                            <div className='flex flex-col items-start space-y-3 py-2'>
+                                <span className='max-w-[145px] flex items-center space-x-2 px-3.5 py-1 bg-red-50 border border-red-300 rounded-md'>
+                                    <span className={`w-3 h-3 rounded-full bg-[#ff1717]`} />
+                                    <span className='text-xs font-medium'>
+                                        {getStatus(request.status as string).text}
+                                    </span>
+                                </span>
+
+                                <span className='text-sm'>
+                                    <span className='block mb-3'>
+                                        <span>{request.requestNumber}</span>
+                                        <span>- Mağaza Adı ...</span>
+                                        <span>- Mağaza Adı ...</span>
+                                        
+                                        {request.requestNumber} - Mağaza Adı ... - {request.Brand?.name} - {request.Product?.name} 
+                                        - {request.requestDetails?.width}x{request.requestDetails?.height} - {request.Material?.name} 
+                                        - {request.requestDetails?.quantity} Adet
+                                    </span>
+
+                                    <span className='block text-xs'>
+                                        {request.createdAt}
+                                    </span>
+                                    
+                                </span>
+                            </div>
+                        )
+                        break;
+
                     case 'status':
                         row[column.key] = (
                             <Badge variation={getStatus(request.status as string).color as BadgeVariations} size="small">
