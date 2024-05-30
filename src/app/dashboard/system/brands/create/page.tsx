@@ -1,10 +1,35 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useStore } from '@/stores/utils/useStore';
 import { observer } from 'mobx-react-lite';
 import { Breadcrumbs, Button } from '@aws-amplify/ui-react';
+import * as Repo from '@/repository/index'
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
+import { toJS } from 'mobx';
+import { useRouter } from 'next/navigation'
 
 const CreateBrand: React.FC = observer(() => {
+    const { brandStore } = useStore();
+    const router = useRouter()
+
+    useEffect(() => {
+        // console.log('brand form', brandStore.getBrandFormValues)
+    }, [])
+
+
+    async function handleCreateForm() {
+        try {
+            const createRequest = await Repo.BrandRepository.create(toJS(brandStore.getBrandFormValues))
+            console.log('brand form', createRequest)
+            router.replace('/dashboard/system/brands')
+            brandStore.resetFormValues()
+
+        } catch (error) {
+            console.log('Error')
+        }
+    }
+
+
     return (
         <div>
             <title>Marka Ekle</title>
@@ -42,7 +67,7 @@ const CreateBrand: React.FC = observer(() => {
                                 colorTheme="success"
                                 size="small"
                                 loadingText=""
-                                // onClick={handleCreateForm}
+                                onClick={handleCreateForm}
                                 className='rounded-none bg-amber-500 text-gray-800 px-6'
                             >
                                 <span>Talep Oluştur</span>

@@ -30,7 +30,7 @@ const BrandsDataTable: React.FC<BrandsDataTableProps> = (props) => {
         handleDelete,
         handleSelect
     );
-    console.log('tableData', tableData);
+
     return (
         <div>
             <DataTable

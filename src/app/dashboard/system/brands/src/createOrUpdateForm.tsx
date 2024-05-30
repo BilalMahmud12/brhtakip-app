@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import type { Brand } from '@/API';
-import { Input, Label } from '@aws-amplify/ui-react';
+import { Input, Label, Autocomplete } from '@aws-amplify/ui-react';
 import { useStore } from '@/stores/utils/useStore';
 
 interface CreateOrUpdateFormProps {
@@ -12,6 +12,11 @@ interface CreateOrUpdateFormProps {
 }
 
 const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
+    const {
+        isCreate = true,
+        brand = {} as Brand
+    } = props;
+
     const { clientProfileStore, brandStore } = useStore();
     const { getClientProfiles } = clientProfileStore;
 
@@ -29,11 +34,28 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 name="name"
                                 placeholder='Marka Ekle'
                                 variation="quiet"
-                                // value={getBrandFormValues.name}
-                                // onChange={handleInputChange}
+                                onChange={(e) => handleFormChange(e.target.value, 'name')}
                                 className='custom-input'
                             />
                         </div>
+                    </div>
+
+                    <div className='my-2 pt-5' />
+
+                    <div className='input-group'>
+                        <Label htmlFor="isActive" className='block text-xs font-medium mb-1.5'>Durum</Label>
+                        <Autocomplete
+                            id="isActive"
+                            label="Durum"
+                            placeholder='Durum Seç'
+                            variation="quiet"
+                            options={[
+                                { id: '1', label: 'Aktif' },
+                                { id: '0', label: 'İnaktif' }
+                            ]}
+                            onSelect={(option) => handleFormChange(option.id, 'isActive')}
+                            className='custom-input'
+                        />
                     </div>
                 </div>
             </form>

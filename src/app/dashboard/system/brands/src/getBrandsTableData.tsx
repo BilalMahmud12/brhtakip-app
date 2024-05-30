@@ -37,7 +37,7 @@ export default function getBrandsTableData(
                     case 'isActive':
                         row[column.key] = (
                             <Badge variation={brand.isActive ? 'success' : 'error'}>
-                                {brand.isActive ? 'Aktif' : 'Inaktif'}
+                                {brand.isActive ? 'Aktif' : 'İnaktif'}
                             </Badge>
                         );
                         break;
@@ -64,27 +64,20 @@ export default function getBrandsTableData(
                                         </Button>
                                     </DropdownTrigger>
                                     <DropdownMenu aria-label='row-actions'>
-                                        <DropdownItem
-                                            key="update-status"
-                                            startContent={<Icon iconName='FcSerialTasks' className='w-5 h-5' />}
-                                            onClick={() => handleEdit(row)}
-                                        >
-                                            Durumu Güncelle
-                                        </DropdownItem>
 
                                         <DropdownItem
                                             key="update"
                                             startContent={<Icon iconName='FcSupport' className='w-5 h-5' />}
                                             onClick={() => handleEdit(row)}
                                         >
-                                            Talep Güncelle
+                                            Güncelle
                                         </DropdownItem>
 
                                         <DropdownItem
                                             key="cancel"
                                             startContent={<Icon iconName='FcCancel' className='w-5 h-5' />}
                                         >
-                                            Talep İptal Et
+                                            Marka Sil
                                         </DropdownItem>
                                     </DropdownMenu>
                                 </Dropdown>

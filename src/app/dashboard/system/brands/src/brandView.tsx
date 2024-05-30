@@ -52,51 +52,51 @@ const SelectClientModalFooter = (
 }
 
 
-const ModalCustomFooter = (
-    props: {
-        type: 'create' | 'update'
-        handleCreate?: (data: any) => void;
-        handleUpdate?: (data: any) => void;
-        handleCancel?: () => void;
-    }
-) => {
-    const {
-        type,
-        handleCreate = () => { },
-        handleUpdate = () => { },
-        handleCancel = () => { },
-    } = props;
+// const ModalCustomFooter = (
+//     props: {
+//         type: 'create' | 'update'
+//         handleCreate?: (data: any) => void;
+//         handleUpdate?: (data: any) => void;
+//         handleCancel?: () => void;
+//     }
+// ) => {
+//     const {
+//         type,
+//         handleCreate = () => { },
+//         handleUpdate = () => { },
+//         handleCancel = () => { },
+//     } = props;
 
-    return (
-        <div className='flex items-center justify-between'>
-            <div className='flex items-center space-x-3'>
-                <Button
-                    variation="primary"
-                    colorTheme="success"
-                    size="small"
-                    loadingText=""
-                    onClick={handleCancel}
-                    className='rounded-none bg-transparent text-gray-800 px-6 font-bold'
-                >
-                    <span>İPTAL ET</span>
-                </Button>
+//     return (
+//         <div className='flex items-center justify-between'>
+//             <div className='flex items-center space-x-3'>
+//                 <Button
+//                     variation="primary"
+//                     colorTheme="success"
+//                     size="small"
+//                     loadingText=""
+//                     onClick={handleCancel}
+//                     className='rounded-none bg-transparent text-gray-800 px-6 font-bold'
+//                 >
+//                     <span>İPTAL ET</span>
+//                 </Button>
 
-                <Button
-                    variation="primary"
-                    colorTheme="success"
-                    size="small"
-                    loadingText=""
-                    onClick={type === 'create' ? handleCreate : handleUpdate}
-                    className='rounded-none bg-amber-500 text-blue-900 font-bold px-6'
-                >
-                    <span className='flex items-center space-x-2'>
-                        <span>ONAYLA</span>
-                    </span>
-                </Button>
-            </div>
-        </div>
-    )
-}
+//                 <Button
+//                     variation="primary"
+//                     colorTheme="success"
+//                     size="small"
+//                     loadingText=""
+//                     onClick={type === 'create' ? handleCreate : handleUpdate}
+//                     className='rounded-none bg-amber-500 text-blue-900 font-bold px-6'
+//                 >
+//                     <span className='flex items-center space-x-2'>
+//                         <span>ONAYLA</span>
+//                     </span>
+//                 </Button>
+//             </div>
+//         </div>
+//     )
+// }
 
 
 const BrandsView: React.FC = observer((props) => {
@@ -117,7 +117,7 @@ const BrandsView: React.FC = observer((props) => {
     }
 
     const handleCancelForm = () => {
-        console.log('Cancel')
+        brandStore.resetFormValues()
         hideDataModal()
     }
 
@@ -144,7 +144,9 @@ const BrandsView: React.FC = observer((props) => {
                     //     handleCreate={handleCreateBrand}
                     //     handleCancel={handleCancelForm}
                     // />
-                }} />
+                }}
+                handleCancel={handleCancelForm}
+            />
         )
     }
 

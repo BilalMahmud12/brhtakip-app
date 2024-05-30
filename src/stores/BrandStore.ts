@@ -1,4 +1,4 @@
-import { makeObservable, extendObservable, action } from 'mobx';
+import { makeObservable, extendObservable, action, observable } from 'mobx';
 import { RootStore } from './RootStore';
 import type { Brand } from '@/API';
 
@@ -16,16 +16,19 @@ export class BrandStore {
     requestForm = {
         name: '',
         clientprofileID: '',
+        isActive: false
     };
 
     constructor(private rootStore: RootStore) {
         this.rootStore = rootStore;
 
         makeObservable(this, {
+            requestForm: observable,
             setBrands: action,
             addBrand: action,
             removeBrand: action,
-            handleFormChange: action
+            handleFormChange: action,
+            resetFormValues: action
         });
         extendObservable(this, initialState);
     }
@@ -36,10 +39,6 @@ export class BrandStore {
 
     setBrands(brands: Brand[]) {
         this.brands = brands;
-    }
-
-    get getBrands() {
-        return this.brands;
     }
 
     addBrand(brand: Brand) {
@@ -57,15 +56,42 @@ export class BrandStore {
         };
     }
 
-    get getBrandFormValues() {
-        return this.requestForm;
+    handleFormChange = (input: string, field: keyof typeof this.requestForm) => {
+        switch (field) {
+            case 'name':
+                this.requestForm = {
+                    ...this.requestForm,
+                    name: input,
+                }
+                break;
+            case 'isActive':
+                this.requestForm = {
+                    ...this.requestForm,
+                    isActive: input === '1' || input === 'true',
+                }
+                break;
+            default:
+                this.requestForm = {
+                    ...this.requestForm,
+                    [field]: input,
+                }
+                break;
+        }
     }
 
-    handleFormChange = (input: string, field: keyof typeof this.requestForm) => {
+    resetFormValues = () => {
         this.requestForm = {
-            ...this.requestForm,
-            [field]: input,
+            name: '',
+            clientprofileID: '',
+            isActive: false
         };
-        console.log('request form', this.requestForm);
+    }
+
+    get getBrands() {
+        return this.brands;
+    }
+
+    get getBrandFormValues() {
+        return this.requestForm;
     }
 }
