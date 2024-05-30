@@ -38,11 +38,11 @@ const create = async (brand: any) => {
     }
 }
 
-const update = async (request: Brand) => {
+const update = async (brand: any) => {
     try {
         const data = await client.graphql({
             query: updateBrand,
-            variables: { input: request }
+            variables: { input: brand }
         });
 
         return data

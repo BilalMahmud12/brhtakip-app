@@ -12,18 +12,12 @@ const CreateBrand: React.FC = observer(() => {
     const { brandStore } = useStore();
     const router = useRouter()
 
-    useEffect(() => {
-        // console.log('brand form', brandStore.getBrandFormValues)
-    }, [])
-
-
     async function handleCreateForm() {
         try {
             const createRequest = await Repo.BrandRepository.create(toJS(brandStore.getBrandFormValues))
             console.log('brand form', createRequest)
             router.replace('/dashboard/system/brands')
             brandStore.resetFormValues()
-
         } catch (error) {
             console.log('Error')
         }
