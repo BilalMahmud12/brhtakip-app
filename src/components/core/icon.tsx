@@ -18,7 +18,15 @@ import {
     FcSettings,
     FcSerialTasks,
     FcCancel,
-    FcViewDetails
+    FcViewDetails,
+    FcFinePrint,
+    FcServices,
+    FcEditImage,
+    FcVlc,
+    FcApproval,
+    FcOk,
+    FcPrint,
+    FcCancel as FcCancelIcon,
 } from 'react-icons/fc';
 import { IoMdRefresh } from "react-icons/io"
 import { GrRefresh } from "react-icons/gr"
@@ -53,6 +61,14 @@ const iconMapping: Record<string, IconType> = {
     'GoKebabHorizontal': GoKebabHorizontal,
     'FcViewDetails': FcViewDetails,
     'FaRegSave': FaRegSave,
+    'FcFinePrint': FcFinePrint,
+    'FcServices': FcServices,
+    'FcEditImage': FcEditImage,
+    'FcVlc': FcVlc,
+    'FcApproval': FcApproval,
+    'FcOk': FcOk,
+    'FcPrint': FcPrint,
+    'FcCancelIcon': FcCancelIcon,
     'inbox': MdInbox, // Map the string from your array to the icon component
 };
 
