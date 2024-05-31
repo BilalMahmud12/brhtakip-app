@@ -1,7 +1,7 @@
 import { listRequests, getRequest } from '@/graphql/queries';
 import { createRequest, updateRequest, deleteRequest } from '@/graphql/mutations';
 import { client } from '@/repository';
-import type { Request } from '@/API';
+import type { Request, RequestStatus } from '@/API';
 
 const getAllRequests = async () => {
     try {
@@ -20,6 +20,25 @@ const getRequestById = async (id: string) => {
         });
 
         return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+const getRequestsByStatus = async (status: string) => {
+    try {
+        const { data } = await client.graphql({
+            query: listRequests,
+            variables: { 
+                filter: { 
+                    status: { 
+                        eq: status as RequestStatus 
+                    } 
+                } 
+            },
+        });
+
+        return data.listRequests.items;
     } catch (error) {
         console.error(error);
     }
@@ -69,6 +88,7 @@ const softDelete = async (id: string) => {
 export {
     getAllRequests,
     getRequestById,
+    getRequestsByStatus,
     create,
     update,
     softDelete

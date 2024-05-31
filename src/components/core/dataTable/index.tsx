@@ -59,8 +59,8 @@ const DataTable: React.FC<DataTableProps> = (props) => {
     };
 
     return (
-        <div className='w-full overflow-x-scroll'>
-            <table className='min-w-[1110px] border-b border-t border-gray-200'>
+        <div className='overflow-x-scroll'>
+            <table className='min-w-[1050px] border-b border-t border-gray-200'>
                 <thead className='border-b border-gray-300 w-full'>
                     <tr className='w-full'>
                         {columns.map((column, index) => (

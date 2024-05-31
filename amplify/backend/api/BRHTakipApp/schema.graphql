@@ -15,10 +15,11 @@ type RequestItem {
 }
 
 enum RequestStatus {
-  PENDING_APPROAL
-  WAITING_DESIGN
-  WAITING_PRESS
-  COMPLETE
+  PENDING_APPRVOAL
+  IN_DESIGN
+  IN_PRESS
+  IN_APPLICATION
+  COMPLETED
   CANCELLED
 }
 
@@ -90,6 +91,9 @@ type Store @model @auth(rules: [{allow: public}]) {
   notes: AWSJSON
   created_by: String
   updated_by: String
+  Area: Area @belongsTo(fields: ["areaID"])
+  District: District @belongsTo(fields: ["districtID"])
+  City: City @belongsTo(fields: ["cityID"])
 }
 
 type Product @model @auth(rules: [{allow: public}]) {
@@ -117,5 +121,7 @@ type Request @model @auth(rules: [{allow: public}]) {
   status: RequestStatus!
   Material: Material @hasOne
   requestDetails: RequestItem
+  Store: Store @belongsTo(fields: ["storeID"])
+  ClientProfile: ClientProfile @belongsTo(fields: ["clientprofileID"])
 }
  
