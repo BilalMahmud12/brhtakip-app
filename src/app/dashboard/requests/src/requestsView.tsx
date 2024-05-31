@@ -107,10 +107,6 @@ const RequestsView: React.FC = observer((props) => {
 
     const { showDataModal, hideDataModal } = useDataModal();
 
-    const handleRefresh = () => {
-        console.log('Refresh')
-    }
-
     const handleCancelForm = () => {
         requestStore.resetFormValues()
         hideDataModal()

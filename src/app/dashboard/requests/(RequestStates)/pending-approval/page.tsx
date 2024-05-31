@@ -16,9 +16,12 @@ const PendingApproval = () => {
         console.log('requestNumber', requestNumber);
 
         const fetchData = async () => {
-            const requestsData = await Repo.RequestRepository.getAllRequests();
-            requestStore.initStore({ requests: [...requestsData as unknown as Request[]] });
-            console.log('requests', requestsData)
+            const requestsData = await Repo.RequestRepository.getRequestsByStatus('PENDING_APPRVOAL');
+
+            if (requestsData) {
+                requestStore.initStore({ requests: [...requestsData as unknown as Request[]] });
+                console.log('requests', requestsData)
+            }
         };
         fetchData();
     }, []);

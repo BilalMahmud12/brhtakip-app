@@ -224,6 +224,144 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
               designNote
               __typename
             }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            ClientProfile {
+              id
+              isActive
+              UserProfiles {
+                items {
+                  id
+                  isActive
+                  clientprofileID
+                  firstName
+                  lastName
+                  email
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
             requestBrandId
@@ -239,6 +377,390 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
         notes
         created_by
         updated_by
+        Area {
+          id
+          districtID
+          isActive
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        District {
+          id
+          cityID
+          isActive
+          Areas {
+            items {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        City {
+          id
+          isActive
+          Districts {
+            items {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
         createdAt
         updatedAt
         __typename
@@ -320,6 +842,78 @@ export const listAreas = /* GraphQL */ `query ListAreas(
                 designNote
                 __typename
               }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
               createdAt
               updatedAt
               requestBrandId
@@ -335,6 +929,248 @@ export const listAreas = /* GraphQL */ `query ListAreas(
           notes
           created_by
           updated_by
+          Area {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          District {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          City {
+            id
+            isActive
+            Districts {
+              items {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -427,6 +1263,78 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
                 designNote
                 __typename
               }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
               createdAt
               updatedAt
               requestBrandId
@@ -442,6 +1350,248 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
           notes
           created_by
           updated_by
+          Area {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          District {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          City {
+            id
+            isActive
+            Districts {
+              items {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -525,6 +1675,30 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   designNote
                   __typename
                 }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
                 createdAt
                 updatedAt
                 requestBrandId
@@ -540,6 +1714,128 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
             notes
             created_by
             updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
             __typename
@@ -621,6 +1917,144 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
               designNote
               __typename
             }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            ClientProfile {
+              id
+              isActive
+              UserProfiles {
+                items {
+                  id
+                  isActive
+                  clientprofileID
+                  firstName
+                  lastName
+                  email
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
             requestBrandId
@@ -636,6 +2070,390 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
         notes
         created_by
         updated_by
+        Area {
+          id
+          districtID
+          isActive
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        District {
+          id
+          cityID
+          isActive
+          Areas {
+            items {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        City {
+          id
+          isActive
+          Districts {
+            items {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
         createdAt
         updatedAt
         __typename
@@ -700,6 +2518,58 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
               notes
               created_by
               updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
               createdAt
               updatedAt
               __typename
@@ -772,6 +2642,78 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
                 designNote
                 __typename
               }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
               createdAt
               updatedAt
               requestBrandId
@@ -787,6 +2729,248 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
           notes
           created_by
           updated_by
+          Area {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          District {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          City {
+            id
+            isActive
+            Districts {
+              items {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -862,6 +3046,58 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
               notes
               created_by
               updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
               createdAt
               updatedAt
               __typename
@@ -934,6 +3170,78 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
                 designNote
                 __typename
               }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
               createdAt
               updatedAt
               requestBrandId
@@ -949,6 +3257,248 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
           notes
           created_by
           updated_by
+          Area {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          District {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          City {
+            id
+            isActive
+            Districts {
+              items {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -1002,6 +3552,38 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                 notes
                 created_by
                 updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
                 createdAt
                 updatedAt
                 __typename
@@ -1070,6 +3652,30 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   designNote
                   __typename
                 }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
                 createdAt
                 updatedAt
                 requestBrandId
@@ -1085,6 +3691,128 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
             notes
             created_by
             updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
             __typename
@@ -1166,6 +3894,144 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
               designNote
               __typename
             }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            ClientProfile {
+              id
+              isActive
+              UserProfiles {
+                items {
+                  id
+                  isActive
+                  clientprofileID
+                  firstName
+                  lastName
+                  email
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
             createdAt
             updatedAt
             requestBrandId
@@ -1181,6 +4047,390 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
         notes
         created_by
         updated_by
+        Area {
+          id
+          districtID
+          isActive
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        District {
+          id
+          cityID
+          isActive
+          Areas {
+            items {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        City {
+          id
+          isActive
+          Districts {
+            items {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
         createdAt
         updatedAt
         __typename
@@ -1276,6 +4526,58 @@ export const listCities = /* GraphQL */ `query ListCities(
               notes
               created_by
               updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
               createdAt
               updatedAt
               __typename
@@ -1348,6 +4650,78 @@ export const listCities = /* GraphQL */ `query ListCities(
                 designNote
                 __typename
               }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
               createdAt
               updatedAt
               requestBrandId
@@ -1363,6 +4737,248 @@ export const listCities = /* GraphQL */ `query ListCities(
           notes
           created_by
           updated_by
+          Area {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          District {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          City {
+            id
+            isActive
+            Districts {
+              items {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -1484,6 +5100,571 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
           width
           height
           designNote
+          __typename
+        }
+        Store {
+          id
+          cityID
+          districtID
+          areaID
+          name
+          address
+          Requests {
+            items {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestMaterialId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          phones
+          email
+          notes
+          created_by
+          updated_by
+          Area {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          District {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          City {
+            id
+            isActive
+            Districts {
+              items {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        ClientProfile {
+          id
+          isActive
+          UserProfiles {
+            items {
+              id
+              isActive
+              clientprofileID
+              firstName
+              lastName
+              email
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Brands {
+            items {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Requests {
+            items {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestMaterialId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdAt
+          updatedAt
           __typename
         }
         createdAt
@@ -1612,6 +5793,338 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
             designNote
             __typename
           }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          ClientProfile {
+            id
+            isActive
+            UserProfiles {
+              items {
+                id
+                isActive
+                clientprofileID
+                firstName
+                lastName
+                email
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Brands {
+              items {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
           createdAt
           updatedAt
           requestBrandId
@@ -1699,6 +6212,571 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
           designNote
           __typename
         }
+        Store {
+          id
+          cityID
+          districtID
+          areaID
+          name
+          address
+          Requests {
+            items {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestMaterialId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          phones
+          email
+          notes
+          created_by
+          updated_by
+          Area {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          District {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          City {
+            id
+            isActive
+            Districts {
+              items {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        ClientProfile {
+          id
+          isActive
+          UserProfiles {
+            items {
+              id
+              isActive
+              clientprofileID
+              firstName
+              lastName
+              email
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Brands {
+            items {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Requests {
+            items {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestMaterialId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
         createdAt
         updatedAt
         requestBrandId
@@ -1714,6 +6792,1454 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
     notes
     created_by
     updated_by
+    Area {
+      id
+      districtID
+      isActive
+      Stores {
+        items {
+          id
+          cityID
+          districtID
+          areaID
+          name
+          address
+          Requests {
+            items {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestMaterialId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          phones
+          email
+          notes
+          created_by
+          updated_by
+          Area {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          District {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          City {
+            id
+            isActive
+            Districts {
+              items {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      name
+      createdBy
+      updatedBy
+      createdAt
+      updatedAt
+      __typename
+    }
+    District {
+      id
+      cityID
+      isActive
+      Areas {
+        items {
+          id
+          districtID
+          isActive
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      Stores {
+        items {
+          id
+          cityID
+          districtID
+          areaID
+          name
+          address
+          Requests {
+            items {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestMaterialId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          phones
+          email
+          notes
+          created_by
+          updated_by
+          Area {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          District {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          City {
+            id
+            isActive
+            Districts {
+              items {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      name
+      createdBy
+      updatedBy
+      createdAt
+      updatedAt
+      __typename
+    }
+    City {
+      id
+      isActive
+      Districts {
+        items {
+          id
+          cityID
+          isActive
+          Areas {
+            items {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      Stores {
+        items {
+          id
+          cityID
+          districtID
+          areaID
+          name
+          address
+          Requests {
+            items {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestMaterialId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          phones
+          email
+          notes
+          created_by
+          updated_by
+          Area {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          District {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          City {
+            id
+            isActive
+            Districts {
+              items {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      name
+      createdBy
+      updatedBy
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
     __typename
@@ -1789,6 +8315,338 @@ export const listStores = /* GraphQL */ `query ListStores(
             designNote
             __typename
           }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          ClientProfile {
+            id
+            isActive
+            UserProfiles {
+              items {
+                id
+                isActive
+                clientprofileID
+                firstName
+                lastName
+                email
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Brands {
+              items {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
           createdAt
           updatedAt
           requestBrandId
@@ -1804,6 +8662,856 @@ export const listStores = /* GraphQL */ `query ListStores(
       notes
       created_by
       updated_by
+      Area {
+        id
+        districtID
+        isActive
+        Stores {
+          items {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdBy
+        updatedBy
+        createdAt
+        updatedAt
+        __typename
+      }
+      District {
+        id
+        cityID
+        isActive
+        Areas {
+          items {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Stores {
+          items {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdBy
+        updatedBy
+        createdAt
+        updatedAt
+        __typename
+      }
+      City {
+        id
+        isActive
+        Districts {
+          items {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Stores {
+          items {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdBy
+        updatedBy
+        createdAt
+        updatedAt
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -1893,6 +9601,338 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
             designNote
             __typename
           }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          ClientProfile {
+            id
+            isActive
+            UserProfiles {
+              items {
+                id
+                isActive
+                clientprofileID
+                firstName
+                lastName
+                email
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Brands {
+              items {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
           createdAt
           updatedAt
           requestBrandId
@@ -1908,6 +9948,856 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
       notes
       created_by
       updated_by
+      Area {
+        id
+        districtID
+        isActive
+        Stores {
+          items {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdBy
+        updatedBy
+        createdAt
+        updatedAt
+        __typename
+      }
+      District {
+        id
+        cityID
+        isActive
+        Areas {
+          items {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Stores {
+          items {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdBy
+        updatedBy
+        createdAt
+        updatedAt
+        __typename
+      }
+      City {
+        id
+        isActive
+        Districts {
+          items {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Stores {
+          items {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdBy
+        updatedBy
+        createdAt
+        updatedAt
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -1997,6 +10887,338 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
             designNote
             __typename
           }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          ClientProfile {
+            id
+            isActive
+            UserProfiles {
+              items {
+                id
+                isActive
+                clientprofileID
+                firstName
+                lastName
+                email
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Brands {
+              items {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
           createdAt
           updatedAt
           requestBrandId
@@ -2012,6 +11234,856 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
       notes
       created_by
       updated_by
+      Area {
+        id
+        districtID
+        isActive
+        Stores {
+          items {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdBy
+        updatedBy
+        createdAt
+        updatedAt
+        __typename
+      }
+      District {
+        id
+        cityID
+        isActive
+        Areas {
+          items {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Stores {
+          items {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdBy
+        updatedBy
+        createdAt
+        updatedAt
+        __typename
+      }
+      City {
+        id
+        isActive
+        Districts {
+          items {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Stores {
+          items {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdBy
+        updatedBy
+        createdAt
+        updatedAt
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -2101,6 +12173,338 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
             designNote
             __typename
           }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          ClientProfile {
+            id
+            isActive
+            UserProfiles {
+              items {
+                id
+                isActive
+                clientprofileID
+                firstName
+                lastName
+                email
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Brands {
+              items {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
           createdAt
           updatedAt
           requestBrandId
@@ -2116,6 +12520,856 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
       notes
       created_by
       updated_by
+      Area {
+        id
+        districtID
+        isActive
+        Stores {
+          items {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdBy
+        updatedBy
+        createdAt
+        updatedAt
+        __typename
+      }
+      District {
+        id
+        cityID
+        isActive
+        Areas {
+          items {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Stores {
+          items {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdBy
+        updatedBy
+        createdAt
+        updatedAt
+        __typename
+      }
+      City {
+        id
+        isActive
+        Districts {
+          items {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Stores {
+          items {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdBy
+        updatedBy
+        createdAt
+        updatedAt
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -2358,6 +13612,1717 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
       designNote
       __typename
     }
+    Store {
+      id
+      cityID
+      districtID
+      areaID
+      name
+      address
+      Requests {
+        items {
+          id
+          clientprofileID
+          storeID
+          requestNumber
+          Brand {
+            id
+            Products {
+              items {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          Product {
+            id
+            brandID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          status
+          Material {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          requestDetails {
+            applicationArea
+            material
+            branded
+            quantity
+            width
+            height
+            designNote
+            __typename
+          }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          ClientProfile {
+            id
+            isActive
+            UserProfiles {
+              items {
+                id
+                isActive
+                clientprofileID
+                firstName
+                lastName
+                email
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Brands {
+              items {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          requestBrandId
+          requestProductId
+          requestMaterialId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      phones
+      email
+      notes
+      created_by
+      updated_by
+      Area {
+        id
+        districtID
+        isActive
+        Stores {
+          items {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdBy
+        updatedBy
+        createdAt
+        updatedAt
+        __typename
+      }
+      District {
+        id
+        cityID
+        isActive
+        Areas {
+          items {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Stores {
+          items {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdBy
+        updatedBy
+        createdAt
+        updatedAt
+        __typename
+      }
+      City {
+        id
+        isActive
+        Districts {
+          items {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Stores {
+          items {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdBy
+        updatedBy
+        createdAt
+        updatedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+    ClientProfile {
+      id
+      isActive
+      UserProfiles {
+        items {
+          id
+          isActive
+          clientprofileID
+          firstName
+          lastName
+          email
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      Brands {
+        items {
+          id
+          Products {
+            items {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          clientprofileID
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      Requests {
+        items {
+          id
+          clientprofileID
+          storeID
+          requestNumber
+          Brand {
+            id
+            Products {
+              items {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          Product {
+            id
+            brandID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          status
+          Material {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          requestDetails {
+            applicationArea
+            material
+            branded
+            quantity
+            width
+            height
+            designNote
+            __typename
+          }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          ClientProfile {
+            id
+            isActive
+            UserProfiles {
+              items {
+                id
+                isActive
+                clientprofileID
+                firstName
+                lastName
+                email
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Brands {
+              items {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          requestBrandId
+          requestProductId
+          requestMaterialId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
     requestBrandId
@@ -2429,6 +15394,863 @@ export const listRequests = /* GraphQL */ `query ListRequests(
         width
         height
         designNote
+        __typename
+      }
+      Store {
+        id
+        cityID
+        districtID
+        areaID
+        name
+        address
+        Requests {
+          items {
+            id
+            clientprofileID
+            storeID
+            requestNumber
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            ClientProfile {
+              id
+              isActive
+              UserProfiles {
+                items {
+                  id
+                  isActive
+                  clientprofileID
+                  firstName
+                  lastName
+                  email
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        phones
+        email
+        notes
+        created_by
+        updated_by
+        Area {
+          id
+          districtID
+          isActive
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        District {
+          id
+          cityID
+          isActive
+          Areas {
+            items {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        City {
+          id
+          isActive
+          Districts {
+            items {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      ClientProfile {
+        id
+        isActive
+        UserProfiles {
+          items {
+            id
+            isActive
+            clientprofileID
+            firstName
+            lastName
+            email
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Brands {
+          items {
+            id
+            Products {
+              items {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Requests {
+          items {
+            id
+            clientprofileID
+            storeID
+            requestNumber
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            ClientProfile {
+              id
+              isActive
+              UserProfiles {
+                items {
+                  id
+                  isActive
+                  clientprofileID
+                  firstName
+                  lastName
+                  email
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdAt
+        updatedAt
         __typename
       }
       createdAt
@@ -2515,6 +16337,863 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
         designNote
         __typename
       }
+      Store {
+        id
+        cityID
+        districtID
+        areaID
+        name
+        address
+        Requests {
+          items {
+            id
+            clientprofileID
+            storeID
+            requestNumber
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            ClientProfile {
+              id
+              isActive
+              UserProfiles {
+                items {
+                  id
+                  isActive
+                  clientprofileID
+                  firstName
+                  lastName
+                  email
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        phones
+        email
+        notes
+        created_by
+        updated_by
+        Area {
+          id
+          districtID
+          isActive
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        District {
+          id
+          cityID
+          isActive
+          Areas {
+            items {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        City {
+          id
+          isActive
+          Districts {
+            items {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      ClientProfile {
+        id
+        isActive
+        UserProfiles {
+          items {
+            id
+            isActive
+            clientprofileID
+            firstName
+            lastName
+            email
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Brands {
+          items {
+            id
+            Products {
+              items {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Requests {
+          items {
+            id
+            clientprofileID
+            storeID
+            requestNumber
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            ClientProfile {
+              id
+              isActive
+              UserProfiles {
+                items {
+                  id
+                  isActive
+                  clientprofileID
+                  firstName
+                  lastName
+                  email
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
       createdAt
       updatedAt
       requestBrandId
@@ -2597,6 +17276,863 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
         width
         height
         designNote
+        __typename
+      }
+      Store {
+        id
+        cityID
+        districtID
+        areaID
+        name
+        address
+        Requests {
+          items {
+            id
+            clientprofileID
+            storeID
+            requestNumber
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            ClientProfile {
+              id
+              isActive
+              UserProfiles {
+                items {
+                  id
+                  isActive
+                  clientprofileID
+                  firstName
+                  lastName
+                  email
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        phones
+        email
+        notes
+        created_by
+        updated_by
+        Area {
+          id
+          districtID
+          isActive
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        District {
+          id
+          cityID
+          isActive
+          Areas {
+            items {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        City {
+          id
+          isActive
+          Districts {
+            items {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      ClientProfile {
+        id
+        isActive
+        UserProfiles {
+          items {
+            id
+            isActive
+            clientprofileID
+            firstName
+            lastName
+            email
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Brands {
+          items {
+            id
+            Products {
+              items {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Requests {
+          items {
+            id
+            clientprofileID
+            storeID
+            requestNumber
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            ClientProfile {
+              id
+              isActive
+              UserProfiles {
+                items {
+                  id
+                  isActive
+                  clientprofileID
+                  firstName
+                  lastName
+                  email
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            requestBrandId
+            requestProductId
+            requestMaterialId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        createdAt
+        updatedAt
         __typename
       }
       createdAt
