@@ -1,6 +1,8 @@
-import { makeObservable, extendObservable, action, observable } from 'mobx';
+import { makeObservable, extendObservable, action, observable, runInAction } from 'mobx';
+import { softDelete } from '../repository/brand.repository';
 import { RootStore } from './RootStore';
 import type { Brand } from '@/API';
+import * as Repo from '@/repository/index'
 
 interface BrandStoreInitialState {
     brands: Brand[];
@@ -13,7 +15,7 @@ const initialState: BrandStoreInitialState = {
 export class BrandStore {
     brands: Brand[] = [];
 
-    requestForm = {
+    brandForm = {
         name: '',
         clientprofileID: '',
         isActive: false
@@ -23,12 +25,13 @@ export class BrandStore {
         this.rootStore = rootStore;
 
         makeObservable(this, {
-            requestForm: observable,
+            brandForm: observable,
             setBrands: action,
             addBrand: action,
+            deleteBrand: action,
             removeBrand: action,
             handleFormChange: action,
-            resetFormValues: action
+            resetFormValues: action,
         });
         extendObservable(this, initialState);
     }
@@ -46,33 +49,40 @@ export class BrandStore {
     }
 
     removeBrand(brandId: string) {
-        this.brands = this.brands.filter(brand => brand.id !== brandId);
+        this.setBrands(this.brands.filter(brand => brand.id !== brandId) || []);
+    }
+
+    async deleteBrand(brandId: string) {
+        softDelete(brandId);
+        const newBrands = await Repo.BrandRepository.getAllBrands();
+        this.setBrands(newBrands as Brand[]);
+        console.log('Brand deleted successfully');
     }
 
     setBrandFormValues(values: any) {
-        this.requestForm = {
-            ...this.requestForm,
+        this.brandForm = {
+            ...this.brandForm,
             ...values,
         };
     }
 
-    handleFormChange = (input: string, field: keyof typeof this.requestForm) => {
+    handleFormChange = (input: string, field: keyof typeof this.brandForm) => {
         switch (field) {
             case 'name':
-                this.requestForm = {
-                    ...this.requestForm,
+                this.brandForm = {
+                    ...this.brandForm,
                     name: input,
                 }
                 break;
             case 'isActive':
-                this.requestForm = {
-                    ...this.requestForm,
+                this.brandForm = {
+                    ...this.brandForm,
                     isActive: input === '1' || input === 'true',
                 }
                 break;
             default:
-                this.requestForm = {
-                    ...this.requestForm,
+                this.brandForm = {
+                    ...this.brandForm,
                     [field]: input,
                 }
                 break;
@@ -80,7 +90,7 @@ export class BrandStore {
     }
 
     resetFormValues = () => {
-        this.requestForm = {
+        this.brandForm = {
             name: '',
             clientprofileID: '',
             isActive: false
@@ -92,6 +102,6 @@ export class BrandStore {
     }
 
     get getBrandFormValues() {
-        return this.requestForm;
+        return this.brandForm;
     }
 }

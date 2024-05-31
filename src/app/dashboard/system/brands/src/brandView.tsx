@@ -54,6 +54,7 @@ const SelectClientModalFooter = (
 const BrandsView: React.FC = observer((props) => {
     const { brandStore, clientProfileStore } = useStore();
     const { showDataModal, hideDataModal } = useDataModal();
+    const { deleteBrand, removeBrand } = brandStore;
     const router = useRouter()
 
     const handleRefresh = () => {
@@ -64,19 +65,14 @@ const BrandsView: React.FC = observer((props) => {
         console.log('Update')
     }
 
-    const handleDelete = () => {
-        console.log('Delete')
+    const handleDelete = (data: any) => {
+        deleteBrand(data.id);
     }
 
     const handleCancelForm = () => {
         brandStore.resetFormValues()
         hideDataModal()
     }
-
-    const handleCreateBrand = () => {
-        console.log('create')
-    }
-
 
     const handleCreateForm = () => {
         console.log('Create')

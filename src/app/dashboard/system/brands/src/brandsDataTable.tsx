@@ -20,8 +20,6 @@ const BrandsDataTable: React.FC<BrandsDataTableProps> = (props) => {
     } = props;
 
     const { brands } = dataTables
-    const { clientProfileStore } = useStore();
-    const { getClientProfiles } = clientProfileStore;
 
     const tableData = getBrandsTableData(
         dataPayload,
@@ -37,7 +35,7 @@ const BrandsDataTable: React.FC<BrandsDataTableProps> = (props) => {
                 columns={brands.columns}
                 data={tableData}
                 onEditRow={(data) => handleEdit(data)}
-                onDeleteRow={(data) => console.log('onDeleteRow', data)}
+                onDeleteRow={(data) => handleDelete(data)}
             />
         </div>
     );

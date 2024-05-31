@@ -16,21 +16,21 @@ export interface DataTableColumn {
 
 type DataTableProps = {
     columns: DataTableColumn[];
-    data: DataTableDatum[];  
+    data: DataTableDatum[];
     onRowSelect?: (selectedRows: Set<number>) => void;
     onEditRow?: (data: any) => void;
     onDeleteRow?: (data: any) => void;
-    styles?: { [key: string] : string };
+    styles?: { [key: string]: string };
 }
 
 
 const DataTable: React.FC<DataTableProps> = (props) => {
-    const { 
-        columns, 
+    const {
+        columns,
         data,
-        onRowSelect = () => {},
-        onEditRow = () => {},
-        onDeleteRow = () => {}, 
+        onRowSelect = () => { },
+        onEditRow = () => { },
+        onDeleteRow = () => { },
         styles = {}
     } = props;
 
@@ -79,7 +79,7 @@ const DataTable: React.FC<DataTableProps> = (props) => {
                             </th>
                         ))}
                     </tr>
-                    
+
                 </thead>
                 <tbody className='bg-white'>
                     {data.map((row, rowIndex) => (
@@ -88,9 +88,9 @@ const DataTable: React.FC<DataTableProps> = (props) => {
                                 <td
                                     key={`row-${rowIndex}-col-${column.key}-${colIndex}`}
                                     className='text-left text-sm px-3 py-1.5 text-gray-600 border-r border-gray-200'
-                                    onClick={() => column.key === 'requestNumber' ? onEditRow(row) : () => {}}
+                                    onClick={() => column.key === 'requestNumber' ? onEditRow(row) : () => { }}
                                 >
-                                    
+
 
                                     {column.key === 'checkbox' ? (
                                         <CheckboxField
@@ -109,7 +109,7 @@ const DataTable: React.FC<DataTableProps> = (props) => {
                     ))}
                 </tbody>
 
-                {/*
+                {/*                 
                 <tfoot>
                     <tr>
                         <td colSpan={columns.length} className='text-left text-sm px-3 py-1.5 text-gray-600 border-r border-gray-200'>

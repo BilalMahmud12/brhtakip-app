@@ -18,6 +18,7 @@ export default function getBrandsTableData(
     const { clientProfileStore } = useStore();
     const { getClientProfiles } = clientProfileStore;
 
+
     return data.map((brand) => {
         const row: { [key: string]: any } = {};
 
@@ -76,6 +77,7 @@ export default function getBrandsTableData(
                                         <DropdownItem
                                             key="cancel"
                                             startContent={<Icon iconName='FcCancel' className='w-5 h-5' />}
+                                            onClick={() => handleDelete(brand)}
                                         >
                                             Marka Sil
                                         </DropdownItem>
