@@ -15,7 +15,7 @@ const CreateBrand: React.FC = observer(() => {
     async function handleCreateForm() {
         try {
             const createRequest = await Repo.BrandRepository.create(toJS(brandStore.getBrandFormValues))
-            console.log('brand form', createRequest)
+            console.log('new created brand', createRequest)
             router.replace('/dashboard/system/brands')
             brandStore.resetFormValues()
         } catch (error) {

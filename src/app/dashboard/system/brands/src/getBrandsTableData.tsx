@@ -77,7 +77,7 @@ export default function getBrandsTableData(
                                         <DropdownItem
                                             key="cancel"
                                             startContent={<Icon iconName='FcCancel' className='w-5 h-5' />}
-                                            onClick={() => handleDelete(brand)}
+                                            onClick={() => handleDelete(row)}
                                         >
                                             Marka Sil
                                         </DropdownItem>

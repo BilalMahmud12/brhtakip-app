@@ -14,14 +14,14 @@ export default function RootLayout({
 }>) {
 
     const {
-        userStore, 
-        clientProfileStore 
+        userStore,
+        clientProfileStore
     } = useStore();
 
     useEffect(() => {
         const currentUser = async () => {
             const user = await getCurrentUser();
-            
+
             userStore.setUserData({
                 id: user?.userId,
                 name: '',
@@ -34,15 +34,15 @@ export default function RootLayout({
         }
 
         const fetchData = async () => {
-            //const clientsData = await Repo.ClientProfileRepository.getClientProfiles();
-            //clientProfileStore.initStore({ clientProfiles: clientsData || [] });
-            //console.log('clientsData', clientsData);
+            const clientsData = await Repo.ClientProfileRepository.getClientProfiles();
+            clientProfileStore.initStore({ clientProfiles: clientsData || [] });
+            console.log('clientsData', clientsData);
         }
 
         currentUser();
         fetchData();
     }, []);
-        
+
     return (
         <>
             <AppHeader />
@@ -56,7 +56,7 @@ export default function RootLayout({
                     </div>
                 </div>
             </div>
-            
+
         </>
     );
 }

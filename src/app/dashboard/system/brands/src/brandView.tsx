@@ -8,6 +8,12 @@ import Icon from '@/components/core/icon';
 import BrandsDataTable from './brandsDataTable';
 import ClientSelectForm from './clientSelectForm';
 import { useRouter } from 'next/navigation';
+import * as Repo from '@/repository/index'
+import { Brand } from '@/API';
+
+interface BrandsViewProps {
+    handleDelete: (data: any) => Promise<void>;
+}
 
 const SelectClientModalFooter = (
     props: {
@@ -51,10 +57,9 @@ const SelectClientModalFooter = (
     )
 }
 
-const BrandsView: React.FC = observer((props) => {
-    const { brandStore, clientProfileStore } = useStore();
+const BrandsView: React.FC<BrandsViewProps> = observer(({ handleDelete }) => {
+    const { brandStore } = useStore();
     const { showDataModal, hideDataModal } = useDataModal();
-    const { deleteBrand, removeBrand } = brandStore;
     const router = useRouter()
 
     const handleRefresh = () => {
@@ -65,17 +70,12 @@ const BrandsView: React.FC = observer((props) => {
         console.log('Update')
     }
 
-    const handleDelete = (data: any) => {
-        deleteBrand(data.id);
-    }
-
     const handleCancelForm = () => {
         brandStore.resetFormValues()
         hideDataModal()
     }
 
     const handleCreateForm = () => {
-        console.log('Create')
         showDataModal(
             <div><span className='text-base font-bold'>Yeni Marka Ekle</span></div>,
             <ClientSelectForm />,

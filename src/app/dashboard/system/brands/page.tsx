@@ -8,8 +8,22 @@ import BrandsView from './src/brandView';
 import { useStore } from '@/stores/utils/useStore';
 
 
-const Brand: React.FC = observer(() => {
+const Brand: React.FC = observer((props) => {
     const { brandStore } = useStore();
+
+    const handleDelete = async (data: any) => {
+        try {
+            const deleteBrand = await Repo.BrandRepository.softDelete(data.originalData.id);
+            console.log('deleted brand', deleteBrand)
+
+            const newBrand = await Repo.BrandRepository.getAllBrands();
+            brandStore.setBrands(newBrand as unknown as Brand[]);
+
+            console.log('new brand array', newBrand)
+        } catch (error) {
+            console.log('error', error)
+        }
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -44,8 +58,9 @@ const Brand: React.FC = observer(() => {
                     className='text-sm font-medium'
                 />
             </div>
-
-            <BrandsView />
+            <BrandsView
+                handleDelete={handleDelete}
+            />
         </div>
     );
 });

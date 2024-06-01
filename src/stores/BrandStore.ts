@@ -1,9 +1,6 @@
-import { makeObservable, extendObservable, action, observable, runInAction } from 'mobx';
-import { softDelete } from '../repository/brand.repository';
+import { makeObservable, extendObservable, action, observable } from 'mobx';
 import { RootStore } from './RootStore';
 import type { Brand } from '@/API';
-import * as Repo from '@/repository/index'
-
 interface BrandStoreInitialState {
     brands: Brand[];
 }
@@ -28,7 +25,6 @@ export class BrandStore {
             brandForm: observable,
             setBrands: action,
             addBrand: action,
-            deleteBrand: action,
             removeBrand: action,
             handleFormChange: action,
             resetFormValues: action,
@@ -50,13 +46,6 @@ export class BrandStore {
 
     removeBrand(brandId: string) {
         this.setBrands(this.brands.filter(brand => brand.id !== brandId) || []);
-    }
-
-    async deleteBrand(brandId: string) {
-        softDelete(brandId);
-        const newBrands = await Repo.BrandRepository.getAllBrands();
-        this.setBrands(newBrands as Brand[]);
-        console.log('Brand deleted successfully');
     }
 
     setBrandFormValues(values: any) {
