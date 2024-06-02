@@ -25,7 +25,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     return (
         <div>
             <form >
-                <div className='bg-gray-100 px-6 py-8 rounded-md border border-zinc-200'>
+                <div className=''>
                     <div className='grid grid-cols-2 gap-8'>
                         <div className='input-group col-span-3'>
                             <Label htmlFor="name" className='block text-xs font-medium mb-1.5'>Marka</Label>

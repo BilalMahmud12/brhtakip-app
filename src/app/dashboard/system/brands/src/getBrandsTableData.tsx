@@ -6,6 +6,8 @@ import { Badge, BadgeVariations } from '@aws-amplify/ui-react'
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import Icon from '@/components/core/icon';
 import { useStore } from '@/stores/utils/useStore';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function getBrandsTableData(
     data: Brand[],
@@ -15,8 +17,9 @@ export default function getBrandsTableData(
     handleSelect: (data: any) => void
 ) {
 
-    const { clientProfileStore } = useStore();
+    const { clientProfileStore, brandStore } = useStore();
     const { getClientProfiles } = clientProfileStore;
+    const router = useRouter()
 
 
     return data.map((brand) => {
@@ -30,9 +33,17 @@ export default function getBrandsTableData(
                 switch (column.key) {
                     case 'name':
                         row[column.key] = (
-                            <span className='hover:underline hover:text-blue-700 hover:cursor-pointer'>
-                                {brand.name}</span>
-                        )
+                            <div
+                                className='hover:underline hover:text-blue-700 cursor-pointer'
+                                onClick={() => {
+                                    brandStore.setBrandFormValues(brand.id);
+                                    console.log('From getBrandTable', brand.id);
+                                    router.push('/dashboard/system/brands/update');
+                                }}
+                            >
+                                {brand.name}
+                            </div>
+                        );
                         break;
 
                     case 'isActive':
@@ -44,7 +55,9 @@ export default function getBrandsTableData(
                         break;
 
                     case 'Products':
-                        row[column.key] = brand.Products?.items.length || 0;
+                        row[column.key] = <Button className='hover:underline hover:text-blue-700'>
+                            {brand.Products?.items.length || 0}
+                        </Button>
                         break;
 
                     case 'clientprofileID':

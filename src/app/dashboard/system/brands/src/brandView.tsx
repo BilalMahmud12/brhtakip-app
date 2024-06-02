@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 import * as Repo from '@/repository/index'
 import { Brand } from '@/API';
 
+
 interface BrandsViewProps {
     handleDelete: (data: any) => Promise<void>;
 }
@@ -57,17 +58,17 @@ const SelectClientModalFooter = (
     )
 }
 
-const BrandsView: React.FC<BrandsViewProps> = observer(({ handleDelete }) => {
+const BrandsView: React.FC<BrandsViewProps> = observer((
+    {
+        handleDelete,
+    }
+) => {
     const { brandStore } = useStore();
     const { showDataModal, hideDataModal } = useDataModal();
     const router = useRouter()
 
-    const handleRefresh = () => {
-        console.log('Refresh')
-    }
-
-    const handleUpdateForm = () => {
-        console.log('Update')
+    const handleUpdateForm = (data: any) => {
+        // console.log('Brands View Data', data)
     }
 
     const handleCancelForm = () => {
@@ -83,15 +84,6 @@ const BrandsView: React.FC<BrandsViewProps> = observer(({ handleDelete }) => {
                 handleConfirm={() => {
                     hideDataModal();
                     router.push('/dashboard/system/brands/create')
-                    // <CreateOrUpdateForm
-                    //     isCreate={true}
-                    // // onSubmit={handleCreateBrand}
-                    // />,
-                    // <ModalCustomFooter
-                    //     type='create'
-                    //     handleCreate={handleCreateBrand}
-                    //     handleCancel={handleCancelForm}
-                    // />
                 }}
                 handleCancel={handleCancelForm}
             />
@@ -110,19 +102,6 @@ const BrandsView: React.FC<BrandsViewProps> = observer(({ handleDelete }) => {
                 <div className='flex items-center space-x-2'>
 
                     <div className='flex items-center space-x-2'>
-                        <Button
-                            variation="primary"
-                            colorTheme="success"
-                            size="small"
-                            loadingText=""
-                            onClick={handleRefresh}
-                            className='rounded-none h-[35px] bg-white border border-gray-600 text-gray-700'
-                        >
-                            <span>
-                                <Icon iconName='GrRefresh' className='text-lg' />
-                            </span>
-                        </Button>
-
                         <Button
                             variation="primary"
                             colorTheme="success"

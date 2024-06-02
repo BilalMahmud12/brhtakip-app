@@ -3,31 +3,31 @@ import React, { useEffect } from 'react';
 import { useStore } from '@/stores/utils/useStore';
 import { observer } from 'mobx-react-lite';
 import { Breadcrumbs, Button } from '@aws-amplify/ui-react';
-import * as Repo from '@/repository/index'
+import * as Repo from '@/repository/index';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { toJS } from 'mobx';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 
-const CreateBrand: React.FC = observer(() => {
+const UpdateBrand: React.FC = observer(() => {
     const { brandStore } = useStore();
-    const router = useRouter()
+    const router = useRouter();
 
-    async function handleCreateForm() {
+
+    async function handleUpdateForm(data: any) {
         try {
-            const createBrand = await Repo.BrandRepository.create(toJS(brandStore.getBrandFormValues))
-            console.log('new created brand', createBrand)
+            const updateBrand = await Repo.BrandRepository.update(data);
+            console.log('updated brand', updateBrand);
 
-            router.replace('/dashboard/system/brands')
-            brandStore.resetFormValues()
+            router.replace('/dashboard/system/brands');
+            brandStore.resetFormValues();
         } catch (error) {
-            console.log('Error')
+            console.error('Error updating brand:', error);
         }
     }
 
-
     return (
         <div>
-            <title>Marka Ekle</title>
+            <title>Marka Güncelle</title>
 
             <div className='px-6 py-3 bg-zinc-50 shadow mb-4'>
                 <Breadcrumbs
@@ -41,17 +41,18 @@ const CreateBrand: React.FC = observer(() => {
                             label: 'Markalar',
                         },
                         {
-                            label: 'Marka Ekle',
+                            label: 'Marka Güncelle',
                         }
                     ]}
                     className='text-sm font-medium'
                 />
             </div>
+
             <div className='mt-1.5 shadow bg-white py-6'>
                 <div className='px-6 mb-3 flex items-center justify-between'>
                     <div>
                         <div className=''>
-                            <h2 className='text-2xl font-medium'>Yeni Marka Oluştur</h2>
+                            <h2 className='text-2xl font-medium'>Marka Güncelle</h2>
                         </div>
                     </div>
 
@@ -62,10 +63,10 @@ const CreateBrand: React.FC = observer(() => {
                                 colorTheme="success"
                                 size="small"
                                 loadingText=""
-                                onClick={handleCreateForm}
+                                onClick={() => handleUpdateForm}
                                 className='rounded-none bg-amber-500 text-gray-800 px-6'
                             >
-                                <span>Ekle</span>
+                                <span>Güncelle</span>
                             </Button>
                         </div>
                     </div>
@@ -75,13 +76,14 @@ const CreateBrand: React.FC = observer(() => {
 
                 <div className='mt-8 px-8 py-8 m-6 shadow bg-neutral-100'>
                     <CreateOrUpdateForm
-                        isCreate={true}
+                        isCreate={false}
                     />
                 </div>
-
             </div>
-        </div >
-    );
-})
 
-export default CreateBrand
+            <div className='mt-1.5 shadow bg-white py-6'>Products Form</div>
+        </div>
+    );
+});
+
+export default UpdateBrand;
