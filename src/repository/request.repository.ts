@@ -72,6 +72,19 @@ const update = async (request: Request) => {
     }
 }
 
+const updateStatus = async (id: string, status: RequestStatus) => {
+    try {
+        const data = await client.graphql({
+            query: updateRequest,
+            variables: { input: { id, status } },
+        });
+
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 const softDelete = async (id: string) => {
     try {
         const data = await client.graphql({
@@ -91,5 +104,6 @@ export {
     getRequestsByStatus,
     create,
     update,
+    updateStatus,
     softDelete
 }

@@ -1,9 +1,11 @@
 import React from 'react'
+import RequestsView from '../../src/requestsView'
 
 const Completed = () => {
     return (
         <div>
-            <h1>Completed ...</h1>
+            <title>Tamamlanan Talepler - BRH Takip</title>
+            <RequestsView />
         </div>
     )
 }

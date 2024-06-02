@@ -298,7 +298,7 @@ export type Product = {
 };
 
 export enum RequestStatus {
-  PENDING_APPRVOAL = "PENDING_APPRVOAL",
+  PENDING_APPROVAL = "PENDING_APPROVAL",
   IN_DESIGN = "IN_DESIGN",
   IN_PRESS = "IN_PRESS",
   IN_APPLICATION = "IN_APPLICATION",

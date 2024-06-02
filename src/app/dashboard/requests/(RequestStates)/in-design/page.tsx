@@ -1,9 +1,11 @@
 import React from 'react'
+import RequestsView from '../../src/requestsView'
 
 const InDesign = () => {
     return (
         <div>
-            <h1>In Design ...</h1>
+            <title>Tasarımdaki Talepler - BRH Takip</title>
+            <RequestsView />
         </div>
     )
 }

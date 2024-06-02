@@ -51,9 +51,7 @@ export default function RootLayout({
                     <SideNav />
                 </div>
                 <div className="col-span-4 xl:col-span-5">
-                    <div className='px-8 py-4'>
-                        {children}
-                    </div>
+                    {children}
                 </div>
             </div>
             

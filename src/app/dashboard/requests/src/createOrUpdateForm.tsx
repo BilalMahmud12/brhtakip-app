@@ -17,7 +17,7 @@ interface CreateOrUpdateFormProps {
 }
 
 const statusOptions = [
-    { id: 'PENDING_APPROAL', label: 'ONAY BEKLENİYOR' },
+    { id: 'PENDING_APPROVAL', label: 'ONAY BEKLENİYOR' },
     { id: 'WAITING_DESIGN', label: 'TASARIM BEKLENİYOR' },
     { id: 'WAITING_PRESS', label: 'BASKI BEKLENİYOR' },
     { id: 'COMPLETE', label: 'TAMAMLANDI' },
@@ -26,7 +26,7 @@ const statusOptions = [
 
 const getStatusColor = (statusId: string) => {
     switch (statusId) {
-        case 'PENDING_APPROAL':
+        case 'PENDING_APPROVAL':
             return 'bg-[#FFA500]'; // Orange
         case 'WAITING_DESIGN':
             return 'bg-[#1E90FF]'; // DodgerBlue

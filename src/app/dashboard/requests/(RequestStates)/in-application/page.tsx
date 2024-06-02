@@ -1,9 +1,11 @@
 import React from 'react'
+import RequestsView from '../../src/requestsView'
 
 const InApplication = () => {
     return (
         <div>
-            <h1>In Application ...</h1>
+            <title>Uygulamadaki Talepler - BRH Takip</title>
+            <RequestsView />
         </div>
     )
 }

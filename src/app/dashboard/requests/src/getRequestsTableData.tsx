@@ -5,10 +5,11 @@ import type { DataTableColumn } from '@/components/core/dataTable';
 import { Badge, BadgeVariations  } from '@aws-amplify/ui-react'
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import Icon from '@/components/core/icon';
+import DetailedRequestTableCell from './requestsTable/detailedRequestTableCell';
 
 const getStatus = (status: string) => {
     switch (status) {
-        case 'PENDING_APPRVOAL':
+        case 'PENDING_APPROVAL':
             return { text: 'Onay Bekliyor', color: 'warning' }
         case 'WAITING_DESIGN':
             return { text: 'Tasarım Bekliyor', color: 'warning' }
@@ -55,55 +56,10 @@ export default function getRequestsTableData(
 
                     case 'detailed':
                         row[column.key] = (
-                            <div className='py-4 px-6 border border-gray-200 rounded-sm bg-white'>
-                                <div className='grid grid-cols-3 gap-x-6 gap-y-3'>
-                                    <span className='col-span-1'>
-                                        <span className='block text-xs font-medium mb-1.5'>
-                                            Talep Durumu
-                                        </span>
-                                        <span className='max-w-[145px] flex items-center space-x-2 px-3.5 py-1 bg-red-50 border border-red-300 rounded-sm'>
-                                            <span className={`w-3 h-3 rounded-full bg-[#ff1717]`} />
-                                            <span className='text-xs font-medium'>
-                                                {getStatus(request.status as string).text}
-                                            </span>
-                                        </span>
-                                    </span>
-
-                                    <span className='col-span-1'>
-                                        <span className='block text-xs font-medium mb-1.5'>
-                                            Talep No
-                                        </span>
-                                        <span className='flex items-center text-sm font-medium px-3 py-0.5 h-[26px] rounded-sm bg-zinc-100 border border-x-zinc-200'>
-                                            <span>{request.requestNumber}</span>
-                                        </span>
-                                    </span>
-
-                                    <span className='col-span-1'>
-                                        <span className='block text-xs font-medium mb-1.5'>
-                                            Talep Tarihi
-                                        </span>
-                                        <span className='flex items-center text-sm font-medium px-3 py-0.5 h-[26px] rounded-sm bg-zinc-100 border border-x-zinc-200'>
-                                            <span>{formateDate(request.createdAt)}</span>
-                                        </span>
-                                    </span>
-
-                                    <span className='col-span-3'>
-                                        <span className='block text-xs font-medium mb-1.5'>
-                                            Dosya Adı
-                                        </span>
-
-                                        <span className='flex flex-wrap items-center space-x-1 px-3 py-1.5 rounded-sm bg-zinc-100 border border-x-zinc-200'>
-                                            <span>{request.requestNumber}</span>
-                                            <span>-- {request.Store.name}</span>
-                                            <span>- {request.Store.Area?.name} {request.Store.District?.name} {request.Store.City?.name}</span>
-                                            <span>-- {request.Brand?.name} - {request.Product?.name}</span>
-                                            <span>- {request.requestDetails?.quantity} Adet </span>
-                                            <span>- {request.requestDetails?.width}x{request.requestDetails?.height}</span>
-                                            <span>- {request.Material?.name} </span>
-                                        </span>
-                                    </span>
-                                </div>
-                            </div>
+                            <>
+                                <DetailedRequestTableCell request={request} />
+                                
+                            </>
                         )
                         break;
 

@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { useStore } from '@/stores/utils/useStore';
 import { useDataModal } from '@/contexts/DataModalContext';
 import RequestsDataTable from './requestsDataTable';
+import RequestDataCards from './requestDataCards';
 import ClientSelectForm from './clientSelectForm';
 import CreateOrUpdateForm from './createOrUpdateForm';
 import { SearchField, Button } from '@aws-amplify/ui-react'
@@ -179,15 +180,13 @@ const RequestsView: React.FC = observer((props) => {
     }
     
     return (
-        <div className='mt-1.5 shadow bg-white p-6'>
-            <div className=''>
-                <RequestsDataTable
-                    dataPayload={requestStore.getAllRequests}
-                    handleEdit={handleUpdateForm}
-                    handleDelete={handleDelete}
+        <>   
+            <div className='mb-8'>
+                <RequestDataCards
+                    data={requestStore.getAllRequests}
                 />
             </div>
-        </div>
+        </>
     );
 });
 
