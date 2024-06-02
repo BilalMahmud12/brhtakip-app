@@ -21,9 +21,9 @@ export const dataTables = {
     products: {
         columns: [
             { label: '', key: 'checkbox', width: '2%' },
-            { label: 'Ürün', key: 'name', width: '10%' },
-            { label: 'Durum', key: 'isActive', width: '4%' },
-            { label: 'Marka', key: 'brandID', width: '20%' },
+            { label: 'Ürün', key: 'name', width: '70%' },
+            { label: 'Durum', key: 'isActive', width: '5%' },
+            // { label: 'Marka', key: 'brandID', width: '20%' },
             { label: '', key: 'actions', width: '2%' },
         ]
     }

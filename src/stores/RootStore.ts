@@ -3,6 +3,7 @@ import { UserStore } from './UserStore';
 import { RequestStore } from './RequestStore';
 import { BrandStore } from './BrandStore';
 import { ClientProfileStore } from './ClientProfileStore';
+import { ProductStore } from './ProductStore';
 import type { ClientProfile } from '@/API';
 
 interface RootStoreInitialState {
@@ -25,6 +26,7 @@ export class RootStore {
     requestStore: RequestStore;
     clientProfileStore: ClientProfileStore;
     brandStore: BrandStore;
+    productStore: ProductStore;
 
     currentClientProfile: ClientProfile | undefined;
 
@@ -33,6 +35,7 @@ export class RootStore {
         this.requestStore = new RequestStore(this);
         this.clientProfileStore = new ClientProfileStore(this);
         this.brandStore = new BrandStore(this);
+        this.productStore = new ProductStore(this);
 
         makeObservable(this, {
             setCurrentClientProfile: action,
