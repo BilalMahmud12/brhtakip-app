@@ -9,26 +9,9 @@ import { generateRequestNumber } from '@/utils/helpers';
 import type { Request } from '@/API';
 
 const PendingApproval = () => {
-    const { requestStore } = useStore();
-
-    useEffect(() => {
-        const requestNumber: string = generateRequestNumber();
-        console.log('requestNumber', requestNumber);
-
-        const fetchData = async () => {
-            const requestsData = await Repo.RequestRepository.getRequestsByStatus('PENDING_APPRVOAL');
-
-            if (requestsData) {
-                requestStore.initStore({ requests: [...requestsData as unknown as Request[]] });
-                console.log('requests', requestsData)
-            }
-        };
-        fetchData();
-    }, []);
-
     return (
         <div>
-            <title>Onay Bekleyen Talepler - BRH Takip</title>
+            <title>İptal Edilen Talepler - BRH Takip</title>
             
             <div className='bg-white shadow px-6 py-4 mb-4 flex flex-col'>
                 <div className='mb-2'>

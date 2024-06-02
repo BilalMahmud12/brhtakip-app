@@ -15,7 +15,7 @@ type RequestItem {
 }
 
 enum RequestStatus {
-  PENDING_APPRVOAL
+  PENDING_APPROVAL
   IN_DESIGN
   IN_PRESS
   IN_APPLICATION

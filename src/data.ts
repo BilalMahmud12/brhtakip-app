@@ -22,7 +22,7 @@ export const requests = [
         id: '93938ac7-4af2-42d1-8e47-1ea6e9d1cffd',
         request_number: 'BRH-2021-0001',
         clientprofileID: 'c0dbfd8d-05d2-4f73-8364-61c157178379',
-        status: 'PENDING_APPROAL' as RequestStatus,
+        status: 'PENDING_APPROVAL' as RequestStatus,
         Brand: {
             __typename: "Brand",
             id: 'e5b3c3b5-9e4a-4f8a-8f6b-4d9f0e7f3b4b',
@@ -197,7 +197,7 @@ export const requests = [
         "id": "a3ef9924-46b2-4872-8b4a-edfdadeef5ac",
         "request_number": "BRH-2021-1006",
         "clientprofileID": "658a948b-9837-473c-b702-3f12ffc88d16",
-        "status": "PENDING_APPROAL" as RequestStatus,
+        "status": "PENDING_APPROVAL" as RequestStatus,
         "Brand": {
             "__typename": "Brand",
             "id": "ca184524-b4e5-450c-95e2-2c073c6e1622",
