@@ -16,5 +16,15 @@ export const dataTables = {
             { label: 'Müşteri', key: 'clientprofileID', width: '20%' },
             { label: '', key: 'actions', width: '2%' },
         ]
+    },
+
+    products: {
+        columns: [
+            { label: '', key: 'checkbox', width: '2%' },
+            { label: 'Ürün', key: 'name', width: '10%' },
+            { label: 'Durum', key: 'isActive', width: '4%' },
+            { label: 'Marka', key: 'brandID', width: '20%' },
+            { label: '', key: 'actions', width: '2%' },
+        ]
     }
 }
