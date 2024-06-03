@@ -34,9 +34,9 @@ export default function RootLayout({
         }
 
         const fetchData = async () => {
-            //const clientsData = await Repo.ClientProfileRepository.getClientProfiles();
-            //clientProfileStore.initStore({ clientProfiles: clientsData || [] });
-            //console.log('clientsData', clientsData);
+            const clientsData = await Repo.ClientProfileRepository.getClientProfiles();
+            clientProfileStore.initStore({ clientProfiles: clientsData || [] });
+            console.log('clientsData', clientsData);
         }
 
         currentUser();

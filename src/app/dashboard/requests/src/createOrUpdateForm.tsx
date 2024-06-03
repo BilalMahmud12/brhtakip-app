@@ -100,7 +100,11 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
         };
 
         fetchData();
-        if (!isCreate) {}
+
+
+        if (isCreate) {
+            handleFormChange(generateRequestNumber(), 'requestNumber');
+        }
     }, []);
   
     // @TODO: isolate this function to a helper file
@@ -153,7 +157,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                     <div className=''>
                         <div className='grid grid-cols-2 gap-8 mb-6'>
                             {!userData.isClient && (
-                                <div className='input-group col-span-2'>
+                                <div className='input-group'>
                                     <Label htmlFor="client_name" className='block text-xs font-medium mb-1.5'>Müşteri</Label>
                                     <Autocomplete
                                         id="client_name"
@@ -169,22 +173,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                                     />
                                 </div>
                             )}
-
-                            <div className='input-group'>
-                                <Label htmlFor="status" className='block text-xs font-medium mb-1.5'>Talep Durumu</Label>
-                                <Autocomplete
-                                    id="status"
-                                    label="Talep Durumu"
-                                    placeholder='Talep Durumu Seç'
-                                    variation="quiet"
-                                    options={statusOptions}
-                                    renderOption={renderStatusOption}
-                                    onChange={(e) => { console.log('selected status', e.target.value) }}
-                                    onSelect={(option) => handleFormChange(option.id, 'status')}
-                                    className='custom-input'
-                                    value={request.status}
-                                />
-                            </div>
 
                             <div className='input-group'>
                                 <Label htmlFor="requestNumber" className='block text-xs font-medium mb-1.5'>Talep Numarası</Label>

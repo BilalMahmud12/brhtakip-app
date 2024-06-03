@@ -1,22 +1,24 @@
 'use client'
 import React, { useState } from 'react';
-import { Chip, Tooltip, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
+import { Chip, Tooltip, Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, divider } from "@nextui-org/react";
 import { Button, CheckboxField } from '@aws-amplify/ui-react';
 import Icon from '@/components/core/icon';
 import * as Repo from '@/repository/index';
 import { RequestStatus } from '@/API';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
+import { toast } from 'sonner';
+import RequestDataCardActionsMenu from './requestCardActionsMenu';
 
 const getStatus = (status: string) => {
     switch (status) {
-        case 'PENDING_APPRVOAL':
-            return { text: 'Onay Bekliyor', color: 'warning' }
+        case 'PENDING_APPROVAL':
+            return { text: 'Onay Bekliyor', color: 'danger' }
         case 'IN_DESIGN':
-            return { text: 'Tasarımda', color: 'warning' }
+            return { text: 'Tasarımda', color: 'default' }
         case 'IN_PRESS':
             return { text: 'Baskıda', color: 'warning' }
         case 'IN_APPLICATION':
-            return { text: 'Uygulamada', color: 'warning' }
+            return { text: 'Uygulamada', color: 'success' }
         case 'COMPLETED':
             return { text: 'Tamamlandı', color: 'success' }
         case 'CANCELLED':
@@ -31,12 +33,13 @@ const RequestCard: React.FC<{ data: any }> = ({ data }) => {
     const [selected, setSelected] = useState(false)
     const [showBody, setShowBody] = useState(true)
 
-    const handleStatusChange = async (status: string) => {
+    const handleStatusChange = async (status: string, data: any) => {
         try {
             const response = await Repo.RequestRepository.updateStatus(data.id, status as RequestStatus)
 
             if (response) {
                 console.log('Request status updated', response)
+                toast.success(`${data.requestNumber} numaralı talep ${getStatus(status).text} durumuna geçirildi`);
 
                 switch (status) {
                     case 'IN_DESIGN':
@@ -57,6 +60,8 @@ const RequestCard: React.FC<{ data: any }> = ({ data }) => {
                     default:
                         router.push('/dashboard/requests')
                 }
+
+
             }
         }
         catch (error) {
@@ -81,35 +86,10 @@ const RequestCard: React.FC<{ data: any }> = ({ data }) => {
                         
                     </div>
                     <div className='flex items-center space-x-2'>
-                        <Dropdown 
-                            id='actions-menu'
-                            showArrow
-                            classNames={{
-                                base: "before:bg-default-200 right-0", // change arrow background
-                                content: "py-1 px-1 border border-default-200 bg-gradient-to-br from-white to-default-200 dark:from-default-50 dark:to-black",
-                            }}
-                        >
-                            <DropdownTrigger>
-                                <button aria-label="Open actions menu">
-                                    <Icon iconName='dots' className='text-xl text-zinc-700' />
-                                </button>
-                            </DropdownTrigger>
-                            <DropdownMenu aria-label="Actions menu"> 
-                                <DropdownItem
-                                    startContent={<Icon iconName='FcEditImage' className='w-5 h-5' />}
-                                   
-                                    onClick={() => handleStatusChange('IN_DESIGN')}
-                                >
-                                    Tasarıma Aktar
-                                </DropdownItem>
-                                <DropdownItem
-                                    startContent={<Icon iconName='FcPrint' className='w-5 h-5' />}
-                                    onClick={() => handleStatusChange('IN_PRESS')}
-                                >
-                                    Baskıya Aktar
-                                </DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>
+                        <RequestDataCardActionsMenu 
+                            data={data} 
+                        />
+                        
                         <button onClick={() => setShowBody(!showBody)} aria-label="Toggle content visibility">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={`w-5 h-5 transition-all duration-300 ease-in-out ${showBody ? 'rotate-180' : ''}`}>
                                 <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
@@ -118,6 +98,7 @@ const RequestCard: React.FC<{ data: any }> = ({ data }) => {
                     </div>
                 </div>
             </header>
+            
             {showBody && (
                 <section className='py-4 space-y-4 border-t border-zinc-200'>
                     <div className='flex items-start space-x-6'>
@@ -159,6 +140,7 @@ const RequestCard: React.FC<{ data: any }> = ({ data }) => {
 
                 </section>
             )}
+            
             <footer className='border-t border-zinc-200 pt-2'>
                 <div className='flex items-center justify-between'>
                     <div>
@@ -177,7 +159,7 @@ const RequestCard: React.FC<{ data: any }> = ({ data }) => {
                     
                     <div>
                         <Chip
-                            color='danger'
+                            color={getStatus(data.status).color as "primary" | "warning" | "success" | "danger" | "default" | "secondary" | undefined}
                             size='sm'
                             classNames={{
                                 base: 'bg-red-50 border border-red-300 rounded-full',
@@ -185,7 +167,7 @@ const RequestCard: React.FC<{ data: any }> = ({ data }) => {
                             }}
 
                         >
-                            {getStatus(data.status).text}
+                            { getStatus(data.status).text }
                         </Chip>
                     </div>
                 </div>

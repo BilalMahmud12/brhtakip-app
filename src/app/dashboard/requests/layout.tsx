@@ -2,12 +2,17 @@
 import React, { useEffect } from 'react'
 import * as Repo from '@/repository/index'
 import { useStore } from '@/stores/utils/useStore';
+import { useDataModal } from '@/contexts/DataModalContext';
 import { generateRequestNumber } from '@/utils/helpers';
 import { useRouter, usePathname } from 'next/navigation';
 import type { Request, RequestStatus } from '@/API';
 import Icon from '@/components/core/icon';
 import Link from 'next/link';
 import { Button } from '@aws-amplify/ui-react';
+import { toast } from 'sonner';
+import ClientSelectForm from './src/clientSelectForm';
+import CreateOrUpdateForm from './src/createOrUpdateForm';
+import { toJS } from 'mobx';
 
 const statusMap = {
     'pending-approval': 'PENDING_APPRVOAL',
@@ -70,12 +75,102 @@ const requestNavigation = [
     }
 ]
 
+const SelectClientModalFooter = (
+    props: {
+        handleConfirm: () => void
+        handleCancel?: () => void;
+    }
+) => {
+    const {
+        handleConfirm = () => { },
+        handleCancel = () => { },
+    } = props
+
+    return (
+        <div className='flex items-center justify-between'>
+            <div className='flex items-center space-x-3'>
+                <Button
+                    variation="primary"
+                    colorTheme="success"
+                    size="small"
+                    loadingText=""
+                    onClick={handleCancel}
+                    className='rounded-none bg-transparent text-gray-800 px-6 font-bold'
+                >
+                    <span>İptal Et</span>
+                </Button>
+
+                <Button
+                    variation="primary"
+                    colorTheme="success"
+                    size="small"
+                    loadingText=""
+                    onClick={handleConfirm}
+                    className='rounded-none bg-amber-500 text-gray-800 font-bold px-6'
+                >
+                    <span className='flex items-center space-x-2'>
+                        <span>Devam Et</span>
+                    </span>
+                </Button>
+            </div>
+        </div>
+    )
+}
+
+const ModalCustomFooter = (
+    props: {
+        type: 'create' | 'update'
+        handleCreate?: (data: any) => void;
+        handleUpdate?: (data: any) => void;
+        handleCancel?: () => void;
+    }
+) => {
+    const {
+        type,
+        handleCreate = () => { },
+        handleUpdate = () => { },
+        handleCancel = () => { },
+    } = props;
+
+    return (
+        <div className='flex items-center justify-between'>
+            <div className='flex items-center space-x-3'>
+                <Button
+                    variation="primary"
+                    colorTheme="success"
+                    size="small"
+                    loadingText=""
+                    onClick={handleCancel}
+                    className='rounded-none bg-transparent text-gray-800 px-6 font-bold'
+                >
+                    <span>İPTAL ET</span>
+                </Button>
+
+                <Button
+                    variation="primary"
+                    colorTheme="success"
+                    size="small"
+                    loadingText=""
+                    onClick={type === 'create' ? handleCreate : handleUpdate}
+                    className='rounded-none bg-amber-500 text-blue-900 font-bold px-6'
+                >
+                    <span className='flex items-center space-x-2'>
+                        <span>ONAYLA</span>
+                    </span>
+                </Button>
+            </div>
+        </div>
+    )
+}
+
 export default function RequestLayout(
     { children }: Readonly<{children: React.ReactNode;}>
 ) {
     const router = useRouter();
     const pathname = usePathname();
-    const { requestStore } = useStore();
+    const { requestStore, userStore } = useStore();
+    const { userData } = userStore;
+    const { showDataModal, hideDataModal } = useDataModal();
 
     const statusMap: { [key: string]: string } = {
         'pending-approval': 'PENDING_APPROVAL',
@@ -106,13 +201,57 @@ export default function RequestLayout(
         }
     }, [pathname]);
 
+    async function handleCreateRequest() {
+        try {
+            const createRequest = await Repo.RequestRepository.create(toJS(requestStore.getRequestFormValues))
+
+            if (createRequest && createRequest.data) {
+                router.replace('/dashboard/requests')
+                requestStore.resetFormValues()
+            }
+        } catch (error) {
+            console.log('Error')
+            alert(`Error while creating: ${error}`)
+        }
+    }
+
     const handleCreateForm = () => {
-        console.log('Create Request')
+        if (userData.isClient) {
+            // @TODO apply client case logic
+        } else {
+            showDataModal(
+                <div><span className='text-sm font-bold'>Müşteri Seç</span></div>,
+                <ClientSelectForm />,
+                <SelectClientModalFooter
+                    handleConfirm={() => {
+                        //hideDataModal()
+                        //router.push('/dashboard/requests/create')
+                        
+                        showDataModal(
+                            <div><span className='text-base font-bold'>Talep Oluştur</span></div>,
+                            <CreateOrUpdateForm
+                                isCreate={true}
+                            />,
+                            <ModalCustomFooter
+                                type='create'
+                                handleCreate={handleCreateRequest}
+                                handleCancel={handleCancelForm}
+                            />
+                        )
+                    }}
+                    handleCancel={handleCancelForm}
+                />
+            )
+        }
+    }
+
+    const handleCancelForm = () => {
+        requestStore.resetFormValues()
+        hideDataModal()
     }
     
     return (
         <div>
-            
             <div className='grid grid-cols-6 border-b border-zinc-200'>
                 {requestNavigation.map((nav, index) => (
                     <Link
