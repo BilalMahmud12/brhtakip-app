@@ -5,6 +5,13 @@ interface BrandStoreInitialState {
     brands: Brand[];
 }
 
+interface BrandFormState {
+    id?: string
+    name?: string
+    isActive?: boolean
+    clientprofileID?: string
+}
+
 const initialState: BrandStoreInitialState = {
     brands: []
 };
@@ -12,10 +19,11 @@ const initialState: BrandStoreInitialState = {
 export class BrandStore {
     brands: Brand[] = [];
 
-    brandForm = {
+    brandForm: BrandFormState = {
+        id: '',
         name: '',
         clientprofileID: '',
-        isActive: false
+        isActive: false ?? ''
     };
 
     constructor(private rootStore: RootStore) {
@@ -69,6 +77,12 @@ export class BrandStore {
                     isActive: input === '1' || input === 'true',
                 }
                 break;
+            case 'id':
+                this.brandForm = {
+                    ...this.brandForm,
+                    id: input,
+                }
+                break;
             default:
                 this.brandForm = {
                     ...this.brandForm,
@@ -82,7 +96,7 @@ export class BrandStore {
         this.brandForm = {
             name: '',
             clientprofileID: '',
-            isActive: false
+            isActive: false ?? ''
         };
     }
 

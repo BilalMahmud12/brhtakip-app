@@ -36,9 +36,13 @@ export default function getBrandsTableData(
                             <div
                                 className='hover:underline hover:text-blue-700 cursor-pointer'
                                 onClick={() => {
-                                    brandStore.setBrandFormValues(brand.id);
-                                    console.log('From getBrandTable', brand.id);
-                                    router.push('/dashboard/system/brands/update');
+                                    brandStore.setBrandFormValues({
+                                        id: brand.id,
+                                        name: brand.name,
+                                        isActive: brand.isActive,
+                                        clientprofileID: brand.clientprofileID
+                                    });
+                                    router.push(`/dashboard/system/brands/${brand.id}}`);
                                 }}
                             >
                                 {brand.name}
@@ -79,13 +83,21 @@ export default function getBrandsTableData(
                                     </DropdownTrigger>
                                     <DropdownMenu aria-label='row-actions'>
 
-                                        <DropdownItem
+                                        {/* <DropdownItem
                                             key="update"
                                             startContent={<Icon iconName='FcSupport' className='w-5 h-5' />}
-                                            onClick={() => handleEdit(row)}
+                                            onClick={() => {
+                                                // brandStore.setBrandFormValues({
+                                                //     id: brand.id || '',
+                                                //     name: brand.name || '',
+                                                //     isActive: brand.isActive || false
+                                                // });
+                                                // console.log('From getBrandTable', brand.id, brand.name, brand.isActive);
+                                                router.push(`/dashboard/system/brands/${brand.id}}`);
+                                            }}
                                         >
                                             Güncelle
-                                        </DropdownItem>
+                                        </DropdownItem> */}
 
                                         <DropdownItem
                                             key="cancel"

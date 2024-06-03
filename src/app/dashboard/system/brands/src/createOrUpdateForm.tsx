@@ -35,11 +35,12 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 placeholder='Marka Ekle'
                                 variation="quiet"
                                 onChange={(e) => handleFormChange(e.target.value, 'name')}
+                                defaultValue={!isCreate ? getBrandFormValues.name : ''}
                                 className='custom-input'
                             />
                         </div>
                     </div>
-
+                    {/* getBrandFormValues.name || '' */}
                     <div className='my-2 pt-5' />
 
                     <div className='input-group'>
@@ -54,6 +55,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 { id: '0', label: 'İnaktif' }
                             ]}
                             onSelect={(option) => handleFormChange(option.id, 'isActive')}
+                            defaultValue={!isCreate ? (getBrandFormValues.isActive ? 'Aktif' : 'İnaktif') : ''}
                             className='custom-input'
                         />
                     </div>

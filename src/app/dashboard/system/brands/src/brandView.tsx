@@ -67,9 +67,7 @@ const BrandsView: React.FC<BrandsViewProps> = observer((
     const { showDataModal, hideDataModal } = useDataModal();
     const router = useRouter()
 
-    const handleUpdateForm = (data: any) => {
-        // console.log('Brands View Data', data)
-    }
+
 
     const handleCancelForm = () => {
         brandStore.resetFormValues()
@@ -119,7 +117,6 @@ const BrandsView: React.FC<BrandsViewProps> = observer((
             <div className='mt-8'>
                 <BrandsDataTable
                     dataPayload={brandStore.getBrands}
-                    handleEdit={handleUpdateForm}
                     handleDelete={handleDelete}
                 />
             </div>
