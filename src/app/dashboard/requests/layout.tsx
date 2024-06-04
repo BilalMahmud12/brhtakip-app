@@ -192,7 +192,6 @@ export default function RequestLayout(
 
             if (requestsData) {
                 requestStore.initStore({ requests: [...requestsData as unknown as Request[]] });
-                console.log('Request Data from layout', requestsData)
             }
         };
 
@@ -281,7 +280,7 @@ export default function RequestLayout(
                     size="small"
                     loadingText=""
                     onClick={handleCreateForm}
-                    className='rounded-md bg-amber-500 text-gray-800 px-6'
+                    className='rounded-md bg-amber-500 text-gray-800 px-6 py-1.5'
                 >
                     <span>Talep Oluştur</span>
                 </Button>

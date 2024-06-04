@@ -33,11 +33,14 @@ export class RequestStore {
         },
     }
 
+    selectedRequests: string[] = [];
+
     constructor(private rootStore: RootStore) {
         this.rootStore = rootStore;
         
         makeObservable(this, {
             requestForm: observable,
+            selectedRequests: observable,
             setRequests: action,
             removeRequest: action,
             handleFormChange: action,
@@ -180,6 +183,14 @@ export class RequestStore {
                 designNote: '',
             },
         };
+    }
+
+    get getSelectedRequests() {
+        return this.selectedRequests;
+    }
+
+    setSelectedRequests(requestIds: string[]) {
+        this.selectedRequests = requestIds;
     }
 
     get getAllRequests() {

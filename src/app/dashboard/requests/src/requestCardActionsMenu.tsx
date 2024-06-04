@@ -67,7 +67,7 @@ const RequestDataCardActionsMenu: React.FC<{ data: any }> = ({ data }) => {
     }
 
     return (
-        <div>
+        <>
             {data.status === 'PENDING_APPROVAL' && (
                 <Dropdown
                     id='actions-menu'
@@ -225,7 +225,7 @@ const RequestDataCardActionsMenu: React.FC<{ data: any }> = ({ data }) => {
                     </DropdownMenu>
                 </Dropdown>
             )}
-        </div>
+        </>
     )
 }
 

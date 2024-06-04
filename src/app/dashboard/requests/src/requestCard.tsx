@@ -1,12 +1,8 @@
 'use client'
 import React, { useState } from 'react';
-import { Chip, Tooltip, Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, divider } from "@nextui-org/react";
-import { Button, CheckboxField } from '@aws-amplify/ui-react';
+import { Chip, Tooltip } from "@nextui-org/react";
+import { CheckboxField } from '@aws-amplify/ui-react';
 import Icon from '@/components/core/icon';
-import * as Repo from '@/repository/index';
-import { RequestStatus } from '@/API';
-import { useRouter } from 'next-nprogress-bar';
-import { toast } from 'sonner';
 import RequestDataCardActionsMenu from './requestCardActionsMenu';
 
 const getStatus = (status: string) => {
@@ -28,47 +24,11 @@ const getStatus = (status: string) => {
     }
 }
 
-const RequestCard: React.FC<{ data: any }> = ({ data }) => {
-    const router = useRouter()
-    const [selected, setSelected] = useState(false)
+const RequestCard: React.FC<{ data: any, handleSelect?: (event: React.ChangeEvent<HTMLInputElement>, id: string) => void}> = ({ 
+    data,
+    handleSelect = () => {}
+}) => {
     const [showBody, setShowBody] = useState(true)
-
-    const handleStatusChange = async (status: string, data: any) => {
-        try {
-            const response = await Repo.RequestRepository.updateStatus(data.id, status as RequestStatus)
-
-            if (response) {
-                console.log('Request status updated', response)
-                toast.success(`${data.requestNumber} numaralı talep ${getStatus(status).text} durumuna geçirildi`);
-
-                switch (status) {
-                    case 'IN_DESIGN':
-                        router.push('/dashboard/requests/in-design')
-                        break;
-                    case 'IN_PRESS':
-                        router.push('/dashboard/requests/in-print')
-                        break;
-                    case 'IN_APPLICATION':
-                        router.push('/dashboard/requests/in-application')
-                        break;
-                    case 'COMPLETED':
-                        router.push('/dashboard/requests/completed')
-                        break;
-                    case 'CANCELLED':
-                        router.push('/dashboard/requests/cancelled')
-                        break;
-                    default:
-                        router.push('/dashboard/requests')
-                }
-
-
-            }
-        }
-        catch (error) {
-            console.error('Error updating request status', error)
-        }
-
-    }
 
     return (
         <article className='relative bg-white rounded-md shadow p-6'>
@@ -77,18 +37,16 @@ const RequestCard: React.FC<{ data: any }> = ({ data }) => {
                     <div className='flex items-center space-x-2'>
                         <span>
                             <CheckboxField
-                                name={`checkbox-${data.id}`}
+                                name={`requestCardCheckbox`}
                                 label={data.requestNumber}
-                                onChange={(e) => {}}
                                 className='text-zinc-600 font-semibold text-sm'
+                                onChange={(event) => handleSelect(event, data.id)}
                             />
                         </span>
-                        
                     </div>
+
                     <div className='flex items-center space-x-2'>
-                        <RequestDataCardActionsMenu 
-                            data={data} 
-                        />
+                        <RequestDataCardActionsMenu data={data} />
                         
                         <button onClick={() => setShowBody(!showBody)} aria-label="Toggle content visibility">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={`w-5 h-5 transition-all duration-300 ease-in-out ${showBody ? 'rotate-180' : ''}`}>

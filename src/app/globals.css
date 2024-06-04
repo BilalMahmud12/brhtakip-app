@@ -27,9 +27,7 @@
 }
 
 .amplify-checkbox__button--focused::before {
-  outline: none !important;
-  border: none !important;
-  background-color: unset !important;
+  box-shadow: none !important;
 }
 
 .amplify-checkbox__button::before {
@@ -96,9 +94,9 @@
   /*max-height: 150px;*/
 }
 
-.amplify-field-group__inner-start {
+/* .amplify-field-group__inner-start {
   display: none !important;
-}
+} */
 
 .amplify-field-group__icon-button {
   background-color: transparent !important;
@@ -126,4 +124,9 @@
 
 .amplify-autocomplete__menu__option:active {
   @apply bg-gray-200 text-gray-800 transition-all duration-300 ease-in-out;
+}
+
+.amplify-button:focus {
+  outline: none;
+  box-shadow: none !important;
 }
