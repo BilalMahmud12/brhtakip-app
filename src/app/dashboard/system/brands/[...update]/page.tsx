@@ -17,15 +17,15 @@ const UpdateBrand: React.FC = observer(() => {
     const pathName = usePathname();
     const { getBrandFormValues, handleFormChange } = brandStore;
 
-    console.log('get Brand Form Values', toJS(getBrandFormValues));
+    // console.log('get Brand Form Values', toJS(getBrandFormValues));
 
     async function handleUpdateBrand() {
         try {
             const updateBrand = await Repo.BrandRepository.update(toJS(brandStore.getBrandFormValues));
-            console.log('updated brand', updateBrand);
+            // console.log('updated brand', updateBrand);
 
-            router.replace('/dashboard/system/brands');
             brandStore.resetFormValues();
+            router.replace('/dashboard/system/brands');
         } catch (error) {
             console.error('Error updating brand:', error);
         }

@@ -5,9 +5,18 @@ import type { Product } from '@/API';
 interface ProductStoreInitialState {
     products: Product[];
 }
+
+export interface ProductInput {
+    name?: string;
+    brandID?: string;
+    isActive?: boolean;
+}
+
 const initialState: ProductStoreInitialState = {
     products: []
 };
+
+
 
 export class ProductStore {
     products: Product[] = [];
@@ -86,11 +95,11 @@ export class ProductStore {
         };
     }
 
-    get getProducts() {
+    get getAllProducts() {
         return this.products;
     }
 
     get getProductFormValues() {
-        return this.products;
+        return this.productForm;
     }
 }

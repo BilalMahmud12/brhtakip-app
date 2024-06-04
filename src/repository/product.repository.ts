@@ -26,11 +26,11 @@ const getProductById = async (id: string) => {
     }
 }
 
-const create = async (product: Product) => {
+const create = async (product: any) => {
     try {
         const data = await client.graphql({
             query: createProduct,
-            variables: { input: product },
+            variables: { input: { ...product } },
         });
 
         return data;

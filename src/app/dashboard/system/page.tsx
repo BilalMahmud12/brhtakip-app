@@ -8,11 +8,11 @@ const requestNavigation = [
         label: 'Markalar',
         icon: <Icon iconName='FcFinePrint' className='' />
     },
-    {
-        href: '/dashboard/system/products',
-        label: 'Ürünler',
-        icon: <Icon iconName='FcFinePrint' className='' />
-    },
+    // {
+    //     href: '/dashboard/system/products',
+    //     label: 'Ürünler',
+    //     icon: <Icon iconName='FcFinePrint' className='' />
+    // },
 
 ]
 
