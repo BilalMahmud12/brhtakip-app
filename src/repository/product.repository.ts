@@ -7,7 +7,7 @@ import type { Product } from '@/API';
 const getAllProducts = async () => {
     try {
         const { data } = await client.graphql({ query: listProducts });
-        return data.listProducts.items
+        return data?.listProducts?.items ?? [];
     } catch (error) {
         console.error(error);
     }
@@ -20,17 +20,17 @@ const getProductById = async (id: string) => {
             variables: { id },
         });
 
-        return data;
+        return data?.getProduct ?? null;
     } catch (error) {
         console.error(error);
     }
 }
 
-const create = async (request: Product) => {
+const create = async (product: Product) => {
     try {
         const data = await client.graphql({
             query: createProduct,
-            variables: { input: request },
+            variables: { input: product },
         });
 
         return data;
@@ -39,11 +39,11 @@ const create = async (request: Product) => {
     }
 }
 
-const update = async (request: Product) => {
+const update = async (product: Product) => {
     try {
         const data = await client.graphql({
             query: updateProduct,
-            variables: { input: request },
+            variables: { input: product },
         });
 
         return data;

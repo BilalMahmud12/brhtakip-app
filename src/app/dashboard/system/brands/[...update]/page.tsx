@@ -83,11 +83,11 @@ const UpdateBrand: React.FC = observer(() => {
             <div className='my-2 pt-5' />
 
             {/* START PRODUCT SECTION */}
-            {/* <div>
+            <div>
                 <ProductView
                     brandId={getBrandFormValues.id ?? ''}
                 />
-            </div> */}
+            </div>
             {/* END PRODUCT SECTION */}
         </div>
     );

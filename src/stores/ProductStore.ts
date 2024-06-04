@@ -5,7 +5,6 @@ import type { Product } from '@/API';
 interface ProductStoreInitialState {
     products: Product[];
 }
-
 const initialState: ProductStoreInitialState = {
     products: []
 };
@@ -13,13 +12,22 @@ const initialState: ProductStoreInitialState = {
 export class ProductStore {
     products: Product[] = [];
 
+    productForm = {
+        name: '',
+        brandID: '',
+        isActive: false,
+    };
+
     constructor(private rootStore: RootStore) {
         this.rootStore = rootStore;
 
         makeObservable(this, {
+            productForm: observable,
             setProducts: action,
             addProduct: action,
             removeProduct: action,
+            handleFormChange: action,
+            resetFormValues: action,
         });
         extendObservable(this, initialState);
     }
@@ -37,11 +45,52 @@ export class ProductStore {
     }
 
     removeProduct(productId: string) {
-        this.setProducts(this.products.filter(product => product.id !== productId) || [])
+        this.setProducts(this.products.filter(product => product.id !== productId) || []);
+    }
+
+    setProductFormValues(values: any) {
+        this.productForm = {
+            ...this.productForm,
+            ...values,
+        };
+    }
+
+    handleFormChange = (input: string, field: keyof typeof this.productForm) => {
+        switch (field) {
+            case 'name':
+                this.productForm = {
+                    ...this.productForm,
+                    name: input,
+                }
+                break;
+            case 'isActive':
+                this.productForm = {
+                    ...this.productForm,
+                    isActive: input === '1' || input === 'true',
+                }
+                break;
+            default:
+                this.productForm = {
+                    ...this.productForm,
+                    [field]: input,
+                }
+                break;
+        }
+    }
+
+    resetFormValues() {
+        this.productForm = {
+            name: '',
+            brandID: '',
+            isActive: false,
+        };
     }
 
     get getProducts() {
         return this.products;
     }
-};
 
+    get getProductFormValues() {
+        return this.products;
+    }
+}

@@ -12,7 +12,7 @@ const CreateBrand: React.FC = observer(() => {
     const { brandStore } = useStore();
     const router = useRouter()
 
-    async function handleCreateForm() {
+    async function handleCreateBrand() {
         try {
             const createBrand = await Repo.BrandRepository.create(toJS(brandStore.getBrandFormValues))
             console.log('new created brand', createBrand)
@@ -62,7 +62,7 @@ const CreateBrand: React.FC = observer(() => {
                                 colorTheme="success"
                                 size="small"
                                 loadingText=""
-                                onClick={handleCreateForm}
+                                onClick={handleCreateBrand}
                                 className='rounded-none bg-amber-500 text-gray-800 px-6'
                             >
                                 <span>Ekle</span>
