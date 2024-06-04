@@ -94,9 +94,9 @@
   /*max-height: 150px;*/
 }
 
-/* .amplify-field-group__inner-start {
+.amplify-field-group__inner-start {
   display: none !important;
-} */
+}
 
 .amplify-field-group__icon-button {
   background-color: transparent !important;
