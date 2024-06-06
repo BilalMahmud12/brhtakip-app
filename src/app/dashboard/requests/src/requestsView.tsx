@@ -264,8 +264,6 @@ const RequestsView: React.FC = observer((props) => {
 
                 <div className='px-6 py-4 bg-white shadow'>
                     <div className="flex flex-col gap-3">
-                        <p className="text-small text-default-500">Selected Page: {currentPage}</p>
-                        
                         <div className="flex gap-6">
                             <UIButton
                                 size="sm"
@@ -273,7 +271,7 @@ const RequestsView: React.FC = observer((props) => {
                                 color="secondary"
                                 onPress={() => setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev))}
                             >
-                                Previous
+                                Onceki
                             </UIButton>
                             <Pagination
                                 total={10}
@@ -287,7 +285,7 @@ const RequestsView: React.FC = observer((props) => {
                                 color="secondary"
                                 onPress={() => setCurrentPage((prev) => (prev < 10 ? prev + 1 : prev))}
                             >
-                                Next
+                                Sonraki
                             </UIButton>
                         </div>
                     </div>
