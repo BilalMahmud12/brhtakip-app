@@ -10,11 +10,30 @@ const initialState: RequestStoreInitialState = {
     requests: []
 }
 
+interface RequestForm {
+    status: RequestStatus;
+    requestNumber: string;
+    clientprofileID: string;
+    storeID: string;
+    requestBrandId: string;
+    requestProductId: string;
+    requestMaterialId: string;
+    requestDetails: {
+        applicationArea: string;
+        branded: boolean;
+        quantity: number;
+        width: number;
+        height: number;
+        material: string;
+        designNote: string;
+    }
+}
+
 
 export class RequestStore {
+    isFetching: boolean = false;
     requests: Request[] = [];
-
-    requestForm = {
+    requestForm: RequestForm = {
         status: '' as RequestStatus,
         requestNumber: '',
         clientprofileID: '',
@@ -39,12 +58,14 @@ export class RequestStore {
         this.rootStore = rootStore;
         
         makeObservable(this, {
+            isFetching: observable,
             requestForm: observable,
             selectedRequests: observable,
             setRequests: action,
             removeRequest: action,
             handleFormChange: action,
-            resetFormValues: action
+            resetFormValues: action,
+            setIsFetching: action,
         });
 
         extendObservable(this, initialState);
@@ -68,13 +89,18 @@ export class RequestStore {
 
     setRequestFormValues(values: any) {
         this.requestForm = {
-            ...this.requestForm,
             ...values,
         }
     }
 
     handleFormChange = (input: string, field: string) => {
         switch (field) {
+            case 'status':
+                this.requestForm = {
+                    ...this.requestForm,
+                    status: input as RequestStatus,
+                }
+                break;
             case 'requestNumber':
                 this.requestForm = {
                     ...this.requestForm,
@@ -161,7 +187,7 @@ export class RequestStore {
                 break;
         }
 
-        console.log('request form', toJS(this.requestForm));
+        //console.log('request form', toJS(this.requestForm));
     }
 
     resetFormValues = () => {
@@ -191,6 +217,14 @@ export class RequestStore {
 
     setSelectedRequests(requestIds: string[]) {
         this.selectedRequests = requestIds;
+    }
+
+    setIsFetching(value: boolean) {
+        this.isFetching = value;
+    }
+
+    get getFetchingStatus() {
+        return this.isFetching;
     }
 
     get getAllRequests() {

@@ -24,11 +24,16 @@ const getStatus = (status: string) => {
     }
 }
 
-const RequestCard: React.FC<{ data: any, handleSelect?: (event: React.ChangeEvent<HTMLInputElement>, id: string) => void}> = ({ 
+const RequestCard: React.FC<{ 
+    data: any,
+    handleSelect?: (event: React.ChangeEvent<HTMLInputElement>, id: string) => void
+    handleEdit?: (data: any) => void
+}> = ({ 
     data,
-    handleSelect = () => {}
+    handleSelect = () => {},
+    handleEdit = () => {}
 }) => {
-    const [showBody, setShowBody] = useState(true)
+    const [showBody, setShowBody] = useState(false)
 
     return (
         <article className='relative bg-white rounded-md shadow p-6'>
@@ -46,13 +51,16 @@ const RequestCard: React.FC<{ data: any, handleSelect?: (event: React.ChangeEven
                     </div>
 
                     <div className='flex items-center space-x-2'>
-                        <RequestDataCardActionsMenu data={data} />
-                        
                         <button onClick={() => setShowBody(!showBody)} aria-label="Toggle content visibility">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={`w-5 h-5 transition-all duration-300 ease-in-out ${showBody ? 'rotate-180' : ''}`}>
                                 <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
                             </svg>
                         </button>
+                        <button onClick={() => handleEdit(data)} aria-label="Toggle content visibility">
+                            <Icon iconName='MdEdit' className='text-xl' />
+                        </button>
+
+                        <RequestDataCardActionsMenu data={data} />
                     </div>
                 </div>
             </header>

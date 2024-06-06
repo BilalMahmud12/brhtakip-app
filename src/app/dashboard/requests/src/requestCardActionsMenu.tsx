@@ -79,7 +79,7 @@ const RequestDataCardActionsMenu: React.FC<{ data: any }> = ({ data }) => {
                 >
                     <DropdownTrigger>
                         <button aria-label="Open actions menu">
-                            <Icon iconName='dots' className='text-xl text-zinc-700' />
+                            <Icon iconName='tbDotsCircleHorizontal' className='text-2xl text-zinc-400 hover:text-zinc-700' />
                         </button>
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Actions menu">

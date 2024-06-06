@@ -6,6 +6,7 @@ import SideNav from "@/components/custom/sideNav";
 
 import * as Repo from '@/repository/index';
 import { useStore } from '@/stores/utils/useStore';
+import { usePathname } from 'next/navigation';
 
 export default function RootLayout({
     children,
@@ -13,10 +14,22 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
 
+    const pathname = usePathname();
+
     const {
         userStore, 
-        clientProfileStore 
-    } = useStore();
+        clientProfileStore,
+        utilityStore
+    } = useStore()
+
+    const { getCurrentPageTitle, setCurrentPageTitle } = utilityStore;
+
+    useEffect(() => {
+        const pageTitle = document.getElementsByTagName('title')[0].innerText;
+        if (pageTitle && pageTitle !== getCurrentPageTitle) {
+            setCurrentPageTitle(pageTitle?.split(' - ')[0]);
+        }
+    }, [pathname]);
 
     useEffect(() => {
         const currentUser = async () => {

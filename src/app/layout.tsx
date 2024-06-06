@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import ConfigureAmplifyClientSide from '@/utils/ConfigureAmplify'
 import { StoreProvider } from '../stores/utils/StoreProvider'
 import { ThemeProvider } from '@aws-amplify/ui-react'
@@ -16,7 +16,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
+
   return (
       <html lang="tr">
         <StoreProvider>

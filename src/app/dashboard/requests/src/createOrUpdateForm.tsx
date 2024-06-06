@@ -7,7 +7,7 @@ import { Input, Label, Autocomplete, ComboBoxOption } from '@aws-amplify/ui-reac
 import { generateRequestNumber } from '@/utils/helpers';
 import { client } from '@/repository';
 
-import type { Request} from '@/API';
+import type { Request, RequestItem } from '@/API';
 
 
 interface CreateOrUpdateFormProps {
@@ -71,7 +71,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
     const { userStore, clientProfileStore, requestStore } = useStore();
     const { userData } = userStore;
     const { getClientProfiles } = clientProfileStore;
-    const { handleFormChange, getRequestFormValues } = requestStore;
+    const { handleFormChange, getRequestFormValues, setRequestFormValues } = requestStore;
 
     const [storesList, setStoresList] = useState<{ id: string, label: string }[]>([]);
     const [productsList, setProductsList] = useState<{ id: string, label: string }[]>([]);
@@ -100,12 +100,49 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
         };
 
         fetchData();
-
-
-        if (isCreate) {
-            handleFormChange(generateRequestNumber(), 'requestNumber');
-        }
     }, []);
+
+    useEffect(() => {
+        if (isCreate) {
+            handleFormChange('PENDING_APPROVAL', 'status')
+            handleFormChange(generateRequestNumber(), 'requestNumber');
+        } else {
+            console.log('Request Data:', request);
+            // const {
+            //     status,
+            //     requestNumber,
+            //     clientprofileID,
+            //     storeID,
+            //     requestBrandId,
+            //     requestProductId,
+            //     requestMaterialId,
+            //     requestDetails
+            // } = request;
+
+            // const {
+            //     applicationArea,
+            //     material,
+            //     branded = false,
+            //     quantity = 0,
+            //     width = 0,
+            //     height = 0,
+            //     designNote = ''
+            // } = requestDetails as RequestItem;
+
+            // handleFormChange(status, 'status')
+            // handleFormChange(requestNumber, 'requestNumber')
+            // handleFormChange(clientprofileID, 'clientprofileID')
+            // handleFormChange(storeID, 'storeID')
+            // handleFormChange(requestBrandId ?? '', 'requestBrandId')
+            // handleFormChange(requestProductId ?? '', 'requestProductId')
+            // handleFormChange(requestMaterialId ?? '', 'requestMaterialId')
+            // handleFormChange(applicationArea ?? '', 'requestDetails.applicationArea')
+            // handleFormChange(material ?? '', 'requestDetails.material')
+            // console.log('form value', getRequestFormValues);
+
+            loadFormData(request);
+        }
+    }, [])
   
     // @TODO: isolate this function to a helper file
     const getClientsList = (): { id: string, label: string }[] => {
@@ -148,6 +185,42 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
         });
 
         return productsData.data.listProducts.items.map((item: any) => ({ id: item.id, label: item.name }));
+    }
+
+    const loadFormData = async (request: Request) => {
+        const {
+            status,
+            requestNumber,
+            clientprofileID,
+            storeID,
+            requestBrandId,
+            requestProductId,
+            requestMaterialId,
+            requestDetails
+        } = request;
+
+        const {
+            applicationArea,
+            material,
+            branded = false,
+            quantity = 0,
+            width = 0,
+            height = 0,
+            designNote = ''
+        } = requestDetails as RequestItem;
+
+        handleFormChange(status, 'status')
+        handleFormChange(requestNumber, 'requestNumber')
+        handleFormChange(clientprofileID, 'clientprofileID')
+        handleFormChange(storeID, 'storeID')
+        handleFormChange(requestBrandId ?? '', 'requestBrandId')
+        handleFormChange(requestProductId ?? '', 'requestProductId')
+        handleFormChange(requestMaterialId ?? '', 'requestMaterialId')
+        handleFormChange(applicationArea ?? '', 'requestDetails.applicationArea')
+        handleFormChange(material ?? '', 'requestDetails.material')
+        handleFormChange(branded ? '1' : '0', 'requestDetails.branded')
+
+        console.log('form value', getRequestFormValues);
     }
 
     return (
@@ -229,6 +302,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                                                 placeholder='Marka Seç'
                                                 variation="quiet"
                                                 options={getBrandsList(getRequestFormValues.clientprofileID !== '' ? getRequestFormValues.clientprofileID : '')}
+                                                value={getBrandsList(getRequestFormValues.clientprofileID !== '' ? getRequestFormValues.clientprofileID : '').find(brand => brand.id === getRequestFormValues.requestBrandId)?.label}
                                                 onSelect={(option) => handleOnBrandSelection(option)}
                                                 onClear={() => handleOnBrandClear}
                                                 className='custom-input'
@@ -243,7 +317,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                                                 placeholder='Ürün Seç'
                                                 variation="quiet"
                                                 options={productsList}
-                                                value={productsList.find(product => product.id === getRequestFormValues.requestProductId)?.label || ''}
+                                                value={productsList.find(product => product.id === getRequestFormValues.requestProductId)?.label}
                                                 onSelect={(option) => handleFormChange(option.id, 'requestProductId')}
                                                 onClear={() => handleFormChange('', 'requestProductId')}
                                                 className='custom-input'
@@ -260,6 +334,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                                                 placeholder='Uygulama Alanı Seç'
                                                 variation="quiet"
                                                 options={applicationAreasList}
+                                                value={applicationAreasList.find(area => area.id === getRequestFormValues.requestDetails.applicationArea)?.label}
                                                 onSelect={(option) => handleFormChange(option.id, 'requestDetails.applicationArea')}
                                                 className='custom-input'
                                             />
@@ -336,6 +411,17 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                                                 variation="quiet"
                                                 className='custom-input'
                                                 onChange={(e) => handleFormChange(e.target.value, 'requestDetails.designNote')}
+                                            />
+                                        </div>
+
+                                        <div className='input-group col-span-3'>
+                                            <Label htmlFor="extraProducts" className='block text-xs font-medium mb-1.5'>Ek Ürün</Label>
+                                            <Input
+                                                id="extraProducts"
+                                                name="extraProducts"
+                                                variation="quiet"
+                                                className='custom-input'
+                                                onChange={(e) => handleFormChange(e.target.value, 'extraProducts')}
                                             />
                                         </div>
 

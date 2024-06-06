@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as Repo from '@/repository/index'
 import { useStore } from '@/stores/utils/useStore';
 import { useDataModal } from '@/contexts/DataModalContext';
@@ -13,6 +13,7 @@ import { toast } from 'sonner';
 import ClientSelectForm from './src/clientSelectForm';
 import CreateOrUpdateForm from './src/createOrUpdateForm';
 import { toJS } from 'mobx';
+import { request } from 'http';
 
 const statusMap = {
     'pending-approval': 'PENDING_APPRVOAL',
@@ -170,6 +171,7 @@ export default function RequestLayout(
     const pathname = usePathname();
     const { requestStore, userStore } = useStore();
     const { userData } = userStore;
+
     const { showDataModal, hideDataModal } = useDataModal();
 
     const statusMap: { [key: string]: string } = {
@@ -188,11 +190,19 @@ export default function RequestLayout(
 
     useEffect(() => {
         const fetchData = async () => {
+            requestStore.setIsFetching(true);
             const requestsData = await Repo.RequestRepository.getRequestsByStatus(`${requestStatus()}`);
 
             if (requestsData) {
-                requestStore.initStore({ requests: [...requestsData as unknown as Request[]] });
+                const sortedRequests = (requestsData as unknown as Request[]).sort((a, b) => {
+                    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+                });
+
+                requestStore.setRequests([] as Request[]);
+                requestStore.setRequests(sortedRequests);
             }
+
+            requestStore.setIsFetching(false);
         };
 
         if (requestStatus() !== undefined) {
@@ -254,6 +264,7 @@ export default function RequestLayout(
             <div className='grid grid-cols-6 border-b border-zinc-200'>
                 {requestNavigation.map((nav, index) => (
                     <Link
+                        onClick={() => requestStore.setRequests([] as Request[])}
                         href={nav.href}
                         key={index}
                         className='col-span-1 px-3 py-2 bg-white flex items-center justify-start border-r border-zinc-200 hover:bg-zinc-100 cursor-pointer transition-all duration-200 ease-in-out'
@@ -266,26 +277,7 @@ export default function RequestLayout(
                     </Link>
                 ))}
             </div>
-
-            <div className='flex items-center justify-between px-8 py-4'>
-                <div>
-                    <div className=''>
-                        <h2 className='text-xl font-medium'>{getPageTitle(requestStatus())}</h2>
-                    </div>
-                </div>
-
-                <Button
-                    variation="primary"
-                    colorTheme="success"
-                    size="small"
-                    loadingText=""
-                    onClick={handleCreateForm}
-                    className='rounded-md bg-amber-500 text-gray-800 px-6 py-1.5'
-                >
-                    <span>Talep Oluştur</span>
-                </Button>
-            </div>
-
+        
             <div className='px-8'>
                 {children}
             </div>

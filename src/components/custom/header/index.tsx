@@ -1,16 +1,23 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { observer } from 'mobx-react'
 import { useRouter } from "next/navigation"
 import { signOut } from "aws-amplify/auth"
-import { Button, SearchField, Divider } from '@aws-amplify/ui-react'
+import { Button, Divider } from '@aws-amplify/ui-react'
 import Logo from './src/logo'
+import { useStore } from '@/stores/utils/useStore'
 
-const AppHeader: React.FC = () => {
+
+
+const AppHeader: React.FC = observer(() => {
+    const store = useStore()
     const router = useRouter()
+
     const handleLogOut = async () => {
         await signOut()
         router.push("/")
     }
+
     return (
         <React.Fragment>
             <header className='border-b border-zinc-200'>
@@ -19,9 +26,9 @@ const AppHeader: React.FC = () => {
                         <Logo />
                     </div>
                     <div className='flex items-center col-span-2 px-4'>
-                        
+                        <h1 className='text-lg font-medium'>{store.utilityStore.getCurrentPageTitle}</h1>
                     </div>
-                    <div></div>
+                    <div className='hidden xl:block xl:col-span-1'></div>
                     <div></div>
                     <div className='flex items-center justify-end'>
                         <div className='mr-6 flex items-center space-x-4'>
@@ -57,6 +64,6 @@ const AppHeader: React.FC = () => {
             </header>
         </React.Fragment>
     )
-}
+})
 
 export default AppHeader
