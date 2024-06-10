@@ -35,6 +35,7 @@ import { HiOutlineFilter, HiDotsHorizontal } from "react-icons/hi"
 import { GoKebabHorizontal } from "react-icons/go"
 import { MdInbox, MdEdit, MdDelete } from 'react-icons/md';
 import { FaRegSave } from "react-icons/fa";
+import { TbDotsCircleHorizontal } from "react-icons/tb";
 
 const iconMapping: Record<string, IconType> = {
     'FcTimeline': FcTimeline,
@@ -73,6 +74,7 @@ const iconMapping: Record<string, IconType> = {
     'FcNext': FcNext,
     'inbox': MdInbox,
     'dots': HiDotsHorizontal,
+    'tbDotsCircleHorizontal': TbDotsCircleHorizontal,
      // Map the string from your array to the icon component
 };
 

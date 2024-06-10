@@ -12,9 +12,9 @@ export const adminNavItems = [
         "section_title": "Yonet",
         show_title: true,
         items: [
-            { name: 'Müşteri Profilleri', href: '/clients', icon: 'FcBriefcase' },
+            //{ name: 'Müşteri Profilleri', href: '/clients', icon: 'FcBriefcase' },
             { name: 'Talepler', href: '/dashboard/requests', icon: 'FcViewDetails' },
-            { name: 'Sistem Tanıtmaları', href: '/dashboard/system', icon: 'FcFolder' },
+            { name: 'Sistem Tanıtmaları', href: '/', icon: 'FcFolder' },
         ]
     },
     {

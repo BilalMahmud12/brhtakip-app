@@ -3,7 +3,7 @@ import { UserStore } from './UserStore';
 import { RequestStore } from './RequestStore';
 import { BrandStore } from './BrandStore';
 import { ClientProfileStore } from './ClientProfileStore';
-import { ProductStore } from './ProductStore';
+import { UtilityStore } from './UtilityStore';
 import type { ClientProfile } from '@/API';
 
 interface RootStoreInitialState {
@@ -25,17 +25,15 @@ export class RootStore {
     userStore: UserStore;
     requestStore: RequestStore;
     clientProfileStore: ClientProfileStore;
-    brandStore: BrandStore;
-    productStore: ProductStore;
-
+    utilityStore: UtilityStore;
+    
     currentClientProfile: ClientProfile | undefined;
 
     constructor() {
         this.userStore = new UserStore(this);
         this.requestStore = new RequestStore(this);
         this.clientProfileStore = new ClientProfileStore(this);
-        this.brandStore = new BrandStore(this);
-        this.productStore = new ProductStore(this);
+        this.utilityStore = new UtilityStore(this);
 
         makeObservable(this, {
             setCurrentClientProfile: action,

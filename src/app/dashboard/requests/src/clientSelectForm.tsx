@@ -1,15 +1,15 @@
-import { useStore } from '@/stores/utils/useStore';
-import { Autocomplete, Label } from '@aws-amplify/ui-react'
 import React from 'react'
+import { useAppSelector } from '@/lib/hooks';
+import { RootState } from '@/lib/store';
+import { handleFormChange } from '@/lib/features/requestSlice'
+import { Autocomplete, Label } from '@aws-amplify/ui-react'
 
 const ClientSelectForm = () => {
-    const { clientProfileStore, requestStore } = useStore();
-    const { getClientProfiles } = clientProfileStore;
-
-    const { handleFormChange, getRequestFormValues } = requestStore;
+    const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
+    const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
 
     const getClientsList = (): { id: string, label: string }[] => {
-        return getClientProfiles?.map((client) => ({
+        return clientProfiles?.map((client) => ({
             id: client.id,
             label: client?.name as string || ''
         }));
@@ -26,9 +26,9 @@ const ClientSelectForm = () => {
                         placeholder='Müşteri Seç'
                         variation="quiet"
                         options={getClientsList()}
-                        value={getClientsList().find(client => client.id === getRequestFormValues.clientprofileID)?.label}
-                        onSelect={(option) => handleFormChange(option.id, 'clientprofileID')}
-                        onClear={() => handleFormChange('', 'clientprofileID')}
+                        value={getClientsList().find(client => client.id === requestForm.clientprofileID)?.label}
+                        onSelect={(option) => handleFormChange({ key: 'clientprofileID', value: option.id })}
+                        onClear={() => handleFormChange({ key: 'clientprofileID', value: '' })}
                         className='custom-input'
                     />
                 </div>

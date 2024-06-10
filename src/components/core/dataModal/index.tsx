@@ -10,14 +10,14 @@ const DataModal: React.FC = () => {
             isOpen={isVisible} 
             onClose={hideDataModal}
             radius="lg"
-            size="3xl"
+            size="4xl"
             isDismissable={false}
             scrollBehavior="inside"
             closeButton={customCloseButton(hideDataModal)}
             classNames={{
                 closeButton: "top-4 right-4 rounded-lg bg-zinc-200 hover:bg-[#f59e0b] hover:text-white hidden",
             }}
-            className='max-h-[60vh] overflow-y-scroll'
+            className='min-h-[60vh]'
         >
             <ModalContent>
                 <ModalHeader className='bg-white py-5 border-b border-zinc-200'>

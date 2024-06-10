@@ -5,7 +5,12 @@ import type { Request, RequestStatus } from '@/API';
 
 const getAllRequests = async () => {
     try {
-        const { data } = await client.graphql({ query: listRequests });
+        const { data } = await client.graphql({ 
+            query: listRequests,
+            variables: { 
+                limit: 5 
+            },
+        });
         return data.listRequests.items
     } catch (error) {
         console.error(error);
@@ -34,7 +39,8 @@ const getRequestsByStatus = async (status: string) => {
                     status: { 
                         eq: status as RequestStatus 
                     } 
-                } 
+                },
+                limit: 500 
             },
         });
 
@@ -45,6 +51,7 @@ const getRequestsByStatus = async (status: string) => {
 }
 
 const create = async (request: any) => {
+    console.log("Request repo create", request)
     try {
         const data = await client.graphql({
             query: createRequest,
