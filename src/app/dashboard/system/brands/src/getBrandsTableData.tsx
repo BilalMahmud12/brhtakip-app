@@ -1,12 +1,9 @@
-
+'use client'
 import type { Brand } from '@/API'
-import { formateDate } from '@/utils/helpers';
 import type { DataTableColumn } from '@/components/core/dataTable';
 import { Badge, BadgeVariations } from '@aws-amplify/ui-react'
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import Icon from '@/components/core/icon';
-import { useStore } from '@/stores/utils/useStore';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 export default function getBrandsTableData(
@@ -14,18 +11,15 @@ export default function getBrandsTableData(
     columns: any,
     handleEdit: (data: any) => void,
     handleDelete: (data: any) => void,
-    handleSelect: (data: any) => void
+    handleSelect: (data: any) => void,
+    getClientName: (data: any) => void
 ) {
-
-    const { clientProfileStore, brandStore } = useStore();
-    const { getClientProfiles } = clientProfileStore;
     const router = useRouter()
-
 
     return data.map((brand) => {
         const row: { [key: string]: any } = {};
 
-        columns.forEach((column: DataTableColumn) => {
+        columns.forEach(async (column: DataTableColumn) => {
             if (column.transform) {
                 row[column.key] = column.transform(brand[column.key as keyof Brand], brand);
             }
@@ -36,13 +30,8 @@ export default function getBrandsTableData(
                             <div
                                 className='hover:underline hover:text-blue-700 cursor-pointer'
                                 onClick={() => {
-                                    brandStore.setBrandFormValues({
-                                        id: brand.id,
-                                        name: brand.name,
-                                        isActive: brand.isActive,
-                                        clientprofileID: brand.clientprofileID
-                                    });
-                                    router.push(`/dashboard/system/brands/${brand.id}}`);
+                                    router.push(`/dashboard/system/brands/${brand.id}`);
+                                    handleEdit(brand)
                                 }}
                             >
                                 {brand.name}
@@ -65,8 +54,7 @@ export default function getBrandsTableData(
                         break;
 
                     case 'clientprofileID':
-                        const clientProfile = getClientProfiles.find(profile => profile.id === brand.clientprofileID);
-                        row[column.key] = clientProfile?.name || 'Unknown';
+                        // row[column.key] = await getClientName(brand.clientprofileID);
                         break;
 
                     case 'actions':
@@ -121,6 +109,7 @@ export default function getBrandsTableData(
         row['onEdit'] = () => handleEdit(brand);
         row['onDelete'] = () => handleDelete(brand);
         row['onSelect'] = () => handleSelect(brand);
+        row['ongetClientName'] = () => getClientName(brand.clientprofileID);
         row['originalData'] = brand;
 
         return row;

@@ -4,16 +4,14 @@ import { observer } from 'mobx-react-lite';
 import { useStore } from '@/stores/utils/useStore';
 import { useDataModal } from '@/contexts/DataModalContext';
 import { Button } from '@aws-amplify/ui-react'
-import Icon from '@/components/core/icon';
 import BrandsDataTable from './brandsDataTable';
 import ClientSelectForm from './clientSelectForm';
 import { useRouter } from 'next/navigation';
 import * as Repo from '@/repository/index'
-import { Brand } from '@/API';
-
 
 interface BrandsViewProps {
-    handleDelete: (data: any) => Promise<void>;
+    onDelete: (data: any) => Promise<void>;
+    // getClientName: (data: any) => Promise<void>
 }
 
 const SelectClientModalFooter = (
@@ -58,16 +56,10 @@ const SelectClientModalFooter = (
     )
 }
 
-const BrandsView: React.FC<BrandsViewProps> = observer((
-    {
-        handleDelete,
-    }
-) => {
-    const { brandStore } = useStore();
+const BrandsView: React.FC<BrandsViewProps> = observer(({ onDelete, }) => {
+    const { brandStore, clientProfileStore } = useStore();
     const { showDataModal, hideDataModal } = useDataModal();
     const router = useRouter()
-
-
 
     const handleCancelForm = () => {
         brandStore.resetFormValues()
@@ -88,36 +80,62 @@ const BrandsView: React.FC<BrandsViewProps> = observer((
         )
     }
 
-    return (
-        <div className='mt-1.5 shadow bg-zinc-50'>
-            <div className='px-6 py-6 mb-3 flex items-center justify-between'>
-                <div>
-                    <div className=''>
-                        <h2 className='text-2xl font-medium'>Markalar</h2>
-                    </div>
-                </div>
 
-                <div className='flex items-center space-x-2'>
+    const getClientName = async (data: string) => {
+        console.log('Coming Data', data);
+        try {
+            const clientProfiles = await Repo.ClientProfileRepository.getClientProfiles();
+            const clientProfile = clientProfiles?.find(profile => profile.id === data);
+            console.log('Get Client Name', clientProfile?.name);
+            clientProfile?.name;
+        } catch (error) {
+            console.error('Failed to get client profiles', error);
+        }
+    };
+
+    const setBrandUpdateData = (data: any) => {
+        brandStore.setBrandFormValues({
+            id: data.id,
+            name: data.name,
+            isActive: data.isActive,
+            clientprofileID: data.clientprofileID
+        });
+    }
+
+
+    return (
+        <div>
+            <div className='mt-1.5 shadow bg-zinc-50'>
+                <div className='px-6 py-6 mb-3 flex items-center justify-between'>
+                    <div>
+                        <div className=''>
+                            <h2 className='text-2xl font-medium'>Markalar</h2>
+                        </div>
+                    </div>
 
                     <div className='flex items-center space-x-2'>
-                        <Button
-                            variation="primary"
-                            colorTheme="success"
-                            size="small"
-                            loadingText=""
-                            onClick={handleCreateForm}
-                            className='rounded-none bg-amber-500 text-gray-800 px-6'
-                        >
-                            <span>Marka Ekle</span>
-                        </Button>
+
+                        <div className='flex items-center space-x-2'>
+                            <Button
+                                variation="primary"
+                                colorTheme="success"
+                                size="small"
+                                loadingText=""
+                                onClick={handleCreateForm}
+                                className='rounded-none bg-amber-500 text-gray-800 px-6'
+                            >
+                                <span>Marka Ekle</span>
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>
-
             <div className='mt-8'>
                 <BrandsDataTable
                     dataPayload={brandStore.getBrands}
-                    handleDelete={handleDelete}
+                    getClientName={getClientName}
+                    onDeleteBrand={onDelete}
+                    handleEdit={setBrandUpdateData}
                 />
             </div>
         </div>

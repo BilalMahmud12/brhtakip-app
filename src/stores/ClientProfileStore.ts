@@ -11,11 +11,14 @@ const initialState: ClientStoreInitialState = {
 }
 
 export class ClientProfileStore {
+    static find(arg0: (profile: { id: any; }) => boolean) {
+        throw new Error('Method not implemented.');
+    }
     clientProfiles: ClientProfile[] = [];
 
     constructor(private rootStore: RootStore) {
         this.rootStore = rootStore;
-        
+
         makeObservable(this, {
             setClientProfiles: action,
             addClientProfile: action,

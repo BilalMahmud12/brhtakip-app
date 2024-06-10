@@ -20,6 +20,7 @@ type DataTableProps = {
     onRowSelect?: (selectedRows: Set<number>) => void;
     onEditRow?: (data: any) => void;
     onDeleteRow?: (data: any) => void;
+    getClientName?: (data: any) => void;
     styles?: { [key: string]: string };
 }
 
@@ -31,6 +32,7 @@ const DataTable: React.FC<DataTableProps> = (props) => {
         onRowSelect = () => { },
         onEditRow = () => { },
         onDeleteRow = () => { },
+        getClientName = () => { },
         styles = {}
     } = props;
 
@@ -109,7 +111,7 @@ const DataTable: React.FC<DataTableProps> = (props) => {
                     ))}
                 </tbody>
 
-                {/*                 
+                {/*
                 <tfoot>
                     <tr>
                         <td colSpan={columns.length} className='text-left text-sm px-3 py-1.5 text-gray-600 border-r border-gray-200'>

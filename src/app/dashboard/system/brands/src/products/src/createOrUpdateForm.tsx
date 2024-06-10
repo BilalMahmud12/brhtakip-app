@@ -9,7 +9,7 @@ interface CreateOrUpdateFormProps {
     product?: Partial<Product>;
 }
 
-const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer(() => {
+const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((isCreate) => {
     const { productStore } = useStore();
     const { handleFormChange, getProductFormValues } = productStore;
     return (
@@ -24,6 +24,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer(() => {
                             placeholder='Ürün Ekle'
                             variation="quiet"
                             onChange={(e) => productStore.handleFormChange(e.target.value, 'name')}
+                            defaultValue={!isCreate ? getProductFormValues.name : ''}
                             className='custom-input'
                         />
                     </div>
@@ -42,6 +43,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer(() => {
                                 { id: '0', label: 'İnaktif' }
                             ]}
                             onSelect={(option) => productStore.handleFormChange(option.id, 'isActive')}
+                            defaultValue={!isCreate ? (getProductFormValues.isActive ? 'Aktif' : 'İnaktif') : ''}
                             className='custom-input'
                         />
                     </div>
