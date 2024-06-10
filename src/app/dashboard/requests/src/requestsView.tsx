@@ -1,20 +1,20 @@
 'use client'
-import React, { useState, useEffect } from 'react';
-import { observer } from 'mobx-react-lite';
-import { toJS } from 'mobx';
-import { useStore } from '@/stores/utils/useStore';
+import React from 'react';
+import * as Repo from '@/repository/index';
+import { usePathname } from 'next/navigation'
 import { useDataModal } from '@/contexts/DataModalContext';
+import { useAppSelector, useAppDispatch } from '@/lib/hooks';
+import { AppDispatch, RootState } from '@/lib/store';
+import { setRequests, resetFormValues, setIsFetching } from '@/lib/features/requestSlice';
+import { Pagination, Button as UIButton } from "@nextui-org/react";
+import { SelectField, Button } from '@aws-amplify/ui-react'
 import RequestDataCards from './requestDataCards';
 import ClientSelectForm from './clientSelectForm';
 import CreateOrUpdateForm from './createOrUpdateForm';
-import { SearchField, SelectField, Button } from '@aws-amplify/ui-react'
-import Icon from '@/components/core/icon';
-import { usePathname, useRouter } from 'next/navigation'
-import * as Repo from '@/repository/index';
-import type { Request, RequestStatus } from '@/API';
-import { toast } from 'sonner';
 import { statusMap } from '@/config';
-import { Pagination, Button as UIButton } from "@nextui-org/react";
+import { toast } from 'sonner';
+
+import type { Request, RequestStatus } from '@/API';
 
 const SelectClientModalFooter = (
     props: {
@@ -105,11 +105,16 @@ const ModalCustomFooter = (
 }
 
 
-const RequestsView: React.FC = observer((props) => {
+const RequestsView: React.FC = () => {
     const pathname = usePathname();
-    const { requestStore, userStore } = useStore();
-    const { userData } = userStore;
+    const dispatch = useAppDispatch<AppDispatch>();
 
+    const userData = useAppSelector((state: RootState) => state.user.userData);
+    const requests = useAppSelector((state: RootState) => state.request.requests);
+    const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
+    const selectedRequests = useAppSelector((state: RootState) => state.request.selectedRequests);
+
+    
     const { showDataModal, hideDataModal } = useDataModal();
     const [currentPage, setCurrentPage] = React.useState(1);
 
@@ -119,7 +124,7 @@ const RequestsView: React.FC = observer((props) => {
     };
 
     const handleCancelForm = () => {
-        requestStore.resetFormValues()
+        dispatch(resetFormValues());
         hideDataModal()
     }
 
@@ -169,13 +174,13 @@ const RequestsView: React.FC = observer((props) => {
 
     const handleCreateRequest = async () => {
         try {
-            const createRequest = await Repo.RequestRepository.create(toJS(requestStore.getRequestFormValues))
+            const createRequest = await Repo.RequestRepository.create(requestForm)
 
             if (createRequest && createRequest.data) {
-                requestStore.setRequests([])
+                dispatch(setRequests([]))
                 hideDataModal()
                 toast.success(`${createRequest.data.createRequest.requestNumber} numaralı talep oluşturuldu.`);
-                requestStore.setIsFetching(true)
+                dispatch(setIsFetching(true))
 
                 const newRequests = await Repo.RequestRepository.getRequestsByStatus(`${requestStatus()}`);
 
@@ -183,9 +188,9 @@ const RequestsView: React.FC = observer((props) => {
                     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
                 });
 
-                requestStore.setRequests(sortedRequests)
-                requestStore.resetFormValues()
-                requestStore.setIsFetching(false)
+                dispatch(setRequests(sortedRequests))
+                dispatch(resetFormValues())
+                dispatch(setIsFetching(false))
             }
         } catch (error) {
             console.log('Error')
@@ -221,7 +226,7 @@ const RequestsView: React.FC = observer((props) => {
                                 size="small"
                                 placeholder="Eylem Seçiniz ..."
                                 labelHidden={true}
-                                isDisabled={!requestStore.getSelectedRequests.length}
+                                isDisabled={!selectedRequests.length}
                             >
                                 <option value="IN_DESIGN">Tasarıma Aktar</option>
                                 <option value="IN_PRESS">Baskıya Aktar</option>
@@ -258,7 +263,7 @@ const RequestsView: React.FC = observer((props) => {
                 </div>
                 
                 <RequestDataCards
-                    data={requestStore.getAllRequests}
+                    data={requests}
                     handleEdit={handleUpdateForm}
                 />
 
@@ -290,11 +295,9 @@ const RequestsView: React.FC = observer((props) => {
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </>
     );
-});
+}
 
 export default RequestsView;

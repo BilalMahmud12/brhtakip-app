@@ -169,7 +169,6 @@ export class RequestStore {
                     }
                 }
                 break;
-
             case 'requestDetails.designNote':
                 this.requestForm = {
                     ...this.requestForm,

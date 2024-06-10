@@ -1,12 +1,8 @@
 'use client'
-import React, { useEffect } from 'react'
-import * as Repo from '@/repository/index'
-import { useStore } from '@/stores/utils/useStore';
+import React from 'react'
 import Icon from '@/components/core/icon';
 import { Breadcrumbs } from '@aws-amplify/ui-react';
 import RequestsView from '../../src/requestsView';
-import { generateRequestNumber } from '@/utils/helpers';
-import type { Request } from '@/API';
 
 const PendingApproval = () => {
     return (

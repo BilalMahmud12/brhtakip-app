@@ -1,9 +1,11 @@
 'use client'
 import React, { useEffect, useState } from 'react';
+import { useAppSelector, useAppDispatch } from '@/lib/hooks';
+import { AppDispatch, RootState } from '@/lib/store';
+import { handleFormChange } from '@/lib/features/requestSlice';
 import { observer } from 'mobx-react';
-import { useStore } from '@/stores/utils/useStore';
-import { listBrands, listProducts, listClientProfiles, listStores, listMaterials } from '@/graphql/queries';
-import { Input, Label, Autocomplete, ComboBoxOption } from '@aws-amplify/ui-react';
+import { listProducts, listStores, listMaterials } from '@/graphql/queries';
+import { Input, Label, Autocomplete, ComboBoxOption, TextAreaField } from '@aws-amplify/ui-react';
 import { generateRequestNumber } from '@/utils/helpers';
 import { client } from '@/repository';
 
@@ -68,10 +70,11 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
         request = {} as Request
     } = props;
 
-    const { userStore, clientProfileStore, requestStore } = useStore();
-    const { userData } = userStore;
-    const { getClientProfiles } = clientProfileStore;
-    const { handleFormChange, getRequestFormValues, setRequestFormValues } = requestStore;
+    const dispatch = useAppDispatch<AppDispatch>();
+    const userData = useAppSelector((state: RootState) => state.user.userData);
+    const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
+
+    const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
 
     const [storesList, setStoresList] = useState<{ id: string, label: string }[]>([]);
     const [productsList, setProductsList] = useState<{ id: string, label: string }[]>([]);
@@ -104,49 +107,17 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
 
     useEffect(() => {
         if (isCreate) {
-            handleFormChange('PENDING_APPROVAL', 'status')
-            handleFormChange(generateRequestNumber(), 'requestNumber');
+            dispatch(handleFormChange({ key: 'status', value: 'PENDING_APPROVAL'}))
+            dispatch(handleFormChange({ key: 'requestNumber', value: generateRequestNumber()}))
         } else {
             console.log('Request Data:', request);
-            // const {
-            //     status,
-            //     requestNumber,
-            //     clientprofileID,
-            //     storeID,
-            //     requestBrandId,
-            //     requestProductId,
-            //     requestMaterialId,
-            //     requestDetails
-            // } = request;
-
-            // const {
-            //     applicationArea,
-            //     material,
-            //     branded = false,
-            //     quantity = 0,
-            //     width = 0,
-            //     height = 0,
-            //     designNote = ''
-            // } = requestDetails as RequestItem;
-
-            // handleFormChange(status, 'status')
-            // handleFormChange(requestNumber, 'requestNumber')
-            // handleFormChange(clientprofileID, 'clientprofileID')
-            // handleFormChange(storeID, 'storeID')
-            // handleFormChange(requestBrandId ?? '', 'requestBrandId')
-            // handleFormChange(requestProductId ?? '', 'requestProductId')
-            // handleFormChange(requestMaterialId ?? '', 'requestMaterialId')
-            // handleFormChange(applicationArea ?? '', 'requestDetails.applicationArea')
-            // handleFormChange(material ?? '', 'requestDetails.material')
-            // console.log('form value', getRequestFormValues);
-
             loadFormData(request);
         }
     }, [])
   
     // @TODO: isolate this function to a helper file
     const getClientsList = (): { id: string, label: string }[] => {
-        return getClientProfiles?.map((client) => ({
+        return clientProfiles?.map((client) => ({
             id: client.id,
             label: client?.name as string || ''
         }));
@@ -154,7 +125,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
 
     // @TODO: isolate this function to a helper file
     const getBrandsList = (clientID: string): { id: string, label: string }[] => {
-        return getClientProfiles
+        return clientProfiles
                 .find(client => client.id === clientID)
                 ?.Brands
                 ?.items
@@ -166,13 +137,13 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
     }
 
     const handleOnBrandSelection = async (option: ComboBoxOption) => {
-        handleFormChange(option.id, 'requestBrandId')
+        dispatch(handleFormChange({ key: 'requestBrandId', value: option.id }))
         setProductsList(await getProductsList(option.id));
     }
 
     const handleOnBrandClear = () => {
-        handleFormChange('', 'requestBrandId');
-        handleFormChange('', 'requestProductId');
+        dispatch(handleFormChange({ key: 'requestBrandId', value: '' }))
+        dispatch(handleFormChange({ key: 'requestProductId', value: '' }))
         setProductsList([]);
     }
 
@@ -209,18 +180,24 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
             designNote = ''
         } = requestDetails as RequestItem;
 
-        handleFormChange(status, 'status')
-        handleFormChange(requestNumber, 'requestNumber')
-        handleFormChange(clientprofileID, 'clientprofileID')
-        handleFormChange(storeID, 'storeID')
-        handleFormChange(requestBrandId ?? '', 'requestBrandId')
-        handleFormChange(requestProductId ?? '', 'requestProductId')
-        handleFormChange(requestMaterialId ?? '', 'requestMaterialId')
-        handleFormChange(applicationArea ?? '', 'requestDetails.applicationArea')
-        handleFormChange(material ?? '', 'requestDetails.material')
-        handleFormChange(branded ? '1' : '0', 'requestDetails.branded')
+        setProductsList(await getProductsList(requestBrandId as string));
 
-        console.log('form value', getRequestFormValues);
+        console.log('start loading form data!')
+        dispatch(handleFormChange({ key: 'status', value: status }));
+        dispatch(handleFormChange({ key: 'requestNumber', value: requestNumber }));
+        dispatch(handleFormChange({ key: 'clientprofileID', value: clientprofileID }));
+        dispatch(handleFormChange({ key: 'storeID', value: storeID }));
+        dispatch(handleFormChange({ key: 'requestBrandId', value: requestBrandId as string }));
+        dispatch(handleFormChange({ key: 'requestProductId', value: requestProductId as string }));
+        dispatch(handleFormChange({ key: 'requestMaterialId', value: requestMaterialId as string }));
+        dispatch(handleFormChange({ key: 'requestDetails.applicationArea', value: applicationArea as string }));
+        dispatch(handleFormChange({ key: 'requestDetails.material', value: material as string }));
+        dispatch(handleFormChange({ key: 'requestDetails.branded', value: branded ? '1' : '0' }));
+        dispatch(handleFormChange({ key: 'requestDetails.quantity', value: (quantity as number)?.toString() }));
+        dispatch(handleFormChange({ key: 'requestDetails.width', value: (width as number)?.toString() }));
+        dispatch(handleFormChange({ key: 'requestDetails.height', value: (height as number)?.toString() }));
+        dispatch(handleFormChange({ key: 'requestDetails.designNote', value: designNote as string }));
+        console.log('finished loading form data:', requestForm);
     }
 
     return (
@@ -238,9 +215,9 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                                         placeholder='Müşteri Seç'
                                         variation="quiet"
                                         options={getClientsList()}
-                                        value={getClientsList().find(client => client.id === getRequestFormValues.clientprofileID)?.label}
-                                        onSelect={(option) => handleFormChange(option.id, 'clientprofileID')}
-                                        onClear={() => handleFormChange('', 'clientprofileID')}
+                                        value={getClientsList().find(client => client.id === requestForm.clientprofileID)?.label}
+                                        onSelect={(option) => dispatch(handleFormChange({ key: 'clientprofileID', value: option.id }))}
+                                        onClear={() => dispatch(handleFormChange({ key: 'clientprofileID', value: '' }))}
                                         className='custom-input'
                                         isDisabled
                                     />
@@ -254,7 +231,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                                     name="requestNumber"
                                     variation="quiet"
                                     className='custom-input'
-                                    defaultValue={getRequestFormValues.requestNumber}
+                                    defaultValue={requestForm.requestNumber}
                                     isDisabled
                                 />
                             </div>
@@ -277,8 +254,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                                         variation="quiet"
                                         options={storesList}
                                         renderOption={renderStoreOption}
-                                        value={storesList.find(store => store.id === getRequestFormValues.storeID)?.label}
-                                        onSelect={(option) => handleFormChange(option.id, 'storeID')}
+                                        value={storesList.find(store => store.id === requestForm.storeID)?.label}
+                                        onSelect={(option) => dispatch(handleFormChange({ key: 'storeID', value: option.id }))}
                                         className='custom-input'
                                     />
                                 </div>
@@ -301,8 +278,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                                                 label="Marka"
                                                 placeholder='Marka Seç'
                                                 variation="quiet"
-                                                options={getBrandsList(getRequestFormValues.clientprofileID !== '' ? getRequestFormValues.clientprofileID : '')}
-                                                value={getBrandsList(getRequestFormValues.clientprofileID !== '' ? getRequestFormValues.clientprofileID : '').find(brand => brand.id === getRequestFormValues.requestBrandId)?.label}
+                                                options={getBrandsList(requestForm.clientprofileID !== '' ? requestForm.clientprofileID : '')}
+                                                value={getBrandsList(requestForm.clientprofileID !== '' ? requestForm.clientprofileID : '').find(brand => brand.id === requestForm.requestBrandId)?.label}
                                                 onSelect={(option) => handleOnBrandSelection(option)}
                                                 onClear={() => handleOnBrandClear}
                                                 className='custom-input'
@@ -317,9 +294,9 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                                                 placeholder='Ürün Seç'
                                                 variation="quiet"
                                                 options={productsList}
-                                                value={productsList.find(product => product.id === getRequestFormValues.requestProductId)?.label}
-                                                onSelect={(option) => handleFormChange(option.id, 'requestProductId')}
-                                                onClear={() => handleFormChange('', 'requestProductId')}
+                                                value={productsList.find(product => product.id === requestForm.requestProductId)?.label}
+                                                onSelect={(option) => dispatch(handleFormChange({ key: 'requestProductId', value: option.id }))}
+                                                onClear={() => dispatch(handleFormChange({ key: 'requestProductId', value: '' }))}
                                                 className='custom-input'
                                             />
                                         </div>
@@ -334,8 +311,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                                                 placeholder='Uygulama Alanı Seç'
                                                 variation="quiet"
                                                 options={applicationAreasList}
-                                                value={applicationAreasList.find(area => area.id === getRequestFormValues.requestDetails.applicationArea)?.label}
-                                                onSelect={(option) => handleFormChange(option.id, 'requestDetails.applicationArea')}
+                                                value={applicationAreasList.find(area => area.id === requestForm.requestDetails.applicationArea)?.label}
+                                                onSelect={(option) => dispatch(handleFormChange({ key: 'requestDetails.applicationArea', value: option.id }))}
                                                 className='custom-input'
                                             />
                                         </div>
@@ -348,9 +325,10 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                                                 variation="quiet"
                                                 options={materialsList}
                                                 onSelect={(option) => {
-                                                    handleFormChange(option.id, 'requestMaterialId')
-                                                    handleFormChange(option.id, 'requestDetails.material')
+                                                    dispatch(handleFormChange({ key: 'requestMaterialId', value: option.id}))
+                                                    dispatch(handleFormChange({ key: 'requestDetails.material', value: option.label}))
                                                 }}
+                                                value={materialsList.find(material => material.id === requestForm.requestMaterialId)?.label}
                                                 className='custom-input'
                                             />
                                         </div>
@@ -365,7 +343,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                                                     { id: '1', label: 'Evet' },
                                                     { id: '0', label: 'Hayır' }
                                                 ]}
-                                                onSelect={(option) => handleFormChange(option.id, 'requestDetails.branded')}
+                                                onSelect={(option) => dispatch(handleFormChange({ key: 'requestDetails.branded', value: option.id }))}
+                                                value={requestForm.requestDetails.branded === true ? 'Evet' : 'Hayır'}
                                                 className='custom-input'
                                             />
                                         </div>
@@ -373,58 +352,60 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                                         <div className='input-group'>
                                             <Label htmlFor="quantity" className='block text-xs font-medium mb-1.5'>Adet</Label>
                                             <Input
+                                                type='number'
+                                                step={1}
                                                 id="quantity"
                                                 name="quantity"
                                                 variation="quiet"
                                                 className='custom-input'
-                                                onChange={(e) => handleFormChange(e.target.value, 'requestDetails.quantity')}
+                                                onChange={(e) => dispatch(handleFormChange({ key: 'requestDetails.quantity', value: e.target.value }))}
+                                                value={requestForm.requestDetails.quantity}
                                             />
                                         </div>
 
                                         <div className='input-group'>
                                             <Label htmlFor="width" className='block text-xs font-medium mb-1.5'>Genişlik / cm</Label>
                                             <Input
+                                                type='number'
+                                                step="any"
                                                 id="width"
                                                 name="width"
                                                 variation="quiet"
                                                 className='custom-input'
-                                                onChange={(e) => handleFormChange(e.target.value, 'requestDetails.width')}
+                                                onChange={(e) => dispatch(handleFormChange({ key: 'requestDetails.width', value: e.target.value }))}
+                                                value={requestForm.requestDetails.width}
                                             />
                                         </div>
 
                                         <div className='input-group'>
                                             <Label htmlFor="height" className='block text-xs font-medium mb-1.5'>Yükseklik / cm</Label>
                                             <Input
+                                                type='number'
+                                                step="any"
                                                 id="height"
                                                 name="height"
                                                 variation="quiet"
                                                 className='custom-input'
-                                                onChange={(e) => handleFormChange(e.target.value, 'requestDetails.height')}
+                                                onChange={(e) => dispatch(handleFormChange({ key: 'requestDetails.height', value: e.target.value }))}
+                                                value={requestForm.requestDetails.height}
                                             />
                                         </div>
 
                                         <div className='input-group col-span-3'>
                                             <Label htmlFor="designNote" className='block text-xs font-medium mb-1.5'>Tasarım Notu</Label>
-                                            <Input
+                                            <TextAreaField
                                                 id="designNote"
                                                 name="designNote"
                                                 variation="quiet"
-                                                className='custom-input'
-                                                onChange={(e) => handleFormChange(e.target.value, 'requestDetails.designNote')}
+                                                label=""
+                                                placeholder=""
+                                                size='small'
+                                                rows={3}
+                                                labelHidden={true}
+                                                value={requestForm.requestDetails.designNote}
+                                                onChange={(e) => dispatch(handleFormChange({ key: 'requestDetails.designNote', value: e.target.value }))}
                                             />
                                         </div>
-
-                                        <div className='input-group col-span-3'>
-                                            <Label htmlFor="extraProducts" className='block text-xs font-medium mb-1.5'>Ek Ürün</Label>
-                                            <Input
-                                                id="extraProducts"
-                                                name="extraProducts"
-                                                variation="quiet"
-                                                className='custom-input'
-                                                onChange={(e) => handleFormChange(e.target.value, 'extraProducts')}
-                                            />
-                                        </div>
-
                                     </div>
                                 </div>
 

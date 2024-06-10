@@ -1,7 +1,8 @@
 'use client';
 import React, { useEffect } from 'react';
 import ConfigureAmplifyClientSide from '@/utils/ConfigureAmplify'
-import { StoreProvider } from '../stores/utils/StoreProvider'
+import { StoreProvider as MobxProvider } from '../stores/utils/StoreProvider'
+import StoreProvider from './StoreProvider'
 import { ThemeProvider } from '@aws-amplify/ui-react'
 import { DataModalProvider } from '@/contexts/DataModalContext';
 import DataModal from '@/components/core/dataModal';
@@ -20,30 +21,32 @@ export default function RootLayout({
   return (
       <html lang="tr">
         <StoreProvider>
-        
-          <body>
-            <ConfigureAmplifyClientSide />
+          <MobxProvider>
+            
+              <body>
+                <ConfigureAmplifyClientSide />
 
-            <ProgressBar
-              height="4px"
-              color="#dd0000"
-              options={{ showSpinner: true }}
-              shallowRouting
-            />
-
-            <ThemeProvider theme={theme}>
-              <DataModalProvider>
-                {children}
-                <DataModal />
-                <Toaster 
-                  position="top-right"
-                  expand={true} 
-                  richColors 
+                <ProgressBar
+                  height="4px"
+                  color="#dd0000"
+                  options={{ showSpinner: true }}
+                  shallowRouting
                 />
-              </DataModalProvider>
-            </ThemeProvider>
-          </body>
 
+                <ThemeProvider theme={theme}>
+                  <DataModalProvider>
+                    {children}
+                    <DataModal />
+                    <Toaster 
+                      position="top-right"
+                      expand={true} 
+                      richColors 
+                    />
+                  </DataModalProvider>
+                </ThemeProvider>
+              </body>
+
+          </MobxProvider>
         </StoreProvider>
       </html>
   );

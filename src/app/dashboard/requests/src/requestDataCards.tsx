@@ -1,34 +1,36 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useAppSelector, useAppDispatch } from '@/lib/hooks';
+import { AppDispatch, RootState } from '@/lib/store';
+import { setSelectedRequests } from '@/lib/features/requestSlice';
+
 import RequestCard from './requestCard'
-import { useStore } from '@/stores/utils/useStore';
 import { Skeleton } from "@nextui-org/react";
-import { observer } from 'mobx-react-lite';
 
 const RequestDataCards: React.FC<{ 
     data: any[]
     handleEdit?: (data: any) => void 
-}> = observer(({ data, handleEdit = () => {} }) => {
+}> = ({ data, handleEdit = () => {} }) => {
 
-    const { requestStore } = useStore();
+    const dispatch = useAppDispatch<AppDispatch>();
+    const isFetching = useAppSelector((state: RootState) => state.request.isFetching);
+    const selectedRequests = useAppSelector((state: RootState) => state.request.selectedRequests);
     
     const handleSelect = (event: React.ChangeEvent<HTMLInputElement>, id: string) => {
-        const selectedRequests = [...requestStore.getSelectedRequests];
+        const requests = [...selectedRequests];
         const isChecked = event.target.checked;
 
         if (isChecked) {
-            if (!selectedRequests.includes(id)) {
-                requestStore.setSelectedRequests([...selectedRequests, id]);
+            if (!requests.includes(id)) {
+                dispatch(setSelectedRequests([...requests, id]));
             }
         } else {
-            requestStore.setSelectedRequests(
-                selectedRequests.filter((item: string) => item !== id)
-            );
+            dispatch(setSelectedRequests(requests.filter((item: string) => item !== id)));
         }
     };
 
     return (
         <div>
-            {requestStore.getFetchingStatus && (
+            {isFetching && (
                 <div className='grid grid-cols-2 gap-4 mb-4 opacity-60'>
                     {Array.from({ length: 6 }).map((_, index) => (
                         <div key={index} className='bg-white rounded-md shadow p-6 '>
@@ -54,6 +56,6 @@ const RequestDataCards: React.FC<{
             </div>
         </div>
     )
-})
+}
 
 export default RequestDataCards
