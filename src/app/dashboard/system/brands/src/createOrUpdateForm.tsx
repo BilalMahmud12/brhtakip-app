@@ -1,14 +1,16 @@
 'use client'
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { Brand } from '@/API';
 import { Input, Label, Autocomplete } from '@aws-amplify/ui-react';
-import { useStore } from '@/stores/utils/useStore';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch } from '@/lib/store';
+import { handleFormChange } from '@/lib/features/brandSlice';
+import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 
 interface CreateOrUpdateFormProps {
     isCreate?: boolean;
-    brand?: Partial<Brand>;
+    brand?: Brand;
     handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onSubmit?: (data: Partial<Brand>) => void;
 }
 
 const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
@@ -17,14 +19,36 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         brand = {} as Brand
     } = props;
 
-    const { clientProfileStore, brandStore } = useStore();
-    const { getClientProfiles } = clientProfileStore;
+    const dispatch = useAppDispatch<AppDispatch>();
+    const brandFormValues = useAppSelector((state: RootState) => state.brand.brandForm);
+    const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
 
-    const { getBrandFormValues, handleFormChange } = brandStore;
+    const handleInputChange = (value: string, key: string) => {
+        dispatch(handleFormChange({ key, value }));
+    };
+
+    const loadFormData = async (brand: Brand) => {
+        const {
+            name,
+            isActive,
+            clientprofileID,
+        } = brand;
+
+        console.log('start loading form data!');
+        dispatch(handleFormChange({ key: 'name', value: name as string }));
+        dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
+        // dispatch(handleFormChange({ key: 'clientprofileID', value: clientprofileID }));
+        console.log('finished loading form data:', brandForm);
+    }
+
+    useEffect(() => {
+        loadFormData(brand);
+        console.log('Brand Data load:', brand);
+    }, [])
 
     return (
         <div>
-            <form >
+            <form>
                 <div className=''>
                     <div className='grid grid-cols-2 gap-8'>
                         <div className='input-group col-span-3'>
@@ -34,13 +58,12 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 name="name"
                                 placeholder='Marka Ekle'
                                 variation="quiet"
-                                onChange={(e) => handleFormChange(e.target.value, 'name')}
-                                defaultValue={!isCreate ? getBrandFormValues.name : ''}
+                                onChange={(e) => dispatch(handleFormChange({ key: 'name', value: e.target.value }))}
+                                defaultValue={!isCreate ? brandFormValues.name : ''}
                                 className='custom-input'
                             />
                         </div>
                     </div>
-                    {/* getBrandFormValues.name || '' */}
                     <div className='my-2 pt-5' />
 
                     <div className='input-group'>
@@ -54,8 +77,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 { id: '1', label: 'Aktif' },
                                 { id: '0', label: 'İnaktif' }
                             ]}
-                            onSelect={(option) => handleFormChange(option.id, 'isActive')}
-                            defaultValue={!isCreate ? (getBrandFormValues.isActive ? 'Aktif' : 'İnaktif') : ''}
+                            onSelect={(option) => dispatch(handleFormChange({ key: 'isActive', value: option.id }))}
+                            defaultValue={!isCreate ? (brandFormValues.isActive ? 'Aktif' : 'İnaktif') : ''}
                             className='custom-input'
                         />
                     </div>

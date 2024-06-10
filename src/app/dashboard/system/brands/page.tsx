@@ -1,45 +1,46 @@
 'use client';
-import * as Repo from '@/repository/index'
+import * as Repo from '@/repository/index';
+
+import { useAppSelector, useAppDispatch } from '@/lib/hooks';
+import { AppDispatch, RootState } from '@/lib/store';
+import { setBrands, resetFormValues } from '@/lib/features/brandSlice';
+
 import React, { useEffect } from 'react';
-import { observer } from 'mobx-react-lite';
 import { Breadcrumbs } from '@aws-amplify/ui-react';
 import type { Brand } from '@/API';
 import BrandsView from './src/brandView';
-import { useStore } from '@/stores/utils/useStore';
-import { getClientProfiles } from '@/repository/clientProfile.repository';
-import { Console } from 'console';
 import BrandsDataTable from './src/brandsDataTable';
 
-
-const Brand: React.FC = observer((props) => {
-    const { brandStore, clientProfileStore } = useStore();
+const Brand: React.FC = () => {
+    const dispatch = useAppDispatch<AppDispatch>();
+    const brands = useAppSelector((state: RootState) => state.brand.brands);
 
     const handleDelete = async (data: any) => {
         try {
             const deleteBrand = await Repo.BrandRepository.softDelete(data.originalData.id);
-            console.log('deleted brand', deleteBrand)
+            console.log('deleted brand', deleteBrand);
 
             const newBrand = await Repo.BrandRepository.getAllBrands();
-            brandStore.setBrands(newBrand as unknown as Brand[]);
+            dispatch(setBrands(newBrand as unknown as Brand[]));
 
-            console.log('new brand array', newBrand)
+            console.log('new brand array', newBrand);
         } catch (error) {
-            console.log('error', error)
+            console.log('error', error);
         }
-    }
+    };
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const brandsData = await Repo.BrandRepository.getAllBrands();
-                brandStore.initStore({ brands: brandsData as unknown as Brand[] });
-                console.log('brands', brandsData);
+                dispatch(setBrands(brandsData as unknown as Brand[]));
+                console.log('brand data', brandsData);
             } catch (error) {
                 console.error('Failed to fetch brands', error);
             }
         };
         fetchData();
-    }, []);
+    }, [dispatch]);
 
     // const getClientName = async (data: string) => {
     //     console.log('Coming Data', data);
@@ -78,6 +79,6 @@ const Brand: React.FC = observer((props) => {
             />
         </div>
     );
-});
+};
 
 export default Brand;

@@ -3,6 +3,8 @@ import requestReducer from './features/requestSlice'
 import globalReducer from './features/globalSlice'
 import clientReducer from './features/clientSlice'
 import userReducer from './features/userSlice'
+import brandReducer from './features/brandSlice'
+
 
 export const makeStore = () => {
     return configureStore({
@@ -11,6 +13,7 @@ export const makeStore = () => {
             global: globalReducer,
             client: clientReducer,
             user: userReducer,
+            brand: brandReducer,
         }
     })
 }

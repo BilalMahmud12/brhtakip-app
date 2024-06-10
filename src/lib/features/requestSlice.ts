@@ -63,7 +63,7 @@ const requestSlice = createSlice({
         setSelectedRequests: (state, action: PayloadAction<string[]>) => {
             state.selectedRequests = action.payload
         },
-        setRequestForm : (state, action: PayloadAction<RequestState['requestForm']>) => {
+        setRequestForm: (state, action: PayloadAction<RequestState['requestForm']>) => {
             state.requestForm = action.payload
         },
         resetFormValues: (state) => {
@@ -86,7 +86,7 @@ const requestSlice = createSlice({
                 },
             }
         },
-        handleFormChange : (state, action: PayloadAction<{key: string, value: string}>) => {
+        handleFormChange: (state, action: PayloadAction<{ key: string, value: string }>) => {
             const { key, value } = action.payload
             switch (key) {
                 case 'status':
@@ -206,11 +206,11 @@ const requestSlice = createSlice({
 })
 
 export const {
-    setIsFetching, 
+    setIsFetching,
     setRequests,
     setSelectedRequests,
     setRequestForm,
     resetFormValues,
     handleFormChange
- } = requestSlice.actions
+} = requestSlice.actions
 export default requestSlice.reducer

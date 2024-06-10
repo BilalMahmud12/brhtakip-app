@@ -19,7 +19,7 @@ export default function getBrandsTableData(
     return data.map((brand) => {
         const row: { [key: string]: any } = {};
 
-        columns.forEach(async (column: DataTableColumn) => {
+        columns.forEach((column: DataTableColumn) => {
             if (column.transform) {
                 row[column.key] = column.transform(brand[column.key as keyof Brand], brand);
             }
@@ -30,7 +30,9 @@ export default function getBrandsTableData(
                             <div
                                 className='hover:underline hover:text-blue-700 cursor-pointer'
                                 onClick={() => {
-                                    router.push(`/dashboard/system/brands/${brand.id}`);
+                                    router.push(
+                                        `/dashboard/system/brands/${brand.id}`
+                                    );
                                     handleEdit(brand)
                                 }}
                             >
@@ -54,7 +56,7 @@ export default function getBrandsTableData(
                         break;
 
                     case 'clientprofileID':
-                        // row[column.key] = await getClientName(brand.clientprofileID);
+                        row[column.key] = getClientName(brand.clientprofileID);
                         break;
 
                     case 'actions':

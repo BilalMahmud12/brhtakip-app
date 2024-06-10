@@ -1,29 +1,34 @@
 'use client';
 import React, { useEffect } from 'react';
-import { useStore } from '@/stores/utils/useStore';
-import { observer } from 'mobx-react-lite';
+import { useDispatch, useSelector } from 'react-redux';
 import { Breadcrumbs, Button } from '@aws-amplify/ui-react';
-import * as Repo from '@/repository/index'
+import { useRouter } from 'next/navigation';
+import * as Repo from '@/repository/index';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
-import { toJS } from 'mobx';
-import { useRouter } from 'next/navigation'
+import { setBrandFormValues, resetFormValues } from '@/lib/features/brandSlice';
+import { RootState, AppDispatch } from '@/lib/store';
 
-const CreateBrand: React.FC = observer(() => {
-    const { brandStore } = useStore();
-    const router = useRouter()
+const CreateBrand: React.FC = () => {
+    const dispatch = useDispatch<AppDispatch>();
+    const router = useRouter();
+
+    const brandForm = useSelector((state: RootState) => state.brand.brandForm);
 
     async function handleCreateBrand() {
         try {
-            const createBrand = await Repo.BrandRepository.create(toJS(brandStore.getBrandFormValues))
-            console.log('new created brand', createBrand)
+            console.log('brandForm', brandForm);
+            const createBrand = await Repo.BrandRepository.create(brandForm);
 
-            router.replace('/dashboard/system/brands')
-            brandStore.resetFormValues()
+            console.log('new created brand', createBrand);
+
+            if (createBrand && createBrand.data) {
+                router.replace('/dashboard/system/brands');
+                dispatch(resetFormValues());
+            }
         } catch (error) {
-            console.log('Error')
+            console.log('Error', error);
         }
     }
-
 
     return (
         <div>
@@ -80,8 +85,8 @@ const CreateBrand: React.FC = observer(() => {
                 </div>
 
             </div>
-        </div >
+        </div>
     );
-})
+}
 
-export default CreateBrand
+export default CreateBrand;
