@@ -16,7 +16,6 @@ const CreateBrand: React.FC = () => {
 
     async function handleCreateBrand() {
         try {
-            console.log('brandForm', brandForm);
             const createBrand = await Repo.BrandRepository.create(brandForm);
 
             console.log('new created brand', createBrand);
@@ -79,9 +78,7 @@ const CreateBrand: React.FC = () => {
                 <div className='my-2 pt-5' />
 
                 <div className='mt-8 px-8 py-8 m-6 shadow bg-neutral-100'>
-                    <CreateOrUpdateForm
-                        isCreate={true}
-                    />
+
                 </div>
 
             </div>

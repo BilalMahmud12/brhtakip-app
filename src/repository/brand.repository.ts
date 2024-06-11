@@ -27,6 +27,14 @@ const getBrandById = async (id: string) => {
 
 const create = async (brand: any) => {
 
+    // if (!brand.name || brand.name.trim() === "") {
+    //     console.error("Brand name cannot be empty.");
+    //     return;
+    // }
+    // if (!brand.clientprofileID || brand.clientprofileID.trim() === "") {
+    //     console.error("Brand clientprofileID cannot be empty.");
+    //     return;
+    // }
 
     try {
         const data = await client.graphql({
@@ -41,11 +49,6 @@ const create = async (brand: any) => {
 }
 
 const update = async (brand: any) => {
-
-    // if (!brand.id || brand.id.trim() === "") {
-    //     console.error("Brand ID cannot be empty.");
-    //     return;
-    // }
 
     // if (!brand.name || brand.name.trim() === "") {
     //     console.error("Brand name cannot be empty.");

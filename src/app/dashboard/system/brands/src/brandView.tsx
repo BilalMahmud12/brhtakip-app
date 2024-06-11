@@ -11,14 +11,26 @@ import BrandsDataTable from './brandsDataTable';
 import ClientSelectForm from './clientSelectForm';
 import { usePathname, useRouter } from 'next/navigation';
 import * as Repo from '@/repository/index';
+import CreateOrUpdateForm from './createOrUpdateForm';
 
 interface BrandsViewProps {
     onDelete: (data: any) => Promise<void>;
-    // getClientName: (data: any) => Promise<void>
 }
 
-const SelectClientModalFooter = (props: { handleConfirm: () => void; handleCancel?: () => void; }) => {
-    const { handleConfirm = () => { }, handleCancel = () => { } } = props;
+const ModalCustomFooter = (
+    props: {
+        type: 'create' | 'update'
+        handleCreate?: (data: any) => void;
+        handleUpdate?: (data: any) => void;
+        handleCancel?: () => void;
+    }
+) => {
+    const {
+        type,
+        handleCreate = () => { },
+        handleUpdate = () => { },
+        handleCancel = () => { },
+    } = props;
 
     return (
         <div className='flex items-center justify-between'>
@@ -31,24 +43,26 @@ const SelectClientModalFooter = (props: { handleConfirm: () => void; handleCance
                     onClick={handleCancel}
                     className='rounded-none bg-transparent text-gray-800 px-6 font-bold'
                 >
-                    <span>İptal Et</span>
+                    <span>İPTAL ET</span>
                 </Button>
+
                 <Button
                     variation="primary"
                     colorTheme="success"
                     size="small"
                     loadingText=""
-                    onClick={handleConfirm}
-                    className='rounded-none bg-amber-500 text-gray-800 font-bold px-6'
+                    onClick={handleCreate}
+                    className='rounded-none bg-amber-500 text-zinc-800 font-bold px-6'
                 >
                     <span className='flex items-center space-x-2'>
-                        <span>Devam Et</span>
+                        <span>ONAYLA</span>
                     </span>
                 </Button>
             </div>
         </div>
-    );
-};
+    )
+}
+
 
 const BrandsView: React.FC<BrandsViewProps> = observer(({ onDelete }) => {
     const pathname = usePathname();
@@ -70,36 +84,46 @@ const BrandsView: React.FC<BrandsViewProps> = observer(({ onDelete }) => {
     const handleCreateForm = () => {
         showDataModal(
             <div><span className='text-base font-bold'>Yeni Marka Ekle</span></div>,
-            <ClientSelectForm
-            // brand={brandForm}
+            <CreateOrUpdateForm
+                isCreate={true}
             />,
-            <SelectClientModalFooter
-                handleConfirm={() => {
-                    hideDataModal();
-                    router.push('/dashboard/system/brands/create');
-                }}
+            <ModalCustomFooter
+                type='create'
                 handleCancel={handleCancelForm}
+                handleCreate={handleCreateBrand}
             />
+
         );
     };
 
+    async function handleCreateBrand() {
+        try {
+            console.log('brandForm', brandForm);
+            const createBrand = await Repo.BrandRepository.create(brandForm);
+            console.log('brandForm after', brandForm);
+            console.log('new created brand', createBrand);
+
+            if (createBrand && createBrand.data) {
+                dispatch(resetFormValues());
+            }
+        } catch (error) {
+            console.log('Error', error);
+        }
+    }
+
     const getClientName = (clientProfileId: string) => {
-        // console.log('Coming Data', clientProfileId);
-
         const clientProfile = clientProfiles?.find(profile => profile.id === clientProfileId);
-        console.log('Get Client Name', clientProfile?.name);
-
         return clientProfile?.name || '';
     };
 
-    // const setBrandUpdateData = (data: any) => {
-    //     dispatch(setBrandFormValues({
-    //         id: data.id,
-    //         name: data.name,
-    //         isActive: data.isActive,
-    //         clientprofileID: data.clientprofileID
-    //     }));
-    // };
+    const setBrandUpdateData = (data: any) => {
+        dispatch(setBrandFormValues({
+            id: data.id,
+            name: data.name,
+            isActive: data.isActive,
+            clientprofileID: data.clientprofileID
+        }));
+    };
 
     return (
         <div>
@@ -131,7 +155,7 @@ const BrandsView: React.FC<BrandsViewProps> = observer(({ onDelete }) => {
                     dataPayload={brands}
                     getClientName={getClientName}
                     onDeleteBrand={onDelete}
-                // handleEdit={setBrandUpdateData}
+                    handleEdit={setBrandUpdateData}
                 />
             </div>
         </div>

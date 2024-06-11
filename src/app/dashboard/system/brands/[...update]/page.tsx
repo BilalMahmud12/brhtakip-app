@@ -10,45 +10,50 @@ import ProductView from '../src/products/src/productView';
 import { toJS } from 'mobx';
 import { Product } from '@/API';
 import ProductsDataTable from '../src/products/src/productsDataTable';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { AppDispatch, RootState } from '@/lib/store';
+import { resetFormValues } from '@/lib/features/brandSlice';
 
 const UpdateBrand: React.FC = observer(() => {
-    const { brandStore, productStore } = useStore();
     const router = useRouter();
     usePathname();
-    const { getBrandFormValues, handleFormChange } = brandStore;
 
     const [haveProduct, setHaveProduct] = useState<boolean>(false);
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
+    const dispatch = useAppDispatch<AppDispatch>();
+    const brands = useAppSelector((state: RootState) => state.brand.brands);
+    const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
+    const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
 
     async function handleUpdateBrand() {
         try {
-            const updateBrand = await Repo.BrandRepository.update(toJS(brandStore.getBrandFormValues));
-            brandStore.resetFormValues();
+            const updateBrand = await Repo.BrandRepository.update(brandForm);
+            dispatch(resetFormValues());
             router.replace(`/dashboard/system/brands`);
         } catch (error) {
             console.error('Error updating brand:', error);
         }
     }
 
-    const fetchFilteredProducts = async () => {
-        try {
-            const productsData = await Repo.ProductRepository.getAllProducts();
-            if (productsData) {
-                const filtered = productsData.filter(product => product.brandID === getBrandFormValues.id);
-                setFilteredProducts(filtered);
-                productStore.initStore({ products: filtered });
-                setHaveProduct(filtered.length > 0);
-            }
-        } catch (error) {
-            console.error('Failed to fetch products', error);
-            setHaveProduct(false);
-        }
-    };
+    // const fetchFilteredProducts = async () => {
+    //     try {
+    //         const productsData = await Repo.ProductRepository.getAllProducts();
+    //         if (productsData) {
+    //             const filtered = productsData.filter(product => product.brandID === getBrandFormValues.id);
+    //             setFilteredProducts(filtered);
+    //             productStore.initStore({ products: filtered });
+    //             setHaveProduct(filtered.length > 0);
+    //         }
+    //     } catch (error) {
+    //         console.error('Failed to fetch products', error);
+    //         setHaveProduct(false);
+    //     }
+    // };
 
-    useEffect(() => {
-        fetchFilteredProducts();
-    }, [getBrandFormValues.id]);
+    // useEffect(() => {
+    //     fetchFilteredProducts();
+    // }, [getBrandFormValues.id]);
 
 
     return (

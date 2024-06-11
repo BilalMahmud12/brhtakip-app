@@ -32,7 +32,6 @@ const BrandsDataTable: React.FC<BrandsDataTableProps> = (props) => {
         getClientName
     );
 
-    // console.log('tableData', tableData);
 
     return (
         <div>
