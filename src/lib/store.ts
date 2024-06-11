@@ -5,6 +5,7 @@ import clientReducer from './features/clientSlice'
 import userReducer from './features/userSlice'
 import brandReducer from './features/brandSlice'
 import productReducer from './features/productSlice';
+import materialReducer from './features/materialSlice';
 
 
 export const makeStore = () => {
@@ -16,6 +17,7 @@ export const makeStore = () => {
             user: userReducer,
             brand: brandReducer,
             product: productReducer,
+            material: materialReducer,
         }
     })
 }
