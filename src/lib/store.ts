@@ -4,6 +4,7 @@ import globalReducer from './features/globalSlice'
 import clientReducer from './features/clientSlice'
 import userReducer from './features/userSlice'
 import brandReducer from './features/brandSlice'
+import productReducer from './features/productSlice';
 
 
 export const makeStore = () => {
@@ -14,6 +15,7 @@ export const makeStore = () => {
             client: clientReducer,
             user: userReducer,
             brand: brandReducer,
+            product: productReducer,
         }
     })
 }
