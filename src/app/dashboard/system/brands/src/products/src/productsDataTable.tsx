@@ -5,7 +5,7 @@ import { dataTables } from '@/config/dataTables';
 import getProductsTableData from './getProductsTableData';
 
 interface ProductsDataTableProps {
-    dataPayload: any[];
+    dataPayload?: any[];
     handleEdit?: (data: any) => void;
     handleDelete?: (data: any) => void;
     handleSelect?: (data: any) => void;

@@ -1,17 +1,45 @@
 import { observer } from 'mobx-react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Input, Label, Autocomplete } from '@aws-amplify/ui-react';
 import { useStore } from '@/stores/utils/useStore';
 import type { Product } from '@/API';
+import { useAppSelector, useAppDispatch } from '@/lib/hooks';
+import { AppDispatch, RootState } from '@/lib/store';
+import { setProducts, resetProductFormValues, setProductFormValues, handleFormChange } from '@/lib/features/productSlice';
 
 interface CreateOrUpdateFormProps {
     isCreate?: boolean;
-    product?: Partial<Product>;
+    product?: Product;
 }
 
-const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((isCreate) => {
-    const { productStore } = useStore();
-    const { handleFormChange, getProductFormValues } = productStore;
+const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
+    const {
+        isCreate = true,
+        product = {} as Product
+    } = props;
+
+    const dispatch = useAppDispatch<AppDispatch>();
+    const products = useAppSelector((state: RootState) => state.product);
+    const productForm = useAppSelector((state: RootState) => state.product.productForm);
+
+
+    const loadFormData = async (product: Product) => {
+        const {
+            name,
+            isActive,
+        } = product;
+
+        console.log('start loading product form data!');
+        dispatch(handleFormChange({ key: 'name', value: name as string }));
+        dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
+        console.log('finished loading product form data:', productForm);
+    }
+
+    useEffect(() => {
+        loadFormData(product);
+        console.log('Brand Data loaded:', product);
+    }, [])
+
     return (
         <div>
             <form>
@@ -23,8 +51,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((isCreate
                             name="add_product"
                             placeholder='Ürün Ekle'
                             variation="quiet"
-                            onChange={(e) => productStore.handleFormChange(e.target.value, 'name')}
-                            defaultValue={!isCreate ? getProductFormValues.name : ''}
+                            onChange={(e) => dispatch(handleFormChange({ key: 'name', value: e.target.value }))}
+                            defaultValue={!isCreate ? productForm.name : ''}
                             className='custom-input'
                         />
                     </div>
@@ -42,8 +70,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((isCreate
                                 { id: '1', label: 'Aktif' },
                                 { id: '0', label: 'İnaktif' }
                             ]}
-                            onSelect={(option) => productStore.handleFormChange(option.id, 'isActive')}
-                            defaultValue={!isCreate ? (getProductFormValues.isActive ? 'Aktif' : 'İnaktif') : ''}
+                            onSelect={(option) => dispatch(handleFormChange({ key: 'isActive', value: option.id }))}
+                            // defaultValue={!isCreate ? (getProductFormValues.isActive ? 'Aktif' : 'İnaktif') : ''}
                             className='custom-input'
                         />
                     </div>
@@ -51,6 +79,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((isCreate
             </form>
         </div>
     );
-});
+};
 
 export default CreateOrUpdateForm;

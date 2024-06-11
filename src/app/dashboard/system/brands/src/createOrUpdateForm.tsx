@@ -43,11 +43,11 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
             clientprofileID,
         } = brand;
 
-        console.log('start loading form data!');
+        // console.log('start loading form data!');
         dispatch(handleFormChange({ key: 'clientprofileID', value: clientprofileID }));
         dispatch(handleFormChange({ key: 'name', value: name as string }));
         dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
-        console.log('finished loading form data:', brandForm);
+        // console.log('finished loading form data:', brandForm);
     }
 
     useEffect(() => {

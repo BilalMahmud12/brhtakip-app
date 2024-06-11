@@ -15,6 +15,7 @@ export const adminNavItems = [
             //{ name: 'Müşteri Profilleri', href: '/clients', icon: 'FcBriefcase' },
             { name: 'Talepler', href: '/dashboard/requests', icon: 'FcViewDetails' },
             { name: 'Sistem Tanıtmaları', href: '/dashboard/system/brands', icon: 'FcFolder' },
+            { name: 'Malzemeler', href: '/dashboard/system/Materials', icon: 'FcFolder' },
         ]
     },
     {

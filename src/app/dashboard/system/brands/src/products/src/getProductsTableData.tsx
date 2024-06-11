@@ -37,13 +37,13 @@ export default function getProductsTableData(
                         );
                         break;
 
-                    case 'brandID':
-                        row[column.key] = (
-                            <Button className='hover:underline hover:text-blue-700'>
-                                {'brand Name'}
-                            </Button>
-                        );
-                        break;
+                    // case 'brandID':
+                    //     row[column.key] = (
+                    //         <Button className='hover:underline hover:text-blue-700'>
+                    //             {'brand Name'}
+                    //         </Button>
+                    //     );
+                    //     break;
 
                     case 'actions':
                         row[column.key] = (

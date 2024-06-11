@@ -13,6 +13,7 @@ import ProductsDataTable from '../src/products/src/productsDataTable';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { AppDispatch, RootState } from '@/lib/store';
 import { resetFormValues } from '@/lib/features/brandSlice';
+import { setProducts, resetProductFormValues, setProductFormValues } from '@/lib/features/productSlice';
 
 const UpdateBrand: React.FC = observer(() => {
     const router = useRouter();
@@ -26,6 +27,9 @@ const UpdateBrand: React.FC = observer(() => {
     const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
 
+    const products = useAppSelector((state: RootState) => state.product);
+    const productForm = useAppSelector((state: RootState) => state.product.productForm);
+
     async function handleUpdateBrand() {
         try {
             const updateBrand = await Repo.BrandRepository.update(brandForm);
@@ -36,24 +40,27 @@ const UpdateBrand: React.FC = observer(() => {
         }
     }
 
-    // const fetchFilteredProducts = async () => {
-    //     try {
-    //         const productsData = await Repo.ProductRepository.getAllProducts();
-    //         if (productsData) {
-    //             const filtered = productsData.filter(product => product.brandID === getBrandFormValues.id);
-    //             setFilteredProducts(filtered);
-    //             productStore.initStore({ products: filtered });
-    //             setHaveProduct(filtered.length > 0);
-    //         }
-    //     } catch (error) {
-    //         console.error('Failed to fetch products', error);
-    //         setHaveProduct(false);
-    //     }
-    // };
+    const fetchFilteredProducts = async () => {
+        try {
+            const productsData = await Repo.ProductRepository.getAllProducts();
 
-    // useEffect(() => {
-    //     fetchFilteredProducts();
-    // }, [getBrandFormValues.id]);
+            if (productsData) {
+                const filtered = productsData.filter(product => product.brandID === brandForm.id);
+                console.log('filtered', filtered)
+
+                setFilteredProducts(filtered);
+                dispatch(setProducts(filtered));
+                setHaveProduct(filtered.length > 0);
+            }
+        } catch (error) {
+            console.error('Failed to fetch products', error);
+            setHaveProduct(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchFilteredProducts();
+    }, [brandForm.id]);
 
 
     return (
@@ -95,12 +102,16 @@ const UpdateBrand: React.FC = observer(() => {
 
             {/* <div className='my-2 pt-5' /> */}
 
+
             {/* START PRODUCT SECTION */}
-            {/* <ProductView
+
+            <ProductView
                 haveProduct={haveProduct}
-                brandId={getBrandFormValues.id}
+                brandId={brandForm.id}
+                filteredProducts={filteredProducts}
                 fetchFilteredProducts={fetchFilteredProducts}
-            /> */}
+            />
+
             {/* END PRODUCT SECTION */}
         </div>
     );

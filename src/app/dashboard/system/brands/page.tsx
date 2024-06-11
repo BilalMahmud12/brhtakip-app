@@ -42,17 +42,6 @@ const Brand: React.FC = () => {
         fetchData();
     }, [dispatch]);
 
-    // const getClientName = async (data: string) => {
-    //     console.log('Coming Data', data);
-    //     try {
-    //         const clientProfiles = await Repo.ClientProfileRepository.getClientProfiles();
-    //         const clientProfile = clientProfiles?.find(profile => profile.id === data);
-    //         console.log('Get Client Name', clientProfile?.name);
-    //         clientProfile?.name;
-    //     } catch (error) {
-    //         console.error('Failed to get client profiles', error);
-    //     }
-    // };
 
     return (
         <div>
@@ -75,7 +64,6 @@ const Brand: React.FC = () => {
             </div>
             <BrandsView
                 onDelete={handleDelete}
-            // getClientName={getClientName}
             />
         </div>
     );

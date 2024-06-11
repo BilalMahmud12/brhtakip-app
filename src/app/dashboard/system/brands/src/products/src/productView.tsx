@@ -9,11 +9,15 @@ import { Button } from '@aws-amplify/ui-react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { useDataModal } from '@/contexts/DataModalContext';
 import { toJS } from 'mobx';
+import { useAppSelector, useAppDispatch } from '@/lib/hooks';
+import { AppDispatch, RootState } from '@/lib/store';
+import { setProducts, resetProductFormValues, setProductFormValues } from '@/lib/features/productSlice';
 
 interface ProductViewProps {
     brandId: any;
     haveProduct: boolean;
-    fetchFilteredProducts: () => void;
+    filteredProducts: any;
+    fetchFilteredProducts: any;
 }
 
 const ModalCustomFooter = (
@@ -63,11 +67,15 @@ const ModalCustomFooter = (
 }
 
 
-const ProductView: React.FC<ProductViewProps> = observer(({ haveProduct, brandId, fetchFilteredProducts }) => {
-    const { productStore } = useStore();
+const ProductView: React.FC<ProductViewProps> = observer(({ haveProduct, brandId, filteredProducts, fetchFilteredProducts }) => {
+
     const router = useRouter();
     const { showDataModal, hideDataModal } = useDataModal();
-    const { getProductFormValues, handleFormChange } = productStore;
+
+    const dispatch = useAppDispatch<AppDispatch>();
+    const products = useAppSelector((state: RootState) => state.product);
+    const productForm = useAppSelector((state: RootState) => state.product.productForm);
+
 
     const handleCreateForm = () => {
         showDataModal(
@@ -83,52 +91,56 @@ const ProductView: React.FC<ProductViewProps> = observer(({ haveProduct, brandId
         );
     };
 
-    const getPriductBrandID = () => {
-        productStore.setProductFormValues({ brandID: brandId });
-    }
+    const setProductBrandId = () => {
+        if (productForm.brandID !== brandId) {
+            dispatch(setProductFormValues({ brandID: brandId }));
+        }
+    };
+
+    useEffect(() => {
+        setProductBrandId();
+    }, [brandId]);
 
     const handleCreateProduct = async () => {
         try {
-            getPriductBrandID();
-            const createProduct = await Repo.ProductRepository.create(toJS(productStore.getProductFormValues));
+            const createProduct = await Repo.ProductRepository.create(productForm);
             console.log('created product', createProduct);
-
             fetchFilteredProducts();
-            productStore.resetFormValues();
+
+            dispatch(setProducts(filteredProducts))
             hideDataModal();
         } catch (error) {
             console.error('Error creating product', error);
         }
     };
 
-    const handleUpdateForm = () => {
-        showDataModal(
-            <div><span className='text-base font-bold'>Yeni Ürün Ekle</span></div>,
-            <CreateOrUpdateForm
-                isCreate={false}
-            />,
-            <ModalCustomFooter
-                type='update'
-                handleUpdate={handleUpdateProduct}
-                handleCancel={handleCancelForm}
-            />
-        );
-    };
+    // const handleUpdateForm = () => {
+    //     showDataModal(
+    //         <div><span className='text-base font-bold'>Yeni Ürün Ekle</span></div>,
+    //         <CreateOrUpdateForm
+    //             isCreate={false}
+    //         />,
+    //         <ModalCustomFooter
+    //             type='update'
+    //             handleUpdate={handleUpdateProduct}
+    //             handleCancel={handleCancelForm}
+    //         />
+    //     );
+    // };
 
-    const handleUpdateProduct = async (data: any) => {
-        console.log('update product');
-    };
+    // const handleUpdateProduct = async (data: any) => {
+    //     console.log('update product');
+    // };
 
     const handleDeleteProduct = async (data: any) => {
         try {
             const deleteProduct = await Repo.ProductRepository.softDelete(data.originalData.id);
             console.log('deleted brand', deleteProduct);
-
             fetchFilteredProducts();
         } catch (error) {
             console.log('error', error);
         }
-    }
+    };
 
     const handleCancelForm = () => {
         hideDataModal();
@@ -155,9 +167,9 @@ const ProductView: React.FC<ProductViewProps> = observer(({ haveProduct, brandId
                     {haveProduct && (
                         <div className='mt-1.5 shadow bg-white py-6'>
                             <ProductsDataTable
-                                dataPayload={productStore.getAllProducts}
+                                dataPayload={filteredProducts}
                                 handleDelete={(data) => handleDeleteProduct(data)}
-                                handleEdit={handleUpdateProduct}
+                            // handleEdit={handleUpdateProduct}
                             />
                         </div>
                     )}

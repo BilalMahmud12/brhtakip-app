@@ -17,7 +17,7 @@ const initialState: ProductFormState = {
         brandID: '',
         isActive: false,
     }
-}
+};
 
 const productSlice = createSlice({
     name: 'product',
@@ -62,7 +62,7 @@ const productSlice = createSlice({
             }
         },
 
-        resetFormValues: (state) => {
+        resetProductFormValues: (state) => {
             state.productForm = {
                 name: '',
                 brandID: '',
@@ -72,6 +72,13 @@ const productSlice = createSlice({
     }
 });
 
-export const { } = productSlice.actions;
+export const {
+    setProducts,
+    addProduct,
+    setProductFormValues,
+    handleFormChange,
+    resetProductFormValues,
+
+} = productSlice.actions;
 
 export default productSlice.reducer
