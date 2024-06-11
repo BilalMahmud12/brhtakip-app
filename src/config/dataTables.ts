@@ -26,5 +26,15 @@ export const dataTables = {
             // { label: 'Marka', key: 'brandID', width: '20%' },
             { label: '', key: 'actions', width: '2%' },
         ]
+    },
+
+    materials: {
+        columns: [
+            { label: '', key: 'checkbox', width: '2%' },
+            { label: 'Melzeme', key: 'name', width: '70%' },
+            { label: 'Durum', key: 'isActive', width: '5%' },
+            // { label: 'Marka', key: 'brandID', width: '20%' },
+            { label: '', key: 'actions', width: '2%' },
+        ]
     }
 }

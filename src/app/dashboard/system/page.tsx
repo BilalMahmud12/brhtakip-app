@@ -8,11 +8,11 @@ const requestNavigation = [
         label: 'Markalar',
         icon: <Icon iconName='FcFinePrint' className='' />
     },
-    // {
-    //     href: '/dashboard/system/products',
-    //     label: 'Ürünler',
-    //     icon: <Icon iconName='FcFinePrint' className='' />
-    // },
+    {
+        href: '/dashboard/system/materials',
+        label: 'Malzemeler',
+        icon: <Icon iconName='FcFinePrint' className='' />
+    },
 
 ]
 
@@ -20,7 +20,7 @@ const SystemPage: React.FC = () => {
     return (
         <div>
             <div>
-                <h1 className='text-2xl font-medium'>Panel Girişi</h1>
+                <title>Panel Girişi</title>
             </div>
 
             <div className='grid grid-cols-4 gap-4 mb-8'>
