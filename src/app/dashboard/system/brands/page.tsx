@@ -1,10 +1,9 @@
 'use client';
 import React from 'react';
-import { observer } from 'mobx-react-lite';
 import { Breadcrumbs } from '@aws-amplify/ui-react';
 import type { Brand } from '@/API';
 
-const Brand: React.FC = observer(() => {
+const Brand: React.FC = () => {
 
     return (
         <div>
@@ -27,6 +26,6 @@ const Brand: React.FC = observer(() => {
             </div>
         </div>
     );
-});
+};
 
 export default Brand;

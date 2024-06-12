@@ -1,37 +1,20 @@
 'use client';
 import React, { useEffect } from 'react';
-import { useStore } from '@/stores/utils/useStore';
-import { observer } from 'mobx-react';
 import { Breadcrumbs, Button } from '@aws-amplify/ui-react'
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { generateRequestNumber } from '@/utils/helpers';
 import * as Repo from '@/repository/index'
 import { useRouter } from 'next/navigation'
-import { toJS } from 'mobx'
 
-
-const CreateRequest: React.FC = observer(() => {
+const CreateRequest: React.FC = () => {
     const router = useRouter()
-    const { requestStore } = useStore();
 
     useEffect(() => {
-        console.log('request form', requestStore.getRequestFormValues)
-        requestStore.handleFormChange(generateRequestNumber(), 'requestNumber')
+        
+        
     }, [])
 
-    async function handleCreateForm() {
-        try {
-            const createRequest = await Repo.RequestRepository.create(toJS(requestStore.getRequestFormValues))
-
-            if (createRequest && createRequest.data) {
-                router.replace('/dashboard/requests')
-                requestStore.resetFormValues()
-            }
-        } catch (error) {
-            console.log('Error')
-            alert(`Error while creating: ${error}`)
-        }   
-    }
+    
 
     return (
         <div>
@@ -71,7 +54,7 @@ const CreateRequest: React.FC = observer(() => {
                                 colorTheme="success"
                                 size="small"
                                 loadingText=""
-                                onClick={handleCreateForm}
+                                onClick={() => {}}
                                 className='rounded-none bg-amber-500 text-gray-800 px-6'
                             >
                                 <span>Talep Oluştur</span>
@@ -91,6 +74,6 @@ const CreateRequest: React.FC = observer(() => {
             </div>
         </div>
     )
-})
+}
 
 export default CreateRequest
