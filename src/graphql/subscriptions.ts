@@ -8,6 +8,57 @@ type GeneratedSubscription<InputType, OutputType> = string & {
   __generatedSubscriptionOutput: OutputType;
 };
 
+export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraProduct(
+  $filter: ModelSubscriptionExtraProductFilterInput
+) {
+  onCreateExtraProduct(filter: $filter) {
+    id
+    isActive
+    name
+    image
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateExtraProductSubscriptionVariables,
+  APITypes.OnCreateExtraProductSubscription
+>;
+export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraProduct(
+  $filter: ModelSubscriptionExtraProductFilterInput
+) {
+  onUpdateExtraProduct(filter: $filter) {
+    id
+    isActive
+    name
+    image
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateExtraProductSubscriptionVariables,
+  APITypes.OnUpdateExtraProductSubscription
+>;
+export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraProduct(
+  $filter: ModelSubscriptionExtraProductFilterInput
+) {
+  onDeleteExtraProduct(filter: $filter) {
+    id
+    isActive
+    name
+    image
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteExtraProductSubscriptionVariables,
+  APITypes.OnDeleteExtraProductSubscription
+>;
 export const onCreateApplicationArea = /* GraphQL */ `subscription OnCreateApplicationArea(
   $filter: ModelSubscriptionApplicationAreaFilterInput
 ) {
@@ -103,11 +154,14 @@ export const onCreateUserProfile = /* GraphQL */ `subscription OnCreateUserProfi
 ) {
   onCreateUserProfile(filter: $filter) {
     id
-    isActive
+    cognitoID
     clientprofileID
+    isActive
     firstName
     lastName
     email
+    role
+    permissions
     createdAt
     updatedAt
     __typename
@@ -122,11 +176,14 @@ export const onUpdateUserProfile = /* GraphQL */ `subscription OnUpdateUserProfi
 ) {
   onUpdateUserProfile(filter: $filter) {
     id
-    isActive
+    cognitoID
     clientprofileID
+    isActive
     firstName
     lastName
     email
+    role
+    permissions
     createdAt
     updatedAt
     __typename
@@ -141,11 +198,14 @@ export const onDeleteUserProfile = /* GraphQL */ `subscription OnDeleteUserProfi
 ) {
   onDeleteUserProfile(filter: $filter) {
     id
-    isActive
+    cognitoID
     clientprofileID
+    isActive
     firstName
     lastName
     email
+    role
+    permissions
     createdAt
     updatedAt
     __typename
@@ -315,11 +375,14 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -358,6 +421,10 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -940,11 +1007,14 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -983,6 +1053,10 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -1565,11 +1639,14 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -1608,6 +1685,10 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -2111,6 +2192,10 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -2424,11 +2509,14 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -2467,6 +2555,10 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -2970,6 +3062,10 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -3283,11 +3379,14 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -3326,6 +3425,10 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -3829,6 +3932,10 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -4142,11 +4249,14 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -4185,6 +4295,10 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -4758,6 +4872,10 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -5071,11 +5189,14 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -5114,6 +5235,10 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -5687,6 +5812,10 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -6000,11 +6129,14 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -6043,6 +6175,10 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -6616,6 +6752,10 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -6929,11 +7069,14 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -6972,6 +7115,10 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -7403,11 +7550,14 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
     UserProfiles {
       items {
         id
-        isActive
+        cognitoID
         clientprofileID
+        isActive
         firstName
         lastName
         email
+        role
+        permissions
         createdAt
         updatedAt
         __typename
@@ -7619,6 +7769,10 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -7890,11 +8044,14 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
           UserProfiles {
             items {
               id
-              isActive
+              cognitoID
               clientprofileID
+              isActive
               firstName
               lastName
               email
+              role
+              permissions
               createdAt
               updatedAt
               __typename
@@ -8043,6 +8200,10 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -8058,6 +8219,10 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
             __typename
           }
           name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
           createdAt
           updatedAt
           __typename
@@ -8073,6 +8238,10 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
       __typename
     }
     name
+    rootUserId
+    contactEmail
+    contactPhone
+    address
     createdAt
     updatedAt
     __typename
@@ -8091,11 +8260,14 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
     UserProfiles {
       items {
         id
-        isActive
+        cognitoID
         clientprofileID
+        isActive
         firstName
         lastName
         email
+        role
+        permissions
         createdAt
         updatedAt
         __typename
@@ -8307,6 +8479,10 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -8578,11 +8754,14 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
           UserProfiles {
             items {
               id
-              isActive
+              cognitoID
               clientprofileID
+              isActive
               firstName
               lastName
               email
+              role
+              permissions
               createdAt
               updatedAt
               __typename
@@ -8731,6 +8910,10 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -8746,6 +8929,10 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
             __typename
           }
           name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
           createdAt
           updatedAt
           __typename
@@ -8761,6 +8948,10 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
       __typename
     }
     name
+    rootUserId
+    contactEmail
+    contactPhone
+    address
     createdAt
     updatedAt
     __typename
@@ -8779,11 +8970,14 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
     UserProfiles {
       items {
         id
-        isActive
+        cognitoID
         clientprofileID
+        isActive
         firstName
         lastName
         email
+        role
+        permissions
         createdAt
         updatedAt
         __typename
@@ -8995,6 +9189,10 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -9266,11 +9464,14 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
           UserProfiles {
             items {
               id
-              isActive
+              cognitoID
               clientprofileID
+              isActive
               firstName
               lastName
               email
+              role
+              permissions
               createdAt
               updatedAt
               __typename
@@ -9419,6 +9620,10 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -9434,6 +9639,10 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
             __typename
           }
           name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
           createdAt
           updatedAt
           __typename
@@ -9449,6 +9658,10 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
       __typename
     }
     name
+    rootUserId
+    contactEmail
+    contactPhone
+    address
     createdAt
     updatedAt
     __typename
@@ -9644,6 +9857,10 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -9915,11 +10132,14 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
           UserProfiles {
             items {
               id
-              isActive
+              cognitoID
               clientprofileID
+              isActive
               firstName
               lastName
               email
+              role
+              permissions
               createdAt
               updatedAt
               __typename
@@ -10068,6 +10288,10 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -10083,6 +10307,10 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
             __typename
           }
           name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
           createdAt
           updatedAt
           __typename
@@ -10229,6 +10457,10 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -10735,6 +10967,10 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -11275,6 +11511,10 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -11745,6 +11985,10 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -12016,11 +12260,14 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
           UserProfiles {
             items {
               id
-              isActive
+              cognitoID
               clientprofileID
+              isActive
               firstName
               lastName
               email
+              role
+              permissions
               createdAt
               updatedAt
               __typename
@@ -12169,6 +12416,10 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -12184,6 +12435,10 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
             __typename
           }
           name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
           createdAt
           updatedAt
           __typename
@@ -12330,6 +12585,10 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -12836,6 +13095,10 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -13376,6 +13639,10 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -13846,6 +14113,10 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -14117,11 +14388,14 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
           UserProfiles {
             items {
               id
-              isActive
+              cognitoID
               clientprofileID
+              isActive
               firstName
               lastName
               email
+              role
+              permissions
               createdAt
               updatedAt
               __typename
@@ -14270,6 +14544,10 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -14285,6 +14563,10 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
             __typename
           }
           name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
           createdAt
           updatedAt
           __typename
@@ -14431,6 +14713,10 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -14937,6 +15223,10 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -15477,6 +15767,10 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -16079,6 +16373,10 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -16230,11 +16528,14 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -16322,6 +16623,10 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -16337,6 +16642,10 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -16431,6 +16740,10 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -16732,6 +17045,10 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -17051,6 +17368,10 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -17216,11 +17537,14 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
       UserProfiles {
         items {
           id
-          isActive
+          cognitoID
           clientprofileID
+          isActive
           firstName
           lastName
           email
+          role
+          permissions
           createdAt
           updatedAt
           __typename
@@ -17380,6 +17704,10 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -17531,11 +17859,14 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -17623,6 +17954,10 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -17638,6 +17973,10 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -17653,6 +17992,10 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
         __typename
       }
       name
+      rootUserId
+      contactEmail
+      contactPhone
+      address
       createdAt
       updatedAt
       __typename
@@ -17858,6 +18201,10 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -18009,11 +18356,14 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -18101,6 +18451,10 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -18116,6 +18470,10 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -18210,6 +18568,10 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -18511,6 +18873,10 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -18830,6 +19196,10 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -18995,11 +19365,14 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
       UserProfiles {
         items {
           id
-          isActive
+          cognitoID
           clientprofileID
+          isActive
           firstName
           lastName
           email
+          role
+          permissions
           createdAt
           updatedAt
           __typename
@@ -19159,6 +19532,10 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -19310,11 +19687,14 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -19402,6 +19782,10 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -19417,6 +19801,10 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -19432,6 +19820,10 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
         __typename
       }
       name
+      rootUserId
+      contactEmail
+      contactPhone
+      address
       createdAt
       updatedAt
       __typename
@@ -19637,6 +20029,10 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -19788,11 +20184,14 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -19880,6 +20279,10 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -19895,6 +20298,10 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -19989,6 +20396,10 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -20290,6 +20701,10 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -20609,6 +21024,10 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -20774,11 +21193,14 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
       UserProfiles {
         items {
           id
-          isActive
+          cognitoID
           clientprofileID
+          isActive
           firstName
           lastName
           email
+          role
+          permissions
           createdAt
           updatedAt
           __typename
@@ -20938,6 +21360,10 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -21089,11 +21515,14 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -21181,6 +21610,10 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -21196,6 +21629,10 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -21211,6 +21648,10 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
         __typename
       }
       name
+      rootUserId
+      contactEmail
+      contactPhone
+      address
       createdAt
       updatedAt
       __typename

@@ -25,16 +25,28 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type ClientProfileUpdateFormInputValues = {
     isActive?: boolean;
     name?: string;
+    rootUserId?: string;
+    contactEmail?: string;
+    contactPhone?: string;
+    address?: string;
 };
 export declare type ClientProfileUpdateFormValidationValues = {
     isActive?: ValidationFunction<boolean>;
     name?: ValidationFunction<string>;
+    rootUserId?: ValidationFunction<string>;
+    contactEmail?: ValidationFunction<string>;
+    contactPhone?: ValidationFunction<string>;
+    address?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ClientProfileUpdateFormOverridesProps = {
     ClientProfileUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     isActive?: PrimitiveOverrideProps<SwitchFieldProps>;
     name?: PrimitiveOverrideProps<TextFieldProps>;
+    rootUserId?: PrimitiveOverrideProps<TextFieldProps>;
+    contactEmail?: PrimitiveOverrideProps<TextFieldProps>;
+    contactPhone?: PrimitiveOverrideProps<TextFieldProps>;
+    address?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ClientProfileUpdateFormProps = React.PropsWithChildren<{
     overrides?: ClientProfileUpdateFormOverridesProps | undefined | null;

@@ -104,12 +104,11 @@ const ModalCustomFooter = (
     )
 }
 
-
 const RequestsView: React.FC = () => {
     const pathname = usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
 
-    const userData = useAppSelector((state: RootState) => state.user.userData);
+    const userProfile = useAppSelector((state: RootState) => state.user.userProfile);
     const requests = useAppSelector((state: RootState) => state.request.requests);
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
     const selectedRequests = useAppSelector((state: RootState) => state.request.selectedRequests);
@@ -129,9 +128,7 @@ const RequestsView: React.FC = () => {
     }
 
     const handleCreateForm = () => {
-        if (userData.isClient) {
-            //
-        } else {
+        if (userProfile.clientprofileID === 'BRH_ADMIN') {
             showDataModal(
                 <div><span className='text-sm font-bold'>Müşteri Seç</span></div>,
                 <ClientSelectForm />,
@@ -149,10 +146,12 @@ const RequestsView: React.FC = () => {
                                 handleCancel={handleCancelForm}
                             />
                         )
-                    }} 
-                    handleCancel={handleCancelForm} 
+                    }}
+                    handleCancel={handleCancelForm}
                 />
             )
+        } else {
+            
         }
     }
 

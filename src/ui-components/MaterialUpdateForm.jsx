@@ -63,7 +63,7 @@ export default function MaterialUpdateForm(props) {
   React.useEffect(resetStateValues, [materialRecord]);
   const validations = {
     isActive: [{ type: "Required" }],
-    name: [],
+    name: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -92,7 +92,7 @@ export default function MaterialUpdateForm(props) {
         event.preventDefault();
         let modelFields = {
           isActive,
-          name: name ?? null,
+          name,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -171,7 +171,7 @@ export default function MaterialUpdateForm(props) {
       ></SwitchField>
       <TextField
         label="Name"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={name}
         onChange={(e) => {

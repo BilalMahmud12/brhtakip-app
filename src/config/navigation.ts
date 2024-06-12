@@ -12,9 +12,9 @@ export const adminNavItems = [
         "section_title": "Yonet",
         show_title: true,
         items: [
-            //{ name: 'Müşteri Profilleri', href: '/clients', icon: 'FcBriefcase' },
             { name: 'Talepler', href: '/dashboard/requests', icon: 'FcViewDetails' },
             { name: 'Sistem Tanıtmaları', href: '/', icon: 'FcFolder' },
+            { name: 'Müşteri Profilleri', href: '/dashboard/clients', icon: 'FcBriefcase' },
         ]
     },
     {
@@ -22,9 +22,9 @@ export const adminNavItems = [
         "section_title": "Ayarlar",
         show_title: true,
         items: [
-            { name: 'Sistem Ayarları', href: '/system-settings', icon: 'FcSettings' },
-            { name: 'Kullanıcılar', href: '/users', icon: 'FcConferenceCall' },
-            { name: 'Yetkiler', href: '/permissions', icon: 'FcKey' },
+            { name: 'Sistem Ayarları', href: '/dashboard/system-settings', icon: 'FcSettings' },
+            { name: 'Kullanıcılar', href: '/dashboard/users', icon: 'FcConferenceCall' },
+            //{ name: 'Yetkiler', href: '/permissions', icon: 'FcKey' },
         ]
     }
 ]

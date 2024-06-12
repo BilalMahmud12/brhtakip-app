@@ -33,9 +33,21 @@ export default function ClientProfileUpdateForm(props) {
   const initialValues = {
     isActive: false,
     name: "",
+    rootUserId: "",
+    contactEmail: "",
+    contactPhone: "",
+    address: "",
   };
   const [isActive, setIsActive] = React.useState(initialValues.isActive);
   const [name, setName] = React.useState(initialValues.name);
+  const [rootUserId, setRootUserId] = React.useState(initialValues.rootUserId);
+  const [contactEmail, setContactEmail] = React.useState(
+    initialValues.contactEmail
+  );
+  const [contactPhone, setContactPhone] = React.useState(
+    initialValues.contactPhone
+  );
+  const [address, setAddress] = React.useState(initialValues.address);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = clientProfileRecord
@@ -43,6 +55,10 @@ export default function ClientProfileUpdateForm(props) {
       : initialValues;
     setIsActive(cleanValues.isActive);
     setName(cleanValues.name);
+    setRootUserId(cleanValues.rootUserId);
+    setContactEmail(cleanValues.contactEmail);
+    setContactPhone(cleanValues.contactPhone);
+    setAddress(cleanValues.address);
     setErrors({});
   };
   const [clientProfileRecord, setClientProfileRecord] = React.useState(
@@ -66,6 +82,10 @@ export default function ClientProfileUpdateForm(props) {
   const validations = {
     isActive: [],
     name: [],
+    rootUserId: [],
+    contactEmail: [{ type: "Email" }],
+    contactPhone: [],
+    address: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -95,6 +115,10 @@ export default function ClientProfileUpdateForm(props) {
         let modelFields = {
           isActive: isActive ?? null,
           name: name ?? null,
+          rootUserId: rootUserId ?? null,
+          contactEmail: contactEmail ?? null,
+          contactPhone: contactPhone ?? null,
+          address: address ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -157,6 +181,10 @@ export default function ClientProfileUpdateForm(props) {
             const modelFields = {
               isActive: value,
               name,
+              rootUserId,
+              contactEmail,
+              contactPhone,
+              address,
             };
             const result = onChange(modelFields);
             value = result?.isActive ?? value;
@@ -182,6 +210,10 @@ export default function ClientProfileUpdateForm(props) {
             const modelFields = {
               isActive,
               name: value,
+              rootUserId,
+              contactEmail,
+              contactPhone,
+              address,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -195,6 +227,122 @@ export default function ClientProfileUpdateForm(props) {
         errorMessage={errors.name?.errorMessage}
         hasError={errors.name?.hasError}
         {...getOverrideProps(overrides, "name")}
+      ></TextField>
+      <TextField
+        label="Root user id"
+        isRequired={false}
+        isReadOnly={false}
+        value={rootUserId}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              isActive,
+              name,
+              rootUserId: value,
+              contactEmail,
+              contactPhone,
+              address,
+            };
+            const result = onChange(modelFields);
+            value = result?.rootUserId ?? value;
+          }
+          if (errors.rootUserId?.hasError) {
+            runValidationTasks("rootUserId", value);
+          }
+          setRootUserId(value);
+        }}
+        onBlur={() => runValidationTasks("rootUserId", rootUserId)}
+        errorMessage={errors.rootUserId?.errorMessage}
+        hasError={errors.rootUserId?.hasError}
+        {...getOverrideProps(overrides, "rootUserId")}
+      ></TextField>
+      <TextField
+        label="Contact email"
+        isRequired={false}
+        isReadOnly={false}
+        value={contactEmail}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              isActive,
+              name,
+              rootUserId,
+              contactEmail: value,
+              contactPhone,
+              address,
+            };
+            const result = onChange(modelFields);
+            value = result?.contactEmail ?? value;
+          }
+          if (errors.contactEmail?.hasError) {
+            runValidationTasks("contactEmail", value);
+          }
+          setContactEmail(value);
+        }}
+        onBlur={() => runValidationTasks("contactEmail", contactEmail)}
+        errorMessage={errors.contactEmail?.errorMessage}
+        hasError={errors.contactEmail?.hasError}
+        {...getOverrideProps(overrides, "contactEmail")}
+      ></TextField>
+      <TextField
+        label="Contact phone"
+        isRequired={false}
+        isReadOnly={false}
+        value={contactPhone}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              isActive,
+              name,
+              rootUserId,
+              contactEmail,
+              contactPhone: value,
+              address,
+            };
+            const result = onChange(modelFields);
+            value = result?.contactPhone ?? value;
+          }
+          if (errors.contactPhone?.hasError) {
+            runValidationTasks("contactPhone", value);
+          }
+          setContactPhone(value);
+        }}
+        onBlur={() => runValidationTasks("contactPhone", contactPhone)}
+        errorMessage={errors.contactPhone?.errorMessage}
+        hasError={errors.contactPhone?.hasError}
+        {...getOverrideProps(overrides, "contactPhone")}
+      ></TextField>
+      <TextField
+        label="Address"
+        isRequired={false}
+        isReadOnly={false}
+        value={address}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              isActive,
+              name,
+              rootUserId,
+              contactEmail,
+              contactPhone,
+              address: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.address ?? value;
+          }
+          if (errors.address?.hasError) {
+            runValidationTasks("address", value);
+          }
+          setAddress(value);
+        }}
+        onBlur={() => runValidationTasks("address", address)}
+        errorMessage={errors.address?.errorMessage}
+        hasError={errors.address?.hasError}
+        {...getOverrideProps(overrides, "address")}
       ></TextField>
       <Flex
         justifyContent="space-between"

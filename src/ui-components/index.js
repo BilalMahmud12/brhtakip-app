@@ -10,6 +10,8 @@ export { default as CityCreateForm } from "./CityCreateForm";
 export { default as CityUpdateForm } from "./CityUpdateForm";
 export { default as ClientProfileCreateForm } from "./ClientProfileCreateForm";
 export { default as ClientProfileUpdateForm } from "./ClientProfileUpdateForm";
+export { default as ExtraProductCreateForm } from "./ExtraProductCreateForm";
+export { default as ExtraProductUpdateForm } from "./ExtraProductUpdateForm";
 export { default as MaterialCreateForm } from "./MaterialCreateForm";
 export { default as MaterialUpdateForm } from "./MaterialUpdateForm";
 export { default as UserProfileCreateForm } from "./UserProfileCreateForm";
