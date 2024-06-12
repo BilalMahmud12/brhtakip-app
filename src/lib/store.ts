@@ -11,7 +11,11 @@ export const makeStore = () => {
             global: globalReducer,
             client: clientReducer,
             user: userReducer,
-        }
+        },
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware({
+                serializableCheck: false,
+            }),
     })
 }
 

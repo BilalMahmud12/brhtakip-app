@@ -33,7 +33,6 @@ const AdminNavigation: React.FC = () => {
                         </ul>
                         <Divider orientation="horizontal" size="small" borderColor={'#dedede'} />
                     </div>
-                    
                 ))}
             </div>
         </div>

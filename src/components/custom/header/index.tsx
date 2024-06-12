@@ -14,7 +14,7 @@ const AppHeader: React.FC = () => {
 
     const handleLogOut = async () => {
         await signOut()
-        router.push("/")
+        router.push('/login')
     }
 
     return (
@@ -43,7 +43,7 @@ const AppHeader: React.FC = () => {
                             <Divider orientation="vertical" size='small' borderColor={'#777777'} height={'25px'} />
 
                             <Button
-                                onClick={handleLogOut}
+                                onClick={() => handleLogOut()}
                                 size="small"
                                 color={'gray'}
                                 fontWeight={'normal'}

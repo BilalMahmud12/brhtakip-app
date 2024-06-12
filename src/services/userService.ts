@@ -18,7 +18,8 @@ export const loadUserData = async (dispatch: AppDispatch): Promise<boolean> => {
             throw new Error("User profile not found");
         }
     
-        dispatch(setUserProfile(userProfile));
+        const { __typename, ...cleanUserProfile } = userProfile
+        dispatch(setUserProfile(cleanUserProfile));
 
         if (userProfile.clientprofileID !== 'BRH_ADMIN') {
             const clientProfile = await Repo.ClientProfileRepository.getClientProfileById(userProfile.clientprofileID as string);

@@ -1,6 +1,5 @@
 'use client'
 import Image from 'next/image'
-import { Authenticator } from '@aws-amplify/ui-react';
 
 export default function AuthLayout({ children }: { children: React.ReactNode}) {
     return (
