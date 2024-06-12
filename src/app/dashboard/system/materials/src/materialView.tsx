@@ -16,7 +16,12 @@ const ModalCustomFooter = (props: {
     handleUpdate?: (data: any) => void;
     handleCancel?: () => void;
 }) => {
-    const { type, handleCreate = () => { }, handleUpdate = () => { }, handleCancel = () => { } } = props;
+    const {
+        type,
+        handleCreate = () => { },
+        handleUpdate = () => { },
+        handleCancel = () => { }
+    } = props;
 
     return (
         <div className='flex items-center justify-between'>
@@ -55,6 +60,7 @@ const MaterialView: React.FC = () => {
     const materialForm = useAppSelector((state: RootState) => state.material.materialForm);
 
     const handleCancelForm = () => {
+        dispatch(resetFormValues());
         hideDataModal();
     };
 

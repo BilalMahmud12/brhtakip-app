@@ -12,6 +12,8 @@ export const dataTables = {
             { label: 'Kullanıcı', key: 'username', width: '40%' },
             { label: 'Rol', key: 'role', width: '20%' },
             { label: '', key: 'actions', width: '3%' },
+        ]
+    },
 
     brands: {
         columns: [
