@@ -26,6 +26,7 @@ const getMaterialById = async (id: string) => {
 }
 
 const create = async (material: any) => {
+    console.log("material repo create", material)
     try {
         const data = await client.graphql({
             query: createMaterial,

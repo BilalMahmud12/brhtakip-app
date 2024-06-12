@@ -1,14 +1,13 @@
-import { observer } from 'mobx-react';
+
 import React, { useEffect, useState } from 'react';
 import * as Repo from '@/repository/index';
-import { useStore } from '@/stores/utils/useStore';
 import { useRouter } from 'next/navigation';
 import type { Product } from '@/API';
 import ProductsDataTable from './productsDataTable';
 import { Button } from '@aws-amplify/ui-react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { useDataModal } from '@/contexts/DataModalContext';
-import { toJS } from 'mobx';
+
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { AppDispatch, RootState } from '@/lib/store';
 import { setProducts, resetProductFormValues, setProductFormValues } from '@/lib/features/productSlice';
@@ -67,7 +66,7 @@ const ModalCustomFooter = (
 }
 
 
-const ProductView: React.FC<ProductViewProps> = observer(({ haveProduct, brandId, filteredProducts, fetchFilteredProducts }) => {
+const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filteredProducts, fetchFilteredProducts }) => {
 
     const router = useRouter();
     const { showDataModal, hideDataModal } = useDataModal();

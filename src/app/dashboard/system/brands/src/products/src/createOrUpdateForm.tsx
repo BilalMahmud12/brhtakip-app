@@ -1,7 +1,7 @@
-import { observer } from 'mobx-react';
+
 import React, { useEffect } from 'react';
 import { Input, Label, Autocomplete } from '@aws-amplify/ui-react';
-import { useStore } from '@/stores/utils/useStore';
+
 import type { Product } from '@/API';
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { AppDispatch, RootState } from '@/lib/store';

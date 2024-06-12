@@ -4,7 +4,7 @@ import { useDataModal } from '@/contexts/DataModalContext';
 import { Button } from '@aws-amplify/ui-react';
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { AppDispatch, RootState } from '@/lib/store';
-import { setMaterials, resetFormValues } from '@/lib/features/materialSlice';
+import { setMaterials, resetFormValues, setMaterialForm } from '@/lib/features/materialSlice';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import type { Material } from '@/API';
 import MaterialsDataTable from './materialsDataTable';
@@ -41,7 +41,7 @@ const ModalCustomFooter = (props: {
                     colorTheme="success"
                     size="small"
                     loadingText=""
-                    onClick={handleCreate}
+                    onClick={type === 'create' ? handleCreate : handleUpdate}
                     className='rounded-none bg-amber-500 text-zinc-800 font-bold px-6'
                 >
                     <span className='flex items-center space-x-2'>
@@ -67,7 +67,7 @@ const MaterialView: React.FC = () => {
     const handleCreateForm = () => {
         dispatch(resetFormValues());
         showDataModal(
-            <div><span className='text-base font-bold'>Yeni Melzeme Ekle</span></div>,
+            <div><span className='text-base font-bold'>Yeni Malzeme Ekle</span></div>,
             <CreateOrUpdateForm isCreate={true} />,
             <ModalCustomFooter
                 type='create'
@@ -79,6 +79,7 @@ const MaterialView: React.FC = () => {
 
     const handleCreateMaterial = async () => {
         try {
+            console.log('incoming data for created material', materialForm);
             const createMaterial = await Repo.MaterialRepository.create(materialForm);
             console.log('new created material', createMaterial);
             hideDataModal();
@@ -88,6 +89,45 @@ const MaterialView: React.FC = () => {
         } catch (error) {
             console.log('Error', error);
         }
+    };
+
+
+    const handleUpdateForm = () => {
+        dispatch(resetFormValues());
+        showDataModal(
+            <div><span className='text-base font-bold'>Güncelle</span></div>,
+            <CreateOrUpdateForm isCreate={false} />,
+            <ModalCustomFooter
+                type='update'
+                handleCancel={handleCancelForm}
+                handleUpdate={handleUpdateMaterial}
+            />
+        );
+    };
+
+    const handleUpdateMaterial = async () => {
+        try {
+            const updateMaterial = await Repo.MaterialRepository.update(materialForm);
+            console.log('updated material', updateMaterial);
+
+            hideDataModal();
+            dispatch(resetFormValues());
+
+            // if (updateMaterial && updateMaterial.data) {
+
+            // }
+        } catch (error) {
+            console.log('Error', error);
+        }
+    };
+
+    const setBrandUpdateData = (material: any) => {
+        handleUpdateForm();
+        dispatch(setMaterialForm({
+            id: material.id,
+            name: material.name,
+            isActive: material.isActive,
+        }));
     };
 
     const handleDeleteMaterial = async (data: any) => {
@@ -105,7 +145,7 @@ const MaterialView: React.FC = () => {
         <div>
             <div className='mt-1.5 shadow bg-zinc-50'>
                 <div className='px-6 py-6 mb-3 flex items-center justify-between'>
-                    <h2 className='text-2xl font-medium'>Markalar</h2>
+                    <h2 className='text-2xl font-medium'>Malzemeler</h2>
                     <Button
                         variation="primary"
                         colorTheme="success"
@@ -114,7 +154,7 @@ const MaterialView: React.FC = () => {
                         onClick={handleCreateForm}
                         className='rounded-none bg-amber-500 text-gray-800 px-6'
                     >
-                        <span>Melzeme Ekle</span>
+                        <span>Malzeme Ekle</span>
                     </Button>
                 </div>
             </div>
@@ -122,6 +162,7 @@ const MaterialView: React.FC = () => {
                 <MaterialsDataTable
                     dataPayload={materials}
                     handleDelete={handleDeleteMaterial}
+                    handleEdit={setBrandUpdateData}
                 />
             </div>
         </div>

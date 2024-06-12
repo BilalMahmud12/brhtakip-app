@@ -55,28 +55,20 @@ export default function getMaterialsTableData(
                                     </DropdownTrigger>
                                     <DropdownMenu aria-label='row-actions'>
 
-                                        {/* <DropdownItem
+                                        <DropdownItem
                                             key="update"
                                             startContent={<Icon iconName='FcSupport' className='w-5 h-5' />}
-                                            onClick={() => {
-                                                // brandStore.setBrandFormValues({
-                                                //     id: brand.id || '',
-                                                //     name: brand.name || '',
-                                                //     isActive: brand.isActive || false
-                                                // });
-                                                // console.log('From getBrandTable', brand.id, brand.name, brand.isActive);
-                                                router.push(`/dashboard/system/brands/${brand.id}}`);
-                                            }}
+                                            onClick={() => handleEdit(material)}
                                         >
                                             Güncelle
-                                        </DropdownItem> */}
+                                        </DropdownItem>
 
                                         <DropdownItem
                                             key="cancel"
                                             startContent={<Icon iconName='FcCancel' className='w-5 h-5' />}
                                             onClick={() => handleDelete(row)}
                                         >
-                                            Marka Sil
+                                            Sil
                                         </DropdownItem>
                                     </DropdownMenu>
                                 </Dropdown>

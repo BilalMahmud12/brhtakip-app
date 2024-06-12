@@ -4,7 +4,6 @@ import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { AppDispatch, RootState } from '@/lib/store';
 import { setBrands, resetFormValues, setBrandFormValues } from '@/lib/features/brandSlice';
 
-import { observer } from 'mobx-react-lite';
 import { useDataModal } from '@/contexts/DataModalContext';
 import { Button } from '@aws-amplify/ui-react';
 import BrandsDataTable from './brandsDataTable';
@@ -64,11 +63,11 @@ const ModalCustomFooter = (
 }
 
 
-const BrandsView: React.FC<BrandsViewProps> = observer(({ onDelete }) => {
+const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
     const pathname = usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
 
-    const userData = useAppSelector((state: RootState) => state.user.userData);
+    // const userData = useAppSelector((state: RootState) => state.user.userData);
     const brands = useAppSelector((state: RootState) => state.brand.brands);
     const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);

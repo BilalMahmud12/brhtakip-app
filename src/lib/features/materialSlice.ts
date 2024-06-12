@@ -1,15 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { Material } from '@/API';
 
-interface MaterialFormState {
+interface MaterialState {
     materials: Material[];
     materialForm: {
+        id?: '',
         name: string;
         isActive: boolean;
     }
 }
 
-const initialState: MaterialFormState = {
+const initialState: MaterialState = {
     materials: [],
     materialForm: {
         name: '',
@@ -29,12 +30,19 @@ const materialSlice = createSlice({
             state.materials.push(action.payload);
         },
 
-        setMaterialFormValues: (state, action: PayloadAction<MaterialFormState['materialForm']>) => {
+        setMaterialForm: (state, action: PayloadAction<MaterialState['materialForm']>) => {
             state.materialForm = action.payload;
         },
 
+        resetFormValues: (state) => {
+            state.materialForm = {
+                name: '',
+                isActive: false,
+            };
+        },
+
         handleFormChange: (state, action: PayloadAction<{ key: string, value: string }>) => {
-            const { key, value } = action.payload;
+            const { key, value } = action.payload
             switch (key) {
                 case 'name':
                     state.materialForm = {
@@ -52,19 +60,13 @@ const materialSlice = createSlice({
                     }
                     break;
             }
-        },
-        resetFormValues: (state) => {
-            state.materialForm = {
-                name: '',
-                isActive: false,
-            };
-        },
-    }
+        }
+    },
 })
 
 export const {
     setMaterials,
-    setMaterialFormValues,
+    setMaterialForm,
     handleFormChange,
     addMaterial,
     resetFormValues,

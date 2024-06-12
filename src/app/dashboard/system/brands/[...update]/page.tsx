@@ -1,13 +1,10 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { useStore } from '@/stores/utils/useStore';
-import { observer } from 'mobx-react-lite';
 import { Breadcrumbs, Button } from '@aws-amplify/ui-react';
 import * as Repo from '@/repository/index';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { useRouter, usePathname } from 'next/navigation';
 import ProductView from '../src/products/src/productView';
-import { toJS } from 'mobx';
 import { Product } from '@/API';
 import ProductsDataTable from '../src/products/src/productsDataTable';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
@@ -15,7 +12,7 @@ import { AppDispatch, RootState } from '@/lib/store';
 import { resetFormValues } from '@/lib/features/brandSlice';
 import { setProducts, resetProductFormValues, setProductFormValues } from '@/lib/features/productSlice';
 
-const UpdateBrand: React.FC = observer(() => {
+const UpdateBrand: React.FC = (() => {
     const router = useRouter();
     usePathname();
 

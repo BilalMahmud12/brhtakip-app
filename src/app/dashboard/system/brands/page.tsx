@@ -1,16 +1,13 @@
 'use client';
 import * as Repo from '@/repository/index';
-
+import React, { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { AppDispatch, RootState } from '@/lib/store';
-import { setBrands, resetFormValues } from '@/lib/features/brandSlice';
+import { setBrands } from '@/lib/features/brandSlice';
 
-import React, { useEffect } from 'react';
-import React from 'react';
 import { Breadcrumbs } from '@aws-amplify/ui-react';
 import type { Brand } from '@/API';
 import BrandsView from './src/brandView';
-import BrandsDataTable from './src/brandsDataTable';
 
 const Brand: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
@@ -43,8 +40,6 @@ const Brand: React.FC = () => {
         fetchData();
     }, [dispatch]);
 
-const Brand: React.FC = () => {
-
     return (
         <div>
             <title>Markalar - BRH Takip</title>
@@ -64,9 +59,7 @@ const Brand: React.FC = () => {
                     className='text-sm font-medium'
                 />
             </div>
-            <BrandsView
-                onDelete={handleDelete}
-            />
+            <BrandsView onDelete={handleDelete} />
         </div>
     );
 };
