@@ -6,6 +6,7 @@ import { AppDispatch, RootState } from '@/lib/store';
 import { setBrands, resetFormValues } from '@/lib/features/brandSlice';
 
 import React, { useEffect } from 'react';
+import React from 'react';
 import { Breadcrumbs } from '@aws-amplify/ui-react';
 import type { Brand } from '@/API';
 import BrandsView from './src/brandView';
@@ -42,6 +43,7 @@ const Brand: React.FC = () => {
         fetchData();
     }, [dispatch]);
 
+const Brand: React.FC = () => {
 
     return (
         <div>

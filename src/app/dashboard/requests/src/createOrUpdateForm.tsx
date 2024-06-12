@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { AppDispatch, RootState } from '@/lib/store';
 import { handleFormChange } from '@/lib/features/requestSlice';
-import { observer } from 'mobx-react';
 import { listProducts, listStores, listMaterials } from '@/graphql/queries';
 import { Input, Label, Autocomplete, ComboBoxOption, TextAreaField } from '@aws-amplify/ui-react';
 import { generateRequestNumber } from '@/utils/helpers';
@@ -64,14 +63,14 @@ const renderStoreOption = (option: any, value: any) => {
     )
 }
 
-const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) => {
+const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     const { 
         isCreate = true, 
         request = {} as Request
     } = props;
 
     const dispatch = useAppDispatch<AppDispatch>();
-    const userData = useAppSelector((state: RootState) => state.user.userData);
+    const userProfile = useAppSelector((state: RootState) => state.user.userProfile);
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
 
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
@@ -206,7 +205,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
                 <form>
                     <div className=''>
                         <div className='grid grid-cols-2 gap-8 mb-6'>
-                            {!userData.isClient && (
+                            {userProfile.clientprofileID === 'BRH_ADMIN' && (
                                 <div className='input-group'>
                                     <Label htmlFor="client_name" className='block text-xs font-medium mb-1.5'>Müşteri</Label>
                                     <Autocomplete
@@ -444,6 +443,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = observer((props) =
             </div>
         </div>
     );
-})
+}
 
 export default CreateOrUpdateForm;

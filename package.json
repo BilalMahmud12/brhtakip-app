@@ -27,8 +27,6 @@
         "@reduxjs/toolkit": "^2.2.5",
         "aws-amplify": "^6.1.4",
         "framer-motion": "^11.1.8",
-        "mobx": "^6.12.3",
-        "mobx-react": "^9.1.1",
         "nanoid": "^5.0.7",
         "next": "14.2.3",
         "next-nprogress-bar": "^2.3.12",
