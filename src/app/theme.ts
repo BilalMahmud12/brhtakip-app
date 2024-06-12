@@ -1,28 +1,17 @@
-import { Theme } from '@aws-amplify/ui-react'
-const theme: Theme = {
-    name: 'custom-theme',
-    tokens: {
-        components: {
-            checkbox: {
-                button: {
-                    color: undefined,
-                    _focus: {
-                        outlineColor: undefined,
-                        outlineOffset: undefined,
-                        outlineWidth: '',
-                        borderColor: undefined,
-                        boxShadow: undefined,
-                    },
-                    before: {
-                        borderWidth: undefined,
-                        borderRadius: undefined,
-                        borderStyle: undefined,
-                        borderColor: undefined,
-                    },
-                },
-            }
-        },
+'use client';
+import { Roboto } from 'next/font/google';
+import { createTheme } from '@mui/material/styles';
+
+const roboto = Roboto({
+    weight: ['300', '400', '500', '700'],
+    subsets: ['latin'],
+    display: 'swap',
+});
+
+const theme = createTheme({
+    typography: {
+        fontFamily: roboto.style.fontFamily,
     },
-};
+});
 
 export default theme;

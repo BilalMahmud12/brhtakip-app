@@ -6,18 +6,12 @@
 
 /* eslint-disable */
 import * as React from "react";
-import {
-  Button,
-  Flex,
-  Grid,
-  SwitchField,
-  TextField,
-} from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
-import { createClientProfile } from "../graphql/mutations";
+import { createExtraProduct } from "../graphql/mutations";
 const client = generateClient();
-export default function ClientProfileCreateForm(props) {
+export default function ExtraProductCreateForm(props) {
   const {
     clearOnSuccess = true,
     onSuccess,
@@ -29,40 +23,24 @@ export default function ClientProfileCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    isActive: false,
+    isActive: "",
     name: "",
-    rootUserId: "",
-    contactEmail: "",
-    contactPhone: "",
-    address: "",
+    image: "",
   };
   const [isActive, setIsActive] = React.useState(initialValues.isActive);
   const [name, setName] = React.useState(initialValues.name);
-  const [rootUserId, setRootUserId] = React.useState(initialValues.rootUserId);
-  const [contactEmail, setContactEmail] = React.useState(
-    initialValues.contactEmail
-  );
-  const [contactPhone, setContactPhone] = React.useState(
-    initialValues.contactPhone
-  );
-  const [address, setAddress] = React.useState(initialValues.address);
+  const [image, setImage] = React.useState(initialValues.image);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setIsActive(initialValues.isActive);
     setName(initialValues.name);
-    setRootUserId(initialValues.rootUserId);
-    setContactEmail(initialValues.contactEmail);
-    setContactPhone(initialValues.contactPhone);
-    setAddress(initialValues.address);
+    setImage(initialValues.image);
     setErrors({});
   };
   const validations = {
     isActive: [],
     name: [],
-    rootUserId: [],
-    contactEmail: [{ type: "Email" }],
-    contactPhone: [],
-    address: [],
+    image: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -92,10 +70,7 @@ export default function ClientProfileCreateForm(props) {
         let modelFields = {
           isActive,
           name,
-          rootUserId,
-          contactEmail,
-          contactPhone,
-          address,
+          image,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -126,7 +101,7 @@ export default function ClientProfileCreateForm(props) {
             }
           });
           await client.graphql({
-            query: createClientProfile.replaceAll("__typename", ""),
+            query: createExtraProduct.replaceAll("__typename", ""),
             variables: {
               input: {
                 ...modelFields,
@@ -146,24 +121,21 @@ export default function ClientProfileCreateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "ClientProfileCreateForm")}
+      {...getOverrideProps(overrides, "ExtraProductCreateForm")}
       {...rest}
     >
-      <SwitchField
+      <TextField
         label="Is active"
-        defaultChecked={false}
-        isDisabled={false}
-        isChecked={isActive}
+        isRequired={false}
+        isReadOnly={false}
+        value={isActive}
         onChange={(e) => {
-          let value = e.target.checked;
+          let { value } = e.target;
           if (onChange) {
             const modelFields = {
               isActive: value,
               name,
-              rootUserId,
-              contactEmail,
-              contactPhone,
-              address,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.isActive ?? value;
@@ -177,7 +149,7 @@ export default function ClientProfileCreateForm(props) {
         errorMessage={errors.isActive?.errorMessage}
         hasError={errors.isActive?.hasError}
         {...getOverrideProps(overrides, "isActive")}
-      ></SwitchField>
+      ></TextField>
       <TextField
         label="Name"
         isRequired={false}
@@ -189,10 +161,7 @@ export default function ClientProfileCreateForm(props) {
             const modelFields = {
               isActive,
               name: value,
-              rootUserId,
-              contactEmail,
-              contactPhone,
-              address,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -208,120 +177,30 @@ export default function ClientProfileCreateForm(props) {
         {...getOverrideProps(overrides, "name")}
       ></TextField>
       <TextField
-        label="Root user id"
+        label="Image"
         isRequired={false}
         isReadOnly={false}
-        value={rootUserId}
+        value={image}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               isActive,
               name,
-              rootUserId: value,
-              contactEmail,
-              contactPhone,
-              address,
+              image: value,
             };
             const result = onChange(modelFields);
-            value = result?.rootUserId ?? value;
+            value = result?.image ?? value;
           }
-          if (errors.rootUserId?.hasError) {
-            runValidationTasks("rootUserId", value);
+          if (errors.image?.hasError) {
+            runValidationTasks("image", value);
           }
-          setRootUserId(value);
+          setImage(value);
         }}
-        onBlur={() => runValidationTasks("rootUserId", rootUserId)}
-        errorMessage={errors.rootUserId?.errorMessage}
-        hasError={errors.rootUserId?.hasError}
-        {...getOverrideProps(overrides, "rootUserId")}
-      ></TextField>
-      <TextField
-        label="Contact email"
-        isRequired={false}
-        isReadOnly={false}
-        value={contactEmail}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              isActive,
-              name,
-              rootUserId,
-              contactEmail: value,
-              contactPhone,
-              address,
-            };
-            const result = onChange(modelFields);
-            value = result?.contactEmail ?? value;
-          }
-          if (errors.contactEmail?.hasError) {
-            runValidationTasks("contactEmail", value);
-          }
-          setContactEmail(value);
-        }}
-        onBlur={() => runValidationTasks("contactEmail", contactEmail)}
-        errorMessage={errors.contactEmail?.errorMessage}
-        hasError={errors.contactEmail?.hasError}
-        {...getOverrideProps(overrides, "contactEmail")}
-      ></TextField>
-      <TextField
-        label="Contact phone"
-        isRequired={false}
-        isReadOnly={false}
-        value={contactPhone}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              isActive,
-              name,
-              rootUserId,
-              contactEmail,
-              contactPhone: value,
-              address,
-            };
-            const result = onChange(modelFields);
-            value = result?.contactPhone ?? value;
-          }
-          if (errors.contactPhone?.hasError) {
-            runValidationTasks("contactPhone", value);
-          }
-          setContactPhone(value);
-        }}
-        onBlur={() => runValidationTasks("contactPhone", contactPhone)}
-        errorMessage={errors.contactPhone?.errorMessage}
-        hasError={errors.contactPhone?.hasError}
-        {...getOverrideProps(overrides, "contactPhone")}
-      ></TextField>
-      <TextField
-        label="Address"
-        isRequired={false}
-        isReadOnly={false}
-        value={address}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              isActive,
-              name,
-              rootUserId,
-              contactEmail,
-              contactPhone,
-              address: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.address ?? value;
-          }
-          if (errors.address?.hasError) {
-            runValidationTasks("address", value);
-          }
-          setAddress(value);
-        }}
-        onBlur={() => runValidationTasks("address", address)}
-        errorMessage={errors.address?.errorMessage}
-        hasError={errors.address?.hasError}
-        {...getOverrideProps(overrides, "address")}
+        onBlur={() => runValidationTasks("image", image)}
+        errorMessage={errors.image?.errorMessage}
+        hasError={errors.image?.hasError}
+        {...getOverrideProps(overrides, "image")}
       ></TextField>
       <Flex
         justifyContent="space-between"

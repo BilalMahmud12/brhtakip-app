@@ -1,3 +1,16 @@
+type ExtraProduct @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  isActive: String
+  name: String
+  image: String
+}
+
+enum Roles {
+  ADMIN
+  CLIENT_ROOT
+  CLIENT_USER
+}
+
 type ApplicationArea @model @auth(rules: [{allow: public}]) {
   id: ID!
   isActive: Boolean!
@@ -15,6 +28,7 @@ type RequestItem {
 }
 
 enum RequestStatus {
+  PENDING_CLIENT_APPROVAL
   PENDING_APPROVAL
   IN_DESIGN
   IN_PRESS
@@ -26,16 +40,19 @@ enum RequestStatus {
 type Material @model @auth(rules: [{allow: public}]) {
   id: ID!
   isActive: Boolean!
-  name: String
+  name: String!
 }
 
 type UserProfile @model @auth(rules: [{allow: public}]) {
   id: ID!
-  isActive: Boolean
+  cognitoID: ID
   clientprofileID: ID @index(name: "byClientProfile")
+  isActive: Boolean
   firstName: String
   lastName: String
   email: AWSEmail
+  role: Roles
+  permissions: [String]
 }
 
 type Area @model @auth(rules: [{allow: public}]) {
@@ -76,6 +93,10 @@ type ClientProfile @model @auth(rules: [{allow: public}]) {
   Brands: [Brand] @hasMany(indexName: "byClientProfile", fields: ["id"])
   Requests: [Request] @hasMany(indexName: "byClientProfile", fields: ["id"])
   name: String
+  rootUserId: ID
+  contactEmail: AWSEmail
+  contactPhone: String
+  address: String
 }
 
 type Store @model @auth(rules: [{allow: public}]) {

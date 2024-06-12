@@ -1,23 +1,34 @@
 'use client'
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { Authenticator, useAuthenticator, Loader } from '@aws-amplify/ui-react';
 import Logo from "@/components/core/logo";
+import { useAppDispatch } from '@/lib/hooks';
+import { AppDispatch } from '@/lib/store';
+import { loadUserData } from "@/services/userService";
 
 const DASHBOARD_URL: string = '/dashboard';
 
 export default function Login() {
     const router = useRouter();
+    const dispatch = useAppDispatch<AppDispatch>();
     const { user } = useAuthenticator((context) => [context.user]);
     
     useEffect(() => {
-
         if (user) {
-            setTimeout(() => {
-                router.push(DASHBOARD_URL)
-            }, 2500)
+            const loadUser = async () => {
+                const success = await loadUserData(dispatch);
+                if (success) {
+                    setTimeout(() => {
+                        router.push(DASHBOARD_URL)
+                    }, 2500);
+                } else {
+                    // Handle error (e.g., show error message or log out user)
+                }
+            };
+            loadUser();
         }
-    })
+    }, [user, dispatch, router])
 
     return (
         <>

@@ -1,34 +1,27 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import type { UserProfile as UserProfileType } from '@/API';
 
-type userData = {
-    id: string,
-    name: string,
-    email: string,
-    role: string,
-    status: string,
-    isClient: boolean,
-    clientId?: string | null,
-    permissions?: {
-        [key: string]: boolean,
-    }
-}
+type UserProfile = Omit<UserProfileType, '__typename'>
 
 interface UserState {
     isFetching: boolean;
-    userData: userData
+    userProfile: UserProfile;
 }
 
 const initialState: UserState = {
     isFetching: false,
-    userData: {
+    userProfile: {
         id: '',
-        name: '',
+        cognitoID: '',
+        clientprofileID: '',
+        isActive: false,
+        firstName: '',
+        lastName: '',
         email: '',
-        role: '',
-        status: '',
-        isClient: false,
-        clientId: null,
-    }
+        role: undefined,
+        createdAt: '',
+        updatedAt: '',
+    },
 }
 
 const userSlice = createSlice({
@@ -38,11 +31,11 @@ const userSlice = createSlice({
         setIsFetching: (state, action: PayloadAction<boolean>) => {
             state.isFetching = action.payload
         },
-        setUserData: (state, action: PayloadAction<userData>) => {
-            state.userData = action.payload
-        }
+        setUserProfile: (state, action: PayloadAction<UserProfile>) => {
+            state.userProfile = action.payload
+        },
     }
 })
 
-export const { setIsFetching, setUserData } = userSlice.actions
+export const { setIsFetching, setUserProfile } = userSlice.actions
 export default userSlice.reducer

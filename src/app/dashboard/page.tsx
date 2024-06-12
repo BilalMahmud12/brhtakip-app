@@ -1,15 +1,15 @@
-import { Metadata } from 'next'
-
-export const metadata: Metadata = {
-    title: 'Panel Girişi - BRH Takip',
-}
+'use client'
+import { useAppSelector } from '@/lib/hooks';
+import { RootState } from '@/lib/store';
 
 function Dashboard() {
+    const userProfile = useAppSelector((state: RootState) => state.user.userProfile);
 
     return (
         <>
-            <div>
-                <h1 className='text-2xl font-medium'>Panel Girişi</h1>
+            <title>Panel Girişi - BRH Takip</title>
+            <div className='px-4 py-6'>
+                <div>Merhaba {userProfile.firstName}!</div>
             </div>
         </>
     );

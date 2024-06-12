@@ -42,7 +42,7 @@ export default function MaterialCreateForm(props) {
   };
   const validations = {
     isActive: [{ type: "Required" }],
-    name: [],
+    name: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -152,7 +152,7 @@ export default function MaterialCreateForm(props) {
       ></SwitchField>
       <TextField
         label="Name"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={name}
         onChange={(e) => {

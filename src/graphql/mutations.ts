@@ -8,6 +8,60 @@ type GeneratedMutation<InputType, OutputType> = string & {
   __generatedMutationOutput: OutputType;
 };
 
+export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
+  $input: CreateExtraProductInput!
+  $condition: ModelExtraProductConditionInput
+) {
+  createExtraProduct(input: $input, condition: $condition) {
+    id
+    isActive
+    name
+    image
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateExtraProductMutationVariables,
+  APITypes.CreateExtraProductMutation
+>;
+export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
+  $input: UpdateExtraProductInput!
+  $condition: ModelExtraProductConditionInput
+) {
+  updateExtraProduct(input: $input, condition: $condition) {
+    id
+    isActive
+    name
+    image
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateExtraProductMutationVariables,
+  APITypes.UpdateExtraProductMutation
+>;
+export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
+  $input: DeleteExtraProductInput!
+  $condition: ModelExtraProductConditionInput
+) {
+  deleteExtraProduct(input: $input, condition: $condition) {
+    id
+    isActive
+    name
+    image
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteExtraProductMutationVariables,
+  APITypes.DeleteExtraProductMutation
+>;
 export const createApplicationArea = /* GraphQL */ `mutation CreateApplicationArea(
   $input: CreateApplicationAreaInput!
   $condition: ModelApplicationAreaConditionInput
@@ -116,11 +170,14 @@ export const createUserProfile = /* GraphQL */ `mutation CreateUserProfile(
 ) {
   createUserProfile(input: $input, condition: $condition) {
     id
-    isActive
+    cognitoID
     clientprofileID
+    isActive
     firstName
     lastName
     email
+    role
+    permissions
     createdAt
     updatedAt
     __typename
@@ -136,11 +193,14 @@ export const updateUserProfile = /* GraphQL */ `mutation UpdateUserProfile(
 ) {
   updateUserProfile(input: $input, condition: $condition) {
     id
-    isActive
+    cognitoID
     clientprofileID
+    isActive
     firstName
     lastName
     email
+    role
+    permissions
     createdAt
     updatedAt
     __typename
@@ -156,11 +216,14 @@ export const deleteUserProfile = /* GraphQL */ `mutation DeleteUserProfile(
 ) {
   deleteUserProfile(input: $input, condition: $condition) {
     id
-    isActive
+    cognitoID
     clientprofileID
+    isActive
     firstName
     lastName
     email
+    role
+    permissions
     createdAt
     updatedAt
     __typename
@@ -333,11 +396,14 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -376,6 +442,10 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -961,11 +1031,14 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -1004,6 +1077,10 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -1589,11 +1666,14 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -1632,6 +1712,10 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -2138,6 +2222,10 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -2451,11 +2539,14 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -2494,6 +2585,10 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -3000,6 +3095,10 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -3313,11 +3412,14 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -3356,6 +3458,10 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -3862,6 +3968,10 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -4175,11 +4285,14 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -4218,6 +4331,10 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -4794,6 +4911,10 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -5107,11 +5228,14 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -5150,6 +5274,10 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -5726,6 +5854,10 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -6039,11 +6171,14 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -6082,6 +6217,10 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -6658,6 +6797,10 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -6971,11 +7114,14 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -7014,6 +7160,10 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -7446,11 +7596,14 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
     UserProfiles {
       items {
         id
-        isActive
+        cognitoID
         clientprofileID
+        isActive
         firstName
         lastName
         email
+        role
+        permissions
         createdAt
         updatedAt
         __typename
@@ -7662,6 +7815,10 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -7933,11 +8090,14 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
           UserProfiles {
             items {
               id
-              isActive
+              cognitoID
               clientprofileID
+              isActive
               firstName
               lastName
               email
+              role
+              permissions
               createdAt
               updatedAt
               __typename
@@ -8086,6 +8246,10 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -8101,6 +8265,10 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
             __typename
           }
           name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
           createdAt
           updatedAt
           __typename
@@ -8116,6 +8284,10 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
       __typename
     }
     name
+    rootUserId
+    contactEmail
+    contactPhone
+    address
     createdAt
     updatedAt
     __typename
@@ -8135,11 +8307,14 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
     UserProfiles {
       items {
         id
-        isActive
+        cognitoID
         clientprofileID
+        isActive
         firstName
         lastName
         email
+        role
+        permissions
         createdAt
         updatedAt
         __typename
@@ -8351,6 +8526,10 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -8622,11 +8801,14 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
           UserProfiles {
             items {
               id
-              isActive
+              cognitoID
               clientprofileID
+              isActive
               firstName
               lastName
               email
+              role
+              permissions
               createdAt
               updatedAt
               __typename
@@ -8775,6 +8957,10 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -8790,6 +8976,10 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
             __typename
           }
           name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
           createdAt
           updatedAt
           __typename
@@ -8805,6 +8995,10 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
       __typename
     }
     name
+    rootUserId
+    contactEmail
+    contactPhone
+    address
     createdAt
     updatedAt
     __typename
@@ -8824,11 +9018,14 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
     UserProfiles {
       items {
         id
-        isActive
+        cognitoID
         clientprofileID
+        isActive
         firstName
         lastName
         email
+        role
+        permissions
         createdAt
         updatedAt
         __typename
@@ -9040,6 +9237,10 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -9311,11 +9512,14 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
           UserProfiles {
             items {
               id
-              isActive
+              cognitoID
               clientprofileID
+              isActive
               firstName
               lastName
               email
+              role
+              permissions
               createdAt
               updatedAt
               __typename
@@ -9464,6 +9668,10 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -9479,6 +9687,10 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
             __typename
           }
           name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
           createdAt
           updatedAt
           __typename
@@ -9494,6 +9706,10 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
       __typename
     }
     name
+    rootUserId
+    contactEmail
+    contactPhone
+    address
     createdAt
     updatedAt
     __typename
@@ -9692,6 +9908,10 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -9963,11 +10183,14 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
           UserProfiles {
             items {
               id
-              isActive
+              cognitoID
               clientprofileID
+              isActive
               firstName
               lastName
               email
+              role
+              permissions
               createdAt
               updatedAt
               __typename
@@ -10116,6 +10339,10 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -10131,6 +10358,10 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
             __typename
           }
           name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
           createdAt
           updatedAt
           __typename
@@ -10277,6 +10508,10 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -10783,6 +11018,10 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -11323,6 +11562,10 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -11796,6 +12039,10 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -12067,11 +12314,14 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
           UserProfiles {
             items {
               id
-              isActive
+              cognitoID
               clientprofileID
+              isActive
               firstName
               lastName
               email
+              role
+              permissions
               createdAt
               updatedAt
               __typename
@@ -12220,6 +12470,10 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -12235,6 +12489,10 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
             __typename
           }
           name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
           createdAt
           updatedAt
           __typename
@@ -12381,6 +12639,10 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -12887,6 +13149,10 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -13427,6 +13693,10 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -13900,6 +14170,10 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -14171,11 +14445,14 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
           UserProfiles {
             items {
               id
-              isActive
+              cognitoID
               clientprofileID
+              isActive
               firstName
               lastName
               email
+              role
+              permissions
               createdAt
               updatedAt
               __typename
@@ -14324,6 +14601,10 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -14339,6 +14620,10 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
             __typename
           }
           name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
           createdAt
           updatedAt
           __typename
@@ -14485,6 +14770,10 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -14991,6 +15280,10 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -15531,6 +15824,10 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -16154,6 +16451,10 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -16305,11 +16606,14 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -16397,6 +16701,10 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -16412,6 +16720,10 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -16506,6 +16818,10 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -16807,6 +17123,10 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -17126,6 +17446,10 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -17291,11 +17615,14 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
       UserProfiles {
         items {
           id
-          isActive
+          cognitoID
           clientprofileID
+          isActive
           firstName
           lastName
           email
+          role
+          permissions
           createdAt
           updatedAt
           __typename
@@ -17455,6 +17782,10 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -17606,11 +17937,14 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -17698,6 +18032,10 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -17713,6 +18051,10 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -17728,6 +18070,10 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
         __typename
       }
       name
+      rootUserId
+      contactEmail
+      contactPhone
+      address
       createdAt
       updatedAt
       __typename
@@ -17936,6 +18282,10 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -18087,11 +18437,14 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -18179,6 +18532,10 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -18194,6 +18551,10 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -18288,6 +18649,10 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -18589,6 +18954,10 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -18908,6 +19277,10 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -19073,11 +19446,14 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
       UserProfiles {
         items {
           id
-          isActive
+          cognitoID
           clientprofileID
+          isActive
           firstName
           lastName
           email
+          role
+          permissions
           createdAt
           updatedAt
           __typename
@@ -19237,6 +19613,10 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -19388,11 +19768,14 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -19480,6 +19863,10 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -19495,6 +19882,10 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -19510,6 +19901,10 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
         __typename
       }
       name
+      rootUserId
+      contactEmail
+      contactPhone
+      address
       createdAt
       updatedAt
       __typename
@@ -19718,6 +20113,10 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -19869,11 +20268,14 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -19961,6 +20363,10 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -19976,6 +20382,10 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -20070,6 +20480,10 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -20371,6 +20785,10 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -20690,6 +21108,10 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -20855,11 +21277,14 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
       UserProfiles {
         items {
           id
-          isActive
+          cognitoID
           clientprofileID
+          isActive
           firstName
           lastName
           email
+          role
+          permissions
           createdAt
           updatedAt
           __typename
@@ -21019,6 +21444,10 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -21170,11 +21599,14 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -21262,6 +21694,10 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -21277,6 +21713,10 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -21292,6 +21732,10 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
         __typename
       }
       name
+      rootUserId
+      contactEmail
+      contactPhone
+      address
       createdAt
       updatedAt
       __typename

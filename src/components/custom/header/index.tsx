@@ -1,11 +1,11 @@
 'use client'
 import React from 'react'
 import { signOut } from "aws-amplify/auth"
-import { useRouter } from "next/navigation"
+import { useRouter } from "next-nprogress-bar"
 import { useAppSelector  } from '@/lib/hooks';
 import { RootState } from '@/lib/store';
 import { Button, Divider } from '@aws-amplify/ui-react'
-import Logo from './src/logo'
+import Logo from '../../core/logo'
 
 
 const AppHeader: React.FC = () => {
@@ -22,7 +22,9 @@ const AppHeader: React.FC = () => {
             <header className='border-b border-zinc-200'>
                 <div className='grid grid-cols-5 xl:grid-cols-6'>
                     <div className='flex items-center space-x-3 col-span-1'>
-                        <Logo />
+                        <div className='bg-zinc-100 w-full py-2 border-r border-gray-300'>
+                            <Logo />
+                        </div>
                     </div>
                     <div className='flex items-center col-span-2 px-4'>
                         <h1 className='text-lg font-medium'>{pageTitle}</h1>

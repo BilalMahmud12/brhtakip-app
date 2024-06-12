@@ -8,6 +8,44 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
+export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
+  getExtraProduct(id: $id) {
+    id
+    isActive
+    name
+    image
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetExtraProductQueryVariables,
+  APITypes.GetExtraProductQuery
+>;
+export const listExtraProducts = /* GraphQL */ `query ListExtraProducts(
+  $filter: ModelExtraProductFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listExtraProducts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      isActive
+      name
+      image
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListExtraProductsQueryVariables,
+  APITypes.ListExtraProductsQuery
+>;
 export const getApplicationArea = /* GraphQL */ `query GetApplicationArea($id: ID!) {
   getApplicationArea(id: $id) {
     id
@@ -83,11 +121,14 @@ export const listMaterials = /* GraphQL */ `query ListMaterials(
 export const getUserProfile = /* GraphQL */ `query GetUserProfile($id: ID!) {
   getUserProfile(id: $id) {
     id
-    isActive
+    cognitoID
     clientprofileID
+    isActive
     firstName
     lastName
     email
+    role
+    permissions
     createdAt
     updatedAt
     __typename
@@ -105,11 +146,14 @@ export const listUserProfiles = /* GraphQL */ `query ListUserProfiles(
   listUserProfiles(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      isActive
+      cognitoID
       clientprofileID
+      isActive
       firstName
       lastName
       email
+      role
+      permissions
       createdAt
       updatedAt
       __typename
@@ -138,11 +182,14 @@ export const userProfilesByClientprofileID = /* GraphQL */ `query UserProfilesBy
   ) {
     items {
       id
-      isActive
+      cognitoID
       clientprofileID
+      isActive
       firstName
       lastName
       email
+      role
+      permissions
       createdAt
       updatedAt
       __typename
@@ -315,11 +362,14 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -358,6 +408,10 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -910,6 +964,10 @@ export const listAreas = /* GraphQL */ `query ListAreas(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -1331,6 +1389,10 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -1695,6 +1757,10 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -2008,11 +2074,14 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -2051,6 +2120,10 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -2710,6 +2783,10 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -3238,6 +3315,10 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -3672,6 +3753,10 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -3985,11 +4070,14 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -4028,6 +4116,10 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -4718,6 +4810,10 @@ export const listCities = /* GraphQL */ `query ListCities(
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -5008,11 +5104,14 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
     UserProfiles {
       items {
         id
-        isActive
+        cognitoID
         clientprofileID
+        isActive
         firstName
         lastName
         email
+        role
+        permissions
         createdAt
         updatedAt
         __typename
@@ -5224,6 +5323,10 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -5495,11 +5598,14 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
           UserProfiles {
             items {
               id
-              isActive
+              cognitoID
               clientprofileID
+              isActive
               firstName
               lastName
               email
+              role
+              permissions
               createdAt
               updatedAt
               __typename
@@ -5648,6 +5754,10 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -5663,6 +5773,10 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
             __typename
           }
           name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
           createdAt
           updatedAt
           __typename
@@ -5678,6 +5792,10 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
       __typename
     }
     name
+    rootUserId
+    contactEmail
+    contactPhone
+    address
     createdAt
     updatedAt
     __typename
@@ -5699,11 +5817,14 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
       UserProfiles {
         items {
           id
-          isActive
+          cognitoID
           clientprofileID
+          isActive
           firstName
           lastName
           email
+          role
+          permissions
           createdAt
           updatedAt
           __typename
@@ -5863,6 +5984,10 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -6014,11 +6139,14 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -6106,6 +6234,10 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -6121,6 +6253,10 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -6136,6 +6272,10 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
         __typename
       }
       name
+      rootUserId
+      contactEmail
+      contactPhone
+      address
       createdAt
       updatedAt
       __typename
@@ -6334,6 +6474,10 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -6605,11 +6749,14 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
           UserProfiles {
             items {
               id
-              isActive
+              cognitoID
               clientprofileID
+              isActive
               firstName
               lastName
               email
+              role
+              permissions
               createdAt
               updatedAt
               __typename
@@ -6758,6 +6905,10 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -6773,6 +6924,10 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
             __typename
           }
           name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
           createdAt
           updatedAt
           __typename
@@ -6919,6 +7074,10 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -7425,6 +7584,10 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -7965,6 +8128,10 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                   __typename
                 }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
                 __typename
@@ -8385,6 +8552,10 @@ export const listStores = /* GraphQL */ `query ListStores(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -8536,11 +8707,14 @@ export const listStores = /* GraphQL */ `query ListStores(
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -8628,6 +8802,10 @@ export const listStores = /* GraphQL */ `query ListStores(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -8643,6 +8821,10 @@ export const listStores = /* GraphQL */ `query ListStores(
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -8737,6 +8919,10 @@ export const listStores = /* GraphQL */ `query ListStores(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -9038,6 +9224,10 @@ export const listStores = /* GraphQL */ `query ListStores(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -9357,6 +9547,10 @@ export const listStores = /* GraphQL */ `query ListStores(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -9671,6 +9865,10 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -9822,11 +10020,14 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -9914,6 +10115,10 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -9929,6 +10134,10 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -10023,6 +10232,10 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -10324,6 +10537,10 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -10643,6 +10860,10 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -10957,6 +11178,10 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -11108,11 +11333,14 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -11200,6 +11428,10 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -11215,6 +11447,10 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -11309,6 +11545,10 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -11610,6 +11850,10 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -11929,6 +12173,10 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -12243,6 +12491,10 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -12394,11 +12646,14 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -12486,6 +12741,10 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -12501,6 +12760,10 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -12595,6 +12858,10 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -12896,6 +13163,10 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -13215,6 +13486,10 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -13745,6 +14020,10 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -13896,11 +14175,14 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -13988,6 +14270,10 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -14003,6 +14289,10 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -14097,6 +14387,10 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -14398,6 +14692,10 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -14717,6 +15015,10 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -14882,11 +15184,14 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
       UserProfiles {
         items {
           id
-          isActive
+          cognitoID
           clientprofileID
+          isActive
           firstName
           lastName
           email
+          role
+          permissions
           createdAt
           updatedAt
           __typename
@@ -15046,6 +15351,10 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -15197,11 +15506,14 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             UserProfiles {
               items {
                 id
-                isActive
+                cognitoID
                 clientprofileID
+                isActive
                 firstName
                 lastName
                 email
+                role
+                permissions
                 createdAt
                 updatedAt
                 __typename
@@ -15289,6 +15601,10 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
                   __typename
@@ -15304,6 +15620,10 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
               __typename
             }
             name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
             createdAt
             updatedAt
             __typename
@@ -15319,6 +15639,10 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
         __typename
       }
       name
+      rootUserId
+      contactEmail
+      contactPhone
+      address
       createdAt
       updatedAt
       __typename
@@ -15550,11 +15874,14 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -15593,6 +15920,10 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -16006,11 +16337,14 @@ export const listRequests = /* GraphQL */ `query ListRequests(
         UserProfiles {
           items {
             id
-            isActive
+            cognitoID
             clientprofileID
+            isActive
             firstName
             lastName
             email
+            role
+            permissions
             createdAt
             updatedAt
             __typename
@@ -16191,11 +16525,14 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -16234,6 +16571,10 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -16249,6 +16590,10 @@ export const listRequests = /* GraphQL */ `query ListRequests(
           __typename
         }
         name
+        rootUserId
+        contactEmail
+        contactPhone
+        address
         createdAt
         updatedAt
         __typename
@@ -16491,11 +16836,14 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -16534,6 +16882,10 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -16947,11 +17299,14 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
         UserProfiles {
           items {
             id
-            isActive
+            cognitoID
             clientprofileID
+            isActive
             firstName
             lastName
             email
+            role
+            permissions
             createdAt
             updatedAt
             __typename
@@ -17132,11 +17487,14 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -17175,6 +17533,10 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -17190,6 +17552,10 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
           __typename
         }
         name
+        rootUserId
+        contactEmail
+        contactPhone
+        address
         createdAt
         updatedAt
         __typename
@@ -17432,11 +17798,14 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -17475,6 +17844,10 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -17888,11 +18261,14 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
         UserProfiles {
           items {
             id
-            isActive
+            cognitoID
             clientprofileID
+            isActive
             firstName
             lastName
             email
+            role
+            permissions
             createdAt
             updatedAt
             __typename
@@ -18073,11 +18449,14 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               UserProfiles {
                 items {
                   id
-                  isActive
+                  cognitoID
                   clientprofileID
+                  isActive
                   firstName
                   lastName
                   email
+                  role
+                  permissions
                   createdAt
                   updatedAt
                   __typename
@@ -18116,6 +18495,10 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                 __typename
               }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
               __typename
@@ -18131,6 +18514,10 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
           __typename
         }
         name
+        rootUserId
+        contactEmail
+        contactPhone
+        address
         createdAt
         updatedAt
         __typename
