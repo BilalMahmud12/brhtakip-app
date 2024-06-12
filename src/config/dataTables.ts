@@ -39,7 +39,17 @@ export const dataTables = {
     materials: {
         columns: [
             { label: '', key: 'checkbox', width: '2%' },
-            { label: 'Melzeme', key: 'name', width: '70%' },
+            { label: 'Malzeme', key: 'name', width: '70%' },
+            { label: 'Durum', key: 'isActive', width: '5%' },
+            // { label: 'Marka', key: 'brandID', width: '20%' },
+            { label: '', key: 'actions', width: '2%' },
+        ]
+    },
+
+    applicationArea: {
+        columns: [
+            { label: '', key: 'checkbox', width: '2%' },
+            { label: 'Uygulama Alanları', key: 'name', width: '70%' },
             { label: 'Durum', key: 'isActive', width: '5%' },
             // { label: 'Marka', key: 'brandID', width: '20%' },
             { label: '', key: 'actions', width: '2%' },

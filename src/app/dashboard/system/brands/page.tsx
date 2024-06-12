@@ -42,7 +42,7 @@ const Brand: React.FC = () => {
 
     return (
         <div>
-            <title>Markalar - BRH Takip</title>
+            <title>Markalar</title>
 
             <div className='px-6 py-3 bg-zinc-50 shadow mb-4'>
                 <Breadcrumbs
@@ -50,6 +50,10 @@ const Brand: React.FC = () => {
                         {
                             href: '/dashboard',
                             label: 'Panel Girişi',
+                        },
+                        {
+                            href: '/dashboard/system',
+                            label: 'System',
                         },
                         {
                             href: '/dashboard/system/brands',

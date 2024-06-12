@@ -13,7 +13,11 @@ const requestNavigation = [
         label: 'Malzemeler',
         icon: <Icon iconName='FcFinePrint' className='' />
     },
-
+    {
+        href: '/dashboard/system/applicationAreas',
+        label: 'Uygulama Alanları',
+        icon: <Icon iconName='FcFinePrint' className='' />
+    },
 ]
 
 const SystemPage: React.FC = () => {

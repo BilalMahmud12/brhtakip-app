@@ -1,0 +1,2 @@
+// getApplicationAreasTableData.tsx
+// applicationAreasDataTable.tsx

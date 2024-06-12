@@ -1,34 +1,34 @@
 'use client'
 import { Breadcrumbs } from '@aws-amplify/ui-react';
 import React, { useEffect } from 'react';
-import MaterialView from './src/materialView';
+import ApplicationAreaView from './src/applicationAreaView';
 import * as Repo from '@/repository/index';
-import type { Material } from '@/API';
+import type { ApplicationArea } from '@/API';
 
 import { useAppDispatch } from '@/lib/hooks';
 import { AppDispatch } from '@/lib/store';
-import { setMaterials } from '@/lib/features/materialSlice';
+import { setApplicationAreas } from '@/lib/features/applicationAreaSlice';
 
+const ApplicationArea: React.FC = () => {
 
-const Material: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const materialData = await Repo.MaterialRepository.getAllMaterials();
-                dispatch(setMaterials(materialData as unknown as Material[]));
-                console.log('material data', materialData);
+                const applicationAreaData = await Repo.ApplicationAreaRepository.getApplicationAreas();
+                dispatch(setApplicationAreas(applicationAreaData as unknown as ApplicationArea[]));
+                console.log('application Area Data', applicationAreaData);
             } catch (error) {
                 console.error('Failed to fetch brands', error);
             }
         };
         fetchData();
-    }, [dispatch, Material])
+    }, [dispatch, ApplicationArea])
 
     return (
         <div>
-            <title>Malzemeler</title>
+            <title>Uygulama Alanları</title>
             <div className='px-6 py-3 bg-zinc-50 shadow mb-4'>
                 <Breadcrumbs
                     items={[
@@ -41,18 +41,20 @@ const Material: React.FC = () => {
                             label: 'System',
                         },
                         {
-                            href: '/dashboard/system/malzemeler',
-                            label: 'Malzemeler',
+                            href: '/dashboard/system/applicationArea',
+                            label: 'Uygulama Alanları',
                         }
                     ]}
                     className='text-sm font-medium'
                 />
             </div>
             <div>
-                <MaterialView />
+                <ApplicationAreaView />
             </div>
         </div>
     )
 }
 
-export default Material
+export default ApplicationArea;
+
+//ApplicationArea
