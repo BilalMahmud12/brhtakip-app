@@ -25,11 +25,11 @@ const getMaterialById = async (id: string) => {
     }
 }
 
-const create = async (request: Material) => {
+const create = async (material: any) => {
     try {
         const data = await client.graphql({
             query: createMaterial,
-            variables: { input: request },
+            variables: { input: material },
         });
 
         return data;
@@ -38,11 +38,11 @@ const create = async (request: Material) => {
     }
 }
 
-const update = async (request: Material) => {
+const update = async (material: any) => {
     try {
         const data = await client.graphql({
             query: updateMaterial,
-            variables: { input: request },
+            variables: { input: material },
         });
 
         return data;
@@ -72,3 +72,13 @@ export {
     update,
     softDelete
 }
+
+
+// if (!material.name || material.name.trim() === "") {
+//     console.error("Brand name cannot be empty.");
+//     return;
+// }
+// if (!material.clientprofileID || material.clientprofileID.trim() === "") {
+//     console.error("Brand clientprofileID cannot be empty.");
+//     return;
+// }

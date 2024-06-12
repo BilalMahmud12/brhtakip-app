@@ -12,7 +12,6 @@ export default function getMaterialsTableData(
     handleEdit: (data: any) => void,
     handleDelete: (data: any) => void,
     handleSelect: (data: any) => void,
-    getClientName: (data: any) => void
 ) {
     const router = useRouter()
 
@@ -42,48 +41,48 @@ export default function getMaterialsTableData(
                         );
                         break;
 
-                    // case 'actions':
-                    //     row[column.key] = (
-                    //         <div className='flex justify-center'>
-                    //             <Dropdown>
-                    //                 <DropdownTrigger>
-                    //                     <Button
-                    //                         variant="light"
-                    //                         className='max-w-[25px] h-[30px] block w-[25px] min-w-0 hover:bg-transparent p-0.5'
-                    //                     >
-                    //                         <Icon iconName='GoKebabHorizontal' className='w-5 h-5' />
-                    //                     </Button>
-                    //                 </DropdownTrigger>
-                    //                 <DropdownMenu aria-label='row-actions'>
+                    case 'actions':
+                        row[column.key] = (
+                            <div className='flex justify-center'>
+                                <Dropdown>
+                                    <DropdownTrigger>
+                                        <Button
+                                            variant="light"
+                                            className='max-w-[25px] h-[30px] block w-[25px] min-w-0 hover:bg-transparent p-0.5'
+                                        >
+                                            <Icon iconName='GoKebabHorizontal' className='w-5 h-5' />
+                                        </Button>
+                                    </DropdownTrigger>
+                                    <DropdownMenu aria-label='row-actions'>
 
-                    //                     {/* <DropdownItem
-                    //                         key="update"
-                    //                         startContent={<Icon iconName='FcSupport' className='w-5 h-5' />}
-                    //                         onClick={() => {
-                    //                             // brandStore.setBrandFormValues({
-                    //                             //     id: brand.id || '',
-                    //                             //     name: brand.name || '',
-                    //                             //     isActive: brand.isActive || false
-                    //                             // });
-                    //                             // console.log('From getBrandTable', brand.id, brand.name, brand.isActive);
-                    //                             router.push(`/dashboard/system/brands/${brand.id}}`);
-                    //                         }}
-                    //                     >
-                    //                         Güncelle
-                    //                     </DropdownItem> */}
+                                        {/* <DropdownItem
+                                            key="update"
+                                            startContent={<Icon iconName='FcSupport' className='w-5 h-5' />}
+                                            onClick={() => {
+                                                // brandStore.setBrandFormValues({
+                                                //     id: brand.id || '',
+                                                //     name: brand.name || '',
+                                                //     isActive: brand.isActive || false
+                                                // });
+                                                // console.log('From getBrandTable', brand.id, brand.name, brand.isActive);
+                                                router.push(`/dashboard/system/brands/${brand.id}}`);
+                                            }}
+                                        >
+                                            Güncelle
+                                        </DropdownItem> */}
 
-                    //                     <DropdownItem
-                    //                         key="cancel"
-                    //                         startContent={<Icon iconName='FcCancel' className='w-5 h-5' />}
-                    //                         onClick={() => handleDelete(row)}
-                    //                     >
-                    //                         Marka Sil
-                    //                     </DropdownItem>
-                    //                 </DropdownMenu>
-                    //             </Dropdown>
-                    //         </div>
-                    //     );
-                    //     break;
+                                        <DropdownItem
+                                            key="cancel"
+                                            startContent={<Icon iconName='FcCancel' className='w-5 h-5' />}
+                                            onClick={() => handleDelete(row)}
+                                        >
+                                            Marka Sil
+                                        </DropdownItem>
+                                    </DropdownMenu>
+                                </Dropdown>
+                            </div>
+                        );
+                        break;
                     default:
                         row[column.key] = material[column.key as keyof Material];
                         break;

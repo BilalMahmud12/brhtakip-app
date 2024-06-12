@@ -4,8 +4,8 @@ import type { Material } from '@/API';
 interface MaterialFormState {
     materials: Material[];
     materialForm: {
-        name?: string;
-        isActive?: boolean;
+        name: string;
+        isActive: boolean;
     }
 }
 
@@ -53,7 +53,7 @@ const materialSlice = createSlice({
                     break;
             }
         },
-        resetMaterialFormValues: (state) => {
+        resetFormValues: (state) => {
             state.materialForm = {
                 name: '',
                 isActive: false,
@@ -67,7 +67,7 @@ export const {
     setMaterialFormValues,
     handleFormChange,
     addMaterial,
-    resetMaterialFormValues,
+    resetFormValues,
 } = materialSlice.actions;
 
 export default materialSlice.reducer

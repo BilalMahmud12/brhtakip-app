@@ -7,18 +7,17 @@ import getMaterialsTableData from './getMaterialsTableData';
 interface MaterialsDataTableProps {
     dataPayload?: any[];
     handleEdit?: (data: any) => void;
-    onDeleteBrand?: (data: any) => void;
+    handleDelete?: (data: any) => void;
     handleSelect?: (data: any) => void;
-    getClientName?: (data: string) => void;
+
 }
 
 const MaterialsDataTable: React.FC<MaterialsDataTableProps> = (props) => {
     const {
         dataPayload = [],
         handleEdit = () => { },
-        onDeleteBrand = () => { },
+        handleDelete = () => { },
         handleSelect = () => { },
-        getClientName = async () => { }
     } = props;
 
     const { materials } = dataTables;
@@ -27,9 +26,8 @@ const MaterialsDataTable: React.FC<MaterialsDataTableProps> = (props) => {
         dataPayload,
         materials.columns,
         handleEdit,
-        onDeleteBrand,
+        handleDelete,
         handleSelect,
-        getClientName
     );
 
 
@@ -39,8 +37,7 @@ const MaterialsDataTable: React.FC<MaterialsDataTableProps> = (props) => {
                 columns={materials.columns}
                 data={tableData}
                 onEditRow={(data) => handleEdit(data)}
-                onDeleteRow={(data) => onDeleteBrand(data)}
-                getClientName={(data) => getClientName(data)}
+                onDeleteRow={(data) => handleDelete(data)}
             />
         </div>
     );
