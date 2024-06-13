@@ -32,6 +32,7 @@ export default function Login() {
 
     return (
         <>
+            <title>Panel Girişi - BRH Takip</title>
             {user ? (
                 <div className='relative z-50 max-w-xl mx-auto px-8 py-10 bg-white rounded-2xl'>
                     <div className="flex items-center justify-center mb-4">
