@@ -7,6 +7,7 @@ import brandReducer from './features/brandSlice'
 import productReducer from './features/productSlice'
 import materialReducer from './features/materialSlice'
 import applicationAreaReducer from './features/applicationAreaSlice'
+import storeReducer from './features/storeSlice'
 
 
 export const makeStore = () => {
@@ -19,7 +20,8 @@ export const makeStore = () => {
             brand: brandReducer,
             product: productReducer,
             material: materialReducer,
-            applicationArea: applicationAreaReducer
+            applicationArea: applicationAreaReducer,
+            store: storeReducer,
         }
     })
 }
