@@ -31,7 +31,6 @@ export const dataTables = {
             { label: '', key: 'checkbox', width: '2%' },
             { label: 'Ürün', key: 'name', width: '70%' },
             { label: 'Durum', key: 'isActive', width: '5%' },
-            // { label: 'Marka', key: 'brandID', width: '20%' },
             { label: '', key: 'actions', width: '2%' },
         ]
     },
@@ -41,7 +40,6 @@ export const dataTables = {
             { label: '', key: 'checkbox', width: '2%' },
             { label: 'Malzeme', key: 'name', width: '70%' },
             { label: 'Durum', key: 'isActive', width: '5%' },
-            // { label: 'Marka', key: 'brandID', width: '20%' },
             { label: '', key: 'actions', width: '2%' },
         ]
     },
@@ -51,8 +49,27 @@ export const dataTables = {
             { label: '', key: 'checkbox', width: '2%' },
             { label: 'Uygulama Alanları', key: 'name', width: '70%' },
             { label: 'Durum', key: 'isActive', width: '5%' },
-            // { label: 'Marka', key: 'brandID', width: '20%' },
             { label: '', key: 'actions', width: '2%' },
         ]
-    }
+    },
+
+    stores: {
+        columns: [
+            { label: '', key: 'checkbox', width: '2%' },
+            { label: 'Mağaza', key: 'name', width: '20%' },
+            { label: 'Şehir', key: 'city', width: '10%' },
+            { label: 'İl', key: 'district ', width: '15%' },
+            { label: 'İlçe', key: 'area', width: '15%' },
+            { label: '', key: 'actions', width: '2%' },
+        ]
+    },
+
+    cities: {
+        columns: [
+            { label: '', key: 'checkbox', width: '2%' },
+            { label: 'Şehir', key: 'name', width: '70%' },
+            { label: 'Durum', key: 'isActive', width: '5%' },
+            { label: '', key: 'actions', width: '2%' },
+        ]
+    },
 }
