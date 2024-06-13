@@ -6,17 +6,17 @@ const requestNavigation = [
     {
         href: '/dashboard/system/brands',
         label: 'Markalar',
-        icon: <Icon iconName='FcFinePrint' className='' />
+        icon: <Icon iconName='FcCopyright' className='' />
     },
     {
         href: '/dashboard/system/materials',
         label: 'Malzemeler',
-        icon: <Icon iconName='FcFinePrint' className='' />
+        icon: <Icon iconName='FcCloth' className='' />
     },
     {
         href: '/dashboard/system/applicationAreas',
         label: 'Uygulama Alanları',
-        icon: <Icon iconName='FcFinePrint' className='' />
+        icon: <Icon iconName='FcRuler' className='' />
     },
 ]
 
@@ -24,10 +24,10 @@ const SystemPage: React.FC = () => {
     return (
         <div>
             <div>
-                <title>Panel Girişi</title>
+                <title>Sistem Tanıtmalar - BRH Takip</title>
             </div>
 
-            <div className='grid grid-cols-4 gap-4 mb-8'>
+            <div className='grid grid-cols-4 gap-4 mb-8 px-6 py-4'>
                 {requestNavigation.map((nav, index) => (
                     <Link
                         href={nav.href}

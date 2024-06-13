@@ -1,10 +1,10 @@
 'use client'
+import { useRouter } from 'next-nprogress-bar';
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
+import { Badge } from '@aws-amplify/ui-react'
+import Icon from '@/components/core/icon';
 import type { Brand } from '@/API'
 import type { DataTableColumn } from '@/components/core/dataTable';
-import { Badge, BadgeVariations } from '@aws-amplify/ui-react'
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
-import Icon from '@/components/core/icon';
-import { useRouter } from 'next/navigation';
 
 export default function getBrandsTableData(
     data: Brand[],
@@ -43,16 +43,18 @@ export default function getBrandsTableData(
 
                     case 'isActive':
                         row[column.key] = (
-                            <Badge variation={brand.isActive ? 'success' : 'error'}>
+                            <Badge variation={brand.isActive ? 'success' : 'error'} size='small' className='px-5'>
                                 {brand.isActive ? 'Aktif' : 'İnaktif'}
                             </Badge>
                         );
                         break;
 
                     case 'Products':
-                        row[column.key] = <Button className='hover:underline hover:text-blue-700'>
-                            {brand.Products?.items.length || 0}
-                        </Button>
+                        row[column.key] = (
+                            <Badge variation='info' size='small' className='px-5'>
+                                {brand.Products?.items?.length || 0}
+                            </Badge>
+                        )
                         break;
 
                     case 'clientprofileID':
@@ -91,7 +93,7 @@ export default function getBrandsTableData(
 
                                         <DropdownItem
                                             key="cancel"
-                                            startContent={<Icon iconName='FcCancel' className='w-5 h-5' />}
+                                            startContent={<Icon iconName='FcFullTrash' className='w-5 h-5' />}
                                             onClick={() => handleDelete(row)}
                                         >
                                             Marka Sil

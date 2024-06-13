@@ -28,6 +28,10 @@ import {
     FcPrint,
     FcNext,
     FcCancel as FcCancelIcon,
+    FcCopyright,
+    FcCloth,
+    FcRuler,
+    FcFullTrash
 } from 'react-icons/fc';
 import { IoMdRefresh } from "react-icons/io"
 import { GrRefresh } from "react-icons/gr"
@@ -38,6 +42,9 @@ import { FaRegSave } from "react-icons/fa";
 import { TbDotsCircleHorizontal } from "react-icons/tb";
 
 const iconMapping: Record<string, IconType> = {
+    'dots': HiDotsHorizontal,
+    'tbDotsCircleHorizontal': TbDotsCircleHorizontal,
+    'inbox': MdInbox,
     'FcTimeline': FcTimeline,
     'FcDepartment': FcDepartment,
     'FcTemplate': FcTemplate,
@@ -72,10 +79,10 @@ const iconMapping: Record<string, IconType> = {
     'FcPrint': FcPrint,
     'FcCancelIcon': FcCancelIcon,
     'FcNext': FcNext,
-    'inbox': MdInbox,
-    'dots': HiDotsHorizontal,
-    'tbDotsCircleHorizontal': TbDotsCircleHorizontal,
-     // Map the string from your array to the icon component
+    'FcCopyright': FcCopyright,
+    'FcCloth': FcCloth,
+    'FcRuler': FcRuler,
+    'FcFullTrash': FcFullTrash  
 };
 
 const Icon: FC<{ iconName: string, className: string }> = ({ iconName, className }) => {

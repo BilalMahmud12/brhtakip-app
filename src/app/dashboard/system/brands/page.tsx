@@ -4,8 +4,6 @@ import React, { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { AppDispatch, RootState } from '@/lib/store';
 import { setBrands } from '@/lib/features/brandSlice';
-
-import { Breadcrumbs } from '@aws-amplify/ui-react';
 import type { Brand } from '@/API';
 import BrandsView from './src/brandView';
 
@@ -42,27 +40,8 @@ const Brand: React.FC = () => {
 
     return (
         <div>
-            <title>Markalar</title>
+            <title>Markalar - BRH Takip</title>
 
-            <div className='px-6 py-3 bg-zinc-50 shadow mb-4'>
-                <Breadcrumbs
-                    items={[
-                        {
-                            href: '/dashboard',
-                            label: 'Panel Girişi',
-                        },
-                        {
-                            href: '/dashboard/system',
-                            label: 'System',
-                        },
-                        {
-                            href: '/dashboard/system/brands',
-                            label: 'Markalar',
-                        }
-                    ]}
-                    className='text-sm font-medium'
-                />
-            </div>
             <BrandsView onDelete={handleDelete} />
         </div>
     );
