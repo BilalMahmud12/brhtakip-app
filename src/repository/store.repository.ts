@@ -3,7 +3,7 @@ import { createStore, updateStore, deleteStore } from '@/graphql/mutations';
 import { client } from '@/repository';
 import type { Store } from '@/API';
 
-const getAllStore = async () => {
+const getAllStores = async () => {
     try {
         const { data } = await client.graphql({ query: listStores });
         return data.listStores.items
@@ -65,7 +65,7 @@ const softDelete = async (id: string) => {
 }
 
 export {
-    getAllStore,
+    getAllStores,
     getStoreById,
     create,
     update,
