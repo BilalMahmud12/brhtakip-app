@@ -8,6 +8,7 @@ import productReducer from './features/productSlice'
 import materialReducer from './features/materialSlice'
 import applicationAreaReducer from './features/applicationAreaSlice'
 import storeReducer from './features/storeSlice'
+import cityReducer from './features/citySlice'
 
 
 export const makeStore = () => {
@@ -22,6 +23,7 @@ export const makeStore = () => {
             material: materialReducer,
             applicationArea: applicationAreaReducer,
             store: storeReducer,
+            city: cityReducer,
         }
     })
 }

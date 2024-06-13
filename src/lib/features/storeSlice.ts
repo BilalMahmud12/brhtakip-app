@@ -38,7 +38,7 @@ const storeSlice = createSlice({
     name: 'store',
     initialState,
     reducers: {
-        setStore: (state, action: PayloadAction<Store[]>) => {
+        setStores: (state, action: PayloadAction<Store[]>) => {
             state.stores = action.payload
         },
 
@@ -140,7 +140,7 @@ const storeSlice = createSlice({
 })
 
 export const {
-    setStore,
+    setStores,
     addStore,
     setStoreForm,
     resetFormValues,
