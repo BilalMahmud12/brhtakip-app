@@ -4,7 +4,7 @@ import type { Material } from '@/API';
 interface MaterialState {
     materials: Material[];
     materialForm: {
-        id?: '',
+        id?: '';
         name: string;
         isActive: boolean;
     }

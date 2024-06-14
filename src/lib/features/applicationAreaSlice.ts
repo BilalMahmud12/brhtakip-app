@@ -4,9 +4,9 @@ import { ApplicationArea } from '@/API';
 interface ApplicationAreaState {
     applicationAreas: ApplicationArea[];
     applicationAreaForm: {
-        id?: string
-        name: string,
-        isActive: boolean,
+        id?: string;
+        name: string;
+        isActive: boolean;
     }
 }
 

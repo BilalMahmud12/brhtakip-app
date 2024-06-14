@@ -25,11 +25,11 @@ const getAreasById = async (id: string) => {
     }
 }
 
-const create = async (request: Area) => {
+const create = async (area: any) => {
     try {
         const data = await client.graphql({
             query: createArea,
-            variables: { input: request },
+            variables: { input: area },
         });
 
         return data;
@@ -38,11 +38,11 @@ const create = async (request: Area) => {
     }
 }
 
-const update = async (request: Area) => {
+const update = async (area: any) => {
     try {
         const data = await client.graphql({
             query: updateArea,
-            variables: { input: request },
+            variables: { input: area },
         });
 
         return data;

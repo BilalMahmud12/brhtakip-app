@@ -25,11 +25,11 @@ const getStoreById = async (id: string) => {
     }
 }
 
-const create = async (request: Store) => {
+const create = async (store: any) => {
     try {
         const data = await client.graphql({
             query: createStore,
-            variables: { input: request },
+            variables: { input: store },
         });
 
         return data;
@@ -38,11 +38,11 @@ const create = async (request: Store) => {
     }
 }
 
-const update = async (request: Store) => {
+const update = async (store: any) => {
     try {
         const data = await client.graphql({
             query: updateStore,
-            variables: { input: request },
+            variables: { input: store },
         });
 
         return data;
