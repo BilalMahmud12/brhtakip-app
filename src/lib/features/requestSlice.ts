@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Request } from '@/API';
+import { Request, RequestStatus } from '@/API';
 
 interface RequestState {
     isFetching: boolean;
@@ -57,7 +57,6 @@ const requestSlice = createSlice({
             state.isFetching = action.payload
         },
         setRequests: (state, action: PayloadAction<Request[]>) => {
-            console.log('setting requests', action.payload);
             state.requests = action.payload;
         },
         setSelectedRequests: (state, action: PayloadAction<string[]>) => {
@@ -92,7 +91,7 @@ const requestSlice = createSlice({
                 case 'status':
                     state.requestForm = {
                         ...state.requestForm,
-                        status: value,
+                        status: value as RequestStatus,
                     }
                     break;
                 case 'requestNumber':
@@ -102,6 +101,7 @@ const requestSlice = createSlice({
                     }
                     break;
                 case 'clientprofileID':
+                    console.log('clientprofileID', value)
                     state.requestForm = {
                         ...state.requestForm,
                         clientprofileID: value,
@@ -110,19 +110,19 @@ const requestSlice = createSlice({
                 case 'storeID':
                     state.requestForm = {
                         ...state.requestForm,
-                        storeID: value,
+                        storeID: value as string,
                     }
                     break;
                 case 'requestBrandId':
                     state.requestForm = {
                         ...state.requestForm,
-                        requestBrandId: value,
+                        requestBrandId: value as string,
                     }
                     break;
                 case 'requestProductId':
                     state.requestForm = {
                         ...state.requestForm,
-                        requestProductId: value,
+                        requestProductId: value as string,
                     }
                     break;
                 case 'requestMaterialId':
@@ -136,7 +136,20 @@ const requestSlice = createSlice({
                         ...state.requestForm,
                         requestDetails: {
                             ...state.requestForm.requestDetails,
-                            applicationArea: value,
+                            applicationArea: JSON.stringify({
+                                id: value,
+                            }),
+                        }
+                    }
+                    break;
+                case 'requestDetails.material':
+                    state.requestForm = {
+                        ...state.requestForm,
+                        requestDetails: {
+                            ...state.requestForm.requestDetails,
+                            material: JSON.stringify({
+                                id: value,
+                            }),
                         }
                     }
                     break;
@@ -176,15 +189,6 @@ const requestSlice = createSlice({
                         }
                     }
                     break;
-                case 'requestDetails.material':
-                    state.requestForm = {
-                        ...state.requestForm,
-                        requestDetails: {
-                            ...state.requestForm.requestDetails,
-                            material: value,
-                        }
-                    }
-                    break;
                 case 'requestDetails.designNote':
                     state.requestForm = {
                         ...state.requestForm,
@@ -192,12 +196,6 @@ const requestSlice = createSlice({
                             ...state.requestForm.requestDetails,
                             designNote: value,
                         }
-                    }
-                    break;
-                default:
-                    state.requestForm = {
-                        ...state.requestForm,
-                        [key]: value,
                     }
                     break;
             }
