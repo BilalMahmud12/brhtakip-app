@@ -20,12 +20,12 @@ const requestNavigation = [
     },
     {
         href: '/dashboard/system/stores',
-        label: 'stores',
+        label: 'Mağazalar',
         icon: <Icon iconName='FcFinePrint' className='' />
     },
     {
         href: '/dashboard/system/cities',
-        label: 'cities',
+        label: 'Şehirler',
         icon: <Icon iconName='FcFinePrint' className='' />
     },
 ]
@@ -36,8 +36,7 @@ const SystemPage: React.FC = () => {
             <div>
                 <title>Panel Girişi</title>
             </div>
-
-            <div className='grid grid-cols-4 gap-4 mb-8'>
+            <div className='grid grid-cols-3 gap-4 mb-8 p-5'>
                 {requestNavigation.map((nav, index) => (
                     <Link
                         href={nav.href}
@@ -45,7 +44,7 @@ const SystemPage: React.FC = () => {
                         className='col-span-1 bg-white shadow flex items-center justify-start'
                     >
                         <span className='flex items-center w-full'>
-                            <span className='px-4 py-4 border-r border-gray-100 text-3xl'>{nav.icon}</span>
+                            <span className='mx-6 px-4 py-4 border-r border-gray-100 text-3xl'>{nav.icon}</span>
                             <span className='px-4 py-4 text-sm text-center font-semibold'>{nav.label}</span>
                         </span>
 

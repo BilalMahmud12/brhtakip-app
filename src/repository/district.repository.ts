@@ -7,7 +7,7 @@ import type { District } from '@/API'
 const getAllDistricts = async () => {
     try {
         const { data } = await client.graphql({ query: listDistricts });
-        return data.listDistricts
+        return data.listDistricts.items
     } catch (error) {
         console.error(error);
     }

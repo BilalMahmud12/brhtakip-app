@@ -72,4 +72,13 @@ export const dataTables = {
             { label: '', key: 'actions', width: '2%' },
         ]
     },
+
+    districts: {
+        columns: [
+            { label: '', key: 'checkbox', width: '2%' },
+            { label: 'Şehir', key: 'name', width: '70%' },
+            { label: 'Durum', key: 'isActive', width: '5%' },
+            { label: '', key: 'actions', width: '2%' },
+        ]
+    },
 }

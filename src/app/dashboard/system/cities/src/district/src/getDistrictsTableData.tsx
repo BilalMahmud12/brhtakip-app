@@ -1,13 +1,13 @@
 'use client'
-import type { City } from '@/API'
+import type { District } from '@/API'
 import type { DataTableColumn } from '@/components/core/dataTable';
 import { Badge, BadgeVariations } from '@aws-amplify/ui-react'
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import Icon from '@/components/core/icon';
 import { useRouter } from 'next/navigation';
 
-export default function getCitiesTableData(
-    data: City[],
+export default function getDistrictsTableData(
+    data: District[],
     columns: any,
     handleEdit: (data: any) => void,
     handleDelete: (data: any) => void,
@@ -15,32 +15,28 @@ export default function getCitiesTableData(
 ) {
     const router = useRouter()
 
-    return data.map((city) => {
+    return data.map((district) => {
         const row: { [key: string]: any } = {};
 
         columns.forEach((column: DataTableColumn) => {
             if (column.transform) {
-                row[column.key] = column.transform(city[column.key as keyof City], city);
+                row[column.key] = column.transform(district[column.key as keyof District], district);
             }
             else {
                 switch (column.key) {
                     case 'name':
                         row[column.key] = (
                             <div
-                                className='hover:underline hover:text-blue-700 cursor-pointer'
-                                onClick={() => {
-                                    router.push(`/dashboard/system/cities/update`);
-                                }}
-                            >
-                                {city.name}
+                                className='hover:underline hover:text-blue-700 cursor-pointer'>
+                                {district.name}
                             </div>
                         );
                         break;
 
                     case 'isActive':
                         row[column.key] = (
-                            <Badge variation={city.isActive ? 'success' : 'error'}>
-                                {city.isActive ? 'Aktif' : 'İnaktif'}
+                            <Badge variation={district.isActive ? 'success' : 'error'}>
+                                {district.isActive ? 'Aktif' : 'İnaktif'}
                             </Badge>
                         );
                         break;
@@ -62,7 +58,7 @@ export default function getCitiesTableData(
                                         <DropdownItem
                                             key="update"
                                             startContent={<Icon iconName='FcSupport' className='w-5 h-5' />}
-                                            onClick={() => handleEdit(city)}
+                                            onClick={() => handleEdit(district)}
                                         >
                                             Güncelle
                                         </DropdownItem>
@@ -80,16 +76,16 @@ export default function getCitiesTableData(
                         );
                         break;
                     default:
-                        row[column.key] = city[column.key as keyof City];
+                        row[column.key] = district[column.key as keyof District];
                         break;
                 }
             }
         })
 
-        row['onEdit'] = () => handleEdit(city);
-        row['onDelete'] = () => handleDelete(city);
-        row['onSelect'] = () => handleSelect(city);
-        row['originalData'] = city;
+        row['onEdit'] = () => handleEdit(district);
+        row['onDelete'] = () => handleDelete(district);
+        row['onSelect'] = () => handleSelect(district);
+        row['originalData'] = district;
 
         return row;
     })
