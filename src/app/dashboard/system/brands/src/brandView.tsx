@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { AppDispatch, RootState } from '@/lib/store';
 import { setBrands, resetFormValues, setBrandFormValues } from '@/lib/features/brandSlice';
@@ -71,6 +71,12 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
     const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
 
+    const brandformRef = useRef(brandForm);
+
+    useEffect(() => { 
+        brandformRef.current = brandForm;
+    }, [brandForm])
+
     const { showDataModal, hideDataModal } = useDataModal();
 
     const handleCancelForm = () => {
@@ -94,9 +100,14 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
     };
 
     async function handleCreateBrand() {
+
+        // Remove Console logs
+        // close modal after create: hideDataModal();
+        // get the new brand list after create: const newBrand = await Repo.BrandRepository.getAllBrands();
+
         try {
-            console.log('brandForm', brandForm);
-            const createBrand = await Repo.BrandRepository.create(brandForm);
+            console.log('brandformRef', brandformRef.current);
+            const createBrand = await Repo.BrandRepository.create(brandformRef.current);
             console.log('new created brand', createBrand);
             
             if (createBrand && createBrand.data) {
@@ -104,7 +115,7 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
                 console.log('brandForm after create', brandForm);
             }
         } catch (error) {
-            console.log('Error', error);
+            console.error('Error', error);
         }
     }
 
