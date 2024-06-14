@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Button } from '@aws-amplify/ui-react';
 import { useDataModal } from '@/contexts/DataModalContext';
 import type { City } from '@/API';
@@ -60,6 +60,12 @@ const CityView: React.FC = () => {
     const cities = useAppSelector((state: RootState) => state.city.cities);
     const cityForm = useAppSelector((state: RootState) => state.city.cityForm);
 
+    const cityformRef = useRef(cityForm);
+
+    useEffect(() => {
+        cityformRef.current = cityForm;
+    }, [cityForm])
+
     const handleCancelForm = () => {
         dispatch(resetFormValues());
         hideDataModal();
@@ -78,8 +84,32 @@ const CityView: React.FC = () => {
     };
 
     const handleCreateCity = async () => {
-        console.log('handle Create City')
+        try {
+            const createCity = await Repo.CityRepository.create(cityformRef.current);
+            console.log('created City', createCity)
+            if (createCity && createCity.data) {
+                const newCity = await Repo.CityRepository.getAllCities();
+                dispatch(setCities(newCity as unknown as City[]))
+                hideDataModal();
+                dispatch(resetFormValues());
+            }
+        } catch (error) {
+        }
     };
+
+    const handleDeleteCity = async (data: any) => {
+        try {
+            const deleteCity = await Repo.CityRepository.softDelete(data.originalData.id);
+            if (deleteCity && deleteCity.data) {
+                const newCity = await Repo.CityRepository.getAllCities();
+                dispatch(setCities(newCity as unknown as City[]))
+                hideDataModal();
+                dispatch(resetFormValues());
+            }
+        } catch (error) {
+            console.log('error', error)
+        }
+    }
 
 
     return (
@@ -102,8 +132,8 @@ const CityView: React.FC = () => {
             <div className='mt-8'>
                 <CitiesDataTable
                     dataPayload={cities}
-                // handleDelete={}
-                // handleEdit={}
+                    handleDelete={handleDeleteCity}
+                // handleEdit={handleDeleteCity}
                 />
             </div>
         </div>
