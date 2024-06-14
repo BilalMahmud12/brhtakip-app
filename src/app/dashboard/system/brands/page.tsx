@@ -14,14 +14,10 @@ const Brand: React.FC = () => {
     const handleDelete = async (data: any) => {
         try {
             const deleteBrand = await Repo.BrandRepository.softDelete(data.originalData.id);
-            console.log('deleted brand', deleteBrand);
-
             const newBrand = await Repo.BrandRepository.getAllBrands();
             dispatch(setBrands(newBrand as unknown as Brand[]));
-
-            console.log('new brand array', newBrand);
         } catch (error) {
-            console.log('error', error);
+            console.log('Failed to delete brand', error);
         }
     };
 

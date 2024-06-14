@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDataModal } from '@/contexts/DataModalContext';
 import { Button } from '@aws-amplify/ui-react';
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
@@ -59,6 +59,11 @@ const MaterialView: React.FC = () => {
     const materials = useAppSelector((state: RootState) => state.material.materials);
     const materialForm = useAppSelector((state: RootState) => state.material.materialForm);
 
+    const materialformRef = useRef(materialForm);
+    useEffect(() => {
+        materialformRef.current = materialForm;
+    }, [materialForm])
+
     const handleCancelForm = () => {
         dispatch(resetFormValues());
         hideDataModal();
@@ -80,7 +85,7 @@ const MaterialView: React.FC = () => {
     const handleCreateMaterial = async () => {
         try {
             console.log('incoming data for created material', materialForm);
-            const createMaterial = await Repo.MaterialRepository.create(materialForm);
+            const createMaterial = await Repo.MaterialRepository.create(materialformRef.current);
             console.log('new created material', createMaterial);
             hideDataModal();
             dispatch(resetFormValues());

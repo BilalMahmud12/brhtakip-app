@@ -11,6 +11,7 @@ import ClientSelectForm from './clientSelectForm';
 import { usePathname, useRouter } from 'next/navigation';
 import * as Repo from '@/repository/index';
 import CreateOrUpdateForm from './createOrUpdateForm';
+import { Brand } from '@/API';
 
 interface BrandsViewProps {
     onDelete: (data: any) => Promise<void>;
@@ -73,7 +74,7 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
 
     const brandformRef = useRef(brandForm);
 
-    useEffect(() => { 
+    useEffect(() => {
         brandformRef.current = brandForm;
     }, [brandForm])
 
@@ -100,19 +101,13 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
     };
 
     async function handleCreateBrand() {
-
-        // Remove Console logs
-        // close modal after create: hideDataModal();
-        // get the new brand list after create: const newBrand = await Repo.BrandRepository.getAllBrands();
-
         try {
-            console.log('brandformRef', brandformRef.current);
             const createBrand = await Repo.BrandRepository.create(brandformRef.current);
-            console.log('new created brand', createBrand);
-            
             if (createBrand && createBrand.data) {
+                const newBrand = await Repo.BrandRepository.getAllBrands();
+                dispatch(setBrands(newBrand as unknown as Brand[]));
+                hideDataModal();
                 dispatch(resetFormValues());
-                console.log('brandForm after create', brandForm);
             }
         } catch (error) {
             console.error('Error', error);

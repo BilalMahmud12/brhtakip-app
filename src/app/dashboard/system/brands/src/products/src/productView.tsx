@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as Repo from '@/repository/index';
 import { useRouter } from 'next/navigation';
 import type { Product } from '@/API';
@@ -75,6 +75,10 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
     const products = useAppSelector((state: RootState) => state.product);
     const productForm = useAppSelector((state: RootState) => state.product.productForm);
 
+    const productformRef = useRef(productForm);
+    useEffect(() => {
+        productformRef.current = productForm;
+    }, [productForm])
 
     const handleCreateForm = () => {
         showDataModal(
@@ -102,7 +106,7 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
 
     const handleCreateProduct = async () => {
         try {
-            const createProduct = await Repo.ProductRepository.create(productForm);
+            const createProduct = await Repo.ProductRepository.create(productformRef.current);
             console.log('created product', createProduct);
             fetchFilteredProducts();
 
