@@ -1,5 +1,7 @@
 'use client';
 import React from 'react';
+import { permissions } from '@/config/index';
+import withAuthorization from '../../withAuthorization';
 import RequestsView from './src/requestsView';
 import type { Request } from '@/API';
 
@@ -13,4 +15,4 @@ const Request: React.FC = () => {
     );
 }
 
-export default Request;
+export default withAuthorization([permissions.VIEW_REQUESTS])(Request);

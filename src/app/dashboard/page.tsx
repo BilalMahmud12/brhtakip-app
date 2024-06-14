@@ -1,6 +1,8 @@
 'use client'
 import { useAppSelector } from '@/lib/hooks';
 import { RootState } from '@/lib/store';
+import { permissions } from '@/config/index';
+import withAuthorization from '../withAuthorization';
 
 function Dashboard() {
     const userProfile = useAppSelector((state: RootState) => state.user.userProfile);
@@ -15,4 +17,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard
+export default withAuthorization([permissions.VIEW_DASHBOARD])(Dashboard);

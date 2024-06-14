@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react';
+import React, { use, useEffect, useRef } from 'react';
 import * as Repo from '@/repository/index';
 import { usePathname } from 'next/navigation';
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
@@ -10,6 +10,7 @@ import { setCurrentPageTitle } from '@/lib/features/globalSlice';
 import { setClientProfiles } from '@/lib/features/clientSlice';
 import AppHeader from '@/components/custom/header';
 import SideNav from "@/components/custom/sideNav";
+import { globalConstants } from '@/config';
 
 import { CognitoIdentityProviderClient, ListUsersCommand } from "@aws-sdk/client-cognito-identity-provider"
 import { loadUserData } from '@/services/userService';
@@ -20,10 +21,20 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     const pathname = usePathname();
+    const { user } = useAuthenticator((context) => [context.user]);
+    
     const dispatch = useAppDispatch<AppDispatch>();
     const currentPageTitle = useAppSelector((state: RootState) => state.global.currentPageTitle);
-    const { user } = useAuthenticator((context) => [context.user]);
+    const currentUserProfile = useAppSelector((state: RootState) => state.user.userProfile);
+    const currentUserProfileRef = useRef(currentUserProfile);
 
+    const clientProfileID = globalConstants.clientProfileId;
+
+    const fetchClientsData = async () => {
+        const clientsData = await Repo.ClientProfileRepository.getClientProfiles();
+        dispatch(setClientProfiles(clientsData || []))
+    }
+    
     useEffect(() => {
         if (user) {
             const loadUser = async () => {
@@ -44,13 +55,11 @@ export default function RootLayout({
     }, [pathname]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const clientsData = await Repo.ClientProfileRepository.getClientProfiles();
-            dispatch(setClientProfiles(clientsData || []))
-        }
-
-        fetchData();
-    }, []);
+        currentUserProfileRef.current = currentUserProfile;
+        if (currentUserProfileRef.current?.clientprofileID === clientProfileID) {
+            fetchClientsData();
+        }        
+    }, [currentUserProfile]);
     
     return (
         <>
