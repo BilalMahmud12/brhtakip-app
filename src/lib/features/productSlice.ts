@@ -14,7 +14,6 @@ const initialState: ProductFormState = {
     products: [],
     productForm: {
         name: '',
-        brandID: '',
         isActive: false,
     }
 };
@@ -65,7 +64,6 @@ const productSlice = createSlice({
         resetProductFormValues: (state) => {
             state.productForm = {
                 name: '',
-                brandID: '',
                 isActive: false,
             };
         },

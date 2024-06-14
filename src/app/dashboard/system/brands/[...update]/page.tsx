@@ -13,6 +13,10 @@ import { resetFormValues } from '@/lib/features/brandSlice';
 import { setProducts, resetProductFormValues, setProductFormValues } from '@/lib/features/productSlice';
 
 const UpdateBrand: React.FC = (() => {
+    const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
+    useEffect(() => {
+        fetchFilteredProducts();
+    }, [brandForm.id]);
     const router = useRouter();
     usePathname();
 
@@ -20,11 +24,6 @@ const UpdateBrand: React.FC = (() => {
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
     const dispatch = useAppDispatch<AppDispatch>();
-    const brands = useAppSelector((state: RootState) => state.brand.brands);
-    const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
-    const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
-
-    const products = useAppSelector((state: RootState) => state.product);
     const productForm = useAppSelector((state: RootState) => state.product.productForm);
 
     async function handleUpdateBrand() {
@@ -55,9 +54,7 @@ const UpdateBrand: React.FC = (() => {
         }
     };
 
-    useEffect(() => {
-        fetchFilteredProducts();
-    }, [brandForm.id]);
+
 
 
     return (

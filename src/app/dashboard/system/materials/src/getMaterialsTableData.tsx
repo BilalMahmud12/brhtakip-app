@@ -27,7 +27,8 @@ export default function getMaterialsTableData(
                     case 'name':
                         row[column.key] = (
                             <div
-                                className='hover:underline hover:text-blue-700 cursor-pointer'>
+                                className='hover:underline hover:text-blue-700 cursor-pointer'
+                                onClick={() => handleEdit(material)}>
                                 {material.name}
                             </div>
                         );

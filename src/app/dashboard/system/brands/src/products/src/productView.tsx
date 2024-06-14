@@ -117,23 +117,44 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
         }
     };
 
-    // const handleUpdateForm = () => {
-    //     showDataModal(
-    //         <div><span className='text-base font-bold'>Yeni Ürün Ekle</span></div>,
-    //         <CreateOrUpdateForm
-    //             isCreate={false}
-    //         />,
-    //         <ModalCustomFooter
-    //             type='update'
-    //             handleUpdate={handleUpdateProduct}
-    //             handleCancel={handleCancelForm}
-    //         />
-    //     );
-    // };
+    const setProductUpdateData = () => {
+        dispatch(setProductFormValues({
+            name: productForm.name,
+            isActive: productForm.isActive,
+        }));
+    };
 
-    // const handleUpdateProduct = async (data: any) => {
-    //     console.log('update product');
-    // };
+
+    const handleUpdateForm = (data: any) => {
+        dispatch(setProductFormValues({
+            name: productForm.name,
+            isActive: productForm.isActive,
+        }));
+        showDataModal(
+            <div><span className='text-base font-bold'>Güncelle</span></div>,
+            <CreateOrUpdateForm
+                isCreate={false}
+                product={data}
+            />,
+            <ModalCustomFooter
+                type='update'
+                handleUpdate={handleUpdateProduct}
+                handleCancel={handleCancelForm}
+            />
+        );
+    };
+
+    const handleUpdateProduct = async () => {
+        try {
+            const updateProduct = await Repo.ProductRepository.update(productForm)
+            console.log('updated product', updateProduct);
+            // fetchFilteredProducts();
+            // dispatch(setProducts(filteredProducts))
+            hideDataModal();
+        } catch (error) {
+            console.log('error on update Product', error);
+        }
+    };
 
     const handleDeleteProduct = async (data: any) => {
         try {
@@ -172,7 +193,7 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
                             <ProductsDataTable
                                 dataPayload={filteredProducts}
                                 handleDelete={(data) => handleDeleteProduct(data)}
-                            // handleEdit={handleUpdateProduct}
+                                handleEdit={handleUpdateForm}
                             />
                         </div>
                     )}

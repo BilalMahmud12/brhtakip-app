@@ -75,7 +75,16 @@ export const dataTables = {
     districts: {
         columns: [
             { label: '', key: 'checkbox', width: '2%' },
-            { label: 'Şehir', key: 'name', width: '70%' },
+            { label: 'İlçe', key: 'name', width: '70%' },
+            { label: 'Durum', key: 'isActive', width: '5%' },
+            { label: '', key: 'actions', width: '2%' },
+        ]
+    },
+
+    areas: {
+        columns: [
+            { label: '', key: 'checkbox', width: '2%' },
+            { label: 'mahalle', key: 'name', width: '70%' },
             { label: 'Durum', key: 'isActive', width: '5%' },
             { label: '', key: 'actions', width: '2%' },
         ]

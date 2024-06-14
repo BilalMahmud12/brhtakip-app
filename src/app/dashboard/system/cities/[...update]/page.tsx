@@ -7,7 +7,7 @@ import * as Repo from '@/repository/index';
 import type { Store, District } from '@/API';
 
 import { setDistricts } from '@/lib/features/districtSlice';
-import DistrictView from "../src/district/src/districtView";
+import DistrictView from "../(src)/district/src/districtView";
 
 const UpdateCity: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
@@ -42,6 +42,7 @@ const UpdateCity: React.FC = () => {
                         className='text-sm font-medium'
                     />
                 </div>
+
 
                 <div className='mt-1.5 shadow bg-white py-6'>
                     <div className='px-6 mb-3 flex items-center justify-between'>

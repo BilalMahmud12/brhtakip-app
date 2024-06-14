@@ -18,10 +18,15 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         product = {} as Product
     } = props;
 
-    const dispatch = useAppDispatch<AppDispatch>();
-    const products = useAppSelector((state: RootState) => state.product);
-    const productForm = useAppSelector((state: RootState) => state.product.productForm);
+    if (!isCreate) {
+        useEffect(() => {
+            loadFormData(product);
+            console.log('product Data loaded:', product);
+        }, [])
+    }
 
+    const dispatch = useAppDispatch<AppDispatch>();
+    const productForm = useAppSelector((state: RootState) => state.product.productForm);
 
     const loadFormData = async (product: Product) => {
         const {
@@ -35,10 +40,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         console.log('finished loading product form data:', productForm);
     }
 
-    useEffect(() => {
-        loadFormData(product);
-        console.log('Brand Data loaded:', product);
-    }, [])
 
     return (
         <div>
@@ -71,7 +72,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 { id: '0', label: 'İnaktif' }
                             ]}
                             onSelect={(option) => dispatch(handleFormChange({ key: 'isActive', value: option.id }))}
-                            // defaultValue={!isCreate ? (getProductFormValues.isActive ? 'Aktif' : 'İnaktif') : ''}
+                            defaultValue={!isCreate ? (productForm.isActive ? 'Aktif' : 'İnaktif') : ''}
                             className='custom-input'
                         />
                     </div>

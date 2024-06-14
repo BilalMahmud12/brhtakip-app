@@ -84,13 +84,15 @@ const MaterialView: React.FC = () => {
 
     const handleCreateMaterial = async () => {
         try {
-            console.log('incoming data for created material', materialForm);
             const createMaterial = await Repo.MaterialRepository.create(materialformRef.current);
-            console.log('new created material', createMaterial);
-            hideDataModal();
-            dispatch(resetFormValues());
-            const newMaterials = await Repo.MaterialRepository.getAllMaterials();
-            dispatch(setMaterials(newMaterials as unknown as Material[]));
+
+            if (createMaterial && createMaterial.data) {
+                hideDataModal();
+                dispatch(resetFormValues());
+                const newMaterials = await Repo.MaterialRepository.getAllMaterials();
+                dispatch(setMaterials(newMaterials as unknown as Material[]));
+                console.log('new Materials', newMaterials)
+            }
         } catch (error) {
             console.log('Error', error);
         }
@@ -98,7 +100,6 @@ const MaterialView: React.FC = () => {
 
 
     const handleUpdateForm = () => {
-        dispatch(resetFormValues());
         showDataModal(
             <div><span className='text-base font-bold'>Güncelle</span></div>,
             <CreateOrUpdateForm isCreate={false} />,
@@ -118,9 +119,6 @@ const MaterialView: React.FC = () => {
             hideDataModal();
             dispatch(resetFormValues());
 
-            // if (updateMaterial && updateMaterial.data) {
-
-            // }
         } catch (error) {
             console.log('Error', error);
         }
@@ -147,23 +145,26 @@ const MaterialView: React.FC = () => {
     };
 
     return (
-        <div>
-            <div className='mt-1.5 shadow bg-zinc-50'>
-                <div className='px-6 py-6 mb-3 flex items-center justify-between'>
-                    <h2 className='text-2xl font-medium'>Malzemeler</h2>
-                    <Button
-                        variation="primary"
-                        colorTheme="success"
-                        size="small"
-                        loadingText=""
-                        onClick={handleCreateForm}
-                        className='rounded-none bg-amber-500 text-gray-800 px-6'
-                    >
-                        <span>Malzeme Ekle</span>
-                    </Button>
+        <div className='px-6 py-3'>
+            <div className='mt-1.5 shadow bg-white'>
+                <div className='px-6 py-3 mb-3 flex items-center justify-between'>
+                    <div className='flex items-center space-x-2'>
+                        <div className='flex items-center space-x-2'>
+                            <Button
+                                variation="primary"
+                                colorTheme="success"
+                                size="small"
+                                loadingText=""
+                                onClick={handleCreateForm}
+                                className='rounded-none bg-amber-500 text-gray-800 px-6'
+                            >
+                                <span>Malzeme Ekle</span>
+                            </Button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className='mt-8'>
+            <div className='mt-8 bg-white shadow'>
                 <MaterialsDataTable
                     dataPayload={materials}
                     handleDelete={handleDeleteMaterial}

@@ -39,7 +39,7 @@ const create = async (product: any) => {
     }
 }
 
-const update = async (product: Product) => {
+const update = async (product: any) => {
     try {
         const data = await client.graphql({
             query: updateProduct,

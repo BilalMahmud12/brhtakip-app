@@ -7,7 +7,7 @@ import * as Repo from '@/repository/index';
 import { useAppDispatch } from '@/lib/hooks';
 import { AppDispatch } from '@/lib/store';
 import { setCities } from '@/lib/features/citySlice';
-import CityView from "./src/cityView";
+import CityView from "./(src)/cityView";
 
 const City: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();

@@ -49,10 +49,11 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         // console.log('finished loading form data:', brandForm);
     }
 
-    useEffect(() => {
-        loadFormData(brand);
-        console.log('Brand Data load:', brand);
-    }, [])
+    if (!isCreate) {
+        useEffect(() => {
+            loadFormData(brand);
+        }, [])
+    }
 
     const handleClientSelect = (option: { id: string }) => {
         dispatch(handleFormChange({ key: 'clientprofileID', value: option.id }));

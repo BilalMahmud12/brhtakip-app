@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDataModal } from '@/contexts/DataModalContext';
 import { Button } from '@aws-amplify/ui-react';
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
@@ -7,8 +7,8 @@ import { AppDispatch, RootState } from '@/lib/store';
 import type { District } from '@/API';
 import * as Repo from '@/repository/index';
 import DistrictsDataTable from './districtsDataTable';
-// import CreateOrUpdateForm from '../src/createOrUpdateForm';
-import { setDistricts } from '@/lib/features/districtSlice';
+import CreateOrUpdateForm from './createOrUpdateForm';
+import { setDistricts, resetFormValues } from '@/lib/features/districtSlice';
 
 const ModalCustomFooter = (props: {
     type: 'create' | 'update'
@@ -54,22 +54,62 @@ const ModalCustomFooter = (props: {
 }
 
 const DistrictView: React.FC = () => {
+    const { showDataModal, hideDataModal } = useDataModal();
     const dispatch = useAppDispatch<AppDispatch>();
     const districts = useAppSelector((state: RootState) => state.district.districts);
     const districtForm = useAppSelector((state: RootState) => state.district.districtForm);
 
+    const districtformRef = useRef(districtForm);
+    useEffect(() => {
+        districtformRef.current = districtForm;
+    }, [districtForm])
+
+    const handleCancelForm = () => {
+        dispatch(resetFormValues());
+        hideDataModal();
+    };
+
+    const handleCreateForm = () => {
+        dispatch(resetFormValues());
+        showDataModal(
+            <div><span className='text-base font-bold'>Yeni İlçe Ekle</span></div>,
+            <CreateOrUpdateForm isCreate={true} />,
+            <ModalCustomFooter
+                type='create'
+                handleCancel={handleCancelForm}
+                handleCreate={handleCreateDistrict}
+            />
+        );
+    };
+
+    const handleCreateDistrict = async () => {
+        try {
+            const createDistrict = await Repo.DistrictRepository.create(districtformRef.current);
+
+            if (createDistrict && createDistrict.data) {
+                hideDataModal();
+                dispatch(resetFormValues());
+                const newDistrict = await Repo.DistrictRepository.getAllDistricts();
+                dispatch(setDistricts(newDistrict as unknown as District[]));
+                console.log('new Districts', newDistrict)
+            }
+        } catch (error) {
+            console.log('Error', error);
+        }
+    };
+
     return (
         <div>
-            <div className='mt-1.5 shadow bg-white py-6'>
-                <div className='mt-1.5 shadow bg-zinc-50'>
-                    <div className='px-6 py-6 mb-3 flex items-center justify-between'>
-                        <h2 className='text-2xl font-medium'>İlçeler</h2>
+            <div className='px-6 py-3'>
+                <div className='mt-1.5 shadow bg-white'>
+                    <div className='px-6 py-3 mb-3 flex items-center justify-between'>
+
                         <Button
                             variation="primary"
                             colorTheme="success"
                             size="small"
                             loadingText=""
-                            // onClick={handleCreateForm}
+                            onClick={handleCreateForm}
                             className='rounded-none bg-amber-500 text-gray-800 px-6'
                         >
                             <span>İlçe Ekle</span>
