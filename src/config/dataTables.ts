@@ -14,14 +14,13 @@ export const dataTables = {
             { label: '', key: 'actions', width: '3%' },
         ]
     },
-
     brands: {
         columns: [
             { label: '', key: 'checkbox', width: '2%' },
-            { label: 'Marka', key: 'name', width: '10%' },
-            { label: 'Durum', key: 'isActive', width: '4%' },
-            { label: 'Ürün Sayısı', key: 'Products', width: '2%' },
-            { label: 'Müşteri', key: 'clientprofileID', width: '20%' },
+            { label: 'Marka', key: 'name', width: '20%' },
+            { label: 'Durum', key: 'isActive', width: '2%' },
+            { label: 'Ürün S.', key: 'Products', width: '2%' },
+            { label: 'Müşteri', key: 'clientprofileID', width: '40%' },
             { label: '', key: 'actions', width: '2%' },
         ]
     },

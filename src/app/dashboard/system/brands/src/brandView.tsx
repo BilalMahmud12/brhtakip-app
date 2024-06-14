@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { AppDispatch, RootState } from '@/lib/store';
 import { setBrands, resetFormValues, setBrandFormValues } from '@/lib/features/brandSlice';
@@ -67,13 +67,17 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
     const pathname = usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
 
-    // const userData = useAppSelector((state: RootState) => state.user.userData);
     const brands = useAppSelector((state: RootState) => state.brand.brands);
     const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
 
+    const brandformRef = useRef(brandForm);
+
+    useEffect(() => { 
+        brandformRef.current = brandForm;
+    }, [brandForm])
+
     const { showDataModal, hideDataModal } = useDataModal();
-    const router = useRouter();
 
     const handleCancelForm = () => {
         dispatch(resetFormValues());
@@ -96,17 +100,22 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
     };
 
     async function handleCreateBrand() {
-        try {
-            console.log('brandForm', brandForm);
-            const createBrand = await Repo.BrandRepository.create(brandForm);
-            console.log('brandForm after', brandForm);
-            console.log('new created brand', createBrand);
 
+        // Remove Console logs
+        // close modal after create: hideDataModal();
+        // get the new brand list after create: const newBrand = await Repo.BrandRepository.getAllBrands();
+
+        try {
+            console.log('brandformRef', brandformRef.current);
+            const createBrand = await Repo.BrandRepository.create(brandformRef.current);
+            console.log('new created brand', createBrand);
+            
             if (createBrand && createBrand.data) {
                 dispatch(resetFormValues());
+                console.log('brandForm after create', brandForm);
             }
         } catch (error) {
-            console.log('Error', error);
+            console.error('Error', error);
         }
     }
 
@@ -125,14 +134,9 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
     };
 
     return (
-        <div>
-            <div className='mt-1.5 shadow bg-zinc-50'>
-                <div className='px-6 py-6 mb-3 flex items-center justify-between'>
-                    <div>
-                        <div className=''>
-                            <h2 className='text-2xl font-medium'>Markalar</h2>
-                        </div>
-                    </div>
+        <div className='px-6 py-3'>
+            <div className='mt-1.5 shadow bg-white'>
+                <div className='px-6 py-3 mb-3 flex items-center justify-between'>
                     <div className='flex items-center space-x-2'>
                         <div className='flex items-center space-x-2'>
                             <Button
@@ -149,7 +153,7 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
                     </div>
                 </div>
             </div>
-            <div className='mt-8'>
+            <div className='mt-8 bg-white shadow'>
                 <BrandsDataTable
                     dataPayload={brands}
                     getClientName={getClientName}

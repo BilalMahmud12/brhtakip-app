@@ -10,7 +10,6 @@ import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 interface CreateOrUpdateFormProps {
     isCreate?: boolean;
     brand?: Brand;
-    handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
@@ -57,6 +56,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     const handleClientSelect = (option: { id: string }) => {
         dispatch(handleFormChange({ key: 'clientprofileID', value: option.id }));
+        console.log('Client Selected:', brandForm);
+        console.log('Client Selected:', brandFormValues);
     };
 
     const handleClientClear = () => {
