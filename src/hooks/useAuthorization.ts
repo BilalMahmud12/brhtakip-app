@@ -4,9 +4,7 @@ import { useRouter } from 'next-nprogress-bar';
 import { permissions } from '@/config';
 
 const useAuthorization = (requiredPermissions: string[]) => {
-    const userProfile = useAppSelector((state) => state.user.userProfile);
-
-    console.log('userProfile', userProfile);
+    const userProfile = useAppSelector((state) => state.global.currentUserProfile);
     const router = useRouter();
 
     useEffect(() => {

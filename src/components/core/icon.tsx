@@ -28,6 +28,7 @@ import {
     FcPrint,
     FcNext,
     FcCancel as FcCancelIcon,
+    FcLock
 } from 'react-icons/fc';
 import { IoMdRefresh } from "react-icons/io"
 import { GrRefresh } from "react-icons/gr"
@@ -75,7 +76,7 @@ const iconMapping: Record<string, IconType> = {
     'inbox': MdInbox,
     'dots': HiDotsHorizontal,
     'tbDotsCircleHorizontal': TbDotsCircleHorizontal,
-     // Map the string from your array to the icon component
+    'FcLock': FcLock
 };
 
 const Icon: FC<{ iconName: string, className: string }> = ({ iconName, className }) => {

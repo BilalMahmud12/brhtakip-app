@@ -5,23 +5,12 @@ type UserProfile = Omit<UserProfileType, '__typename'>
 
 interface UserState {
     isFetching: boolean;
-    userProfile: UserProfile;
+    users: UserProfile[];
 }
 
 const initialState: UserState = {
     isFetching: false,
-    userProfile: {
-        id: '',
-        cognitoID: '',
-        clientprofileID: '',
-        isActive: false,
-        firstName: '',
-        lastName: '',
-        email: '',
-        role: undefined,
-        createdAt: '',
-        updatedAt: '',
-    },
+    users: [],
 }
 
 const userSlice = createSlice({
@@ -31,11 +20,14 @@ const userSlice = createSlice({
         setIsFetching: (state, action: PayloadAction<boolean>) => {
             state.isFetching = action.payload
         },
-        setUserProfile: (state, action: PayloadAction<UserProfile>) => {
-            state.userProfile = action.payload
+        setUsers: (state, action: PayloadAction<UserProfile[]>) => {
+            state.users = action.payload
         },
     }
 })
 
-export const { setIsFetching, setUserProfile } = userSlice.actions
+export const { 
+    setIsFetching,
+    setUsers, 
+} = userSlice.actions
 export default userSlice.reducer

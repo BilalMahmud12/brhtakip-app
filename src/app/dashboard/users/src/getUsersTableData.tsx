@@ -1,5 +1,6 @@
 import type { UserProfile } from '@/API'
 import { formateDate } from '@/utils/helpers';
+import { Badge, BadgeVariations } from '@aws-amplify/ui-react'
 
 export default function getUsresTableData(
     data: UserProfile[],
@@ -12,58 +13,58 @@ export default function getUsresTableData(
         const row: { [key: string]: any } = {};
 
         columns.forEach((column) => {
-            if (column.transform) {
-                row[column.key] = column.transform(user[column.key as keyof UserProfile], user);
-            }
+            switch (column.key) {
+                case 'username':
+                    row[column.key] = (
+                        <span className='hover:underline hover:text-blue-700 hover:cursor-pointer'>
+                            {user.firstName} {user.lastName}
+                        </span>
+                    )
+                    break;
+                case 'status':
+                    row[column.key] = (
+                        <Badge 
+                            variation={user.isActive === true ? 'success' : 'error'} 
+                            size='small'
+                            className='px-5'
+                        >
+                            {user.isActive === true ? 'Aktif' : 'Pasif'}
+                        </Badge>
+                    )
+                    break;
+                case 'email':
+                    row[column.key] = (
+                        <span className='hover:underline hover:text-blue-700 hover:cursor-pointer'>{user.email}</span>
+                    )
+                    break;
+                case 'role':
+                    row[column.key] = user.role;
+                    break;
+                case 'createdAt':
+                    row[column.key] = formateDate(user.createdAt);
+                    break;
+                case 'actions':
+                    row[column.key] = (
+                        <div className='flex items-center justify-center'>
+                            <button
+                                onClick={() => handleEdit(user)}
+                                className='p-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full mr-2'
+                            >
+                                {/* <EditIcon /> */}
+                            </button>
 
-            else {
-                switch (column.key) {
-                    case 'username':
-                        row[column.key] = (
-                            <span className='hover:underline hover:text-blue-700 hover:cursor-pointer'>
-                                {user.firstName} {user.lastName}
-                            </span>
-                        )
-                        break;
-
-                    case 'email':
-                        row[column.key] = (
-                            <span className='hover:underline hover:text-blue-700 hover:cursor-pointer'>{user.email}</span>
-                        )
-                        break;
-
-                    case 'role':
-                        row[column.key] = user.role;
-                        break;
-
-                    case 'createdAt':
-                        row[column.key] = formateDate(user.createdAt);
-                        break;
-
-                    case 'actions':
-                        row[column.key] = (
-                            <div className='flex items-center justify-center'>
-                                <button
-                                    onClick={() => handleEdit(user)}
-                                    className='p-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full mr-2'
-                                >
-                                    {/* <EditIcon /> */}
-                                </button>
-
-                                <button
-                                    onClick={() => handleDelete(user)}
-                                    className='p-2 bg-red-500 hover:bg-red-600 text-white rounded-full'
-                                >
-                                    {/* <DeleteIcon /> */}
-                                </button>
-                            </div>
-                        )
-                        break;
-
-                    default:
-                        row[column.key] = user[column.key as keyof UserProfile];
-                        break;
-                }
+                            <button
+                                onClick={() => handleDelete(user)}
+                                className='p-2 bg-red-500 hover:bg-red-600 text-white rounded-full'
+                            >
+                                {/* <DeleteIcon /> */}
+                            </button>
+                        </div>
+                    )
+                    break;
+                default:
+                    row[column.key] = user[column.key as keyof UserProfile];
+                    break;
             }
         });
 

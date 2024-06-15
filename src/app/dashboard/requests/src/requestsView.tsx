@@ -108,7 +108,7 @@ const RequestsView: React.FC = () => {
     const pathname = usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
 
-    const userProfile = useAppSelector((state: RootState) => state.user.userProfile);
+    const userProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const requests = useAppSelector((state: RootState) => state.request.requests);
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
     const selectedRequests = useAppSelector((state: RootState) => state.request.selectedRequests);

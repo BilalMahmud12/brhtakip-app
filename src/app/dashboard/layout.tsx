@@ -1,19 +1,17 @@
 'use client'
-import React, { use, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as Repo from '@/repository/index';
+import { loadUserData } from '@/services/userService';
 import { usePathname } from 'next/navigation';
-import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
+import { useAuthenticator } from '@aws-amplify/ui-react';
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { AppDispatch, RootState } from '@/lib/store';
-import { setUserProfile } from '@/lib/features/userSlice';
 import { setCurrentPageTitle } from '@/lib/features/globalSlice';
 import { setClientProfiles } from '@/lib/features/clientSlice';
+import { globalConstants } from '@/config';
 import AppHeader from '@/components/custom/header';
 import SideNav from "@/components/custom/sideNav";
-import { globalConstants } from '@/config';
 
-import { CognitoIdentityProviderClient, ListUsersCommand } from "@aws-sdk/client-cognito-identity-provider"
-import { loadUserData } from '@/services/userService';
 
 export default function RootLayout({
     children,
@@ -25,10 +23,10 @@ export default function RootLayout({
     
     const dispatch = useAppDispatch<AppDispatch>();
     const currentPageTitle = useAppSelector((state: RootState) => state.global.currentPageTitle);
-    const currentUserProfile = useAppSelector((state: RootState) => state.user.userProfile);
+    
+    const currentUserProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const currentUserProfileRef = useRef(currentUserProfile);
-
-    const clientProfileID = globalConstants.clientProfileId;
+    const BRHAdminProfileId = globalConstants.clientProfileId;
 
     const fetchClientsData = async () => {
         const clientsData = await Repo.ClientProfileRepository.getClientProfiles();
@@ -56,7 +54,7 @@ export default function RootLayout({
 
     useEffect(() => {
         currentUserProfileRef.current = currentUserProfile;
-        if (currentUserProfileRef.current?.clientprofileID === clientProfileID) {
+        if (currentUserProfileRef.current?.clientprofileID === BRHAdminProfileId) {
             fetchClientsData();
         }        
     }, [currentUserProfile]);

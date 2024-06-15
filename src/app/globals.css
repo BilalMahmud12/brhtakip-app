@@ -130,3 +130,7 @@
   outline: none;
   box-shadow: none !important;
 }
+
+.recharts-text {
+  font-size: 10px !important;
+}

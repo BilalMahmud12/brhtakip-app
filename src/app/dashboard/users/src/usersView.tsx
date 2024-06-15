@@ -1,9 +1,14 @@
 'use client'
 import React from "react";
+import { useAppSelector, useAppDispatch } from '@/lib/hooks';
+import { AppDispatch, RootState } from '@/lib/store';
 import UsersDataTable from "./usersDataTable";
 import { Button } from "@aws-amplify/ui-react";
 
 const UsersView: React.FC = () => {
+    const dispatch = useAppDispatch<AppDispatch>();
+    const users = useAppSelector((state: RootState) => state.user.users);
+
     return (
         <>
             <div className="mb-8 py-4 px-8">
@@ -24,7 +29,9 @@ const UsersView: React.FC = () => {
                     </div>
                 </div>
 
-                <UsersDataTable />
+                <UsersDataTable
+                    dataPayload={users}
+                 />
             </div>
         </>
     );
