@@ -7,7 +7,7 @@ import * as Repo from '@/repository/index';
 
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { AppDispatch, RootState } from '@/lib/store';
-import { setCities, resetFormValues } from '@/lib/features/citySlice';
+import { setCities, resetFormValues, setCityForm } from '@/lib/features/citySlice';
 import CitiesDataTable from "./citiesDataTable";
 import CreateOrUpdateForm from "./createOrUpdateForm";
 
@@ -97,6 +97,16 @@ const CityView: React.FC = () => {
         }
     };
 
+    // const setCityUpdateData = (data: any) => {
+    //     dispatch(setCityForm({
+    //         id: data.id,
+    //         name: data.name,
+    //         isActive: data.isActive,
+    //         createdBy: data.createdBy,
+    //         updatedBy: data.updatedBy,
+    //     }));
+    // };
+
     const handleDeleteCity = async (data: any) => {
         try {
             const deleteCity = await Repo.CityRepository.softDelete(data.originalData.id);
@@ -133,7 +143,7 @@ const CityView: React.FC = () => {
                 <CitiesDataTable
                     dataPayload={cities}
                     handleDelete={handleDeleteCity}
-                // handleEdit={handleDeleteCity}
+                // handleEdit={setCityUpdateData}
                 />
             </div>
         </div>

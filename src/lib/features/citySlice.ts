@@ -4,6 +4,7 @@ import { City } from '@/API';
 interface CityFormState {
     cities: City[];
     cityForm: {
+        id?: string;
         name?: string;
         isActive: boolean;
         createdBy?: string;

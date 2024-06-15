@@ -4,7 +4,7 @@ import type { District } from '@/API';
 interface DistrictFormState {
     districts: District[];
     districtForm: {
-        cityID: string;
+        cityID?: string;
         isActive: boolean;
         name: string;
         createdBy?: string;
@@ -52,12 +52,6 @@ const districtSlice = createSlice({
         handleFormChange: (state, action: PayloadAction<{ key: string, value: string }>) => {
             const { key, value } = action.payload
             switch (key) {
-                case 'cityID':
-                    state.districtForm = {
-                        ...state.districtForm,
-                        cityID: value,
-                    }
-                    break;
                 case 'name':
                     state.districtForm = {
                         ...state.districtForm,
@@ -66,6 +60,12 @@ const districtSlice = createSlice({
                     break;
                 case 'isActive':
                     state.districtForm.isActive = value === '1' || value === 'true';
+                    break;
+                case 'cityID':
+                    state.districtForm = {
+                        ...state.districtForm,
+                        cityID: value,
+                    }
                     break;
                 case 'createdBy':
                     state.districtForm = {

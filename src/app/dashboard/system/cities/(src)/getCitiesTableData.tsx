@@ -29,7 +29,8 @@ export default function getCitiesTableData(
                             <div
                                 className='hover:underline hover:text-blue-700 cursor-pointer'
                                 onClick={() => {
-                                    router.push(`/dashboard/system/cities/update`);
+                                    router.push(`/dashboard/system/cities/${city.id}`);
+                                    handleEdit(row);
                                 }}
                             >
                                 {city.name}

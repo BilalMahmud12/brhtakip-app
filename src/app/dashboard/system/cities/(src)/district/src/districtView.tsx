@@ -70,7 +70,6 @@ const DistrictView: React.FC = () => {
     };
 
     const handleCreateForm = () => {
-        dispatch(resetFormValues());
         showDataModal(
             <div><span className='text-base font-bold'>Yeni İlçe Ekle</span></div>,
             <CreateOrUpdateForm isCreate={true} />,
@@ -85,13 +84,12 @@ const DistrictView: React.FC = () => {
     const handleCreateDistrict = async () => {
         try {
             const createDistrict = await Repo.DistrictRepository.create(districtformRef.current);
-
             if (createDistrict && createDistrict.data) {
-                hideDataModal();
-                dispatch(resetFormValues());
                 const newDistrict = await Repo.DistrictRepository.getAllDistricts();
                 dispatch(setDistricts(newDistrict as unknown as District[]));
                 console.log('new Districts', newDistrict)
+                hideDataModal();
+                dispatch(resetFormValues());
             }
         } catch (error) {
             console.log('Error', error);

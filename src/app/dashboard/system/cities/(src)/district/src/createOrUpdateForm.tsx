@@ -21,23 +21,23 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     const dispatch = useAppDispatch<AppDispatch>();
     const districtForm = useAppSelector((state: RootState) => state.district.districtForm);
 
-    if (!isCreate) {
-        useEffect(() => {
-            loadFormData(district);
-        }, []);
-    }
+    // if (!isCreate) {
+    //     useEffect(() => {
+    //         loadFormData(district);
+    //     }, []);
+    // }
 
-    const loadFormData = async (district: District) => {
-        const {
-            name,
-            isActive,
-        } = district;
+    // const loadFormData = async (district: District) => {
+    //     const {
+    //         name,
+    //         isActive,
+    //     } = district;
 
-        console.log('start loading form data!');
-        dispatch(handleFormChange({ key: 'name', value: name || '' }));
-        dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
-        console.log('finished loading form data:', districtForm);
-    }
+    //     console.log('start loading form data!');
+    //     dispatch(handleFormChange({ key: 'name', value: name as string }));
+    //     dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
+    //     console.log('finished loading form data:', districtForm);
+    // }
 
 
     return (
@@ -53,7 +53,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 placeholder='İlçe Ekle'
                                 variation="quiet"
                                 onChange={(e) => dispatch(handleFormChange({ key: 'name', value: e.target.value }))}
-                                defaultValue={!isCreate ? districtForm.name : ''}
+                            // defaultValue={!isCreate ? districtForm.name : ''}
                             />
                         </div>
                     </div>
@@ -72,7 +72,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 { id: '0', label: 'İnaktif' }
                             ]}
                             onSelect={(option) => dispatch(handleFormChange({ key: 'isActive', value: option.id }))}
-                            defaultValue={!isCreate ? (districtForm.isActive ? 'Aktif' : 'İnaktif') : ''}
+                        // defaultValue={!isCreate ? (districtForm.isActive ? 'Aktif' : 'İnaktif') : ''}
                         />
                     </div>
                 </div>
