@@ -6,7 +6,9 @@ import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { AppDispatch, RootState } from '@/lib/store';
 import CreateOrUpdateForm from './createOrUpdateForm';
 import { useDataModal } from '@/contexts/DataModalContext';
-import { resetFormValues } from '@/lib/features/storeSlice';
+import { resetFormValues, setStores } from '@/lib/features/storeSlice';
+import * as Repo from '@/repository/index';
+import { Store } from '@/API';
 
 
 const ModalCustomFooter = (
@@ -84,7 +86,19 @@ const StoreView: React.FC = () => {
     };
 
     const handleCreateStore = async () => {
-        console.log('handle Create Store')
+        try {
+            const createStore = await Repo.StoreRepository.create(storeFormRef.current);
+
+            if (createStore && createStore.data) {
+                const newStore = await Repo.StoreRepository.getAllStores();
+                dispatch(setStores(newStore as unknown as Store[]))
+                console.log('new created store', newStore);
+                hideDataModal();
+                dispatch(resetFormValues());
+            }
+        } catch (error) {
+            console.log('Faield to create store', error);
+        }
     }
 
     const handleCancelForm = () => {

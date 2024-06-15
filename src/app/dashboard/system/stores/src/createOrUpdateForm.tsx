@@ -41,7 +41,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                 client.graphql({ query: listDistricts }),
                 client.graphql({ query: listAreas }),
             ]);
-            const fetchedCities = citiesData.data.listCities.items.map((item: any) => ({ id: item.id, label: item.name, }));
+            const fetchedCities = citiesData.data.listCities.items.map((item: any) => ({ id: item.id, label: item.name }));
             const fetchedDistricts = districtsData.data.listDistricts.items.map((item: any) => ({ id: item.id, label: item.name, cityID: item.cityID }));
             const fetchedAreas = areasData.data.listAreas.items.map((item: any) => ({ id: item.id, label: item.name, districtID: item.districtID }));
 
@@ -65,6 +65,10 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         setSelectedDistrict(selected.id);
         dispatch(handleFormChange({ key: 'districtID', value: selected.id }));
         dispatch(handleFormChange({ key: 'areaID', value: '' }));
+    };
+
+    const handleAreaSelection = (selected: { id: string, label: string }) => {
+        dispatch(handleFormChange({ key: 'areaID', value: selected.id }));
     };
 
     const handleClearCity = () => {
@@ -179,14 +183,13 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
                     <div className='grid grid-cols-2 gap-8'>
                         <div className='input-group col-span-1'>
-                            <Label htmlFor="store_phones" className='block text-xs font-medium mb-1.5'>Mağaza Telefon Numarası</Label>
+                            <Label htmlFor="store_phones" className='block text-xs font-medium mb-1.5'>Telefon Numarası</Label>
                             <Input
                                 id="store_phones"
                                 name="store_phones"
                                 placeholder='Telefon Numarası'
                                 variation="quiet"
                                 onChange={(e) => dispatch(handleFormChange({ key: 'phones', value: e.target.value }))}
-                                defaultValue={'+90 '}
                                 className='custom-input'
                             />
                         </div>

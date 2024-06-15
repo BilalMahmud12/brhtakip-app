@@ -113,11 +113,16 @@ const MaterialView: React.FC = () => {
 
     const handleUpdateMaterial = async () => {
         try {
-            const updateMaterial = await Repo.MaterialRepository.update(materialForm);
+            const updateMaterial = await Repo.MaterialRepository.update(materialformRef.current);
             console.log('updated material', updateMaterial);
 
-            hideDataModal();
-            dispatch(resetFormValues());
+            if (updateMaterial && updateMaterial.data) {
+                hideDataModal();
+                dispatch(resetFormValues());
+                const newMaterials = await Repo.MaterialRepository.getAllMaterials();
+                dispatch(setMaterials(newMaterials as unknown as Material[]));
+                console.log('update Material', newMaterials)
+            }
 
         } catch (error) {
             console.log('Error', error);

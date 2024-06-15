@@ -96,7 +96,6 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
                 handleCancel={handleCancelForm}
                 handleCreate={handleCreateBrand}
             />
-
         );
     };
 

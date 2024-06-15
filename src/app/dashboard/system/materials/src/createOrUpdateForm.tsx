@@ -22,23 +22,23 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     const dispatch = useAppDispatch<AppDispatch>();
     const materialForm = useAppSelector((state: RootState) => state.material.materialForm);
 
-    if (!isCreate) {
-        useEffect(() => {
-            loadFormData(material);
-        }, []);
-    }
+    // if (!isCreate) {
+    //     useEffect(() => {
+    //         loadFormData(material);
+    //     }, []);
+    // }
 
-    const loadFormData = async (material: Material) => {
-        const {
-            name,
-            isActive,
-        } = material;
+    // const loadFormData = async (material: Material) => {
+    //     const {
+    //         name,
+    //         isActive,
+    //     } = material;
 
-        console.log('start loading form data!');
-        dispatch(handleFormChange({ key: 'name', value: name || '' }));
-        dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
-        console.log('finished loading form data:', materialForm);
-    }
+    //     console.log('start loading form data!');
+    //     dispatch(handleFormChange({ key: 'name', value: name || '' }));
+    //     dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
+    //     console.log('finished loading form data:', materialForm);
+    // }
 
 
     return (
