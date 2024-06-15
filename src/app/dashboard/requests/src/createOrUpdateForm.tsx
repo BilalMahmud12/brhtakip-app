@@ -70,7 +70,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     } = props;
 
     const dispatch = useAppDispatch<AppDispatch>();
-    const userProfile = useAppSelector((state: RootState) => state.user.userProfile);
+    const userProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
 
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
