@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import type { Store } from '@/API';
-import { Input, Label, Autocomplete } from '@aws-amplify/ui-react';
+import { Input, Label, Autocomplete, TextAreaField } from '@aws-amplify/ui-react';
 import { useDispatch } from 'react-redux';
 import { handleFormChange } from '@/lib/features/storeSlice';
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
@@ -114,9 +114,9 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                     <div className='my-2 pt-5' />
 
                     <div>
-                        <span className='block mb-3 text-xs font-medium'>Mağaza Adresi</span>
+                        <span className='block mb-3 text-xs font-medium'>Adres Bilgileri</span>
 
-                        <div className='bg-white px-6 py-8 rounded-md shadow'>
+                        <div className='bg-gray-100 px-6 py-8 rounded-md shadow'>
                             <div className='grid grid-cols-3 gap-8'>
                                 <div className='input-group col-span-1'>
                                     <Label htmlFor="city_name" className='block text-xs font-medium mb-1.5'>Sehir</Label>
@@ -160,10 +160,68 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                         className='custom-input'
                                     />
                                 </div>
+                                <div className='input-group col-span-3'>
+                                    <Label htmlFor="store_adres" className='block text-xs font-medium mb-1.5'>Adres Detayları</Label>
+                                    <Input
+                                        id="store_adres"
+                                        name="adres"
+                                        placeholder='Mağaza Adres Detayları'
+                                        variation="quiet"
+                                        onChange={(e) => dispatch(handleFormChange({ key: 'address', value: e.target.value }))}
+                                        className='custom-input'
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
 
+                    <div className='my-2 pt-5' />
+
+                    <div className='grid grid-cols-2 gap-8'>
+                        <div className='input-group col-span-1'>
+                            <Label htmlFor="store_phones" className='block text-xs font-medium mb-1.5'>Mağaza Telefon Numarası</Label>
+                            <Input
+                                id="store_phones"
+                                name="store_phones"
+                                placeholder='Telefon Numarası'
+                                variation="quiet"
+                                onChange={(e) => dispatch(handleFormChange({ key: 'phones', value: e.target.value }))}
+                                defaultValue={'+90 '}
+                                className='custom-input'
+                            />
+                        </div>
+
+                        <div className='input-group col-span-1'>
+                            <Label htmlFor="store_email" className='block text-xs font-medium mb-1.5'>Mağaza Email Adresi</Label>
+                            <Input
+                                id="store_email"
+                                name="store_email"
+                                placeholder='Email Adresi'
+                                variation="quiet"
+                                onChange={(e) => dispatch(handleFormChange({ key: 'email', value: e.target.value }))}
+                                className='custom-input'
+                            />
+                        </div>
+
+                        <div className='input-group col-span-2'>
+                            <Label htmlFor="store_notes" className='block text-xs font-medium mb-1.5'>Mağaza Notları</Label>
+                            <TextAreaField
+                                id="designNote"
+                                name="designNote"
+                                variation="quiet"
+                                label=""
+                                placeholder=""
+                                size='small'
+                                rows={3}
+                                labelHidden={true}
+                                onChange={(e) => dispatch(handleFormChange({ key: 'notes', value: e.target.value }))}
+                                value={storeForm.notes}
+                                className='custom-input'
+                            />
+                        </div>
+                    </div>
+
+                    <div className='my-2 pt-5' />
                 </div>
             </form>
         </div>
