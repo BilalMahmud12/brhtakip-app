@@ -7,6 +7,7 @@ import * as Repo from '@/repository/index';
 import { useAppDispatch } from '@/lib/hooks';
 import { AppDispatch } from '@/lib/store';
 import { setStores } from '@/lib/features/storeSlice';
+import StoreView from "./src/storeView";
 
 
 const Store: React.FC = () => {
@@ -22,37 +23,15 @@ const Store: React.FC = () => {
             }
         };
         fetchData();
-    }, [dispatch, Store])
+    }, [])
 
     return (
         <div>
             <title>Mağazalar</title>
-            <div className='px-6 py-3 bg-zinc-50 shadow mb-4'>
-                <Breadcrumbs
-                    items={[
-                        {
-                            href: '/dashboard',
-                            label: 'Panel Girişi',
-                        },
-                        {
-                            href: '/dashboard/system',
-                            label: 'System',
-                        },
-                        {
-                            href: '/dashboard/system/mağazalar',
-                            label: 'Mağazalar',
-                        }
-                    ]}
-                    className='text-sm font-medium'
-                />
-            </div>
+
+            <div><StoreView /></div>
         </div>
     )
 }
 
 export default Store
-
-// Mağazalar
-
-
-// mağazalar

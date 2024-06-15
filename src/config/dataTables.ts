@@ -56,9 +56,7 @@ export const dataTables = {
         columns: [
             { label: '', key: 'checkbox', width: '2%' },
             { label: 'Mağaza', key: 'name', width: '20%' },
-            { label: 'Şehir', key: 'city', width: '10%' },
-            { label: 'İl', key: 'district ', width: '15%' },
-            { label: 'İlçe', key: 'area', width: '15%' },
+            { label: 'Adres', key: 'address', width: '40%' },
             { label: '', key: 'actions', width: '2%' },
         ]
     },
