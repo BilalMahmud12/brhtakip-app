@@ -63,13 +63,13 @@ export default function getProductsTableData(
                                     </DropdownTrigger>
                                     <DropdownMenu aria-label='row-actions'>
 
-                                        <DropdownItem
+                                        {/* <DropdownItem
                                             key="update"
                                             startContent={<Icon iconName='FcSupport' className='w-5 h-5' />}
                                             onClick={() => handleEdit(row)}
                                         >
                                             Güncelle
-                                        </DropdownItem>
+                                        </DropdownItem> */}
 
                                         <DropdownItem
                                             key="cancel"

@@ -18,27 +18,27 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         product = {} as Product
     } = props;
 
-    if (!isCreate) {
-        useEffect(() => {
-            loadFormData(product);
-            console.log('product Data loaded:', product);
-        }, [])
-    }
-
     const dispatch = useAppDispatch<AppDispatch>();
     const productForm = useAppSelector((state: RootState) => state.product.productForm);
 
-    const loadFormData = async (product: Product) => {
-        const {
-            name,
-            isActive,
-        } = product;
+    // const loadFormData = async (product: Product) => {
+    //     const {
+    //         name,
+    //         isActive,
+    //     } = product;
 
-        console.log('start loading product form data!');
-        dispatch(handleFormChange({ key: 'name', value: name as string }));
-        dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
-        console.log('finished loading product form data:', productForm);
-    }
+    //     console.log('start loading product form data!');
+    //     dispatch(handleFormChange({ key: 'name', value: name as string }));
+    //     dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
+    //     console.log('finished loading product form data:', productForm);
+    // }
+
+    // if (!isCreate) {
+    //     useEffect(() => {
+    //         loadFormData(product);
+    //         console.log('product Data loaded:', product);
+    //     }, [])
+    // }
 
 
     return (

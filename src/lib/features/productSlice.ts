@@ -4,6 +4,7 @@ import type { Product } from '@/API';
 interface ProductFormState {
     products: Product[];
     productForm: {
+        id?: string;
         name?: string;
         brandID?: string;
         isActive?: boolean;

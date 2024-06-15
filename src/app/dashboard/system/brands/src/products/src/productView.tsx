@@ -75,9 +75,9 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
     const products = useAppSelector((state: RootState) => state.product);
     const productForm = useAppSelector((state: RootState) => state.product.productForm);
 
-    const productformRef = useRef(productForm);
+    const productFormRef = useRef(productForm);
     useEffect(() => {
-        productformRef.current = productForm;
+        productFormRef.current = productForm;
     }, [productForm])
 
     const handleCreateForm = () => {
@@ -106,35 +106,25 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
 
     const handleCreateProduct = async () => {
         try {
-            const createProduct = await Repo.ProductRepository.create(productformRef.current);
-            console.log('created product', createProduct);
-            fetchFilteredProducts();
+            const createProduct = await Repo.ProductRepository.create(productFormRef.current);
 
-            dispatch(setProducts(filteredProducts))
-            hideDataModal();
+            if (createProduct && createProduct.data) {
+                fetchFilteredProducts();
+                dispatch(setProducts(filteredProducts))
+                hideDataModal();
+                dispatch(resetProductFormValues())
+            }
         } catch (error) {
-            console.error('Error creating product', error);
+            console.error('Error create product', error);
         }
     };
 
-    const setProductUpdateData = () => {
-        dispatch(setProductFormValues({
-            name: productForm.name,
-            isActive: productForm.isActive,
-        }));
-    };
 
-
-    const handleUpdateForm = (data: any) => {
-        dispatch(setProductFormValues({
-            name: productForm.name,
-            isActive: productForm.isActive,
-        }));
+    const handleUpdateForm = () => {
         showDataModal(
             <div><span className='text-base font-bold'>Güncelle</span></div>,
             <CreateOrUpdateForm
                 isCreate={false}
-                product={data}
             />,
             <ModalCustomFooter
                 type='update'
@@ -146,20 +136,34 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
 
     const handleUpdateProduct = async () => {
         try {
-            const updateProduct = await Repo.ProductRepository.update(productForm)
-            console.log('updated product', updateProduct);
-            // fetchFilteredProducts();
-            // dispatch(setProducts(filteredProducts))
-            hideDataModal();
+            productFormRef
+            const updateProduct = await Repo.ProductRepository.update(productFormRef.current)
+
+            if (updateProduct && updateProduct.data) {
+                fetchFilteredProducts();
+                dispatch(setProducts(filteredProducts))
+                hideDataModal();
+                dispatch(resetProductFormValues())
+            }
+
         } catch (error) {
             console.log('error on update Product', error);
         }
     };
 
+    const setProductUpdateData = (data: any) => {
+        handleUpdateForm();
+        dispatch(setProductFormValues({
+            id: data.id,
+            name: data.name,
+            isActive: data.isActive,
+            brandID: data.brandID,
+        }));
+    };
+
     const handleDeleteProduct = async (data: any) => {
         try {
             const deleteProduct = await Repo.ProductRepository.softDelete(data.originalData.id);
-            console.log('deleted brand', deleteProduct);
             fetchFilteredProducts();
         } catch (error) {
             console.log('error', error);
@@ -173,33 +177,34 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
     return (
         <div>
             <div>
-                <div className='mt-1.5 shadow bg-white py-6'>
-                    <div className='px-6 mb-3 flex items-center justify-between'>
-                        <h2 className='text-2xl font-medium'>
-                            {haveProduct ? 'Bağlı Ürünler' : 'Henüz Ürün Eklenmedi'}
-                        </h2>
-                        <Button
-                            variation="primary"
-                            colorTheme="success"
-                            size="small"
-                            onClick={handleCreateForm}
-                            className='rounded-none bg-amber-500 text-gray-800 px-6'
-                        >
-                            <span>Ürün Ekle</span>
-                        </Button>
-                    </div>
-                    {haveProduct && (
-                        <div className='mt-1.5 shadow bg-white py-6'>
-                            <ProductsDataTable
-                                dataPayload={filteredProducts}
-                                handleDelete={(data) => handleDeleteProduct(data)}
-                                handleEdit={handleUpdateForm}
-                            />
+                <div className='px-6 py-3'>
+                    <div className='mt-1.5 shadow bg-white'>
+                        <div className='px-6 py-3 mb-3 flex items-center justify-between'>
+                            <h2 className='text-2xl font-medium'>
+                                {haveProduct ? 'Bağlı Ürünler' : 'Henüz Ürün Eklenmedi'}
+                            </h2>
+                            <Button
+                                variation="primary"
+                                colorTheme="success"
+                                size="small"
+                                onClick={handleCreateForm}
+                                className='rounded-none bg-amber-500 text-gray-800 px-6'
+                            >
+                                <span>Ürün Ekle</span>
+                            </Button>
                         </div>
-                    )}
+                        {haveProduct && (
+                            <div className='mt-1.5 shadow bg-white py-6'>
+                                <ProductsDataTable
+                                    dataPayload={filteredProducts}
+                                    handleDelete={(data) => handleDeleteProduct(data)}
+                                    handleEdit={setProductUpdateData}
+                                />
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
-
             {/* <div className='mt-1.5 shadow bg-white py-6'>
                 <ProductsDataTable
                     
