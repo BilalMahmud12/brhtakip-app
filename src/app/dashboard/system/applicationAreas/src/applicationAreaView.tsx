@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDataModal } from '@/contexts/DataModalContext';
 import ApplicationAreaDataTable from './applicationAreasDataTable';
 import type { ApplicationArea } from '@/API';
@@ -59,6 +59,11 @@ const ApplicationAreaView: React.FC = () => {
     const applicationAreas = useAppSelector((state: RootState) => state.applicationArea.applicationAreas);
     const applicationAreaForm = useAppSelector((state: RootState) => state.applicationArea.applicationAreaForm);
 
+    const applicationAreaRef = useRef(applicationAreaForm);
+    useEffect(() => {
+        applicationAreaRef.current = applicationAreaForm;
+    }, [applicationAreaForm])
+
     const handleCancelForm = () => {
         dispatch(resetFormValues());
         hideDataModal();
@@ -79,14 +84,14 @@ const ApplicationAreaView: React.FC = () => {
 
     const handleCreateApplicationArea = async () => {
         try {
-            const createApplicationArea = await Repo.ApplicationAreaRepository.create(applicationAreaForm);
+            const createApplicationArea = await Repo.ApplicationAreaRepository.create(applicationAreaRef.current);
             console.log('new created Application Area', createApplicationArea);
             hideDataModal();
             dispatch(resetFormValues());
             const newApplicationArea = await Repo.ApplicationAreaRepository.getApplicationAreas();
             dispatch(setApplicationAreas(newApplicationArea as unknown as ApplicationArea[]));
         } catch (error) {
-            console.log('Error', error);
+            console.log('Failed to create application area', error);
         }
     };
 
@@ -105,21 +110,25 @@ const ApplicationAreaView: React.FC = () => {
 
     const handleUpdateApplicationArea = async () => {
         try {
-            const createApplicationArea = await Repo.ApplicationAreaRepository.update(applicationAreaForm);
-            console.log('new created Application Area', createApplicationArea);
-            hideDataModal();
-            dispatch(resetFormValues());
+            const createApplicationArea = await Repo.ApplicationAreaRepository.update(applicationAreaRef.current);
+
+            if (createApplicationArea && createApplicationArea.data) {
+                const newApplicationArea = await Repo.ApplicationAreaRepository.getApplicationAreas();
+                dispatch(setApplicationAreas(newApplicationArea as unknown as ApplicationArea[]));
+                hideDataModal();
+                dispatch(resetFormValues());
+            }
         } catch (error) {
-            console.log('Error', error);
+            console.log('Failed to update application area', error);
         }
     };
 
-    const setBrandUpdateData = (material: any) => {
+    const setBrandUpdateData = (data: any) => {
         handleUpdateForm();
         dispatch(setApplicationAreaForm({
-            id: material.id,
-            name: material.name,
-            isActive: material.isActive,
+            id: data.id,
+            name: data.name,
+            isActive: data.isActive,
         }));
     };
 
@@ -130,29 +139,32 @@ const ApplicationAreaView: React.FC = () => {
             const newApplicationArea = await Repo.ApplicationAreaRepository.getApplicationAreas();
             dispatch(setApplicationAreas(newApplicationArea as unknown as ApplicationArea[]));
         } catch (error) {
-            console.log('error', error);
+            console.log('Failed to delete application area', error);
         }
     };
 
 
     return (
-        <div>
-            <div className='mt-1.5 shadow bg-zinc-50'>
-                <div className='px-6 py-6 mb-3 flex items-center justify-between'>
-                    <h2 className='text-2xl font-medium'>Uygulama Alanları</h2>
-                    <Button
-                        variation="primary"
-                        colorTheme="success"
-                        size="small"
-                        loadingText=""
-                        onClick={handleCreateForm}
-                        className='rounded-none bg-amber-500 text-gray-800 px-6'
-                    >
-                        <span>Uygulama Alanı Ekle</span>
-                    </Button>
+        <div className='px-6 py-3'>
+            <div className='mt-1.5 shadow bg-white'>
+                <div className='px-6 py-3 mb-3 flex items-center justify-between'>
+                    <div className='flex items-center space-x-2'>
+                        <div className='flex items-center space-x-2'>
+                            <Button
+                                variation="primary"
+                                colorTheme="success"
+                                size="small"
+                                loadingText=""
+                                onClick={handleCreateForm}
+                                className='rounded-none bg-amber-500 text-gray-800 px-6'
+                            >
+                                <span>Uygulama Alanı Ekle</span>
+                            </Button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className='mt-8'>
+            <div className='mt-8 bg-white shadow'>
                 <ApplicationAreaDataTable
                     dataPayload={applicationAreas}
                     handleDelete={handleDeleteApplicationArea}

@@ -29,25 +29,6 @@ const ApplicationArea: React.FC = () => {
     return (
         <div>
             <title>Uygulama Alanları</title>
-            <div className='px-6 py-3 bg-zinc-50 shadow mb-4'>
-                <Breadcrumbs
-                    items={[
-                        {
-                            href: '/dashboard',
-                            label: 'Panel Girişi',
-                        },
-                        {
-                            href: '/dashboard/system',
-                            label: 'System',
-                        },
-                        {
-                            href: '/dashboard/system/applicationArea',
-                            label: 'Uygulama Alanları',
-                        }
-                    ]}
-                    className='text-sm font-medium'
-                />
-            </div>
             <div>
                 <ApplicationAreaView />
             </div>

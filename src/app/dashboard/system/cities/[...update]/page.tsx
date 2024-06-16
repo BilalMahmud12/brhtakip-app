@@ -81,7 +81,7 @@ const UpdateCity: React.FC = () => {
                             { href: '/dashboard', label: 'Panel Girişi' },
                             { href: '/dashboard/system', label: 'System' },
                             { href: '/dashboard/system/cities', label: 'Şehirler' },
-                            { label: 'Şehir Güncelle' }
+                            { label: 'Şehir Güncelle' },
                         ]}
                         className='text-sm font-medium'
                     />
