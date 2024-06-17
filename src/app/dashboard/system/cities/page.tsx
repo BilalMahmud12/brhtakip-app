@@ -25,26 +25,8 @@ const City: React.FC = () => {
     }, [dispatch, City])
     return (
         < div >
-            <title>Mağazalar</title>
-            <div className='px-6 py-3 bg-zinc-50 shadow mb-4'>
-                <Breadcrumbs
-                    items={[
-                        {
-                            href: '/dashboard',
-                            label: 'Panel Girişi',
-                        },
-                        {
-                            href: '/dashboard/system',
-                            label: 'System',
-                        },
-                        {
-                            href: '/dashboard/system/Şehirler',
-                            label: 'Şehirler',
-                        }
-                    ]}
-                    className='text-sm font-medium'
-                />
-            </div>
+            <title>Şehirler</title>
+
             <div>
                 <CityView />
             </div>

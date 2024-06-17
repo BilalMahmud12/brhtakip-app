@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import { Button } from '@aws-amplify/ui-react';
 import { useDataModal } from '@/contexts/DataModalContext';
-import type { City } from '@/API';
+import type { City, District } from '@/API';
 import * as Repo from '@/repository/index';
 
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
@@ -10,6 +10,7 @@ import { AppDispatch, RootState } from '@/lib/store';
 import { setCities, resetFormValues, setCityForm } from '@/lib/features/citySlice';
 import CitiesDataTable from "./citiesDataTable";
 import CreateOrUpdateForm from "./createOrUpdateForm";
+
 
 const ModalCustomFooter = (props: {
     type: 'create' | 'update'
@@ -94,18 +95,17 @@ const CityView: React.FC = () => {
                 dispatch(resetFormValues());
             }
         } catch (error) {
+            console.log('Failed Create City', error)
         }
     };
 
-    // const setCityUpdateData = (data: any) => {
-    //     dispatch(setCityForm({
-    //         id: data.id,
-    //         name: data.name,
-    //         isActive: data.isActive,
-    //         createdBy: data.createdBy,
-    //         updatedBy: data.updatedBy,
-    //     }));
-    // };
+    const setCityUpdateData = (data: any) => {
+        dispatch(setCityForm({
+            id: data.id,
+            name: data.name,
+            isActive: data.isActive,
+        }));
+    };
 
     const handleDeleteCity = async (data: any) => {
         try {
@@ -117,34 +117,35 @@ const CityView: React.FC = () => {
                 dispatch(resetFormValues());
             }
         } catch (error) {
-            console.log('error', error)
+            console.log('Failed Delete City', error)
         }
     }
 
 
     return (
         <div>
-            <div className='mt-1.5 shadow bg-zinc-50'>
-                <div className='px-6 py-6 mb-3 flex items-center justify-between'>
-                    <h2 className='text-2xl font-medium'>Şehirler</h2>
-                    <Button
-                        variation="primary"
-                        colorTheme="success"
-                        size="small"
-                        loadingText=""
-                        onClick={handleCreateForm}
-                        className='rounded-none bg-amber-500 text-gray-800 px-6'
-                    >
-                        <span>Şehir Ekle</span>
-                    </Button>
+            <div className='px-6 py-3'>
+                <div className='mt-1.5 shadow bg-white'>
+                    <div className='px-6 py-3 mb-3 flex items-center justify-between'>
+                        <Button
+                            variation="primary"
+                            colorTheme="success"
+                            size="small"
+                            loadingText=""
+                            onClick={handleCreateForm}
+                            className='rounded-none bg-amber-500 text-gray-800 px-6'
+                        >
+                            <span>Şehir Ekle</span>
+                        </Button>
+                    </div>
                 </div>
-            </div>
-            <div className='mt-8'>
-                <CitiesDataTable
-                    dataPayload={cities}
-                    handleDelete={handleDeleteCity}
-                // handleEdit={setCityUpdateData}
-                />
+                <div className='mt-8 bg-white shadow'>
+                    <CitiesDataTable
+                        dataPayload={cities}
+                        handleDelete={handleDeleteCity}
+                        handleEdit={setCityUpdateData}
+                    />
+                </div>
             </div>
         </div>
     )

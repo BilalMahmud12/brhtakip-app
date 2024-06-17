@@ -4,15 +4,16 @@ import { Breadcrumbs, Button } from '@aws-amplify/ui-react';
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { AppDispatch, RootState } from "@/lib/store";
 import * as Repo from '@/repository/index';
-import type { Store, District } from '@/API';
+import type { Store, District, City } from '@/API';
 
 import { setDistricts } from '@/lib/features/districtSlice';
 import DistrictView from "../(src)/district/src/districtView";
-import { resetFormValues } from "@/lib/features/citySlice";
-import router from "next/router";
+import { resetFormValues, setCities } from "@/lib/features/citySlice";
 import CreateOrUpdateForm from "../(src)/createOrUpdateForm";
+import { useRouter } from "next/navigation";
 
 const UpdateCity: React.FC = () => {
+    const router = useRouter();
     const [filteredDistricts, setFilteredDistricts] = useState<District[]>([]);
     const [haveDistricts, setHaveDistricts] = useState<boolean>(false);
 
@@ -23,28 +24,17 @@ const UpdateCity: React.FC = () => {
 
     async function handleUpdateCity() {
         try {
-            const updateCity = await Repo.BrandRepository.update(cityForm);
-            dispatch(resetFormValues());
-            router.replace(`/dashboard/system/cities`);
+            const updateCity = await Repo.CityRepository.update(cityForm);
+            if (updateCity && updateCity.data) {
+                const newCity = await Repo.CityRepository.getAllCities();
+                dispatch(setCities(newCity as unknown as City[]));
+                dispatch(resetFormValues());
+                router.replace(`/dashboard/system/cities`);
+            }
         } catch (error) {
-            console.error('Error updating brand:', error);
+            console.error('Failed updating city:', error);
         }
     }
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const districtData = await Repo.DistrictRepository.getAllDistricts();
-    //             dispatch(setDistricts(districtData as unknown as District[]))
-    //             console.log('district data', districtData);
-    //         } catch (error) {
-    //             console.log('error', error);
-    //         }
-    //     }
-    //     fetchData();
-    // }, [])
-
-
 
     const fetchFilteredDistricts = async () => {
         try {
@@ -60,7 +50,7 @@ const UpdateCity: React.FC = () => {
                 setHaveDistricts(filtered.length > 0);
             }
         } catch (error) {
-            console.error('Failed to fetch products', error);
+            console.error('Failed fetching products', error);
             setHaveDistricts(false);
         }
     };
@@ -68,8 +58,6 @@ const UpdateCity: React.FC = () => {
     useEffect(() => {
         fetchFilteredDistricts();
     }, [cityForm.id])
-
-
 
     return (
         <div>
@@ -86,7 +74,6 @@ const UpdateCity: React.FC = () => {
                         className='text-sm font-medium'
                     />
                 </div>
-
 
                 <div className='mt-1.5 shadow bg-white py-6'>
                     <div className='px-6 mb-3 flex items-center justify-between'>
@@ -108,13 +95,17 @@ const UpdateCity: React.FC = () => {
                 </div>
             </div>
 
-
             {/* START District SECTION */}
-            <DistrictView />
+
+            <DistrictView
+                cityId={cityForm.id || ''}
+                haveDistricts={haveDistricts}
+                fetchFilteredDistricts={fetchFilteredDistricts}
+                filteredDistricts={filteredDistricts}
+            />
             {/* END District SECTION */}
         </div>
     )
 }
 
-export default UpdateCity
-
+export default UpdateCity;

@@ -9,6 +9,12 @@ import * as Repo from '@/repository/index';
 import DistrictsDataTable from './districtsDataTable';
 import CreateOrUpdateForm from './createOrUpdateForm';
 import { setDistricts, resetFormValues } from '@/lib/features/districtSlice';
+interface DistrictViewProps {
+    cityId: string;
+    haveDistricts: boolean;
+    fetchFilteredDistricts: () => void;
+    filteredDistricts: District[];
+}
 
 const ModalCustomFooter = (props: {
     type: 'create' | 'update'
@@ -53,7 +59,7 @@ const ModalCustomFooter = (props: {
     );
 }
 
-const DistrictView: React.FC = () => {
+const DistrictView: React.FC<DistrictViewProps> = ({ cityId, haveDistricts, fetchFilteredDistricts, filteredDistricts }) => {
     const { showDataModal, hideDataModal } = useDataModal();
     const dispatch = useAppDispatch<AppDispatch>();
     const districts = useAppSelector((state: RootState) => state.district.districts);
@@ -101,7 +107,7 @@ const DistrictView: React.FC = () => {
             <div className='px-6 py-3'>
                 <div className='mt-1.5 shadow bg-white'>
                     <div className='px-6 py-3 mb-3 flex items-center justify-between'>
-
+                        <h2>{haveDistricts ? 'İlçeler' : 'Henüz İlçe Eklenmedi'}</h2>
                         <Button
                             variation="primary"
                             colorTheme="success"
@@ -115,11 +121,14 @@ const DistrictView: React.FC = () => {
                     </div>
                 </div>
                 <div className='mt-8'>
-                    <DistrictsDataTable
-                        dataPayload={districts}
-                    // handleDelete={ }
-                    // handleEdit={ }
-                    />
+                    {haveDistricts ?
+                        <DistrictsDataTable
+                            dataPayload={districts}
+                        // handleDelete={ }
+                        // handleEdit={ }
+                        />
+                        : ''}
+
                 </div>
             </div>
         </div>

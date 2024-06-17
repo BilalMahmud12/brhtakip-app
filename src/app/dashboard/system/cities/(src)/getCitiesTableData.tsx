@@ -30,7 +30,7 @@ export default function getCitiesTableData(
                                 className='hover:underline hover:text-blue-700 cursor-pointer'
                                 onClick={() => {
                                     router.push(`/dashboard/system/cities/${city.id}`);
-                                    handleEdit(row);
+                                    handleEdit(city);
                                 }}
                             >
                                 {city.name}
