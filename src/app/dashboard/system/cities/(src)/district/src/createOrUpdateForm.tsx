@@ -53,7 +53,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 placeholder='İlçe Ekle'
                                 variation="quiet"
                                 onChange={(e) => dispatch(handleFormChange({ key: 'name', value: e.target.value }))}
-                            // defaultValue={!isCreate ? districtForm.name : ''}
+                                defaultValue={!isCreate ? districtForm.name : ''}
                             />
                         </div>
                     </div>
@@ -72,7 +72,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 { id: '0', label: 'İnaktif' }
                             ]}
                             onSelect={(option) => dispatch(handleFormChange({ key: 'isActive', value: option.id }))}
-                        // defaultValue={!isCreate ? (districtForm.isActive ? 'Aktif' : 'İnaktif') : ''}
+                            defaultValue={!isCreate ? (districtForm.isActive ? 'Aktif' : 'İnaktif') : ''}
                         />
                     </div>
                 </div>

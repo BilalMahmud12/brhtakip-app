@@ -8,7 +8,7 @@ import type { District } from '@/API';
 import * as Repo from '@/repository/index';
 import DistrictsDataTable from './districtsDataTable';
 import CreateOrUpdateForm from './createOrUpdateForm';
-import { setDistricts, resetFormValues } from '@/lib/features/districtSlice';
+import { setDistricts, resetFormValues, setDistrictForm } from '@/lib/features/districtSlice';
 interface DistrictViewProps {
     cityId: string;
     haveDistricts: boolean;
@@ -75,6 +75,7 @@ const DistrictView: React.FC<DistrictViewProps> = ({ cityId, haveDistricts, fetc
         hideDataModal();
     };
 
+
     const handleCreateForm = () => {
         showDataModal(
             <div><span className='text-base font-bold'>Yeni İlçe Ekle</span></div>,
@@ -87,21 +88,48 @@ const DistrictView: React.FC<DistrictViewProps> = ({ cityId, haveDistricts, fetc
         );
     };
 
+    // FIX
+    const setDistrictCityId = () => {
+        if (districtForm.cityID !== cityId) {
+            dispatch(setDistrictForm({
+                ...districtForm,
+                cityID: cityId
+            }));
+        }
+    };
+
+    useEffect(() => {
+        setDistrictCityId();
+    }, [cityId]);
+
     const handleCreateDistrict = async () => {
         try {
             const createDistrict = await Repo.DistrictRepository.create(districtformRef.current);
+
             if (createDistrict && createDistrict.data) {
-                const newDistrict = await Repo.DistrictRepository.getAllDistricts();
-                dispatch(setDistricts(newDistrict as unknown as District[]));
-                console.log('new Districts', newDistrict)
+                fetchFilteredDistricts();
+                dispatch(setDistricts(filteredDistricts));
+                console.log('new Districts', filteredDistricts)
                 hideDataModal();
                 dispatch(resetFormValues());
             }
         } catch (error) {
-            console.log('Error', error);
+            console.log('Failed Creating District', error);
         }
     };
 
+    const handleDeleteDistrict = async (data: any) => {
+        try {
+            const deleteProduct = await Repo.DistrictRepository.softDelete(data.originalData.id);
+
+            if (deleteProduct && deleteProduct.data) {
+                fetchFilteredDistricts();
+                dispatch(setDistricts(filteredDistricts));
+            }
+        } catch (error) {
+            console.log('Failed Delete District', error);
+        }
+    }
     return (
         <div>
             <div className='px-6 py-3'>
@@ -124,7 +152,7 @@ const DistrictView: React.FC<DistrictViewProps> = ({ cityId, haveDistricts, fetc
                     {haveDistricts ?
                         <DistrictsDataTable
                             dataPayload={districts}
-                        // handleDelete={ }
+                            handleDelete={handleDeleteDistrict}
                         // handleEdit={ }
                         />
                         : ''}
