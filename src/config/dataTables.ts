@@ -8,12 +8,11 @@ export const dataTables = {
     },
     users: {
         columns: [
-            { label: '', key: 'checkbox', width: '2%' },
-            { label: 'Kullanıcı', key: 'username', width: '20%' },
-            { label: 'Durum', key: 'status', width: '5%' },
-            { label: 'Rol', key: 'role', width: '5%' },
-            { label: 'Eposta', key: 'email', width: '65%' },
-            { label: '', key: 'actions', width: '3%' },
+            { label: 'Kullanıcı', key: 'username', width: '240' },
+            { label: 'Durum', key: 'status', width: '150' },
+            { label: 'Rol', key: 'role', width: '180' },
+            { label: 'Eposta', key: 'email', width: '240' },
+            { label: '', key: 'actions', width: '80' },
         ]
     }
 }

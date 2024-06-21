@@ -18,6 +18,7 @@ import { useRouter } from 'next-nprogress-bar';
 
 interface CreateOrUpdateFormProps {
     isCreate?: boolean
+    onSubmitted?: () => void
 }
 
 const getRoleOptions = (currentUser: any) => {
@@ -59,7 +60,8 @@ const getClientOptions = (clientProfiles: any[]) => {
 }
 
 const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({ 
-    isCreate = false 
+    isCreate = false,
+    onSubmitted = () => {} 
 }) => {
     const router = useRouter()
     const dispatch = useAppDispatch<AppDispatch>()
@@ -105,7 +107,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                             Kullanıcılara Geri Dön
                         </Button>
 
-                        <Button variant="contained" startIcon={<SaveIcon />}>
+                        <Button variant="contained" startIcon={<SaveIcon />} onClick={onSubmitted}>
                             Kaydı Et
                         </Button>
                     </div>

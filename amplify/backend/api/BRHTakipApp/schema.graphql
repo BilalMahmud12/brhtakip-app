@@ -7,8 +7,9 @@ type ExtraProduct @model @auth(rules: [{allow: public}]) {
 
 enum Roles {
   ADMIN
-  CLIENT_ROOT
-  CLIENT_USER
+  EDITOR
+  CLIENT_ADMIN
+  CLIENT_EDITOR
 }
 
 type ApplicationArea @model @auth(rules: [{allow: public}]) {
@@ -107,9 +108,9 @@ type Store @model @auth(rules: [{allow: public}]) {
   name: String!
   address: String
   Requests: [Request] @hasMany(indexName: "byStore", fields: ["id"])
-  phones: AWSJSON
-  email: [AWSJSON]
-  notes: AWSJSON
+  phones: [String]
+  email: [AWSEmail]
+  notes: String
   created_by: String
   updated_by: String
   Area: Area @belongsTo(fields: ["areaID"])

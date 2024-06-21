@@ -1,6 +1,10 @@
 import type { UserProfile } from '@/API'
 import { formateDate } from '@/utils/helpers';
-import { Badge } from '@aws-amplify/ui-react'
+import Chip from '@mui/material/Chip';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function getUsresTableData(
     data: UserProfile[],
@@ -23,13 +27,11 @@ export default function getUsresTableData(
                     break;
                 case 'status':
                     row[column.key] = (
-                        <Badge 
-                            variation={user.isActive === true ? 'success' : 'error'} 
-                            size='small'
-                            className='px-5'
-                        >
-                            <span>{user.isActive === true ? 'Aktif' : 'Pasif'}</span>
-                        </Badge>
+                        <Chip 
+                            label={user.isActive === true ? 'Aktif' : 'Pasif'}
+                            color={user.isActive === true ? 'success' : 'error'}
+                            size="small"  
+                        />
                     )
                     break;
                 case 'email':
@@ -39,13 +41,10 @@ export default function getUsresTableData(
                     break;
                 case 'role':
                     row[column.key] = (
-                        <Badge 
-                            variation={'info'} 
-                            size='small'
-                            className='px-5'
-                        >
-                            <span>{user.role}</span>
-                        </Badge>
+                        <Chip 
+                            label={user?.role as string}
+                            size="small" 
+                        />
                     )
                     break;
                 case 'createdAt':
@@ -53,20 +52,14 @@ export default function getUsresTableData(
                     break;
                 case 'actions':
                     row[column.key] = (
-                        <div className='flex items-center justify-center'>
-                            <button
-                                onClick={() => handleEdit(user)}
-                                className='p-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full mr-2'
-                            >
-                                {/* <EditIcon /> */}
-                            </button>
+                        <div className='flex items-center justify-center h-full'>
+                            <IconButton aria-label="delete" size="small" color='primary'>
+                                <EditIcon fontSize="inherit" />
+                            </IconButton>
 
-                            <button
-                                onClick={() => handleDelete(user)}
-                                className='p-2 bg-red-500 hover:bg-red-600 text-white rounded-full'
-                            >
-                                {/* <DeleteIcon /> */}
-                            </button>
+                            <IconButton aria-label="delete" size="small" color='error'>
+                                <DeleteIcon fontSize="inherit" />
+                            </IconButton>
                         </div>
                     )
                     break;
