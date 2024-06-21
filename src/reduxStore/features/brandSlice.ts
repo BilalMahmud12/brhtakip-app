@@ -36,30 +36,19 @@ const brandSlice = createSlice({
             state.brandForm = action.payload
         },
 
-        handleFormChange: (state, action: PayloadAction<{ key: string, value: string }>) => {
+        handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean }>) => {
             const { key, value } = action.payload;
             switch (key) {
                 case 'name':
-                    state.brandForm = {
-                        ...state.brandForm,
-                        name: value,
-                    }
+                    state.brandForm.name = value as string
                     break;
                 case 'isActive':
-                    state.brandForm.isActive = value === '1' || value === 'true';
+                    state.brandForm.isActive = value as boolean
                     break;
                 case 'clientprofileID':
-                    state.brandForm = {
-                        ...state.brandForm,
-                        clientprofileID: value,
-                    }
+                    state.brandForm.clientprofileID = value as string
                     break;
-
                 default:
-                    state.brandForm = {
-                        ...state.brandForm,
-                        [key]: value,
-                    }
                     break;
             }
         },

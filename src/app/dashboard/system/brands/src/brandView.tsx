@@ -1,13 +1,12 @@
 'use client'
 import React, { useEffect, useRef } from 'react';
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
-import { setBrands, resetFormValues, setBrandFormValues } from '@/lib/features/brandSlice';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
+import { setBrands, resetFormValues, setBrandFormValues } from '@/reduxStore/features/brandSlice';
 
 import { useDataModal } from '@/contexts/DataModalContext';
 import { Button } from '@aws-amplify/ui-react';
 import BrandsDataTable from './brandsDataTable';
-import ClientSelectForm from './clientSelectForm';
 import { usePathname, useRouter } from 'next/navigation';
 import * as Repo from '@/repository/index';
 import CreateOrUpdateForm from './createOrUpdateForm';
@@ -66,6 +65,7 @@ const ModalCustomFooter = (
 
 const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
     usePathname();
+    const router = useRouter()
     const dispatch = useAppDispatch<AppDispatch>();
 
     const brands = useAppSelector((state: RootState) => state.brand.brands);
@@ -115,6 +115,7 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
 
     const getClientName = (clientProfileId: string) => {
         const clientProfile = clientProfiles?.find(profile => profile.id === clientProfileId);
+        console.log('clientProfile', clientProfile?.name)
         return clientProfile?.name || '';
     };
 
@@ -138,7 +139,7 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
                                 colorTheme="success"
                                 size="small"
                                 loadingText=""
-                                onClick={handleCreateForm}
+                                onClick={() => router.push(`/dashboard/system/brands/create`)}
                                 className='rounded-none bg-amber-500 text-gray-800 px-6'
                             >
                                 <span>Marka Ekle</span>

@@ -1,73 +1,140 @@
 'use client'
 import React, { useEffect } from 'react';
 import type { Brand } from '@/API';
-import { Input, Label, Autocomplete } from '@aws-amplify/ui-react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState, AppDispatch } from '@/lib/store';
-import { handleFormChange } from '@/lib/features/brandSlice';
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
+import { handleFormChange } from '@/reduxStore/features/brandSlice';
+import { useRouter } from 'next-nprogress-bar';
+
+import Button from '@mui/material/Button';
+import SaveIcon from '@mui/icons-material/Save';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import AutoComplete from '@/components/core/autoComplete';
+import TextField from '@mui/material/TextField';
+import { FormControlLabel } from '@mui/material';
+import Switch from '@mui/material/Switch';
 
 interface CreateOrUpdateFormProps {
     isCreate?: boolean;
     brand?: Brand;
 }
 
-const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
-    const {
+const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
+    {
         isCreate = true,
-        brand = {} as Brand
-    } = props;
+        brand = {} as Brand }
+) => {
 
-    const brands = useAppSelector((state: RootState) => state.brand.brands);
+    const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
-    const brandFormValues = useAppSelector((state: RootState) => state.brand.brandForm);
     const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
+    const brandFormRef = React.useRef(brandForm)
+    brandFormRef.current = brandForm
 
-    const handleInputChange = (value: string, key: string) => {
-        dispatch(handleFormChange({ key, value }));
+    const [checked, setChecked] = React.useState(brandFormRef.current.isActive as boolean);
+
+    const getClientsList = (): { value: string; label: string }[] => {
+        return clientProfiles?.map((client) => ({
+            value: client.id,
+            label: client?.name || ''
+        }));
     };
 
-    const getClientsList = (): { id: string, label: string }[] => {
+    return (
+        <div className='h-full'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>
+                <div className='h-full col-span-2'>
+                    <div className='flex items-center justify-between'>
+                        <Button
+                            variant="text"
+                            startIcon={<ArrowBackIosIcon />}
+                            onClick={() => router.push('/dashboard/system/brands')}
+                        >
+                            Markalara Geri Dön
+                        </Button>
+
+                        <Button variant="contained" startIcon={<SaveIcon />}>
+                            Kaydı Et
+                        </Button>
+                    </div>
+                </div>
+
+                <div className='p-6 bg-white shadow col-span-2'>
+                    <h2 className='text-base font-semibold mb-6'>Marka Durumu ve Müşteri</h2>
+
+                    <div className='input-group w-full col-span-2'>
+                        <label htmlFor="client_name" className='block text-xs font-medium mb-1.5'>Müşteri</label>
+                        <AutoComplete
+                            id="client_name"
+                            options={getClientsList()}
+                            value={getClientsList().find(client => client.value === brandForm.clientprofileID)?.label || ''}
+                            handleOnChange={(option) => {
+                                if (typeof option !== 'string') {
+                                    dispatch(handleFormChange({ key: 'clientprofileID', value: option?.value || '' }));
+                                }
+                            }}
+                        />
+                    </div>
+
+                    <div className='my-2 pt-5' />
+
+                    <div className='input-group w-full col-span-1 lg:col-span-1'>
+                        <label htmlFor="lastName" className='block text-xs font-medium mb-1.5'>Marka Adı *</label>
+                        <TextField
+                            id='lastName'
+                            variant="standard"
+                            sx={{ width: '100%' }}
+                            helperText={''}
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                dispatch(handleFormChange({ key: 'name', value: event.target.value }))
+                            }}
+                        />
+                    </div>
+
+                    <div className='my-2 pt-5' />
+
+                    <div className='input-group w-full'>
+                        <label htmlFor="brand_state" className='block text-xs font-medium mb-2'>Hesap Durumu</label>
+                        <div>
+                            <FormControlLabel
+                                label={checked ? 'Aktif' : 'Aktif Değil'}
+                                control={<Switch
+                                    color='success'
+                                    checked={checked}
+                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                        setChecked(event.target.checked);
+                                        dispatch(handleFormChange({
+                                            key: 'isActive',
+                                            value: event.target.checked
+                                        }));
+                                    }}
+                                />}
+                                sx={{ '.MuiFormControlLabel-label': { fontSize: '0.90rem', fontWeight: '500' } }}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default CreateOrUpdateForm;
+
+
+
+/*
+const getClientsList = (): { id: string, label: string }[] => {
         return clientProfiles?.map((client) => ({
             id: client.id,
             label: client?.name || ''
         }));
     }
 
-    const loadFormData = async (brand: Brand) => {
-        const {
-            name,
-            isActive,
-            clientprofileID,
-        } = brand;
 
-        // console.log('start loading form data!');
-        dispatch(handleFormChange({ key: 'clientprofileID', value: clientprofileID }));
-        dispatch(handleFormChange({ key: 'name', value: name as string }));
-        dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
-        // console.log('finished loading form data:', brandForm);
-    }
 
-    if (!isCreate) {
-        useEffect(() => {
-            loadFormData(brand);
-        }, [])
-    }
-
-    const handleClientSelect = (option: { id: string }) => {
-        dispatch(handleFormChange({ key: 'clientprofileID', value: option.id }));
-        console.log('Client Selected:', brandForm);
-        console.log('Client Selected:', brandFormValues);
-    };
-
-    const handleClientClear = () => {
-        dispatch(handleFormChange({ key: 'clientprofileID', value: '' }));
-    };
-
-    return (
-        <div>
-            <form>
+<form>
                 <div className=''>
                     <div className='grid grid-cols-2 gap-8'>
                         {isCreate ?
@@ -122,8 +189,37 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                     </div>
                 </div>
             </form>
-        </div>
-    );
-};
 
-export default CreateOrUpdateForm;
+
+
+
+        const loadFormData = async (brand: Brand) => {
+        const {
+            name,
+            isActive,
+            clientprofileID,
+        } = brand;
+
+        // console.log('start loading form data!');
+        dispatch(handleFormChange({ key: 'clientprofileID', value: clientprofileID }));
+        dispatch(handleFormChange({ key: 'name', value: name as string }));
+        dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
+        // console.log('finished loading form data:', brandForm);
+    }
+
+    if (!isCreate) {
+        useEffect(() => {
+            loadFormData(brand);
+        }, [])
+    }
+
+    const handleClientSelect = (option: { id: string }) => {
+        dispatch(handleFormChange({ key: 'clientprofileID', value: option.id }));
+        console.log('Client Selected:', brandForm);
+        console.log('Client Selected:', brandFormValues);
+    };
+
+    const handleClientClear = () => {
+        dispatch(handleFormChange({ key: 'clientprofileID', value: '' }));
+    };
+*/

@@ -1,11 +1,13 @@
 'use client';
 import * as Repo from '@/repository/index';
 import React, { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
-import { setBrands } from '@/lib/features/brandSlice';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
+import { setBrands } from '@/reduxStore/features/brandSlice';
 import type { Brand } from '@/API';
 import BrandsView from './src/brandView';
+import withAuthorization from '@/app/withAuthorization';
+import { permissions } from '@/config/index';
 
 const Brand: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
@@ -44,3 +46,4 @@ const Brand: React.FC = () => {
 };
 
 export default Brand;
+// withAuthorization([permissions.VIEW_BRANDS])(Brand)
