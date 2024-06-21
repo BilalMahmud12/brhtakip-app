@@ -3,9 +3,9 @@ import React, { useEffect, useRef } from 'react';
 import * as Repo from '@/repository/index';
 import { usePathname } from 'next/navigation'
 import { useDataModal } from '@/contexts/DataModalContext';
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
-import { setRequests, resetFormValues, setIsFetching } from '@/lib/features/requestSlice';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
+import { setRequests, resetFormValues, setIsFetching } from '@/reduxStore/features/requestSlice';
 import { Pagination, Button as UIButton } from "@nextui-org/react";
 import { SelectField, Button } from '@aws-amplify/ui-react'
 import RequestDataCards from './requestDataCards';
@@ -212,7 +212,7 @@ const RequestsView: React.FC = () => {
     return (
         <>   
             <div className='mb-8 py-4'>
-                <div className='px-6 py-3 bg-white shadow mb-4'>
+                <div className='hidden sm:block px-6 py-3 bg-white shadow mb-4'>
                     <div className='flex items-center justify-between'>
                         <div className='flex items-center space-x-3'>
 
@@ -269,35 +269,6 @@ const RequestsView: React.FC = () => {
                     data={requests}
                     handleEdit={handleUpdateForm}
                 />
-
-                <div className='px-6 py-4 bg-white shadow'>
-                    <div className="flex flex-col gap-3">
-                        <div className="flex gap-6">
-                            <UIButton
-                                size="sm"
-                                variant="flat"
-                                color="secondary"
-                                onPress={() => setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev))}
-                            >
-                                Onceki
-                            </UIButton>
-                            <Pagination
-                                total={10}
-                                color="secondary"
-                                page={currentPage}
-                                onChange={setCurrentPage}
-                            />
-                            <UIButton
-                                size="sm"
-                                variant="flat"
-                                color="secondary"
-                                onPress={() => setCurrentPage((prev) => (prev < 10 ? prev + 1 : prev))}
-                            >
-                                Sonraki
-                            </UIButton>
-                        </div>
-                    </div>
-                </div>
             </div>
         </>
     );

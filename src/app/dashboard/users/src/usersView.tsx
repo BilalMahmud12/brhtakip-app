@@ -1,11 +1,16 @@
 'use client'
 import React from "react";
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
 import UsersDataTable from "./usersDataTable";
+import { useDataModal } from '@/contexts/DataModalContext';
 import { Button } from "@aws-amplify/ui-react";
+import { useRouter } from "next-nprogress-bar";
+
+
 
 const UsersView: React.FC = () => {
+    const router = useRouter()
     const dispatch = useAppDispatch<AppDispatch>();
     const users = useAppSelector((state: RootState) => state.user.users);
 
@@ -20,7 +25,7 @@ const UsersView: React.FC = () => {
                                 colorTheme="success"
                                 size="small"
                                 loadingText=""
-                                onClick={() => {}}
+                                onClick={() => router.push('/dashboard/users/create')}
                                 className='rounded-md bg-amber-500 text-gray-800 px-6 py-1.5 h-[35px]'
                             >
                                 <span>Kullanıcı Ekle</span>

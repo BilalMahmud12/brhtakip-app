@@ -1,7 +1,7 @@
 import * as Repo from '@/repository/index';
-import { AppDispatch } from '@/lib/store';
+import { AppDispatch } from '@/redux/store';
 import { getCurrentUserId } from './authService';
-import { setCurrentClientProfile, setCurrentUserProfile } from '@/lib/features/globalSlice';
+import { setCurrentClientProfile, setCurrentUserProfile } from '@/reduxStore/features/globalSlice';
 
 export const loadUserData = async (dispatch: AppDispatch): Promise<boolean> => {
     try {

@@ -1,8 +1,8 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
-import { handleFormChange } from '@/lib/features/requestSlice';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
+import { handleFormChange } from '@/reduxStore/features/requestSlice';
 import { listProducts, listStores, listMaterials } from '@/graphql/queries';
 import { Input, Label, Autocomplete, ComboBoxOption, TextAreaField } from '@aws-amplify/ui-react';
 import { generateRequestNumber } from '@/utils/helpers';

@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { Divider } from '@aws-amplify/ui-react';
 import Icon from '@/components/core/icon'
-import { adminNavItems, clientNavItems } from '@/config/navigation';
+import { adminNavItems } from '@/config/navigation';
 import { signOut } from "aws-amplify/auth"
 import { useRouter } from "next-nprogress-bar"
 

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useAppSelector } from '@/lib/hooks';
+import { useAppSelector } from '@/reduxStore/hooks';
 import { useRouter } from 'next-nprogress-bar';
 import { permissions } from '@/config';
 

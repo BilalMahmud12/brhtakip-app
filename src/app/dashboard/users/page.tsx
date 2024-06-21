@@ -3,9 +3,9 @@ import React, { useEffect } from 'react'
 import { permissions } from '@/config/index';
 import withAuthorization from '../../withAuthorization';
 import * as Repo from '@/repository'
-import { useAppDispatch } from '@/lib/hooks';
-import { AppDispatch } from '@/lib/store';
-import { setUsers, setIsFetching } from '@/lib/features/userSlice';
+import { useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch } from '@/reduxStore/store';
+import { setUsers, setIsFetching } from '@/reduxStore/features/userSlice';
 import UsersView from './src/usersView'
 
 const UsersPage: React.FC = () => {

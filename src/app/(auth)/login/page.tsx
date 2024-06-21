@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { useRouter } from "next-nprogress-bar";
 import { Authenticator, useAuthenticator, Loader } from '@aws-amplify/ui-react';
 import Logo from "@/components/core/logo";
-import { useAppDispatch } from '@/lib/hooks';
-import { AppDispatch } from '@/lib/store';
+import { useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch } from '@/reduxStore/store';
 import { loadUserData } from "@/services/userService";
 
 const DASHBOARD_URL: string = '/dashboard';

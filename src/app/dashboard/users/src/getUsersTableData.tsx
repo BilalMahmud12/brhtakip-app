@@ -1,6 +1,6 @@
 import type { UserProfile } from '@/API'
 import { formateDate } from '@/utils/helpers';
-import { Badge, BadgeVariations } from '@aws-amplify/ui-react'
+import { Badge } from '@aws-amplify/ui-react'
 
 export default function getUsresTableData(
     data: UserProfile[],
@@ -28,7 +28,7 @@ export default function getUsresTableData(
                             size='small'
                             className='px-5'
                         >
-                            {user.isActive === true ? 'Aktif' : 'Pasif'}
+                            <span>{user.isActive === true ? 'Aktif' : 'Pasif'}</span>
                         </Badge>
                     )
                     break;
@@ -38,7 +38,15 @@ export default function getUsresTableData(
                     )
                     break;
                 case 'role':
-                    row[column.key] = user.role;
+                    row[column.key] = (
+                        <Badge 
+                            variation={'info'} 
+                            size='small'
+                            className='px-5'
+                        >
+                            <span>{user.role}</span>
+                        </Badge>
+                    )
                     break;
                 case 'createdAt':
                     row[column.key] = formateDate(user.createdAt);

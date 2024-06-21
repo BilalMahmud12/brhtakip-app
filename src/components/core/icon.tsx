@@ -1,5 +1,7 @@
 import { FC } from 'react';
 import { IconType } from 'react-icons';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { SvgIconTypeMap } from '@mui/material';
 import { 
     FcTimeline, 
     FcDepartment, 
@@ -37,8 +39,15 @@ import { GoKebabHorizontal } from "react-icons/go"
 import { MdInbox, MdEdit, MdDelete } from 'react-icons/md';
 import { FaRegSave } from "react-icons/fa";
 import { TbDotsCircleHorizontal } from "react-icons/tb";
+import HomeIcon from '@mui/icons-material/Home';
 
-const iconMapping: Record<string, IconType> = {
+
+type IconComponent = IconType | OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
+    muiName: string;
+}
+    
+const iconMapping: Record<string, IconComponent> = {
+    'HomeIcon': HomeIcon,
     'FcTimeline': FcTimeline,
     'FcDepartment': FcDepartment,
     'FcTemplate': FcTemplate,
@@ -79,9 +88,9 @@ const iconMapping: Record<string, IconType> = {
     'FcLock': FcLock
 };
 
-const Icon: FC<{ iconName: string, className: string }> = ({ iconName, className }) => {
-    const Icon = iconMapping[iconName]; // Get the correct icon component based on the iconName prop
-    return Icon ? <Icon className={className} /> : null; // Render the icon with additional props
+const Icon: FC<{ iconName: string, className?: string }> = ({ iconName, className }) => {
+    const IconComponent = iconMapping[iconName]; // Get the correct icon component based on the iconName prop
+    return IconComponent ? <IconComponent className={className} /> : null; // Render the icon with additional props
 }
 
 export default Icon;

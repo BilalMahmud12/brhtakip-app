@@ -1,3 +1,4 @@
+export * from './roles';
 export * from './permissions';
 export * from './dataTables';
 export * from './navigation';

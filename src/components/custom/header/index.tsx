@@ -2,8 +2,8 @@
 import React from 'react'
 import { signOut } from "aws-amplify/auth"
 import { useRouter } from "next-nprogress-bar"
-import { useAppSelector  } from '@/lib/hooks';
-import { RootState } from '@/lib/store';
+import { useAppSelector  } from '@/reduxStore/hooks';
+import { RootState } from '@/redux/store';
 import { Button, Divider } from '@aws-amplify/ui-react'
 import Logo from '../../core/logo'
 

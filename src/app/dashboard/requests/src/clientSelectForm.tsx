@@ -1,7 +1,7 @@
 import React from 'react'
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
-import { handleFormChange } from '@/lib/features/requestSlice'
+import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/redux/store';
+import { handleFormChange } from '@/reduxStore/features/requestSlice'
 import { Autocomplete, Label } from '@aws-amplify/ui-react'
 
 const ClientSelectForm = () => {
