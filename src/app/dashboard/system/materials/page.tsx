@@ -5,9 +5,9 @@ import MaterialView from './src/materialView';
 import * as Repo from '@/repository/index';
 import type { Material } from '@/API';
 
-import { useAppDispatch } from '@/lib/hooks';
-import { AppDispatch } from '@/lib/store';
-import { setMaterials } from '@/lib/features/materialSlice';
+import { useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch } from '@/reduxStore/store';
+import { setMaterials } from '@/reduxStore/features/materialSlice';
 
 
 const Material: React.FC = () => {
@@ -29,25 +29,7 @@ const Material: React.FC = () => {
     return (
         <div>
             <title>Malzemeler</title>
-            <div className='px-6 py-3 bg-zinc-50 shadow mb-4'>
-                <Breadcrumbs
-                    items={[
-                        {
-                            href: '/dashboard',
-                            label: 'Panel Girişi',
-                        },
-                        {
-                            href: '/dashboard/system',
-                            label: 'System',
-                        },
-                        {
-                            href: '/dashboard/system/malzemeler',
-                            label: 'Malzemeler',
-                        }
-                    ]}
-                    className='text-sm font-medium'
-                />
-            </div>
+
             <div>
                 <MaterialView />
             </div>

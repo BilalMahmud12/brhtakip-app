@@ -41,23 +41,16 @@ const materialSlice = createSlice({
             };
         },
 
-        handleFormChange: (state, action: PayloadAction<{ key: string, value: string }>) => {
+        handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean }>) => {
             const { key, value } = action.payload
             switch (key) {
                 case 'name':
-                    state.materialForm = {
-                        ...state.materialForm,
-                        name: value
-                    }
+                    state.materialForm.name = value as string
                     break;
                 case 'isActive':
-                    state.materialForm.isActive = value === '1' || value === 'true';
+                    state.materialForm.isActive = value as boolean
                     break;
                 default:
-                    state.materialForm = {
-                        ...state.materialForm,
-                        [key]: value,
-                    }
                     break;
             }
         }

@@ -2,13 +2,14 @@
 import React, { useEffect, useRef } from 'react';
 import { useDataModal } from '@/contexts/DataModalContext';
 import { Button } from '@aws-amplify/ui-react';
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
-import { setMaterials, resetFormValues, setMaterialForm } from '@/lib/features/materialSlice';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
+import { setMaterials, resetFormValues, setMaterialForm } from '@/reduxStore/features/materialSlice';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import type { Material } from '@/API';
 import MaterialsDataTable from './materialsDataTable';
 import * as Repo from '@/repository/index';
+import { useRouter } from 'next/navigation';
 
 const ModalCustomFooter = (props: {
     type: 'create' | 'update'
@@ -58,6 +59,7 @@ const MaterialView: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
     const materials = useAppSelector((state: RootState) => state.material.materials);
     const materialForm = useAppSelector((state: RootState) => state.material.materialForm);
+    const router = useRouter()
 
     const materialformRef = useRef(materialForm);
     useEffect(() => {
@@ -165,7 +167,7 @@ const MaterialView: React.FC = () => {
                                 colorTheme="success"
                                 size="small"
                                 loadingText=""
-                                onClick={handleCreateForm}
+                                onClick={() => router.push(`/dashboard/system/materials/create`)}
                                 className='rounded-none bg-amber-500 text-gray-800 px-6'
                             >
                                 <span>Malzeme Ekle</span>
