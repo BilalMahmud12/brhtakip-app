@@ -6,9 +6,9 @@ import type { Request, RequestStatus } from '@/API';
 import Icon from '@/components/core/icon';
 import Link from 'next/link';
 import { Button } from '@aws-amplify/ui-react';
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
-import { setRequests, setIsFetching } from '@/lib/features/requestSlice';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
+import { setRequests, setIsFetching } from '@/reduxStore/features/requestSlice';
 
 const requestNavigation = [
     {
@@ -87,13 +87,13 @@ export default function RequestLayout(
     
     return (
         <div>
-            <div className='grid grid-cols-6 border-b border-zinc-200'>
+            <div className='hidden sm:grid grid-cols-6 border-b border-zinc-200'>
                 {requestNavigation.map((nav, index) => (
                     <Link
                         onClick={() => dispatch(setRequests([]))}
                         href={nav.href}
                         key={index}
-                        className='col-span-1 px-3 py-2 bg-white flex items-center justify-start border-r border-zinc-200 hover:bg-zinc-100 cursor-pointer transition-all duration-200 ease-in-out'
+                        className='col-span-1 px-3 py-3 bg-white flex items-center justify-start border-r border-zinc-200 hover:bg-zinc-100 cursor-pointer transition-all duration-200 ease-in-out'
                     >
                         <span className='flex items-center space-x-2 w-full'>
                             <span className='text-xl'>{nav.icon}</span>
@@ -103,7 +103,7 @@ export default function RequestLayout(
                 ))}
             </div>
         
-            <div className='px-8'>
+            <div className=''>
                 {children}
             </div>
         </div>

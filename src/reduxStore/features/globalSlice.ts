@@ -1,12 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { ClientProfile as ClientProfileType } from '@/API'
+import type { 
+    ClientProfile as ClientProfileType,
+    UserProfile as UserProfileType, 
+} from '@/API'
 
 type ClientProfile = Omit<ClientProfileType, '__typename'>
+type UserProfile = Omit<UserProfileType, '__typename'>
 
 interface GlobalState {
     isFetching: boolean;
     currentPageTitle: string;
     currentClientProfile: ClientProfile;
+    currentUserProfile: UserProfile;
 }
 
 const initialState: GlobalState = {
@@ -16,6 +21,18 @@ const initialState: GlobalState = {
         id: '',
         name: '',
         isActive: false,
+        createdAt: '',
+        updatedAt: '',
+    },
+    currentUserProfile: {
+        id: '',
+        cognitoID: '',
+        clientprofileID: '',
+        isActive: false,
+        firstName: '',
+        lastName: '',
+        email: '',
+        role: undefined,
         createdAt: '',
         updatedAt: '',
     },
@@ -34,8 +51,16 @@ const globalSlice = createSlice({
         setCurrentClientProfile: (state, action: PayloadAction<ClientProfile>) => {
             state.currentClientProfile = action.payload
         },
+        setCurrentUserProfile: (state, action: PayloadAction<UserProfile>) => {
+            state.currentUserProfile = action.payload
+        },
     }
 })
 
-export const { setIsFetching, setCurrentPageTitle, setCurrentClientProfile } = globalSlice.actions
+export const { 
+    setIsFetching, 
+    setCurrentPageTitle, 
+    setCurrentClientProfile,
+    setCurrentUserProfile, 
+} = globalSlice.actions
 export default globalSlice.reducer

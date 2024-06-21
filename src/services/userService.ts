@@ -1,8 +1,7 @@
 import * as Repo from '@/repository/index';
-import { AppDispatch } from '@/lib/store';
+import { AppDispatch } from '@/redux/store';
 import { getCurrentUserId } from './authService';
-import { setUserProfile } from '@/lib/features/userSlice';
-import { setCurrentClientProfile } from '@/lib/features/globalSlice';
+import { setCurrentClientProfile, setCurrentUserProfile } from '@/reduxStore/features/globalSlice';
 
 export const loadUserData = async (dispatch: AppDispatch): Promise<boolean> => {
     try {
@@ -18,7 +17,8 @@ export const loadUserData = async (dispatch: AppDispatch): Promise<boolean> => {
             throw new Error("User profile not found");
         }
     
-        dispatch(setUserProfile(userProfile));
+        const { __typename, ...cleanUserProfile } = userProfile
+        dispatch(setCurrentUserProfile(cleanUserProfile));
 
         if (userProfile.clientprofileID !== 'BRH_ADMIN') {
             const clientProfile = await Repo.ClientProfileRepository.getClientProfileById(userProfile.clientprofileID as string);

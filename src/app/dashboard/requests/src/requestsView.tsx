@@ -1,11 +1,11 @@
 'use client'
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as Repo from '@/repository/index';
 import { usePathname } from 'next/navigation'
 import { useDataModal } from '@/contexts/DataModalContext';
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
-import { setRequests, resetFormValues, setIsFetching } from '@/lib/features/requestSlice';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
+import { setRequests, resetFormValues, setIsFetching } from '@/reduxStore/features/requestSlice';
 import { Pagination, Button as UIButton } from "@nextui-org/react";
 import { SelectField, Button } from '@aws-amplify/ui-react'
 import RequestDataCards from './requestDataCards';
@@ -108,14 +108,19 @@ const RequestsView: React.FC = () => {
     const pathname = usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
 
-    const userProfile = useAppSelector((state: RootState) => state.user.userProfile);
+    const userProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const requests = useAppSelector((state: RootState) => state.request.requests);
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
     const selectedRequests = useAppSelector((state: RootState) => state.request.selectedRequests);
 
-    
     const { showDataModal, hideDataModal } = useDataModal();
     const [currentPage, setCurrentPage] = React.useState(1);
+
+    const requestFormRef = useRef(requestForm);
+
+    useEffect(() => {
+        requestFormRef.current = requestForm;
+    }, [requestForm])
 
     const requestStatus = (): string => {
         const status: string = statusMap[pathname.split('/').pop() as string];
@@ -133,6 +138,7 @@ const RequestsView: React.FC = () => {
                 <div><span className='text-sm font-bold'>Müşteri Seç</span></div>,
                 <ClientSelectForm />,
                 <SelectClientModalFooter
+                    handleCancel={handleCancelForm}
                     handleConfirm={() => {
                         hideDataModal()
                         showDataModal(
@@ -147,7 +153,6 @@ const RequestsView: React.FC = () => {
                             />
                         )
                     }}
-                    handleCancel={handleCancelForm}
                 />
             )
         } else {
@@ -174,7 +179,7 @@ const RequestsView: React.FC = () => {
     const handleCreateRequest = async () => {
         console.log('Request Form', requestForm)
         try {
-            const createRequest = await Repo.RequestRepository.create(requestForm)
+            const createRequest = await Repo.RequestRepository.create(requestFormRef.current)
 
             if (createRequest && createRequest.data) {
                 dispatch(setRequests([]))
@@ -194,7 +199,6 @@ const RequestsView: React.FC = () => {
             }
         } catch (error) {
             console.log('Error')
-            alert(`Error while creating: ${error}`)
         }
     }
 
@@ -209,7 +213,7 @@ const RequestsView: React.FC = () => {
     return (
         <>   
             <div className='mb-8 py-4'>
-                <div className='px-6 py-3 bg-white shadow mb-4'>
+                <div className='hidden sm:block px-6 py-3 bg-white shadow mb-4'>
                     <div className='flex items-center justify-between'>
                         <div className='flex items-center space-x-3'>
 
@@ -266,35 +270,6 @@ const RequestsView: React.FC = () => {
                     data={requests}
                     handleEdit={handleUpdateForm}
                 />
-
-                <div className='px-6 py-4 bg-white shadow'>
-                    <div className="flex flex-col gap-3">
-                        <div className="flex gap-6">
-                            <UIButton
-                                size="sm"
-                                variant="flat"
-                                color="secondary"
-                                onPress={() => setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev))}
-                            >
-                                Onceki
-                            </UIButton>
-                            <Pagination
-                                total={10}
-                                color="secondary"
-                                page={currentPage}
-                                onChange={setCurrentPage}
-                            />
-                            <UIButton
-                                size="sm"
-                                variant="flat"
-                                color="secondary"
-                                onPress={() => setCurrentPage((prev) => (prev < 10 ? prev + 1 : prev))}
-                            >
-                                Sonraki
-                            </UIButton>
-                        </div>
-                    </div>
-                </div>
             </div>
         </>
     );

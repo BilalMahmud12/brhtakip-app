@@ -1,8 +1,8 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
-import { handleFormChange } from '@/lib/features/requestSlice';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
+import { handleFormChange } from '@/reduxStore/features/requestSlice';
 import { listProducts, listStores, listMaterials } from '@/graphql/queries';
 import { Input, Label, Autocomplete, ComboBoxOption, TextAreaField } from '@aws-amplify/ui-react';
 import { generateRequestNumber } from '@/utils/helpers';
@@ -70,7 +70,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     } = props;
 
     const dispatch = useAppDispatch<AppDispatch>();
-    const userProfile = useAppSelector((state: RootState) => state.user.userProfile);
+    const userProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
 
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);

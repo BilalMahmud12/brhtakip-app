@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { useRouter } from "next-nprogress-bar";
 import { Authenticator, useAuthenticator, Loader } from '@aws-amplify/ui-react';
 import Logo from "@/components/core/logo";
-import { useAppDispatch } from '@/lib/hooks';
-import { AppDispatch } from '@/lib/store';
+import { useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch } from '@/reduxStore/store';
 import { loadUserData } from "@/services/userService";
 
 const DASHBOARD_URL: string = '/dashboard';
@@ -32,6 +32,7 @@ export default function Login() {
 
     return (
         <>
+            <title>Panel Girişi - BRH Takip</title>
             {user ? (
                 <div className='relative z-50 max-w-xl mx-auto px-8 py-10 bg-white rounded-2xl'>
                     <div className="flex items-center justify-center mb-4">

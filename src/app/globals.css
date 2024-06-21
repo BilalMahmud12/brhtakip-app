@@ -130,3 +130,11 @@
   outline: none;
   box-shadow: none !important;
 }
+
+.recharts-text {
+  font-size: 10px !important;
+}
+
+#nprogress .bar {
+  z-index: 9999 !important;
+}
