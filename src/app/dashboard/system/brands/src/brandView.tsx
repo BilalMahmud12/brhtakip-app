@@ -1,69 +1,18 @@
 'use client'
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
-import { setBrands, resetFormValues, setBrandFormValues } from '@/reduxStore/features/brandSlice';
-
-import { useDataModal } from '@/contexts/DataModalContext';
-import { Button } from '@aws-amplify/ui-react';
+import * as Repo from '@/repository/index';
 import BrandsDataTable from './brandsDataTable';
 import { usePathname, useRouter } from 'next/navigation';
-import * as Repo from '@/repository/index';
-import CreateOrUpdateForm from './createOrUpdateForm';
+import { setBrandFormValues, setBrands } from '@/reduxStore/features/brandSlice';
+
+import Button from '@mui/material/Button';
+import SaveIcon from '@mui/icons-material/Save';
 import { Brand } from '@/API';
 
-interface BrandsViewProps {
-    onDelete: (data: any) => Promise<void>;
-}
 
-const ModalCustomFooter = (
-    props: {
-        type: 'create' | 'update'
-        handleCreate?: (data: any) => void;
-        handleUpdate?: (data: any) => void;
-        handleCancel?: () => void;
-    }
-) => {
-    const {
-        type,
-        handleCreate = () => { },
-        handleUpdate = () => { },
-        handleCancel = () => { },
-    } = props;
-
-    return (
-        <div className='flex items-center justify-between'>
-            <div className='flex items-center space-x-3'>
-                <Button
-                    variation="primary"
-                    colorTheme="success"
-                    size="small"
-                    loadingText=""
-                    onClick={handleCancel}
-                    className='rounded-none bg-transparent text-gray-800 px-6 font-bold'
-                >
-                    <span>İPTAL ET</span>
-                </Button>
-
-                <Button
-                    variation="primary"
-                    colorTheme="success"
-                    size="small"
-                    loadingText=""
-                    onClick={handleCreate}
-                    className='rounded-none bg-amber-500 text-zinc-800 font-bold px-6'
-                >
-                    <span className='flex items-center space-x-2'>
-                        <span>ONAYLA</span>
-                    </span>
-                </Button>
-            </div>
-        </div>
-    )
-}
-
-
-const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
+const BrandsView: React.FC = () => {
     usePathname();
     const router = useRouter()
     const dispatch = useAppDispatch<AppDispatch>();
@@ -73,49 +22,10 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
 
     const brandformRef = useRef(brandForm);
-
-    useEffect(() => {
-        brandformRef.current = brandForm;
-    }, [brandForm])
-
-    const { showDataModal, hideDataModal } = useDataModal();
-
-    const handleCancelForm = () => {
-        dispatch(resetFormValues());
-        hideDataModal();
-    };
-
-    const handleCreateForm = () => {
-        showDataModal(
-            <div><span className='text-base font-bold'>Yeni Marka Ekle</span></div>,
-            <CreateOrUpdateForm
-                isCreate={true}
-            />,
-            <ModalCustomFooter
-                type='create'
-                handleCancel={handleCancelForm}
-                handleCreate={handleCreateBrand}
-            />
-        );
-    };
-
-    async function handleCreateBrand() {
-        try {
-            const createBrand = await Repo.BrandRepository.create(brandformRef.current);
-            if (createBrand && createBrand.data) {
-                const newBrand = await Repo.BrandRepository.getAllBrands();
-                dispatch(setBrands(newBrand as unknown as Brand[]));
-                hideDataModal();
-                dispatch(resetFormValues());
-            }
-        } catch (error) {
-            console.error('Error', error);
-        }
-    }
+    brandformRef.current = brandForm;
 
     const getClientName = (clientProfileId: string) => {
         const clientProfile = clientProfiles?.find(profile => profile.id === clientProfileId);
-        console.log('clientProfile', clientProfile?.name)
         return clientProfile?.name || '';
     };
 
@@ -128,6 +38,18 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
         }));
     };
 
+    const handleDelete = async (data: any) => {
+        try {
+            const deleteBrand = await Repo.BrandRepository.softDelete(data.originalData.id);
+            if (deleteBrand && deleteBrand.data) {
+                const newBrand = await Repo.BrandRepository.getAllBrands();
+                dispatch(setBrands(newBrand as unknown as Brand[]));
+            }
+        } catch (error) {
+            console.log('Failed to delete brand', error);
+        }
+    };
+
     return (
         <div className='px-6 py-3'>
             <div className='mt-1.5 shadow bg-white'>
@@ -135,14 +57,11 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
                     <div className='flex items-center space-x-2'>
                         <div className='flex items-center space-x-2'>
                             <Button
-                                variation="primary"
-                                colorTheme="success"
-                                size="small"
-                                loadingText=""
-                                onClick={() => router.push(`/dashboard/system/brands/create`)}
-                                className='rounded-none bg-amber-500 text-gray-800 px-6'
+                                variant="contained"
+                                startIcon={<SaveIcon />}
+                                onClick={() => router.push('/dashboard/system/brands/create')}
                             >
-                                <span>Marka Ekle</span>
+                                Marka Ekle
                             </Button>
                         </div>
                     </div>
@@ -152,12 +71,12 @@ const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
                 <BrandsDataTable
                     dataPayload={brands}
                     getClientName={getClientName}
-                    onDeleteBrand={onDelete}
+                    onDeleteBrand={handleDelete}
                     handleEdit={setBrandUpdateData}
                 />
             </div>
         </div>
     );
-});
+};
 
 export default BrandsView;

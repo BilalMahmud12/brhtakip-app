@@ -44,38 +44,24 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
     return (
         <div className='h-full'>
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>
-                <div className='h-full col-span-2'>
-                    <div className='flex items-center justify-between'>
-                        <Button
-                            variant="text"
-                            startIcon={<ArrowBackIosIcon />}
-                            onClick={() => router.push('/dashboard/system/brands')}
-                        >
-                            Markalara Geri Dön
-                        </Button>
-
-                        <Button variant="contained" startIcon={<SaveIcon />}>
-                            Kaydı Et
-                        </Button>
-                    </div>
-                </div>
 
                 <div className='p-6 bg-white shadow col-span-2'>
-                    <h2 className='text-base font-semibold mb-6'>Marka Durumu ve Müşteri</h2>
 
-                    <div className='input-group w-full col-span-2'>
-                        <label htmlFor="client_name" className='block text-xs font-medium mb-1.5'>Müşteri</label>
-                        <AutoComplete
-                            id="client_name"
-                            options={getClientsList()}
-                            value={getClientsList().find(client => client.value === brandForm.clientprofileID)?.label || ''}
-                            handleOnChange={(option) => {
-                                if (typeof option !== 'string') {
-                                    dispatch(handleFormChange({ key: 'clientprofileID', value: option?.value || '' }));
-                                }
-                            }}
-                        />
-                    </div>
+                    {isCreate ?
+                        <div className='input-group w-full col-span-2'>
+                            <label htmlFor="client_name" className='block text-xs font-medium mb-1.5'>Müşteri</label>
+                            <AutoComplete
+                                id="client_name"
+                                options={getClientsList()}
+                                value={getClientsList().find(client => client.value === brandForm.clientprofileID)?.label || ''}
+                                handleOnChange={(option) => {
+                                    if (typeof option !== 'string') {
+                                        dispatch(handleFormChange({ key: 'clientprofileID', value: option?.value || '' }));
+                                    }
+                                }}
+                            />
+                        </div>
+                        : ''}
 
                     <div className='my-2 pt-5' />
 
@@ -89,6 +75,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
                             }}
+                            defaultValue={!isCreate ? brandForm.name : ''}
                         />
                     </div>
 

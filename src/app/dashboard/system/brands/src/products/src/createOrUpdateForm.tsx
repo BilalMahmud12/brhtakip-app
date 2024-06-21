@@ -3,9 +3,9 @@ import React, { useEffect } from 'react';
 import { Input, Label, Autocomplete } from '@aws-amplify/ui-react';
 
 import type { Product } from '@/API';
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
-import { setProducts, resetProductFormValues, setProductFormValues, handleFormChange } from '@/lib/features/productSlice';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
+import { setProducts, resetProductFormValues, setProductFormValues, handleFormChange } from '@/reduxStore/features/productSlice';
 
 interface CreateOrUpdateFormProps {
     isCreate?: boolean;

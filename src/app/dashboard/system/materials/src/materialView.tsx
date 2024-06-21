@@ -71,36 +71,36 @@ const MaterialView: React.FC = () => {
         hideDataModal();
     };
 
-    const handleCreateForm = () => {
-        dispatch(resetFormValues());
-        showDataModal(
-            <div><span className='text-base font-bold'>Yeni Malzeme Ekle</span></div>,
-            <CreateOrUpdateForm
-                isCreate={true}
-            />,
-            <ModalCustomFooter
-                type='create'
-                handleCancel={handleCancelForm}
-                handleCreate={handleCreateMaterial}
-            />
-        );
-    };
+    // const handleCreateForm = () => {
+    //     dispatch(resetFormValues());
+    //     showDataModal(
+    //         <div><span className='text-base font-bold'>Yeni Malzeme Ekle</span></div>,
+    //         <CreateOrUpdateForm
+    //             isCreate={true}
+    //         />,
+    //         <ModalCustomFooter
+    //             type='create'
+    //             handleCancel={handleCancelForm}
+    //             handleCreate={handleCreateMaterial}
+    //         />
+    //     );
+    // };
 
-    const handleCreateMaterial = async () => {
-        try {
-            const createMaterial = await Repo.MaterialRepository.create(materialformRef.current);
+    // const handleCreateMaterial = async () => {
+    //     try {
+    //         const createMaterial = await Repo.MaterialRepository.create(materialformRef.current);
 
-            if (createMaterial && createMaterial.data) {
-                hideDataModal();
-                dispatch(resetFormValues());
-                const newMaterials = await Repo.MaterialRepository.getAllMaterials();
-                dispatch(setMaterials(newMaterials as unknown as Material[]));
-                console.log('new Materials', newMaterials)
-            }
-        } catch (error) {
-            console.log('Error', error);
-        }
-    };
+    //         if (createMaterial && createMaterial.data) {
+    //             hideDataModal();
+    //             dispatch(resetFormValues());
+    //             const newMaterials = await Repo.MaterialRepository.getAllMaterials();
+    //             dispatch(setMaterials(newMaterials as unknown as Material[]));
+    //             console.log('new Materials', newMaterials)
+    //         }
+    //     } catch (error) {
+    //         console.log('Error', error);
+    //     }
+    // };
 
 
     const handleUpdateForm = () => {

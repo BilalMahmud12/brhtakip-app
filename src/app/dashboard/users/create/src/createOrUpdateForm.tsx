@@ -42,15 +42,15 @@ const getRoleOptions = (currentUser: any) => {
         }
         return { value: role, label }
     })
-    .filter((role) => {
-        if (currentUser.clientprofileID === 'BRH_ADMIN') {
-            return currentUser.role === roles.EDITOR ? role.value !== roles.ADMIN : role
-        } else {
-            return currentUser.role === roles.CLIENT_EDITOR ? 
-                (role.value !== roles.CLIENT_ADMIN || role.value !== roles.ADMIN || role.value !== roles.EDITOR)
-                : role
-        }
-    })
+        .filter((role) => {
+            if (currentUser.clientprofileID === 'BRH_ADMIN') {
+                return currentUser.role === roles.EDITOR ? role.value !== roles.ADMIN : role
+            } else {
+                return currentUser.role === roles.CLIENT_EDITOR ?
+                    (role.value !== roles.CLIENT_ADMIN || role.value !== roles.ADMIN || role.value !== roles.EDITOR)
+                    : role
+            }
+        })
 }
 
 const getClientOptions = (clientProfiles: any[]) => {
@@ -59,9 +59,9 @@ const getClientOptions = (clientProfiles: any[]) => {
     })
 }
 
-const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({ 
+const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
     isCreate = false,
-    onSubmitted = () => {} 
+    onSubmitted = () => { }
 }) => {
     const router = useRouter()
     const dispatch = useAppDispatch<AppDispatch>()
@@ -86,9 +86,9 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
     }, [selectedPermissions])
 
     React.useEffect(() => {
-        dispatch(handleFormChange({ 
-            key: 'clientprofileID', 
-            value: [roles.ADMIN, roles.EDITOR].includes(userFormRef.current.role as string)  ? 'BRH_ADMIN' : ''
+        dispatch(handleFormChange({
+            key: 'clientprofileID',
+            value: [roles.ADMIN, roles.EDITOR].includes(userFormRef.current.role as string) ? 'BRH_ADMIN' : ''
         }))
 
         if (userFormRef.current.role === roles.ADMIN) {
@@ -181,7 +181,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                 />
                             </div>
                         )}
-                        
+
                         <div className='input-group w-full col-span-2 lg:col-span-1'>
                             <label htmlFor="firstName" className='block text-xs font-medium mb-1.5'>Adı *</label>
                             <TextField

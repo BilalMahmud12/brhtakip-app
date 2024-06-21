@@ -8,9 +8,9 @@ import { Button } from '@aws-amplify/ui-react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { useDataModal } from '@/contexts/DataModalContext';
 
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
-import { setProducts, resetProductFormValues, setProductFormValues } from '@/lib/features/productSlice';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
+import { setProducts, resetProductFormValues, setProductFormValues } from '@/reduxStore/features/productSlice';
 
 interface ProductViewProps {
     brandId: any;

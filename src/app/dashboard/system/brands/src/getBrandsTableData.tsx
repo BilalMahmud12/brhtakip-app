@@ -6,6 +6,10 @@ import Icon from '@/components/core/icon';
 import type { Brand } from '@/API'
 import type { DataTableColumn } from '@/components/core/dataTable';
 
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+
 export default function getBrandsTableData(
     data: Brand[],
     columns: any,
@@ -27,15 +31,7 @@ export default function getBrandsTableData(
                 switch (column.key) {
                     case 'name':
                         row[column.key] = (
-                            <div
-                                className='hover:underline hover:text-blue-700 cursor-pointer'
-                                onClick={() => {
-                                    router.push(
-                                        `/dashboard/system/brands/${brand.id}`
-                                    );
-                                    handleEdit(brand)
-                                }}
-                            >
+                            <div>
                                 {brand.name}
                             </div>
                         );
@@ -63,43 +59,29 @@ export default function getBrandsTableData(
 
                     case 'actions':
                         row[column.key] = (
-                            <div className='flex justify-center'>
-                                <Dropdown>
-                                    <DropdownTrigger>
-                                        <Button
-                                            variant="light"
-                                            className='max-w-[25px] h-[30px] block w-[25px] min-w-0 hover:bg-transparent p-0.5'
-                                        >
-                                            <Icon iconName='GoKebabHorizontal' className='w-5 h-5' />
-                                        </Button>
-                                    </DropdownTrigger>
-                                    <DropdownMenu aria-label='row-actions'>
+                            <div className='flex items-center justify-center h-full'>
+                                <IconButton
+                                    aria-label="edit"
+                                    size="small"
+                                    color='primary'
+                                    onClick={() => {
+                                        router.push(
+                                            `/dashboard/system/brands/${brand.id}`
+                                        );
+                                        handleEdit(brand)
+                                    }}
+                                >
+                                    <EditIcon fontSize="inherit" />
+                                </IconButton>
 
-                                        {/* <DropdownItem
-                                            key="update"
-                                            startContent={<Icon iconName='FcSupport' className='w-5 h-5' />}
-                                            onClick={() => {
-                                                // brandStore.setBrandFormValues({
-                                                //     id: brand.id || '',
-                                                //     name: brand.name || '',
-                                                //     isActive: brand.isActive || false
-                                                // });
-                                                // console.log('From getBrandTable', brand.id, brand.name, brand.isActive);
-                                                router.push(`/dashboard/system/brands/${brand.id}}`);
-                                            }}
-                                        >
-                                            Güncelle
-                                        </DropdownItem> */}
-
-                                        <DropdownItem
-                                            key="cancel"
-                                            startContent={<Icon iconName='FcFullTrash' className='w-5 h-5' />}
-                                            onClick={() => handleDelete(row)}
-                                        >
-                                            Marka Sil
-                                        </DropdownItem>
-                                    </DropdownMenu>
-                                </Dropdown>
+                                <IconButton
+                                    aria-label="delete"
+                                    size="small"
+                                    color='error'
+                                    onClick={() => handleDelete(row)}
+                                >
+                                    <DeleteIcon fontSize="inherit" />
+                                </IconButton>
                             </div>
                         );
                         break;

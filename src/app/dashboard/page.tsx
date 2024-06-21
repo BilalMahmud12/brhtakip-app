@@ -1,6 +1,6 @@
 'use client'
 import { useAppSelector } from '@/reduxStore/hooks';
-import { RootState } from '@/redux/store';
+import { RootState } from '@/reduxStore/store';
 import { permissions } from '@/config/index';
 import withAuthorization from '../withAuthorization';
 import Charts from './src/charts';

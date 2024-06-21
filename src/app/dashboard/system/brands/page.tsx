@@ -6,22 +6,9 @@ import { AppDispatch, RootState } from '@/reduxStore/store';
 import { setBrands } from '@/reduxStore/features/brandSlice';
 import type { Brand } from '@/API';
 import BrandsView from './src/brandView';
-import withAuthorization from '@/app/withAuthorization';
-import { permissions } from '@/config/index';
 
 const Brand: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
-    const brands = useAppSelector((state: RootState) => state.brand.brands);
-
-    const handleDelete = async (data: any) => {
-        try {
-            const deleteBrand = await Repo.BrandRepository.softDelete(data.originalData.id);
-            const newBrand = await Repo.BrandRepository.getAllBrands();
-            dispatch(setBrands(newBrand as unknown as Brand[]));
-        } catch (error) {
-            console.log('Failed to delete brand', error);
-        }
-    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -40,7 +27,7 @@ const Brand: React.FC = () => {
         <div>
             <title>Markalar - BRH Takip</title>
 
-            <BrandsView onDelete={handleDelete} />
+            <BrandsView />
         </div>
     );
 };

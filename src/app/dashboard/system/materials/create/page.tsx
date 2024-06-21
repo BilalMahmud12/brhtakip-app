@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { useRouter } from 'next-nprogress-bar';
-import { setMaterials, resetFormValues, setMaterialForm } from '@/reduxStore/features/materialSlice';
+import { setMaterials, resetFormValues } from '@/reduxStore/features/materialSlice';
 import * as Repo from '@/repository/index';
 
 import Button from '@mui/material/Button';
@@ -23,13 +23,10 @@ const CreateMaterialPage: React.FC = () => {
     materialformRef.current = materialForm;
 
 
-    const handleCancelForm = () => {
-        dispatch(resetFormValues());
-    };
-
     const handleCreateMaterial = async () => {
         try {
             const createMaterial = await Repo.MaterialRepository.create(materialformRef.current);
+
             if (createMaterial && createMaterial.data) {
                 dispatch(resetFormValues());
                 const newMaterials = await Repo.MaterialRepository.getAllMaterials();
@@ -59,7 +56,7 @@ const CreateMaterialPage: React.FC = () => {
                         <Button
                             variant="contained"
                             startIcon={<SaveIcon />}
-                            onClick={() => router.push('/dashboard/system/materials')}
+                            onClick={handleCreateMaterial}
                         >
                             Kaydı Et
                         </Button>
