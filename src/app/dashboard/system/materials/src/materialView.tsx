@@ -73,7 +73,9 @@ const MaterialView: React.FC = () => {
         dispatch(resetFormValues());
         showDataModal(
             <div><span className='text-base font-bold'>Yeni Malzeme Ekle</span></div>,
-            <CreateOrUpdateForm isCreate={true} />,
+            <CreateOrUpdateForm
+                isCreate={true}
+            />,
             <ModalCustomFooter
                 type='create'
                 handleCancel={handleCancelForm}
@@ -102,7 +104,10 @@ const MaterialView: React.FC = () => {
     const handleUpdateForm = () => {
         showDataModal(
             <div><span className='text-base font-bold'>Güncelle</span></div>,
-            <CreateOrUpdateForm isCreate={false} />,
+            <CreateOrUpdateForm
+                isCreate={false}
+            // material={data}
+            />,
             <ModalCustomFooter
                 type='update'
                 handleCancel={handleCancelForm}

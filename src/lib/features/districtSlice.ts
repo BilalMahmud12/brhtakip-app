@@ -4,6 +4,7 @@ import type { District } from '@/API';
 interface DistrictFormState {
     districts: District[];
     districtForm: {
+        id?: string;
         cityID?: string;
         isActive: boolean;
         name: string;

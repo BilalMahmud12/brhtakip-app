@@ -28,7 +28,10 @@ export default function getDistrictsTableData(
                         row[column.key] = (
                             <div
                                 className='hover:underline hover:text-blue-700 cursor-pointer'
-                                onClick={() => router.push(`/dashboard/system/cities/district/update`)}
+                                onClick={() => {
+                                    router.push(`/dashboard/system/cities/district/${district.id}`);
+                                    handleEdit(district);
+                                }}
                             >
                                 {district.name}
                             </div>

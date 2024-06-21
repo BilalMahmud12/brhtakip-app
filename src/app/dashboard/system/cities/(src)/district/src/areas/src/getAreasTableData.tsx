@@ -5,7 +5,7 @@ import { Badge, BadgeVariations } from '@aws-amplify/ui-react'
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import Icon from '@/components/core/icon';
 import { useRouter } from 'next/navigation';
-//Material
+
 export default function getAreasTableData(
     data: Area[],
     columns: any,

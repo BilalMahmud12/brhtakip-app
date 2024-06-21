@@ -109,13 +109,21 @@ const DistrictView: React.FC<DistrictViewProps> = ({ cityId, haveDistricts, fetc
             if (createDistrict && createDistrict.data) {
                 fetchFilteredDistricts();
                 dispatch(setDistricts(filteredDistricts));
-                console.log('new Districts', filteredDistricts)
                 hideDataModal();
                 dispatch(resetFormValues());
             }
         } catch (error) {
             console.log('Failed Creating District', error);
         }
+    };
+
+    const setDistrictUpdateData = (data: any) => {
+        dispatch(setDistrictForm({
+            id: data.id,
+            name: data.name,
+            isActive: data.isActive,
+            cityID: cityId
+        }));
     };
 
     const handleDeleteDistrict = async (data: any) => {
@@ -130,6 +138,7 @@ const DistrictView: React.FC<DistrictViewProps> = ({ cityId, haveDistricts, fetc
             console.log('Failed Delete District', error);
         }
     }
+
     return (
         <div>
             <div className='px-6 py-3'>
@@ -153,7 +162,7 @@ const DistrictView: React.FC<DistrictViewProps> = ({ cityId, haveDistricts, fetc
                         <DistrictsDataTable
                             dataPayload={districts}
                             handleDelete={handleDeleteDistrict}
-                        // handleEdit={ }
+                            handleEdit={setDistrictUpdateData}
                         />
                         : ''}
 

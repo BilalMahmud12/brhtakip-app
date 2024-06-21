@@ -7,9 +7,29 @@ import * as Repo from '@/repository/index';
 import type { Area, District } from '@/API';
 import AreaView from "../src/areas/src/areaView";
 import { setAreas } from "@/lib/features/areaSlice";
+import CreateOrUpdateForm from "../src/createOrUpdateForm";
+import { setDistricts } from "@/lib/features/districtSlice";
+import { useRouter } from "next/navigation";
 
 const updateDistrict: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
+    const router = useRouter();
+    const districtForm = useAppSelector((state: RootState) => { state.district.districtForm })
+
+    const handleUpdateDistrict = async () => {
+        try {
+            const updateDistrict = await Repo.DistrictRepository.update(districtForm)
+
+            if (updateDistrict && updateDistrict.data) {
+                const newDistrict = await Repo.DistrictRepository.getAllDistricts();
+                dispatch(setDistricts(newDistrict as unknown as District[]));
+                console.log('updateDistrict', newDistrict)
+                router.replace(`/dashboard/system/brands`);
+            }
+        } catch (error) {
+            console.log('Failed Update District', error)
+        }
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -36,7 +56,7 @@ const updateDistrict: React.FC = () => {
                                 variation="primary"
                                 colorTheme="success"
                                 size="small"
-                                // onClick={handleUpdateCity}
+                                onClick={handleUpdateDistrict}
                                 className='rounded-none bg-amber-500 text-gray-800 px-6'
                             >
                                 <span>Güncelle</span>
@@ -44,14 +64,14 @@ const updateDistrict: React.FC = () => {
                         </div>
 
                         <div className='mt-8 px-8 py-8 m-6 shadow bg-neutral-100'>
-                            {/* <CreateOrUpdateForm isCreate={false} /> */}
+                            <CreateOrUpdateForm isCreate={false} />
                         </div>
                     </div>
                 </div>
 
 
                 {/* START AreaView SECTION */}
-                <AreaView />
+                {/* <AreaView /> */}
                 {/* END AreaView SECTION */}
             </div>
         </div>

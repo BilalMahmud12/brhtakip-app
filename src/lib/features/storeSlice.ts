@@ -101,19 +101,19 @@ const storeSlice = createSlice({
                 case 'phones':
                     state.storeForm = {
                         ...state.storeForm,
-                        phones: value,
+                        phones: JSON.stringify([...state.storeForm.phones as unknown as string[], value as string])
                     }
                     break;
                 case 'email':
                     state.storeForm = {
                         ...state.storeForm,
-                        email: value,
+                        email: JSON.stringify([...state.storeForm.email as unknown as string[], value as string]),
                     }
                     break;
                 case 'notes':
                     state.storeForm = {
                         ...state.storeForm,
-                        notes: value,
+                        notes: JSON.stringify([...state.storeForm.notes as unknown as string[], value as string]),
                     }
                     break;
                 case 'created_by':

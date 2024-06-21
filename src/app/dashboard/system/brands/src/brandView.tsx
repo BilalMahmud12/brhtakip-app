@@ -65,7 +65,7 @@ const ModalCustomFooter = (
 
 
 const BrandsView: React.FC<BrandsViewProps> = (({ onDelete }) => {
-    const pathname = usePathname();
+    usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
 
     const brands = useAppSelector((state: RootState) => state.brand.brands);
