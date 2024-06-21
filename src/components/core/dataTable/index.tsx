@@ -1,6 +1,7 @@
 import { CheckboxField } from '@aws-amplify/ui-react';
 import React, { useState } from 'react';
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { trTR } from '@mui/x-data-grid/locales';
 import Icon from '../icon';
 
 type DataTableDatum = {
@@ -36,6 +37,17 @@ const DataTable: React.FC<DataTableProps> = (props) => {
         styles = {}
     } = props;
 
+    const DataGridColumns: GridColDef[] = columns.map((column) => ({
+        field: column.key,
+        headerName: column.label,
+        width: column.width ? parseInt(column.width) : 200,
+        renderCell: (params) => {
+            return column.transform ? column.transform(params.value, params.row) : params.value;
+        }
+    }));
+
+    const rows = data.map((datum, index) => ({ id: index, ...datum }));
+
     const [selectedRows, setSelectedRows] = useState<Set<number>>(new Set());
 
     const handleRowSelectionChange = (rowIndex: number, isChecked: boolean) => {
@@ -62,6 +74,26 @@ const DataTable: React.FC<DataTableProps> = (props) => {
 
     return (
         <div className='overflow-x-scroll'>
+            <div style={{ width: '100%' }}>
+                <DataGrid
+                    columns={DataGridColumns}
+                    rows={rows}
+                    initialState={{
+                        pagination: {
+                            paginationModel: { page: 0, pageSize: 10 },
+                        },
+                    }}
+                    pageSizeOptions={[5, 10, 25, 50, 100]}
+                    localeText={trTR.components.MuiDataGrid.defaultProps.localeText}
+                    checkboxSelection
+                    disableRowSelectionOnClick
+                    density='compact'
+                    isCellEditable={() => false}
+                />
+            </div>
+
+            <div>
+            {/*
             <table className='min-w-[1050px] border-b border-t border-gray-200'>
                 <thead className='border-b border-gray-300 w-full'>
                     <tr className='w-full'>
@@ -111,7 +143,7 @@ const DataTable: React.FC<DataTableProps> = (props) => {
                     ))}
                 </tbody>
 
-                {/*
+
                 <tfoot>
                     <tr>
                         <td colSpan={columns.length} className='text-left text-sm px-3 py-1.5 text-gray-600 border-r border-gray-200'>
@@ -122,8 +154,10 @@ const DataTable: React.FC<DataTableProps> = (props) => {
                         </td>
                     </tr>
                 </tfoot>
-                */}
+               
             </table>
+             */}
+            </div>
         </div>
     );
 }

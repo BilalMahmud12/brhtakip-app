@@ -4,7 +4,8 @@ import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import UsersDataTable from "./usersDataTable";
 import { useDataModal } from '@/contexts/DataModalContext';
-import { Button } from "@aws-amplify/ui-react";
+import Button from '@mui/material/Button';
+import AddIcon from '@mui/icons-material/Add';
 import { useRouter } from "next-nprogress-bar";
 
 
@@ -16,19 +17,17 @@ const UsersView: React.FC = () => {
 
     return (
         <>
-            <div className="mb-8 py-4 px-8">
+            <div className="mb-8">
                 <div className="px-6 py-3 bg-white shadow mb-4">
                     <div className='flex items-center justify-between'>
+                        <div></div>
                         <div className='flex items-center space-x-3'>
-                            <Button
-                                variation="primary"
-                                colorTheme="success"
-                                size="small"
-                                loadingText=""
+                            <Button 
+                                variant="contained" 
+                                startIcon={<AddIcon />} 
                                 onClick={() => router.push('/dashboard/users/create')}
-                                className='rounded-md bg-amber-500 text-gray-800 px-6 py-1.5 h-[35px]'
                             >
-                                <span>Kullanıcı Ekle</span>
+                                Kullanıcı Ekle
                             </Button>
                         </div>
                     </div>

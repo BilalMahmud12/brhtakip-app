@@ -504,14 +504,19 @@ export default function UserProfileCreateForm(props) {
           {...getOverrideProps(overrides, "roleoption0")}
         ></option>
         <option
-          children="Client root"
-          value="CLIENT_ROOT"
+          children="Editor"
+          value="EDITOR"
           {...getOverrideProps(overrides, "roleoption1")}
         ></option>
         <option
-          children="Client user"
-          value="CLIENT_USER"
+          children="Client admin"
+          value="CLIENT_ADMIN"
           {...getOverrideProps(overrides, "roleoption2")}
+        ></option>
+        <option
+          children="Client editor"
+          value="CLIENT_EDITOR"
+          {...getOverrideProps(overrides, "roleoption3")}
         ></option>
       </SelectField>
       <ArrayField
