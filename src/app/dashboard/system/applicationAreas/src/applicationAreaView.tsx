@@ -2,12 +2,15 @@ import React, { useEffect, useRef } from 'react';
 import { useDataModal } from '@/contexts/DataModalContext';
 import ApplicationAreaDataTable from './applicationAreasDataTable';
 import type { ApplicationArea } from '@/API';
-import { Button } from '@aws-amplify/ui-react';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
-import { setApplicationAreaForm, setApplicationAreas, resetFormValues } from '@/lib/features/applicationAreaSlice';
+import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
+import { setApplicationAreaForm, setApplicationAreas, resetFormValues } from '@/reduxStore/features/applicationAreaSlice';
 import CreateOrUpdateForm from './createOrUpdateForm';
 import * as Repo from '@/repository/index';
+
+import Button from '@mui/material/Button';
+import SaveIcon from '@mui/icons-material/Save';
+import AddIcon from '@mui/icons-material/Add';
 
 const ModalCustomFooter = (props: {
     type: 'create' | 'update'
@@ -26,26 +29,17 @@ const ModalCustomFooter = (props: {
         <div className='flex items-center justify-between'>
             <div className='flex items-center space-x-3'>
                 <Button
-                    variation="primary"
-                    colorTheme="success"
-                    size="small"
-                    loadingText=""
+                    // startIcon={<SaveIcon />}
                     onClick={handleCancel}
-                    className='rounded-none bg-transparent text-gray-800 px-6 font-bold'
                 >
-                    <span>İPTAL ET</span>
+                    iptal et
                 </Button>
                 <Button
-                    variation="primary"
-                    colorTheme="success"
-                    size="small"
-                    loadingText=""
+                    variant="contained"
+                    startIcon={<SaveIcon />}
                     onClick={type === 'create' ? handleCreate : handleUpdate}
-                    className='rounded-none bg-amber-500 text-zinc-800 font-bold px-6'
                 >
-                    <span className='flex items-center space-x-2'>
-                        <span>ONAYLA</span>
-                    </span>
+                    Onayla
                 </Button>
             </div>
         </div>
@@ -60,9 +54,7 @@ const ApplicationAreaView: React.FC = () => {
     const applicationAreaForm = useAppSelector((state: RootState) => state.applicationArea.applicationAreaForm);
 
     const applicationAreaRef = useRef(applicationAreaForm);
-    useEffect(() => {
-        applicationAreaRef.current = applicationAreaForm;
-    }, [applicationAreaForm])
+    applicationAreaRef.current = applicationAreaForm;
 
     const handleCancelForm = () => {
         dispatch(resetFormValues());
@@ -151,14 +143,11 @@ const ApplicationAreaView: React.FC = () => {
                     <div className='flex items-center space-x-2'>
                         <div className='flex items-center space-x-2'>
                             <Button
-                                variation="primary"
-                                colorTheme="success"
-                                size="small"
-                                loadingText=""
+                                variant="contained"
+                                startIcon={<AddIcon />}
                                 onClick={handleCreateForm}
-                                className='rounded-none bg-amber-500 text-gray-800 px-6'
                             >
-                                <span>Uygulama Alanı Ekle</span>
+                                Uygulama Alan Ekle
                             </Button>
                         </div>
                     </div>
@@ -176,3 +165,5 @@ const ApplicationAreaView: React.FC = () => {
 }
 
 export default ApplicationAreaView
+
+//Uygulama Alanı Ekle

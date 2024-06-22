@@ -13,6 +13,7 @@ import { Brand } from '@/API';
 
 
 const BrandsView: React.FC = () => {
+
     usePathname();
     const router = useRouter()
     const dispatch = useAppDispatch<AppDispatch>();

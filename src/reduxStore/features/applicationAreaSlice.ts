@@ -41,23 +41,16 @@ const applicationAreaSlice = createSlice({
             }
         },
 
-        handleFormChange: (state, action: PayloadAction<{ key: string, value: string }>) => {
+        handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean }>) => {
             const { key, value } = action.payload;
             switch (key) {
                 case 'name':
-                    state.applicationAreaForm = {
-                        ...state.applicationAreaForm,
-                        name: value,
-                    }
+                    state.applicationAreaForm.name = value as string
                     break;
                 case 'isActive':
-                    state.applicationAreaForm.isActive = value === '1' || value === 'true';
+                    state.applicationAreaForm.isActive = value as boolean
                     break;
                 default:
-                    state.applicationAreaForm = {
-                        ...state.applicationAreaForm,
-                        [key]: value,
-                    }
                     break;
             }
         }

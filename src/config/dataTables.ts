@@ -43,10 +43,9 @@ export const dataTables = {
 
     applicationArea: {
         columns: [
-            { label: '', key: 'checkbox', width: '2%' },
-            { label: 'Uygulama Alanları', key: 'name', width: '70%' },
-            { label: 'Durum', key: 'isActive', width: '5%' },
-            { label: '', key: 'actions', width: '2%' },
+            { label: 'Uygulama Alanları', key: 'name', width: '250' },
+            { label: 'Durum', key: 'isActive', width: '80' },
+            { label: '', key: 'actions', width: '150' },
         ]
     },
 

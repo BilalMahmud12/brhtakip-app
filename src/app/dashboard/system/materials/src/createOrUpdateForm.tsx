@@ -37,9 +37,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     const [checked, setChecked] = React.useState(materialFormmRef.current.isActive as boolean);
 
-
-
-
     return (
         <div >
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>

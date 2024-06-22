@@ -5,9 +5,9 @@ import ApplicationAreaView from './src/applicationAreaView';
 import * as Repo from '@/repository/index';
 import type { ApplicationArea } from '@/API';
 
-import { useAppDispatch } from '@/lib/hooks';
-import { AppDispatch } from '@/lib/store';
-import { setApplicationAreas } from '@/lib/features/applicationAreaSlice';
+import { useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch } from '@/reduxStore/store';
+import { setApplicationAreas } from '@/reduxStore/features/applicationAreaSlice';
 
 const ApplicationArea: React.FC = () => {
 
