@@ -4,9 +4,9 @@ import { Breadcrumbs } from '@aws-amplify/ui-react';
 import type { Store } from '@/API';
 import * as Repo from '@/repository/index';
 
-import { useAppDispatch } from '@/lib/hooks';
-import { AppDispatch } from '@/lib/store';
-import { setStores } from '@/lib/features/storeSlice';
+import { useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch } from '@/reduxStore/store';
+import { setStores } from '@/reduxStore/features/storeSlice';
 import StoreView from "./src/storeView";
 
 

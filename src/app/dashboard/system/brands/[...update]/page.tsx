@@ -13,6 +13,7 @@ import { setProducts, resetProductFormValues, setProductFormValues } from '@/red
 
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 const UpdateBrand: React.FC = (() => {
     const router = useRouter();
@@ -67,36 +68,42 @@ const UpdateBrand: React.FC = (() => {
 
     return (
         <div>
-            <div>
-                <title>Marka Güncelle</title>
-                <div className='mt-1.5 shadow bg-white py-6'>
-                    <div className='px-6 mb-3 flex items-center justify-between'>
-                        <h2 className='text-2xl font-medium'>Marka Güncelle</h2>
-                        <Button
-                            variant="contained"
-                            startIcon={<SaveIcon />}
-                            onClick={handleUpdateBrand}
-                        >
-                            Güncelle
-                        </Button>
-                    </div>
+            <div >
+                <title>Marka Güncelle - BRH Takip</title>
 
-                    <div className='space-y-3'>
-                        <CreateOrUpdateForm isCreate={false} />
+                <div className='h-full'>
+                    <div className='h-full col-span-2'>
+                        <div className='flex items-center justify-between'>
+                            <Button
+                                variant="text"
+                                startIcon={<ArrowBackIosIcon />}
+                                onClick={() => router.push('/dashboard/system/brands')}
+                            >
+                                Markalara Geri Dön
+                            </Button>
+
+                            <Button
+                                variant="contained"
+                                startIcon={<SaveIcon />}
+                                onClick={handleUpdateBrand}
+                            >
+                                Kaydı Et
+                            </Button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            {/* START PRODUCT SECTION */}
+                <div className='space-y-3'>
+                    <CreateOrUpdateForm isCreate={false} />
+                </div>
+            </div>
 
             {/* <ProductView
                 haveProduct={haveProduct}
                 brandId={brandForm.id}
                 filteredProducts={filteredProducts}
                 fetchFilteredProducts={fetchFilteredProducts}
-            /> */}
-
-            {/* END PRODUCT SECTION */}
+            />  */}
         </div>
     );
 });

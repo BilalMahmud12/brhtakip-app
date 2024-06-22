@@ -39,6 +39,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     return (
         <div >
+            <div className='my-2 pt-5' />
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>
 
                 <div className='p-6 bg-white shadow col-span-2'>
@@ -54,6 +55,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
                             }}
+                            defaultValue={!isCreate ? materialForm.name : ''}
                         />
                     </div>
 

@@ -51,10 +51,9 @@ export const dataTables = {
 
     stores: {
         columns: [
-            { label: '', key: 'checkbox', width: '2%' },
-            { label: 'Mağaza', key: 'name', width: '20%' },
-            { label: 'Adres', key: 'address', width: '40%' },
-            { label: '', key: 'actions', width: '2%' },
+            { label: 'Mağaza', key: 'name', width: '240' },
+            { label: 'Adres', key: 'address', width: '500' },
+            { label: '', key: 'actions', width: '80' },
         ]
     },
 

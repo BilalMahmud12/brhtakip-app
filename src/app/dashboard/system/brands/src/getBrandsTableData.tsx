@@ -31,7 +31,13 @@ export default function getBrandsTableData(
                 switch (column.key) {
                     case 'name':
                         row[column.key] = (
-                            <div>
+                            <div
+                                className='hover:underline hover:text-blue-700 cursor-pointer'
+                                onClick={() => {
+                                    router.push(`/dashboard/system/brands/${brand.id}`);
+                                    handleEdit(brand)
+                                }}
+                            >
                                 {brand.name}
                             </div>
                         );

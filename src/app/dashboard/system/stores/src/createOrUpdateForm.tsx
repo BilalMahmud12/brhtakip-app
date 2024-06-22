@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import type { Store } from '@/API';
 import { Input, Label, Autocomplete, TextAreaField } from '@aws-amplify/ui-react';
 import { useDispatch } from 'react-redux';
-import { handleFormChange } from '@/lib/features/storeSlice';
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { RootState, AppDispatch } from '@/lib/store';
+import { handleFormChange } from '@/reduxStore/features/storeSlice';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { RootState, AppDispatch } from '@/reduxStore/store';
 import { client } from '@/repository';
 import { listCities, listDistricts, listAreas } from '@/graphql/queries';
 

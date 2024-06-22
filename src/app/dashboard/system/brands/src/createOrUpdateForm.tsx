@@ -44,12 +44,12 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
     return (
         <div className='h-full'>
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>
-
+                <div className='my-2 pt-5' />
                 <div className='p-6 bg-white shadow col-span-2'>
 
                     {isCreate ?
                         <div className='input-group w-full col-span-2'>
-                            <label htmlFor="client_name" className='block text-xs font-medium mb-1.5'>Müşteri</label>
+                            <label htmlFor="client_name" className='block text-xs font-medium mb-1.5'>Müşteri *</label>
                             <AutoComplete
                                 id="client_name"
                                 options={getClientsList()}

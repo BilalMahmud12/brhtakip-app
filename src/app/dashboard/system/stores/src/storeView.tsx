@@ -2,11 +2,11 @@
 import React, { useEffect, useRef } from 'react'
 import { Button } from '@aws-amplify/ui-react';
 import StoresDataTable from './storesDataTable';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
+import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
 import CreateOrUpdateForm from './createOrUpdateForm';
 import { useDataModal } from '@/contexts/DataModalContext';
-import { resetFormValues, setStores } from '@/lib/features/storeSlice';
+import { resetFormValues, setStores } from '@/reduxStore/features/storeSlice';
 import * as Repo from '@/repository/index';
 import { Store } from '@/API';
 
