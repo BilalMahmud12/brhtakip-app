@@ -25,8 +25,8 @@ export default function RootLayout({
               <body>
                 <ConfigureAmplifyClientSide />
                 <ProgressBar
-                  height="4px"
-                  color="#dd0000"
+                  height="3px"
+                  color="#1976d2"
                   options={{ showSpinner: false }}
                   shallowRouting
                 />

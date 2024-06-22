@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { UserProfile as UserProfileType, Roles } from '@/API';
 
-type UserProfile = Omit<UserProfileType, '__typename' | 'createdAt' | 'updatedAt' | 'id'>
+type UserProfile = Omit<UserProfileType, '__typename' | 'createdAt' | 'updatedAt'>
 interface UserProfileForm extends UserProfile {
-    id?: string;
     password?: string;
     confirmPassword?: string;
 }
@@ -18,6 +17,7 @@ const initialState: UserState = {
     isFetching: false,
     users: [],
     userForm: {
+        id: '',
         isActive: false,
         firstName: '',
         lastName: '',
@@ -70,6 +70,12 @@ const userSlice = createSlice({
                 default:
                     break
             }
+        },
+        setUserForm (state, action: PayloadAction<UserProfileForm>) {
+            state.userForm = action.payload
+        },
+        resetUserForm (state) {
+            state.userForm = initialState.userForm
         }
     }
 })
@@ -77,6 +83,8 @@ const userSlice = createSlice({
 export const { 
     setIsFetching,
     setUsers,
-    handleFormChange 
+    handleFormChange,
+    setUserForm,
+    resetUserForm 
 } = userSlice.actions
 export default userSlice.reducer

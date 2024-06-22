@@ -21,7 +21,6 @@ const UsersDataTable: React.FC<UsersDataTableProps> = (props) => {
 
     const { users } = dataTables;
 
-    
     const usersTableData = getUsresTableData(
         dataPayload,
         users.columns,
@@ -35,8 +34,9 @@ const UsersDataTable: React.FC<UsersDataTableProps> = (props) => {
             <DataTable
                 columns={users.columns}
                 data={usersTableData}
-                onEditRow={() => {}}
-                onDeleteRow={() => {}}
+                onEditRow={handleEdit}
+                onDeleteRow={handleDelete}
+                onRowSelect={handleSelect}
             />
         </div>
     );

@@ -1,8 +1,8 @@
-import { CheckboxField } from '@aws-amplify/ui-react';
-import React, { useState } from 'react';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+'use client'
+import React from 'react';
+import { DataGrid, GridColDef, GridRowSelectionModel } from '@mui/x-data-grid';
 import { trTR } from '@mui/x-data-grid/locales';
-import Icon from '../icon';
+
 
 type DataTableDatum = {
     [key: string]: any;
@@ -17,6 +17,8 @@ export interface DataTableColumn {
 
 type DataTableProps = {
     columns: DataTableColumn[];
+    data: DataTableDatum[];  
+    onRowSelect?: (selectedRows: string[]) => void;
     data: DataTableDatum[];
     onRowSelect?: (selectedRows: Set<number>) => void;
     onEditRow?: (data: any) => void;
@@ -46,33 +48,35 @@ const DataTable: React.FC<DataTableProps> = (props) => {
         }
     }));
 
-    const rows = data.map((datum, index) => ({ id: index, ...datum }));
-
-    const [selectedRows, setSelectedRows] = useState<Set<number>>(new Set());
-
-    const handleRowSelectionChange = (rowIndex: number, isChecked: boolean) => {
-        const newSelectedRows = new Set(selectedRows);
-        if (isChecked) {
-            newSelectedRows.add(rowIndex);
-        } else {
-            newSelectedRows.delete(rowIndex);
-        }
-        setSelectedRows(newSelectedRows);
-        console.log('Select: =>', selectedRows);
-    };
-
-    const handleSelectAll = (isChecked: boolean) => {
-        if (isChecked) {
-            const allIndexes = new Set(data.map((_, index) => index));
-            setSelectedRows(allIndexes);
-        } else {
-            setSelectedRows(new Set());
-        }
-
-        console.log('Select All: =>', selectedRows);
-    };
+    const rows = data.map((datum, index) => ({ id: datum?.id || index, ...datum }));
+    const [rowSelectionModel, setRowSelectionModel] = React.useState<GridRowSelectionModel>([]);
 
     return (
+        <div style={{ width: '100%', background: '#fff' }}>
+            <DataGrid
+                columns={DataGridColumns}
+                rows={rows}
+                pageSizeOptions={[5, 10, 25, 50, 100]}
+                initialState={{
+                    pagination: {
+                        paginationModel: { page: 0, pageSize: 10 },
+                    },
+                }}
+                slots={{
+                    //toolbar: GridToolbar,
+                }}
+                rowSelectionModel={rowSelectionModel}
+                onRowSelectionModelChange={(newRowSelectionModel, details) => {
+                    onRowSelect(newRowSelectionModel as string[]);
+                    setRowSelectionModel(newRowSelectionModel);
+                }}
+                density='compact'
+                localeText={trTR.components.MuiDataGrid.defaultProps.localeText}
+                disableRowSelectionOnClick
+                checkboxSelection
+                disableColumnResize
+                autoHeight
+            />
         <div className='overflow-x-scroll'>
             <div style={{ width: '100%' }}>
                 <DataGrid

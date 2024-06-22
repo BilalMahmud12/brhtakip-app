@@ -1,5 +1,5 @@
 import * as Repo from '@/repository/index';
-import { AppDispatch } from '@/redux/store';
+import { AppDispatch } from '@/reduxStore/store';
 import { getCurrentUserId } from './authService';
 import { setCurrentClientProfile, setCurrentUserProfile } from '@/reduxStore/features/globalSlice';
 

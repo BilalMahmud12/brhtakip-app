@@ -17,6 +17,8 @@ import Toolbar from '@mui/material/Toolbar';
 import MuiDrawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -28,11 +30,13 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import Logo from '@/components/core/logo';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import { navigation } from '@/config/navigation';
 import Icon from '@/components/core/icon';
 import { useRouter } from 'next-nprogress-bar';
 import Image from 'next/image';
+import UserAccountMenu from './src/userAccountMenu';
+import UserNotificationMenu from './src/userNotificationMenu';
 
 const drawerWidth = 280;
 
@@ -126,6 +130,12 @@ export default function RootLayout({
         const clientsData = await Repo.ClientProfileRepository.getClientProfiles();
         dispatch(setClientProfiles(clientsData || []))
     }
+
+    const getCurrentClientName = () => {
+        const currentClient = currentUserProfileRef.current?.clientprofileID;
+        const client = currentUserProfileRef.current?.clientprofileID === BRHAdminProfileId ? 'BRH_ADMIN' : currentUserProfileRef.current?.clientprofileID;
+        return client;
+    }
     
     useEffect(() => {
         if (user) {
@@ -203,6 +213,18 @@ export default function RootLayout({
                         <h1 className='text-base font-medium text-black'>{currentPageTitle}</h1>
                     </div>
 
+                    <div className='ml-auto flex items-center justify-end space-x-3'>
+                        <UserNotificationMenu />
+                        <UserAccountMenu /> 
+                        
+                        
+                        <div className='hidden'>
+                            <span className='flex flex-col ml-2'>
+                                <span className='text-sm text-gray-800 font-medium'>{currentUserProfile?.firstName} {currentUserProfile?.lastName}</span>
+                                <span className='text-xs text-gray-400'>{currentUserProfile?.email}</span>
+                            </span>
+                        </div>
+                    </div>
                 </Toolbar>
             </AppBar>
 
@@ -279,7 +301,7 @@ export default function RootLayout({
                 </List>
             </Drawer>
 
-            <Box component="main" sx={{ flexGrow: 1, p: 3, background: '#f4f4f5', marginTop: '64px' }}>
+            <Box component="main" sx={{ flexGrow: 1, p: 3, background: '#f4f4f5', marginTop: '64px', minHeight: 'calc(100vh - 64px)' }}>
                 {children}
             </Box>
         </Box>
