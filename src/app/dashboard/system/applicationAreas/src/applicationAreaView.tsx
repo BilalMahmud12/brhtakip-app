@@ -7,116 +7,22 @@ import { AppDispatch, RootState } from '@/reduxStore/store';
 import { setApplicationAreaForm, setApplicationAreas, resetFormValues } from '@/reduxStore/features/applicationAreaSlice';
 import CreateOrUpdateForm from './createOrUpdateForm';
 import * as Repo from '@/repository/index';
+import { useRouter } from 'next/navigation';
 
 import Button from '@mui/material/Button';
-import SaveIcon from '@mui/icons-material/Save';
 import AddIcon from '@mui/icons-material/Add';
 
-const ModalCustomFooter = (props: {
-    type: 'create' | 'update'
-    handleCreate?: (data: any) => void;
-    handleUpdate?: (data: any) => void;
-    handleCancel?: () => void;
-}) => {
-    const {
-        type,
-        handleCreate = () => { },
-        handleUpdate = () => { },
-        handleCancel = () => { }
-    } = props;
-
-    return (
-        <div className='flex items-center justify-between'>
-            <div className='flex items-center space-x-3'>
-                <Button
-                    // startIcon={<SaveIcon />}
-                    onClick={handleCancel}
-                >
-                    iptal et
-                </Button>
-                <Button
-                    variant="contained"
-                    startIcon={<SaveIcon />}
-                    onClick={type === 'create' ? handleCreate : handleUpdate}
-                >
-                    Onayla
-                </Button>
-            </div>
-        </div>
-    );
-}
 
 const ApplicationAreaView: React.FC = () => {
-    const { showDataModal, hideDataModal } = useDataModal();
-
+    const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
     const applicationAreas = useAppSelector((state: RootState) => state.applicationArea.applicationAreas);
     const applicationAreaForm = useAppSelector((state: RootState) => state.applicationArea.applicationAreaForm);
 
-    const applicationAreaRef = useRef(applicationAreaForm);
-    applicationAreaRef.current = applicationAreaForm;
+    // const applicationAreaRef = useRef(applicationAreaForm);
+    // applicationAreaRef.current = applicationAreaForm;
 
-    const handleCancelForm = () => {
-        dispatch(resetFormValues());
-        hideDataModal();
-    };
-
-    const handleCreateForm = () => {
-        dispatch(resetFormValues());
-        showDataModal(
-            <div><span className='text-base font-bold'>Yeni Uygulama Alanı Ekle</span></div>,
-            <CreateOrUpdateForm isCreate={true} />,
-            <ModalCustomFooter
-                type='create'
-                handleCancel={handleCancelForm}
-                handleCreate={handleCreateApplicationArea}
-            />
-        );
-    };
-
-    const handleCreateApplicationArea = async () => {
-        try {
-            const createApplicationArea = await Repo.ApplicationAreaRepository.create(applicationAreaRef.current);
-            console.log('new created Application Area', createApplicationArea);
-            hideDataModal();
-            dispatch(resetFormValues());
-            const newApplicationArea = await Repo.ApplicationAreaRepository.getApplicationAreas();
-            dispatch(setApplicationAreas(newApplicationArea as unknown as ApplicationArea[]));
-        } catch (error) {
-            console.log('Failed to create application area', error);
-        }
-    };
-
-    const handleUpdateForm = () => {
-        dispatch(resetFormValues());
-        showDataModal(
-            <div><span className='text-base font-bold'>Güncelle</span></div>,
-            <CreateOrUpdateForm isCreate={false} />,
-            <ModalCustomFooter
-                type='update'
-                handleCancel={handleCancelForm}
-                handleUpdate={handleUpdateApplicationArea}
-            />
-        );
-    };
-
-    const handleUpdateApplicationArea = async () => {
-        try {
-            const createApplicationArea = await Repo.ApplicationAreaRepository.update(applicationAreaRef.current);
-
-            if (createApplicationArea && createApplicationArea.data) {
-                const newApplicationArea = await Repo.ApplicationAreaRepository.getApplicationAreas();
-                dispatch(setApplicationAreas(newApplicationArea as unknown as ApplicationArea[]));
-                hideDataModal();
-                dispatch(resetFormValues());
-            }
-        } catch (error) {
-            console.log('Failed to update application area', error);
-        }
-    };
-
-    const setBrandUpdateData = (data: any) => {
-        handleUpdateForm();
+    const setApplicationAreaUpdateData = (data: any) => {
         dispatch(setApplicationAreaForm({
             id: data.id,
             name: data.name,
@@ -145,7 +51,7 @@ const ApplicationAreaView: React.FC = () => {
                             <Button
                                 variant="contained"
                                 startIcon={<AddIcon />}
-                                onClick={handleCreateForm}
+                                onClick={() => router.push('/dashboard/system/applicationAreas/create')}
                             >
                                 Uygulama Alan Ekle
                             </Button>
@@ -157,7 +63,7 @@ const ApplicationAreaView: React.FC = () => {
                 <ApplicationAreaDataTable
                     dataPayload={applicationAreas}
                     handleDelete={handleDeleteApplicationArea}
-                    handleEdit={setBrandUpdateData}
+                    handleEdit={setApplicationAreaUpdateData}
                 />
             </div>
         </div>

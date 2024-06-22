@@ -22,7 +22,7 @@ const MaterialView: React.FC = () => {
     const materialformRef = useRef(materialForm);
     materialformRef.current = materialForm;
 
-    const setBrandUpdateData = (material: any) => {
+    const setMaterialUpdateData = (material: any) => {
         dispatch(setMaterialForm({
             id: material.id,
             name: material.name,
@@ -62,7 +62,7 @@ const MaterialView: React.FC = () => {
                 <MaterialsDataTable
                     dataPayload={materials}
                     handleDelete={handleDeleteMaterial}
-                    handleEdit={setBrandUpdateData}
+                    handleEdit={setMaterialUpdateData}
                 />
             </div>
         </div>

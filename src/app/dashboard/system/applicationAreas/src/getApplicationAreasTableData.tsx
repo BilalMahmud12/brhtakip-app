@@ -31,7 +31,12 @@ export default function getApplicationAreaTableData(
                     case 'name':
                         row[column.key] = (
                             <div
-                                className='hover:underline hover:text-blue-700 cursor-pointer'>
+                                className='hover:underline hover:text-blue-700 cursor-pointer'
+                                onClick={() => {
+                                    router.push(`/dashboard/system/applicationAreas/${applicationArea.id}`);
+                                    handleEdit(applicationArea)
+                                }}
+                            >
                                 {applicationArea.name}
                             </div>
                         );
@@ -53,6 +58,7 @@ export default function getApplicationAreaTableData(
                                     size="small"
                                     color='primary'
                                     onClick={() => {
+                                        router.push(`/dashboard/system/applicationAreas/${applicationArea.id}`);
                                         handleEdit(applicationArea)
                                     }}
                                 >

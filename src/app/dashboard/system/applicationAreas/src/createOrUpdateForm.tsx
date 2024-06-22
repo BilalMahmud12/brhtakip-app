@@ -1,8 +1,6 @@
 'use client'
 import React, { useEffect, useRef } from 'react';
 import type { ApplicationArea } from '@/API';
-import { Input, Label, Autocomplete } from '@aws-amplify/ui-react';
-
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { RootState, AppDispatch } from '@/reduxStore/store';
 import { handleFormChange } from '@/reduxStore/features/applicationAreaSlice';
@@ -45,6 +43,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     return (
         <div >
+            <div className='my-2 pt-5' />
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>
                 <div className='p-6 bg-white shadow col-span-2'>
 
@@ -91,37 +90,3 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 }
 
 export default CreateOrUpdateForm
-
-/*
-<form>
-            <div className='grid grid-cols-2 gap-8'>
-                <div className='input-group col-span-3'>
-                    <Label htmlFor="name" className='block text-xs font-medium mb-1.5'>Uygulama Alanları</Label>
-                    <Input
-                        id="name"
-                        name="name"
-                        placeholder='Uygulama Alanı Ekle'
-                        variation="quiet"
-                        onChange={(e) => dispatch(handleFormChange({ key: 'name', value: e.target.value }))}
-                        defaultValue={!isCreate ? applicationAreaForm.name : ''}
-                    />
-                </div>
-            </div>
-            <div className='my-2 pt-5' />
-            <div className='input-group'>
-                <Label htmlFor="isActive" className='block text-xs font-medium mb-1.5'>Durum</Label>
-                <Autocomplete
-                    id="isActive"
-                    label="Durum"
-                    placeholder='Durum Seç'
-                    variation="quiet"
-                    options={[
-                        { id: '1', label: 'Aktif' },
-                        { id: '0', label: 'İnaktif' }
-                    ]}
-                    onSelect={(option) => dispatch(handleFormChange({ key: 'isActive', value: option.id }))}
-                    defaultValue={!isCreate ? (applicationAreaForm.isActive ? 'Aktif' : 'İnaktif') : ''}
-                />
-            </div>
-        </form>
-*/
