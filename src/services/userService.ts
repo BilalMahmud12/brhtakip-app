@@ -22,9 +22,16 @@ export const loadUserData = async (dispatch: AppDispatch): Promise<boolean> => {
 
         if (userProfile.clientprofileID !== 'BRH_ADMIN') {
             const clientProfile = await Repo.ClientProfileRepository.getClientProfileById(userProfile.clientprofileID as string);
+
             if (clientProfile) {
-                //dispatch(setCurrentClientProfile(clientProfile));
+                const { __typename, ...cleanClientProfile } = clientProfile
+                dispatch(setCurrentClientProfile(cleanClientProfile));
             }
+        } else {
+            dispatch(setCurrentClientProfile({
+                id: 'BRH_ADMIN',
+                name: 'BRH Reklamcılık ve Mimarlık Ltd.'
+            }))
         }
 
         return true;

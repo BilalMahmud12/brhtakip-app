@@ -17,8 +17,6 @@ import Toolbar from '@mui/material/Toolbar';
 import MuiDrawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -28,15 +26,14 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import { navigation } from '@/config/navigation';
 import Icon from '@/components/core/icon';
 import { useRouter } from 'next-nprogress-bar';
 import Image from 'next/image';
 import UserAccountMenu from './src/userAccountMenu';
 import UserNotificationMenu from './src/userNotificationMenu';
+import { signOut } from "aws-amplify/auth"
+import { toast } from 'sonner';
 
 const drawerWidth = 280;
 
@@ -124,19 +121,19 @@ export default function RootLayout({
     
     const currentUserProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const currentUserProfileRef = useRef(currentUserProfile);
+
+
+    const currentClientProfile = useAppSelector((state: RootState) => state.global.currentClientProfile);
+    const currentClientProfileRef = useRef(currentClientProfile);
+    currentClientProfileRef.current = currentClientProfile;
+
+
     const BRHAdminProfileId = globalConstants.clientProfileId;
 
     const fetchClientsData = async () => {
         const clientsData = await Repo.ClientProfileRepository.getClientProfiles();
         dispatch(setClientProfiles(clientsData || []))
     }
-
-    const getCurrentClientName = () => {
-        const currentClient = currentUserProfileRef.current?.clientprofileID;
-        const client = currentUserProfileRef.current?.clientprofileID === BRHAdminProfileId ? 'BRH_ADMIN' : currentUserProfileRef.current?.clientprofileID;
-        return client;
-    }
-    
     useEffect(() => {
         if (user) {
             const loadUser = async () => {
@@ -167,6 +164,12 @@ export default function RootLayout({
     const [open, setOpen] = React.useState(false);
     const [selectedIndex, setSelectedIndex] = React.useState(1);
 
+    const handleLogOut = async () => {
+        toast.success('Güvenli Çıkış yapıldı, görüşmek üzere!');
+        await signOut()
+        router.push('/login')
+    }
+
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -191,7 +194,7 @@ export default function RootLayout({
                         onClick={handleDrawerOpen}
                         edge="start"
                         sx={{
-                            marginRight: 2,
+                            marginRight: 4,
                             ...(open && { display: 'none' }),
                         }}
                     >
@@ -203,27 +206,30 @@ export default function RootLayout({
                         alt="Logo"
                         width={120}
                         height={30}
-                        className='cursor-pointer mr-4'
+                        className='cursor-pointer mr-12'
                         onClick={() => router.push('/')} 
                     />
 
-                    {/* <Divider orientation="vertical" flexItem /> */}
+                    <Divider orientation="vertical" flexItem />
 
                     <div>
-                        <h1 className='text-base font-medium text-black'>{currentPageTitle}</h1>
+                        <div className=''>
+                            <span className='flex flex-col ml-6'>
+                                <span className='text-sm text-gray-800 font-medium flex items-center space-x-2'>
+                                    <span className='block w-2 h-2 rounded-full bg-green-600'></span>
+                                    <span>{currentClientProfileRef.current.name} </span>
+                                </span>
+                                <span className='flex items-center space-x-2'>
+                                    <span className='block w-6 h-[2px] bg-gray-800'></span>
+                                    <span className='text-xs text-gray-600 font-medium'>{currentUserProfile?.firstName} {currentUserProfile?.lastName}</span>
+                                </span>
+                            </span>
+                        </div>
                     </div>
 
                     <div className='ml-auto flex items-center justify-end space-x-3'>
                         <UserNotificationMenu />
                         <UserAccountMenu /> 
-                        
-                        
-                        <div className='hidden'>
-                            <span className='flex flex-col ml-2'>
-                                <span className='text-sm text-gray-800 font-medium'>{currentUserProfile?.firstName} {currentUserProfile?.lastName}</span>
-                                <span className='text-xs text-gray-400'>{currentUserProfile?.email}</span>
-                            </span>
-                        </div>
                     </div>
                 </Toolbar>
             </AppBar>
@@ -282,6 +288,7 @@ export default function RootLayout({
                                         justifyContent: open ? 'initial' : 'center',
                                         px: 2.5,
                                     }}
+                                    onClick={handleLogOut}
                                 >
                                         <ListItemIcon
                                             sx={{

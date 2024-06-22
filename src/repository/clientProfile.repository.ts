@@ -19,7 +19,7 @@ const getClientProfileById = async (id: string) => {
             variables: { id },
         });
 
-        return data;
+        return data.getClientProfile as ClientProfile;
     } catch (error) {
         console.error(error);
     }
