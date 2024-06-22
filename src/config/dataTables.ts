@@ -9,9 +9,9 @@ export const dataTables = {
     users: {
         columns: [
             { label: 'Kullanıcı', key: 'username', width: '240' },
-            { label: 'Durum', key: 'status', width: '150' },
-            { label: 'Rol', key: 'role', width: '180' },
             { label: 'Eposta', key: 'email', width: '240' },
+            { label: 'Rol', key: 'role', width: '180' },
+            { label: 'Durum', key: 'status', width: '150' },
             { label: '', key: 'actions', width: '80' },
         ]
     }

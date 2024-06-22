@@ -11,6 +11,7 @@ import UsersView from './src/usersView'
 const UsersPage: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
 
+    // TODO - Fetch users according to current user's role and client Profile
     const fetchAndSetUsers = async () => {
         dispatch(setIsFetching(true));
         const users = await Repo.UserRepository.getAllUsers();

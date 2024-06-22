@@ -4,16 +4,16 @@ import { features, abstractPermissions, abstractPermissionsTurkish, featuresTurk
 
 interface PermissionSelectionProps {
     selectedPermissions: Permission[];
-    setSelectedPermissions: React.Dispatch<React.SetStateAction<Permission[]>>;
+    handleSelectedPermissions: React.Dispatch<React.SetStateAction<Permission[]>>;
 }
 
 const PermissionSelection: React.FC<PermissionSelectionProps> = ({
     selectedPermissions = [],
-    setSelectedPermissions
+    handleSelectedPermissions
 }) => {
     const handleCheckboxChange = (feature: Feature, action: AbstractPermission) => {
         const permission: Permission = `${action}_${feature.toUpperCase()}` as Permission;
-        setSelectedPermissions((prevPermissions) => {
+        handleSelectedPermissions((prevPermissions) => {
             if (prevPermissions.includes(permission)) {
                 return prevPermissions.filter((perm) => perm !== permission);
             } else {

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { use } from 'react'
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
-import { handleFormChange } from '@/reduxStore/features/userSlice';
+import { handleFormChange, resetUserForm } from '@/reduxStore/features/userSlice';
 import { FormControlLabel } from '@mui/material';
 import AutoComplete from '@/components/core/autoComplete';
 import TextField from '@mui/material/TextField';
@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { roles } from '@/config/roles';
-import PermissionSelection from './PermissionSelection';
+import PermissionSelection from '../create/src/PermissionSelection';
 import type { Permission } from '@/config/index';
 import { useRouter } from 'next-nprogress-bar';
 
@@ -81,6 +81,12 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
         return getRoleOptions(currentUser).find((option) => option.value === role)?.label as string || ''
     }
 
+    
+    React.useEffect(() => {
+        setChecked(userFormRef.current.isActive as boolean)
+        setSelectedPermissions(userFormRef.current.permissions as Permission[] || [])
+    }, [])
+
     React.useEffect(() => {
         dispatch(handleFormChange({ key: 'permissions', value: selectedPermissions }))
     }, [selectedPermissions])
@@ -88,13 +94,13 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
     React.useEffect(() => {
         dispatch(handleFormChange({ 
             key: 'clientprofileID', 
-            value: [roles.ADMIN, roles.EDITOR].includes(userFormRef.current.role as string)  ? 'BRH_ADMIN' : ''
+            value: [roles.ADMIN, roles.EDITOR].includes(userFormRef.current.role as string)  ? 'BRH_ADMIN' : userFormRef.current.clientprofileID as string
         }))
 
         if (userFormRef.current.role === roles.ADMIN) {
             setSelectedPermissions(['ALL_PERMISSIONS'] as unknown as Permission[])
         } else {
-            setSelectedPermissions([])
+            setSelectedPermissions(userFormRef.current.permissions as Permission[] || [])
         }
     }, [userFormRef.current.role])
 
@@ -121,10 +127,10 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                             <label htmlFor="client_name" className='block text-xs font-medium mb-2'>Hesap Durumu</label>
                             <div>
                                 <FormControlLabel
-                                    label={checked ? 'Aktif' : 'Aktif Değil'}
+                                    label={userFormRef.current.isActive as boolean ? 'Aktif' : 'Aktif Değil'}
                                     control={<Switch
                                         color='success'
-                                        checked={checked}
+                                        checked={userFormRef.current.isActive as boolean}
                                         onChange={
                                             (event: React.ChangeEvent<HTMLInputElement>) => {
                                                 setChecked(event.target.checked)
@@ -134,6 +140,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                                 }))
                                             }
                                         }
+
                                     />}
                                     sx={{ '.MuiFormControlLabel-label': { fontSize: '0.90rem', fontWeight: '500' } }}
                                 />
@@ -195,6 +202,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                         value: event.target.value
                                     }))
                                 }}
+                                value={userFormRef.current.firstName}
                                 required
                             />
                         </div>
@@ -212,70 +220,70 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                         value: event.target.value
                                     }))
                                 }}
+                                value={userFormRef.current.lastName}
                             />
                         </div>
                     </div>
                 </div>
 
-                {isCreate && (
-                    <div className='p-6 bg-white shadow mb-6 h-full col-span-2 lg:col-span-1'>
-                        <h2 className='text-base font-semibold mb-6'>Giriş Bilgileri</h2>
+                <div className='p-6 bg-white shadow mb-6 h-full col-span-2 lg:col-span-1'>
+                    <h2 className='text-base font-semibold mb-6'>Giriş Bilgileri</h2>
 
-                        <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
-                            <div className='input-group w-full sm:col-span-2'>
-                                <label htmlFor="email" className='block text-xs font-medium mb-1.5'>E-Posta Adresi *</label>
-                                <TextField
-                                    id='email'
-                                    variant="standard"
-                                    sx={{ width: '100%' }}
-                                    helperText={''}
-                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                                        dispatch(handleFormChange({
-                                            key: 'email',
-                                            value: event.target.value
-                                        }))
-                                    }}
-                                    autoComplete='email'
-                                />
-                            </div>
-                            <div className='input-group w-full'>
-                                <label htmlFor="password" className='block text-xs font-medium mb-1.5'>Şifre *</label>
-                                <TextField
-                                    id='password'
-                                    variant="standard"
-                                    sx={{ width: '100%' }}
-                                    helperText={''}
-                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                                        dispatch(handleFormChange({
-                                            key: 'password',
-                                            value: event.target.value
-                                        }))
-                                    }}
-                                    type='password'
-                                    autoComplete='new-password'
-                                />
-                            </div>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
+                        <div className='input-group w-full sm:col-span-2'>
+                            <label htmlFor="email" className='block text-xs font-medium mb-1.5'>E-Posta Adresi *</label>
+                            <TextField
+                                id='email'
+                                variant="standard"
+                                sx={{ width: '100%' }}
+                                helperText={''}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    dispatch(handleFormChange({
+                                        key: 'email',
+                                        value: event.target.value
+                                    }))
+                                }}
+                                value={userFormRef.current.email}
+                                autoComplete='email'
+                            />
+                        </div>
+                        <div className='input-group w-full'>
+                            <label htmlFor="password" className='block text-xs font-medium mb-1.5'>Şifre *</label>
+                            <TextField
+                                id='password'
+                                variant="standard"
+                                sx={{ width: '100%' }}
+                                helperText={''}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    dispatch(handleFormChange({
+                                        key: 'password',
+                                        value: event.target.value
+                                    }))
+                                }}
+                                type='password'
+                                autoComplete='new-password'
+                            />
+                        </div>
 
-                            <div className='input-group w-full'>
-                                <label htmlFor="confirmPassword" className='block text-xs font-medium mb-1.5'>Şifre Tekrar *</label>
-                                <TextField
-                                    id='confirmPassword'
-                                    variant="standard"
-                                    sx={{ width: '100%' }}
-                                    helperText={''}
-                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                                        dispatch(handleFormChange({
-                                            key: 'confirmPassword',
-                                            value: event.target.value
-                                        }))
-                                    }}
-                                    type='password'
-                                    autoComplete='new-password'
-                                />
-                            </div>
+                        <div className='input-group w-full'>
+                            <label htmlFor="confirmPassword" className='block text-xs font-medium mb-1.5'>Şifre Tekrar *</label>
+                            <TextField
+                                id='confirmPassword'
+                                variant="standard"
+                                sx={{ width: '100%' }}
+                                helperText={''}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    dispatch(handleFormChange({
+                                        key: 'confirmPassword',
+                                        value: event.target.value
+                                    }))
+                                }}
+                                type='password'
+                                autoComplete='new-password'
+                            />
                         </div>
                     </div>
-                )}
+                </div>
 
                 <div className='p-6 bg-white shadow h-full col-span-2'>
                     <h2 className='text-base font-semibold mb-6'>İzinler</h2>
@@ -285,9 +293,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                             <div className='p-6 bg-zinc-100'>
                                 <PermissionSelection
                                     selectedPermissions={selectedPermissions}
-                                    setSelectedPermissions={(permissions) => {
-                                        setSelectedPermissions(permissions)
-                                    }}
+                                    handleSelectedPermissions={setSelectedPermissions}
                                 />
                             </div>
                         </div>

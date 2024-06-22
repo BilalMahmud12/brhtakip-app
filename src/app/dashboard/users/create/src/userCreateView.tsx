@@ -1,5 +1,5 @@
 import React from 'react'
-import CreateOrUpdateForm from './createOrUpdateForm'
+import CreateOrUpdateForm from '../../src/createOrUpdateForm'
 
 const UserCreateView: React.FC = () => {
     return (
