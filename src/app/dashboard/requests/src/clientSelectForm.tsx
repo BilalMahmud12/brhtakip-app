@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
-import { AppDispatch, RootState } from '@/redux/store';
+import { AppDispatch, RootState } from '@/reduxStore/store';
 import { handleFormChange } from '@/reduxStore/features/requestSlice'
 import { Autocomplete, Label } from '@aws-amplify/ui-react'
 
