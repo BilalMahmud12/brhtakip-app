@@ -7,7 +7,7 @@ import type { District } from '@/API'
 const getAllDistricts = async () => {
     try {
         const { data } = await client.graphql({ query: listDistricts });
-        return data.listDistricts
+        return data.listDistricts.items
     } catch (error) {
         console.error(error);
     }
@@ -26,7 +26,7 @@ const getDistrictById = async (id: string) => {
     }
 }
 
-const create = async (district: District) => {
+const create = async (district: any) => {
     try {
         const data = await client.graphql({
             query: createDistrict,
@@ -40,7 +40,7 @@ const create = async (district: District) => {
 }
 
 
-const update = async (district: District) => {
+const update = async (district: any) => {
     try {
         const data = await client.graphql({
             query: updateDistrict,

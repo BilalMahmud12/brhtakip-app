@@ -25,11 +25,11 @@ const getCityById = async (id: string) => {
     }
 }
 
-const create = async (request: City) => {
+const create = async (city: any) => {
     try {
         const data = await client.graphql({
             query: createCity,
-            variables: { input: request },
+            variables: { input: city },
         });
 
         return data;
@@ -38,11 +38,11 @@ const create = async (request: City) => {
     }
 }
 
-const update = async (request: City) => {
+const update = async (city: any) => {
     try {
         const data = await client.graphql({
             query: updateCity,
-            variables: { input: request },
+            variables: { input: city },
         });
 
         return data;

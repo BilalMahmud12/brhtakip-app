@@ -1,31 +1,36 @@
 'use client';
-import React from 'react';
-import { Breadcrumbs } from '@aws-amplify/ui-react';
+import * as Repo from '@/repository/index';
+import React, { useEffect } from 'react';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
+import { setBrands } from '@/reduxStore/features/brandSlice';
 import type { Brand } from '@/API';
+import BrandsView from './src/brandView';
 
 const Brand: React.FC = () => {
+    const dispatch = useAppDispatch<AppDispatch>();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const brandsData = await Repo.BrandRepository.getAllBrands();
+                dispatch(setBrands(brandsData as unknown as Brand[]));
+                console.log('brand data', brandsData);
+            } catch (error) {
+                console.error('Failed to fetch brands', error);
+            }
+        };
+        fetchData();
+    }, [dispatch]);
 
     return (
         <div>
             <title>Markalar - BRH Takip</title>
 
-            <div className='px-6 py-3 bg-zinc-50 shadow mb-4'>
-                <Breadcrumbs
-                    items={[
-                        {
-                            href: '/dashboard',
-                            label: 'Panel Girişi',
-                        },
-                        {
-                            href: '/dashboard/system/brands',
-                            label: 'Markalar',
-                        }
-                    ]}
-                    className='text-sm font-medium'
-                />
-            </div>
+            <BrandsView />
         </div>
     );
 };
 
 export default Brand;
+// withAuthorization([permissions.VIEW_BRANDS])(Brand)

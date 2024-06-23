@@ -25,11 +25,11 @@ const getApplicationAreaById = async (id: string) => {
     }
 }
 
-const create = async (request: ApplicationArea) => {
+const create = async (applicationArea: any) => {
     try {
         const data = await client.graphql({
             query: createApplicationArea,
-            variables: { input: request },
+            variables: { input: applicationArea },
         });
 
         return data;
@@ -38,11 +38,11 @@ const create = async (request: ApplicationArea) => {
     }
 }
 
-const update = async (request: ApplicationArea) => {
+const update = async (applicationArea: any) => {
     try {
         const data = await client.graphql({
             query: updateApplicationArea,
-            variables: { input: request },
+            variables: { input: applicationArea },
         });
 
         return data;

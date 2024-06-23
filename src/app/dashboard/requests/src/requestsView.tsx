@@ -69,6 +69,7 @@ const RequestsView: React.FC = () => {
     }
 
     const handleCreateRequest = async () => {
+        console.log('Request Form', requestForm)
         try {
             const createRequest = await Repo.RequestRepository.create(requestFormRef.current)
 

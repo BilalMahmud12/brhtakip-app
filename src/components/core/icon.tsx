@@ -2,14 +2,14 @@ import { FC } from 'react';
 import { IconType } from 'react-icons';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { SvgIconTypeMap } from '@mui/material';
-import { 
-    FcTimeline, 
-    FcDepartment, 
-    FcTemplate, 
-    FcBriefcase, 
-    FcFolder, 
-    FcShop, 
-    FcTrademark, 
+import {
+    FcTimeline,
+    FcDepartment,
+    FcTemplate,
+    FcBriefcase,
+    FcFolder,
+    FcShop,
+    FcTrademark,
     FcEngineering,
     FcSupport,
     FcAddDatabase,
@@ -28,26 +28,32 @@ import {
     FcApproval,
     FcOk,
     FcPrint,
-    FcNext,
     FcCancel as FcCancelIcon,
-    FcLock
+    FcLock,
+    FcCopyright,
+    FcCloth,
+    FcRuler,
+    FcFullTrash,
+    FcNext
 } from 'react-icons/fc';
-import { IoMdRefresh } from "react-icons/io"
-import { GrRefresh } from "react-icons/gr"
-import { HiOutlineFilter, HiDotsHorizontal } from "react-icons/hi"
-import { GoKebabHorizontal } from "react-icons/go"
+import { IoMdRefresh } from "react-icons/io";
+import { GrRefresh } from "react-icons/gr";
+import { HiOutlineFilter, HiDotsHorizontal } from "react-icons/hi";
+import { GoKebabHorizontal } from "react-icons/go";
 import { MdInbox, MdEdit, MdDelete } from 'react-icons/md';
 import { FaRegSave } from "react-icons/fa";
 import { TbDotsCircleHorizontal } from "react-icons/tb";
 import HomeIcon from '@mui/icons-material/Home';
 
-
 type IconComponent = IconType | OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
-    muiName: string;
-}
-    
+    muiName?: string;
+};
+
 const iconMapping: Record<string, IconComponent> = {
     'HomeIcon': HomeIcon,
+    'dots': HiDotsHorizontal,
+    'tbDotsCircleHorizontal': TbDotsCircleHorizontal,
+    'inbox': MdInbox,
     'FcTimeline': FcTimeline,
     'FcDepartment': FcDepartment,
     'FcTemplate': FcTemplate,
@@ -82,15 +88,16 @@ const iconMapping: Record<string, IconComponent> = {
     'FcPrint': FcPrint,
     'FcCancelIcon': FcCancelIcon,
     'FcNext': FcNext,
-    'inbox': MdInbox,
-    'dots': HiDotsHorizontal,
-    'tbDotsCircleHorizontal': TbDotsCircleHorizontal,
-    'FcLock': FcLock
+    'FcLock': FcLock,
+    'FcCopyright': FcCopyright,
+    'FcCloth': FcCloth,
+    'FcRuler': FcRuler,
+    'FcFullTrash': FcFullTrash
 };
 
 const Icon: FC<{ iconName: string, className?: string }> = ({ iconName, className }) => {
     const IconComponent = iconMapping[iconName]; // Get the correct icon component based on the iconName prop
     return IconComponent ? <IconComponent className={className} /> : null; // Render the icon with additional props
-}
+};
 
 export default Icon;

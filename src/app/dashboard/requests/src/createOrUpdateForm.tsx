@@ -263,7 +263,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                     </div>
 
                     <div className='my-2 pt-5' />
-                    
+
                     <div>
                         <span className='block mb-3 text-xs font-medium'>Talep Detaiları</span>
                         <div>

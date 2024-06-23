@@ -19,21 +19,21 @@ export interface DataTableColumn {
 
 type DataTableProps = {
     columns: DataTableColumn[];
-    data: DataTableDatum[];  
+    data: DataTableDatum[];
     onRowSelect?: (selectedRows: string[]) => void;
     onEditRow?: (data: any) => void;
     onDeleteRow?: (data: any) => void;
-    styles?: { [key: string] : string };
+    styles?: { [key: string]: string };
 }
 
 
 const DataTable: React.FC<DataTableProps> = (props) => {
-    const { 
-        columns, 
+    const {
+        columns,
         data,
-        onRowSelect = () => {},
-        onEditRow = () => {},
-        onDeleteRow = () => {}, 
+        onRowSelect = () => { },
+        onEditRow = () => { },
+        onDeleteRow = () => { },
         styles = {}
     } = props;
 
