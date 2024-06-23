@@ -3,9 +3,9 @@ import React, { useEffect, useRef } from 'react';
 import { useDataModal } from '@/contexts/DataModalContext';
 import { Button } from '@aws-amplify/ui-react';
 
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
-import { setAreas } from '@/lib/features/areaSlice';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
+import { setAreas } from '@/reduxStore/features/areaSlice';
 
 //import CreateOrUpdateForm from './createOrUpdateForm';
 import type { Area } from '@/API';

@@ -2,13 +2,13 @@
 import React, { useEffect, useRef } from 'react';
 import { useDataModal } from '@/contexts/DataModalContext';
 import { Button } from '@aws-amplify/ui-react';
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { AppDispatch, RootState } from '@/lib/store';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
 import type { District } from '@/API';
 import * as Repo from '@/repository/index';
 import DistrictsDataTable from './districtsDataTable';
 import CreateOrUpdateForm from './createOrUpdateForm';
-import { setDistricts, resetFormValues, setDistrictForm } from '@/lib/features/districtSlice';
+import { setDistricts, resetFormValues, setDistrictForm } from '@/reduxStore/features/districtSlice';
 interface DistrictViewProps {
     cityId: string;
     haveDistricts: boolean;

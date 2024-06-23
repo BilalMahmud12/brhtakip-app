@@ -3,9 +3,9 @@ import React, { useEffect } from 'react';
 import type { District } from '@/API';
 import { Input, Label, Autocomplete } from '@aws-amplify/ui-react';
 
-import { useAppSelector, useAppDispatch } from '@/lib/hooks';
-import { RootState, AppDispatch } from '@/lib/store';
-import { handleFormChange } from '@/lib/features/districtSlice';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { RootState, AppDispatch } from '@/reduxStore/store';
+import { handleFormChange } from '@/reduxStore/features/districtSlice';
 
 interface CreateOrUpdateFormProps {
     isCreate?: boolean;

@@ -47,35 +47,22 @@ const citySlice = createSlice({
             }
         },
 
-        handleFormChange: (state, action: PayloadAction<{ key: string, value: string }>) => {
+        handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean }>) => {
             const { key, value } = action.payload
             switch (key) {
                 case 'name':
-                    state.cityForm = {
-                        ...state.cityForm,
-                        name: value,
-                    }
+                    state.cityForm.name = value as string
                     break;
                 case 'isActive':
-                    state.cityForm.isActive = value === '1' || value === 'true';
+                    state.cityForm.isActive = value as boolean;
                     break;
                 case 'createdBy':
-                    state.cityForm = {
-                        ...state.cityForm,
-                        createdBy: value,
-                    }
+                    state.cityForm.createdBy = value as string
                     break;
                 case 'updatedBy':
-                    state.cityForm = {
-                        ...state.cityForm,
-                        updatedBy: value,
-                    }
+                    state.cityForm.updatedBy = value as string
                     break;
                 default:
-                    state.cityForm = {
-                        ...state.cityForm,
-                        [key]: value,
-                    }
                     break;
             }
         }

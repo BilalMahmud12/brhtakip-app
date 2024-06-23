@@ -9,6 +9,14 @@ import { RootState, AppDispatch } from '@/reduxStore/store';
 import { client } from '@/repository';
 import { listCities, listDistricts, listAreas } from '@/graphql/queries';
 
+import Button from '@mui/material/Button';
+import SaveIcon from '@mui/icons-material/Save';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import AutoComplete from '@/components/core/autoComplete';
+import TextField from '@mui/material/TextField';
+import { FormControlLabel } from '@mui/material';
+import Switch from '@mui/material/Switch';
+
 interface CreateOrUpdateFormProps {
     isCreate?: boolean;
     brand?: Store;
@@ -98,8 +106,71 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     };
 
     return (
-        <div>
-            <form>
+        <div className='h-full'>
+            <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6'>
+                <div className='p-6 bg-white shadow col-span-3'>
+                    <div className='input-group w-full col-span-1 lg:col-span-1'>
+                        <label htmlFor="_name" className='block text-xs font-medium mb-1.5'>Mağaza Adı *</label>
+                        <TextField
+                            id='material_name'
+                            variant="standard"
+                            sx={{ width: '100%' }}
+                            helperText={''}
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                dispatch(handleFormChange({ key: 'name', value: event.target.value }))
+                            }}
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div className='my-2 pt-5' />
+
+            <div className='p-6 bg-white shadow'>
+                <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6'>
+                    <div className='input-group w-full col-span-1 lg:col-span-1'>
+                        <label htmlFor="city" className='block text-xs font-medium mb-1.5'>Sehir *</label>
+                        {/* <AutoComplete
+                            id=""
+                            options={citiesList}
+                            value={ }
+                            handleOnChange={ }
+                        /> */}
+                    </div>
+                    <div className='input-group w-full col-span-1 lg:col-span-1'>
+                        <label htmlFor="material_name" className='block text-xs font-medium mb-1.5'>İlçe *</label>
+                        <TextField
+                            id='material_name'
+                            variant="standard"
+                            sx={{ width: '100%' }}
+                            helperText={''}
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                dispatch(handleFormChange({ key: 'name', value: event.target.value }))
+                            }}
+                        />
+                    </div>
+                    <div className='input-group w-full col-span-1 lg:col-span-1'>
+                        <label htmlFor="material_name" className='block text-xs font-medium mb-1.5'>Mağaza Adı *</label>
+                        <TextField
+                            id='material_name'
+                            variant="standard"
+                            sx={{ width: '100%' }}
+                            helperText={''}
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                dispatch(handleFormChange({ key: 'name', value: event.target.value }))
+                            }}
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default CreateOrUpdateForm;
+
+/*
+<form>
                 <div className=''>
                     <div className='grid grid-cols-2 gap-8'>
                         <div className='input-group col-span-3'>
@@ -123,7 +194,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                         <div className='bg-gray-100 px-6 py-8 rounded-md shadow'>
                             <div className='grid grid-cols-3 gap-8'>
                                 <div className='input-group col-span-1'>
-                                    <Label htmlFor="city_name" className='block text-xs font-medium mb-1.5'>Sehir</Label>
+                                    <Label htmlFor="city_name" className='block text-xs font-medium mb-1.5'></Label>
                                     <Autocomplete
                                         id="city_name"
                                         label="Sehir"
@@ -227,8 +298,4 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                     <div className='my-2 pt-5' />
                 </div>
             </form>
-        </div>
-    );
-};
-
-export default CreateOrUpdateForm;
+*/

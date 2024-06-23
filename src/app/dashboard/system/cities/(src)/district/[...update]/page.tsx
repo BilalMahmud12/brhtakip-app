@@ -1,14 +1,14 @@
 'use client'
 import React, { useEffect } from "react";
 import { Breadcrumbs, Button } from '@aws-amplify/ui-react';
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { AppDispatch, RootState } from "@/lib/store";
+import { useAppDispatch, useAppSelector } from "@/reduxStore/hooks";
+import { AppDispatch, RootState } from "@/reduxStore/store";
 import * as Repo from '@/repository/index';
 import type { Area, District } from '@/API';
 import AreaView from "../src/areas/src/areaView";
-import { setAreas } from "@/lib/features/areaSlice";
+import { setAreas } from "@/reduxStore/features/areaSlice";
 import CreateOrUpdateForm from "../src/createOrUpdateForm";
-import { setDistricts } from "@/lib/features/districtSlice";
+import { setDistricts } from "@/reduxStore/features/districtSlice";
 import { useRouter } from "next/navigation";
 
 const updateDistrict: React.FC = () => {

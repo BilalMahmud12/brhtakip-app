@@ -59,28 +59,25 @@ export const dataTables = {
 
     cities: {
         columns: [
-            { label: '', key: 'checkbox', width: '2%' },
-            { label: 'Şehir', key: 'name', width: '70%' },
-            { label: 'Durum', key: 'isActive', width: '5%' },
-            { label: '', key: 'actions', width: '2%' },
+            { label: 'Şehir', key: 'name', width: '240%' },
+            { label: 'Durum', key: 'isActive', width: '80' },
+            { label: '', key: 'actions', width: '150' },
         ]
     },
 
     districts: {
         columns: [
-            { label: '', key: 'checkbox', width: '2%' },
-            { label: 'İlçe', key: 'name', width: '70%' },
-            { label: 'Durum', key: 'isActive', width: '5%' },
-            { label: '', key: 'actions', width: '2%' },
+            { label: 'İlçe', key: 'name', width: '240' },
+            { label: 'Durum', key: 'isActive', width: '80' },
+            { label: '', key: 'actions', width: '150' },
         ]
     },
 
     areas: {
         columns: [
-            { label: '', key: 'checkbox', width: '2%' },
-            { label: 'mahalle', key: 'name', width: '70%' },
-            { label: 'Durum', key: 'isActive', width: '5%' },
-            { label: '', key: 'actions', width: '2%' },
+            { label: 'mahalle', key: 'name', width: '240' },
+            { label: 'Durum', key: 'isActive', width: '80' },
+            { label: '', key: 'actions', width: '150' },
         ]
     },
 }

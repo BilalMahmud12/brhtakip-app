@@ -69,70 +69,51 @@ const storeSlice = createSlice({
             const { key, value } = action.payload
             switch (key) {
                 case 'cityID':
-                    state.storeForm = {
-                        ...state.storeForm,
-                        cityID: value,
-                    }
+                    state.storeForm.areaID = value as string
                     break;
                 case 'districtID':
-                    state.storeForm = {
-                        ...state.storeForm,
-                        districtID: value,
-                    }
+                    state.storeForm.districtID = value as string
                     break;
                 case 'areaID':
-                    state.storeForm = {
-                        ...state.storeForm,
-                        areaID: value,
-                    }
+                    state.storeForm.areaID = value as string
                     break;
                 case 'name':
-                    state.storeForm = {
-                        ...state.storeForm,
-                        name: value,
-                    }
+                    state.storeForm.name = value as string
                     break;
                 case 'address':
-                    state.storeForm = {
-                        ...state.storeForm,
-                        address: value,
-                    }
+                    state.storeForm.address = value as string
                     break;
-                case 'phones':
-                    state.storeForm = {
-                        ...state.storeForm,
-                        phones: JSON.stringify([...state.storeForm.phones as unknown as string[], value as string])
-                    }
-                    break;
-                case 'email':
-                    state.storeForm = {
-                        ...state.storeForm,
-                        email: JSON.stringify([...state.storeForm.email as unknown as string[], value as string]),
-                    }
-                    break;
-                case 'notes':
-                    state.storeForm = {
-                        ...state.storeForm,
-                        notes: JSON.stringify([...state.storeForm.notes as unknown as string[], value as string]),
-                    }
-                    break;
-                case 'created_by':
-                    state.storeForm = {
-                        ...state.storeForm,
-                        created_by: value,
-                    }
-                    break;
-                case 'updated_by':
-                    state.storeForm = {
-                        ...state.storeForm,
-                        updated_by: value,
-                    }
-                    break;
+                // case 'phones':
+                //     state.storeForm = {
+                //         ...state.storeForm,
+                //         phones: JSON.stringify([...state.storeForm.phones as unknown as string[], value as string])
+                //     }
+                //     break;
+                // case 'email':
+                //     state.storeForm = {
+                //         ...state.storeForm,
+                //         email: JSON.stringify([...state.storeForm.email as unknown as string[], value as string]),
+                //     }
+                //     break;
+                // case 'notes':
+                //     state.storeForm = {
+                //         ...state.storeForm,
+                //         notes: JSON.stringify([...state.storeForm.notes as unknown as string[], value as string]),
+                //     }
+                //     break;
+                // case 'created_by':
+                //     state.storeForm = {
+                //         ...state.storeForm,
+                //         created_by: value,
+                //     }
+                //     break;
+                // case 'updated_by':
+                //     state.storeForm = {
+                //         ...state.storeForm,
+                //         updated_by: value,
+                //     }
+                //     break;
                 default:
-                    state.storeForm = {
-                        ...state.storeForm,
-                        [key]: value,
-                    }
                     break;
             }
         }

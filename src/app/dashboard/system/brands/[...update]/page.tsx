@@ -17,7 +17,9 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 const UpdateBrand: React.FC = (() => {
     const router = useRouter();
+
     usePathname();
+
     const [haveProduct, setHaveProduct] = useState<boolean>(false);
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
@@ -98,12 +100,12 @@ const UpdateBrand: React.FC = (() => {
                 </div>
             </div>
 
-            {/* <ProductView
+            <ProductView
                 haveProduct={haveProduct}
                 brandId={brandForm.id}
                 filteredProducts={filteredProducts}
                 fetchFilteredProducts={fetchFilteredProducts}
-            />  */}
+            />
         </div>
     );
 });

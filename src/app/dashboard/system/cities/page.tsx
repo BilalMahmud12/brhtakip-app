@@ -4,9 +4,9 @@ import { Breadcrumbs } from '@aws-amplify/ui-react';
 import type { City } from '@/API';
 import * as Repo from '@/repository/index';
 
-import { useAppDispatch } from '@/lib/hooks';
-import { AppDispatch } from '@/lib/store';
-import { setCities } from '@/lib/features/citySlice';
+import { useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch } from '@/reduxStore/store';
+import { setCities } from '@/reduxStore/features/citySlice';
 import CityView from "./(src)/cityView";
 
 const City: React.FC = () => {
