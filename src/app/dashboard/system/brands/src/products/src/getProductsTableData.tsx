@@ -5,6 +5,10 @@ import { Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@
 import { useRouter } from 'next/navigation';
 import Icon from '@/components/core/icon';
 
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 export default function getProductsTableData(
     data: Product[],
@@ -26,7 +30,10 @@ export default function getProductsTableData(
                     case 'name':
                         row[column.key] = (
                             <div className='hover:underline hover:text-blue-700 cursor-pointer'
-                                onClick={() => handleEdit(product)}
+                                onClick={() => {
+                                    router.push(`/dashboard/system/brands/src/products/update`);
+                                    handleEdit(product)
+                                }}
                             >
                                 {product.name}
                             </div>
@@ -35,10 +42,14 @@ export default function getProductsTableData(
 
                     case 'isActive':
                         row[column.key] = (
-                            <Badge variation={product.isActive ? 'success' : 'error'}>
-                                {product.isActive ? 'Aktif' : 'İnaktif'}
-                            </Badge>
-                        );
+                            <div className='flex items-center space-x-1 h-full'>
+                                <FiberManualRecordIcon
+                                    color={product.isActive === true ? 'success' : 'disabled'}
+                                    fontSize="small"
+                                />
+                                <span className='text-xs block font-medium'>{product.isActive === true ? 'Aktif' : 'Aktif Değil'}</span>
+                            </div>
+                        )
                         break;
 
                     // case 'brandID':
@@ -51,35 +62,27 @@ export default function getProductsTableData(
 
                     case 'actions':
                         row[column.key] = (
-                            <div className='flex justify-center'>
-                                <Dropdown>
-                                    <DropdownTrigger>
-                                        <Button
-                                            variant="light"
-                                            className='max-w-[25px] h-[30px] block w-[25px] min-w-0 hover:bg-transparent p-0.5'
-                                        >
-                                            <Icon iconName='GoKebabHorizontal' className='w-5 h-5' />
-                                        </Button>
-                                    </DropdownTrigger>
-                                    <DropdownMenu aria-label='row-actions'>
+                            <div className='flex items-center justify-center h-full'>
+                                <IconButton
+                                    aria-label="edit"
+                                    size="small"
 
-                                        {/* <DropdownItem
-                                            key="update"
-                                            startContent={<Icon iconName='FcSupport' className='w-5 h-5' />}
-                                            onClick={() => handleEdit(row)}
-                                        >
-                                            Güncelle
-                                        </DropdownItem> */}
+                                    onClick={() => {
+                                        router.push(`/dashboard/system/brands/products/update`);
+                                        handleEdit(product)
+                                    }}
+                                >
+                                    <EditIcon fontSize="inherit" />
+                                </IconButton>
 
-                                        <DropdownItem
-                                            key="cancel"
-                                            startContent={<Icon iconName='FcCancel' className='w-5 h-5' />}
-                                            onClick={() => handleDelete(row)}
-                                        >
-                                            Ürün Sil
-                                        </DropdownItem>
-                                    </DropdownMenu>
-                                </Dropdown>
+                                <IconButton
+                                    aria-label="delete"
+                                    size="small"
+
+                                    onClick={() => handleDelete(row)}
+                                >
+                                    <DeleteIcon fontSize="inherit" />
+                                </IconButton>
                             </div>
                         );
                         break;
