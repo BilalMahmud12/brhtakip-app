@@ -18,9 +18,9 @@ export const dataTables = {
     brands: {
         columns: [
             { label: 'Marka', key: 'name', width: '240' },
-            { label: 'Durum', key: 'isActive', width: '150' },
-            { label: 'Ürün S.', key: 'Products', width: '80' },
             { label: 'Müşteri', key: 'clientprofileID', width: '500' },
+            { label: 'Ürün S.', key: 'Products', width: '80' },
+            { label: 'Durum', key: 'isActive', width: '150' },
             { label: '', key: 'actions', width: '150' },
         ]
     },
@@ -52,7 +52,7 @@ export const dataTables = {
     stores: {
         columns: [
             { label: 'Mağaza', key: 'name', width: '240' },
-            { label: 'Adres', key: 'address', width: '500' },
+            { label: 'Adres', key: 'address', width: '800' },
             { label: '', key: 'actions', width: '80' },
         ]
     },
@@ -80,7 +80,7 @@ export const dataTables = {
             { label: '', key: 'actions', width: '150' },
         ]
     },
-    clients:{
+    clients: {
         columns: [
             { label: 'Firma Adı', key: 'name', width: '240' },
             { label: 'Kullanıcı', key: 'users', width: '100' },

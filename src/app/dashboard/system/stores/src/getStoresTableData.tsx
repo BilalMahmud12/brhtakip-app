@@ -33,6 +33,7 @@ export default function getStoresTableData(
                             <div
                                 className='hover:underline hover:text-blue-700 cursor-pointer'
                                 onClick={() => {
+                                    router.push(`/dashboard/system/stores/${store.id}`);
                                     handleEdit(store)
                                 }}
                             >
@@ -51,7 +52,6 @@ export default function getStoresTableData(
                                 <IconButton
                                     aria-label="edit"
                                     size="small"
-                                    color='primary'
                                 // onClick={}
                                 >
                                     <EditIcon fontSize="inherit" />
@@ -60,7 +60,6 @@ export default function getStoresTableData(
                                 <IconButton
                                     aria-label="delete"
                                     size="small"
-                                    color='error'
                                     onClick={() => handleDelete(row)}
                                 >
                                     <DeleteIcon fontSize="inherit" />

@@ -107,6 +107,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     return (
         <div className='h-full'>
+            <div className='my-2 pt-5' />
             <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6'>
                 <div className='p-6 bg-white shadow col-span-3'>
                     <div className='input-group w-full col-span-1 lg:col-span-1'>
@@ -150,7 +151,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                         />
                     </div>
                     <div className='input-group w-full col-span-1 lg:col-span-1'>
-                        <label htmlFor="material_name" className='block text-xs font-medium mb-1.5'>Mağaza Adı *</label>
+                        <label htmlFor="material_name" className='block text-xs font-medium mb-1.5'>Mahalle *</label>
                         <TextField
                             id='material_name'
                             variant="standard"
@@ -158,6 +159,25 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             helperText={''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
+                            }}
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div className='my-2 pt-5' />
+
+            <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6'>
+                <div className='p-6 bg-white shadow col-span-3'>
+                    <div className='input-group w-full col-span-1 lg:col-span-1'>
+                        <label htmlFor="_name" className='block text-xs font-medium mb-1.5'>Adres *</label>
+                        <TextField
+                            id='material_name'
+                            variant="standard"
+                            sx={{ width: '100%' }}
+                            helperText={''}
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                dispatch(handleFormChange({ key: 'address', value: event.target.value }))
                             }}
                         />
                     </div>
