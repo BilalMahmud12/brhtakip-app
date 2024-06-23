@@ -8,6 +8,7 @@ import { useDataModal } from '@/contexts/DataModalContext';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import CheckIcon from '@mui/icons-material/Check';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useRouter } from "next-nprogress-bar";
 import AutoComplete from "@/components/core/autoComplete";
@@ -17,8 +18,6 @@ const getClientOptions = (clientProfiles: any[]) => {
         return { value: client.id, label: client.name }
     })
 }
-
-
 
 const UsersView: React.FC = () => {
     const router = useRouter()
@@ -42,7 +41,6 @@ const UsersView: React.FC = () => {
                     <div className='flex items-center justify-between'>
                         <div className='flex items-center space-x-3'>
                             <h1 className='text-2xl font-semibold'>Kullanıcılar</h1>
-                            
                         </div>
 
                         <div className="flex items-center space-x-3">
@@ -52,6 +50,7 @@ const UsersView: React.FC = () => {
                                 startIcon={<FilterAltIcon />}
                                 onClick={() => setShowFilter(!showFilter)}
                                 sx={{ backgroundColor: '#fff' }}
+                                disableElevation
                             >
                                 Filtre
                             </Button>
@@ -62,6 +61,7 @@ const UsersView: React.FC = () => {
                                     color="error"
                                     startIcon={<DeleteIcon />}
                                     onClick={() => console.log('delete', selectedUsers)}
+                                    disableElevation
                                 >
                                     Seçildikleri Sil
                                 </Button>
@@ -71,6 +71,7 @@ const UsersView: React.FC = () => {
                                 variant="contained"
                                 startIcon={<AddIcon />}
                                 onClick={() => router.push('/dashboard/users/create')}
+                                disableElevation
                             >
                                 Kullanıcı Ekle
                             </Button>
@@ -96,6 +97,18 @@ const UsersView: React.FC = () => {
                                         }}
                                     />
                                 </div>
+                            </div>
+
+                            <div className="flex items-center justify-end space-x-3">
+                                <Button
+                                    variant="contained"
+                                    color="inherit"
+                                    startIcon={<CheckIcon />}
+                                    onClick={() => router.push('/dashboard/users/create')}
+                                    disableElevation
+                                >
+                                    Uygula
+                                </Button>
                             </div>
                         </div>
                     )}

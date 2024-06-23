@@ -4,7 +4,7 @@ import { permissions } from '@/config/index';
 import withAuthorization from '../../../withAuthorization';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { RootState, AppDispatch } from '@/reduxStore/store';
-import { handleFormChange, setUserForm } from '@/reduxStore/features/userSlice';
+import { setUserForm } from '@/reduxStore/features/userSlice';
 import CreateOrUpdateForm from '../src/createOrUpdateForm'
 import * as Repo from '@/repository'
 import { toast } from 'sonner';
@@ -87,4 +87,4 @@ const UpdateUser: React.FC = () => {
     );
 }
 
-export default withAuthorization([permissions.VIEW_REQUESTS])(UpdateUser)
+export default withAuthorization([permissions.UPDATE_USERS])(UpdateUser)

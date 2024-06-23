@@ -13,6 +13,8 @@ export interface DataTableColumn {
     label: string;
     width?: string;
     transform?: (value: any, data: any) => JSX.Element | string;
+    sortable?: boolean;
+    disableColumnMenu?: boolean;
 }
 
 type DataTableProps = {
@@ -39,6 +41,8 @@ const DataTable: React.FC<DataTableProps> = (props) => {
         field: column.key,
         headerName: column.label,
         width: column.width ? parseInt(column.width) : 200,
+        sortable: column.sortable || false,
+        disableColumnMenu: column.disableColumnMenu || false,
         renderCell: (params) => {
             return column.transform ? column.transform(params.value, params.row) : params.value;
         }
@@ -72,6 +76,7 @@ const DataTable: React.FC<DataTableProps> = (props) => {
                 checkboxSelection
                 disableColumnResize
                 autoHeight
+                loading={data.length === 0}
             />
         </div>
     );

@@ -12,10 +12,11 @@ interface AutoCompleteProps {
     label?: string;
     value: string;
     handleOnChange: (option: string | Option | null, reason: string) => void;
+    variant?: 'standard' | 'outlined' | 'filled';
 }
 
 const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
-    const { id, options, label, value, handleOnChange = () => {} } = props
+    const { id, options, label, value, handleOnChange = () => { }, variant = 'standard' } = props
     const [currentValue, setCurrentValue] = React.useState('')
 
     React.useEffect(() => {
@@ -33,8 +34,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
                     setCurrentValue(typeof option === 'string' ? option : (option as unknown as Option)?.value || '')
                     handleOnChange(option, resason)
                 }}
-
-                renderInput={(params) => <TextField {...params} label={label} variant="standard" />}
+                renderInput={(params) => <TextField {...params} label={label} variant={variant} size='small' />}
             />
         </div>
     )

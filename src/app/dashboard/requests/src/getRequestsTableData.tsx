@@ -5,6 +5,10 @@ import { Badge, BadgeVariations  } from '@aws-amplify/ui-react'
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import Icon from '@/components/core/icon';
 import DetailedRequestTableCell from './requestsTable/detailedRequestTableCell';
+import IconButton from '@mui/material/IconButton';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Chip from '@mui/material/Chip';
 
 const getStatus = (status: string) => {
     switch (status) {
@@ -49,7 +53,11 @@ export default function getRequestsTableData(
                 switch (column.key) {
                     case 'requestNumber':
                         row[column.key] = (
-                            <span className='hover:underline hover:text-blue-700 hover:cursor-pointer'>{request.requestNumber}</span>
+                            <div className='h-full flex items-center'>
+                                <span className='block px-3 py-1 bg-yellow-100 rounded-sm border border-yellow-300 w-full text-xs text-gray-800 font-bold font-mono hover:underline hover:text-blue-700 hover:cursor-pointer'>
+                                    {request.requestNumber}
+                                </span>
+                            </div>
                         )
                         break;
 
@@ -64,9 +72,12 @@ export default function getRequestsTableData(
 
                     case 'status':
                         row[column.key] = (
-                            <Badge variation={getStatus(request.status as string).color as BadgeVariations} size="small">
-                                {getStatus(request.status as string).text}
-                            </Badge>
+                            <Chip 
+                                label={getStatus(request.status as string).text}
+                                size="small"
+                                sx={{ backgroundColor: '#f7f7f7', color: '#333333' }}
+                                className='bg-[#f7f7f7] text-[#333333] border border-[#f7f7f7]'
+                            />
                         );
                         break;
 
@@ -75,7 +86,7 @@ export default function getRequestsTableData(
                         break;
 
                     case 'store':
-                        row[column.key] = request.Store?.name;
+                        row[column.key] = `${request.Store?.name} - ${request.Store?.District?.name} - ${request.Store?.Area?.name}`
                         break;
 
                     case 'createdAt':
@@ -84,42 +95,53 @@ export default function getRequestsTableData(
                         
                     case 'actions':
                         row[column.key] = (
-                            <div className='flex justify-center'>
-                                <Dropdown>
-                                    <DropdownTrigger>
-                                        <Button
-                                            variant="light"
-                                            className='max-w-[25px] h-[30px] block w-[25px] min-w-0 hover:bg-transparent p-0.5'
-                                        >
-                                            <Icon iconName='GoKebabHorizontal' className='w-5 h-5' />
-                                        </Button>
-                                    </DropdownTrigger>
-                                    <DropdownMenu aria-label='row-actions'>
-                                        <DropdownItem
-                                            key="update-status"
-                                            startContent={<Icon iconName='FcSerialTasks' className='w-5 h-5' />}
-                                            onClick={() => handleEdit(row)}
-                                        >
-                                            Durumu Güncelle
-                                        </DropdownItem>
+                            <>
+                                <div className='flex items-center  h-full'>
+                                    <IconButton
+                                        size='small'
+                                        onClick={() => handleEdit(request)}
+                                    >
+                                        <EditIcon fontSize='small' />
+                                    </IconButton>
+                                </div>
 
-                                        <DropdownItem
-                                            key="update"
-                                            startContent={<Icon iconName='FcSupport' className='w-5 h-5' />}
-                                            onClick={() => handleEdit(row)}
-                                        >
-                                            Talep Güncelle
-                                        </DropdownItem>
+                                <div className='flex justify-center'>
+                                    <Dropdown>
+                                        <DropdownTrigger>
+                                            <Button
+                                                variant="light"
+                                                className='max-w-[25px] h-[30px] block w-[25px] min-w-0 hover:bg-transparent p-0.5'
+                                            >
+                                                <Icon iconName='GoKebabHorizontal' className='w-5 h-5' />
+                                            </Button>
+                                        </DropdownTrigger>
+                                        <DropdownMenu aria-label='row-actions'>
+                                            <DropdownItem
+                                                key="update-status"
+                                                startContent={<Icon iconName='FcSerialTasks' className='w-5 h-5' />}
+                                                onClick={() => handleEdit(row)}
+                                            >
+                                                Durumu Güncelle
+                                            </DropdownItem>
 
-                                        <DropdownItem
-                                            key="cancel"
-                                            startContent={<Icon iconName='FcCancel' className='w-5 h-5' />}
-                                        >
-                                            Talep İptal Et
-                                        </DropdownItem>
-                                    </DropdownMenu>
-                                </Dropdown>
-                            </div>
+                                            <DropdownItem
+                                                key="update"
+                                                startContent={<Icon iconName='FcSupport' className='w-5 h-5' />}
+                                                onClick={() => handleEdit(row)}
+                                            >
+                                                Talep Güncelle
+                                            </DropdownItem>
+
+                                            <DropdownItem
+                                                key="cancel"
+                                                startContent={<Icon iconName='FcCancel' className='w-5 h-5' />}
+                                            >
+                                                Talep İptal Et
+                                            </DropdownItem>
+                                        </DropdownMenu>
+                                    </Dropdown>
+                                </div>
+                            </>
                         );
                         break;
                     default:
