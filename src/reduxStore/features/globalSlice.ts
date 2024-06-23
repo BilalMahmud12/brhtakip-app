@@ -4,7 +4,7 @@ import type {
     UserProfile as UserProfileType, 
 } from '@/API'
 
-type ClientProfile = Omit<ClientProfileType, '__typename'>
+type ClientProfile = Omit<ClientProfileType, '__typename' | 'createdAt' | 'updatedAt'>
 type UserProfile = Omit<UserProfileType, '__typename'>
 
 interface GlobalState {
@@ -21,8 +21,6 @@ const initialState: GlobalState = {
         id: '',
         name: '',
         isActive: false,
-        createdAt: '',
-        updatedAt: '',
     },
     currentUserProfile: {
         id: '',

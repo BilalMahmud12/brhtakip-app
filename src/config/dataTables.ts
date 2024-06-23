@@ -80,4 +80,13 @@ export const dataTables = {
             { label: '', key: 'actions', width: '150' },
         ]
     },
+    clients:{
+        columns: [
+            { label: 'Firma Adı', key: 'name', width: '240' },
+            { label: 'Kullanıcı', key: 'users', width: '100' },
+            { label: 'Markalar', key: 'brands', width: '100' },
+            { label: 'Durum', key: 'status', width: '120' },
+            { label: '', key: 'actions', width: '80' },
+        ]
+    }
 }

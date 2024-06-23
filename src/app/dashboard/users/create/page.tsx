@@ -40,7 +40,9 @@ const UserCreatePage: React.FC = () => {
             }
 
             userProfile.cognitoID = cognitoUser.userId
-            const response = await Repo.UserRepository.create(userProfile)
+            
+            const { id, ...cleanedUserProfile} = userProfile
+            const response = await Repo.UserRepository.create(cleanedUserProfile)
 
             console.log(response)
 
