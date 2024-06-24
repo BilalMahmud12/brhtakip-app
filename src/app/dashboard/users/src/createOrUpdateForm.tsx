@@ -109,11 +109,17 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>
                 <div className='h-full col-span-2'>
                     <div className='flex items-center justify-between'>
-                        <Button variant="text" startIcon={<ArrowBackIosIcon />} onClick={() => router.push('/dashboard/users')}>
+                        <Button 
+                            variant="text" 
+                            startIcon={<ArrowBackIosIcon />} 
+                            onClick={() => router.push('/dashboard/users')}
+                            disableElevation
+                            color='inherit'
+                        >
                             Kullanıcılara Geri Dön
                         </Button>
 
-                        <Button variant="contained" startIcon={<SaveIcon />} onClick={onSubmitted}>
+                        <Button variant="contained" startIcon={<SaveIcon />} onClick={onSubmitted} disableElevation>
                             Kaydı Et
                         </Button>
                     </div>

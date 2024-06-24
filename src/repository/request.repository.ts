@@ -30,7 +30,7 @@ const getRequestById = async (id: string) => {
     }
 }
 
-const getRequestsByStatus = async (status: string) => {
+const getRequestsByStatus = async (status: string, clientId: string | undefined = undefined) => {
     try {
         const { data } = await client.graphql({
             query: listRequests,
@@ -38,12 +38,14 @@ const getRequestsByStatus = async (status: string) => {
                 filter: { 
                     status: { 
                         eq: status as RequestStatus 
-                    } 
+                    },
+                    ...(clientId && { clientprofileID: { eq: clientId } })
                 },
-                limit: 500 
+                limit: 100 
             },
         });
 
+        console.log('getRequestsByStatus', data)
         return data.listRequests.items;
     } catch (error) {
         console.error(error);

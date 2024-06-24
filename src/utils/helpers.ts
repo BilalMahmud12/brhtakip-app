@@ -12,3 +12,7 @@ export const generateRequestNumber = (): string => {
     const Year = new Date().getFullYear();
     return `BRH-${Year}-${Math.floor(Math.random() * 1000000)}`
 }
+
+export const findKeyByValue = (obj: { [key: string]: string }, value: string): string | undefined => {
+    return Object.keys(obj).find(key => obj[key] === value);
+}

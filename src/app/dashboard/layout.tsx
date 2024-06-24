@@ -52,7 +52,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
         duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: 'hidden',
-    width: `calc(${theme.spacing(7)} + 1px)`,
+    width: 0, //`calc(${theme.spacing(7)} + 1px)` 0,
     [theme.breakpoints.up('sm')]: {
         width: `calc(${theme.spacing(8)} + 1px)`,
     },
@@ -206,13 +206,14 @@ export default function RootLayout({
                         alt="Logo"
                         width={120}
                         height={30}
-                        className='cursor-pointer mr-12'
-                        onClick={() => router.push('/')} 
+                        className='cursor-pointer mr-12 w-[120px] h-auto'
+                        onClick={() => router.push('/dashboard')}
+                        priority 
                     />
 
                     <Divider orientation="vertical" flexItem />
 
-                    <div>
+                    <div className='hidden sm:block'>
                         <div className=''>
                             <span className='flex flex-col ml-6'>
                                 <span className='text-sm text-gray-800 font-medium flex items-center space-x-2'>
@@ -308,7 +309,7 @@ export default function RootLayout({
                 </List>
             </Drawer>
 
-            <Box component="main" sx={{ flexGrow: 1, p: 3, background: '#f4f4f5', marginTop: '64px', minHeight: 'calc(100vh - 64px)' }}>
+            <Box component="main" sx={{ flexGrow: 1, p: 3, background: '#f4f4f5', marginTop: '54px', minHeight: 'calc(100vh - 54px)' }}>
                 {children}
             </Box>
         </Box>

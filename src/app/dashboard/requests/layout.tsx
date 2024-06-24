@@ -48,6 +48,8 @@ export default function RequestLayout(
 ) {
     const pathname = usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
+    const currentClientProfile = useAppSelector((state: RootState) => state.global.currentClientProfile);
+    console.log('currentClientProfile', currentClientProfile)
     
     const statusMap: { [key: string]: string } = {
         'pending-approval': 'PENDING_APPROVAL',
@@ -64,9 +66,10 @@ export default function RequestLayout(
     };
 
     useEffect(() => {
+        console.log('from useEffect')
         const fetchData = async () => {
             dispatch(setIsFetching(true));
-            const requestsData = await Repo.RequestRepository.getRequestsByStatus(`${requestStatus()}`);
+            const requestsData = await Repo.RequestRepository.getRequestsByStatus(`${requestStatus()}`, currentClientProfile?.id === 'BRH_ADMIN' ? undefined : currentClientProfile?.id);
 
             if (requestsData) {
                 const sortedRequests = (requestsData as unknown as Request[]).sort((a, b) => {
@@ -80,14 +83,14 @@ export default function RequestLayout(
             dispatch(setIsFetching(false));
         };
 
-        if (requestStatus() !== undefined) {
+        if (requestStatus() !== undefined && currentClientProfile.isActive) {
             fetchData();
         }
-    }, [pathname]);
+    }, [pathname, currentClientProfile]);
     
     return (
         <div>
-            <div className='hidden sm:grid grid-cols-6 border-b border-zinc-200'>
+            <div className='hidden  grid-cols-6 border-b border-zinc-200'>
                 {requestNavigation.map((nav, index) => (
                     <Link
                         onClick={() => dispatch(setRequests([]))}

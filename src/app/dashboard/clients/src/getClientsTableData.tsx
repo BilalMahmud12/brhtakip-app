@@ -24,14 +24,14 @@ export default function getClientsTableData(
                     break;
                 case 'users':
                     row[column.key] = (
-                        <div className='h-full flex items-center ml-3'>
+                        <div className='h-full flex items-center ml-3.5'>
                             <span className='flex items-center justify-center w-6 h-6 rounded-full bg-green-100 border border-green-200 text-xs font-medium'>{client.UserProfiles?.items.length}</span>
                         </div>
                     )
                     break;
                 case 'brands':
                     row[column.key] = (
-                        <div className='h-full flex items-center ml-3'>
+                        <div className='h-full flex items-center ml-3.5'>
                             <span className='flex items-center justify-center w-6 h-6 rounded-full bg-red-100 border border-red-200 text-xs font-medium'>{client.Brands?.items.length}</span>
                         </div>
                     )
@@ -49,7 +49,7 @@ export default function getClientsTableData(
                     break;
                 case 'actions':
                     row[column.key] = (
-                        <div className='flex items-center space-x-2'>
+                        <div className='flex items-center  h-full'>
                             <IconButton
                                 size='small'
                                 onClick={() => handleEdit(client)}

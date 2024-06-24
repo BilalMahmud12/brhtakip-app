@@ -2,8 +2,10 @@
 export const dataTables = {
     requests: {
         columns: [
-            { label: '', key: 'checkbox', width: '2%' },
-            { label: 'Talep Detaiları', key: 'detailed', width: '98%' },
+            { label: '', key: 'actions', width: '30', sortable: false, disableColumnMenu: true },
+            { label: 'Talep Numarası', key: 'requestNumber', width: '150', sortable: false  },
+            { label: 'Mağaza', key: 'store', width: '450', sortable: false },
+            { label: 'Marka', key: 'brand', width: '300', sortable: false },
         ]
     },
     users: {

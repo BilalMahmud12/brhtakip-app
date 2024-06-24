@@ -6,105 +6,21 @@ import { useDataModal } from '@/contexts/DataModalContext';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { setRequests, resetFormValues, setIsFetching } from '@/reduxStore/features/requestSlice';
-import { Pagination, Button as UIButton } from "@nextui-org/react";
-import { SelectField, Button } from '@aws-amplify/ui-react'
-import RequestDataCards from './requestDataCards';
-import ClientSelectForm from './clientSelectForm';
-import CreateOrUpdateForm from './createOrUpdateForm';
-import { statusMap } from '@/config';
+import { SelectField } from '@aws-amplify/ui-react'
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
+import AddIcon from '@mui/icons-material/Add';
+import RequestsDataTable from './requestsDataTable';
+import { statusMap, requestStatusOptions } from '@/config';
+
 import { toast } from 'sonner';
-
+import { useRouter } from "next-nprogress-bar";
 import type { Request, RequestStatus } from '@/API';
-
-const SelectClientModalFooter = (
-    props: {
-        handleConfirm: () => void
-        handleCancel?: () => void;
-    }
-) => {
-    const {
-        handleConfirm = () => {},
-        handleCancel = () => { },
-    } = props
-
-    return (
-        <div className='flex items-center justify-between'>
-            <div className='flex items-center space-x-3'>
-                <Button
-                    variation="primary"
-                    colorTheme="success"
-                    size="small"
-                    loadingText=""
-                    onClick={handleCancel}
-                    className='rounded-none bg-transparent text-gray-800 px-6 font-bold'
-                >
-                    <span>İptal Et</span>
-                </Button>
-
-                <Button
-                    variation="primary"
-                    colorTheme="success"
-                    size="small"
-                    loadingText=""
-                    onClick={handleConfirm}
-                    className='rounded-none bg-amber-500 text-gray-800 font-bold px-6'
-                >
-                    <span className='flex items-center space-x-2'>
-                        <span>Devam Et</span>
-                    </span>
-                </Button>                
-            </div>
-        </div>
-    )
-}
-
-const ModalCustomFooter = (
-    props: {
-        type: 'create' | 'update'
-        handleCreate?: (data: any) => void;
-        handleUpdate?: (data: any) => void;
-        handleCancel?: () => void;
-    }
-) => {
-    const {
-        type,
-        handleCreate = () => { },
-        handleUpdate = () => { },
-        handleCancel = () => { },
-    } = props;
-
-    return (
-        <div className='flex items-center justify-between'>
-            <div className='flex items-center space-x-3'>
-                <Button
-                    variation="primary"
-                    colorTheme="success"
-                    size="small"
-                    loadingText=""
-                    onClick={handleCancel}
-                    className='rounded-none bg-transparent text-gray-800 px-6 font-bold'
-                >
-                    <span>İPTAL ET</span>
-                </Button>
-
-                <Button
-                    variation="primary"
-                    colorTheme="success"
-                    size="small"
-                    loadingText=""
-                    onClick={type === 'create' ? handleCreate : handleUpdate}
-                    className='rounded-none bg-amber-500 text-zinc-800 font-bold px-6'
-                >
-                    <span className='flex items-center space-x-2'>
-                        <span>ONAYLA</span>
-                    </span>
-                </Button>
-            </div>
-        </div>
-    )
-}
+import AutoComplete from "@/components/core/autoComplete";
+import { findKeyByValue } from '@/utils/helpers';
 
 const RequestsView: React.FC = () => {
+    const router = useRouter();
     const pathname = usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
 
@@ -112,9 +28,19 @@ const RequestsView: React.FC = () => {
     const requests = useAppSelector((state: RootState) => state.request.requests);
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
     const selectedRequests = useAppSelector((state: RootState) => state.request.selectedRequests);
+    
+    const currentRequestStatus = (): string => {
+        const status: string = statusMap[pathname.split('/').pop() as string];
+        return status !== undefined ? status : 'PENDING_APPROVAL' as RequestStatus;
+    };
 
-    const { showDataModal, hideDataModal } = useDataModal();
-    const [currentPage, setCurrentPage] = React.useState(1);
+    const [selectedStatus, setSelectedStatus] = React.useState(currentRequestStatus);
+
+    const statusOptions: { value: string; label: string }[] = React.useMemo(() => {
+        return Object.keys(requestStatusOptions).map((key: string) => {
+            return { value: key, label: requestStatusOptions[key as keyof typeof requestStatusOptions] }
+        })
+    }, [])
 
     const requestFormRef = useRef(requestForm);
 
@@ -122,58 +48,11 @@ const RequestsView: React.FC = () => {
         requestFormRef.current = requestForm;
     }, [requestForm])
 
-    const requestStatus = (): string => {
-        const status: string = statusMap[pathname.split('/').pop() as string];
-        return status !== undefined ? status : 'PENDING_APPROVAL' as RequestStatus;
-    };
-
-    const handleCancelForm = () => {
-        dispatch(resetFormValues());
-        hideDataModal()
-    }
-
-    const handleCreateForm = () => {
-        if (userProfile.clientprofileID === 'BRH_ADMIN') {
-            showDataModal(
-                <div><span className='text-sm font-bold'>Müşteri Seç</span></div>,
-                <ClientSelectForm />,
-                <SelectClientModalFooter
-                    handleCancel={handleCancelForm}
-                    handleConfirm={() => {
-                        hideDataModal()
-                        showDataModal(
-                            <div><span className='text-base font-bold'>Talep Oluştur</span></div>,
-                            <CreateOrUpdateForm
-                                isCreate={true}
-                            />,
-                            <ModalCustomFooter
-                                type='create'
-                                handleCreate={handleCreateRequest}
-                                handleCancel={handleCancelForm}
-                            />
-                        )
-                    }}
-                />
-            )
-        } else {
-            
-        }
-    }
-
-    const handleUpdateForm = (data: any) => {
-        console.log('Edit', data)
-        showDataModal(
-            <div><span className='text-sm font-bold'>Talep Güncelle</span></div>,
-            <CreateOrUpdateForm
-                isCreate={false}
-                request={data}  
-            />,
-            <ModalCustomFooter
-                type='update'
-                handleUpdate={handleUpdateRequest} 
-                handleCancel={handleCancelForm} 
-            />
-        )
+    const handleStatusChange = () => {
+        const baseUrl = '/dashboard/requests'; 
+        const slug = findKeyByValue(requestStatusOptions, selectedStatus)?.toLowerCase().replace('_', '-')
+        router.push(`${baseUrl}${slug === 'pending-approval' ? '' : `/${slug}`}`)
+        dispatch(setRequests([]))
     }
 
     const handleCreateRequest = async () => {
@@ -183,11 +62,10 @@ const RequestsView: React.FC = () => {
 
             if (createRequest && createRequest.data) {
                 dispatch(setRequests([]))
-                hideDataModal()
                 toast.success(`${createRequest.data.createRequest.requestNumber} numaralı talep oluşturuldu.`);
                 dispatch(setIsFetching(true))
 
-                const newRequests = await Repo.RequestRepository.getRequestsByStatus(`${requestStatus()}`);
+                const newRequests = await Repo.RequestRepository.getRequestsByStatus(`${currentRequestStatus()}`);
 
                 const sortedRequests = (newRequests as unknown as Request[]).sort((a, b) => {
                     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
@@ -212,64 +90,77 @@ const RequestsView: React.FC = () => {
     
     return (
         <>   
-            <div className='mb-8 py-4'>
-                <div className='hidden sm:block px-6 py-3 bg-white shadow mb-4'>
+            <div className='mb-8'>
+                <div className="mb-4 space-y-5">
                     <div className='flex items-center justify-between'>
-                        <div className='flex items-center space-x-3'>
-
-                            {/* <SearchField
-                            label="Search"
-                            placeholder="Search here..."
-                            size="small"
-                            hasSearchButton={false}
-                            hasSearchIcon={true}
-                        /> */}
-
-                            <SelectField
-                                label="Seçilen Talepler Eylemleri"
-                                size="small"
-                                placeholder="Eylem Seçiniz ..."
-                                labelHidden={true}
-                                isDisabled={!selectedRequests.length}
-                            >
-                                <option value="IN_DESIGN">Tasarıma Aktar</option>
-                                <option value="IN_PRESS">Baskıya Aktar</option>
-                                <option value="IN_APPLICATION">Uygulamaya Aktar</option>
-                                <option value="COMPLETED">Tamamla</option>
-                                <option value="CANCELLED" disabled>İpat Et</option>
-                            </SelectField>
+                        <div className='flex flex-col items-start'>
+                            <h1 className='text-2xl font-semibold'>Talepler</h1>
+                            <p className='font-medium text-sm text-red-600'>Onayı Bekleyen Talepler</p>
                         </div>
 
-                        <div className='flex items-center space-x-3'>
+                        <div className="flex items-center space-x-3">
                             <Button
-                                variation="primary"
-                                colorTheme="success"
-                                size="small"
-                                loadingText=""
-                                onClick={handleCreateForm}
-                                className='rounded-md bg-amber-500 text-gray-800 px-6 py-1.5 h-[35px]'
+                                variant="contained"
+                                startIcon={<AddIcon />}
+                                onClick={() => router.push('/dashboard/requests/create')}
+                                disableElevation
                             >
-                                <span>Talep Oluştur</span>
-                            </Button>
-
-                            <Button
-                                variation="primary"
-                                colorTheme="success"
-                                size="small"
-                                loadingText=""
-                                onClick={() => { }}
-                                className='rounded-md bg-zinc-200 text-gray-800 px-6 py-1.5 h-[35px]'
-                            >
-                                <span>Ek Ürün Talep Oluştur</span>
+                                Talep Ekle
                             </Button>
                         </div>
                     </div>
+
+                    <div className='flex items-center justify-between'>
+                        <div className='flex items-center space-x-3'>
+                            <div className='input-group w-[292px] bg-white'>
+                                <AutoComplete
+                                    id="request_status"
+                                    options={statusOptions}
+                                    value={statusOptions.find(option => option.value === selectedStatus)?.label || 'Onay Bekliyor'}
+                                    handleOnChange={(option) => {
+                                        if (option && typeof option !== 'string') {
+                                            setSelectedStatus(option.label as RequestStatus)
+                                        }
+                                    }}
+                                    variant='outlined'
+                                />
+                            </div>
+
+                            <Button variant="contained" endIcon={<SendIcon />} onClick={handleStatusChange}>
+                                Git
+                            </Button>
+                        </div>
+                    </div>
+
+                    <div className='hidden px-6 py-3 bg-white shadow'>
+                        <div className='flex items-center justify-between'>
+                            <div className='flex items-center space-x-3'>
+                                <SelectField
+                                    label="Seçilen Talepler Eylemleri"
+                                    size="small"
+                                    placeholder="Eylem Seçiniz ..."
+                                    labelHidden={true}
+                                    isDisabled={!selectedRequests.length}
+                                >
+                                    <option value="IN_DESIGN">Tasarıma Aktar</option>
+                                    <option value="IN_PRESS">Baskıya Aktar</option>
+                                    <option value="IN_APPLICATION">Uygulamaya Aktar</option>
+                                    <option value="COMPLETED">Tamamla</option>
+                                    <option value="CANCELLED" disabled>İpat Et</option>
+                                </SelectField>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='max-w-[calc(100vw-48px)] sm:max-w-full'>
+                        <RequestsDataTable
+                            dataPayload={requests}
+                            handleEdit={(row) => { console.log('Edit', row) }}
+                            handleDelete={handleDelete}
+                            handleSelect={handleDelete}
+                        />
+                    </div>
                 </div>
-                
-                <RequestDataCards
-                    data={requests}
-                    handleEdit={handleUpdateForm}
-                />
             </div>
         </>
     );
