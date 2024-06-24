@@ -30,7 +30,7 @@ const create = async (district: any) => {
     try {
         const data = await client.graphql({
             query: createDistrict,
-            variables: { input: district },
+            variables: { input: { ...district } },
         });
 
         return data;
@@ -41,10 +41,11 @@ const create = async (district: any) => {
 
 
 const update = async (district: any) => {
+    console.log('district', district)
     try {
         const data = await client.graphql({
             query: updateDistrict,
-            variables: { input: district },
+            variables: { input: { ...district } },
         });
 
         return data;

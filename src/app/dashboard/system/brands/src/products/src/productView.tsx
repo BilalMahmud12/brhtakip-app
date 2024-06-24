@@ -46,23 +46,6 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
         setProductBrandId();
     }, [brandId]);
 
-    const handleCreateProduct = async () => {
-        try {
-            const createProduct = await Repo.ProductRepository.create(productFormRef.current);
-
-            if (createProduct && createProduct.data) {
-                fetchFilteredProducts();
-                dispatch(setProducts(filteredProducts))
-                hideDataModal();
-                dispatch(resetProductFormValues())
-            }
-        } catch (error) {
-            console.error('Error create product', error);
-        }
-    };
-
-
-
 
 
     const setProductUpdateData = (data: any) => {

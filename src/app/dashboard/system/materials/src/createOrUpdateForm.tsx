@@ -32,10 +32,10 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     const dispatch = useAppDispatch<AppDispatch>();
     const materialForm = useAppSelector((state: RootState) => state.material.materialForm);
 
-    const materialFormmRef = React.useRef(materialForm)
-    materialFormmRef.current = materialForm
+    const materialFormRef = React.useRef(materialForm)
+    materialFormRef.current = materialForm
 
-    const [checked, setChecked] = React.useState(materialFormmRef.current.isActive as boolean);
+    const [checked, setChecked] = React.useState(materialFormRef.current.isActive as boolean);
 
     return (
         <div >

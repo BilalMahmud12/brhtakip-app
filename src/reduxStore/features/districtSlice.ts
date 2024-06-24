@@ -6,8 +6,8 @@ interface DistrictFormState {
     districtForm: {
         id?: string;
         cityID?: string;
-        isActive: boolean;
-        name: string;
+        isActive?: boolean;
+        name?: string;
         createdBy?: string;
         updatedBy?: string;
     }
@@ -16,11 +16,8 @@ interface DistrictFormState {
 const initialState: DistrictFormState = {
     districts: [],
     districtForm: {
-        cityID: '',
         isActive: false,
         name: '',
-        createdBy: '',
-        updatedBy: '',
     }
 }
 
@@ -42,49 +39,30 @@ const districtSlice = createSlice({
 
         resetFormValues: (state) => {
             state.districtForm = {
-                cityID: '',
                 isActive: false,
                 name: '',
-                createdBy: '',
-                updatedBy: '',
             }
         },
 
-        handleFormChange: (state, action: PayloadAction<{ key: string, value: string }>) => {
+        handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean | string[] }>) => {
             const { key, value } = action.payload
             switch (key) {
                 case 'name':
-                    state.districtForm = {
-                        ...state.districtForm,
-                        name: value,
-                    }
+                    state.districtForm.name = value as string
                     break;
                 case 'isActive':
-                    state.districtForm.isActive = value === '1' || value === 'true';
+                    state.districtForm.isActive = value as boolean
                     break;
                 case 'cityID':
-                    state.districtForm = {
-                        ...state.districtForm,
-                        cityID: value,
-                    }
+                    state.districtForm.cityID = value as string
                     break;
-                case 'createdBy':
-                    state.districtForm = {
-                        ...state.districtForm,
-                        createdBy: value,
-                    }
-                    break;
-                case 'updatedBy':
-                    state.districtForm = {
-                        ...state.districtForm,
-                        updatedBy: value,
-                    }
-                    break;
+                // case 'createdBy':
+                //     state.districtForm.createdBy = value as string
+                //     break;
+                // case 'updatedBy':
+                //     state.districtForm.updatedBy = value as string
+                //     break;
                 default:
-                    state.districtForm = {
-                        ...state.districtForm,
-                        [key]: value,
-                    }
                     break;
             }
         }

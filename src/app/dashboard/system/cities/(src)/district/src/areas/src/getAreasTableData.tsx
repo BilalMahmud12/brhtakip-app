@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 export default function getAreasTableData(
     data: Area[],
@@ -32,7 +33,10 @@ export default function getAreasTableData(
                         row[column.key] = (
                             <div
                                 className='hover:underline hover:text-blue-700 cursor-pointer'
-                                onClick={() => handleEdit(area)}>
+                                onClick={() => {
+                                    router.push(`/dashboard/system/cities/district/src/areas/${area.id}`);
+                                    handleEdit(area)
+                                }}>
                                 {area.name}
                             </div>
                         );
@@ -40,10 +44,14 @@ export default function getAreasTableData(
 
                     case 'isActive':
                         row[column.key] = (
-                            <Badge variation={area.isActive ? 'success' : 'error'}>
-                                {area.isActive ? 'Aktif' : 'İnaktif'}
-                            </Badge>
-                        );
+                            <div className='flex items-center space-x-1 h-full'>
+                                <FiberManualRecordIcon
+                                    color={area.isActive === true ? 'success' : 'disabled'}
+                                    fontSize="small"
+                                />
+                                <span className='text-xs block font-medium'>{area.isActive === true ? 'Aktif' : 'Aktif Değil'}</span>
+                            </div>
+                        )
                         break;
 
                     case 'actions':
@@ -52,8 +60,8 @@ export default function getAreasTableData(
                                 <IconButton
                                     aria-label="edit"
                                     size="small"
-                                    color='primary'
                                     onClick={() => {
+                                        router.push(`/dashboard/system/cities/district/src/areas/${area.id}`);
                                         handleEdit(area)
                                     }}
                                 >
@@ -63,7 +71,6 @@ export default function getAreasTableData(
                                 <IconButton
                                     aria-label="delete"
                                     size="small"
-                                    color='error'
                                     onClick={() => handleDelete(row)}
                                 >
                                     <DeleteIcon fontSize="inherit" />

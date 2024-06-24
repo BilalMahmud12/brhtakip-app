@@ -29,7 +29,7 @@ const create = async (area: any) => {
     try {
         const data = await client.graphql({
             query: createArea,
-            variables: { input: area },
+            variables: { input: { ...area } },
         });
 
         return data;
@@ -42,7 +42,7 @@ const update = async (area: any) => {
     try {
         const data = await client.graphql({
             query: updateArea,
-            variables: { input: area },
+            variables: { input: { ...area } },
         });
 
         return data;
