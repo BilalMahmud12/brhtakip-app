@@ -72,39 +72,31 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
 
     return (
         <div>
-            <div>
-                <div className='px-6 py-3'>
-                    <div className='mt-1.5 shadow bg-white'>
-                        <div className='px-6 py-3 mb-3 flex items-center justify-between'>
-                            <h2 className='text-2xl font-medium'>
-                                {haveProduct ? 'Bağlı Ürünler' : 'Henüz Ürün Eklenmedi'}
-                            </h2>
-                            <Button
-                                variant="contained"
-                                startIcon={<SaveIcon />}
-                                onClick={() => router.push('/dashboard/system/brands/src/products/create')}
-                            >
-                                Ürün Ekle
-                            </Button>
+            <div className="mb-8">
+                <div className="mb-4 space-y-5">
+                    <div className='flex items-center p-4 pt-8 justify-between'>
+                        <div className='flex items-center space-x-3'>
+                            <h1 className='text-2xl font-semibold'>Ürünler</h1>
                         </div>
-                        {haveProduct && (
-                            <div className='mt-1.5 shadow bg-white py-6'>
-                                <ProductsDataTable
-                                    dataPayload={filteredProducts}
-                                    handleDelete={(data) => handleDeleteProduct(data)}
-                                    handleEdit={setProductUpdateData}
-                                />
-                            </div>
-                        )}
+                        <Button
+                            variant="contained"
+                            startIcon={<SaveIcon />}
+                            onClick={() => router.push('/dashboard/system/brands/src/products/create')}
+                        >
+                            Ürün Ekle
+                        </Button>
                     </div>
+                    {haveProduct && (
+                        <div className='mt-1.5 shadow bg-white py-6'>
+                            <ProductsDataTable
+                                dataPayload={filteredProducts}
+                                handleDelete={(data) => handleDeleteProduct(data)}
+                                handleEdit={setProductUpdateData}
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
-            {/* <div className='mt-1.5 shadow bg-white py-6'>
-                <ProductsDataTable
-                    
-                // handleSelect={(data) => handleDeleteProduct(data)}
-                />
-            </div> */}
         </div>
     );
 });

@@ -41,6 +41,10 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
         }));
     };
 
+    const handleClientClear = () => {
+        dispatch(handleFormChange({ key: 'clientprofileID', value: '' }));
+    };
+
     return (
         <div className='h-full'>
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>

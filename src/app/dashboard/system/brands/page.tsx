@@ -6,6 +6,7 @@ import { AppDispatch, RootState } from '@/reduxStore/store';
 import { setBrands } from '@/reduxStore/features/brandSlice';
 import type { Brand } from '@/API';
 import BrandsView from './src/brandView';
+import { permissions } from '@/config/index';
 
 const Brand: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
@@ -33,4 +34,4 @@ const Brand: React.FC = () => {
 };
 
 export default Brand;
-// withAuthorization([permissions.VIEW_BRANDS])(Brand)
+//withAuthorization([permissions.VIEW_BRANDS])(Brand)

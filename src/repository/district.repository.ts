@@ -41,7 +41,6 @@ const create = async (district: any) => {
 
 
 const update = async (district: any) => {
-    console.log('district', district)
     try {
         const data = await client.graphql({
             query: updateDistrict,

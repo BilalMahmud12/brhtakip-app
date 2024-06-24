@@ -69,9 +69,9 @@ const DistrictView: React.FC<DistrictViewProps> = ({ haveDistricts, fetchFiltere
 
     return (
         <div>
-            <div className='px-6 py-3'>
-                <div className='mt-1.5 shadow bg-white'>
-                    <div className='px-6 py-3 mb-3 flex items-center justify-between'>
+            <div className="mb-8">
+                <div className="mb-4 space-y-5">
+                    <div className='flex items-center p-4 pt-8 justify-between'>
                         <div className='flex items-center space-x-3'>
                             <h1 className='text-2xl font-semibold'>İlçeler</h1>
                         </div>

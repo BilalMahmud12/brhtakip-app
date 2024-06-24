@@ -52,26 +52,25 @@ const BrandsView: React.FC = () => {
     };
 
     return (
-        <div>
-            <div className='px-6 py-3'>
-                <div className='mt-1.5 shadow bg-white'>
-                    <div className='px-6 py-3 mb-3 flex items-center justify-between'>
-                        <div className='flex items-center space-x-3'>
-                            <h1 className='text-2xl font-semibold'>Markalar</h1>
-                        </div>
+        <div className="mb-8">
+            <div className='mb-4 space-y-5'>
+                <div className='flex items-center justify-between'>
+                    <div className='flex items-center space-x-3'>
+                        <h1 className='text-2xl font-semibold'>Markalar</h1>
+                    </div>
+                    <div className='flex items-center space-x-3'>
                         <div className='flex items-center space-x-2'>
-                            <div className='flex items-center space-x-2'>
-                                <Button
-                                    variant="contained"
-                                    startIcon={<AddIcon />}
-                                    onClick={() => router.push('/dashboard/system/brands/create')}
-                                >
-                                    Marka Ekle
-                                </Button>
-                            </div>
+                            <Button
+                                variant="contained"
+                                startIcon={<AddIcon />}
+                                onClick={() => router.push('/dashboard/system/brands/create')}
+                            >
+                                Marka Ekle
+                            </Button>
                         </div>
                     </div>
                 </div>
+
                 <div className='mt-8 bg-white shadow'>
                     <BrandsDataTable
                         dataPayload={brands}
