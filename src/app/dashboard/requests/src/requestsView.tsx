@@ -12,10 +12,12 @@ import SendIcon from '@mui/icons-material/Send';
 import AddIcon from '@mui/icons-material/Add';
 import RequestsDataTable from './requestsDataTable';
 import { statusMap, requestStatusOptions } from '@/config';
+
 import { toast } from 'sonner';
 import { useRouter } from "next-nprogress-bar";
 import type { Request, RequestStatus } from '@/API';
 import AutoComplete from "@/components/core/autoComplete";
+import { findKeyByValue } from '@/utils/helpers';
 
 const RequestsView: React.FC = () => {
     const router = useRouter();
@@ -26,11 +28,19 @@ const RequestsView: React.FC = () => {
     const requests = useAppSelector((state: RootState) => state.request.requests);
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
     const selectedRequests = useAppSelector((state: RootState) => state.request.selectedRequests);
+    
+    const currentRequestStatus = (): string => {
+        const status: string = statusMap[pathname.split('/').pop() as string];
+        return status !== undefined ? status : 'PENDING_APPROVAL' as RequestStatus;
+    };
 
+    const [selectedStatus, setSelectedStatus] = React.useState(currentRequestStatus);
 
-
-    const { showDataModal, hideDataModal } = useDataModal();
-    const [selectedStatus, setSelectedStatus] = React.useState('Onay Bekleyen');
+    const statusOptions: { value: string; label: string }[] = React.useMemo(() => {
+        return Object.keys(requestStatusOptions).map((key: string) => {
+            return { value: key, label: requestStatusOptions[key as keyof typeof requestStatusOptions] }
+        })
+    }, [])
 
     const requestFormRef = useRef(requestForm);
 
@@ -38,34 +48,11 @@ const RequestsView: React.FC = () => {
         requestFormRef.current = requestForm;
     }, [requestForm])
 
-    // Add index signature to requestStatusOptions object
-    interface RequestStatusOptions {
-        [key: string]: string;
-    }
-
-    const requestStatusOptions: RequestStatusOptions = {
-        PENDING_APPROVAL: 'Onay Bekleyen',
-        IN_DESIGN: 'Tasarımdaki',
-        IN_PRESS: 'Baskıda',
-        IN_APPLICATION: 'Uygulamada',
-        COMPLETED: 'Tamamlanan',
-        CANCELLED: 'İptal Edilen',
-    };
-
-    const StatusOptions: { value: string; label: string }[] = React.useMemo(() => {
-        return Object.keys(requestStatusOptions).map((key: string) => {
-            return { value: key, label: requestStatusOptions[key as keyof typeof requestStatusOptions] }
-        })
-    }, [])
-    
-    const requestStatus = (): string => {
-        const status: string = statusMap[pathname.split('/').pop() as string];
-        return status !== undefined ? status : 'PENDING_APPROVAL' as RequestStatus;
-    };
-
     const handleStatusChange = () => {
-        console.log('Status Change')
-        router.push(`/dashboard/requests/`)
+        const baseUrl = '/dashboard/requests'; 
+        const slug = findKeyByValue(requestStatusOptions, selectedStatus)?.toLowerCase().replace('_', '-')
+        router.push(`${baseUrl}${slug === 'pending-approval' ? '' : `/${slug}`}`)
+        dispatch(setRequests([]))
     }
 
     const handleCreateRequest = async () => {
@@ -75,11 +62,10 @@ const RequestsView: React.FC = () => {
 
             if (createRequest && createRequest.data) {
                 dispatch(setRequests([]))
-                hideDataModal()
                 toast.success(`${createRequest.data.createRequest.requestNumber} numaralı talep oluşturuldu.`);
                 dispatch(setIsFetching(true))
 
-                const newRequests = await Repo.RequestRepository.getRequestsByStatus(`${requestStatus()}`);
+                const newRequests = await Repo.RequestRepository.getRequestsByStatus(`${currentRequestStatus()}`);
 
                 const sortedRequests = (newRequests as unknown as Request[]).sort((a, b) => {
                     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
@@ -126,11 +112,11 @@ const RequestsView: React.FC = () => {
 
                     <div className='flex items-center justify-between'>
                         <div className='flex items-center space-x-3'>
-                            <div className='input-group w-[240px] bg-white'>
+                            <div className='input-group w-[292px] bg-white'>
                                 <AutoComplete
                                     id="request_status"
-                                    options={StatusOptions}
-                                    value={selectedStatus} 
+                                    options={statusOptions}
+                                    value={statusOptions.find(option => option.value === selectedStatus)?.label || 'Onay Bekliyor'}
                                     handleOnChange={(option) => {
                                         if (option && typeof option !== 'string') {
                                             setSelectedStatus(option.label as RequestStatus)

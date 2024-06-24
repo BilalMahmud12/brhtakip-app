@@ -31,10 +31,11 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
                 getOptionLabel={(option) => typeof option === 'string' ? option : (option as Option).label}
                 value={currentValue}
                 onChange={(_, option, resason) => {
-                    setCurrentValue(typeof option === 'string' ? option : (option as unknown as Option)?.value || '')
+                    setCurrentValue(typeof option === 'string' ? option : (option as unknown as Option)?.label || '')
                     handleOnChange(option, resason)
                 }}
                 renderInput={(params) => <TextField {...params} label={label} variant={variant} size='small' />}
+                isOptionEqualToValue={(option, value) => option === currentValue}
             />
         </div>
     )

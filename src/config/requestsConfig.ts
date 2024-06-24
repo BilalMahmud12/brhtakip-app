@@ -1,7 +1,7 @@
 export const statusMap: { [key: string]: string } = {
     'pending-approval': 'PENDING_APPROVAL',
     'in-design': 'IN_DESIGN',
-    'in-print': 'IN_PRESS',
+    'in-press': 'IN_PRESS',
     'in-application': 'IN_APPLICATION',
     'completed': 'COMPLETED',
     'cancelled': 'CANCELLED',
@@ -12,7 +12,7 @@ export const requestStatus= (pathname: string): string => {
     return status !== undefined ? status : 'PENDING_APPROVAL';
 };
 
-export const requestStatusOptions = {
+export const requestStatusOptions: { [key: string]: string } = {
     'PENDING_APPROVAL': 'Onay Bekliyor',
     'IN_DESIGN': 'Tasarım Bekliyor',
     'IN_PRESS': 'Baskı Bekliyor',

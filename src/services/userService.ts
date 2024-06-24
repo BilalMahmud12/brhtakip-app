@@ -30,7 +30,8 @@ export const loadUserData = async (dispatch: AppDispatch): Promise<boolean> => {
         } else {
             dispatch(setCurrentClientProfile({
                 id: 'BRH_ADMIN',
-                name: 'BRH Reklamcılık ve Mimarlık Ltd.'
+                name: 'BRH Reklamcılık ve Mimarlık Ltd.',
+                isActive: true,
             }))
         }
 
