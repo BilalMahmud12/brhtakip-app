@@ -62,7 +62,7 @@ export const dataTables = {
     cities: {
         columns: [
             { label: 'Şehir', key: 'name', width: '240%' },
-            { label: 'Durum', key: 'isActive', width: '80' },
+            { label: 'Durum', key: 'isActive', width: '120' },
             { label: '', key: 'actions', width: '150' },
         ]
     },
@@ -70,7 +70,7 @@ export const dataTables = {
     districts: {
         columns: [
             { label: 'İlçe', key: 'name', width: '240' },
-            { label: 'Durum', key: 'isActive', width: '80' },
+            { label: 'Durum', key: 'isActive', width: '120' },
             { label: '', key: 'actions', width: '150' },
         ]
     },
@@ -78,7 +78,7 @@ export const dataTables = {
     areas: {
         columns: [
             { label: 'mahalle', key: 'name', width: '240' },
-            { label: 'Durum', key: 'isActive', width: '80' },
+            { label: 'Durum', key: 'isActive', width: '120' },
             { label: '', key: 'actions', width: '150' },
         ]
     },

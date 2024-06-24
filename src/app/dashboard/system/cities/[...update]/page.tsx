@@ -1,16 +1,18 @@
-'use client'
-import React, { useEffect, useState } from "react";
-import { Breadcrumbs, Button } from '@aws-amplify/ui-react';
-import { useAppDispatch, useAppSelector } from "@/reduxStore/hooks";
-import { AppDispatch, RootState } from "@/reduxStore/store";
-import * as Repo from '@/repository/index';
-import type { Store, District, City } from '@/API';
-
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
+import CreateOrUpdateForm from '../(src)/createOrUpdateForm';
+import { useRouter } from 'next-nprogress-bar';
+import { setCities, resetFormValues, setCityForm } from '@/reduxStore/features/citySlice';
 import { setDistricts } from '@/reduxStore/features/districtSlice';
-import DistrictView from "../(src)/district/src/districtView";
-import { resetFormValues, setCities } from "@/reduxStore/features/citySlice";
-import CreateOrUpdateForm from "../(src)/createOrUpdateForm";
-import { useRouter } from "next/navigation";
+import * as Repo from '@/repository/index';
+
+import Button from '@mui/material/Button';
+import SaveIcon from '@mui/icons-material/Save';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
+import { City, District } from '@/API';
+import DistrictView from '../(src)/district/src/districtView';
 
 const UpdateCity: React.FC = () => {
     const router = useRouter();
@@ -61,26 +63,33 @@ const UpdateCity: React.FC = () => {
 
     return (
         <div>
-            <div>
-                <title>Şehir Güncelle - BRH Takip</title>
+            <div >
+                <title>Şehir Ekle - BRH Takip</title>
 
-                <div className='mt-1.5 shadow bg-white py-6'>
-                    <div className='px-6 mb-3 flex items-center justify-between'>
-                        <h2 className='text-2xl font-medium'>Şehir Güncelle</h2>
-                        <Button
-                            variation="primary"
-                            colorTheme="success"
-                            size="small"
-                            onClick={handleUpdateCity}
-                            className='rounded-none bg-amber-500 text-gray-800 px-6'
-                        >
-                            <span>Güncelle</span>
-                        </Button>
-                    </div>
+                <div className='h-full'>
+                    <div className='h-full col-span-2'>
+                        <div className='flex items-center justify-between'>
+                            <Button
+                                variant="text"
+                                startIcon={<ArrowBackIosIcon />}
+                                onClick={() => router.push('/dashboard/system/cities')}
+                            >
+                                Şehirlere Geri Dön
+                            </Button>
 
-                    <div className='mt-8 px-8 py-8 m-6 shadow bg-neutral-100'>
-                        <CreateOrUpdateForm isCreate={false} />
+                            <Button
+                                variant="contained"
+                                startIcon={<SaveIcon />}
+                                onClick={handleUpdateCity}
+                            >
+                                Kaydı Et
+                            </Button>
+                        </div>
                     </div>
+                </div>
+
+                <div className='space-y-3'>
+                    <CreateOrUpdateForm isCreate={false} />
                 </div>
             </div>
 

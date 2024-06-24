@@ -15,7 +15,6 @@ import AddIcon from '@mui/icons-material/Add';
 import { useRouter } from "next/navigation";
 
 const CityView: React.FC = () => {
-    const { showDataModal, hideDataModal } = useDataModal();
     const dispatch = useAppDispatch<AppDispatch>();
     const cities = useAppSelector((state: RootState) => state.city.cities);
     const cityForm = useAppSelector((state: RootState) => state.city.cityForm);
@@ -24,21 +23,6 @@ const CityView: React.FC = () => {
     const cityformRef = useRef(cityForm);
     cityformRef.current = cityForm;
 
-
-    const handleCreateCity = async () => {
-        try {
-            const createCity = await Repo.CityRepository.create(cityformRef.current);
-            console.log('created City', createCity)
-            if (createCity && createCity.data) {
-                const newCity = await Repo.CityRepository.getAllCities();
-                dispatch(setCities(newCity as unknown as City[]))
-                hideDataModal();
-                dispatch(resetFormValues());
-            }
-        } catch (error) {
-            console.log('Failed Create City', error)
-        }
-    };
 
     const setCityUpdateData = (data: any) => {
         dispatch(setCityForm({
@@ -54,7 +38,6 @@ const CityView: React.FC = () => {
             if (deleteCity && deleteCity.data) {
                 const newCity = await Repo.CityRepository.getAllCities();
                 dispatch(setCities(newCity as unknown as City[]))
-                hideDataModal();
                 dispatch(resetFormValues());
             }
         } catch (error) {
@@ -67,12 +50,15 @@ const CityView: React.FC = () => {
         <div>
             <div className='mt-1.5 shadow bg-white'>
                 <div className='px-6 py-3 mb-3 flex items-center justify-between'>
+                    <div className='flex items-center space-x-3'>
+                        <h1 className='text-2xl font-semibold'>Şehirler</h1>
+                    </div>
                     <div className='flex items-center space-x-2'>
                         <div className='flex items-center space-x-2'>
                             <Button
                                 variant="contained"
                                 startIcon={<AddIcon />}
-                                onClick={() => router.push('/dashboard/system/city/create')}
+                                onClick={() => router.push('/dashboard/system/cities/create')}
                             >
                                 Şehir Ekle
                             </Button>
