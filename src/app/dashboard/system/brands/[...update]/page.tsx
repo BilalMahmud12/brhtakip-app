@@ -17,17 +17,30 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 const UpdateBrand: React.FC = (() => {
     const router = useRouter();
-
-    usePathname();
-
+    const pathName = usePathname()
     const [haveProduct, setHaveProduct] = useState<boolean>(false);
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
     const dispatch = useAppDispatch<AppDispatch>();
     const productForm = useAppSelector((state: RootState) => state.product.productForm);
+    const brands = useAppSelector((state: RootState) => state.brand.brands);
     const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
+
     const brandformRef = useRef(brandForm);
     brandformRef.current = brandForm;
+
+    // React.useEffect(() => {
+    //     const brandID = pathName.split('/').pop()
+    //     const targetBrand = brands.find(brand => brand.id === brandID)
+
+    //     if (targetBrand) {
+    //         const { updatedAt, createdAt, __typename, Products, clientprofileID, id ...restOfTheBrand } = targetBrand
+    //         console.log('targetUser', targetBrand)
+    //         brandformRef.current = { restOfTheBrand }
+    //         dispatch(setBrandFormValues({ restOfTheBrand }))
+    //     }
+    //     console.log('pathname', pathName.split('/').pop())
+    // }, [pathName])
 
     async function handleUpdateBrand() {
         try {

@@ -17,6 +17,7 @@ import TextField from '@mui/material/TextField';
 import { FormControlLabel } from '@mui/material';
 import Switch from '@mui/material/Switch';
 
+
 interface CreateOrUpdateFormProps {
     isCreate?: boolean;
     brand?: Store;
@@ -138,6 +139,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             handleOnChange={ }
                         /> */}
                     </div>
+
                     <div className='input-group w-full col-span-1 lg:col-span-1'>
                         <label htmlFor="material_name" className='block text-xs font-medium mb-1.5'>İlçe *</label>
                         <TextField
@@ -150,6 +152,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             }}
                         />
                     </div>
+
                     <div className='input-group w-full col-span-1 lg:col-span-1'>
                         <label htmlFor="material_name" className='block text-xs font-medium mb-1.5'>Mahalle *</label>
                         <TextField
@@ -163,6 +166,23 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                         />
                     </div>
                 </div>
+
+                <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6'>
+                    <div className='p-6 bg-white shadow col-span-3'>
+                        <div className='input-group w-full col-span-1 lg:col-span-1'>
+                            <label htmlFor="_name" className='block text-xs font-medium mb-1.5'>Adres *</label>
+                            <TextField
+                                id='material_name'
+                                variant="standard"
+                                sx={{ width: '100%' }}
+                                helperText={''}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    dispatch(handleFormChange({ key: 'address', value: event.target.value }))
+                                }}
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div className='my-2 pt-5' />
@@ -170,14 +190,38 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
             <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6'>
                 <div className='p-6 bg-white shadow col-span-3'>
                     <div className='input-group w-full col-span-1 lg:col-span-1'>
-                        <label htmlFor="_name" className='block text-xs font-medium mb-1.5'>Adres *</label>
+                        <label htmlFor="email" className='block text-xs font-medium mb-1.5'>Email *</label>
                         <TextField
-                            id='material_name'
+                            id='email'
                             variant="standard"
                             sx={{ width: '100%' }}
                             helperText={''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                                dispatch(handleFormChange({ key: 'address', value: event.target.value }))
+                                dispatch(handleFormChange({ key: 'email', value: event.target.value }))
+                            }}
+                        />
+                    </div>
+                    <div className='input-group w-full col-span-1 lg:col-span-1'>
+                        <label htmlFor="phone" className='block text-xs font-medium mb-1.5'>Phone *</label>
+                        <TextField
+                            id='phone'
+                            variant="standard"
+                            sx={{ width: '100%' }}
+                            helperText={''}
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                dispatch(handleFormChange({ key: 'phone', value: event.target.value }))
+                            }}
+                        />
+                    </div>
+                    <div className='input-group w-full col-span-1 lg:col-span-1'>
+                        <label htmlFor="notes" className='block text-xs font-medium mb-1.5'>Notes *</label>
+                        <TextField
+                            id='notes'
+                            variant="standard"
+                            sx={{ width: '100%' }}
+                            helperText={''}
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                dispatch(handleFormChange({ key: 'notes', value: event.target.value }))
                             }}
                         />
                     </div>

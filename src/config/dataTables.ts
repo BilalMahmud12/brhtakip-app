@@ -28,7 +28,7 @@ export const dataTables = {
     products: {
         columns: [
             { label: 'Ürün', key: 'name', width: '240' },
-            { label: 'Durum', key: 'isActive', width: '80' },
+            { label: 'Durum', key: 'isActive', width: '120' },
             { label: '', key: 'actions', width: '150' },
         ]
     },

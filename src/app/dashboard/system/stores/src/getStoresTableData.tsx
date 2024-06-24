@@ -52,7 +52,10 @@ export default function getStoresTableData(
                                 <IconButton
                                     aria-label="edit"
                                     size="small"
-                                // onClick={}
+                                    onClick={() => {
+                                        router.push(`/dashboard/system/stores/${store.id}`);
+                                        handleEdit(store)
+                                    }}
                                 >
                                     <EditIcon fontSize="inherit" />
                                 </IconButton>

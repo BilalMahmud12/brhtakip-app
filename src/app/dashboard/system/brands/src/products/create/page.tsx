@@ -27,7 +27,7 @@ const UpdateProductPage: React.FC = () => {
             const createProduct = await Repo.ProductRepository.create(productFormRef.current);
 
             if (createProduct && createProduct.data) {
-                router.push('/dashboard/system/brands')
+                router.back();
                 dispatch(resetProductFormValues())
             }
         } catch (error) {
