@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 export default function getApplicationAreaTableData(
     data: ApplicationArea[],
@@ -44,10 +45,14 @@ export default function getApplicationAreaTableData(
 
                     case 'isActive':
                         row[column.key] = (
-                            <Badge variation={applicationArea.isActive ? 'success' : 'error'}>
-                                {applicationArea.isActive ? 'Aktif' : 'İnaktif'}
-                            </Badge>
-                        );
+                            <div className='flex items-center space-x-1 h-full'>
+                                <FiberManualRecordIcon
+                                    color={applicationArea.isActive === true ? 'success' : 'disabled'}
+                                    fontSize="small"
+                                />
+                                <span className='text-xs block font-medium'>{applicationArea.isActive === true ? 'Aktif' : 'Aktif Değil'}</span>
+                            </div>
+                        )
                         break;
 
                     case 'actions':
@@ -56,7 +61,6 @@ export default function getApplicationAreaTableData(
                                 <IconButton
                                     aria-label="edit"
                                     size="small"
-                                    color='primary'
                                     onClick={() => {
                                         router.push(`/dashboard/system/applicationAreas/${applicationArea.id}`);
                                         handleEdit(applicationArea)
@@ -68,7 +72,6 @@ export default function getApplicationAreaTableData(
                                 <IconButton
                                     aria-label="delete"
                                     size="small"
-                                    color='error'
                                     onClick={() => handleDelete(row)}
                                 >
                                     <DeleteIcon fontSize="inherit" />
