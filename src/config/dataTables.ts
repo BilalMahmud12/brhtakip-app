@@ -3,7 +3,7 @@ export const dataTables = {
     requests: {
         columns: [
             { label: '', key: 'actions', width: '30', sortable: false, disableColumnMenu: true },
-            { label: 'Talep Numarası', key: 'requestNumber', width: '150', sortable: false  },
+            { label: 'Talep Numarası', key: 'requestNumber', width: '150', sortable: false },
             { label: 'Mağaza', key: 'store', width: '450', sortable: false },
             { label: 'Marka', key: 'brand', width: '300', sortable: false },
         ]
@@ -38,7 +38,7 @@ export const dataTables = {
     materials: {
         columns: [
             { label: 'Malzeme', key: 'name', width: '250' },
-            { label: 'Durum', key: 'isActive', width: '80' },
+            { label: 'Durum', key: 'isActive', width: '120' },
             { label: '', key: 'actions', width: '150' },
         ]
     },

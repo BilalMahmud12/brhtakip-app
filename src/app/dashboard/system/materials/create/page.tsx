@@ -16,7 +16,6 @@ import { Material } from '@/API';
 const CreateMaterialPage: React.FC = () => {
     const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
-    const materials = useAppSelector((state: RootState) => state.material.materials);
     const materialForm = useAppSelector((state: RootState) => state.material.materialForm);
 
     const materialformRef = useRef(materialForm);
@@ -28,9 +27,9 @@ const CreateMaterialPage: React.FC = () => {
             const createMaterial = await Repo.MaterialRepository.create(materialformRef.current);
 
             if (createMaterial && createMaterial.data) {
-                dispatch(resetFormValues());
                 const newMaterials = await Repo.MaterialRepository.getAllMaterials();
                 dispatch(setMaterials(newMaterials as unknown as Material[]));
+                dispatch(resetFormValues());
                 router.push('/dashboard/system/materials')
             }
         } catch (error) {

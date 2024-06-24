@@ -16,7 +16,6 @@ import { useRouter } from 'next/navigation';
 const UpdateMaterialPage: React.FC = () => {
 
     const dispatch = useAppDispatch<AppDispatch>();
-    const materials = useAppSelector((state: RootState) => state.material.materials);
     const materialForm = useAppSelector((state: RootState) => state.material.materialForm);
     const router = useRouter()
 
@@ -28,9 +27,9 @@ const UpdateMaterialPage: React.FC = () => {
             const updateMaterial = await Repo.MaterialRepository.update(materialformRef.current);
 
             if (updateMaterial && updateMaterial.data) {
-                dispatch(resetFormValues());
                 const newMaterials = await Repo.MaterialRepository.getAllMaterials();
                 dispatch(setMaterials(newMaterials as unknown as Material[]));
+                dispatch(resetFormValues());
                 router.push(`/dashboard/system/materials`);
             }
         } catch (error) {

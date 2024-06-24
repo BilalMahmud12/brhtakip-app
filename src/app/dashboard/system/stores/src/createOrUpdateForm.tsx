@@ -209,7 +209,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             sx={{ width: '100%' }}
                             helperText={''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                                dispatch(handleFormChange({ key: 'phone', value: event.target.value }))
+                                dispatch(handleFormChange({ key: 'phones', value: event.target.value }))
                             }}
                         />
                     </div>
