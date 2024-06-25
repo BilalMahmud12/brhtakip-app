@@ -471,7 +471,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 category='references'
                             />
 
-                            <StorageImage alt="sleepy-cat" path="public/BRH-2024-16849/references/4bf22b6b-5d49-43ec-98e5-686609a31bce.jpg" />;
+                            {/* <StorageImage alt="sleepy-cat" path="public/BRH-2024-16849/references/4bf22b6b-5d49-43ec-98e5-686609a31bce.jpg" />; */}
                         </div>
                     </div>
 
