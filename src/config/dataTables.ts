@@ -3,7 +3,7 @@ export const dataTables = {
     requests: {
         columns: [
             { label: '', key: 'actions', width: '30', sortable: false, disableColumnMenu: true },
-            { label: 'Talep Numarası', key: 'requestNumber', width: '150', sortable: false  },
+            { label: 'Talep Numarası', key: 'requestNumber', width: '150', sortable: false },
             { label: 'Mağaza', key: 'store', width: '450', sortable: false },
             { label: 'Marka', key: 'brand', width: '300', sortable: false },
         ]
@@ -20,9 +20,9 @@ export const dataTables = {
     brands: {
         columns: [
             { label: 'Marka', key: 'name', width: '240' },
-            { label: 'Durum', key: 'isActive', width: '150' },
-            { label: 'Ürün S.', key: 'Products', width: '80' },
             { label: 'Müşteri', key: 'clientprofileID', width: '500' },
+            { label: 'Ürün S.', key: 'Products', width: '80' },
+            { label: 'Durum', key: 'isActive', width: '150' },
             { label: '', key: 'actions', width: '150' },
         ]
     },
@@ -30,7 +30,7 @@ export const dataTables = {
     products: {
         columns: [
             { label: 'Ürün', key: 'name', width: '240' },
-            { label: 'Durum', key: 'isActive', width: '80' },
+            { label: 'Durum', key: 'isActive', width: '120' },
             { label: '', key: 'actions', width: '150' },
         ]
     },
@@ -38,7 +38,7 @@ export const dataTables = {
     materials: {
         columns: [
             { label: 'Malzeme', key: 'name', width: '250' },
-            { label: 'Durum', key: 'isActive', width: '80' },
+            { label: 'Durum', key: 'isActive', width: '120' },
             { label: '', key: 'actions', width: '150' },
         ]
     },
@@ -46,7 +46,7 @@ export const dataTables = {
     applicationArea: {
         columns: [
             { label: 'Uygulama Alanları', key: 'name', width: '250' },
-            { label: 'Durum', key: 'isActive', width: '80' },
+            { label: 'Durum', key: 'isActive', width: '120' },
             { label: '', key: 'actions', width: '150' },
         ]
     },
@@ -54,7 +54,7 @@ export const dataTables = {
     stores: {
         columns: [
             { label: 'Mağaza', key: 'name', width: '240' },
-            { label: 'Adres', key: 'address', width: '500' },
+            { label: 'Adres', key: 'address', width: '800' },
             { label: '', key: 'actions', width: '80' },
         ]
     },
@@ -62,7 +62,7 @@ export const dataTables = {
     cities: {
         columns: [
             { label: 'Şehir', key: 'name', width: '240%' },
-            { label: 'Durum', key: 'isActive', width: '80' },
+            { label: 'Durum', key: 'isActive', width: '120' },
             { label: '', key: 'actions', width: '150' },
         ]
     },
@@ -70,7 +70,7 @@ export const dataTables = {
     districts: {
         columns: [
             { label: 'İlçe', key: 'name', width: '240' },
-            { label: 'Durum', key: 'isActive', width: '80' },
+            { label: 'Durum', key: 'isActive', width: '120' },
             { label: '', key: 'actions', width: '150' },
         ]
     },
@@ -78,11 +78,11 @@ export const dataTables = {
     areas: {
         columns: [
             { label: 'mahalle', key: 'name', width: '240' },
-            { label: 'Durum', key: 'isActive', width: '80' },
+            { label: 'Durum', key: 'isActive', width: '120' },
             { label: '', key: 'actions', width: '150' },
         ]
     },
-    clients:{
+    clients: {
         columns: [
             { label: 'Firma Adı', key: 'name', width: '240' },
             { label: 'Kullanıcı', key: 'users', width: '100' },

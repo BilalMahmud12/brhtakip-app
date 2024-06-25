@@ -40,7 +40,6 @@ const BrandsDataTable: React.FC<BrandsDataTableProps> = (props) => {
                 data={tableData}
                 onEditRow={(data) => handleEdit(data)}
                 onDeleteRow={(data) => onDeleteBrand(data)}
-                getClientName={(data) => getClientName(data)}
             />
         </div>
     );

@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
-import CreateOrUpdateForm from '../(src)/createOrUpdateForm';
+import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { useRouter } from 'next-nprogress-bar';
 import { setCities, resetFormValues, setCityForm } from '@/reduxStore/features/citySlice';
 import { setDistricts } from '@/reduxStore/features/districtSlice';
@@ -12,7 +12,6 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { City, District } from '@/API';
-import DistrictView from '../(src)/district/src/districtView';
 
 const UpdateCity: React.FC = () => {
     const router = useRouter();
@@ -20,53 +19,29 @@ const UpdateCity: React.FC = () => {
     const [haveDistricts, setHaveDistricts] = useState<boolean>(false);
 
     const dispatch = useAppDispatch<AppDispatch>();
-    const districts = useAppSelector((state: RootState) => state.district.districts);
     const districtForm = useAppSelector((state: RootState) => state.district.districtForm);
-    const cityForm = useAppSelector((state: RootState) => state.city.cityForm);
 
-    const cityformRef = useRef(cityForm);
-    cityformRef.current = cityForm;
+    const districtformRef = useRef(districtForm);
+    districtformRef.current = districtForm;
 
-    async function handleUpdateCity() {
+    const handleCreateDistrict = async () => {
         try {
-            const updateCity = await Repo.CityRepository.update(cityformRef.current);
-            if (updateCity && updateCity.data) {
-                const newCity = await Repo.CityRepository.getAllCities();
-                dispatch(setCities(newCity as unknown as City[]));
+            const createDistrict = await Repo.DistrictRepository.create(districtformRef.current);
+
+            if (createDistrict && createDistrict.data) {
                 dispatch(resetFormValues());
-                router.replace(`/dashboard/system/cities`);
+                router.back();
             }
         } catch (error) {
-            console.error('Failed updating city:', error);
-        }
-    }
-
-    const fetchFilteredDistricts = async () => {
-        try {
-            const districtsData = await Repo.DistrictRepository.getAllDistricts();
-
-            if (districtsData) {
-                const filtered = districtsData.filter(district => district.cityID === cityForm.id);
-                console.log('filtered', filtered)
-
-                setFilteredDistricts(filtered as unknown as District[]);
-                dispatch(setDistricts(filtered as unknown as District[]));
-                setHaveDistricts(filtered.length > 0);
-            }
-        } catch (error) {
-            console.error('Failed fetching products', error);
-            setHaveDistricts(false);
+            console.log('Failed Creating District', error);
         }
     };
 
-    useEffect(() => {
-        fetchFilteredDistricts();
-    }, [cityForm.id])
 
     return (
         <div>
             <div >
-                <title>Şehir Güncelle - BRH Takip</title>
+                <title>Şehir Ekle - BRH Takip</title>
 
                 <div className='h-full'>
                     <div className='h-full col-span-2'>
@@ -82,7 +57,7 @@ const UpdateCity: React.FC = () => {
                             <Button
                                 variant="contained"
                                 startIcon={<SaveIcon />}
-                                onClick={handleUpdateCity}
+                                onClick={handleCreateDistrict}
                             >
                                 Kaydı Et
                             </Button>
@@ -91,18 +66,9 @@ const UpdateCity: React.FC = () => {
                 </div>
 
                 <div className='space-y-3'>
-                    <CreateOrUpdateForm isCreate={false} />
+                    <CreateOrUpdateForm isCreate={true} />
                 </div>
             </div>
-
-            {/* START District SECTION */}
-
-            <DistrictView
-                haveDistricts={haveDistricts}
-                fetchFilteredDistricts={fetchFilteredDistricts}
-                filteredDistricts={filteredDistricts}
-            />
-            {/* END District SECTION */}
         </div>
     )
 }

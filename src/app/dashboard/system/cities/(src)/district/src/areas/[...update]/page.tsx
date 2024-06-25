@@ -1,10 +1,10 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
-import { Material } from '@/API';
+import { Area } from '@/API';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import * as Repo from '@/repository/index';
-import { setMaterials, resetFormValues } from '@/reduxStore/features/materialSlice';
+import { setAreas, resetFormValues } from '@/reduxStore/features/areaSlice';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 
 
@@ -13,34 +13,32 @@ import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useRouter } from 'next/navigation';
 
-const UpdateMaterialPage: React.FC = () => {
-
+const UpdateAreaPage: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
-    const materialForm = useAppSelector((state: RootState) => state.material.materialForm);
-    const router = useRouter()
+    const router = useRouter();
+    const areaForm = useAppSelector((state: RootState) => state.area.areaForm);
 
-    const materialformRef = useRef(materialForm);
-    materialformRef.current = materialForm;
+    const areaFormRef = useRef(areaForm);
+    areaFormRef.current = areaForm;
 
-    const handleUpdateMaterial = async () => {
+    const handleUpdateArea = async () => {
         try {
-            const updateMaterial = await Repo.MaterialRepository.update(materialformRef.current);
+            const createArea = await Repo.AreaRepository.update(areaFormRef.current);
 
-            if (updateMaterial && updateMaterial.data) {
-                const newMaterials = await Repo.MaterialRepository.getAllMaterials();
-                dispatch(setMaterials(newMaterials as unknown as Material[]));
+            if (createArea && createArea.data) {
+                const newAreas = await Repo.AreaRepository.getAllAreas();
+                dispatch(setAreas(newAreas as unknown as Area[]));
                 dispatch(resetFormValues());
-                router.push(`/dashboard/system/materials`);
+                router.back();
             }
         } catch (error) {
-            console.log('Error', error);
+            console.log('Failed Update District', error);
         }
     };
-
     return (
         <div>
             <div >
-                <title>Malzeme Güncelle - BRH Takip</title>
+                <title>Mahalle Güncelle - BRH Takip</title>
 
                 <div className='h-full'>
                     <div className='h-full col-span-2'>
@@ -48,15 +46,15 @@ const UpdateMaterialPage: React.FC = () => {
                             <Button
                                 variant="text"
                                 startIcon={<ArrowBackIosIcon />}
-                                onClick={() => router.push('/dashboard/system/materials')}
+                                onClick={() => router.push('/dashboard/system/cities')}
                             >
-                                Malzemelere Geri Dön
+                                Şehirlere Geri Dön
                             </Button>
 
                             <Button
                                 variant="contained"
                                 startIcon={<SaveIcon />}
-                                onClick={handleUpdateMaterial}
+                                onClick={handleUpdateArea}
                             >
                                 Kaydı Et
                             </Button>
@@ -72,4 +70,4 @@ const UpdateMaterialPage: React.FC = () => {
     );
 }
 
-export default UpdateMaterialPage
+export default UpdateAreaPage

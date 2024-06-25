@@ -1,86 +1,102 @@
-'use client'
-import React, { useEffect } from "react";
-import { Breadcrumbs, Button } from '@aws-amplify/ui-react';
+'use client';
+import React, { useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/reduxStore/hooks";
 import { AppDispatch, RootState } from "@/reduxStore/store";
 import * as Repo from '@/repository/index';
 import type { Area, District } from '@/API';
 import AreaView from "../src/areas/src/areaView";
 import { setAreas } from "@/reduxStore/features/areaSlice";
-import CreateOrUpdateForm from "../src/createOrUpdateForm";
+import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { setDistricts } from "@/reduxStore/features/districtSlice";
 import { useRouter } from "next/navigation";
 
-const updateDistrict: React.FC = () => {
+import Button from '@mui/material/Button';
+import SaveIcon from '@mui/icons-material/Save';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+
+const UpdateDistrict: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
     const router = useRouter();
-    const districtForm = useAppSelector((state: RootState) => { state.district.districtForm })
+    const districtForm = useAppSelector((state: RootState) => state.district.districtForm);
+    const areaForm = useAppSelector((state: RootState) => state.area.areaForm);
+
+    const [filteredAreas, setFilteredAreas] = useState<Area[]>([]);
+    const [haveArea, setHaveArea] = useState<boolean>(false);
+
+    const districtformRef = useRef(districtForm);
+    districtformRef.current = districtForm;
 
     const handleUpdateDistrict = async () => {
         try {
-            const updateDistrict = await Repo.DistrictRepository.update(districtForm)
+            const updateDistrict = await Repo.DistrictRepository.update(districtformRef.current);
 
             if (updateDistrict && updateDistrict.data) {
                 const newDistrict = await Repo.DistrictRepository.getAllDistricts();
                 dispatch(setDistricts(newDistrict as unknown as District[]));
-                console.log('updateDistrict', newDistrict)
-                router.replace(`/dashboard/system/brands`);
+                router.back();
             }
         } catch (error) {
-            console.log('Failed Update District', error)
+            console.log('Failed Update District', error);
         }
-    }
+    };
+
+    const fetchFilteredAreas = async () => {
+        try {
+            const areasData = await Repo.AreaRepository.getAllAreas();
+
+            if (areasData) {
+                const filtered = areasData.filter(area => area.districtID === districtForm.id);
+                console.log('filtered', filtered);
+
+                setFilteredAreas(filtered as unknown as Area[]);
+                dispatch(setAreas(filtered as unknown as Area[]));
+                setHaveArea(filtered.length > 0);
+            }
+        } catch (error) {
+            console.error('Failed fetching areas', error);
+            setHaveArea(false);
+        }
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const areaData = await Repo.AreaRepository.getAllAreas();
-                dispatch(setAreas(areaData as unknown as Area[]))
-                console.log('area Data', areaData);
-            } catch (error) {
-                console.log('error', error)
-            }
-        }
-        fetchData();
-    })
+        fetchFilteredAreas();
+    }, [districtForm.id]);
+
     return (
         <div>
             <div>
-                <div>
-                    <title>İlçe Güncelle</title>
-
-                    <div className='mt-1.5 shadow bg-white py-6'>
-                        <div className='px-6 mb-3 flex items-center justify-between'>
-                            <h2 className='text-2xl font-medium'>İlçe Güncelle</h2>
+                <title>İlçe Güncelle - BRH Takip</title>
+                <div className='h-full'>
+                    <div className='h-full col-span-2'>
+                        <div className='flex items-center justify-between'>
                             <Button
-                                variation="primary"
-                                colorTheme="success"
-                                size="small"
-                                onClick={handleUpdateDistrict}
-                                className='rounded-none bg-amber-500 text-gray-800 px-6'
+                                variant="text"
+                                startIcon={<ArrowBackIosIcon />}
+                                onClick={() => router.push('/dashboard/system/cities')}
                             >
-                                <span>Güncelle</span>
+                                Şehirlere Geri Dön
                             </Button>
-                        </div>
-
-                        <div className='mt-8 px-8 py-8 m-6 shadow bg-neutral-100'>
-                            <CreateOrUpdateForm isCreate={false} />
+                            <Button
+                                variant="contained"
+                                startIcon={<SaveIcon />}
+                                onClick={handleUpdateDistrict}
+                            >
+                                Kaydet
+                            </Button>
                         </div>
                     </div>
                 </div>
-
-
-                {/* START AreaView SECTION */}
-                {/* <AreaView /> */}
-                {/* END AreaView SECTION */}
+                <div className='space-y-3'>
+                    <CreateOrUpdateForm isCreate={false} />
+                </div>
             </div>
+            <AreaView
+                haveArea={haveArea}
+                fetchFilteredAreas={fetchFilteredAreas}
+                filteredAreas={filteredAreas}
+            />
         </div>
-    )
-}
+    );
+};
 
-export default updateDistrict
-
-// areaView.tsx
-//getAreasTableData.tsx
-//createOrUpdateForm.tsx
-// areasDataTable.tsx
+export default UpdateDistrict;

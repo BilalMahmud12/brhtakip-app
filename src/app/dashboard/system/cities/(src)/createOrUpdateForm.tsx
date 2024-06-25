@@ -34,9 +34,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         <div>
             <div className='my-2 pt-5' />
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>
-
                 <div className='p-6 bg-white shadow col-span-2'>
-                    <h2 className='text-base font-semibold mb-6'>Malzeme Ekle</h2>
 
                     <div className='input-group w-full col-span-1 lg:col-span-1'>
                         <label htmlFor="material_name" className='block text-xs font-medium mb-1.5'>Malzeme Adı *</label>

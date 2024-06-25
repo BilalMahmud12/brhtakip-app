@@ -32,11 +32,8 @@ const brandSlice = createSlice({
             state.brands.push(action.payload);
         },
 
-        setBrandFormValues: (state, action: PayloadAction<BrandFormState['brandForm']>) => {
-            state.brandForm = action.payload
-        },
 
-        handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean }>) => {
+        handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean | string[] }>) => {
             const { key, value } = action.payload;
             switch (key) {
                 case 'name':
@@ -58,7 +55,11 @@ const brandSlice = createSlice({
                 clientprofileID: '',
                 isActive: false
             };
-        }
+        },
+
+        setBrandFormValues(state, action: PayloadAction<BrandFormState['brandForm']>) {
+            state.brandForm = action.payload
+        },
     }
 });
 

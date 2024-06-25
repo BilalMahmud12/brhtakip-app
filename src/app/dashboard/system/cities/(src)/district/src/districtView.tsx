@@ -1,7 +1,6 @@
 'use client'
 import React, { useEffect, useRef } from 'react';
 import { useDataModal } from '@/contexts/DataModalContext';
-import { Button } from '@aws-amplify/ui-react';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import type { District } from '@/API';
@@ -9,91 +8,34 @@ import * as Repo from '@/repository/index';
 import DistrictsDataTable from './districtsDataTable';
 import CreateOrUpdateForm from './createOrUpdateForm';
 import { setDistricts, resetFormValues, setDistrictForm } from '@/reduxStore/features/districtSlice';
+
+import Button from '@mui/material/Button';
+import AddIcon from '@mui/icons-material/Add';
+import { usePathname, useRouter } from 'next/navigation';
 interface DistrictViewProps {
-    cityId: string;
     haveDistricts: boolean;
     fetchFilteredDistricts: () => void;
     filteredDistricts: District[];
 }
 
-const ModalCustomFooter = (props: {
-    type: 'create' | 'update'
-    handleCreate?: (data: any) => void;
-    handleUpdate?: (data: any) => void;
-    handleCancel?: () => void;
-}) => {
-    const {
-        type,
-        handleCreate = () => { },
-        handleUpdate = () => { },
-        handleCancel = () => { }
-    } = props;
 
-    return (
-        <div className='flex items-center justify-between'>
-            <div className='flex items-center space-x-3'>
-                <Button
-                    variation="primary"
-                    colorTheme="success"
-                    size="small"
-                    loadingText=""
-                    onClick={handleCancel}
-                    className='rounded-none bg-transparent text-gray-800 px-6 font-bold'
-                >
-                    <span>İPTAL ET</span>
-                </Button>
-                <Button
-                    variation="primary"
-                    colorTheme="success"
-                    size="small"
-                    loadingText=""
-                    onClick={type === 'create' ? handleCreate : handleUpdate}
-                    className='rounded-none bg-amber-500 text-zinc-800 font-bold px-6'
-                >
-                    <span className='flex items-center space-x-2'>
-                        <span>ONAYLA</span>
-                    </span>
-                </Button>
-            </div>
-        </div>
-    );
-}
-
-const DistrictView: React.FC<DistrictViewProps> = ({ cityId, haveDistricts, fetchFilteredDistricts, filteredDistricts }) => {
-    const { showDataModal, hideDataModal } = useDataModal();
+const DistrictView: React.FC<DistrictViewProps> = ({ haveDistricts, fetchFilteredDistricts, filteredDistricts }) => {
+    const router = useRouter()
     const dispatch = useAppDispatch<AppDispatch>();
     const districts = useAppSelector((state: RootState) => state.district.districts);
     const districtForm = useAppSelector((state: RootState) => state.district.districtForm);
+    const pathName = usePathname()
 
     const districtformRef = useRef(districtForm);
-    useEffect(() => {
-        districtformRef.current = districtForm;
-    }, [districtForm])
+    districtformRef.current = districtForm;
 
-    const handleCancelForm = () => {
-        dispatch(resetFormValues());
-        hideDataModal();
-    };
+    const cityId = pathName.split('/').pop()
 
-
-    const handleCreateForm = () => {
-        showDataModal(
-            <div><span className='text-base font-bold'>Yeni İlçe Ekle</span></div>,
-            <CreateOrUpdateForm isCreate={true} />,
-            <ModalCustomFooter
-                type='create'
-                handleCancel={handleCancelForm}
-                handleCreate={handleCreateDistrict}
-            />
-        );
-    };
-
-    // FIX
     const setDistrictCityId = () => {
         if (districtForm.cityID !== cityId) {
             dispatch(setDistrictForm({
-                ...districtForm,
-                cityID: cityId
+                cityID: cityId,
+                isActive: false
             }));
         }
     };
@@ -102,27 +44,13 @@ const DistrictView: React.FC<DistrictViewProps> = ({ cityId, haveDistricts, fetc
         setDistrictCityId();
     }, [cityId]);
 
-    const handleCreateDistrict = async () => {
-        try {
-            const createDistrict = await Repo.DistrictRepository.create(districtformRef.current);
-
-            if (createDistrict && createDistrict.data) {
-                fetchFilteredDistricts();
-                dispatch(setDistricts(filteredDistricts));
-                hideDataModal();
-                dispatch(resetFormValues());
-            }
-        } catch (error) {
-            console.log('Failed Creating District', error);
-        }
-    };
 
     const setDistrictUpdateData = (data: any) => {
         dispatch(setDistrictForm({
             id: data.id,
             name: data.name,
             isActive: data.isActive,
-            cityID: cityId
+            cityID: data.cityID,
         }));
     };
 
@@ -141,20 +69,23 @@ const DistrictView: React.FC<DistrictViewProps> = ({ cityId, haveDistricts, fetc
 
     return (
         <div>
-            <div className='px-6 py-3'>
-                <div className='mt-1.5 shadow bg-white'>
-                    <div className='px-6 py-3 mb-3 flex items-center justify-between'>
-                        <h2>{haveDistricts ? 'İlçeler' : 'Henüz İlçe Eklenmedi'}</h2>
-                        <Button
-                            variation="primary"
-                            colorTheme="success"
-                            size="small"
-                            loadingText=""
-                            onClick={handleCreateForm}
-                            className='rounded-none bg-amber-500 text-gray-800 px-6'
-                        >
-                            <span>İlçe Ekle</span>
-                        </Button>
+            <div className="mb-8">
+                <div className="mb-4 space-y-5">
+                    <div className='flex items-center p-4 pt-8 justify-between'>
+                        <div className='flex items-center space-x-3'>
+                            <h1 className='text-2xl font-semibold'>İlçeler</h1>
+                        </div>
+                        <div className='flex items-center space-x-2'>
+                            <div className='flex items-center space-x-2'>
+                                <Button
+                                    variant="contained"
+                                    startIcon={<AddIcon />}
+                                    onClick={() => router.push('/dashboard/system/cities/district/create')}
+                                >
+                                    İlçe Ekle
+                                </Button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className='mt-8'>

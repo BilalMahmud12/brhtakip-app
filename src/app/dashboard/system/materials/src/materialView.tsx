@@ -33,18 +33,23 @@ const MaterialView: React.FC = () => {
     const handleDeleteMaterial = async (data: any) => {
         try {
             const deleteMaterial = await Repo.MaterialRepository.softDelete(data.originalData.id);
-            console.log('deleted material', deleteMaterial);
-            const newMaterials = await Repo.MaterialRepository.getAllMaterials();
-            dispatch(setMaterials(newMaterials as unknown as Material[]));
+
+            if (deleteMaterial && deleteMaterial.data) {
+                const newMaterials = await Repo.MaterialRepository.getAllMaterials();
+                dispatch(setMaterials(newMaterials as unknown as Material[]));
+            }
         } catch (error) {
-            console.log('error', error);
+            console.log('Failed to delete material', error);
         }
     };
 
     return (
-        <div className='px-6 py-3'>
-            <div className='mt-1.5 shadow bg-white'>
-                <div className='px-6 py-3 mb-3 flex items-center justify-between'>
+        <div className="mb-8">
+            <div className='mb-4 space-y-5'>
+                <div className='flex items-center justify-between'>
+                    <div className='flex items-center space-x-3'>
+                        <h1 className='text-2xl font-semibold'>Malzemeler</h1>
+                    </div>
                     <div className='flex items-center space-x-2'>
                         <div className='flex items-center space-x-2'>
                             <Button

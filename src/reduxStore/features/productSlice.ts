@@ -35,29 +35,19 @@ const productSlice = createSlice({
             state.productForm = action.payload;
         },
 
-        handleFormChange: (state, action: PayloadAction<{ key: string, value: string }>) => {
+        handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean | string[] }>) => {
             const { key, value } = action.payload;
             switch (key) {
                 case 'name':
-                    state.productForm = {
-                        ...state.productForm,
-                        name: value
-                    }
+                    state.productForm.name = value as string
                     break;
                 case 'brandID':
-                    state.productForm = {
-                        ...state.productForm,
-                        brandID: value,
-                    }
+                    state.productForm.brandID = value as string
                     break;
                 case 'isActive':
-                    state.productForm.isActive = value === '1' || value === 'true';
+                    state.productForm.isActive = value as boolean
                     break;
                 default:
-                    state.productForm = {
-                        ...state.productForm,
-                        [key]: value,
-                    }
                     break;
             }
         },

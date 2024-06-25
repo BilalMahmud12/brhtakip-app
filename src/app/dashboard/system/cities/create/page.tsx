@@ -1,43 +1,45 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-import CreateOrUpdateForm from '../src/createOrUpdateForm'
+import CreateOrUpdateForm from '../(src)/createOrUpdateForm';
 import { useRouter } from 'next-nprogress-bar';
+import { setCities, resetFormValues, setCityForm } from '@/reduxStore/features/citySlice';
 import * as Repo from '@/repository/index';
-import { resetFormValues, setStores } from '@/reduxStore/features/storeSlice';
 
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
-import { Store } from '@/API';
+import { City } from '@/API';
 
-const CreateStorePage: React.FC = () => {
+
+const CreateMaterialPage: React.FC = () => {
     const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
-    const stores = useAppSelector((state: RootState) => state.store.stores);
-    const storeForm = useAppSelector((state: RootState) => state.store.storeForm);
-    const storeFormRef = useRef(storeForm);
-    storeFormRef.current = storeForm;
+    const cityForm = useAppSelector((state: RootState) => state.city.cityForm);
 
-    const handleCreateStore = async () => {
+    const cityformRef = useRef(cityForm);
+    cityformRef.current = cityForm;
+
+
+    const handleCreateCity = async () => {
         try {
-            const createStore = await Repo.StoreRepository.create(storeFormRef.current);
-
-            if (createStore && createStore.data) {
-                const newStore = await Repo.StoreRepository.getAllStores();
-                dispatch(setStores(newStore as unknown as Store[]))
-                console.log('new created store', newStore);
+            const createCity = await Repo.CityRepository.create(cityformRef.current);
+            console.log('created City', createCity)
+            if (createCity && createCity.data) {
+                const newCity = await Repo.CityRepository.getAllCities();
+                dispatch(setCities(newCity as unknown as City[]))
+                router.push('/dashboard/system/cities');
                 dispatch(resetFormValues());
             }
         } catch (error) {
-            console.log('Faield to create store', error);
+            console.log('Failed Create City', error)
         }
-    }
+    };
 
     return (
-        <div>
-            <title>Mağaza Ekle - BRH Takip</title>
+        <div >
+            <title>Şehir Ekle - BRH Takip</title>
 
             <div className='h-full'>
                 <div className='h-full col-span-2'>
@@ -45,15 +47,15 @@ const CreateStorePage: React.FC = () => {
                         <Button
                             variant="text"
                             startIcon={<ArrowBackIosIcon />}
-                            onClick={() => router.push('/dashboard/system/stores')}
+                            onClick={() => router.push('/dashboard/system/cities')}
                         >
-                            Mağazalara Geri Dön
+                            Şehirlere Geri Dön
                         </Button>
 
                         <Button
                             variant="contained"
                             startIcon={<SaveIcon />}
-                            onClick={handleCreateStore}
+                            onClick={handleCreateCity}
                         >
                             Kaydı Et
                         </Button>
@@ -68,4 +70,4 @@ const CreateStorePage: React.FC = () => {
     );
 }
 
-export default CreateStorePage
+export default CreateMaterialPage

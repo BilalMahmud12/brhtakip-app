@@ -12,7 +12,7 @@ import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { Store } from '@/API';
 
-const CreateStorePage: React.FC = () => {
+const UpdateStorePage: React.FC = () => {
     const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
     const stores = useAppSelector((state: RootState) => state.store.stores);
@@ -22,12 +22,14 @@ const CreateStorePage: React.FC = () => {
 
     const handleCreateStore = async () => {
         try {
-            const createStore = await Repo.StoreRepository.create(storeFormRef.current);
+            const updateStore = await Repo.StoreRepository.update(storeFormRef.current);
 
-            if (createStore && createStore.data) {
+            if (updateStore && updateStore.data) {
                 const newStore = await Repo.StoreRepository.getAllStores();
                 dispatch(setStores(newStore as unknown as Store[]))
-                console.log('new created store', newStore);
+
+                console.log('new updated store', newStore);
+
                 dispatch(resetFormValues());
             }
         } catch (error) {
@@ -37,7 +39,7 @@ const CreateStorePage: React.FC = () => {
 
     return (
         <div>
-            <title>Mağaza Ekle - BRH Takip</title>
+            <title>Mağaza Güncelle - BRH Takip</title>
 
             <div className='h-full'>
                 <div className='h-full col-span-2'>
@@ -62,10 +64,10 @@ const CreateStorePage: React.FC = () => {
             </div>
 
             <div className='space-y-3'>
-                <CreateOrUpdateForm isCreate={true} />
+                <CreateOrUpdateForm isCreate={false} />
             </div>
         </div>
     );
 }
 
-export default CreateStorePage
+export default UpdateStorePage

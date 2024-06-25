@@ -27,9 +27,9 @@ const CreateBrandPage: React.FC = () => {
         try {
             const createBrand = await Repo.BrandRepository.create(brandFormRef.current);
             if (createBrand && createBrand.data) {
-                dispatch(resetFormValues());
                 const newbrand = await Repo.BrandRepository.getAllBrands();
                 dispatch(setBrands(newbrand as unknown as Brand[]))
+                dispatch(resetFormValues());
                 router.replace('/dashboard/system/brands');
             }
         } catch (error) {

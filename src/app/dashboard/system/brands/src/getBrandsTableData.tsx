@@ -9,6 +9,7 @@ import type { DataTableColumn } from '@/components/core/dataTable';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 export default function getBrandsTableData(
     data: Brand[],
@@ -45,17 +46,21 @@ export default function getBrandsTableData(
 
                     case 'isActive':
                         row[column.key] = (
-                            <Badge variation={brand.isActive ? 'success' : 'error'} size='small' className='px-5'>
-                                {brand.isActive ? 'Aktif' : 'İnaktif'}
-                            </Badge>
-                        );
+                            <div className='flex items-center space-x-1 h-full'>
+                                <FiberManualRecordIcon
+                                    color={brand.isActive === true ? 'success' : 'disabled'}
+                                    fontSize="small"
+                                />
+                                <span className='text-xs block font-medium'>{brand.isActive === true ? 'Aktif' : 'Aktif Değil'}</span>
+                            </div>
+                        )
                         break;
 
                     case 'Products':
                         row[column.key] = (
-                            <Badge variation='info' size='small' className='px-5'>
-                                {brand.Products?.items?.length || 0}
-                            </Badge>
+                            <div className='h-full flex items-center ml-3'>
+                                <span className='flex items-center justify-center w-6 h-6 rounded-full bg-red-100 border border-red-200 text-xs font-medium'>{brand.Products?.items?.length || 0}</span>
+                            </div>
                         )
                         break;
 
@@ -69,7 +74,6 @@ export default function getBrandsTableData(
                                 <IconButton
                                     aria-label="edit"
                                     size="small"
-                                    color='primary'
                                     onClick={() => {
                                         router.push(
                                             `/dashboard/system/brands/${brand.id}`
@@ -83,7 +87,6 @@ export default function getBrandsTableData(
                                 <IconButton
                                     aria-label="delete"
                                     size="small"
-                                    color='error'
                                     onClick={() => handleDelete(row)}
                                 >
                                     <DeleteIcon fontSize="inherit" />

@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 export default function getCitiesTableData(
     data: City[],
@@ -44,10 +45,14 @@ export default function getCitiesTableData(
 
                     case 'isActive':
                         row[column.key] = (
-                            <Badge variation={city.isActive ? 'success' : 'error'}>
-                                {city.isActive ? 'Aktif' : 'İnaktif'}
-                            </Badge>
-                        );
+                            <div className='flex items-center space-x-1 h-full'>
+                                <FiberManualRecordIcon
+                                    color={city.isActive === true ? 'success' : 'disabled'}
+                                    fontSize="small"
+                                />
+                                <span className='text-xs block font-medium'>{city.isActive === true ? 'Aktif' : 'Aktif Değil'}</span>
+                            </div>
+                        )
                         break;
 
                     case 'actions':
@@ -56,7 +61,6 @@ export default function getCitiesTableData(
                                 <IconButton
                                     aria-label="edit"
                                     size="small"
-                                    color='primary'
                                     onClick={() => {
                                         handleEdit(city)
                                     }}
@@ -67,7 +71,6 @@ export default function getCitiesTableData(
                                 <IconButton
                                     aria-label="delete"
                                     size="small"
-                                    color='error'
                                     onClick={() => handleDelete(row)}
                                 >
                                     <DeleteIcon fontSize="inherit" />

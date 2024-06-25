@@ -62,3 +62,7 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+
+# Workspace-settings
+.vscode/settings.json
+

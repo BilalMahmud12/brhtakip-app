@@ -4,9 +4,10 @@ import type { Area } from '@/API';
 interface AreaFormState {
     areas: Area[];
     areaForm: {
-        districtID: string;
+        id?: string;
+        districtID?: string;
         isActive: boolean;
-        name: string;
+        name?: string;
         createdBy?: string;
         updatedBy?: string;
     }
@@ -15,7 +16,6 @@ interface AreaFormState {
 const initialState: AreaFormState = {
     areas: [],
     areaForm: {
-        districtID: '',
         isActive: false,
         name: '',
         createdBy: '',
@@ -41,7 +41,6 @@ const areaSlice = createSlice({
 
         resetFormValues: (state) => {
             state.areaForm = {
-                districtID: '',
                 isActive: false,
                 name: '',
                 createdBy: '',
@@ -49,41 +48,25 @@ const areaSlice = createSlice({
             }
         },
 
-        handleFormChange: (state, action: PayloadAction<{ key: string, value: string }>) => {
+        handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean | string[] }>) => {
             const { key, value } = action.payload
             switch (key) {
                 case 'districtID':
-                    state.areaForm = {
-                        ...state.areaForm,
-                        districtID: value,
-                    }
+                    state.areaForm.districtID = value as string
                     break;
                 case 'name':
-                    state.areaForm = {
-                        ...state.areaForm,
-                        name: value,
-                    }
+                    state.areaForm.name = value as string
                     break;
                 case 'isActive':
-                    state.areaForm.isActive = value === '1' || value === 'true';
+                    state.areaForm.isActive = value as boolean
                     break;
                 case 'createdBy':
-                    state.areaForm = {
-                        ...state.areaForm,
-                        createdBy: value,
-                    }
+                    state.areaForm.createdBy = value as string
                     break;
                 case 'updatedBy':
-                    state.areaForm = {
-                        ...state.areaForm,
-                        updatedBy: value,
-                    }
+                    state.areaForm.updatedBy = value as string
                     break;
                 default:
-                    state.areaForm = {
-                        ...state.areaForm,
-                        [key]: value,
-                    }
                     break;
             }
         }

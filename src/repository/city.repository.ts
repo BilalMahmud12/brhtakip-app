@@ -42,7 +42,7 @@ const update = async (city: any) => {
     try {
         const data = await client.graphql({
             query: updateCity,
-            variables: { input: city },
+            variables: { input: { ...city } },
         });
 
         return data;
