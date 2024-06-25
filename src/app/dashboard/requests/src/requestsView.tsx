@@ -24,6 +24,7 @@ const RequestsView: React.FC = () => {
     const pathname = usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
 
+    const currentPageTitle = useAppSelector((state: RootState) => state.global.currentPageTitle);
     const userProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const requests = useAppSelector((state: RootState) => state.request.requests);
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
@@ -50,7 +51,7 @@ const RequestsView: React.FC = () => {
 
     const handleStatusChange = () => {
         const baseUrl = '/dashboard/requests'; 
-        const slug = findKeyByValue(requestStatusOptions, selectedStatus)?.toLowerCase().replace('_', '-')
+        const slug = findKeyByValue(statusMap, selectedStatus)
         router.push(`${baseUrl}${slug === 'pending-approval' ? '' : `/${slug}`}`)
         dispatch(setRequests([]))
     }
@@ -95,7 +96,9 @@ const RequestsView: React.FC = () => {
                     <div className='flex items-center justify-between'>
                         <div className='flex flex-col items-start'>
                             <h1 className='text-2xl font-semibold'>Talepler</h1>
-                            <p className='font-medium text-sm text-red-600'>Onayı Bekleyen Talepler</p>
+                            <p className='font-medium text-sm text-red-600'>
+                                {currentPageTitle} 
+                            </p>
                         </div>
 
                         <div className="flex items-center space-x-3">
@@ -116,11 +119,9 @@ const RequestsView: React.FC = () => {
                                 <AutoComplete
                                     id="request_status"
                                     options={statusOptions}
-                                    value={statusOptions.find(option => option.value === selectedStatus)?.label || 'Onay Bekliyor'}
+                                    value={statusOptions.find(option => option.value === selectedStatus)?.value as string}
                                     handleOnChange={(option) => {
-                                        if (option && typeof option !== 'string') {
-                                            setSelectedStatus(option.label as RequestStatus)
-                                        }
+                                        setSelectedStatus(option.value as RequestStatus)
                                     }}
                                     variant='outlined'
                                 />

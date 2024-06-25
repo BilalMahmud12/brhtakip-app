@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { use } from 'react'
 import { Autocomplete, TextField } from '@mui/material';
 
 type Option = {
@@ -8,34 +8,57 @@ type Option = {
 
 interface AutoCompleteProps {
     id: string;
-    options: readonly string[] | Option[];
+    options: Option[];
     label?: string;
     value: string;
-    handleOnChange: (option: string | Option | null, reason: string) => void;
+    handleOnChange: (option: Option) => void;
     variant?: 'standard' | 'outlined' | 'filled';
 }
 
 const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
-    const { id, options, label, value, handleOnChange = () => { }, variant = 'standard' } = props
-    const [currentValue, setCurrentValue] = React.useState('')
+    const { 
+        id, 
+        options, 
+        label, 
+        handleOnChange = () => { }, 
+        variant = 'standard' 
+    } = props
+
+    const [currentValue, setCurrentValue] = React.useState<Option | null>(options[0])
+    const [inputValue, setInputValue] = React.useState('');
 
     React.useEffect(() => {
-        setCurrentValue(value)
-    }, [value])
-    
+        const option = options.find(option => option.value === props.value)
+        setCurrentValue(option || null)
+        setInputValue(option?.label || '')
+    }
+    , [props.value, options])
+
+
     return (
         <div>
             <Autocomplete
                 id={id}
-                options={options as readonly string[]}
-                getOptionLabel={(option) => typeof option === 'string' ? option : (option as Option).label}
+                options={options}
                 value={currentValue}
-                onChange={(_, option, resason) => {
-                    setCurrentValue(typeof option === 'string' ? option : (option as unknown as Option)?.label || '')
-                    handleOnChange(option, resason)
+                onChange={(_, option) => {
+                    setCurrentValue(option)
+                    handleOnChange(option as Option)
                 }}
-                renderInput={(params) => <TextField {...params} label={label} variant={variant} size='small' />}
-                isOptionEqualToValue={(option, value) => option === currentValue}
+                onInputChange={(_, newInputValue: string) => {
+                    setInputValue(newInputValue);
+                }}
+                getOptionLabel={(option) => option.label}
+                isOptionEqualToValue={(option, value) => option.value === value?.value}
+                renderInput={(params) => (
+                    <TextField 
+                        {...params} 
+                        label={label} 
+                        variant={variant} 
+                        size='small' 
+                    />
+                )}
+                loading
             />
         </div>
     )

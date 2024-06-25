@@ -206,7 +206,7 @@ export default function RootLayout({
                         alt="Logo"
                         width={120}
                         height={30}
-                        className='cursor-pointer mr-12 w-[120px] h-auto'
+                        className='cursor-pointer mr-12 w-[120px] h-[30px]'
                         onClick={() => router.push('/dashboard')}
                         priority 
                     />
@@ -258,7 +258,10 @@ export default function RootLayout({
                                                 justifyContent: open ? 'initial' : 'center',
                                                 px: 2.5,
                                             }}
-                                            onClick={() => router.push(item.href)}
+                                            onClick={() => {
+                                                handleDrawerClose();
+                                                router.push(item.href)
+                                            }}
                                         >
                                             <ListItemIcon
                                                 sx={{

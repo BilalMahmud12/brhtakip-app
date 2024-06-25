@@ -4,9 +4,21 @@ import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { handleFormChange } from '@/reduxStore/features/requestSlice';
 import { listProducts, listStores, listMaterials } from '@/graphql/queries';
-import { Input, Label, Autocomplete, ComboBoxOption, TextAreaField } from '@aws-amplify/ui-react';
+import { Input, Label, Autocomplete, TextAreaField } from '@aws-amplify/ui-react';
 import { generateRequestNumber } from '@/utils/helpers';
 import { client } from '@/repository';
+
+import AutoComplete from '@/components/core/autoComplete';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import Switch from '@mui/material/Switch';
+import Stack from '@mui/material/Stack';
+import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
+import SaveIcon from '@mui/icons-material/Save';
+import ImagesUpload from './imagesUpload';
+import { StorageImage } from '@aws-amplify/ui-react-storage';
+
 
 import type { Request, RequestItem } from '@/API';
 
@@ -63,6 +75,12 @@ const renderStoreOption = (option: any, value: any) => {
     )
 }
 
+const getClientOptions = (clientProfiles: any[]) => {
+    return clientProfiles.map((client) => {
+        return { value: client.id, label: client.name }
+    })
+}
+
 const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     const { 
         isCreate = true, 
@@ -70,15 +88,20 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     } = props;
 
     const dispatch = useAppDispatch<AppDispatch>();
-    const userProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
+    const currentUser = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
-
+    const { clientprofileID } = currentUser
+    
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
+    const requestFormRef = React.useRef(requestForm);
+    requestFormRef.current = requestForm;
+
+    console.log('Request Form:', requestFormRef.current);
 
     const [storesList, setStoresList] = useState<{ id: string, label: string }[]>([]);
     const [productsList, setProductsList] = useState<{ id: string, label: string }[]>([]);
-    const [applicationAreasList, setApplicationAreasList] = useState<{ id: string, label: string }[]>([]);
-    const [materialsList, setMaterialsList] = useState<{ id: string, label: string }[]>([]);
+    const [applicationAreasList, setApplicationAreasList] = useState<{ value: string, label: string }[]>([]);
+    const [materialsList, setMaterialsList] = useState<{ value: string, label: string }[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -91,13 +114,13 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
             ]);
 
             setStoresList(storesData.data.listStores.items.map((item: any) => ({ id: item.id, label: item.name, description: item.address })));
-            setMaterialsList(materialsData.data.listMaterials.items.map((item: any) => ({ id: item.id, label: item.name })));
+            setMaterialsList(materialsData.data.listMaterials.items.map((item: any) => ({ value: item.id, label: item.name })));
             setApplicationAreasList([
-                { id: 'INTERIOR', label: 'İç Mekan' },
-                { id: 'EXTERIOR', label: 'Dış Mekan' },
-                { id: 'VEHICLE', label: 'Araç Giydirme' },
-                { id: 'WINDOW', label: 'Cam' },
-                { id: 'OTHER', label: 'Diğer' }
+                { value: 'INTERIOR', label: 'İç Mekan' },
+                { value: 'EXTERIOR', label: 'Dış Mekan' },
+                { value: 'VEHICLE', label: 'Araç Giydirme' },
+                { value: 'WINDOW', label: 'Cam' },
+                { value: 'OTHER', label: 'Diğer' }
             ]);
         };
 
@@ -113,31 +136,22 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
             loadFormData(request);
         }
     }, [])
-  
-    // @TODO: isolate this function to a helper file
-    const getClientsList = (): { id: string, label: string }[] => {
-        return clientProfiles?.map((client) => ({
-            id: client.id,
-            label: client?.name as string || ''
-        }));
-    }
 
-    // @TODO: isolate this function to a helper file
-    const getBrandsList = (clientID: string): { id: string, label: string }[] => {
+    const getBrandsList = (clientID: string): { value: string, label: string }[] => {
         return clientProfiles
                 .find(client => client.id === clientID)
                 ?.Brands
                 ?.items
                 ?.map(brand => ({
-                    id: brand?.id as string,
+                    value: brand?.id as string,
                     label: brand?.name as string
                 })) 
                 || [];
     }
 
-    const handleOnBrandSelection = async (option: ComboBoxOption) => {
-        dispatch(handleFormChange({ key: 'requestBrandId', value: option.id }))
-        setProductsList(await getProductsList(option.id));
+    const handleOnBrandSelection = async (option: { value: string, label: string }) => {
+        dispatch(handleFormChange({ key: 'requestBrandId', value: option.value }))
+        setProductsList(await getProductsList(option.value));
     }
 
     const handleOnBrandClear = () => {
@@ -201,245 +215,281 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     return (
         <div>
-            <div className=''>
-                <form>
-                    <div className=''>
-                        <div className='grid grid-cols-2 gap-8 mb-6'>
-                            {userProfile.clientprofileID === 'BRH_ADMIN' && (
-                                <div className='input-group'>
-                                    <Label htmlFor="client_name" className='block text-xs font-medium mb-1.5'>Müşteri</Label>
-                                    <Autocomplete
-                                        id="client_name"
-                                        label="Müşteri"
-                                        placeholder='Müşteri Seç'
-                                        variation="quiet"
-                                        options={getClientsList()}
-                                        value={getClientsList().find(client => client.id === requestForm.clientprofileID)?.label}
-                                        onSelect={(option) => dispatch(handleFormChange({ key: 'clientprofileID', value: option.id }))}
-                                        onClear={() => dispatch(handleFormChange({ key: 'clientprofileID', value: '' }))}
-                                        className='custom-input'
-                                        isDisabled
-                                    />
-                                </div>
-                            )}
+            <div className='h-full'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>
+                    {/** Talep Ayarları */}
+                    <div className='p-6 bg-white shadow col-span-2 sm:col-span-1'>
+                        <h2 className='text-base font-semibold mb-6'>Talep Ayarları</h2>
 
-                            <div className='input-group'>
-                                <Label htmlFor="requestNumber" className='block text-xs font-medium mb-1.5'>Talep Numarası</Label>
-                                <Input
-                                    id="requestNumber"
-                                    name="requestNumber"
-                                    variation="quiet"
-                                    className='custom-input'
-                                    defaultValue={requestForm.requestNumber}
-                                    isDisabled
+                        <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
+                            <div className='input-group w-full col-span-2 lg:col-span-1'>
+                                <label htmlFor="requestNumber" className='block text-xs font-medium mb-1.5'>Talep Numarası</label>
+                                <TextField
+                                    id='requestNumber'
+                                    variant="standard"
+                                    sx={{ width: '100%' }}
+                                    helperText={''}
+                                    value={requestFormRef.current.requestNumber}
+                                    disabled
                                 />
                             </div>
                         </div>
                     </div>
 
-                    <div className='my-2 pt-5' />
+                    {/** Talep Durumu */}
+                    <div className='p-6 bg-white shadow col-span-2 sm:col-span-1'>
+                        <h2 className='text-base font-semibold mb-6'>Marka ve Ürün</h2>
 
-                    <div>
-                        <span className='block mb-3 text-xs font-medium'>Mağaza Bilgileri</span>
-
-                        <div className='bg-white px-6 py-8 rounded-md shadow'>
-                            <div className='grid grid-cols-2 gap-8'>
-                                <div className='input-group col-span-2'>
-                                    <Label htmlFor="store_name" className='block text-xs font-medium mb-1.5'>Mağaza</Label>
-                                    <Autocomplete
-                                        id="store_name"
-                                        label="Mağaza"
-                                        placeholder='Mağaza Seç'
-                                        variation="quiet"
-                                        options={storesList}
-                                        renderOption={renderStoreOption}
-                                        value={storesList.find(store => store.id === requestForm.storeID)?.label}
-                                        onSelect={(option) => dispatch(handleFormChange({ key: 'storeID', value: option.id }))}
-                                        className='custom-input'
+                        <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
+                            {clientprofileID === 'BRH_ADMIN' && (
+                                <div className='input-group w-full col-span-2'>
+                                    <label htmlFor="client_name" className='block text-xs font-medium mb-1.5'>Firma</label>
+                                    <AutoComplete
+                                        id="client_name"
+                                        options={getClientOptions(clientProfiles)}
+                                        value={
+                                            clientProfiles.find(
+                                                (client: any) => client.id === requestFormRef.current.clientprofileID
+                                            )?.id as string || ''
+                                        }
+                                        handleOnChange={(option) => dispatch(
+                                            handleFormChange({ 
+                                                key: 'clientprofileID', 
+                                                value: option?.value as string || '' 
+                                            })
+                                        )}
                                     />
                                 </div>
+                            )}
+
+                            {/* <div className='input-group w-full col-span-1'>
+                                <label htmlFor="brand_name" className='block text-xs font-medium mb-1.5'>Marka</label>
+                                <AutoComplete
+                                    id="brand_name"
+                                    options={getBrandsList(requestFormRef.current.clientprofileID)}
+                                    value={
+                                        getBrandsList(requestFormRef.current.clientprofileID).find(
+                                            (brand: any) => brand.value === requestFormRef.current.requestBrandId
+                                        )?.value as string || ''
+                                    }
+                                    handleOnChange={(option) => dispatch(
+                                        handleFormChange({ 
+                                            key: 'requestBrandId', 
+                                            value: option?.value as string || '' 
+                                        })
+                                    )}
+                                />
+                            </div> */}
+                        </div>
+                    </div>
+
+                    {/** Mağaza */}
+                    <div className='p-6 bg-white shadow col-span-2'>
+                        <h2 className='text-base font-semibold mb-6'>Mağaza</h2>
+                        <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 mb-4'></div>
+                    </div>
+
+                    {/** Finans */}
+                    <div className='p-6 bg-white shadow col-span-2'>
+                        <h2 className='text-base font-semibold mb-6'>Finans</h2>
+                        
+                        <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
+                            <div className='input-group w-full col-span-2 lg:col-span-1'>
+                                <label htmlFor="productionCost" className='block text-xs font-medium mb-1.5'>Urtim Maliyeti</label>
+                                <TextField
+                                    id='productionCost'
+                                    variant="standard"
+                                    sx={{ width: '100%' }}
+                                    helperText={''}
+                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                        console.log('Production Cost:', event.target.value);
+                                        dispatch(handleFormChange({
+                                            key: 'productionCost',
+                                            value: event.target.value
+                                        }))
+                                    }}
+                                    placeholder={'0.00'}
+                                    type='number'
+                                    inputProps={{ 
+                                        min: 0.00, 
+                                        step: 0.01,
+                                    }}
+                                />
+                            </div>
+
+                            <div className='input-group w-full col-span-2 lg:col-span-1'>
+                                <label htmlFor="cargoBudget" className='block text-xs font-medium mb-1.5'>Kargo Bütçesi</label>
+                                <TextField
+                                    id='cargoBudget'
+                                    variant="standard"
+                                    sx={{ width: '100%' }}
+                                    helperText={''}
+                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                        dispatch(handleFormChange({
+                                            key: 'cargoBudget',
+                                            value: event.target.value
+                                        }))
+                                    }}
+                                    placeholder={'0.00'}
+                                    type='number'
+                                    inputProps={{
+                                        min: 0.00,
+                                        step: 0.01,
+                                    }}
+                                />
+                            </div>
+
+                            <div className='input-group w-full col-span-2 lg:col-span-1'>
+                                <label htmlFor="assemblyBudget" className='block text-xs font-medium mb-1.5'>Montaj Bütçesi</label>
+                                <TextField
+                                    id='assemblyBudget'
+                                    variant="standard"
+                                    sx={{ width: '100%' }}
+                                    helperText={''}
+                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                        dispatch(handleFormChange({
+                                            key: 'assemblyBudget',
+                                            value: event.target.value
+                                        }))
+                                    }}
+                                    placeholder={'0.00'}
+                                    type='number'
+                                    inputProps={{
+                                        min: 0.00,
+                                        step: 0.01,
+                                    }}
+                                />
+                            </div>
+
+                            <div className='input-group w-full col-span-2 lg:col-span-1'>
+                                <label htmlFor="monthlyFee" className='block text-xs font-medium mb-1.5'>Aylık Aidatı</label>
+                                <TextField
+                                    id='monthlyFee'
+                                    variant="standard"
+                                    sx={{ width: '100%' }}
+                                    helperText={''}
+                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                        dispatch(handleFormChange({
+                                            key: 'monthlyFee',
+                                            value: event.target.value
+                                        }))
+                                    }}
+                                    placeholder={'0.00'}
+                                    type='number'
+                                    inputProps={{
+                                        min: 0.00,
+                                        step: 0.01,
+                                    }}
+                                />
                             </div>
                         </div>
                     </div>
 
-                    <div className='my-2 pt-5' />
+                    {/** Talep Detayları */}
+                    <div className='p-6 bg-white shadow col-span-2'>
+                        <h2 className='text-base font-semibold mb-6'>Talep Detaiları</h2>
 
-                    <div>
-                        <span className='block mb-3 text-xs font-medium'>Talep Detaiları</span>
+                        <div className='grid grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-8 mb-4'>
+                            <div className='input-group w-full col-span-2 lg:col-span-1'>
+                                <label htmlFor="quantity" className='block text-xs font-medium mb-1.5'>Adet</label>
+                                <TextField
+                                    id='quantity'
+                                    variant="standard"
+                                    sx={{ width: '100%' }}
+                                    helperText={''}
+                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                        dispatch(handleFormChange({
+                                            key: 'requestDetails.quantity',
+                                            value: event.target.value
+                                        }))
+                                    }}
+                                    placeholder={'0'}
+                                    type='number'
+                                    inputProps={{
+                                        min: 0,
+                                        step: 1,
+                                    }}
+                                />
+                            </div>
+                            
+                            <div className='input-group w-full col-span-2 lg:col-span-1'>
+                                <label htmlFor="applicationArea" className='block text-xs font-medium mb-1.5'>Uygulama Alanı</label>
+                                <AutoComplete
+                                    id="applicationArea"
+                                    options={applicationAreasList}
+                                    value={requestFormRef.current.requestDetails.applicationArea}
+                                    handleOnChange={(option) => dispatch(
+                                        handleFormChange({ 
+                                            key: 'requestDetails.applicationArea', 
+                                            value: option?.value as string || '' 
+                                        })
+                                    )}
+                                />
+                            </div>
+
+                            <div className='input-group w-full col-span-2 lg:col-span-1'>
+                                <label htmlFor="material" className='block text-xs font-medium mb-1.5'>Malzeme</label>
+                                <AutoComplete
+                                    id="material"
+                                    options={materialsList}
+                                    value={requestFormRef.current.requestDetails.material}
+                                    handleOnChange={(option) => dispatch(
+                                        handleFormChange({ 
+                                            key: 'requestDetails.material', 
+                                            value: option?.value as string || '' 
+                                        })
+                                    )}
+                                />
+                            </div>
+
+                            
+                            <div className='input-group w-full col-span-3 lg:col-span-1'>
+                                <label htmlFor="branded" className='block text-xs font-medium mb-1.5'>Markalı</label>
+                                <Stack direction="row" spacing={1}>
+                                    <Switch
+                                        id="branded"
+                                        checked={requestFormRef.current.requestDetails.branded}
+                                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                            dispatch(handleFormChange({
+                                                key: 'requestDetails.branded',
+                                                value: event.target.checked ? '1' : '0'
+                                            }))
+                                        }}
+                                    />
+                                </Stack>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/** Referans Fotoğrafları */}
+                    <div className='p-6 bg-white shadow col-span-2'>
+                        <h2 className='text-base font-semibold mb-6'>Referans Fotoğrafları</h2>
+
                         <div>
-                            <div className='space-y-5'>
-                                <div className='bg-white px-6 py-8 rounded-md shadow'>
-                                    <div className='grid grid-cols-2 gap-8'>
-                                        <div className='input-group'>
-                                            <Label htmlFor="brand_name" className='block text-xs font-medium mb-1.5'>Marka</Label>
-                                            <Autocomplete
-                                                id="brand_name"
-                                                label="Marka"
-                                                placeholder='Marka Seç'
-                                                variation="quiet"
-                                                options={getBrandsList(requestForm.clientprofileID !== '' ? requestForm.clientprofileID : '')}
-                                                value={getBrandsList(requestForm.clientprofileID !== '' ? requestForm.clientprofileID : '').find(brand => brand.id === requestForm.requestBrandId)?.label}
-                                                onSelect={(option) => handleOnBrandSelection(option)}
-                                                onClear={() => handleOnBrandClear}
-                                                className='custom-input'
-                                            />
-                                        </div>
+                            <ImagesUpload
+                                requestNumber={requestFormRef.current.requestNumber} 
+                                category='references'
+                            />
 
-                                        <div className='input-group'>
-                                            <Label htmlFor="product_name" className='block text-xs font-medium mb-1.5'>Ürün</Label>
-                                            <Autocomplete
-                                                id="product_name"
-                                                label="Ürün"
-                                                placeholder='Ürün Seç'
-                                                variation="quiet"
-                                                options={productsList}
-                                                value={productsList.find(product => product.id === requestForm.requestProductId)?.label}
-                                                onSelect={(option) => dispatch(handleFormChange({ key: 'requestProductId', value: option.id }))}
-                                                onClear={() => dispatch(handleFormChange({ key: 'requestProductId', value: '' }))}
-                                                className='custom-input'
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className='grid grid-cols-3 gap-8 my-6'>
-                                        <div className='input-group'>
-                                            <Label htmlFor="application_area" className='block text-xs font-medium mb-1.5'>Uygulama Alanı</Label>
-                                            <Autocomplete
-                                                id="application_area"
-                                                label="Uygulama Alanı"
-                                                placeholder='Uygulama Alanı Seç'
-                                                variation="quiet"
-                                                options={applicationAreasList}
-                                                value={applicationAreasList.find(area => area.id === requestForm.requestDetails.applicationArea)?.label}
-                                                onSelect={(option) => dispatch(handleFormChange({ key: 'requestDetails.applicationArea', value: option.id }))}
-                                                className='custom-input'
-                                            />
-                                        </div>
-                                        <div className='input-group'>
-                                            <Label htmlFor="material" className='block text-xs font-medium mb-1.5'>Malzeme</Label>
-                                            <Autocomplete
-                                                id="material"
-                                                label="Malzeme"
-                                                placeholder='Malzeme Seç'
-                                                variation="quiet"
-                                                options={materialsList}
-                                                onSelect={(option) => {
-                                                    dispatch(handleFormChange({ key: 'requestMaterialId', value: option.id}))
-                                                    dispatch(handleFormChange({ key: 'requestDetails.material', value: option.label}))
-                                                }}
-                                                value={materialsList.find(material => material.id === requestForm.requestMaterialId)?.label}
-                                                className='custom-input'
-                                            />
-                                        </div>
-                                        <div className='input-group'>
-                                            <Label htmlFor="branded" className='block text-xs font-medium mb-1.5'>Markalı mı?</Label>
-                                            <Autocomplete
-                                                id="branded"
-                                                label="Markalı mı?"
-                                                placeholder='Cevap Seç'
-                                                variation="quiet"
-                                                options={[
-                                                    { id: '1', label: 'Evet' },
-                                                    { id: '0', label: 'Hayır' }
-                                                ]}
-                                                onSelect={(option) => dispatch(handleFormChange({ key: 'requestDetails.branded', value: option.id }))}
-                                                value={requestForm.requestDetails.branded === true ? 'Evet' : 'Hayır'}
-                                                className='custom-input'
-                                            />
-                                        </div>
-
-                                        <div className='input-group'>
-                                            <Label htmlFor="quantity" className='block text-xs font-medium mb-1.5'>Adet</Label>
-                                            <Input
-                                                type='number'
-                                                step={1}
-                                                id="quantity"
-                                                name="quantity"
-                                                variation="quiet"
-                                                className='custom-input'
-                                                onChange={(e) => dispatch(handleFormChange({ key: 'requestDetails.quantity', value: e.target.value }))}
-                                                value={requestForm.requestDetails.quantity}
-                                            />
-                                        </div>
-
-                                        <div className='input-group'>
-                                            <Label htmlFor="width" className='block text-xs font-medium mb-1.5'>Genişlik / cm</Label>
-                                            <Input
-                                                type='number'
-                                                step="any"
-                                                id="width"
-                                                name="width"
-                                                variation="quiet"
-                                                className='custom-input'
-                                                onChange={(e) => dispatch(handleFormChange({ key: 'requestDetails.width', value: e.target.value }))}
-                                                value={requestForm.requestDetails.width}
-                                            />
-                                        </div>
-
-                                        <div className='input-group'>
-                                            <Label htmlFor="height" className='block text-xs font-medium mb-1.5'>Yükseklik / cm</Label>
-                                            <Input
-                                                type='number'
-                                                step="any"
-                                                id="height"
-                                                name="height"
-                                                variation="quiet"
-                                                className='custom-input'
-                                                onChange={(e) => dispatch(handleFormChange({ key: 'requestDetails.height', value: e.target.value }))}
-                                                value={requestForm.requestDetails.height}
-                                            />
-                                        </div>
-
-                                        <div className='input-group col-span-3'>
-                                            <Label htmlFor="designNote" className='block text-xs font-medium mb-1.5'>Tasarım Notu</Label>
-                                            <TextAreaField
-                                                id="designNote"
-                                                name="designNote"
-                                                variation="quiet"
-                                                label=""
-                                                placeholder=""
-                                                size='small'
-                                                rows={3}
-                                                labelHidden={true}
-                                                value={requestForm.requestDetails.designNote}
-                                                onChange={(e) => dispatch(handleFormChange({ key: 'requestDetails.designNote', value: e.target.value }))}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/*formData.items?.map((requestItem, index) => {
-                                    return (
-                                        <div key={index} className='bg-gray-100 px-6 py-2.5 rounded-md border border-zinc-200'>
-                                            <div className='flex items-center justify-end pt-2'>
-                                                <Button
-                                                    size="small"
-                                                    onClick={() => setFormData({
-                                                        ...formData,
-                                                        items: formData.items.filter((item, i) => i !== index)
-                                                    })}
-                                                    className='rounded-md text-red-500 p-1 text-xs border-gray-300 hover:bg-red-600 hover:text-white hover:border-red-600'
-                                                >
-                                                    <span className='flex items-center'>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-                                                            <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
-                                                        </svg>
-                                                    </span>
-                                                </Button>
-                                            </div>
-                                            <RequestItemsForm 
-                                                brandsList={brandsList}
-                                                productsList={productsList}
-                                                applicationAreasList={applicationAreasList}
-                                                materialsList={materialsList}
-                                            />
-                                        </div>
-                                    )
-                                })*/}
-                            </div>
+                            <StorageImage alt="sleepy-cat" path="public/BRH-2024-16849/references/4bf22b6b-5d49-43ec-98e5-686609a31bce.jpg" />;
                         </div>
                     </div>
-                </form> 
+
+                    {/** Tasarım ve Revizeler */}
+                    <div className='p-6 bg-white shadow col-span-2'>
+                        <h2 className='text-base font-semibold mb-6'>Tasarım ve Revizeler</h2>
+                    </div>
+
+                    {/** Baskı Fotoğrafları */}
+                    <div className='p-6 bg-white shadow col-span-2'>
+                        <h2 className='text-base font-semibold mb-6'>Baskı Fotoğrafları</h2>
+                    </div>
+
+                    {/** Montaj Fotoğrafları */}
+                    <div className='p-6 bg-white shadow col-span-2'>
+                        <h2 className='text-base font-semibold mb-6'>Uygulama Fotoğrafları</h2>
+                    </div>
+                </div>
             </div>
         </div>
     );

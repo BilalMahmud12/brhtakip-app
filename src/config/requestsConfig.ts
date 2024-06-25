@@ -13,10 +13,10 @@ export const requestStatus= (pathname: string): string => {
 };
 
 export const requestStatusOptions: { [key: string]: string } = {
-    'PENDING_APPROVAL': 'Onay Bekliyor',
-    'IN_DESIGN': 'Tasarım Bekliyor',
-    'IN_PRESS': 'Baskı Bekliyor',
-    'IN_APPLICATION': 'Uygulama Bekliyor',
+    'PENDING_APPROVAL': 'Onayı Bekleyen',
+    'IN_DESIGN': 'Tasarıma Bekleyen',
+    'IN_PRESS': 'Baskı Bekleyen',
+    'IN_APPLICATION': 'Uygulama Bekleyen',
     'COMPLETED': 'Tamamlandı',
     'CANCELLED': 'İptal Edildi',
 }
