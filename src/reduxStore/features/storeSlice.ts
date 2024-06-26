@@ -65,11 +65,11 @@ const storeSlice = createSlice({
             }
         },
 
-        handleFormChange: (state, action: PayloadAction<{ key: string, value: string }>) => {
+        handleFormChange: (state, action: PayloadAction<{ key: string, value: string | string[] }>) => {
             const { key, value } = action.payload
             switch (key) {
                 case 'cityID':
-                    state.storeForm.areaID = value as string
+                    state.storeForm.cityID = value as string
                     break;
                 case 'districtID':
                     state.storeForm.districtID = value as string
@@ -83,36 +83,15 @@ const storeSlice = createSlice({
                 case 'address':
                     state.storeForm.address = value as string
                     break;
-                // case 'phones':
-                //     state.storeForm = {
-                //         ...state.storeForm,
-                //         phones: JSON.stringify([...state.storeForm.phones as unknown as string[], value as string])
-                //     }
-                //     break;
-                // case 'email':
-                //     state.storeForm = {
-                //         ...state.storeForm,
-                //         email: JSON.stringify([...state.storeForm.email as unknown as string[], value as string]),
-                //     }
-                //     break;
-                // case 'notes':
-                //     state.storeForm = {
-                //         ...state.storeForm,
-                //         notes: JSON.stringify([...state.storeForm.notes as unknown as string[], value as string]),
-                //     }
-                //     break;
-                // case 'created_by':
-                //     state.storeForm = {
-                //         ...state.storeForm,
-                //         created_by: value,
-                //     }
-                //     break;
-                // case 'updated_by':
-                //     state.storeForm = {
-                //         ...state.storeForm,
-                //         updated_by: value,
-                //     }
-                //     break;
+                case 'phones':
+                    state.storeForm.phones = value as string
+                    break;
+                case 'email':
+                    state.storeForm.email = value as string
+                    break;
+                case 'notes':
+                    state.storeForm.notes = value as string
+                    break;
                 default:
                     break;
             }

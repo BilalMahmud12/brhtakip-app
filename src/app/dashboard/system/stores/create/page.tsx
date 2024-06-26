@@ -21,6 +21,7 @@ const CreateStorePage: React.FC = () => {
     storeFormRef.current = storeForm;
 
     const handleCreateStore = async () => {
+        console.log('storeForm', storeForm);
         try {
             const createStore = await Repo.StoreRepository.create(storeFormRef.current);
 
