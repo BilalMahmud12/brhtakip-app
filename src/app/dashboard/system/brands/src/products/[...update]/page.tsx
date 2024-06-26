@@ -4,25 +4,47 @@ import { Product } from '@/API';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import * as Repo from '@/repository/index';
-import { setProducts, resetProductFormValues } from '@/reduxStore/features/productSlice';
+import { setProductFormValues, resetProductFormValues } from '@/reduxStore/features/productSlice';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useRouter } from 'next-nprogress-bar';
+import { usePathname } from 'next/navigation';
 
 const UpdateProductPage: React.FC = () => {
 
     const dispatch = useAppDispatch<AppDispatch>();
     const products = useAppSelector((state: RootState) => state.product.products);
     const productForm = useAppSelector((state: RootState) => state.product.productForm);
-
+    const pathName = usePathname();
     const productFormRef = useRef(productForm);
     productFormRef.current = productForm;
     const router = useRouter()
 
+    useEffect(() => {
+        const productID = pathName.split('/').pop();
+        const targetProduct = products.find(product => product.id === productID);
+
+        if (targetProduct) {
+            const { updatedAt, createdAt, __typename, ...restOfTheProduct } = targetProduct;
+
+            const updatedProductForm = {
+                id: restOfTheProduct.id || '',
+                name: restOfTheProduct.name || '',
+                isActive: restOfTheProduct.isActive ?? false,
+                brandID: restOfTheProduct.brandID || '',
+            };
+
+            productFormRef.current = updatedProductForm;
+            dispatch(setProductFormValues(updatedProductForm));
+        }
+    }, [pathName, products, dispatch]);
+
+
     const handleUpdateProduct = async () => {
+        console.log('productForm', productForm);
         try {
             productFormRef
             const updateProduct = await Repo.ProductRepository.update(productFormRef.current)
@@ -68,7 +90,7 @@ const UpdateProductPage: React.FC = () => {
                     <div className='space-y-3'>
                         <CreateOrUpdateForm
                             isCreate={false}
-
+                            product={productForm}
                         />
                     </div>
                 </div>

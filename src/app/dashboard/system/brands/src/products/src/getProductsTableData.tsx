@@ -31,7 +31,7 @@ export default function getProductsTableData(
                         row[column.key] = (
                             <div className='hover:underline hover:text-blue-700 cursor-pointer'
                                 onClick={() => {
-                                    router.push(`/dashboard/system/brands/src/products/update`);
+                                    router.push(`/dashboard/system/brands/src/products/${product.id}`);
                                     handleEdit(product)
                                 }}
                             >
@@ -68,7 +68,7 @@ export default function getProductsTableData(
                                     size="small"
 
                                     onClick={() => {
-                                        router.push(`/dashboard/system/brands/products/update`);
+                                        router.push(`/dashboard/system/brands/src/products/${product.id}`);
                                         handleEdit(product)
                                     }}
                                 >

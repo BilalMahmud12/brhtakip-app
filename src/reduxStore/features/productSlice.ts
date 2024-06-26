@@ -47,6 +47,9 @@ const productSlice = createSlice({
                 case 'isActive':
                     state.productForm.isActive = value as boolean
                     break;
+                case 'id':
+                    state.productForm.id = value as string
+                    break;
                 default:
                     break;
             }

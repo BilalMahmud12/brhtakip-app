@@ -64,7 +64,7 @@ const UpdateProductPage: React.FC = () => {
                     </div>
 
                     <div className='space-y-3'>
-                        <CreateOrUpdateForm isCreate={false} />
+                        <CreateOrUpdateForm isCreate={true} />
                     </div>
                 </div>
             </div>

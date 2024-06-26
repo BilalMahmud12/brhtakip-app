@@ -61,7 +61,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
 
         dispatch(handleFormChange({ key: 'name', value: name as string }))
         dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
-        console.log('finished loading form data:', brandForm);
+        // console.log('finished loading form data:', brandForm);
     }
 
     return (

@@ -1,13 +1,9 @@
 'use client'
 import React, { useEffect } from 'react'
 import * as Repo from '@/repository/index'
-import { usePathname } from 'next/navigation';
 import type { Brand } from '@/API';
-import Icon from '@/components/core/icon';
-import Link from 'next/link';
-import { Button } from '@aws-amplify/ui-react';
-import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
-import { AppDispatch, RootState } from '@/reduxStore/store';
+import { useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch } from '@/reduxStore/store';
 import { setBrands } from '@/reduxStore/features/brandSlice';
 
 export default function name(

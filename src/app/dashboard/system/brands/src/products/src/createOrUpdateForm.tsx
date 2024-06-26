@@ -20,11 +20,12 @@ interface CreateOrUpdateFormProps {
     product?: Product;
 }
 
-const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
-    const {
+const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
+    {
         isCreate = true,
-        product = {} as Product
-    } = props;
+        product = {} as Product }
+) => {
+
 
     const dispatch = useAppDispatch<AppDispatch>();
     const productForm = useAppSelector((state: RootState) => state.product.productForm);
@@ -32,6 +33,28 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     productFormRef.current = productForm;
 
     const [checked, setChecked] = React.useState(productFormRef.current.isActive as boolean);
+
+    // useEffect(() => {
+    //     setChecked(productFormRef.current.isActive as boolean)
+    // }, [])
+
+    useEffect(() => {
+        if (!isCreate) {
+            loadFormData(product);
+        }
+    }, [product])
+
+
+    const loadFormData = async (product: Product) => {
+        const {
+            name,
+            isActive,
+        } = product
+
+        dispatch(handleFormChange({ key: 'name', value: name as string }))
+        dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
+        // console.log('finished loading form data:', productForm);
+    }
 
     return (
         <div>
