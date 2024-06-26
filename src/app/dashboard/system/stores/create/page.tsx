@@ -28,7 +28,7 @@ const CreateStorePage: React.FC = () => {
             if (createStore && createStore.data) {
                 const newStore = await Repo.StoreRepository.getAllStores();
                 dispatch(setStores(newStore as unknown as Store[]))
-                console.log('new created store', newStore);
+                router.back()
                 dispatch(resetFormValues());
             }
         } catch (error) {

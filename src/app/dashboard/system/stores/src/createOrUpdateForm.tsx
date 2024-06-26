@@ -12,13 +12,13 @@ import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@m
 
 interface CreateOrUpdateFormProps {
     isCreate?: boolean;
-    brand?: Store;
+    store?: Store;
 }
 
 const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     const {
         isCreate = true,
-        brand = {} as Store
+        store = {} as Store
     } = props;
 
     const dispatch = useAppDispatch<AppDispatch>();
@@ -82,6 +82,34 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         return areasList.filter(area => area.districtID === districtID);
     };
 
+    useEffect(() => {
+        if (!isCreate) {
+            loadFormData(store);
+            console.log('load store', store);
+        }
+    }, [store]);
+
+    const loadFormData = async (store: Store) => {
+        const {
+            name,
+            cityID,
+            districtID,
+            areaID,
+            address,
+            phones,
+            email,
+            notes
+        } = store;
+        dispatch(handleFormChange({ key: 'name', value: name }));
+        dispatch(handleFormChange({ key: 'cityID', value: cityID }));
+        dispatch(handleFormChange({ key: 'districtID', value: districtID }));
+        dispatch(handleFormChange({ key: 'areaID', value: areaID }));
+        dispatch(handleFormChange({ key: 'address', value: address as string }));
+        dispatch(handleFormChange({ key: 'phones', value: phones as string[] }));
+        dispatch(handleFormChange({ key: 'email', value: email as string[] }));
+        dispatch(handleFormChange({ key: 'notes', value: notes as string }));
+    }
+
     return (
         <div className='h-full'>
             <div className='my-2 pt-5' />
@@ -97,6 +125,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
                             }}
+                            defaultValue={!isCreate ? store.name : ''}
                         />
                     </div>
                 </div>
@@ -113,7 +142,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             <Select
                                 labelId="city-select-label"
                                 id="city-select"
-                                value={selectedCity}
+                                value={storeForm.cityID}
                                 onChange={handleCitySelection}
                                 label="Şehir *"
                             >
@@ -173,6 +202,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({ key: 'address', value: event.target.value }))
                                 }}
+                                defaultValue={!isCreate ? store.address : ''}
                             />
                         </div>
                     </div>
@@ -193,6 +223,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({ key: 'email', value: event.target.value }))
                                 }}
+                                defaultValue={!isCreate ? store.email : ''}
                             />
                         </div>
                         <div className='input-group w-full col-span-1 lg:col-span-1'>
@@ -205,6 +236,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({ key: 'phones', value: event.target.value }))
                                 }}
+                                defaultValue={!isCreate ? store.phones : ''}
                             />
                         </div>
                     </div>
@@ -221,6 +253,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'notes', value: event.target.value }))
                             }}
+                            defaultValue={!isCreate ? store.notes : ''}
                         />
                     </div>
                 </div>

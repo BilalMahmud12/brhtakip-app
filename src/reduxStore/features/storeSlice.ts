@@ -5,6 +5,7 @@ import type { Store } from '@/API';
 interface StoreFormState {
     stores: Store[];
     storeForm: {
+        id?: string;
         cityID: string;
         districtID: string;
         areaID: string;
