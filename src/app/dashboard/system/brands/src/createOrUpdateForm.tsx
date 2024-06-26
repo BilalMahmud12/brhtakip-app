@@ -36,12 +36,33 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
 
     const [checked, setChecked] = useState(brandFormRef.current.isActive as boolean);
 
+    useEffect(() => {
+        setChecked(brandFormRef.current.isActive as boolean)
+    }, [])
+
     const getClientsList = (): { value: string; label: string }[] => {
         return clientProfiles?.map((client) => ({
             value: client.id,
             label: client?.name || ''
         }));
     };
+
+    useEffect(() => {
+        if (!isCreate) {
+            loadFormData(brand);
+        }
+    }, [brand])
+
+    const loadFormData = async (brand: Brand) => {
+        const {
+            name,
+            isActive,
+        } = brand
+
+        dispatch(handleFormChange({ key: 'name', value: name as string }))
+        dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
+        console.log('finished loading form data:', brandForm);
+    }
 
     return (
         <div className='h-full'>

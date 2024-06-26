@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import * as Repo from '@/repository/index';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 import type { Product } from '@/API';
 import ProductsDataTable from './productsDataTable';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
@@ -24,9 +24,7 @@ interface ProductViewProps {
 
 
 const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filteredProducts, fetchFilteredProducts }) => {
-
     const router = useRouter();
-    const { showDataModal, hideDataModal } = useDataModal();
 
     const dispatch = useAppDispatch<AppDispatch>();
     const products = useAppSelector((state: RootState) => state.product);
@@ -47,7 +45,6 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
     }, [brandId]);
 
 
-
     const setProductUpdateData = (data: any) => {
         dispatch(setProductFormValues({
             id: data.id,
@@ -66,9 +63,6 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
         }
     };
 
-    const handleCancelForm = () => {
-        hideDataModal();
-    };
 
     return (
         <div>

@@ -45,6 +45,9 @@ const brandSlice = createSlice({
                 case 'clientprofileID':
                     state.brandForm.clientprofileID = value as string
                     break;
+                case 'id':
+                    state.brandForm.id = value as string
+                    break;
                 default:
                     break;
             }

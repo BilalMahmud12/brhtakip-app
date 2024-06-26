@@ -5,7 +5,7 @@ import { Input, Label, Autocomplete } from '@aws-amplify/ui-react';
 import type { Product } from '@/API';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
-import { setProducts, resetProductFormValues, setProductFormValues, handleFormChange } from '@/reduxStore/features/productSlice';
+import { handleFormChange } from '@/reduxStore/features/productSlice';
 
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';

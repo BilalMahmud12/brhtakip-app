@@ -10,7 +10,7 @@ import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 
 const UpdateProductPage: React.FC = () => {
 
