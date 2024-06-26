@@ -6,7 +6,7 @@ import { useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch } from '@/reduxStore/store';
 import { setBrands } from '@/reduxStore/features/brandSlice';
 
-export default function name(
+export default function BrandLayout(
     { children }: Readonly<{ children: React.ReactNode; }>
 ) {
     const dispatch = useAppDispatch<AppDispatch>();

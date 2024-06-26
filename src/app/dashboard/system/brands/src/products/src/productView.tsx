@@ -21,8 +21,6 @@ interface ProductViewProps {
     fetchFilteredProducts: any;
 }
 
-
-
 const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filteredProducts, fetchFilteredProducts }) => {
     const router = useRouter();
 
@@ -57,7 +55,11 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
     const handleDeleteProduct = async (data: any) => {
         try {
             const deleteProduct = await Repo.ProductRepository.softDelete(data.originalData.id);
-            fetchFilteredProducts();
+
+            if (deleteProduct && deleteProduct.data) {
+                fetchFilteredProducts();
+            }
+
         } catch (error) {
             console.log('error', error);
         }
