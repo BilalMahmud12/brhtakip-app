@@ -4,7 +4,7 @@ import type { Material } from '@/API';
 interface MaterialState {
     materials: Material[];
     materialForm: {
-        id?: '';
+        id?: string;
         name: string;
         isActive: boolean;
     }
@@ -49,6 +49,9 @@ const materialSlice = createSlice({
                     break;
                 case 'isActive':
                     state.materialForm.isActive = value as boolean
+                    break;
+                case 'id':
+                    state.materialForm.id = value as string
                     break;
                 default:
                     break;

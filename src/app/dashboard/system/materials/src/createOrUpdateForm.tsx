@@ -37,6 +37,25 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     const [checked, setChecked] = React.useState(materialFormRef.current.isActive as boolean);
 
+
+    useEffect(() => {
+        if (!isCreate) {
+            loadFormData(material);
+        }
+    }, [material])
+
+
+    const loadFormData = async (material: Material) => {
+        const {
+            name,
+            isActive,
+        } = material;
+
+        dispatch(handleFormChange({ key: 'name', value: name || '' }));
+        dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
+        console.log('finished loading form data:', materialForm);
+    }
+
     return (
         <div >
             <div className='my-2 pt-5' />

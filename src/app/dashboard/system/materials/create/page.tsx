@@ -30,7 +30,7 @@ const CreateMaterialPage: React.FC = () => {
                 const newMaterials = await Repo.MaterialRepository.getAllMaterials();
                 dispatch(setMaterials(newMaterials as unknown as Material[]));
                 dispatch(resetFormValues());
-                router.push('/dashboard/system/materials')
+                router.back();
             }
         } catch (error) {
             console.log('Error', error);
@@ -47,7 +47,7 @@ const CreateMaterialPage: React.FC = () => {
                         <Button
                             variant="text"
                             startIcon={<ArrowBackIosIcon />}
-                            onClick={() => router.push('/dashboard/system/materials')}
+                            onClick={() => router.back()}
                         >
                             Malzemelere Geri Dön
                         </Button>

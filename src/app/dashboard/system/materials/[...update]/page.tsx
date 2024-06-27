@@ -4,23 +4,44 @@ import { Material } from '@/API';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import * as Repo from '@/repository/index';
-import { setMaterials, resetFormValues } from '@/reduxStore/features/materialSlice';
+import { setMaterials, resetFormValues, setMaterialForm } from '@/reduxStore/features/materialSlice';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 
 
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 
 const UpdateMaterialPage: React.FC = () => {
-
+    const router = useRouter()
+    const pathName = usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
     const materialForm = useAppSelector((state: RootState) => state.material.materialForm);
-    const router = useRouter()
-
+    const materials = useAppSelector((state: RootState) => state.material.materials);
     const materialformRef = useRef(materialForm);
     materialformRef.current = materialForm;
+
+
+
+    useEffect(() => {
+        const materialId = pathName.split('/').pop();
+        const targetMaterial = materials.find(material => material.id === materialId);
+
+        if (targetMaterial) {
+            const { updatedAt, createdAt, __typename, ...restOfTheMaterial } = targetMaterial;
+
+            const updatedMaterial = {
+                id: restOfTheMaterial.id || '',
+                name: restOfTheMaterial.name || '',
+                isActive: restOfTheMaterial.isActive || false,
+            };
+
+            materialformRef.current = updatedMaterial;
+            dispatch(setMaterialForm(updatedMaterial));
+        }
+    }, [pathName, materials, dispatch]);
 
     const handleUpdateMaterial = async () => {
         try {
@@ -30,7 +51,7 @@ const UpdateMaterialPage: React.FC = () => {
                 const newMaterials = await Repo.MaterialRepository.getAllMaterials();
                 dispatch(setMaterials(newMaterials as unknown as Material[]));
                 dispatch(resetFormValues());
-                router.push(`/dashboard/system/materials`);
+                router.back();
             }
         } catch (error) {
             console.log('Error', error);
@@ -48,7 +69,7 @@ const UpdateMaterialPage: React.FC = () => {
                             <Button
                                 variant="text"
                                 startIcon={<ArrowBackIosIcon />}
-                                onClick={() => router.push('/dashboard/system/materials')}
+                                onClick={() => router.back()}
                             >
                                 Malzemelere Geri Dön
                             </Button>
@@ -65,7 +86,10 @@ const UpdateMaterialPage: React.FC = () => {
                 </div>
 
                 <div className='space-y-3'>
-                    <CreateOrUpdateForm isCreate={false} />
+                    <CreateOrUpdateForm
+                        isCreate={false}
+                        material={materialForm as Material}
+                    />
                 </div>
             </div>
         </div>
