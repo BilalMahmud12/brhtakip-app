@@ -12,7 +12,6 @@ import Switch from '@mui/material/Switch';
 interface CreateOrUpdateFormProps {
     isCreate?: boolean;
     applicationArea?: ApplicationArea;
-    handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
@@ -29,17 +28,21 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     const [checked, setChecked] = React.useState(applicationAreaRef.current.isActive as boolean);
 
-    // if (!isCreate) {
-    //     useEffect(() => {
-    //         loadFormData(applicationArea);
-    //     }, []);
-    // }
+    if (!isCreate) {
+        useEffect(() => {
+            loadFormData(applicationArea);
+        }, []);
+    }
 
-    // const loadFormData = async (applicationArea: ApplicationArea) => {
-    //     const { name, isActive } = applicationArea;
-    //     dispatch(handleFormChange({ key: 'name', value: name || '' }));
-    //     dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
-    // }
+    const loadFormData = async (applicationArea: ApplicationArea) => {
+        const {
+            name,
+            isActive
+        } = applicationArea;
+
+        dispatch(handleFormChange({ key: 'name', value: name || '' }));
+        dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
+    }
 
     return (
         <div >

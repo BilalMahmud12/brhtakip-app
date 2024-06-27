@@ -25,10 +25,10 @@ const CreateApplicationAreaPage: React.FC = () => {
             const createApplicationArea = await Repo.ApplicationAreaRepository.create(applicationAreaRef.current);
 
             if (createApplicationArea && createApplicationArea.data) {
-                dispatch(resetFormValues());
                 const newApplicationArea = await Repo.ApplicationAreaRepository.getApplicationAreas();
                 dispatch(setApplicationAreas(newApplicationArea as unknown as ApplicationArea[]));
-                router.push('/dashboard/system/applicationAreas')
+                dispatch(resetFormValues());
+                router.back();
             }
         } catch (error) {
             console.log('Failed to create application area', error);
@@ -45,7 +45,10 @@ const CreateApplicationAreaPage: React.FC = () => {
                         <Button
                             variant="text"
                             startIcon={<ArrowBackIosIcon />}
-                            onClick={() => router.push('/dashboard/system/applicationAreas')}
+                            onClick={() => {
+                                router.back();
+                                dispatch(resetFormValues());
+                            }}
                         >
                             Uygulama Alanlara Geri Dön
                         </Button>

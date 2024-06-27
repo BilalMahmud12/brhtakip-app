@@ -13,18 +13,18 @@ import { setMaterials } from '@/reduxStore/features/materialSlice';
 const Material: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const materialData = await Repo.MaterialRepository.getAllMaterials();
-                dispatch(setMaterials(materialData as unknown as Material[]));
-                console.log('material data', materialData);
-            } catch (error) {
-                console.error('Failed to fetch brands', error);
-            }
-        };
-        fetchData();
-    }, [dispatch, Material])
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const materialData = await Repo.MaterialRepository.getAllMaterials();
+    //             dispatch(setMaterials(materialData as unknown as Material[]));
+    //             console.log('material data', materialData);
+    //         } catch (error) {
+    //             console.error('Failed to fetch brands', error);
+    //         }
+    //     };
+    //     fetchData();
+    // }, [dispatch, Material])
 
     return (
         <div>

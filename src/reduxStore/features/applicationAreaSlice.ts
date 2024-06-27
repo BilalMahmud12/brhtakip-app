@@ -50,6 +50,9 @@ const applicationAreaSlice = createSlice({
                 case 'isActive':
                     state.applicationAreaForm.isActive = value as boolean
                     break;
+                case 'id':
+                    state.applicationAreaForm.id = value as string
+                    break;
                 default:
                     break;
             }
