@@ -27,8 +27,8 @@ const CreateAreaPage: React.FC = () => {
             if (createArea && createArea.data) {
                 const newAreas = await Repo.AreaRepository.getAllAreas();
                 dispatch(setAreas(newAreas as unknown as Area[]));
-                dispatch(resetFormValues());
                 router.back();
+                dispatch(resetFormValues());
             }
         } catch (error) {
             console.log('Error', error);
@@ -45,9 +45,12 @@ const CreateAreaPage: React.FC = () => {
                         <Button
                             variant="text"
                             startIcon={<ArrowBackIosIcon />}
-                            onClick={() => router.push('/dashboard/system/cities')}
+                            onClick={() => {
+                                router.back();
+                                dispatch(resetFormValues());
+                            }}
                         >
-                            Şehirlere Geri Dön
+                            Geri Dön
                         </Button>
 
                         <Button

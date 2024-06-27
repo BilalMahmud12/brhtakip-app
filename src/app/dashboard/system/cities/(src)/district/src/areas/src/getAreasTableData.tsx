@@ -4,7 +4,7 @@ import type { DataTableColumn } from '@/components/core/dataTable';
 import { Badge, BadgeVariations } from '@aws-amplify/ui-react'
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import Icon from '@/components/core/icon';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';

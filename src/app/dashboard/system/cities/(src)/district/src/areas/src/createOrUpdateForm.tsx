@@ -1,17 +1,11 @@
 'use client'
 import React, { useEffect } from 'react';
 import type { Area } from '@/API';
-import { Input, Label, Autocomplete } from '@aws-amplify/ui-react';
 import { useRouter } from 'next-nprogress-bar';
 
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { RootState, AppDispatch } from '@/reduxStore/store';
 import { handleFormChange } from '@/reduxStore/features/areaSlice';
-//Material
-import Button from '@mui/material/Button';
-import SaveIcon from '@mui/icons-material/Save';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import AutoComplete from '@/components/core/autoComplete';
 import TextField from '@mui/material/TextField';
 import { FormControlLabel } from '@mui/material';
 import Switch from '@mui/material/Switch';
@@ -39,6 +33,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     React.useEffect(() => {
         setChecked(areaFormRef.current.isActive as boolean)
     }, [areaFormRef.current.isActive])
+
+
 
 
     return (

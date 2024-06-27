@@ -7,7 +7,8 @@ import * as Repo from '@/repository/index';
 import AreasDataTable from './areasDataTable';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 import { Area } from '@/API';
 
 
