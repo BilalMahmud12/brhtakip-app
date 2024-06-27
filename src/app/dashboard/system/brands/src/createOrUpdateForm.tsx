@@ -24,8 +24,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
         isCreate = true,
         brand = {} as Brand }
 ) => {
-
-    const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
     const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);

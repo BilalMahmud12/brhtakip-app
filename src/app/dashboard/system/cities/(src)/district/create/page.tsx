@@ -15,9 +15,6 @@ import { City, District } from '@/API';
 
 const UpdateCity: React.FC = () => {
     const router = useRouter();
-    const [filteredDistricts, setFilteredDistricts] = useState<District[]>([]);
-    const [haveDistricts, setHaveDistricts] = useState<boolean>(false);
-
     const dispatch = useAppDispatch<AppDispatch>();
     const districtForm = useAppSelector((state: RootState) => state.district.districtForm);
 
@@ -29,8 +26,10 @@ const UpdateCity: React.FC = () => {
             const createDistrict = await Repo.DistrictRepository.create(districtformRef.current);
 
             if (createDistrict && createDistrict.data) {
-                dispatch(resetFormValues());
+                const newDistricts = await Repo.DistrictRepository.getAllDistricts();
+                dispatch(setDistricts(newDistricts as unknown as District[]));
                 router.back();
+                dispatch(resetFormValues());
             }
         } catch (error) {
             console.log('Failed Creating District', error);
@@ -49,9 +48,12 @@ const UpdateCity: React.FC = () => {
                             <Button
                                 variant="text"
                                 startIcon={<ArrowBackIosIcon />}
-                                onClick={() => router.push('/dashboard/system/cities')}
+                                onClick={() => {
+                                    router.back();
+                                    dispatch(resetFormValues());
+                                }}
                             >
-                                Şehirlere Geri Dön
+                                Geri Dön
                             </Button>
 
                             <Button

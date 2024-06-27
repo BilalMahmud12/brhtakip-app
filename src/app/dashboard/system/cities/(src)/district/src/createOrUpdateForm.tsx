@@ -35,6 +35,24 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         setChecked(districtformRef.current.isActive as boolean)
     }, [districtformRef.current.isActive])
 
+
+    useEffect(() => {
+        if (!isCreate) {
+            loadFormData(district);
+        }
+    }, [district]);
+
+
+    const loadFormData = async (district: District) => {
+        const {
+            name,
+            isActive
+        } = district;
+
+        dispatch(handleFormChange({ key: 'name', value: name as string }));
+        dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }));
+    };
+
     return (
         <div >
             <div className='my-2 pt-5' />
