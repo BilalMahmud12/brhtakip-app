@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { City, District } from '@/API';
 import DistrictView from '../(src)/district/src/districtView';
+import { usePathname } from 'next/navigation';
 
 const UpdateCity: React.FC = () => {
     const router = useRouter();
@@ -20,12 +21,30 @@ const UpdateCity: React.FC = () => {
     const [haveDistricts, setHaveDistricts] = useState<boolean>(false);
 
     const dispatch = useAppDispatch<AppDispatch>();
-    const districts = useAppSelector((state: RootState) => state.district.districts);
-    const districtForm = useAppSelector((state: RootState) => state.district.districtForm);
     const cityForm = useAppSelector((state: RootState) => state.city.cityForm);
-
+    const cities = useAppSelector((state: RootState) => state.city.cities);
+    const namePath = usePathname();
     const cityformRef = useRef(cityForm);
     cityformRef.current = cityForm;
+
+    useEffect(() => {
+        const cityId = namePath?.split('/').pop();
+        const targetCity = cities.find((city) => city.id === cityId);
+
+        if (targetCity) {
+            const { updatedAt, createdAt, Districts, Stores, __typename, ...resetOfCity } = targetCity;
+
+            const updatedCity = {
+                id: resetOfCity.id || '',
+                name: resetOfCity.name || '',
+                isActive: resetOfCity.isActive ?? false,
+                createdBy: resetOfCity.createdBy || '',
+                updatedBy: resetOfCity.updatedBy || '',
+            };
+            cityformRef.current = updatedCity;
+            dispatch(setCityForm(updatedCity));
+        }
+    }, [namePath, cities, dispatch]);
 
     async function handleUpdateCity() {
         try {
@@ -34,7 +53,7 @@ const UpdateCity: React.FC = () => {
                 const newCity = await Repo.CityRepository.getAllCities();
                 dispatch(setCities(newCity as unknown as City[]));
                 dispatch(resetFormValues());
-                router.replace(`/dashboard/system/cities`);
+                router.back();
             }
         } catch (error) {
             console.error('Failed updating city:', error);
@@ -74,7 +93,10 @@ const UpdateCity: React.FC = () => {
                             <Button
                                 variant="text"
                                 startIcon={<ArrowBackIosIcon />}
-                                onClick={() => router.push('/dashboard/system/cities')}
+                                onClick={() => {
+                                    router.back();
+                                    dispatch(resetFormValues());
+                                }}
                             >
                                 Şehirlere Geri Dön
                             </Button>
@@ -91,7 +113,10 @@ const UpdateCity: React.FC = () => {
                 </div>
 
                 <div className='space-y-3'>
-                    <CreateOrUpdateForm isCreate={false} />
+                    <CreateOrUpdateForm
+                        isCreate={false}
+                        city={cityForm as City}
+                    />
                 </div>
             </div>
 

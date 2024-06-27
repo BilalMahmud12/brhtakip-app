@@ -52,8 +52,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         } = material;
 
         dispatch(handleFormChange({ key: 'name', value: name || '' }));
-        dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
-        console.log('finished loading form data:', materialForm);
+        dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
     }
 
     return (
@@ -83,10 +82,10 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                         <label htmlFor="brand_state" className='block text-xs font-medium mb-2'>Malzeme Durumu</label>
                         <div>
                             <FormControlLabel
-                                label={checked ? 'Aktif' : 'Aktif Değil'}
+                                label={materialFormRef.current.isActive as boolean ? 'Aktif' : 'Aktif Değil'}
                                 control={<Switch
                                     color='success'
-                                    checked={checked}
+                                    checked={materialFormRef.current.isActive as boolean}
                                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                         setChecked(event.target.checked);
                                         dispatch(handleFormChange({
@@ -105,61 +104,3 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     )
 }
 export default CreateOrUpdateForm
-
-
-
-/*
-    // if (!isCreate) {
-    //     useEffect(() => {
-    //         loadFormData(material);
-    //     }, []);
-    // }
-
-    // const loadFormData = async (material: Material) => {
-    //     const {
-    //         name,
-    //         isActive,
-    //     } = material;
-
-    //     console.log('start loading form data!');
-    //     dispatch(handleFormChange({ key: 'name', value: name || '' }));
-    //     dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
-    //     console.log('finished loading form data:', materialForm);
-    // }
-
-    <form>
-                <div className=''>
-                    <div className='grid grid-cols-2 gap-8'>
-                        <div className='input-group col-span-3'>
-                            <Label htmlFor="name" className='block text-xs font-medium mb-1.5'>Malzeme</Label>
-                            <Input
-                                id="name"
-                                name="name"
-                                placeholder='Malzeme Ekle'
-                                variation="quiet"
-                                onChange={(e) => dispatch(handleFormChange({ key: 'name', value: e.target.value }))}
-                                defaultValue={!isCreate ? materialForm.name : ''}
-                            />
-                        </div>
-                    </div>
-
-                    <div className='my-2 pt-5' />
-
-                    <div className='input-group'>
-                        <Label htmlFor="isActive" className='block text-xs font-medium mb-1.5'>Durum</Label>
-                        <Autocomplete
-                            id="isActive"
-                            label="Durum"
-                            placeholder='Durum Seç'
-                            variation="quiet"
-                            options={[
-                                { id: '1', label: 'Aktif' },
-                                { id: '0', label: 'İnaktif' }
-                            ]}
-                            onSelect={(option) => dispatch(handleFormChange({ key: 'isActive', value: option.id }))}
-                            defaultValue={!isCreate ? (materialForm.isActive ? 'Aktif' : 'İnaktif') : ''}
-                        />
-                    </div>
-                </div>
-            </form>
-    */

@@ -84,10 +84,10 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
                         <label htmlFor="brand_state" className='block text-xs font-medium mb-2'>Ürün Durumu</label>
                         <div>
                             <FormControlLabel
-                                label={checked ? 'Aktif' : 'Aktif Değil'}
+                                label={productFormRef.current.isActive as boolean ? 'Aktif' : 'Aktif Değil'}
                                 control={<Switch
                                     color='success'
-                                    checked={checked}
+                                    checked={productFormRef.current.isActive as boolean}
                                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                         setChecked(event.target.checked);
                                         dispatch(handleFormChange({

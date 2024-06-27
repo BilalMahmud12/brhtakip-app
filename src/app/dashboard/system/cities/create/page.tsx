@@ -21,7 +21,6 @@ const CreateMaterialPage: React.FC = () => {
     const cityformRef = useRef(cityForm);
     cityformRef.current = cityForm;
 
-
     const handleCreateCity = async () => {
         try {
             const createCity = await Repo.CityRepository.create(cityformRef.current);
@@ -29,7 +28,7 @@ const CreateMaterialPage: React.FC = () => {
             if (createCity && createCity.data) {
                 const newCity = await Repo.CityRepository.getAllCities();
                 dispatch(setCities(newCity as unknown as City[]))
-                router.push('/dashboard/system/cities');
+                router.back();
                 dispatch(resetFormValues());
             }
         } catch (error) {
@@ -47,7 +46,10 @@ const CreateMaterialPage: React.FC = () => {
                         <Button
                             variant="text"
                             startIcon={<ArrowBackIosIcon />}
-                            onClick={() => router.push('/dashboard/system/cities')}
+                            onClick={() => {
+                                router.back();
+                                dispatch(resetFormValues());
+                            }}
                         >
                             Şehirlere Geri Dön
                         </Button>
@@ -64,7 +66,9 @@ const CreateMaterialPage: React.FC = () => {
             </div>
 
             <div className='space-y-3'>
-                <CreateOrUpdateForm isCreate={true} />
+                <CreateOrUpdateForm
+                    isCreate={true}
+                />
             </div>
         </div>
     );

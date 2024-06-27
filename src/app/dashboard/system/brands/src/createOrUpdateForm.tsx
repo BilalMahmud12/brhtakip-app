@@ -29,10 +29,9 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
     const dispatch = useAppDispatch<AppDispatch>();
     const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
+    const currentUserProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const brandFormRef = React.useRef(brandForm);
     brandFormRef.current = brandForm;
-
-    const currentUserProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
 
     const [checked, setChecked] = useState(brandFormRef.current.isActive as boolean);
 
@@ -108,10 +107,10 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
                         <label htmlFor="brand_state" className='block text-xs font-medium mb-2'>Hesap Durumu</label>
                         <div>
                             <FormControlLabel
-                                label={checked ? 'Aktif' : 'Aktif Değil'}
+                                label={brandFormRef.current.isActive as boolean ? 'Aktif' : 'Aktif Değil'}
                                 control={<Switch
                                     color='success'
-                                    checked={checked}
+                                    checked={brandFormRef.current.isActive as boolean}
                                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                         setChecked(event.target.checked);
                                         dispatch(handleFormChange({
