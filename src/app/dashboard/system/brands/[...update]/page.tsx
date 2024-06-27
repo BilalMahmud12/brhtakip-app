@@ -118,7 +118,7 @@ const UpdateBrand: React.FC = (() => {
                     {brands.length > 0 && (
                         <CreateOrUpdateForm
                             isCreate={false}
-                            brand={brandForm}
+                            brand={brandForm as Brand}
                         />
                     )}
                 </div>

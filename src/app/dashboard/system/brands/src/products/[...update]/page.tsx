@@ -90,7 +90,7 @@ const UpdateProductPage: React.FC = () => {
                     <div className='space-y-3'>
                         <CreateOrUpdateForm
                             isCreate={false}
-                            product={productForm}
+                            product={productForm as Product}
                         />
                     </div>
                 </div>

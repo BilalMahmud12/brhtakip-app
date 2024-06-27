@@ -85,7 +85,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     useEffect(() => {
         if (!isCreate) {
             loadFormData(store);
-            console.log('load store', store);
         }
     }, [store]);
 
@@ -159,7 +158,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             <Select
                                 labelId="district-select-label"
                                 id="district-select"
-                                value={selectedDistrict}
+                                value={storeForm.districtID}
                                 onChange={handleDistrictSelection}
                                 label="İlçe *"
                                 disabled={!selectedCity}
@@ -177,7 +176,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             <Select
                                 labelId="area-select-label"
                                 id="area-select"
-                                value={storeForm.areaID || ''}
+                                value={storeForm.areaID}
                                 onChange={handleAreaSelection}
                                 label="Mahalle *"
                                 disabled={!selectedDistrict}

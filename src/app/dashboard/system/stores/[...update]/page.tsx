@@ -71,7 +71,7 @@ const UpdateStorePage: React.FC = () => {
                         <Button
                             variant="text"
                             startIcon={<ArrowBackIosIcon />}
-                            onClick={() => router.push('/dashboard/system/stores')}
+                            onClick={() => router.back()}
                         >
                             Mağazalara Geri Dön
                         </Button>
@@ -90,7 +90,7 @@ const UpdateStorePage: React.FC = () => {
             <div className='space-y-3'>
                 <CreateOrUpdateForm
                     isCreate={false}
-                    store={storeForm}
+                    store={storeForm as Store}
                 />
             </div>
         </div>
