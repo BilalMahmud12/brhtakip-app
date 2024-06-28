@@ -53,9 +53,12 @@ const UpdateProductPage: React.FC = () => {
                                 <Button
                                     variant="text"
                                     startIcon={<ArrowBackIosIcon />}
-                                    onClick={() => router.push('/dashboard/system/brands')}
+                                    onClick={() => {
+                                        router.back();
+                                        dispatch(resetProductFormValues())
+                                    }}
                                 >
-                                    Markalara Geri Dön
+                                    Geri Dön
                                 </Button>
 
                                 <Button

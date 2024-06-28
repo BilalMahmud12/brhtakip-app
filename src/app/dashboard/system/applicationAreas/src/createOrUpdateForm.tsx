@@ -22,7 +22,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     const dispatch = useAppDispatch<AppDispatch>();
     const applicationAreaForm = useAppSelector((state: RootState) => state.applicationArea.applicationAreaForm);
-
+    const errors = useAppSelector((state: RootState) => state.applicationArea.errors);
     const applicationAreaRef = useRef(applicationAreaForm);
     applicationAreaRef.current = applicationAreaForm;
 
@@ -56,7 +56,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             id='material_name'
                             variant="standard"
                             sx={{ width: '100%' }}
-                            helperText={''}
+                            error={!!errors.name}
+                            helperText={errors.name || ''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
                             }}

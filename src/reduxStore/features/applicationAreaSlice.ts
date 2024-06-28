@@ -8,6 +8,9 @@ interface ApplicationAreaState {
         name: string;
         isActive: boolean;
     }
+    errors: {
+        name?: string;
+    };
 }
 
 const initialState: ApplicationAreaState = {
@@ -15,8 +18,13 @@ const initialState: ApplicationAreaState = {
     applicationAreaForm: {
         name: '',
         isActive: false,
-    }
+    },
+    errors: {}
 }
+
+const isValidName = (name: string): boolean => {
+    return typeof name === 'string' && name.trim().length >= 3 && name !== '';
+};
 
 const applicationAreaSlice = createSlice({
     name: 'applicationArea',
@@ -32,6 +40,7 @@ const applicationAreaSlice = createSlice({
 
         setApplicationAreaForm: (state, action: PayloadAction<ApplicationAreaState['applicationAreaForm']>) => {
             state.applicationAreaForm = action.payload
+            state.errors = {};
         },
 
         resetFormValues: (state) => {
@@ -45,7 +54,12 @@ const applicationAreaSlice = createSlice({
             const { key, value } = action.payload;
             switch (key) {
                 case 'name':
-                    state.applicationAreaForm.name = value as string
+                    if (isValidName(value as string)) {
+                        state.applicationAreaForm.name = value as string;
+                        delete state.errors.name;
+                    } else {
+                        state.errors.name = 'Uygulama Alan adı zorunludur ve 3 harften fazla olmalıdır';
+                    }
                     break;
                 case 'isActive':
                     state.applicationAreaForm.isActive = value as boolean

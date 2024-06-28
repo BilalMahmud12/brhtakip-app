@@ -53,7 +53,7 @@ const productSlice = createSlice({
                         state.productForm.name = value as string;
                         delete state.errors.name;
                     } else {
-                        state.errors.name = 'Marka adı zorunludur ve 3 harften fazla olmalıdır';
+                        state.errors.name = 'Ürün adı zorunludur ve 3 harften fazla olmalıdır';
                     }
                     break;
                 case 'brandID':

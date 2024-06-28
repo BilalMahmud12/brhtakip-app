@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { useRouter } from 'next-nprogress-bar';
-import { setApplicationAreas, resetFormValues } from '@/reduxStore/features/applicationAreaSlice';
+import { setApplicationAreas, resetFormValues, handleFormChange } from '@/reduxStore/features/applicationAreaSlice';
 import * as Repo from '@/repository/index';
 
 import Button from '@mui/material/Button';
@@ -16,22 +16,28 @@ const CreateApplicationAreaPage: React.FC = () => {
     const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
     const applicationAreaForm = useAppSelector((state: RootState) => state.applicationArea.applicationAreaForm);
+    const errors = useAppSelector((state: RootState) => state.applicationArea.errors);
 
     const applicationAreaRef = useRef(applicationAreaForm);
     applicationAreaRef.current = applicationAreaForm;
 
     const handleCreateApplicationArea = async () => {
-        try {
-            const createApplicationArea = await Repo.ApplicationAreaRepository.create(applicationAreaRef.current);
+        if (!errors.name && applicationAreaRef.current.name.trim() !== '') {
+            dispatch(handleFormChange({ key: 'name', value: applicationAreaRef.current.name }));
+            try {
+                const createApplicationArea = await Repo.ApplicationAreaRepository.create(applicationAreaRef.current);
 
-            if (createApplicationArea && createApplicationArea.data) {
-                const newApplicationArea = await Repo.ApplicationAreaRepository.getApplicationAreas();
-                dispatch(setApplicationAreas(newApplicationArea as unknown as ApplicationArea[]));
-                dispatch(resetFormValues());
-                router.back();
+                if (createApplicationArea && createApplicationArea.data) {
+                    const newApplicationArea = await Repo.ApplicationAreaRepository.getApplicationAreas();
+                    dispatch(setApplicationAreas(newApplicationArea as unknown as ApplicationArea[]));
+                    dispatch(resetFormValues());
+                    router.back();
+                }
+            } catch (error) {
+                console.log('Failed to create application area', error);
             }
-        } catch (error) {
-            console.log('Failed to create application area', error);
+        } else {
+            dispatch(handleFormChange({ key: 'name', value: applicationAreaRef.current.name }));
         }
     };
 

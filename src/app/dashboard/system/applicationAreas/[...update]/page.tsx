@@ -4,7 +4,7 @@ import { ApplicationArea } from '@/API';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import * as Repo from '@/repository/index';
-import { setApplicationAreas, resetFormValues, setApplicationAreaForm } from '@/reduxStore/features/applicationAreaSlice';
+import { setApplicationAreas, resetFormValues, setApplicationAreaForm, handleFormChange } from '@/reduxStore/features/applicationAreaSlice';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 
 import Button from '@mui/material/Button';
@@ -19,7 +19,7 @@ const UpdateApplicationAreaPage: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
     const applicationAreaForm = useAppSelector((state: RootState) => state.applicationArea.applicationAreaForm);
     const applicationAreas = useAppSelector((state: RootState) => state.applicationArea.applicationAreas);
-
+    const errors = useAppSelector((state: RootState) => state.applicationArea.errors);
     const applicationAreaRef = useRef(applicationAreaForm);
     applicationAreaRef.current = applicationAreaForm;
 
@@ -42,17 +42,22 @@ const UpdateApplicationAreaPage: React.FC = () => {
     }, [pathName, applicationAreas, dispatch]);
 
     const handleUpdateApplicationArea = async () => {
-        try {
-            const updateApplicationArea = await Repo.ApplicationAreaRepository.update(applicationAreaRef.current);
+        if (!errors.name && applicationAreaRef.current.name.trim() !== '') {
+            dispatch(handleFormChange({ key: 'name', value: applicationAreaRef.current.name }));
+            try {
+                const updateApplicationArea = await Repo.ApplicationAreaRepository.update(applicationAreaRef.current);
 
-            if (updateApplicationArea && updateApplicationArea.data) {
-                const newApplicationArea = await Repo.ApplicationAreaRepository.getApplicationAreas();
-                dispatch(setApplicationAreas(newApplicationArea as unknown as ApplicationArea[]));
-                dispatch(resetFormValues());
-                router.back();
+                if (updateApplicationArea && updateApplicationArea.data) {
+                    const newApplicationArea = await Repo.ApplicationAreaRepository.getApplicationAreas();
+                    dispatch(setApplicationAreas(newApplicationArea as unknown as ApplicationArea[]));
+                    dispatch(resetFormValues());
+                    router.back();
+                }
+            } catch (error) {
+                console.log('Failed to update application area', error);
             }
-        } catch (error) {
-            console.log('Failed to update application area', error);
+        } else {
+            dispatch(handleFormChange({ key: 'name', value: applicationAreaRef.current.name }));
         }
     };
 
