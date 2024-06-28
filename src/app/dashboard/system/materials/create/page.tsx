@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { useRouter } from 'next-nprogress-bar';
-import { setMaterials, resetFormValues } from '@/reduxStore/features/materialSlice';
+import { setMaterials, resetFormValues, handleFormChange } from '@/reduxStore/features/materialSlice';
 import * as Repo from '@/repository/index';
 
 import Button from '@mui/material/Button';
@@ -17,23 +17,29 @@ const CreateMaterialPage: React.FC = () => {
     const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
     const materialForm = useAppSelector((state: RootState) => state.material.materialForm);
-
+    const errors = useAppSelector((state: RootState) => state.material.errors);
     const materialformRef = useRef(materialForm);
     materialformRef.current = materialForm;
 
 
     const handleCreateMaterial = async () => {
-        try {
-            const createMaterial = await Repo.MaterialRepository.create(materialformRef.current);
+        if (!errors.name && materialformRef.current.name.trim() !== '') {
+            dispatch(handleFormChange({ key: 'name', value: materialformRef.current.name }));
+            try {
+                const createMaterial = await Repo.MaterialRepository.create(materialformRef.current);
 
-            if (createMaterial && createMaterial.data) {
-                const newMaterials = await Repo.MaterialRepository.getAllMaterials();
-                dispatch(setMaterials(newMaterials as unknown as Material[]));
-                dispatch(resetFormValues());
-                router.back();
+                if (createMaterial && createMaterial.data) {
+                    const newMaterials = await Repo.MaterialRepository.getAllMaterials();
+                    dispatch(setMaterials(newMaterials as unknown as Material[]));
+                    dispatch(resetFormValues());
+                    router.back();
+                }
+            } catch (error) {
+                console.log('Error', error);
             }
-        } catch (error) {
-            console.log('Error', error);
+        } else {
+            // If there are errors, ensure the form is updated to display them
+            dispatch(handleFormChange({ key: 'name', value: materialformRef.current.name }));
         }
     };
 

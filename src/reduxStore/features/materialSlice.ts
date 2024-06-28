@@ -8,6 +8,9 @@ interface MaterialState {
         name: string;
         isActive: boolean;
     }
+    errors: {
+        name?: string;
+    };
 }
 
 const initialState: MaterialState = {
@@ -15,8 +18,13 @@ const initialState: MaterialState = {
     materialForm: {
         name: '',
         isActive: false,
-    }
+    },
+    errors: {}
 }
+
+const isValidName = (name: string): boolean => {
+    return typeof name === 'string' && name.trim().length >= 3 && name !== '';
+};
 
 const materialSlice = createSlice({
     name: 'material',
@@ -32,6 +40,7 @@ const materialSlice = createSlice({
 
         setMaterialForm: (state, action: PayloadAction<MaterialState['materialForm']>) => {
             state.materialForm = action.payload;
+            state.errors = {};
         },
 
         resetFormValues: (state) => {
@@ -45,7 +54,12 @@ const materialSlice = createSlice({
             const { key, value } = action.payload
             switch (key) {
                 case 'name':
-                    state.materialForm.name = value as string
+                    if (isValidName(value as string)) {
+                        state.materialForm.name = value as string;
+                        delete state.errors.name;
+                    } else {
+                        state.errors.name = 'Malzeme adı zorunludur ve 3 harften fazla olmalıdır';
+                    }
                     break;
                 case 'isActive':
                     state.materialForm.isActive = value as boolean

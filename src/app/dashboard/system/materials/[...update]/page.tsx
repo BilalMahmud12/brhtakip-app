@@ -4,7 +4,7 @@ import { Material } from '@/API';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import * as Repo from '@/repository/index';
-import { setMaterials, resetFormValues, setMaterialForm } from '@/reduxStore/features/materialSlice';
+import { setMaterials, resetFormValues, setMaterialForm, handleFormChange } from '@/reduxStore/features/materialSlice';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 
 
@@ -20,10 +20,9 @@ const UpdateMaterialPage: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
     const materialForm = useAppSelector((state: RootState) => state.material.materialForm);
     const materials = useAppSelector((state: RootState) => state.material.materials);
+    const errors = useAppSelector((state: RootState) => state.material.errors);
     const materialformRef = useRef(materialForm);
     materialformRef.current = materialForm;
-
-
 
     useEffect(() => {
         const materialId = pathName.split('/').pop();
@@ -44,17 +43,23 @@ const UpdateMaterialPage: React.FC = () => {
     }, [pathName, materials, dispatch]);
 
     const handleUpdateMaterial = async () => {
-        try {
-            const updateMaterial = await Repo.MaterialRepository.update(materialformRef.current);
+        if (!errors.name && materialformRef.current.name.trim() !== '') {
+            dispatch(handleFormChange({ key: 'name', value: materialformRef.current.name }));
+            try {
+                const updateMaterial = await Repo.MaterialRepository.update(materialformRef.current);
 
-            if (updateMaterial && updateMaterial.data) {
-                const newMaterials = await Repo.MaterialRepository.getAllMaterials();
-                dispatch(setMaterials(newMaterials as unknown as Material[]));
-                dispatch(resetFormValues());
-                router.back();
+                if (updateMaterial && updateMaterial.data) {
+                    const newMaterials = await Repo.MaterialRepository.getAllMaterials();
+                    dispatch(setMaterials(newMaterials as unknown as Material[]));
+                    dispatch(resetFormValues());
+                    router.back();
+                }
+            } catch (error) {
+                console.log('Error', error);
             }
-        } catch (error) {
-            console.log('Error', error);
+        } else {
+            // If there are errors, ensure the form is updated to display them
+            dispatch(handleFormChange({ key: 'name', value: materialformRef.current.name }));
         }
     };
 
