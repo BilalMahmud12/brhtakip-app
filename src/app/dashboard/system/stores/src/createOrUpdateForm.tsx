@@ -23,6 +23,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     const dispatch = useAppDispatch<AppDispatch>();
     const storeForm = useAppSelector((state: RootState) => state.store.storeForm);
+    const errors = useAppSelector((state: RootState) => state.store.errors);
 
     const [citiesList, setCitiesList] = useState<{ id: string, label: string }[]>([]);
     const [districtsList, setDistrictsList] = useState<{ id: string, label: string, cityID: string }[]>([]);
@@ -120,7 +121,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             id='material_name'
                             variant="standard"
                             sx={{ width: '100%' }}
-                            helperText={''}
+                            error={!!errors.name}
+                            helperText={errors.name || ''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
                             }}
@@ -197,7 +199,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 id='material_address'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                helperText={''}
+                                error={!!errors.address}
+                                helperText={errors.address || ''}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({ key: 'address', value: event.target.value }))
                                 }}
@@ -218,7 +221,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 id='email'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                helperText={''}
+                                error={!!errors.email}
+                                helperText={errors.email || ''}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({ key: 'email', value: event.target.value }))
                                 }}
@@ -231,7 +235,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 id='phone'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                helperText={''}
+                                error={!!errors.phones}
+                                helperText={errors.phones || ''}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({ key: 'phones', value: event.target.value }))
                                 }}
@@ -262,11 +267,3 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 };
 
 export default CreateOrUpdateForm;
-
-
-
-
-/*
-
-
-*/

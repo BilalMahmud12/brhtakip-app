@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm'
 import { useRouter } from 'next-nprogress-bar';
 import * as Repo from '@/repository/index';
-import { resetFormValues, setStores } from '@/reduxStore/features/storeSlice';
+import { resetFormValues, setStores, handleFormChange } from '@/reduxStore/features/storeSlice';
 
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
@@ -17,24 +17,37 @@ const CreateStorePage: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
     const stores = useAppSelector((state: RootState) => state.store.stores);
     const storeForm = useAppSelector((state: RootState) => state.store.storeForm);
+    const errors = useAppSelector((state: RootState) => state.store.errors);
     const storeFormRef = useRef(storeForm);
     storeFormRef.current = storeForm;
 
     const handleCreateStore = async () => {
-        console.log('storeForm', storeForm);
-        try {
-            const createStore = await Repo.StoreRepository.create(storeFormRef.current);
+        if (
+            !errors.name && storeFormRef.current.name.trim() !== '' &&
+            !errors.address && storeFormRef.current.address?.trim() !== '' &&
+            !errors.email && storeFormRef.current.email?.trim() !== '' &&
+            !errors.phones && storeFormRef.current.phones?.trim() !== ''
+        ) {
+            try {
+                const createStore = await Repo.StoreRepository.create(storeFormRef.current);
 
-            if (createStore && createStore.data) {
-                const newStore = await Repo.StoreRepository.getAllStores();
-                dispatch(setStores(newStore as unknown as Store[]))
-                router.back()
-                dispatch(resetFormValues());
+                if (createStore && createStore.data) {
+                    const newStore = await Repo.StoreRepository.getAllStores();
+                    dispatch(setStores(newStore as unknown as Store[]));
+                    router.back();
+                    dispatch(resetFormValues());
+                }
+            } catch (error) {
+                console.log('Failed to create store', error);
             }
-        } catch (error) {
-            console.log('Faield to create store', error);
+        } else {
+            dispatch(handleFormChange({ key: 'name', value: storeFormRef.current.name }));
+            dispatch(handleFormChange({ key: 'address', value: storeFormRef.current.address || '' }));
+            dispatch(handleFormChange({ key: 'email', value: storeFormRef.current.email || '' }));
+            dispatch(handleFormChange({ key: 'phones', value: storeFormRef.current.phones || '' }));
         }
-    }
+    };
+
 
     return (
         <div>

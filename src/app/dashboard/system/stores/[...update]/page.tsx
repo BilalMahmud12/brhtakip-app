@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm'
 import { useRouter } from 'next-nprogress-bar';
 import * as Repo from '@/repository/index';
-import { resetFormValues, setStores, setStoreForm } from '@/reduxStore/features/storeSlice';
+import { resetFormValues, setStores, setStoreForm, handleFormChange } from '@/reduxStore/features/storeSlice';
 
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
@@ -19,6 +19,7 @@ const UpdateStorePage: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
     const stores = useAppSelector((state: RootState) => state.store.stores);
     const storeForm = useAppSelector((state: RootState) => state.store.storeForm);
+    const errors = useAppSelector((state: RootState) => state.store.errors);
     const storeFormRef = useRef(storeForm);
     storeFormRef.current = storeForm;
 
@@ -47,17 +48,29 @@ const UpdateStorePage: React.FC = () => {
     }, [pathName, stores, dispatch]);
 
     const handleCreateStore = async () => {
-        try {
-            const updateStore = await Repo.StoreRepository.update(storeFormRef.current);
+        if (
+            !errors.name && storeFormRef.current.name.trim() !== '' &&
+            !errors.address && storeFormRef.current.address?.trim() !== '' &&
+            !errors.email && storeFormRef.current.email?.trim() !== '' &&
+            !errors.phones && storeFormRef.current.phones?.trim() !== ''
+        ) {
+            try {
+                const updateStore = await Repo.StoreRepository.update(storeFormRef.current);
 
-            if (updateStore && updateStore.data) {
-                const newStore = await Repo.StoreRepository.getAllStores();
-                dispatch(setStores(newStore as unknown as Store[]))
-                router.back();
-                dispatch(resetFormValues());
+                if (updateStore && updateStore.data) {
+                    const newStore = await Repo.StoreRepository.getAllStores();
+                    dispatch(setStores(newStore as unknown as Store[]))
+                    router.back();
+                    dispatch(resetFormValues());
+                }
+            } catch (error) {
+                console.log('Faield to create store', error);
             }
-        } catch (error) {
-            console.log('Faield to create store', error);
+        } else {
+            dispatch(handleFormChange({ key: 'name', value: storeFormRef.current.name }));
+            dispatch(handleFormChange({ key: 'address', value: storeFormRef.current.address || '' }));
+            dispatch(handleFormChange({ key: 'email', value: storeFormRef.current.email || '' }));
+            dispatch(handleFormChange({ key: 'phones', value: storeFormRef.current.phones || '' }));
         }
     }
 
