@@ -6,10 +6,13 @@ interface AreaFormState {
     areaForm: {
         id?: string;
         districtID?: string;
-        isActive: boolean;
-        name?: string;
+        isActive?: boolean;
+        name: string;
         createdBy?: string;
         updatedBy?: string;
+    }
+    errors: {
+        name?: string;
     }
 }
 
@@ -20,7 +23,12 @@ const initialState: AreaFormState = {
         name: '',
         createdBy: '',
         updatedBy: '',
-    }
+    },
+    errors: {}
+}
+
+const isValidName = (name: string): boolean => {
+    return typeof name === 'string' && name.trim().length >= 3 && name !== ''
 }
 
 const areaSlice = createSlice({
@@ -37,6 +45,7 @@ const areaSlice = createSlice({
 
         setAreaForm: (state, action: PayloadAction<AreaFormState['areaForm']>) => {
             state.areaForm = action.payload
+            state.errors = {}
         },
 
         resetFormValues: (state) => {
@@ -51,11 +60,16 @@ const areaSlice = createSlice({
         handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean | string[] }>) => {
             const { key, value } = action.payload
             switch (key) {
+                case 'name':
+                    if (isValidName(value as string)) {
+                        state.areaForm.name = value as string;
+                        delete state.errors.name;
+                    } else {
+                        state.errors.name = 'Alan adı zorunludur ve 3 harften fazla olmalıdır.'
+                    }
+                    break;
                 case 'districtID':
                     state.areaForm.districtID = value as string
-                    break;
-                case 'name':
-                    state.areaForm.name = value as string
                     break;
                 case 'isActive':
                     state.areaForm.isActive = value as boolean

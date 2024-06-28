@@ -4,7 +4,7 @@ import { Area } from '@/API';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import * as Repo from '@/repository/index';
-import { setAreas, resetFormValues, setAreaForm } from '@/reduxStore/features/areaSlice';
+import { setAreas, resetFormValues, setAreaForm, handleFormChange } from '@/reduxStore/features/areaSlice';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 
 import Button from '@mui/material/Button';
@@ -19,22 +19,28 @@ const UpdateAreaPage: React.FC = () => {
     const router = useRouter();
     const areaForm = useAppSelector((state: RootState) => state.area.areaForm);
     const areas = useAppSelector((state: RootState) => state.area.areas);
+    const errors = useAppSelector((state: RootState) => state.area.errors);
 
     const areaFormRef = useRef(areaForm);
     areaFormRef.current = areaForm;
 
     const handleUpdateArea = async () => {
-        try {
-            const createArea = await Repo.AreaRepository.update(areaFormRef.current);
+        if (!errors.name && areaFormRef.current.name.trim() !== '') {
+            dispatch(handleFormChange({ key: 'name', value: areaFormRef.current.name }));
+            try {
+                const createArea = await Repo.AreaRepository.update(areaFormRef.current);
 
-            if (createArea && createArea.data) {
-                const newAreas = await Repo.AreaRepository.getAllAreas();
-                dispatch(setAreas(newAreas as unknown as Area[]));
-                router.back();
-                dispatch(resetFormValues());
+                if (createArea && createArea.data) {
+                    const newAreas = await Repo.AreaRepository.getAllAreas();
+                    dispatch(setAreas(newAreas as unknown as Area[]));
+                    router.back();
+                    dispatch(resetFormValues());
+                }
+            } catch (error) {
+                console.log('Failed Update District', error);
             }
-        } catch (error) {
-            console.log('Failed Update District', error);
+        } else {
+            dispatch(handleFormChange({ key: 'name', value: areaFormRef.current.name }));
         }
     };
 
@@ -73,7 +79,7 @@ const UpdateAreaPage: React.FC = () => {
                                     dispatch(resetFormValues());
                                 }}
                             >
-                                Şehirlere Geri Dön
+                                Geri Dön
                             </Button>
 
                             <Button

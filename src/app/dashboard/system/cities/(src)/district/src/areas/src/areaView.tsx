@@ -30,7 +30,10 @@ const AreaView: React.FC<AreaViewProps> = ({ haveArea, fetchFilteredAreas, filte
 
     const setAreaDistrictId = () => {
         if (areaForm.districtID !== districtId) {
-            dispatch(setAreaForm({ districtID: districtId, isActive: false }));
+            dispatch(setAreaForm({
+                districtID: districtId, isActive: false,
+                name: ''
+            }));
         }
     };
     useEffect(() => {
