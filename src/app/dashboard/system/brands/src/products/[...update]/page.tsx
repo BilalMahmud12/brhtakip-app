@@ -4,7 +4,7 @@ import { Product } from '@/API';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import * as Repo from '@/repository/index';
-import { setProductFormValues, resetProductFormValues } from '@/reduxStore/features/productSlice';
+import { setProductFormValues, resetProductFormValues, handleFormChange } from '@/reduxStore/features/productSlice';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 
 import Button from '@mui/material/Button';
@@ -18,6 +18,7 @@ const UpdateProductPage: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
     const products = useAppSelector((state: RootState) => state.product.products);
     const productForm = useAppSelector((state: RootState) => state.product.productForm);
+    const errors = useAppSelector((state: RootState) => state.product.errors);
     const pathName = usePathname();
     const productFormRef = useRef(productForm);
     productFormRef.current = productForm;
@@ -44,18 +45,22 @@ const UpdateProductPage: React.FC = () => {
 
 
     const handleUpdateProduct = async () => {
-        console.log('productForm', productForm);
-        try {
-            productFormRef
-            const updateProduct = await Repo.ProductRepository.update(productFormRef.current)
+        if (!errors.name && productFormRef.current.name.trim() !== '') {
+            dispatch(handleFormChange({ key: 'name', value: productFormRef.current.name }));
+            try {
+                productFormRef
+                const updateProduct = await Repo.ProductRepository.update(productFormRef.current)
 
-            if (updateProduct && updateProduct.data) {
-                router.back();
-                dispatch(resetProductFormValues())
+                if (updateProduct && updateProduct.data) {
+                    router.back();
+                    dispatch(resetProductFormValues())
+                }
+
+            } catch (error) {
+                console.log('error on update Product', error);
             }
-
-        } catch (error) {
-            console.log('error on update Product', error);
+        } else {
+            dispatch(handleFormChange({ key: 'name', value: productFormRef.current.name }));
         }
     };
 

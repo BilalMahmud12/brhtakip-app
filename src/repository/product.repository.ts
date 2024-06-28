@@ -27,6 +27,7 @@ const getProductById = async (id: string) => {
 }
 
 const create = async (product: any) => {
+    console.log('create product repo', product)
     try {
         const data = await client.graphql({
             query: createProduct,

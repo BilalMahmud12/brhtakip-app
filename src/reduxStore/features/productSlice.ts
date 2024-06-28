@@ -5,10 +5,13 @@ interface ProductFormState {
     products: Product[];
     productForm: {
         id?: string;
-        name?: string;
+        name: string;
         brandID?: string;
-        isActive?: boolean;
+        isActive: boolean;
     }
+    errors: {
+        name?: string;
+    };
 }
 
 const initialState: ProductFormState = {
@@ -16,7 +19,13 @@ const initialState: ProductFormState = {
     productForm: {
         name: '',
         isActive: false,
-    }
+        brandID: '',
+    },
+    errors: {}
+};
+
+const isValidName = (name: string): boolean => {
+    return typeof name === 'string' && name.trim().length >= 3 && name !== '';
 };
 
 const productSlice = createSlice({
@@ -33,13 +42,19 @@ const productSlice = createSlice({
 
         setProductFormValues: (state, action: PayloadAction<ProductFormState['productForm']>) => {
             state.productForm = action.payload;
+            state.errors = {};
         },
 
         handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean | string[] }>) => {
             const { key, value } = action.payload;
             switch (key) {
                 case 'name':
-                    state.productForm.name = value as string
+                    if (isValidName(value as string)) {
+                        state.productForm.name = value as string;
+                        delete state.errors.name;
+                    } else {
+                        state.errors.name = 'Marka adı zorunludur ve 3 harften fazla olmalıdır';
+                    }
                     break;
                 case 'brandID':
                     state.productForm.brandID = value as string
@@ -59,6 +74,7 @@ const productSlice = createSlice({
             state.productForm = {
                 name: '',
                 isActive: false,
+                brandID: '',
             };
         },
     }

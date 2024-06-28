@@ -8,7 +8,10 @@ interface BrandFormState {
         name: string;
         isActive: boolean;
         clientprofileID?: string;
-    }
+    };
+    errors: {
+        name?: string;
+    };
 }
 
 const initialState: BrandFormState = {
@@ -17,7 +20,12 @@ const initialState: BrandFormState = {
         name: '',
         clientprofileID: '',
         isActive: false
-    }
+    },
+    errors: {}
+};
+
+const isValidName = (name: string): boolean => {
+    return typeof name === 'string' && name.trim().length >= 3 && name !== '';
 };
 
 const brandSlice = createSlice({
@@ -32,21 +40,25 @@ const brandSlice = createSlice({
             state.brands.push(action.payload);
         },
 
-
         handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean | string[] }>) => {
             const { key, value } = action.payload;
             switch (key) {
                 case 'name':
-                    state.brandForm.name = value as string
+                    if (isValidName(value as string)) {
+                        state.brandForm.name = value as string;
+                        delete state.errors.name;
+                    } else {
+                        state.errors.name = 'Marka adı zorunludur ve 3 harften fazla olmalıdır';
+                    }
                     break;
                 case 'isActive':
-                    state.brandForm.isActive = value as boolean
+                    state.brandForm.isActive = value as boolean;
                     break;
                 case 'clientprofileID':
-                    state.brandForm.clientprofileID = value as string
+                    state.brandForm.clientprofileID = value as string;
                     break;
                 case 'id':
-                    state.brandForm.id = value as string
+                    state.brandForm.id = value as string;
                     break;
                 default:
                     break;
@@ -58,10 +70,12 @@ const brandSlice = createSlice({
                 clientprofileID: '',
                 isActive: false
             };
+            state.errors = {};
         },
 
         setBrandFormValues(state, action: PayloadAction<BrandFormState['brandForm']>) {
-            state.brandForm = action.payload
+            state.brandForm = action.payload;
+            state.errors = {};
         },
     }
 });

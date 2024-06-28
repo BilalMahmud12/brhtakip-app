@@ -9,7 +9,7 @@ import { Brand, Product } from '@/API';
 import ProductsDataTable from '../src/products/src/productsDataTable';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
-import { setBrands, resetFormValues, setBrandFormValues } from '@/reduxStore/features/brandSlice';
+import { setBrands, resetFormValues, setBrandFormValues, handleFormChange } from '@/reduxStore/features/brandSlice';
 import { setProducts, resetProductFormValues, setProductFormValues } from '@/reduxStore/features/productSlice';
 
 import Button from '@mui/material/Button';
@@ -26,6 +26,7 @@ const UpdateBrand: React.FC = (() => {
     const products = useAppSelector((state: RootState) => state.product.products); // Assuming you have products in your Redux store
     const brands = useAppSelector((state: RootState) => state.brand.brands);
     const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
+    const errors = useAppSelector((state: RootState) => state.brand.errors);
 
     const brandformRef = useRef(brandForm);
     brandformRef.current = brandForm;
@@ -49,19 +50,23 @@ const UpdateBrand: React.FC = (() => {
         }
     }, [pathName, brands, dispatch]);
 
-
     async function handleUpdateBrand() {
-        try {
-            const updateBrand = await Repo.BrandRepository.update(brandformRef.current);
+        if (!errors.name && brandformRef.current.name.trim() !== '') {
+            try {
+                const updateBrand = await Repo.BrandRepository.update(brandformRef.current);
 
-            if (updateBrand && updateBrand.data) {
-                dispatch(resetFormValues());
-                const newBrandList = await Repo.BrandRepository.getAllBrands();
-                dispatch(setBrands(newBrandList as unknown as Brand[]));
-                router.replace(`/dashboard/system/brands`);
+                if (updateBrand && updateBrand.data) {
+                    dispatch(resetFormValues());
+                    const newBrandList = await Repo.BrandRepository.getAllBrands();
+                    dispatch(setBrands(newBrandList as unknown as Brand[]));
+                    router.replace(`/dashboard/system/brands`);
+                }
+            } catch (error) {
+                console.error('Error updating brand:', error);
             }
-        } catch (error) {
-            console.error('Error updating brand:', error);
+        } else {
+            // If there are errors, ensure the form is updated to display them
+            dispatch(handleFormChange({ key: 'name', value: brandformRef.current.name }));
         }
     }
 

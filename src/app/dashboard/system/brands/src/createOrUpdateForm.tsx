@@ -26,6 +26,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
 ) => {
     const dispatch = useAppDispatch<AppDispatch>();
     const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
+    const errors = useAppSelector((state: RootState) => state.brand.errors);
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
     const currentUserProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const brandFormRef = React.useRef(brandForm);
@@ -58,8 +59,12 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
 
         dispatch(handleFormChange({ key: 'name', value: name as string }))
         dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
-        // console.log('finished loading form data:', brandForm);
     }
+
+    const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value;
+        dispatch(handleFormChange({ key: 'name', value }));
+    };
 
     return (
         <div className='h-full'>
@@ -86,14 +91,16 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
                     <div className='my-2 pt-5' />
 
                     <div className='input-group w-full col-span-1 lg:col-span-1'>
-                        <label htmlFor="lastName" className='block text-xs font-medium mb-1.5'>Marka Adı *</label>
+                        <label htmlFor="name" className='block text-xs font-medium mb-1.5'>Marka Adı *</label>
                         <TextField
-                            id='lastName'
+                            id='name'
                             variant="standard"
                             sx={{ width: '100%' }}
-                            helperText={''}
+                            error={!!errors.name}
+                            helperText={errors.name || ''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                                dispatch(handleFormChange({ key: 'name', value: event.target.value }))
+                                const value = event.target.value;
+                                dispatch(handleFormChange({ key: 'name', value }));
                             }}
                             defaultValue={!isCreate ? brandForm.name : ''}
                         />
@@ -102,7 +109,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
                     <div className='my-2 pt-5' />
 
                     <div className='input-group w-full'>
-                        <label htmlFor="brand_state" className='block text-xs font-medium mb-2'>Hesap Durumu</label>
+                        <label htmlFor="brand_state" className='block text-xs font-medium mb-2'>Marka Durumu</label>
                         <div>
                             <FormControlLabel
                                 label={brandFormRef.current.isActive as boolean ? 'Aktif' : 'Aktif Değil'}

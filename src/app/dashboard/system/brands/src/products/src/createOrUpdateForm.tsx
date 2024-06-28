@@ -29,6 +29,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
 
     const dispatch = useAppDispatch<AppDispatch>();
     const productForm = useAppSelector((state: RootState) => state.product.productForm);
+    const errors = useAppSelector((state: RootState) => state.product.errors);
     const productFormRef = useRef(productForm);
     productFormRef.current = productForm;
 
@@ -62,7 +63,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>
 
                 <div className='p-6 bg-white shadow col-span-2'>
-                    <h2 className='text-base font-semibold mb-6'>Malzeme Ekle</h2>
 
                     <div className='input-group w-full col-span-1 lg:col-span-1'>
                         <label htmlFor="material_name" className='block text-xs font-medium mb-1.5'>Ürün Adı *</label>
@@ -70,7 +70,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
                             id='material_name'
                             variant="standard"
                             sx={{ width: '100%' }}
-                            helperText={''}
+                            error={!!errors.name}
+                            helperText={errors.name || ''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
                             }}

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import * as Repo from '@/repository/index';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
-import { setBrandFormValues, resetFormValues, setBrands } from '@/reduxStore/features/brandSlice';
+import { setBrandFormValues, resetFormValues, setBrands, handleFormChange } from '@/reduxStore/features/brandSlice';
 import { RootState, AppDispatch } from '@/reduxStore/store';
 
 import Button from '@mui/material/Button';
@@ -15,27 +15,34 @@ import TextField from '@mui/material/TextField';
 import { FormControlLabel } from '@mui/material';
 import Switch from '@mui/material/Switch';
 import { Brand } from '@/API';
+import { useAppSelector } from '@/reduxStore/hooks';
 
 const CreateBrandPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const router = useRouter();
-    const brandForm = useSelector((state: RootState) => state.brand.brandForm);
-    const brandFormRef = React.useRef(brandForm)
-    brandFormRef.current = brandForm
+    const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
+    const errors = useAppSelector((state: RootState) => state.brand.errors);
+    const brandFormRef = React.useRef(brandForm);
+    brandFormRef.current = brandForm;
 
     const handleCreateBrand = async () => {
-        try {
-            const createBrand = await Repo.BrandRepository.create(brandFormRef.current);
-            if (createBrand && createBrand.data) {
-                const newbrand = await Repo.BrandRepository.getAllBrands();
-                dispatch(setBrands(newbrand as unknown as Brand[]))
-                dispatch(resetFormValues());
-                router.replace('/dashboard/system/brands');
+        if (!errors.name && brandFormRef.current.name.trim() !== '') {
+            try {
+                const createBrand = await Repo.BrandRepository.create(brandFormRef.current);
+                if (createBrand && createBrand.data) {
+                    const newbrand = await Repo.BrandRepository.getAllBrands();
+                    dispatch(setBrands(newbrand as unknown as Brand[]));
+                    dispatch(resetFormValues());
+                    router.replace('/dashboard/system/brands');
+                }
+            } catch (error) {
+                console.log('Error', error);
             }
-        } catch (error) {
-            console.log('Error', error);
+        } else {
+            // If there are errors, ensure the form is updated to display them
+            dispatch(handleFormChange({ key: 'name', value: brandFormRef.current.name }));
         }
-    }
+    };
 
     return (
         <div>
@@ -46,7 +53,7 @@ const CreateBrandPage: React.FC = () => {
                     <Button
                         variant="text"
                         startIcon={<ArrowBackIosIcon />}
-                        onClick={() => router.push('/dashboard/system/brands')}
+                        onClick={() => { router.push('/dashboard/system/brands'); dispatch(resetFormValues()); }}
                     >
                         Markalara Geri Dön
                     </Button>

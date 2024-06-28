@@ -13,6 +13,7 @@ import { setProducts, resetProductFormValues, setProductFormValues } from '@/red
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { usePathname } from 'next/navigation';
 
 interface ProductViewProps {
     brandId: any;
@@ -23,7 +24,7 @@ interface ProductViewProps {
 
 const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filteredProducts, fetchFilteredProducts }) => {
     const router = useRouter();
-
+    const pathName = usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
     const products = useAppSelector((state: RootState) => state.product);
     const productForm = useAppSelector((state: RootState) => state.product.productForm);
@@ -31,10 +32,15 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
     const productFormRef = useRef(productForm);
     productFormRef.current = productForm;
 
+    console.log('brandId', brandId);
 
     const setProductBrandId = () => {
         if (productForm.brandID !== brandId) {
-            dispatch(setProductFormValues({ brandID: brandId }));
+            dispatch(setProductFormValues({
+                brandID: brandId,
+                isActive: false,
+                name: ''
+            }));
         }
     };
 
