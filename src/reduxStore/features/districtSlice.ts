@@ -7,10 +7,13 @@ interface DistrictFormState {
         id?: string;
         cityID?: string;
         isActive?: boolean;
-        name?: string;
+        name: string;
         createdBy?: string;
         updatedBy?: string;
     }
+    errors: {
+        name?: string;
+    };
 }
 
 const initialState: DistrictFormState = {
@@ -18,7 +21,12 @@ const initialState: DistrictFormState = {
     districtForm: {
         isActive: false,
         name: '',
-    }
+    },
+    errors: {}
+}
+
+const isValidName = (name: string): boolean => {
+    return typeof name === 'string' && name.trim().length >= 3 && name !== '';
 }
 
 const districtSlice = createSlice({
@@ -48,10 +56,12 @@ const districtSlice = createSlice({
             const { key, value } = action.payload
             switch (key) {
                 case 'name':
-                    state.districtForm.name = value as string
-                    break;
-                case 'isActive':
-                    state.districtForm.isActive = value as boolean
+                    if (isValidName(value as string)) {
+                        state.districtForm.name = value as string;
+                        delete state.errors.name;
+                    } else {
+                        state.errors.name = 'İlçe adı zorunludur ve 3 harften fazla olmalıdır';
+                    }
                     break;
                 case 'cityID':
                     state.districtForm.cityID = value as string

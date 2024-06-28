@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { useRouter } from 'next-nprogress-bar';
-import { setCities, resetFormValues, setCityForm } from '@/reduxStore/features/citySlice';
+import { setCities, resetFormValues, setCityForm, handleFormChange } from '@/reduxStore/features/citySlice';
 import { setDistricts } from '@/reduxStore/features/districtSlice';
 import * as Repo from '@/repository/index';
 
@@ -17,22 +17,27 @@ const UpdateCity: React.FC = () => {
     const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
     const districtForm = useAppSelector((state: RootState) => state.district.districtForm);
-
+    const errors = useAppSelector((state: RootState) => state.district.errors);
     const districtformRef = useRef(districtForm);
     districtformRef.current = districtForm;
 
     const handleCreateDistrict = async () => {
-        try {
-            const createDistrict = await Repo.DistrictRepository.create(districtformRef.current);
+        if (!errors.name && districtformRef.current.name.trim() !== '') {
+            dispatch(handleFormChange({ key: 'name', value: districtformRef.current.name }));
+            try {
+                const createDistrict = await Repo.DistrictRepository.create(districtformRef.current);
 
-            if (createDistrict && createDistrict.data) {
-                const newDistricts = await Repo.DistrictRepository.getAllDistricts();
-                dispatch(setDistricts(newDistricts as unknown as District[]));
-                router.back();
-                dispatch(resetFormValues());
+                if (createDistrict && createDistrict.data) {
+                    const newDistricts = await Repo.DistrictRepository.getAllDistricts();
+                    dispatch(setDistricts(newDistricts as unknown as District[]));
+                    router.back();
+                    dispatch(resetFormValues());
+                }
+            } catch (error) {
+                console.log('Failed Creating District', error);
             }
-        } catch (error) {
-            console.log('Failed Creating District', error);
+        } else {
+            dispatch(handleFormChange({ key: 'name', value: districtformRef.current.name }));
         }
     };
 
