@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import CreateOrUpdateForm from '../(src)/createOrUpdateForm';
 import { useRouter } from 'next-nprogress-bar';
-import { setCities, resetFormValues, setCityForm } from '@/reduxStore/features/citySlice';
+import { setCities, resetFormValues, handleFormChange } from '@/reduxStore/features/citySlice';
 import * as Repo from '@/repository/index';
 
 import Button from '@mui/material/Button';
@@ -17,22 +17,27 @@ const CreateMaterialPage: React.FC = () => {
     const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
     const cityForm = useAppSelector((state: RootState) => state.city.cityForm);
+    const errors = useAppSelector((state: RootState) => state.city.errors);
 
     const cityformRef = useRef(cityForm);
     cityformRef.current = cityForm;
 
     const handleCreateCity = async () => {
-        try {
-            const createCity = await Repo.CityRepository.create(cityformRef.current);
-            console.log('created City', createCity)
-            if (createCity && createCity.data) {
-                const newCity = await Repo.CityRepository.getAllCities();
-                dispatch(setCities(newCity as unknown as City[]))
-                router.back();
-                dispatch(resetFormValues());
+        if (!errors.name && cityformRef.current.name.trim() !== '') {
+            dispatch(handleFormChange({ key: 'name', value: cityformRef.current.name }));
+            try {
+                const createCity = await Repo.CityRepository.create(cityformRef.current);
+                if (createCity && createCity.data) {
+                    const newCity = await Repo.CityRepository.getAllCities();
+                    dispatch(setCities(newCity as unknown as City[]))
+                    router.back();
+                    dispatch(resetFormValues());
+                }
+            } catch (error) {
+                console.log('Failed Create City', error)
             }
-        } catch (error) {
-            console.log('Failed Create City', error)
+        } else {
+            dispatch(handleFormChange({ key: 'name', value: cityformRef.current.name }));
         }
     };
 

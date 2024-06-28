@@ -5,11 +5,14 @@ interface CityFormState {
     cities: City[];
     cityForm: {
         id?: string;
-        name?: string;
+        name: string;
         isActive: boolean;
         createdBy?: string;
         updatedBy?: string;
-    }
+    };
+    errors: {
+        name?: string;
+    };
 }
 
 const initialState: CityFormState = {
@@ -19,8 +22,13 @@ const initialState: CityFormState = {
         isActive: false,
         createdBy: '',
         updatedBy: '',
-    }
+    },
+    errors: {}
 }
+
+const isValidName = (name: string): boolean => {
+    return typeof name === 'string' && name.trim().length >= 3 && name !== '';
+};
 
 const citySlice = createSlice({
     name: 'city',
@@ -36,6 +44,7 @@ const citySlice = createSlice({
 
         setCityForm: (state, action: PayloadAction<CityFormState['cityForm']>) => {
             state.cityForm = action.payload
+            state.errors = {}
         },
 
         resetFormValues: (state) => {
@@ -51,7 +60,12 @@ const citySlice = createSlice({
             const { key, value } = action.payload
             switch (key) {
                 case 'name':
-                    state.cityForm.name = value as string
+                    if (isValidName(value as string)) {
+                        state.cityForm.name = value as string;
+                        delete state.errors.name;
+                    } else {
+                        state.errors.name = 'Sehir adı zorunludur ve 3 harften fazla olmalıdır';
+                    }
                     break;
                 case 'isActive':
                     state.cityForm.isActive = value as boolean;

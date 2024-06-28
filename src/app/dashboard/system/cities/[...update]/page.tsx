@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import CreateOrUpdateForm from '../(src)/createOrUpdateForm';
 import { useRouter } from 'next-nprogress-bar';
-import { setCities, resetFormValues, setCityForm } from '@/reduxStore/features/citySlice';
+import { setCities, resetFormValues, setCityForm, handleFormChange } from '@/reduxStore/features/citySlice';
 import { setDistricts } from '@/reduxStore/features/districtSlice';
 import * as Repo from '@/repository/index';
 
@@ -23,6 +23,7 @@ const UpdateCity: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
     const cityForm = useAppSelector((state: RootState) => state.city.cityForm);
     const cities = useAppSelector((state: RootState) => state.city.cities);
+    const errors = useAppSelector((state: RootState) => state.city.errors);
     const namePath = usePathname();
     const cityformRef = useRef(cityForm);
     cityformRef.current = cityForm;
@@ -47,16 +48,22 @@ const UpdateCity: React.FC = () => {
     }, [namePath, cities, dispatch]);
 
     async function handleUpdateCity() {
-        try {
-            const updateCity = await Repo.CityRepository.update(cityformRef.current);
-            if (updateCity && updateCity.data) {
-                const newCity = await Repo.CityRepository.getAllCities();
-                dispatch(setCities(newCity as unknown as City[]));
-                dispatch(resetFormValues());
-                router.back();
+        if (!errors.name && cityformRef.current.name.trim() !== '') {
+            dispatch(handleFormChange({ key: 'name', value: cityformRef.current.name }));
+            try {
+                const updateCity = await Repo.CityRepository.update(cityformRef.current);
+                console.log('updated City', updateCity)
+                if (updateCity && updateCity.data) {
+                    const newCity = await Repo.CityRepository.getAllCities();
+                    dispatch(setCities(newCity as unknown as City[]));
+                    router.push('/dashboard/system/cities');
+                    dispatch(resetFormValues());
+                }
+            } catch (error) {
+                console.log('Failed Update City', error)
             }
-        } catch (error) {
-            console.error('Failed updating city:', error);
+        } else {
+            dispatch(handleFormChange({ key: 'name', value: cityformRef.current.name }));
         }
     }
 
