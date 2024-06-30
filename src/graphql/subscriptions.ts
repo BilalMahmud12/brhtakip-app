@@ -15,7 +15,7 @@ export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraPro
     id
     isActive
     name
-    image {
+    images {
       type
       path
       url
@@ -30,7 +30,7 @@ export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraPro
           id
           isActive
           name
-          image {
+          images {
             type
             path
             url
@@ -45,7 +45,7 @@ export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraPro
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -741,7 +741,7 @@ export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraPro
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -917,7 +917,7 @@ export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraPro
     id
     isActive
     name
-    image {
+    images {
       type
       path
       url
@@ -932,7 +932,7 @@ export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraPro
           id
           isActive
           name
-          image {
+          images {
             type
             path
             url
@@ -947,7 +947,7 @@ export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraPro
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -1643,7 +1643,7 @@ export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraPro
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -1819,7 +1819,7 @@ export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraPro
     id
     isActive
     name
-    image {
+    images {
       type
       path
       url
@@ -1834,7 +1834,7 @@ export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraPro
           id
           isActive
           name
-          image {
+          images {
             type
             path
             url
@@ -1849,7 +1849,7 @@ export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraPro
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -2545,7 +2545,7 @@ export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraPro
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -12603,7 +12603,7 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -13688,7 +13688,7 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -14773,7 +14773,7 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -15816,7 +15816,7 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -18506,7 +18506,7 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -21196,7 +21196,7 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -23811,7 +23811,7 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -24531,7 +24531,7 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -25800,7 +25800,7 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
           id
           isActive
           name
-          image {
+          images {
             type
             path
             url
@@ -25815,7 +25815,7 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -26511,7 +26511,7 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -27285,7 +27285,7 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -28005,7 +28005,7 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -29274,7 +29274,7 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
           id
           isActive
           name
-          image {
+          images {
             type
             path
             url
@@ -29289,7 +29289,7 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -29985,7 +29985,7 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -30759,7 +30759,7 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -31479,7 +31479,7 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -32748,7 +32748,7 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
           id
           isActive
           name
-          image {
+          images {
             type
             path
             url
@@ -32763,7 +32763,7 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -33459,7 +33459,7 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -33643,7 +33643,7 @@ export const onCreateRequestExtraProduct = /* GraphQL */ `subscription OnCreateR
       id
       isActive
       name
-      image {
+      images {
         type
         path
         url
@@ -33658,7 +33658,7 @@ export const onCreateRequestExtraProduct = /* GraphQL */ `subscription OnCreateR
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -35274,7 +35274,7 @@ export const onCreateRequestExtraProduct = /* GraphQL */ `subscription OnCreateR
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -35679,7 +35679,7 @@ export const onUpdateRequestExtraProduct = /* GraphQL */ `subscription OnUpdateR
       id
       isActive
       name
-      image {
+      images {
         type
         path
         url
@@ -35694,7 +35694,7 @@ export const onUpdateRequestExtraProduct = /* GraphQL */ `subscription OnUpdateR
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -37310,7 +37310,7 @@ export const onUpdateRequestExtraProduct = /* GraphQL */ `subscription OnUpdateR
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -37715,7 +37715,7 @@ export const onDeleteRequestExtraProduct = /* GraphQL */ `subscription OnDeleteR
       id
       isActive
       name
-      image {
+      images {
         type
         path
         url
@@ -37730,7 +37730,7 @@ export const onDeleteRequestExtraProduct = /* GraphQL */ `subscription OnDeleteR
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -39346,7 +39346,7 @@ export const onDeleteRequestExtraProduct = /* GraphQL */ `subscription OnDeleteR
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url

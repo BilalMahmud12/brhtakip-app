@@ -6,7 +6,13 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import {
+  Button,
+  Flex,
+  Grid,
+  SwitchField,
+  TextField,
+} from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { getExtraProduct } from "../graphql/queries";
@@ -25,7 +31,7 @@ export default function ExtraProductUpdateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    isActive: "",
+    isActive: false,
     name: "",
   };
   const [isActive, setIsActive] = React.useState(initialValues.isActive);
@@ -58,8 +64,8 @@ export default function ExtraProductUpdateForm(props) {
   }, [idProp, extraProductModelProp]);
   React.useEffect(resetStateValues, [extraProductRecord]);
   const validations = {
-    isActive: [],
-    name: [],
+    isActive: [{ type: "Required" }],
+    name: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -87,8 +93,8 @@ export default function ExtraProductUpdateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          isActive: isActive ?? null,
-          name: name ?? null,
+          isActive,
+          name,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -140,13 +146,13 @@ export default function ExtraProductUpdateForm(props) {
       {...getOverrideProps(overrides, "ExtraProductUpdateForm")}
       {...rest}
     >
-      <TextField
+      <SwitchField
         label="Is active"
-        isRequired={false}
-        isReadOnly={false}
-        value={isActive}
+        defaultChecked={false}
+        isDisabled={false}
+        isChecked={isActive}
         onChange={(e) => {
-          let { value } = e.target;
+          let value = e.target.checked;
           if (onChange) {
             const modelFields = {
               isActive: value,
@@ -164,10 +170,10 @@ export default function ExtraProductUpdateForm(props) {
         errorMessage={errors.isActive?.errorMessage}
         hasError={errors.isActive?.hasError}
         {...getOverrideProps(overrides, "isActive")}
-      ></TextField>
+      ></SwitchField>
       <TextField
         label="Name"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={name}
         onChange={(e) => {

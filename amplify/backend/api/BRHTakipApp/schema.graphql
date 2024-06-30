@@ -6,9 +6,9 @@ type ImageStorageItem {
 
 type ExtraProduct @model @auth(rules: [{allow: public}]) {
   id: ID!
-  isActive: String
-  name: String
-  image: ImageStorageItem
+  isActive: Boolean!
+  name: String!
+  images: [ImageStorageItem]
   requests: [Request] @manyToMany(relationName: "RequestExtraProduct")
 }
 
