@@ -25,19 +25,16 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type ExtraProductUpdateFormInputValues = {
     isActive?: string;
     name?: string;
-    image?: string;
 };
 export declare type ExtraProductUpdateFormValidationValues = {
     isActive?: ValidationFunction<string>;
     name?: ValidationFunction<string>;
-    image?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ExtraProductUpdateFormOverridesProps = {
     ExtraProductUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     isActive?: PrimitiveOverrideProps<TextFieldProps>;
     name?: PrimitiveOverrideProps<TextFieldProps>;
-    image?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ExtraProductUpdateFormProps = React.PropsWithChildren<{
     overrides?: ExtraProductUpdateFormOverridesProps | undefined | null;

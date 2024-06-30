@@ -1,11 +1,23 @@
 'use client'
 import React from 'react';
 import * as Repo from '@/repository/index';
+import { useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch } from '@/reduxStore/store';
+import { handleFormChange, resetFormValues } from '@/reduxStore/features/requestSlice';
+import { generateRequestNumber } from '@/utils/helpers';
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
-import CreateOrUpdateForm from '../../src/createOrUpdateForm';
+import CreateOrUpdateForm from '../../src/createOrUpdateForm/index';
 
 const RequestCreateView: React.FC = () => {
+    const dispatch = useAppDispatch<AppDispatch>();
+
+    React.useEffect(() => {
+        dispatch(resetFormValues());
+        dispatch(handleFormChange({ key: 'requestNumber', value: generateRequestNumber() }));
+        dispatch(handleFormChange({ key: 'status', value: 'PENDING_APPROVAL' }));
+    }, []);
+
     return (
         <div>
             <div className="mb-8">

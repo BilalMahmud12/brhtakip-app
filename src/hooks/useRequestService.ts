@@ -21,6 +21,7 @@ interface UseRequestService {
     handleUpdateRequest: (data: any) => Promise<void>;
     handleDeleteRequest: (data: any) => void;
     fetchClientData: () => void;
+    getClientOptions: () => { value: string; label: string }[]
 }
 
 export const useRequestService = (): UseRequestService => {
@@ -156,8 +157,14 @@ export const useRequestService = (): UseRequestService => {
         return productsData.data.listProducts.items.map((item: any) => ({ id: item.id, label: item.name }));
     };
 
+    const getClientOptions = () => {
+        return clientProfiles?.map((client) => {
+            return { value: client.id, label: client.name || '' }
+        }) || [];
+    }
+
     return {
-        requestForm: requestForm as RequestForm,
+        requestForm: requestForm as unknown as RequestForm,
         storesList,
         productsList,
         applicationAreasList,
@@ -167,6 +174,7 @@ export const useRequestService = (): UseRequestService => {
         handleCreateRequest,
         handleUpdateRequest,
         handleDeleteRequest,
-        fetchClientData
+        fetchClientData,
+        getClientOptions
     };
 };

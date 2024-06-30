@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Chip from '@mui/material/Chip';
+import { requestStatusColors } from '@/config';
 
 const getStatus = (status: string) => {
     switch (status) {
@@ -54,7 +55,7 @@ export default function getRequestsTableData(
                     case 'requestNumber':
                         row[column.key] = (
                             <div className='h-full flex items-center'>
-                                <span className='block px-3 py-1 bg-yellow-100 rounded-sm border border-yellow-300 w-full text-xs text-gray-800 font-bold font-mono hover:underline hover:text-blue-700 hover:cursor-pointer'>
+                                <span className={`bg-yellow-100 border-yellow-300 block px-3 py-1 rounded-sm border w-full text-xs text-gray-800 font-bold font-mono hover:underline hover:text-blue-700 hover:cursor-pointer`}>
                                     {request.requestNumber}
                                 </span>
                             </div>
@@ -151,6 +152,7 @@ export default function getRequestsTableData(
             }
         })
 
+        row['id'] = request.id;
         row['onEdit'] = () => handleEdit(request);
         row['onDelete'] = () => handleDelete(request);
         row['onSelect'] = () => handleSelect(request);

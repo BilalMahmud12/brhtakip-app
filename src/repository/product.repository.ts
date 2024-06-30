@@ -13,6 +13,18 @@ const getAllProducts = async () => {
     }
 }
 
+const getProductByBrandId = async (brandId: string) => {
+    try {
+        const { data } = await client.graphql({
+            query: listProducts,
+            variables: { filter: { brandID: { eq: brandId } } }
+        });
+        return data?.listProducts?.items ?? [];
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 const getProductById = async (id: string) => {
     try {
         const { data } = await client.graphql({
@@ -68,6 +80,7 @@ const softDelete = async (id: string) => {
 
 export {
     getAllProducts,
+    getProductByBrandId,
     getProductById,
     create,
     update,

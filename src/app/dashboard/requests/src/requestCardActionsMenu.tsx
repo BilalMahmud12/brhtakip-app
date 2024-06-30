@@ -56,14 +56,11 @@ const RequestDataCardActionsMenu: React.FC<{ data: any }> = ({ data }) => {
                     default:
                         router.push('/dashboard/requests')
                 }
-
-
             }
         }
         catch (error) {
             console.error('Error updating request status', error)
         }
-
     }
 
     return (

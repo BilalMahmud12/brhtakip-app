@@ -25,22 +25,18 @@ export default function ExtraProductCreateForm(props) {
   const initialValues = {
     isActive: "",
     name: "",
-    image: "",
   };
   const [isActive, setIsActive] = React.useState(initialValues.isActive);
   const [name, setName] = React.useState(initialValues.name);
-  const [image, setImage] = React.useState(initialValues.image);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setIsActive(initialValues.isActive);
     setName(initialValues.name);
-    setImage(initialValues.image);
     setErrors({});
   };
   const validations = {
     isActive: [],
     name: [],
-    image: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -70,7 +66,6 @@ export default function ExtraProductCreateForm(props) {
         let modelFields = {
           isActive,
           name,
-          image,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -135,7 +130,6 @@ export default function ExtraProductCreateForm(props) {
             const modelFields = {
               isActive: value,
               name,
-              image,
             };
             const result = onChange(modelFields);
             value = result?.isActive ?? value;
@@ -161,7 +155,6 @@ export default function ExtraProductCreateForm(props) {
             const modelFields = {
               isActive,
               name: value,
-              image,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -175,32 +168,6 @@ export default function ExtraProductCreateForm(props) {
         errorMessage={errors.name?.errorMessage}
         hasError={errors.name?.hasError}
         {...getOverrideProps(overrides, "name")}
-      ></TextField>
-      <TextField
-        label="Image"
-        isRequired={false}
-        isReadOnly={false}
-        value={image}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              isActive,
-              name,
-              image: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.image ?? value;
-          }
-          if (errors.image?.hasError) {
-            runValidationTasks("image", value);
-          }
-          setImage(value);
-        }}
-        onBlur={() => runValidationTasks("image", image)}
-        errorMessage={errors.image?.errorMessage}
-        hasError={errors.image?.hasError}
-        {...getOverrideProps(overrides, "image")}
       ></TextField>
       <Flex
         justifyContent="space-between"

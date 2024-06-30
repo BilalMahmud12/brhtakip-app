@@ -24,6 +24,7 @@ type DataTableProps = {
     onEditRow?: (data: any) => void;
     onDeleteRow?: (data: any) => void;
     styles?: { [key: string]: string };
+    loading?: boolean;
 }
 
 
@@ -34,7 +35,8 @@ const DataTable: React.FC<DataTableProps> = (props) => {
         onRowSelect = () => { },
         onEditRow = () => { },
         onDeleteRow = () => { },
-        styles = {}
+        styles = {},
+        loading = false,
     } = props;
 
     const DataGridColumns: GridColDef[] = columns.map((column) => ({
@@ -62,9 +64,6 @@ const DataTable: React.FC<DataTableProps> = (props) => {
                         paginationModel: { page: 0, pageSize: 10 },
                     },
                 }}
-                slots={{
-                    //toolbar: GridToolbar,
-                }}
                 rowSelectionModel={rowSelectionModel}
                 onRowSelectionModelChange={(newRowSelectionModel, details) => {
                     onRowSelect(newRowSelectionModel as string[]);
@@ -76,7 +75,7 @@ const DataTable: React.FC<DataTableProps> = (props) => {
                 checkboxSelection
                 disableColumnResize
                 autoHeight
-                loading={data.length === 0}
+                loading={loading}
             />
         </div>
     );

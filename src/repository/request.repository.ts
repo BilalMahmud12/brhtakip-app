@@ -45,7 +45,6 @@ const getRequestsByStatus = async (status: string, clientId: string | undefined 
             },
         });
 
-        console.log('getRequestsByStatus', data)
         return data.listRequests.items;
     } catch (error) {
         console.error(error);
