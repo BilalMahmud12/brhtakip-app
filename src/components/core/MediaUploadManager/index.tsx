@@ -1,6 +1,7 @@
 'use client'
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StorageManager } from '@aws-amplify/ui-react-storage';
+import { dictionary } from '@/config/index';
 
 interface MediaUploadManagerProps {
     basePath?: string;
@@ -9,23 +10,30 @@ interface MediaUploadManagerProps {
 }
 
 const MediaUploadManager: React.FC<MediaUploadManagerProps> = (props) => {
-    const { 
-        basePath = 'public', 
+    const {
+        basePath = 'public',
         uploadPath,
-        handleOnUploadSuccess = () => { } 
+        handleOnUploadSuccess = () => { }
     } = props;
 
-    const [files, setFiles] = React.useState({});
+    const [files, setFiles] = useState<{ [key: string]: { status: string } }>({});
 
     const targetPath = `${basePath}/${uploadPath}/`;
+
+    useEffect(() => {
+        handleOnUploadSuccess(files);
+    }, [files]);
 
     return (
         <StorageManager
             acceptedFileTypes={['image/*']}
             path={targetPath}
+            maxFileCount={50}
+            displayText={dictionary['tr']}
+            autoUpload={false}
             onUploadSuccess={({ key }) => {
                 setFiles((prevFiles) => {
-                    return {
+                    const updatedFiles = {
                         ...prevFiles,
                         ...(key && {
                             [key]: {
@@ -33,11 +41,9 @@ const MediaUploadManager: React.FC<MediaUploadManagerProps> = (props) => {
                             },
                         })
                     };
+                    return updatedFiles;
                 });
-
-                handleOnUploadSuccess(files);
             }}
-            maxFileCount={10}
             isResumable
         />
     );

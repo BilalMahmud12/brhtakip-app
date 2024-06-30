@@ -1,7 +1,6 @@
 type ImageStorageItem {
   type: String
   path: String
-  url: String
 }
 
 type ExtraProduct @model @auth(rules: [{allow: public}]) {

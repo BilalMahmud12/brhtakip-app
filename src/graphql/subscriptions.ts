@@ -18,7 +18,6 @@ export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraPro
     images {
       type
       path
-      url
       __typename
     }
     requests {
@@ -33,7 +32,6 @@ export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraPro
           images {
             type
             path
-            url
             __typename
           }
           requests {
@@ -48,7 +46,6 @@ export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraPro
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -150,25 +147,21 @@ export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraPro
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -329,25 +322,21 @@ export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraPro
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -473,25 +462,21 @@ export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraPro
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -711,25 +696,21 @@ export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraPro
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -744,7 +725,6 @@ export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraPro
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -846,25 +826,21 @@ export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraPro
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -920,7 +896,6 @@ export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraPro
     images {
       type
       path
-      url
       __typename
     }
     requests {
@@ -935,7 +910,6 @@ export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraPro
           images {
             type
             path
-            url
             __typename
           }
           requests {
@@ -950,7 +924,6 @@ export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraPro
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -1052,25 +1025,21 @@ export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraPro
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -1231,25 +1200,21 @@ export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraPro
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -1375,25 +1340,21 @@ export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraPro
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -1613,25 +1574,21 @@ export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraPro
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -1646,7 +1603,6 @@ export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraPro
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -1748,25 +1704,21 @@ export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraPro
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -1822,7 +1774,6 @@ export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraPro
     images {
       type
       path
-      url
       __typename
     }
     requests {
@@ -1837,7 +1788,6 @@ export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraPro
           images {
             type
             path
-            url
             __typename
           }
           requests {
@@ -1852,7 +1802,6 @@ export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraPro
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -1954,25 +1903,21 @@ export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraPro
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -2133,25 +2078,21 @@ export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraPro
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -2277,25 +2218,21 @@ export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraPro
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -2515,25 +2452,21 @@ export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraPro
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -2548,7 +2481,6 @@ export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraPro
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -2650,25 +2582,21 @@ export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraPro
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -3127,25 +3055,21 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -3901,25 +3825,21 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -4675,25 +4595,21 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -5302,25 +5218,21 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -5734,25 +5646,21 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -6361,25 +6269,21 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -6793,25 +6697,21 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -7420,25 +7320,21 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -7852,25 +7748,21 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -8549,25 +8441,21 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -8981,25 +8869,21 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -9678,25 +9562,21 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -10110,25 +9990,21 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -10807,25 +10683,21 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -11239,25 +11111,21 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -12003,25 +11871,21 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -12207,25 +12071,21 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -12573,25 +12433,21 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -12606,7 +12462,6 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -12768,25 +12623,21 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -13088,25 +12939,21 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -13292,25 +13139,21 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -13658,25 +13501,21 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -13691,7 +13530,6 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -13853,25 +13691,21 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -14173,25 +14007,21 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -14377,25 +14207,21 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -14743,25 +14569,21 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -14776,7 +14598,6 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -14938,25 +14759,21 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -15216,25 +15033,21 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -15420,25 +15233,21 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -15786,25 +15595,21 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -15819,7 +15624,6 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -15981,25 +15785,21 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -16201,25 +16001,21 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -16777,25 +16573,21 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -17387,25 +17179,21 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -17906,25 +17694,21 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -18110,25 +17894,21 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -18476,25 +18256,21 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -18509,7 +18285,6 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -18671,25 +18446,21 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -18891,25 +18662,21 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -19467,25 +19234,21 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -20077,25 +19840,21 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -20596,25 +20355,21 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -20800,25 +20555,21 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -21166,25 +20917,21 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -21199,7 +20946,6 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -21361,25 +21107,21 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -21581,25 +21323,21 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -22157,25 +21895,21 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -22767,25 +22501,21 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -23399,25 +23129,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -23543,25 +23269,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -23781,25 +23503,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -23814,7 +23532,6 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -23916,25 +23633,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -24119,25 +23832,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -24263,25 +23972,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -24501,25 +24206,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -24534,7 +24235,6 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -24636,25 +24336,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -24796,25 +24492,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -25148,25 +24840,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -25518,25 +25206,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -25770,25 +25454,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
     referenceImages {
       type
       path
-      url
       __typename
     }
     designImages {
       type
       path
-      url
       __typename
     }
     printImages {
       type
       path
-      url
       __typename
     }
     applicationImages {
       type
       path
-      url
       __typename
     }
     ExtraProducts {
@@ -25803,7 +25483,6 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
           images {
             type
             path
-            url
             __typename
           }
           requests {
@@ -25818,7 +25497,6 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -25920,25 +25598,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -26099,25 +25773,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -26243,25 +25913,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -26481,25 +26147,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -26514,7 +26176,6 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -26616,25 +26277,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -26873,25 +26530,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -27017,25 +26670,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -27255,25 +26904,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -27288,7 +26933,6 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -27390,25 +27034,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -27593,25 +27233,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -27737,25 +27373,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -27975,25 +27607,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -28008,7 +27636,6 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -28110,25 +27737,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -28270,25 +27893,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -28622,25 +28241,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -28992,25 +28607,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -29244,25 +28855,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
     referenceImages {
       type
       path
-      url
       __typename
     }
     designImages {
       type
       path
-      url
       __typename
     }
     printImages {
       type
       path
-      url
       __typename
     }
     applicationImages {
       type
       path
-      url
       __typename
     }
     ExtraProducts {
@@ -29277,7 +28884,6 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
           images {
             type
             path
-            url
             __typename
           }
           requests {
@@ -29292,7 +28898,6 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -29394,25 +28999,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -29573,25 +29174,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -29717,25 +29314,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -29955,25 +29548,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -29988,7 +29577,6 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -30090,25 +29678,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -30347,25 +29931,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -30491,25 +30071,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -30729,25 +30305,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -30762,7 +30334,6 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -30864,25 +30435,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -31067,25 +30634,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -31211,25 +30774,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -31449,25 +31008,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -31482,7 +31037,6 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -31584,25 +31138,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -31744,25 +31294,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -32096,25 +31642,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -32466,25 +32008,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -32718,25 +32256,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
     referenceImages {
       type
       path
-      url
       __typename
     }
     designImages {
       type
       path
-      url
       __typename
     }
     printImages {
       type
       path
-      url
       __typename
     }
     applicationImages {
       type
       path
-      url
       __typename
     }
     ExtraProducts {
@@ -32751,7 +32285,6 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
           images {
             type
             path
-            url
             __typename
           }
           requests {
@@ -32766,7 +32299,6 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -32868,25 +32400,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -33047,25 +32575,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -33191,25 +32715,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -33429,25 +32949,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -33462,7 +32978,6 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -33564,25 +33079,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -33646,7 +33157,6 @@ export const onCreateRequestExtraProduct = /* GraphQL */ `subscription OnCreateR
       images {
         type
         path
-        url
         __typename
       }
       requests {
@@ -33661,7 +33171,6 @@ export const onCreateRequestExtraProduct = /* GraphQL */ `subscription OnCreateR
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -33955,25 +33464,21 @@ export const onCreateRequestExtraProduct = /* GraphQL */ `subscription OnCreateR
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -34335,25 +33840,21 @@ export const onCreateRequestExtraProduct = /* GraphQL */ `subscription OnCreateR
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -34671,25 +34172,21 @@ export const onCreateRequestExtraProduct = /* GraphQL */ `subscription OnCreateR
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -35244,25 +34741,21 @@ export const onCreateRequestExtraProduct = /* GraphQL */ `subscription OnCreateR
       referenceImages {
         type
         path
-        url
         __typename
       }
       designImages {
         type
         path
-        url
         __typename
       }
       printImages {
         type
         path
-        url
         __typename
       }
       applicationImages {
         type
         path
-        url
         __typename
       }
       ExtraProducts {
@@ -35277,7 +34770,6 @@ export const onCreateRequestExtraProduct = /* GraphQL */ `subscription OnCreateR
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -35571,25 +35063,21 @@ export const onCreateRequestExtraProduct = /* GraphQL */ `subscription OnCreateR
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -35682,7 +35170,6 @@ export const onUpdateRequestExtraProduct = /* GraphQL */ `subscription OnUpdateR
       images {
         type
         path
-        url
         __typename
       }
       requests {
@@ -35697,7 +35184,6 @@ export const onUpdateRequestExtraProduct = /* GraphQL */ `subscription OnUpdateR
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -35991,25 +35477,21 @@ export const onUpdateRequestExtraProduct = /* GraphQL */ `subscription OnUpdateR
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -36371,25 +35853,21 @@ export const onUpdateRequestExtraProduct = /* GraphQL */ `subscription OnUpdateR
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -36707,25 +36185,21 @@ export const onUpdateRequestExtraProduct = /* GraphQL */ `subscription OnUpdateR
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -37280,25 +36754,21 @@ export const onUpdateRequestExtraProduct = /* GraphQL */ `subscription OnUpdateR
       referenceImages {
         type
         path
-        url
         __typename
       }
       designImages {
         type
         path
-        url
         __typename
       }
       printImages {
         type
         path
-        url
         __typename
       }
       applicationImages {
         type
         path
-        url
         __typename
       }
       ExtraProducts {
@@ -37313,7 +36783,6 @@ export const onUpdateRequestExtraProduct = /* GraphQL */ `subscription OnUpdateR
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -37607,25 +37076,21 @@ export const onUpdateRequestExtraProduct = /* GraphQL */ `subscription OnUpdateR
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -37718,7 +37183,6 @@ export const onDeleteRequestExtraProduct = /* GraphQL */ `subscription OnDeleteR
       images {
         type
         path
-        url
         __typename
       }
       requests {
@@ -37733,7 +37197,6 @@ export const onDeleteRequestExtraProduct = /* GraphQL */ `subscription OnDeleteR
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -38027,25 +37490,21 @@ export const onDeleteRequestExtraProduct = /* GraphQL */ `subscription OnDeleteR
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -38407,25 +37866,21 @@ export const onDeleteRequestExtraProduct = /* GraphQL */ `subscription OnDeleteR
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -38743,25 +38198,21 @@ export const onDeleteRequestExtraProduct = /* GraphQL */ `subscription OnDeleteR
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -39316,25 +38767,21 @@ export const onDeleteRequestExtraProduct = /* GraphQL */ `subscription OnDeleteR
       referenceImages {
         type
         path
-        url
         __typename
       }
       designImages {
         type
         path
-        url
         __typename
       }
       printImages {
         type
         path
-        url
         __typename
       }
       applicationImages {
         type
         path
-        url
         __typename
       }
       ExtraProducts {
@@ -39349,7 +38796,6 @@ export const onDeleteRequestExtraProduct = /* GraphQL */ `subscription OnDeleteR
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -39643,25 +39089,21 @@ export const onDeleteRequestExtraProduct = /* GraphQL */ `subscription OnDeleteR
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
