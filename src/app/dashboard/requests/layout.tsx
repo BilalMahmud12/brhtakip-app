@@ -5,10 +5,10 @@ import { usePathname } from 'next/navigation';
 import type { Request, RequestStatus } from '@/API';
 import Icon from '@/components/core/icon';
 import Link from 'next/link';
-import { Button } from '@aws-amplify/ui-react';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { setRequests, setIsFetching } from '@/reduxStore/features/requestSlice';
+import { statusMap } from '@/config';
 
 const requestNavigation = [
     {
@@ -49,24 +49,13 @@ export default function RequestLayout(
     const pathname = usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
     const currentClientProfile = useAppSelector((state: RootState) => state.global.currentClientProfile);
-    console.log('currentClientProfile', currentClientProfile)
     
-    const statusMap: { [key: string]: string } = {
-        'pending-approval': 'PENDING_APPROVAL',
-        'in-design': 'IN_DESIGN',
-        'in-print': 'IN_PRESS',
-        'in-application': 'IN_APPLICATION',
-        'completed': 'COMPLETED',
-        'cancelled': 'CANCELLED',
-    };
-
     const requestStatus= (): string => {
         const status: string = statusMap[pathname.split('/').pop() as string];
         return status !== undefined ? status : 'PENDING_APPROVAL' as RequestStatus;
     };
 
     useEffect(() => {
-        console.log('from useEffect')
         const fetchData = async () => {
             dispatch(setIsFetching(true));
             const requestsData = await Repo.RequestRepository.getRequestsByStatus(`${requestStatus()}`, currentClientProfile?.id === 'BRH_ADMIN' ? undefined : currentClientProfile?.id);

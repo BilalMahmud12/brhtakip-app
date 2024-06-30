@@ -1,8 +1,15 @@
+type ImageStorageItem {
+  type: String
+  path: String
+  url: String
+}
+
 type ExtraProduct @model @auth(rules: [{allow: public}]) {
   id: ID!
   isActive: String
   name: String
-  image: String
+  image: ImageStorageItem
+  requests: [Request] @manyToMany(relationName: "RequestExtraProduct")
 }
 
 enum Roles {
@@ -138,12 +145,28 @@ type Request @model @auth(rules: [{allow: public}]) {
   clientprofileID: ID! @index(name: "byClientProfile")
   storeID: ID! @index(name: "byStore")
   requestNumber: String!
-  Brand: Brand @hasOne
-  Product: Product @hasOne
+  ClientProfile: ClientProfile! @belongsTo(fields: ["clientprofileID"])
+  Store: Store! @belongsTo(fields: ["storeID"])
   status: RequestStatus!
-  Material: Material @hasOne
+  Brand: Brand @hasOne
   requestDetails: RequestItem
-  Store: Store @belongsTo(fields: ["storeID"])
-  ClientProfile: ClientProfile @belongsTo(fields: ["clientprofileID"])
+  Product: Product @hasOne
+  ApplicationArea: ApplicationArea @hasOne
+  Material: Material @hasOne
+  quantity: Int
+  width: Float
+  height: Float
+  branded: String
+  designNote: String
+  productionCost: Float
+  cargoBudget: Float
+  assemblyBudget: Float
+  monthlyFee: Float
+  isExtraProductRequest: Boolean
+  referenceImages: [ImageStorageItem]
+  designImages: [ImageStorageItem]
+  printImages: [ImageStorageItem]
+  applicationImages: [ImageStorageItem]
+  ExtraProducts: [ExtraProduct] @manyToMany(relationName: "RequestExtraProduct")
 }
  

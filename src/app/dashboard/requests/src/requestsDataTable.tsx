@@ -9,6 +9,7 @@ interface RequestsDataTableProps {
     handleEdit?: (data: any) => void;
     handleDelete?: (data: any) => void;
     handleSelect?: (data: any) => void;
+    isLoading?: boolean;
 }
 
 const RequestsDataTable: React.FC<RequestsDataTableProps> = (props) => {
@@ -17,6 +18,7 @@ const RequestsDataTable: React.FC<RequestsDataTableProps> = (props) => {
         handleEdit = () => {}, 
         handleDelete = () => {},
         handleSelect = () => {},
+        isLoading = false,
     } = props;
 
     const { requests } = dataTables
@@ -36,6 +38,8 @@ const RequestsDataTable: React.FC<RequestsDataTableProps> = (props) => {
                 data={tableData}
                 onEditRow={(data) => handleEdit(data)}
                 onDeleteRow={(data) => console.log('onDeleteRow', data)}
+                onRowSelect={(data) => handleSelect(data)}
+                loading={isLoading}
             />
         </div>
     );

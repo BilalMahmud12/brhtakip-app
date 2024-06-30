@@ -53,8 +53,8 @@ export const navigation = [
         "section_title": "Ayarlar",
         show_title: true,
         items: [
-            { name: 'Sistem Ayarları', href: '/dashboard/system-settings', icon: 'FcSettings' },
             { name: 'Kullanıcılar', href: '/dashboard/users', icon: 'FcConferenceCall' },
+            { name: 'Sistem Ayarları', href: '/dashboard/system-settings', icon: 'FcSettings' },
         ]
     }
 ]

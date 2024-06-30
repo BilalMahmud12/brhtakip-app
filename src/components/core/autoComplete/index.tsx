@@ -1,44 +1,71 @@
-import React from 'react'
-import { Autocomplete, TextField } from '@mui/material';
+import React from 'react';
+import { Autocomplete, AutocompleteChangeReason, TextField } from '@mui/material';
 
 type Option = {
     label: string;
     value: string;
-}
+};
 
-interface AutoCompleteProps {
+interface AutoCompleteProps<T extends Option> {
     id: string;
-    options: readonly string[] | Option[];
+    options: T[];
     label?: string;
     value: string;
-    handleOnChange: (option: string | Option | null, reason: string) => void;
     variant?: 'standard' | 'outlined' | 'filled';
+    handleOnChange: (option: T, reason: AutocompleteChangeReason) => void;
+    renderOption?: (props: any, option: T) => React.ReactNode;
+    disabled?: boolean;
+    isLoading?: boolean;
 }
 
-const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
-    const { id, options, label, value, handleOnChange = () => { }, variant = 'standard' } = props
-    const [currentValue, setCurrentValue] = React.useState('')
+const AutoComplete = <T extends Option>(props: AutoCompleteProps<T>) => {
+    const {
+        id,
+        options,
+        label,
+        variant = 'standard',
+        disabled = false,
+        isLoading = false,
+        handleOnChange,
+        renderOption
+    } = props;
+
+    const [currentValue, setCurrentValue] = React.useState<T | null>(options.find(option => option.value === props.value) || null);
+    const [inputValue, setInputValue] = React.useState('');
 
     React.useEffect(() => {
-        setCurrentValue(value)
-    }, [value])
-    
-    return (
-        <div>
-            <Autocomplete
-                id={id}
-                options={options as readonly string[]}
-                getOptionLabel={(option) => typeof option === 'string' ? option : (option as Option).label}
-                value={currentValue}
-                onChange={(_, option, resason) => {
-                    setCurrentValue(typeof option === 'string' ? option : (option as unknown as Option)?.label || '')
-                    handleOnChange(option, resason)
-                }}
-                renderInput={(params) => <TextField {...params} label={label} variant={variant} size='small' />}
-                isOptionEqualToValue={(option, value) => option === currentValue}
-            />
-        </div>
-    )
-}
+        const option = options.find(option => option.value === props.value) || null;
+        setCurrentValue(option);
+        setInputValue(option?.label || '');
+    }, [props.value, options]);
 
-export default AutoComplete
+    return (
+        <Autocomplete
+            id={id}
+            options={options}
+            value={currentValue}
+            onChange={(_, option, reason) => {
+                setCurrentValue(option as T);
+                handleOnChange(option as T, reason);
+            }}
+            onInputChange={(_, newInputValue: string) => {
+                setInputValue(newInputValue);
+            }}
+            getOptionLabel={(option) => option.label}
+            isOptionEqualToValue={(option, value) => option.value === value?.value}
+            renderInput={(params) => (
+                <TextField
+                    {...params}
+                    label={label}
+                    variant={variant}
+                    size='small'
+                />
+            )}
+            renderOption={renderOption}
+            disabled={disabled}
+            loading={isLoading}
+        />
+    );
+};
+
+export default AutoComplete;

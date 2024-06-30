@@ -13,7 +13,892 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
     id
     isActive
     name
-    image
+    image {
+      type
+      path
+      url
+      __typename
+    }
+    requests {
+      items {
+        id
+        extraProductId
+        requestId
+        extraProduct {
+          id
+          isActive
+          name
+          image {
+            type
+            path
+            url
+            __typename
+          }
+          requests {
+            items {
+              id
+              extraProductId
+              requestId
+              extraProduct {
+                id
+                isActive
+                name
+                image {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                requests {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              request {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestApplicationAreaId
+                requestMaterialId
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        request {
+          id
+          clientprofileID
+          storeID
+          requestNumber
+          ClientProfile {
+            id
+            isActive
+            UserProfiles {
+              items {
+                id
+                cognitoID
+                clientprofileID
+                isActive
+                firstName
+                lastName
+                email
+                role
+                permissions
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Brands {
+              items {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestApplicationAreaId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
+            createdAt
+            updatedAt
+            __typename
+          }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestApplicationAreaId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          status
+          Brand {
+            id
+            Products {
+              items {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          requestDetails {
+            applicationArea
+            material
+            branded
+            quantity
+            width
+            height
+            designNote
+            __typename
+          }
+          Product {
+            id
+            brandID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          ApplicationArea {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          Material {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          quantity
+          width
+          height
+          branded
+          designNote
+          productionCost
+          cargoBudget
+          assemblyBudget
+          monthlyFee
+          isExtraProductRequest
+          referenceImages {
+            type
+            path
+            url
+            __typename
+          }
+          designImages {
+            type
+            path
+            url
+            __typename
+          }
+          printImages {
+            type
+            path
+            url
+            __typename
+          }
+          applicationImages {
+            type
+            path
+            url
+            __typename
+          }
+          ExtraProducts {
+            items {
+              id
+              extraProductId
+              requestId
+              extraProduct {
+                id
+                isActive
+                name
+                image {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                requests {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              request {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestApplicationAreaId
+                requestMaterialId
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          requestBrandId
+          requestProductId
+          requestApplicationAreaId
+          requestMaterialId
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     __typename
@@ -33,7 +918,398 @@ export const listExtraProducts = /* GraphQL */ `query ListExtraProducts(
       id
       isActive
       name
-      image
+      image {
+        type
+        path
+        url
+        __typename
+      }
+      requests {
+        items {
+          id
+          extraProductId
+          requestId
+          extraProduct {
+            id
+            isActive
+            name
+            image {
+              type
+              path
+              url
+              __typename
+            }
+            requests {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          request {
+            id
+            clientprofileID
+            storeID
+            requestNumber
+            ClientProfile {
+              id
+              isActive
+              UserProfiles {
+                items {
+                  id
+                  cognitoID
+                  clientprofileID
+                  isActive
+                  firstName
+                  lastName
+                  email
+                  role
+                  permissions
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
+              createdAt
+              updatedAt
+              __typename
+            }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            requestBrandId
+            requestProductId
+            requestApplicationAreaId
+            requestMaterialId
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -221,12 +1497,31 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
             clientprofileID
             storeID
             requestNumber
-            Brand {
+            ClientProfile {
               id
-              Products {
+              isActive
+              UserProfiles {
                 items {
                   id
-                  brandID
+                  cognitoID
+                  clientprofileID
+                  isActive
+                  firstName
+                  lastName
+                  email
+                  role
+                  permissions
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
                   isActive
                   name
                   createdAt
@@ -236,39 +1531,41 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                 nextToken
                 __typename
               }
-              clientprofileID
-              isActive
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
-              __typename
-            }
-            Product {
-              id
-              brandID
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            status
-            Material {
-              id
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            requestDetails {
-              applicationArea
-              material
-              branded
-              quantity
-              width
-              height
-              designNote
               __typename
             }
             Store {
@@ -285,10 +1582,21 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -356,31 +1664,13 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
               updatedAt
               __typename
             }
-            ClientProfile {
+            status
+            Brand {
               id
-              isActive
-              UserProfiles {
+              Products {
                 items {
                   id
-                  cognitoID
-                  clientprofileID
-                  isActive
-                  firstName
-                  lastName
-                  email
-                  role
-                  permissions
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                nextToken
-                __typename
-              }
-              Brands {
-                items {
-                  id
-                  clientprofileID
+                  brandID
                   isActive
                   name
                   createdAt
@@ -390,36 +1680,131 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                 nextToken
                 __typename
               }
-              Requests {
-                items {
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
                   id
                   clientprofileID
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
-                nextToken
+                createdAt
+                updatedAt
                 __typename
               }
-              name
-              rootUserId
-              contactEmail
-              contactPhone
-              address
-              createdAt
-              updatedAt
+              nextToken
               __typename
             }
             createdAt
             updatedAt
             requestBrandId
             requestProductId
+            requestApplicationAreaId
             requestMaterialId
             __typename
           }
@@ -450,10 +1835,21 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -585,10 +1981,21 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -734,10 +2141,21 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -855,45 +2273,28 @@ export const listAreas = /* GraphQL */ `query ListAreas(
               clientprofileID
               storeID
               requestNumber
-              Brand {
+              ClientProfile {
                 id
-                Products {
+                isActive
+                UserProfiles {
                   nextToken
                   __typename
                 }
-                clientprofileID
-                isActive
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
-                __typename
-              }
-              Product {
-                id
-                brandID
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              status
-              Material {
-                id
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              requestDetails {
-                applicationArea
-                material
-                branded
-                quantity
-                width
-                height
-                designNote
                 __typename
               }
               Store {
@@ -948,34 +2349,106 @@ export const listAreas = /* GraphQL */ `query ListAreas(
                 updatedAt
                 __typename
               }
-              ClientProfile {
+              status
+              Brand {
                 id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
-                UserProfiles {
-                  nextToken
-                  __typename
-                }
-                Brands {
-                  nextToken
-                  __typename
-                }
-                Requests {
-                  nextToken
-                  __typename
-                }
                 name
-                rootUserId
-                contactEmail
-                contactPhone
-                address
                 createdAt
                 updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
                 __typename
               }
               createdAt
               updatedAt
               requestBrandId
               requestProductId
+              requestApplicationAreaId
               requestMaterialId
               __typename
             }
@@ -1280,45 +2753,28 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
               clientprofileID
               storeID
               requestNumber
-              Brand {
+              ClientProfile {
                 id
-                Products {
+                isActive
+                UserProfiles {
                   nextToken
                   __typename
                 }
-                clientprofileID
-                isActive
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
-                __typename
-              }
-              Product {
-                id
-                brandID
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              status
-              Material {
-                id
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              requestDetails {
-                applicationArea
-                material
-                branded
-                quantity
-                width
-                height
-                designNote
                 __typename
               }
               Store {
@@ -1373,34 +2829,106 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
                 updatedAt
                 __typename
               }
-              ClientProfile {
+              status
+              Brand {
                 id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
-                UserProfiles {
-                  nextToken
-                  __typename
-                }
-                Brands {
-                  nextToken
-                  __typename
-                }
-                Requests {
-                  nextToken
-                  __typename
-                }
                 name
-                rootUserId
-                contactEmail
-                contactPhone
-                address
                 createdAt
                 updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
                 __typename
               }
               createdAt
               updatedAt
               requestBrandId
               requestProductId
+              requestApplicationAreaId
               requestMaterialId
               __typename
             }
@@ -1700,41 +3228,16 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -1753,22 +3256,94 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -1933,12 +3508,31 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
             clientprofileID
             storeID
             requestNumber
-            Brand {
+            ClientProfile {
               id
-              Products {
+              isActive
+              UserProfiles {
                 items {
                   id
-                  brandID
+                  cognitoID
+                  clientprofileID
+                  isActive
+                  firstName
+                  lastName
+                  email
+                  role
+                  permissions
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
                   isActive
                   name
                   createdAt
@@ -1948,39 +3542,41 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                 nextToken
                 __typename
               }
-              clientprofileID
-              isActive
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
-              __typename
-            }
-            Product {
-              id
-              brandID
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            status
-            Material {
-              id
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            requestDetails {
-              applicationArea
-              material
-              branded
-              quantity
-              width
-              height
-              designNote
               __typename
             }
             Store {
@@ -1997,10 +3593,21 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -2068,31 +3675,13 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
               updatedAt
               __typename
             }
-            ClientProfile {
+            status
+            Brand {
               id
-              isActive
-              UserProfiles {
+              Products {
                 items {
                   id
-                  cognitoID
-                  clientprofileID
-                  isActive
-                  firstName
-                  lastName
-                  email
-                  role
-                  permissions
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                nextToken
-                __typename
-              }
-              Brands {
-                items {
-                  id
-                  clientprofileID
+                  brandID
                   isActive
                   name
                   createdAt
@@ -2102,36 +3691,131 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                 nextToken
                 __typename
               }
-              Requests {
-                items {
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
                   id
                   clientprofileID
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
-                nextToken
+                createdAt
+                updatedAt
                 __typename
               }
-              name
-              rootUserId
-              contactEmail
-              contactPhone
-              address
-              createdAt
-              updatedAt
+              nextToken
               __typename
             }
             createdAt
             updatedAt
             requestBrandId
             requestProductId
+            requestApplicationAreaId
             requestMaterialId
             __typename
           }
@@ -2162,10 +3846,21 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -2297,10 +3992,21 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -2446,10 +4152,21 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -2576,10 +4293,21 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -2674,45 +4402,28 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
               clientprofileID
               storeID
               requestNumber
-              Brand {
+              ClientProfile {
                 id
-                Products {
+                isActive
+                UserProfiles {
                   nextToken
                   __typename
                 }
-                clientprofileID
-                isActive
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
-                __typename
-              }
-              Product {
-                id
-                brandID
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              status
-              Material {
-                id
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              requestDetails {
-                applicationArea
-                material
-                branded
-                quantity
-                width
-                height
-                designNote
                 __typename
               }
               Store {
@@ -2767,34 +4478,106 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
                 updatedAt
                 __typename
               }
-              ClientProfile {
+              status
+              Brand {
                 id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
-                UserProfiles {
-                  nextToken
-                  __typename
-                }
-                Brands {
-                  nextToken
-                  __typename
-                }
-                Requests {
-                  nextToken
-                  __typename
-                }
                 name
-                rootUserId
-                contactEmail
-                contactPhone
-                address
                 createdAt
                 updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
                 __typename
               }
               createdAt
               updatedAt
               requestBrandId
               requestProductId
+              requestApplicationAreaId
               requestMaterialId
               __typename
             }
@@ -3108,10 +4891,21 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -3206,45 +5000,28 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
               clientprofileID
               storeID
               requestNumber
-              Brand {
+              ClientProfile {
                 id
-                Products {
+                isActive
+                UserProfiles {
                   nextToken
                   __typename
                 }
-                clientprofileID
-                isActive
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
-                __typename
-              }
-              Product {
-                id
-                brandID
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              status
-              Material {
-                id
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              requestDetails {
-                applicationArea
-                material
-                branded
-                quantity
-                width
-                height
-                designNote
                 __typename
               }
               Store {
@@ -3299,34 +5076,106 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
                 updatedAt
                 __typename
               }
-              ClientProfile {
+              status
+              Brand {
                 id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
-                UserProfiles {
-                  nextToken
-                  __typename
-                }
-                Brands {
-                  nextToken
-                  __typename
-                }
-                Requests {
-                  nextToken
-                  __typename
-                }
                 name
-                rootUserId
-                contactEmail
-                contactPhone
-                address
                 createdAt
                 updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
                 __typename
               }
               createdAt
               updatedAt
               requestBrandId
               requestProductId
+              requestApplicationAreaId
               requestMaterialId
               __typename
             }
@@ -3696,41 +5545,16 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -3749,22 +5573,94 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -3929,12 +5825,31 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
             clientprofileID
             storeID
             requestNumber
-            Brand {
+            ClientProfile {
               id
-              Products {
+              isActive
+              UserProfiles {
                 items {
                   id
-                  brandID
+                  cognitoID
+                  clientprofileID
+                  isActive
+                  firstName
+                  lastName
+                  email
+                  role
+                  permissions
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
                   isActive
                   name
                   createdAt
@@ -3944,39 +5859,41 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                 nextToken
                 __typename
               }
-              clientprofileID
-              isActive
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
-              __typename
-            }
-            Product {
-              id
-              brandID
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            status
-            Material {
-              id
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            requestDetails {
-              applicationArea
-              material
-              branded
-              quantity
-              width
-              height
-              designNote
               __typename
             }
             Store {
@@ -3993,10 +5910,21 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -4064,31 +5992,13 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
               updatedAt
               __typename
             }
-            ClientProfile {
+            status
+            Brand {
               id
-              isActive
-              UserProfiles {
+              Products {
                 items {
                   id
-                  cognitoID
-                  clientprofileID
-                  isActive
-                  firstName
-                  lastName
-                  email
-                  role
-                  permissions
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                nextToken
-                __typename
-              }
-              Brands {
-                items {
-                  id
-                  clientprofileID
+                  brandID
                   isActive
                   name
                   createdAt
@@ -4098,36 +6008,131 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                 nextToken
                 __typename
               }
-              Requests {
-                items {
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
                   id
                   clientprofileID
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
-                nextToken
+                createdAt
+                updatedAt
                 __typename
               }
-              name
-              rootUserId
-              contactEmail
-              contactPhone
-              address
-              createdAt
-              updatedAt
+              nextToken
               __typename
             }
             createdAt
             updatedAt
             requestBrandId
             requestProductId
+            requestApplicationAreaId
             requestMaterialId
             __typename
           }
@@ -4158,10 +6163,21 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -4293,10 +6309,21 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -4442,10 +6469,21 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -4603,10 +6641,21 @@ export const listCities = /* GraphQL */ `query ListCities(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -4701,45 +6750,28 @@ export const listCities = /* GraphQL */ `query ListCities(
               clientprofileID
               storeID
               requestNumber
-              Brand {
+              ClientProfile {
                 id
-                Products {
+                isActive
+                UserProfiles {
                   nextToken
                   __typename
                 }
-                clientprofileID
-                isActive
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
-                __typename
-              }
-              Product {
-                id
-                brandID
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              status
-              Material {
-                id
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              requestDetails {
-                applicationArea
-                material
-                branded
-                quantity
-                width
-                height
-                designNote
                 __typename
               }
               Store {
@@ -4794,34 +6826,106 @@ export const listCities = /* GraphQL */ `query ListCities(
                 updatedAt
                 __typename
               }
-              ClientProfile {
+              status
+              Brand {
                 id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
-                UserProfiles {
-                  nextToken
-                  __typename
-                }
-                Brands {
-                  nextToken
-                  __typename
-                }
-                Requests {
-                  nextToken
-                  __typename
-                }
                 name
-                rootUserId
-                contactEmail
-                contactPhone
-                address
                 createdAt
                 updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
                 __typename
               }
               createdAt
               updatedAt
               requestBrandId
               requestProductId
+              requestApplicationAreaId
               requestMaterialId
               __typename
             }
@@ -5151,12 +7255,44 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
         clientprofileID
         storeID
         requestNumber
-        Brand {
+        ClientProfile {
           id
-          Products {
+          isActive
+          UserProfiles {
             items {
               id
-              brandID
+              cognitoID
+              clientprofileID
+              isActive
+              firstName
+              lastName
+              email
+              role
+              permissions
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Brands {
+            items {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
               isActive
               name
               createdAt
@@ -5166,93 +7302,34 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
             nextToken
             __typename
           }
-          clientprofileID
-          isActive
-          name
-          createdAt
-          updatedAt
-          __typename
-        }
-        Product {
-          id
-          brandID
-          isActive
-          name
-          createdAt
-          updatedAt
-          __typename
-        }
-        status
-        Material {
-          id
-          isActive
-          name
-          createdAt
-          updatedAt
-          __typename
-        }
-        requestDetails {
-          applicationArea
-          material
-          branded
-          quantity
-          width
-          height
-          designNote
-          __typename
-        }
-        Store {
-          id
-          cityID
-          districtID
-          areaID
-          name
-          address
           Requests {
             items {
               id
               clientprofileID
               storeID
               requestNumber
-              Brand {
+              ClientProfile {
                 id
-                Products {
+                isActive
+                UserProfiles {
                   nextToken
                   __typename
                 }
-                clientprofileID
-                isActive
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
-                __typename
-              }
-              Product {
-                id
-                brandID
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              status
-              Material {
-                id
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              requestDetails {
-                applicationArea
-                material
-                branded
-                quantity
-                width
-                height
-                designNote
                 __typename
               }
               Store {
@@ -5307,6 +7384,134 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                 updatedAt
                 __typename
               }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestApplicationAreaId
+              requestMaterialId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
+          createdAt
+          updatedAt
+          __typename
+        }
+        Store {
+          id
+          cityID
+          districtID
+          areaID
+          name
+          address
+          Requests {
+            items {
+              id
+              clientprofileID
+              storeID
+              requestNumber
               ClientProfile {
                 id
                 isActive
@@ -5331,10 +7536,158 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                 updatedAt
                 __typename
               }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
               createdAt
               updatedAt
               requestBrandId
               requestProductId
+              requestApplicationAreaId
               requestMaterialId
               __typename
             }
@@ -5592,44 +7945,13 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
           updatedAt
           __typename
         }
-        ClientProfile {
+        status
+        Brand {
           id
-          isActive
-          UserProfiles {
+          Products {
             items {
               id
-              cognitoID
-              clientprofileID
-              isActive
-              firstName
-              lastName
-              email
-              role
-              permissions
-              createdAt
-              updatedAt
-              __typename
-            }
-            nextToken
-            __typename
-          }
-          Brands {
-            items {
-              id
-              Products {
-                items {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                nextToken
-                __typename
-              }
-              clientprofileID
+              brandID
               isActive
               name
               createdAt
@@ -5639,51 +7961,140 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
             nextToken
             __typename
           }
-          Requests {
-            items {
+          clientprofileID
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        requestDetails {
+          applicationArea
+          material
+          branded
+          quantity
+          width
+          height
+          designNote
+          __typename
+        }
+        Product {
+          id
+          brandID
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        ApplicationArea {
+          id
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        Material {
+          id
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        quantity
+        width
+        height
+        branded
+        designNote
+        productionCost
+        cargoBudget
+        assemblyBudget
+        monthlyFee
+        isExtraProductRequest
+        referenceImages {
+          type
+          path
+          url
+          __typename
+        }
+        designImages {
+          type
+          path
+          url
+          __typename
+        }
+        printImages {
+          type
+          path
+          url
+          __typename
+        }
+        applicationImages {
+          type
+          path
+          url
+          __typename
+        }
+        ExtraProducts {
+          items {
+            id
+            extraProductId
+            requestId
+            extraProduct {
+              id
+              isActive
+              name
+              image {
+                type
+                path
+                url
+                __typename
+              }
+              requests {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            request {
               id
               clientprofileID
               storeID
               requestNumber
-              Brand {
+              ClientProfile {
                 id
-                Products {
+                isActive
+                UserProfiles {
                   nextToken
                   __typename
                 }
-                clientprofileID
-                isActive
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
-                __typename
-              }
-              Product {
-                id
-                brandID
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              status
-              Material {
-                id
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              requestDetails {
-                applicationArea
-                material
-                branded
-                quantity
-                width
-                height
-                designNote
                 __typename
               }
               Store {
@@ -5738,53 +8149,121 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                 updatedAt
                 __typename
               }
-              ClientProfile {
+              status
+              Brand {
                 id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
-                UserProfiles {
-                  nextToken
-                  __typename
-                }
-                Brands {
-                  nextToken
-                  __typename
-                }
-                Requests {
-                  nextToken
-                  __typename
-                }
                 name
-                rootUserId
-                contactEmail
-                contactPhone
-                address
                 createdAt
                 updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
                 __typename
               }
               createdAt
               updatedAt
               requestBrandId
               requestProductId
+              requestApplicationAreaId
               requestMaterialId
               __typename
             }
-            nextToken
+            createdAt
+            updatedAt
             __typename
           }
-          name
-          rootUserId
-          contactEmail
-          contactPhone
-          address
-          createdAt
-          updatedAt
+          nextToken
           __typename
         }
         createdAt
         updatedAt
         requestBrandId
         requestProductId
+        requestApplicationAreaId
         requestMaterialId
         __typename
       }
@@ -5864,12 +8343,35 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
           clientprofileID
           storeID
           requestNumber
-          Brand {
+          ClientProfile {
             id
-            Products {
+            isActive
+            UserProfiles {
               items {
                 id
-                brandID
+                cognitoID
+                clientprofileID
+                isActive
+                firstName
+                lastName
+                email
+                role
+                permissions
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Brands {
+              items {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
                 name
                 createdAt
@@ -5879,89 +8381,22 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
               nextToken
               __typename
             }
-            clientprofileID
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          Product {
-            id
-            brandID
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          status
-          Material {
-            id
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          requestDetails {
-            applicationArea
-            material
-            branded
-            quantity
-            width
-            height
-            designNote
-            __typename
-          }
-          Store {
-            id
-            cityID
-            districtID
-            areaID
-            name
-            address
             Requests {
               items {
                 id
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -5980,6 +8415,122 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   updatedAt
                   __typename
                 }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestApplicationAreaId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
+            createdAt
+            updatedAt
+            __typename
+          }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
                 ClientProfile {
                   id
                   isActive
@@ -5992,10 +8543,110 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   updatedAt
                   __typename
                 }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -6133,35 +8784,13 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
             updatedAt
             __typename
           }
-          ClientProfile {
+          status
+          Brand {
             id
-            isActive
-            UserProfiles {
+            Products {
               items {
                 id
-                cognitoID
-                clientprofileID
-                isActive
-                firstName
-                lastName
-                email
-                role
-                permissions
-                createdAt
-                updatedAt
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            Brands {
-              items {
-                id
-                Products {
-                  nextToken
-                  __typename
-                }
-                clientprofileID
+                brandID
                 isActive
                 name
                 createdAt
@@ -6171,47 +8800,120 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
               nextToken
               __typename
             }
-            Requests {
-              items {
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          requestDetails {
+            applicationArea
+            material
+            branded
+            quantity
+            width
+            height
+            designNote
+            __typename
+          }
+          Product {
+            id
+            brandID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          ApplicationArea {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          Material {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          quantity
+          width
+          height
+          branded
+          designNote
+          productionCost
+          cargoBudget
+          assemblyBudget
+          monthlyFee
+          isExtraProductRequest
+          referenceImages {
+            type
+            path
+            url
+            __typename
+          }
+          designImages {
+            type
+            path
+            url
+            __typename
+          }
+          printImages {
+            type
+            path
+            url
+            __typename
+          }
+          applicationImages {
+            type
+            path
+            url
+            __typename
+          }
+          ExtraProducts {
+            items {
+              id
+              extraProductId
+              requestId
+              extraProduct {
+                id
+                isActive
+                name
+                image {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                requests {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              request {
                 id
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -6230,41 +8932,109 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
-              nextToken
+              createdAt
+              updatedAt
               __typename
             }
-            name
-            rootUserId
-            contactEmail
-            contactPhone
-            address
-            createdAt
-            updatedAt
+            nextToken
             __typename
           }
           createdAt
           updatedAt
           requestBrandId
           requestProductId
+          requestApplicationAreaId
           requestMaterialId
           __typename
         }
@@ -6302,12 +9072,44 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
         clientprofileID
         storeID
         requestNumber
-        Brand {
+        ClientProfile {
           id
-          Products {
+          isActive
+          UserProfiles {
             items {
               id
-              brandID
+              cognitoID
+              clientprofileID
+              isActive
+              firstName
+              lastName
+              email
+              role
+              permissions
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Brands {
+            items {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
               isActive
               name
               createdAt
@@ -6317,93 +9119,34 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
             nextToken
             __typename
           }
-          clientprofileID
-          isActive
-          name
-          createdAt
-          updatedAt
-          __typename
-        }
-        Product {
-          id
-          brandID
-          isActive
-          name
-          createdAt
-          updatedAt
-          __typename
-        }
-        status
-        Material {
-          id
-          isActive
-          name
-          createdAt
-          updatedAt
-          __typename
-        }
-        requestDetails {
-          applicationArea
-          material
-          branded
-          quantity
-          width
-          height
-          designNote
-          __typename
-        }
-        Store {
-          id
-          cityID
-          districtID
-          areaID
-          name
-          address
           Requests {
             items {
               id
               clientprofileID
               storeID
               requestNumber
-              Brand {
+              ClientProfile {
                 id
-                Products {
+                isActive
+                UserProfiles {
                   nextToken
                   __typename
                 }
-                clientprofileID
-                isActive
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
-                __typename
-              }
-              Product {
-                id
-                brandID
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              status
-              Material {
-                id
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              requestDetails {
-                applicationArea
-                material
-                branded
-                quantity
-                width
-                height
-                designNote
                 __typename
               }
               Store {
@@ -6458,6 +9201,134 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 updatedAt
                 __typename
               }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestApplicationAreaId
+              requestMaterialId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
+          createdAt
+          updatedAt
+          __typename
+        }
+        Store {
+          id
+          cityID
+          districtID
+          areaID
+          name
+          address
+          Requests {
+            items {
+              id
+              clientprofileID
+              storeID
+              requestNumber
               ClientProfile {
                 id
                 isActive
@@ -6482,10 +9353,158 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 updatedAt
                 __typename
               }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
               createdAt
               updatedAt
               requestBrandId
               requestProductId
+              requestApplicationAreaId
               requestMaterialId
               __typename
             }
@@ -6743,44 +9762,13 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
           updatedAt
           __typename
         }
-        ClientProfile {
+        status
+        Brand {
           id
-          isActive
-          UserProfiles {
+          Products {
             items {
               id
-              cognitoID
-              clientprofileID
-              isActive
-              firstName
-              lastName
-              email
-              role
-              permissions
-              createdAt
-              updatedAt
-              __typename
-            }
-            nextToken
-            __typename
-          }
-          Brands {
-            items {
-              id
-              Products {
-                items {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                nextToken
-                __typename
-              }
-              clientprofileID
+              brandID
               isActive
               name
               createdAt
@@ -6790,51 +9778,140 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
             nextToken
             __typename
           }
-          Requests {
-            items {
+          clientprofileID
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        requestDetails {
+          applicationArea
+          material
+          branded
+          quantity
+          width
+          height
+          designNote
+          __typename
+        }
+        Product {
+          id
+          brandID
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        ApplicationArea {
+          id
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        Material {
+          id
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        quantity
+        width
+        height
+        branded
+        designNote
+        productionCost
+        cargoBudget
+        assemblyBudget
+        monthlyFee
+        isExtraProductRequest
+        referenceImages {
+          type
+          path
+          url
+          __typename
+        }
+        designImages {
+          type
+          path
+          url
+          __typename
+        }
+        printImages {
+          type
+          path
+          url
+          __typename
+        }
+        applicationImages {
+          type
+          path
+          url
+          __typename
+        }
+        ExtraProducts {
+          items {
+            id
+            extraProductId
+            requestId
+            extraProduct {
+              id
+              isActive
+              name
+              image {
+                type
+                path
+                url
+                __typename
+              }
+              requests {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            request {
               id
               clientprofileID
               storeID
               requestNumber
-              Brand {
+              ClientProfile {
                 id
-                Products {
+                isActive
+                UserProfiles {
                   nextToken
                   __typename
                 }
-                clientprofileID
-                isActive
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
-                __typename
-              }
-              Product {
-                id
-                brandID
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              status
-              Material {
-                id
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              requestDetails {
-                applicationArea
-                material
-                branded
-                quantity
-                width
-                height
-                designNote
                 __typename
               }
               Store {
@@ -6889,53 +9966,121 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 updatedAt
                 __typename
               }
-              ClientProfile {
+              status
+              Brand {
                 id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
-                UserProfiles {
-                  nextToken
-                  __typename
-                }
-                Brands {
-                  nextToken
-                  __typename
-                }
-                Requests {
-                  nextToken
-                  __typename
-                }
                 name
-                rootUserId
-                contactEmail
-                contactPhone
-                address
                 createdAt
                 updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
                 __typename
               }
               createdAt
               updatedAt
               requestBrandId
               requestProductId
+              requestApplicationAreaId
               requestMaterialId
               __typename
             }
-            nextToken
+            createdAt
+            updatedAt
             __typename
           }
-          name
-          rootUserId
-          contactEmail
-          contactPhone
-          address
-          createdAt
-          updatedAt
+          nextToken
           __typename
         }
         createdAt
         updatedAt
         requestBrandId
         requestProductId
+        requestApplicationAreaId
         requestMaterialId
         __typename
       }
@@ -6965,45 +10110,28 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               clientprofileID
               storeID
               requestNumber
-              Brand {
+              ClientProfile {
                 id
-                Products {
+                isActive
+                UserProfiles {
                   nextToken
                   __typename
                 }
-                clientprofileID
-                isActive
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
-                __typename
-              }
-              Product {
-                id
-                brandID
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              status
-              Material {
-                id
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              requestDetails {
-                applicationArea
-                material
-                branded
-                quantity
-                width
-                height
-                designNote
                 __typename
               }
               Store {
@@ -7058,34 +10186,106 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 updatedAt
                 __typename
               }
-              ClientProfile {
+              status
+              Brand {
                 id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
-                UserProfiles {
-                  nextToken
-                  __typename
-                }
-                Brands {
-                  nextToken
-                  __typename
-                }
-                Requests {
-                  nextToken
-                  __typename
-                }
                 name
-                rootUserId
-                contactEmail
-                contactPhone
-                address
                 createdAt
                 updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
                 __typename
               }
               createdAt
               updatedAt
               requestBrandId
               requestProductId
+              requestApplicationAreaId
               requestMaterialId
               __typename
             }
@@ -7377,10 +10577,21 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -7475,45 +10686,28 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               clientprofileID
               storeID
               requestNumber
-              Brand {
+              ClientProfile {
                 id
-                Products {
+                isActive
+                UserProfiles {
                   nextToken
                   __typename
                 }
-                clientprofileID
-                isActive
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
-                __typename
-              }
-              Product {
-                id
-                brandID
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              status
-              Material {
-                id
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              requestDetails {
-                applicationArea
-                material
-                branded
-                quantity
-                width
-                height
-                designNote
                 __typename
               }
               Store {
@@ -7568,34 +10762,106 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 updatedAt
                 __typename
               }
-              ClientProfile {
+              status
+              Brand {
                 id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
-                UserProfiles {
-                  nextToken
-                  __typename
-                }
-                Brands {
-                  nextToken
-                  __typename
-                }
-                Requests {
-                  nextToken
-                  __typename
-                }
                 name
-                rootUserId
-                contactEmail
-                contactPhone
-                address
                 createdAt
                 updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
                 __typename
               }
               createdAt
               updatedAt
               requestBrandId
               requestProductId
+              requestApplicationAreaId
               requestMaterialId
               __typename
             }
@@ -7921,10 +11187,21 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -8019,45 +11296,28 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               clientprofileID
               storeID
               requestNumber
-              Brand {
+              ClientProfile {
                 id
-                Products {
+                isActive
+                UserProfiles {
                   nextToken
                   __typename
                 }
-                clientprofileID
-                isActive
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
                 name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
                 createdAt
                 updatedAt
-                __typename
-              }
-              Product {
-                id
-                brandID
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              status
-              Material {
-                id
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              requestDetails {
-                applicationArea
-                material
-                branded
-                quantity
-                width
-                height
-                designNote
                 __typename
               }
               Store {
@@ -8112,34 +11372,106 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 updatedAt
                 __typename
               }
-              ClientProfile {
+              status
+              Brand {
                 id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
-                UserProfiles {
-                  nextToken
-                  __typename
-                }
-                Brands {
-                  nextToken
-                  __typename
-                }
-                Requests {
-                  nextToken
-                  __typename
-                }
                 name
-                rootUserId
-                contactEmail
-                contactPhone
-                address
                 createdAt
                 updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
                 __typename
               }
               createdAt
               updatedAt
               requestBrandId
               requestProductId
+              requestApplicationAreaId
               requestMaterialId
               __typename
             }
@@ -8432,12 +11764,35 @@ export const listStores = /* GraphQL */ `query ListStores(
           clientprofileID
           storeID
           requestNumber
-          Brand {
+          ClientProfile {
             id
-            Products {
+            isActive
+            UserProfiles {
               items {
                 id
-                brandID
+                cognitoID
+                clientprofileID
+                isActive
+                firstName
+                lastName
+                email
+                role
+                permissions
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Brands {
+              items {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
                 name
                 createdAt
@@ -8447,89 +11802,22 @@ export const listStores = /* GraphQL */ `query ListStores(
               nextToken
               __typename
             }
-            clientprofileID
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          Product {
-            id
-            brandID
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          status
-          Material {
-            id
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          requestDetails {
-            applicationArea
-            material
-            branded
-            quantity
-            width
-            height
-            designNote
-            __typename
-          }
-          Store {
-            id
-            cityID
-            districtID
-            areaID
-            name
-            address
             Requests {
               items {
                 id
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -8548,6 +11836,122 @@ export const listStores = /* GraphQL */ `query ListStores(
                   updatedAt
                   __typename
                 }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestApplicationAreaId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
+            createdAt
+            updatedAt
+            __typename
+          }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
                 ClientProfile {
                   id
                   isActive
@@ -8560,10 +11964,110 @@ export const listStores = /* GraphQL */ `query ListStores(
                   updatedAt
                   __typename
                 }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -8701,35 +12205,13 @@ export const listStores = /* GraphQL */ `query ListStores(
             updatedAt
             __typename
           }
-          ClientProfile {
+          status
+          Brand {
             id
-            isActive
-            UserProfiles {
+            Products {
               items {
                 id
-                cognitoID
-                clientprofileID
-                isActive
-                firstName
-                lastName
-                email
-                role
-                permissions
-                createdAt
-                updatedAt
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            Brands {
-              items {
-                id
-                Products {
-                  nextToken
-                  __typename
-                }
-                clientprofileID
+                brandID
                 isActive
                 name
                 createdAt
@@ -8739,47 +12221,120 @@ export const listStores = /* GraphQL */ `query ListStores(
               nextToken
               __typename
             }
-            Requests {
-              items {
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          requestDetails {
+            applicationArea
+            material
+            branded
+            quantity
+            width
+            height
+            designNote
+            __typename
+          }
+          Product {
+            id
+            brandID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          ApplicationArea {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          Material {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          quantity
+          width
+          height
+          branded
+          designNote
+          productionCost
+          cargoBudget
+          assemblyBudget
+          monthlyFee
+          isExtraProductRequest
+          referenceImages {
+            type
+            path
+            url
+            __typename
+          }
+          designImages {
+            type
+            path
+            url
+            __typename
+          }
+          printImages {
+            type
+            path
+            url
+            __typename
+          }
+          applicationImages {
+            type
+            path
+            url
+            __typename
+          }
+          ExtraProducts {
+            items {
+              id
+              extraProductId
+              requestId
+              extraProduct {
+                id
+                isActive
+                name
+                image {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                requests {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              request {
                 id
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -8798,41 +12353,109 @@ export const listStores = /* GraphQL */ `query ListStores(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
-              nextToken
+              createdAt
+              updatedAt
               __typename
             }
-            name
-            rootUserId
-            contactEmail
-            contactPhone
-            address
-            createdAt
-            updatedAt
+            nextToken
             __typename
           }
           createdAt
           updatedAt
           requestBrandId
           requestProductId
+          requestApplicationAreaId
           requestMaterialId
           __typename
         }
@@ -8862,41 +12485,16 @@ export const listStores = /* GraphQL */ `query ListStores(
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -8915,22 +12513,94 @@ export const listStores = /* GraphQL */ `query ListStores(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -9167,41 +12837,16 @@ export const listStores = /* GraphQL */ `query ListStores(
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -9220,22 +12865,94 @@ export const listStores = /* GraphQL */ `query ListStores(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -9490,41 +13207,16 @@ export const listStores = /* GraphQL */ `query ListStores(
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -9543,22 +13235,94 @@ export const listStores = /* GraphQL */ `query ListStores(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -9745,12 +13509,35 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
           clientprofileID
           storeID
           requestNumber
-          Brand {
+          ClientProfile {
             id
-            Products {
+            isActive
+            UserProfiles {
               items {
                 id
-                brandID
+                cognitoID
+                clientprofileID
+                isActive
+                firstName
+                lastName
+                email
+                role
+                permissions
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Brands {
+              items {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
                 name
                 createdAt
@@ -9760,89 +13547,22 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
               nextToken
               __typename
             }
-            clientprofileID
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          Product {
-            id
-            brandID
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          status
-          Material {
-            id
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          requestDetails {
-            applicationArea
-            material
-            branded
-            quantity
-            width
-            height
-            designNote
-            __typename
-          }
-          Store {
-            id
-            cityID
-            districtID
-            areaID
-            name
-            address
             Requests {
               items {
                 id
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -9861,6 +13581,122 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   updatedAt
                   __typename
                 }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestApplicationAreaId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
+            createdAt
+            updatedAt
+            __typename
+          }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
                 ClientProfile {
                   id
                   isActive
@@ -9873,10 +13709,110 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   updatedAt
                   __typename
                 }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -10014,35 +13950,13 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
             updatedAt
             __typename
           }
-          ClientProfile {
+          status
+          Brand {
             id
-            isActive
-            UserProfiles {
+            Products {
               items {
                 id
-                cognitoID
-                clientprofileID
-                isActive
-                firstName
-                lastName
-                email
-                role
-                permissions
-                createdAt
-                updatedAt
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            Brands {
-              items {
-                id
-                Products {
-                  nextToken
-                  __typename
-                }
-                clientprofileID
+                brandID
                 isActive
                 name
                 createdAt
@@ -10052,47 +13966,120 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
               nextToken
               __typename
             }
-            Requests {
-              items {
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          requestDetails {
+            applicationArea
+            material
+            branded
+            quantity
+            width
+            height
+            designNote
+            __typename
+          }
+          Product {
+            id
+            brandID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          ApplicationArea {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          Material {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          quantity
+          width
+          height
+          branded
+          designNote
+          productionCost
+          cargoBudget
+          assemblyBudget
+          monthlyFee
+          isExtraProductRequest
+          referenceImages {
+            type
+            path
+            url
+            __typename
+          }
+          designImages {
+            type
+            path
+            url
+            __typename
+          }
+          printImages {
+            type
+            path
+            url
+            __typename
+          }
+          applicationImages {
+            type
+            path
+            url
+            __typename
+          }
+          ExtraProducts {
+            items {
+              id
+              extraProductId
+              requestId
+              extraProduct {
+                id
+                isActive
+                name
+                image {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                requests {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              request {
                 id
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -10111,41 +14098,109 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
-              nextToken
+              createdAt
+              updatedAt
               __typename
             }
-            name
-            rootUserId
-            contactEmail
-            contactPhone
-            address
-            createdAt
-            updatedAt
+            nextToken
             __typename
           }
           createdAt
           updatedAt
           requestBrandId
           requestProductId
+          requestApplicationAreaId
           requestMaterialId
           __typename
         }
@@ -10175,41 +14230,16 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -10228,22 +14258,94 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -10480,41 +14582,16 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -10533,22 +14610,94 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -10803,41 +14952,16 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -10856,22 +14980,94 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -11058,12 +15254,35 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
           clientprofileID
           storeID
           requestNumber
-          Brand {
+          ClientProfile {
             id
-            Products {
+            isActive
+            UserProfiles {
               items {
                 id
-                brandID
+                cognitoID
+                clientprofileID
+                isActive
+                firstName
+                lastName
+                email
+                role
+                permissions
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Brands {
+              items {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
                 name
                 createdAt
@@ -11073,89 +15292,22 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
               nextToken
               __typename
             }
-            clientprofileID
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          Product {
-            id
-            brandID
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          status
-          Material {
-            id
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          requestDetails {
-            applicationArea
-            material
-            branded
-            quantity
-            width
-            height
-            designNote
-            __typename
-          }
-          Store {
-            id
-            cityID
-            districtID
-            areaID
-            name
-            address
             Requests {
               items {
                 id
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -11174,6 +15326,122 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   updatedAt
                   __typename
                 }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestApplicationAreaId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
+            createdAt
+            updatedAt
+            __typename
+          }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
                 ClientProfile {
                   id
                   isActive
@@ -11186,10 +15454,110 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   updatedAt
                   __typename
                 }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -11327,35 +15695,13 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
             updatedAt
             __typename
           }
-          ClientProfile {
+          status
+          Brand {
             id
-            isActive
-            UserProfiles {
+            Products {
               items {
                 id
-                cognitoID
-                clientprofileID
-                isActive
-                firstName
-                lastName
-                email
-                role
-                permissions
-                createdAt
-                updatedAt
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            Brands {
-              items {
-                id
-                Products {
-                  nextToken
-                  __typename
-                }
-                clientprofileID
+                brandID
                 isActive
                 name
                 createdAt
@@ -11365,47 +15711,120 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
               nextToken
               __typename
             }
-            Requests {
-              items {
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          requestDetails {
+            applicationArea
+            material
+            branded
+            quantity
+            width
+            height
+            designNote
+            __typename
+          }
+          Product {
+            id
+            brandID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          ApplicationArea {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          Material {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          quantity
+          width
+          height
+          branded
+          designNote
+          productionCost
+          cargoBudget
+          assemblyBudget
+          monthlyFee
+          isExtraProductRequest
+          referenceImages {
+            type
+            path
+            url
+            __typename
+          }
+          designImages {
+            type
+            path
+            url
+            __typename
+          }
+          printImages {
+            type
+            path
+            url
+            __typename
+          }
+          applicationImages {
+            type
+            path
+            url
+            __typename
+          }
+          ExtraProducts {
+            items {
+              id
+              extraProductId
+              requestId
+              extraProduct {
+                id
+                isActive
+                name
+                image {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                requests {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              request {
                 id
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -11424,41 +15843,109 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
-              nextToken
+              createdAt
+              updatedAt
               __typename
             }
-            name
-            rootUserId
-            contactEmail
-            contactPhone
-            address
-            createdAt
-            updatedAt
+            nextToken
             __typename
           }
           createdAt
           updatedAt
           requestBrandId
           requestProductId
+          requestApplicationAreaId
           requestMaterialId
           __typename
         }
@@ -11488,41 +15975,16 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -11541,22 +16003,94 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -11793,41 +16327,16 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -11846,22 +16355,94 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -12116,41 +16697,16 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -12169,22 +16725,94 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -12371,12 +16999,35 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
           clientprofileID
           storeID
           requestNumber
-          Brand {
+          ClientProfile {
             id
-            Products {
+            isActive
+            UserProfiles {
               items {
                 id
-                brandID
+                cognitoID
+                clientprofileID
+                isActive
+                firstName
+                lastName
+                email
+                role
+                permissions
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Brands {
+              items {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
                 name
                 createdAt
@@ -12386,89 +17037,22 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
               nextToken
               __typename
             }
-            clientprofileID
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          Product {
-            id
-            brandID
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          status
-          Material {
-            id
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          requestDetails {
-            applicationArea
-            material
-            branded
-            quantity
-            width
-            height
-            designNote
-            __typename
-          }
-          Store {
-            id
-            cityID
-            districtID
-            areaID
-            name
-            address
             Requests {
               items {
                 id
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -12487,6 +17071,122 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   updatedAt
                   __typename
                 }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestApplicationAreaId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
+            createdAt
+            updatedAt
+            __typename
+          }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
                 ClientProfile {
                   id
                   isActive
@@ -12499,10 +17199,110 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   updatedAt
                   __typename
                 }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -12640,35 +17440,13 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
             updatedAt
             __typename
           }
-          ClientProfile {
+          status
+          Brand {
             id
-            isActive
-            UserProfiles {
+            Products {
               items {
                 id
-                cognitoID
-                clientprofileID
-                isActive
-                firstName
-                lastName
-                email
-                role
-                permissions
-                createdAt
-                updatedAt
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            Brands {
-              items {
-                id
-                Products {
-                  nextToken
-                  __typename
-                }
-                clientprofileID
+                brandID
                 isActive
                 name
                 createdAt
@@ -12678,47 +17456,120 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
               nextToken
               __typename
             }
-            Requests {
-              items {
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          requestDetails {
+            applicationArea
+            material
+            branded
+            quantity
+            width
+            height
+            designNote
+            __typename
+          }
+          Product {
+            id
+            brandID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          ApplicationArea {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          Material {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          quantity
+          width
+          height
+          branded
+          designNote
+          productionCost
+          cargoBudget
+          assemblyBudget
+          monthlyFee
+          isExtraProductRequest
+          referenceImages {
+            type
+            path
+            url
+            __typename
+          }
+          designImages {
+            type
+            path
+            url
+            __typename
+          }
+          printImages {
+            type
+            path
+            url
+            __typename
+          }
+          applicationImages {
+            type
+            path
+            url
+            __typename
+          }
+          ExtraProducts {
+            items {
+              id
+              extraProductId
+              requestId
+              extraProduct {
+                id
+                isActive
+                name
+                image {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                requests {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              request {
                 id
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -12737,41 +17588,109 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
-              nextToken
+              createdAt
+              updatedAt
               __typename
             }
-            name
-            rootUserId
-            contactEmail
-            contactPhone
-            address
-            createdAt
-            updatedAt
+            nextToken
             __typename
           }
           createdAt
           updatedAt
           requestBrandId
           requestProductId
+          requestApplicationAreaId
           requestMaterialId
           __typename
         }
@@ -12801,41 +17720,16 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -12854,22 +17748,94 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -13106,41 +18072,16 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -13159,22 +18100,94 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -13429,41 +18442,16 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -13482,22 +18470,94 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -13837,12 +18897,44 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
     clientprofileID
     storeID
     requestNumber
-    Brand {
+    ClientProfile {
       id
-      Products {
+      isActive
+      UserProfiles {
         items {
           id
-          brandID
+          cognitoID
+          clientprofileID
+          isActive
+          firstName
+          lastName
+          email
+          role
+          permissions
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      Brands {
+        items {
+          id
+          Products {
+            items {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          clientprofileID
           isActive
           name
           createdAt
@@ -13852,60 +18944,41 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
         nextToken
         __typename
       }
-      clientprofileID
-      isActive
-      name
-      createdAt
-      updatedAt
-      __typename
-    }
-    Product {
-      id
-      brandID
-      isActive
-      name
-      createdAt
-      updatedAt
-      __typename
-    }
-    status
-    Material {
-      id
-      isActive
-      name
-      createdAt
-      updatedAt
-      __typename
-    }
-    requestDetails {
-      applicationArea
-      material
-      branded
-      quantity
-      width
-      height
-      designNote
-      __typename
-    }
-    Store {
-      id
-      cityID
-      districtID
-      areaID
-      name
-      address
       Requests {
         items {
           id
           clientprofileID
           storeID
           requestNumber
-          Brand {
+          ClientProfile {
             id
-            Products {
+            isActive
+            UserProfiles {
               items {
                 id
-                brandID
+                cognitoID
+                clientprofileID
+                isActive
+                firstName
+                lastName
+                email
+                role
+                permissions
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Brands {
+              items {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
                 isActive
                 name
                 createdAt
@@ -13915,89 +18988,22 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
               nextToken
               __typename
             }
-            clientprofileID
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          Product {
-            id
-            brandID
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          status
-          Material {
-            id
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          requestDetails {
-            applicationArea
-            material
-            branded
-            quantity
-            width
-            height
-            designNote
-            __typename
-          }
-          Store {
-            id
-            cityID
-            districtID
-            areaID
-            name
-            address
             Requests {
               items {
                 id
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -14016,6 +19022,122 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   updatedAt
                   __typename
                 }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestApplicationAreaId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
+            createdAt
+            updatedAt
+            __typename
+          }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
                 ClientProfile {
                   id
                   isActive
@@ -14028,10 +19150,110 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   updatedAt
                   __typename
                 }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -14169,6 +19391,285 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             updatedAt
             __typename
           }
+          status
+          Brand {
+            id
+            Products {
+              items {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          requestDetails {
+            applicationArea
+            material
+            branded
+            quantity
+            width
+            height
+            designNote
+            __typename
+          }
+          Product {
+            id
+            brandID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          ApplicationArea {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          Material {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          quantity
+          width
+          height
+          branded
+          designNote
+          productionCost
+          cargoBudget
+          assemblyBudget
+          monthlyFee
+          isExtraProductRequest
+          referenceImages {
+            type
+            path
+            url
+            __typename
+          }
+          designImages {
+            type
+            path
+            url
+            __typename
+          }
+          printImages {
+            type
+            path
+            url
+            __typename
+          }
+          applicationImages {
+            type
+            path
+            url
+            __typename
+          }
+          ExtraProducts {
+            items {
+              id
+              extraProductId
+              requestId
+              extraProduct {
+                id
+                isActive
+                name
+                image {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                requests {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              request {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestApplicationAreaId
+                requestMaterialId
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          requestBrandId
+          requestProductId
+          requestApplicationAreaId
+          requestMaterialId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      name
+      rootUserId
+      contactEmail
+      contactPhone
+      address
+      createdAt
+      updatedAt
+      __typename
+    }
+    Store {
+      id
+      cityID
+      districtID
+      areaID
+      name
+      address
+      Requests {
+        items {
+          id
+          clientprofileID
+          storeID
+          requestNumber
           ClientProfile {
             id
             isActive
@@ -14213,41 +19714,16 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -14266,22 +19742,94 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -14297,10 +19845,523 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             updatedAt
             __typename
           }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestApplicationAreaId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            phones
+            email
+            notes
+            created_by
+            updated_by
+            Area {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            District {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            City {
+              id
+              isActive
+              Districts {
+                items {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          status
+          Brand {
+            id
+            Products {
+              items {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          requestDetails {
+            applicationArea
+            material
+            branded
+            quantity
+            width
+            height
+            designNote
+            __typename
+          }
+          Product {
+            id
+            brandID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          ApplicationArea {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          Material {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          quantity
+          width
+          height
+          branded
+          designNote
+          productionCost
+          cargoBudget
+          assemblyBudget
+          monthlyFee
+          isExtraProductRequest
+          referenceImages {
+            type
+            path
+            url
+            __typename
+          }
+          designImages {
+            type
+            path
+            url
+            __typename
+          }
+          printImages {
+            type
+            path
+            url
+            __typename
+          }
+          applicationImages {
+            type
+            path
+            url
+            __typename
+          }
+          ExtraProducts {
+            items {
+              id
+              extraProductId
+              requestId
+              extraProduct {
+                id
+                isActive
+                name
+                image {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                requests {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              request {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestApplicationAreaId
+                requestMaterialId
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           requestBrandId
           requestProductId
+          requestApplicationAreaId
           requestMaterialId
           __typename
         }
@@ -14330,41 +20391,16 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -14383,22 +20419,94 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -14635,41 +20743,16 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -14688,22 +20771,94 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -14958,41 +21113,16 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -15011,22 +21141,94 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -15178,44 +21380,13 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
       updatedAt
       __typename
     }
-    ClientProfile {
+    status
+    Brand {
       id
-      isActive
-      UserProfiles {
+      Products {
         items {
           id
-          cognitoID
-          clientprofileID
-          isActive
-          firstName
-          lastName
-          email
-          role
-          permissions
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      Brands {
-        items {
-          id
-          Products {
-            items {
-              id
-              brandID
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            nextToken
-            __typename
-          }
-          clientprofileID
+          brandID
           isActive
           name
           createdAt
@@ -15225,110 +21396,135 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
         nextToken
         __typename
       }
-      Requests {
-        items {
+      clientprofileID
+      isActive
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    requestDetails {
+      applicationArea
+      material
+      branded
+      quantity
+      width
+      height
+      designNote
+      __typename
+    }
+    Product {
+      id
+      brandID
+      isActive
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    ApplicationArea {
+      id
+      isActive
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    Material {
+      id
+      isActive
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    quantity
+    width
+    height
+    branded
+    designNote
+    productionCost
+    cargoBudget
+    assemblyBudget
+    monthlyFee
+    isExtraProductRequest
+    referenceImages {
+      type
+      path
+      url
+      __typename
+    }
+    designImages {
+      type
+      path
+      url
+      __typename
+    }
+    printImages {
+      type
+      path
+      url
+      __typename
+    }
+    applicationImages {
+      type
+      path
+      url
+      __typename
+    }
+    ExtraProducts {
+      items {
+        id
+        extraProductId
+        requestId
+        extraProduct {
           id
-          clientprofileID
-          storeID
-          requestNumber
-          Brand {
-            id
-            Products {
-              items {
+          isActive
+          name
+          image {
+            type
+            path
+            url
+            __typename
+          }
+          requests {
+            items {
+              id
+              extraProductId
+              requestId
+              extraProduct {
                 id
-                brandID
                 isActive
                 name
+                image {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                requests {
+                  nextToken
+                  __typename
+                }
                 createdAt
                 updatedAt
                 __typename
               }
-              nextToken
-              __typename
-            }
-            clientprofileID
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          Product {
-            id
-            brandID
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          status
-          Material {
-            id
-            isActive
-            name
-            createdAt
-            updatedAt
-            __typename
-          }
-          requestDetails {
-            applicationArea
-            material
-            branded
-            quantity
-            width
-            height
-            designNote
-            __typename
-          }
-          Store {
-            id
-            cityID
-            districtID
-            areaID
-            name
-            address
-            Requests {
-              items {
+              request {
                 id
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -15347,6 +21543,157 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   updatedAt
                   __typename
                 }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestApplicationAreaId
+                requestMaterialId
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        request {
+          id
+          clientprofileID
+          storeID
+          requestNumber
+          ClientProfile {
+            id
+            isActive
+            UserProfiles {
+              items {
+                id
+                cognitoID
+                clientprofileID
+                isActive
+                firstName
+                lastName
+                email
+                role
+                permissions
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Brands {
+              items {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
                 ClientProfile {
                   id
                   isActive
@@ -15359,10 +21706,254 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   updatedAt
                   __typename
                 }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
+                requestMaterialId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            rootUserId
+            contactEmail
+            contactPhone
+            address
+            createdAt
+            updatedAt
+            __typename
+          }
+          Store {
+            id
+            cityID
+            districtID
+            areaID
+            name
+            address
+            Requests {
+              items {
+                id
+                clientprofileID
+                storeID
+                requestNumber
+                ClientProfile {
+                  id
+                  isActive
+                  name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Store {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                requestBrandId
+                requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
@@ -15500,35 +22091,13 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             updatedAt
             __typename
           }
-          ClientProfile {
+          status
+          Brand {
             id
-            isActive
-            UserProfiles {
+            Products {
               items {
                 id
-                cognitoID
-                clientprofileID
-                isActive
-                firstName
-                lastName
-                email
-                role
-                permissions
-                createdAt
-                updatedAt
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            Brands {
-              items {
-                id
-                Products {
-                  nextToken
-                  __typename
-                }
-                clientprofileID
+                brandID
                 isActive
                 name
                 createdAt
@@ -15538,47 +22107,120 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
               nextToken
               __typename
             }
-            Requests {
-              items {
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          requestDetails {
+            applicationArea
+            material
+            branded
+            quantity
+            width
+            height
+            designNote
+            __typename
+          }
+          Product {
+            id
+            brandID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          ApplicationArea {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          Material {
+            id
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          quantity
+          width
+          height
+          branded
+          designNote
+          productionCost
+          cargoBudget
+          assemblyBudget
+          monthlyFee
+          isExtraProductRequest
+          referenceImages {
+            type
+            path
+            url
+            __typename
+          }
+          designImages {
+            type
+            path
+            url
+            __typename
+          }
+          printImages {
+            type
+            path
+            url
+            __typename
+          }
+          applicationImages {
+            type
+            path
+            url
+            __typename
+          }
+          ExtraProducts {
+            items {
+              id
+              extraProductId
+              requestId
+              extraProduct {
+                id
+                isActive
+                name
+                image {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                requests {
+                  nextToken
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              request {
                 id
                 clientprofileID
                 storeID
                 requestNumber
-                Brand {
-                  id
-                  clientprofileID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                Product {
-                  id
-                  brandID
-                  isActive
-                  name
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                status
-                Material {
+                ClientProfile {
                   id
                   isActive
                   name
+                  rootUserId
+                  contactEmail
+                  contactPhone
+                  address
                   createdAt
                   updatedAt
-                  __typename
-                }
-                requestDetails {
-                  applicationArea
-                  material
-                  branded
-                  quantity
-                  width
-                  height
-                  designNote
                   __typename
                 }
                 Store {
@@ -15597,60 +22239,124 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   updatedAt
                   __typename
                 }
-                ClientProfile {
+                status
+                Brand {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                requestDetails {
+                  applicationArea
+                  material
+                  branded
+                  quantity
+                  width
+                  height
+                  designNote
+                  __typename
+                }
+                Product {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                ApplicationArea {
                   id
                   isActive
                   name
-                  rootUserId
-                  contactEmail
-                  contactPhone
-                  address
                   createdAt
                   updatedAt
+                  __typename
+                }
+                Material {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                quantity
+                width
+                height
+                branded
+                designNote
+                productionCost
+                cargoBudget
+                assemblyBudget
+                monthlyFee
+                isExtraProductRequest
+                referenceImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                designImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                printImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                applicationImages {
+                  type
+                  path
+                  url
+                  __typename
+                }
+                ExtraProducts {
+                  nextToken
                   __typename
                 }
                 createdAt
                 updatedAt
                 requestBrandId
                 requestProductId
+                requestApplicationAreaId
                 requestMaterialId
                 __typename
               }
-              nextToken
+              createdAt
+              updatedAt
               __typename
             }
-            name
-            rootUserId
-            contactEmail
-            contactPhone
-            address
-            createdAt
-            updatedAt
+            nextToken
             __typename
           }
           createdAt
           updatedAt
           requestBrandId
           requestProductId
+          requestApplicationAreaId
           requestMaterialId
           __typename
         }
-        nextToken
+        createdAt
+        updatedAt
         __typename
       }
-      name
-      rootUserId
-      contactEmail
-      contactPhone
-      address
-      createdAt
-      updatedAt
+      nextToken
       __typename
     }
     createdAt
     updatedAt
     requestBrandId
     requestProductId
+    requestApplicationAreaId
     requestMaterialId
     __typename
   }
@@ -15670,12 +22376,44 @@ export const listRequests = /* GraphQL */ `query ListRequests(
       clientprofileID
       storeID
       requestNumber
-      Brand {
+      ClientProfile {
         id
-        Products {
+        isActive
+        UserProfiles {
           items {
             id
-            brandID
+            cognitoID
+            clientprofileID
+            isActive
+            firstName
+            lastName
+            email
+            role
+            permissions
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Brands {
+          items {
+            id
+            Products {
+              items {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            clientprofileID
             isActive
             name
             createdAt
@@ -15685,60 +22423,37 @@ export const listRequests = /* GraphQL */ `query ListRequests(
           nextToken
           __typename
         }
-        clientprofileID
-        isActive
-        name
-        createdAt
-        updatedAt
-        __typename
-      }
-      Product {
-        id
-        brandID
-        isActive
-        name
-        createdAt
-        updatedAt
-        __typename
-      }
-      status
-      Material {
-        id
-        isActive
-        name
-        createdAt
-        updatedAt
-        __typename
-      }
-      requestDetails {
-        applicationArea
-        material
-        branded
-        quantity
-        width
-        height
-        designNote
-        __typename
-      }
-      Store {
-        id
-        cityID
-        districtID
-        areaID
-        name
-        address
         Requests {
           items {
             id
             clientprofileID
             storeID
             requestNumber
-            Brand {
+            ClientProfile {
               id
-              Products {
+              isActive
+              UserProfiles {
                 items {
                   id
-                  brandID
+                  cognitoID
+                  clientprofileID
+                  isActive
+                  firstName
+                  lastName
+                  email
+                  role
+                  permissions
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
                   isActive
                   name
                   createdAt
@@ -15748,39 +22463,41 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                 nextToken
                 __typename
               }
-              clientprofileID
-              isActive
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
-              __typename
-            }
-            Product {
-              id
-              brandID
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            status
-            Material {
-              id
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            requestDetails {
-              applicationArea
-              material
-              branded
-              quantity
-              width
-              height
-              designNote
               __typename
             }
             Store {
@@ -15797,10 +22514,21 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -15868,6 +22596,175 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               updatedAt
               __typename
             }
+            status
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            requestBrandId
+            requestProductId
+            requestApplicationAreaId
+            requestMaterialId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        rootUserId
+        contactEmail
+        contactPhone
+        address
+        createdAt
+        updatedAt
+        __typename
+      }
+      Store {
+        id
+        cityID
+        districtID
+        areaID
+        name
+        address
+        Requests {
+          items {
+            id
+            clientprofileID
+            storeID
+            requestNumber
             ClientProfile {
               id
               isActive
@@ -15909,10 +22806,21 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -15928,10 +22836,243 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               updatedAt
               __typename
             }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
             createdAt
             updatedAt
             requestBrandId
             requestProductId
+            requestApplicationAreaId
             requestMaterialId
             __typename
           }
@@ -15962,10 +23103,21 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -16097,10 +23249,21 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -16246,10 +23409,21 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -16331,44 +23505,13 @@ export const listRequests = /* GraphQL */ `query ListRequests(
         updatedAt
         __typename
       }
-      ClientProfile {
+      status
+      Brand {
         id
-        isActive
-        UserProfiles {
+        Products {
           items {
             id
-            cognitoID
-            clientprofileID
-            isActive
-            firstName
-            lastName
-            email
-            role
-            permissions
-            createdAt
-            updatedAt
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        Brands {
-          items {
-            id
-            Products {
-              items {
-                id
-                brandID
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            clientprofileID
+            brandID
             isActive
             name
             createdAt
@@ -16378,18 +23521,175 @@ export const listRequests = /* GraphQL */ `query ListRequests(
           nextToken
           __typename
         }
-        Requests {
-          items {
+        clientprofileID
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      requestDetails {
+        applicationArea
+        material
+        branded
+        quantity
+        width
+        height
+        designNote
+        __typename
+      }
+      Product {
+        id
+        brandID
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      ApplicationArea {
+        id
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      Material {
+        id
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      quantity
+      width
+      height
+      branded
+      designNote
+      productionCost
+      cargoBudget
+      assemblyBudget
+      monthlyFee
+      isExtraProductRequest
+      referenceImages {
+        type
+        path
+        url
+        __typename
+      }
+      designImages {
+        type
+        path
+        url
+        __typename
+      }
+      printImages {
+        type
+        path
+        url
+        __typename
+      }
+      applicationImages {
+        type
+        path
+        url
+        __typename
+      }
+      ExtraProducts {
+        items {
+          id
+          extraProductId
+          requestId
+          extraProduct {
+            id
+            isActive
+            name
+            image {
+              type
+              path
+              url
+              __typename
+            }
+            requests {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          request {
             id
             clientprofileID
             storeID
             requestNumber
-            Brand {
+            ClientProfile {
               id
-              Products {
+              isActive
+              UserProfiles {
                 items {
                   id
-                  brandID
+                  cognitoID
+                  clientprofileID
+                  isActive
+                  firstName
+                  lastName
+                  email
+                  role
+                  permissions
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
                   isActive
                   name
                   createdAt
@@ -16399,39 +23699,41 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                 nextToken
                 __typename
               }
-              clientprofileID
-              isActive
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
-              __typename
-            }
-            Product {
-              id
-              brandID
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            status
-            Material {
-              id
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            requestDetails {
-              applicationArea
-              material
-              branded
-              quantity
-              width
-              height
-              designNote
               __typename
             }
             Store {
@@ -16448,10 +23750,21 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -16519,31 +23832,13 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               updatedAt
               __typename
             }
-            ClientProfile {
+            status
+            Brand {
               id
-              isActive
-              UserProfiles {
+              Products {
                 items {
                   id
-                  cognitoID
-                  clientprofileID
-                  isActive
-                  firstName
-                  lastName
-                  email
-                  role
-                  permissions
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                nextToken
-                __typename
-              }
-              Brands {
-                items {
-                  id
-                  clientprofileID
+                  brandID
                   isActive
                   name
                   createdAt
@@ -16553,55 +23848,146 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                 nextToken
                 __typename
               }
-              Requests {
-                items {
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
                   id
                   clientprofileID
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
-                nextToken
+                createdAt
+                updatedAt
                 __typename
               }
-              name
-              rootUserId
-              contactEmail
-              contactPhone
-              address
-              createdAt
-              updatedAt
+              nextToken
               __typename
             }
             createdAt
             updatedAt
             requestBrandId
             requestProductId
+            requestApplicationAreaId
             requestMaterialId
             __typename
           }
-          nextToken
+          createdAt
+          updatedAt
           __typename
         }
-        name
-        rootUserId
-        contactEmail
-        contactPhone
-        address
-        createdAt
-        updatedAt
+        nextToken
         __typename
       }
       createdAt
       updatedAt
       requestBrandId
       requestProductId
+      requestApplicationAreaId
       requestMaterialId
       __typename
     }
@@ -16632,12 +24018,44 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
       clientprofileID
       storeID
       requestNumber
-      Brand {
+      ClientProfile {
         id
-        Products {
+        isActive
+        UserProfiles {
           items {
             id
-            brandID
+            cognitoID
+            clientprofileID
+            isActive
+            firstName
+            lastName
+            email
+            role
+            permissions
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Brands {
+          items {
+            id
+            Products {
+              items {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            clientprofileID
             isActive
             name
             createdAt
@@ -16647,60 +24065,37 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
           nextToken
           __typename
         }
-        clientprofileID
-        isActive
-        name
-        createdAt
-        updatedAt
-        __typename
-      }
-      Product {
-        id
-        brandID
-        isActive
-        name
-        createdAt
-        updatedAt
-        __typename
-      }
-      status
-      Material {
-        id
-        isActive
-        name
-        createdAt
-        updatedAt
-        __typename
-      }
-      requestDetails {
-        applicationArea
-        material
-        branded
-        quantity
-        width
-        height
-        designNote
-        __typename
-      }
-      Store {
-        id
-        cityID
-        districtID
-        areaID
-        name
-        address
         Requests {
           items {
             id
             clientprofileID
             storeID
             requestNumber
-            Brand {
+            ClientProfile {
               id
-              Products {
+              isActive
+              UserProfiles {
                 items {
                   id
-                  brandID
+                  cognitoID
+                  clientprofileID
+                  isActive
+                  firstName
+                  lastName
+                  email
+                  role
+                  permissions
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
                   isActive
                   name
                   createdAt
@@ -16710,39 +24105,41 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                 nextToken
                 __typename
               }
-              clientprofileID
-              isActive
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
-              __typename
-            }
-            Product {
-              id
-              brandID
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            status
-            Material {
-              id
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            requestDetails {
-              applicationArea
-              material
-              branded
-              quantity
-              width
-              height
-              designNote
               __typename
             }
             Store {
@@ -16759,10 +24156,21 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -16830,6 +24238,175 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               updatedAt
               __typename
             }
+            status
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            requestBrandId
+            requestProductId
+            requestApplicationAreaId
+            requestMaterialId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        rootUserId
+        contactEmail
+        contactPhone
+        address
+        createdAt
+        updatedAt
+        __typename
+      }
+      Store {
+        id
+        cityID
+        districtID
+        areaID
+        name
+        address
+        Requests {
+          items {
+            id
+            clientprofileID
+            storeID
+            requestNumber
             ClientProfile {
               id
               isActive
@@ -16871,10 +24448,21 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -16890,10 +24478,243 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               updatedAt
               __typename
             }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
             createdAt
             updatedAt
             requestBrandId
             requestProductId
+            requestApplicationAreaId
             requestMaterialId
             __typename
           }
@@ -16924,10 +24745,21 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -17059,10 +24891,21 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -17208,10 +25051,21 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -17293,44 +25147,13 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
         updatedAt
         __typename
       }
-      ClientProfile {
+      status
+      Brand {
         id
-        isActive
-        UserProfiles {
+        Products {
           items {
             id
-            cognitoID
-            clientprofileID
-            isActive
-            firstName
-            lastName
-            email
-            role
-            permissions
-            createdAt
-            updatedAt
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        Brands {
-          items {
-            id
-            Products {
-              items {
-                id
-                brandID
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            clientprofileID
+            brandID
             isActive
             name
             createdAt
@@ -17340,18 +25163,175 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
           nextToken
           __typename
         }
-        Requests {
-          items {
+        clientprofileID
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      requestDetails {
+        applicationArea
+        material
+        branded
+        quantity
+        width
+        height
+        designNote
+        __typename
+      }
+      Product {
+        id
+        brandID
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      ApplicationArea {
+        id
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      Material {
+        id
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      quantity
+      width
+      height
+      branded
+      designNote
+      productionCost
+      cargoBudget
+      assemblyBudget
+      monthlyFee
+      isExtraProductRequest
+      referenceImages {
+        type
+        path
+        url
+        __typename
+      }
+      designImages {
+        type
+        path
+        url
+        __typename
+      }
+      printImages {
+        type
+        path
+        url
+        __typename
+      }
+      applicationImages {
+        type
+        path
+        url
+        __typename
+      }
+      ExtraProducts {
+        items {
+          id
+          extraProductId
+          requestId
+          extraProduct {
+            id
+            isActive
+            name
+            image {
+              type
+              path
+              url
+              __typename
+            }
+            requests {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          request {
             id
             clientprofileID
             storeID
             requestNumber
-            Brand {
+            ClientProfile {
               id
-              Products {
+              isActive
+              UserProfiles {
                 items {
                   id
-                  brandID
+                  cognitoID
+                  clientprofileID
+                  isActive
+                  firstName
+                  lastName
+                  email
+                  role
+                  permissions
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
                   isActive
                   name
                   createdAt
@@ -17361,39 +25341,41 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                 nextToken
                 __typename
               }
-              clientprofileID
-              isActive
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
-              __typename
-            }
-            Product {
-              id
-              brandID
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            status
-            Material {
-              id
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            requestDetails {
-              applicationArea
-              material
-              branded
-              quantity
-              width
-              height
-              designNote
               __typename
             }
             Store {
@@ -17410,10 +25392,21 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -17481,31 +25474,13 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               updatedAt
               __typename
             }
-            ClientProfile {
+            status
+            Brand {
               id
-              isActive
-              UserProfiles {
+              Products {
                 items {
                   id
-                  cognitoID
-                  clientprofileID
-                  isActive
-                  firstName
-                  lastName
-                  email
-                  role
-                  permissions
-                  createdAt
-                  updatedAt
-                  __typename
-                }
-                nextToken
-                __typename
-              }
-              Brands {
-                items {
-                  id
-                  clientprofileID
+                  brandID
                   isActive
                   name
                   createdAt
@@ -17515,55 +25490,146 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                 nextToken
                 __typename
               }
-              Requests {
-                items {
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
                   id
                   clientprofileID
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
-                nextToken
+                createdAt
+                updatedAt
                 __typename
               }
-              name
-              rootUserId
-              contactEmail
-              contactPhone
-              address
-              createdAt
-              updatedAt
+              nextToken
               __typename
             }
             createdAt
             updatedAt
             requestBrandId
             requestProductId
+            requestApplicationAreaId
             requestMaterialId
             __typename
           }
-          nextToken
+          createdAt
+          updatedAt
           __typename
         }
-        name
-        rootUserId
-        contactEmail
-        contactPhone
-        address
-        createdAt
-        updatedAt
+        nextToken
         __typename
       }
       createdAt
       updatedAt
       requestBrandId
       requestProductId
+      requestApplicationAreaId
       requestMaterialId
       __typename
     }
@@ -17594,12 +25660,44 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
       clientprofileID
       storeID
       requestNumber
-      Brand {
+      ClientProfile {
         id
-        Products {
+        isActive
+        UserProfiles {
           items {
             id
-            brandID
+            cognitoID
+            clientprofileID
+            isActive
+            firstName
+            lastName
+            email
+            role
+            permissions
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Brands {
+          items {
+            id
+            Products {
+              items {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            clientprofileID
             isActive
             name
             createdAt
@@ -17609,60 +25707,37 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
           nextToken
           __typename
         }
-        clientprofileID
-        isActive
-        name
-        createdAt
-        updatedAt
-        __typename
-      }
-      Product {
-        id
-        brandID
-        isActive
-        name
-        createdAt
-        updatedAt
-        __typename
-      }
-      status
-      Material {
-        id
-        isActive
-        name
-        createdAt
-        updatedAt
-        __typename
-      }
-      requestDetails {
-        applicationArea
-        material
-        branded
-        quantity
-        width
-        height
-        designNote
-        __typename
-      }
-      Store {
-        id
-        cityID
-        districtID
-        areaID
-        name
-        address
         Requests {
           items {
             id
             clientprofileID
             storeID
             requestNumber
-            Brand {
+            ClientProfile {
               id
-              Products {
+              isActive
+              UserProfiles {
                 items {
                   id
-                  brandID
+                  cognitoID
+                  clientprofileID
+                  isActive
+                  firstName
+                  lastName
+                  email
+                  role
+                  permissions
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
                   isActive
                   name
                   createdAt
@@ -17672,39 +25747,41 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                 nextToken
                 __typename
               }
-              clientprofileID
-              isActive
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
-              __typename
-            }
-            Product {
-              id
-              brandID
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            status
-            Material {
-              id
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            requestDetails {
-              applicationArea
-              material
-              branded
-              quantity
-              width
-              height
-              designNote
               __typename
             }
             Store {
@@ -17721,10 +25798,21 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -17792,6 +25880,175 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               updatedAt
               __typename
             }
+            status
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            requestBrandId
+            requestProductId
+            requestApplicationAreaId
+            requestMaterialId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        name
+        rootUserId
+        contactEmail
+        contactPhone
+        address
+        createdAt
+        updatedAt
+        __typename
+      }
+      Store {
+        id
+        cityID
+        districtID
+        areaID
+        name
+        address
+        Requests {
+          items {
+            id
+            clientprofileID
+            storeID
+            requestNumber
             ClientProfile {
               id
               isActive
@@ -17833,10 +26090,21 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -17852,10 +26120,243 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               updatedAt
               __typename
             }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
             createdAt
             updatedAt
             requestBrandId
             requestProductId
+            requestApplicationAreaId
             requestMaterialId
             __typename
           }
@@ -17886,10 +26387,21 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -18021,10 +26533,21 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -18170,10 +26693,21 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -18255,44 +26789,13 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
         updatedAt
         __typename
       }
-      ClientProfile {
+      status
+      Brand {
         id
-        isActive
-        UserProfiles {
+        Products {
           items {
             id
-            cognitoID
-            clientprofileID
-            isActive
-            firstName
-            lastName
-            email
-            role
-            permissions
-            createdAt
-            updatedAt
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        Brands {
-          items {
-            id
-            Products {
-              items {
-                id
-                brandID
-                isActive
-                name
-                createdAt
-                updatedAt
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            clientprofileID
+            brandID
             isActive
             name
             createdAt
@@ -18302,18 +26805,175 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
           nextToken
           __typename
         }
-        Requests {
-          items {
+        clientprofileID
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      requestDetails {
+        applicationArea
+        material
+        branded
+        quantity
+        width
+        height
+        designNote
+        __typename
+      }
+      Product {
+        id
+        brandID
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      ApplicationArea {
+        id
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      Material {
+        id
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      quantity
+      width
+      height
+      branded
+      designNote
+      productionCost
+      cargoBudget
+      assemblyBudget
+      monthlyFee
+      isExtraProductRequest
+      referenceImages {
+        type
+        path
+        url
+        __typename
+      }
+      designImages {
+        type
+        path
+        url
+        __typename
+      }
+      printImages {
+        type
+        path
+        url
+        __typename
+      }
+      applicationImages {
+        type
+        path
+        url
+        __typename
+      }
+      ExtraProducts {
+        items {
+          id
+          extraProductId
+          requestId
+          extraProduct {
+            id
+            isActive
+            name
+            image {
+              type
+              path
+              url
+              __typename
+            }
+            requests {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          request {
             id
             clientprofileID
             storeID
             requestNumber
-            Brand {
+            ClientProfile {
               id
-              Products {
+              isActive
+              UserProfiles {
                 items {
                   id
-                  brandID
+                  cognitoID
+                  clientprofileID
+                  isActive
+                  firstName
+                  lastName
+                  email
+                  role
+                  permissions
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
                   isActive
                   name
                   createdAt
@@ -18323,39 +26983,41 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                 nextToken
                 __typename
               }
-              clientprofileID
-              isActive
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
               name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
               createdAt
               updatedAt
-              __typename
-            }
-            Product {
-              id
-              brandID
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            status
-            Material {
-              id
-              isActive
-              name
-              createdAt
-              updatedAt
-              __typename
-            }
-            requestDetails {
-              applicationArea
-              material
-              branded
-              quantity
-              width
-              height
-              designNote
               __typename
             }
             Store {
@@ -18372,10 +27034,21 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -18443,6 +27116,256 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               updatedAt
               __typename
             }
+            status
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            requestBrandId
+            requestProductId
+            requestApplicationAreaId
+            requestMaterialId
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      requestBrandId
+      requestProductId
+      requestApplicationAreaId
+      requestMaterialId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.RequestsByStoreIDQueryVariables,
+  APITypes.RequestsByStoreIDQuery
+>;
+export const getRequestExtraProduct = /* GraphQL */ `query GetRequestExtraProduct($id: ID!) {
+  getRequestExtraProduct(id: $id) {
+    id
+    extraProductId
+    requestId
+    extraProduct {
+      id
+      isActive
+      name
+      image {
+        type
+        path
+        url
+        __typename
+      }
+      requests {
+        items {
+          id
+          extraProductId
+          requestId
+          extraProduct {
+            id
+            isActive
+            name
+            image {
+              type
+              path
+              url
+              __typename
+            }
+            requests {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          request {
+            id
+            clientprofileID
+            storeID
+            requestNumber
             ClientProfile {
               id
               isActive
@@ -18484,10 +27407,21 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   storeID
                   requestNumber
                   status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
                   createdAt
                   updatedAt
                   requestBrandId
                   requestProductId
+                  requestApplicationAreaId
                   requestMaterialId
                   __typename
                 }
@@ -18503,10 +27437,623 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               updatedAt
               __typename
             }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
             createdAt
             updatedAt
             requestBrandId
             requestProductId
+            requestApplicationAreaId
+            requestMaterialId
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+    request {
+      id
+      clientprofileID
+      storeID
+      requestNumber
+      ClientProfile {
+        id
+        isActive
+        UserProfiles {
+          items {
+            id
+            cognitoID
+            clientprofileID
+            isActive
+            firstName
+            lastName
+            email
+            role
+            permissions
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Brands {
+          items {
+            id
+            Products {
+              items {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            clientprofileID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Requests {
+          items {
+            id
+            clientprofileID
+            storeID
+            requestNumber
+            ClientProfile {
+              id
+              isActive
+              UserProfiles {
+                items {
+                  id
+                  cognitoID
+                  clientprofileID
+                  isActive
+                  firstName
+                  lastName
+                  email
+                  role
+                  permissions
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
+              createdAt
+              updatedAt
+              __typename
+            }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            requestBrandId
+            requestProductId
+            requestApplicationAreaId
             requestMaterialId
             __typename
           }
@@ -18522,11 +28069,2523 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
         updatedAt
         __typename
       }
+      Store {
+        id
+        cityID
+        districtID
+        areaID
+        name
+        address
+        Requests {
+          items {
+            id
+            clientprofileID
+            storeID
+            requestNumber
+            ClientProfile {
+              id
+              isActive
+              UserProfiles {
+                items {
+                  id
+                  cognitoID
+                  clientprofileID
+                  isActive
+                  firstName
+                  lastName
+                  email
+                  role
+                  permissions
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
+              createdAt
+              updatedAt
+              __typename
+            }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            requestBrandId
+            requestProductId
+            requestApplicationAreaId
+            requestMaterialId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        phones
+        email
+        notes
+        created_by
+        updated_by
+        Area {
+          id
+          districtID
+          isActive
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        District {
+          id
+          cityID
+          isActive
+          Areas {
+            items {
+              id
+              districtID
+              isActive
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        City {
+          id
+          isActive
+          Districts {
+            items {
+              id
+              cityID
+              isActive
+              Areas {
+                items {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Stores {
+                items {
+                  id
+                  cityID
+                  districtID
+                  areaID
+                  name
+                  address
+                  phones
+                  email
+                  notes
+                  created_by
+                  updated_by
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              createdBy
+              updatedBy
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Stores {
+            items {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          createdBy
+          updatedBy
+          createdAt
+          updatedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      status
+      Brand {
+        id
+        Products {
+          items {
+            id
+            brandID
+            isActive
+            name
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        clientprofileID
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      requestDetails {
+        applicationArea
+        material
+        branded
+        quantity
+        width
+        height
+        designNote
+        __typename
+      }
+      Product {
+        id
+        brandID
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      ApplicationArea {
+        id
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      Material {
+        id
+        isActive
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      quantity
+      width
+      height
+      branded
+      designNote
+      productionCost
+      cargoBudget
+      assemblyBudget
+      monthlyFee
+      isExtraProductRequest
+      referenceImages {
+        type
+        path
+        url
+        __typename
+      }
+      designImages {
+        type
+        path
+        url
+        __typename
+      }
+      printImages {
+        type
+        path
+        url
+        __typename
+      }
+      applicationImages {
+        type
+        path
+        url
+        __typename
+      }
+      ExtraProducts {
+        items {
+          id
+          extraProductId
+          requestId
+          extraProduct {
+            id
+            isActive
+            name
+            image {
+              type
+              path
+              url
+              __typename
+            }
+            requests {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          request {
+            id
+            clientprofileID
+            storeID
+            requestNumber
+            ClientProfile {
+              id
+              isActive
+              UserProfiles {
+                items {
+                  id
+                  cognitoID
+                  clientprofileID
+                  isActive
+                  firstName
+                  lastName
+                  email
+                  role
+                  permissions
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Brands {
+                items {
+                  id
+                  clientprofileID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              name
+              rootUserId
+              contactEmail
+              contactPhone
+              address
+              createdAt
+              updatedAt
+              __typename
+            }
+            Store {
+              id
+              cityID
+              districtID
+              areaID
+              name
+              address
+              Requests {
+                items {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              phones
+              email
+              notes
+              created_by
+              updated_by
+              Area {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              District {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              City {
+                id
+                isActive
+                Districts {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            status
+            Brand {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            requestDetails {
+              applicationArea
+              material
+              branded
+              quantity
+              width
+              height
+              designNote
+              __typename
+            }
+            Product {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            ApplicationArea {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            Material {
+              id
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            width
+            height
+            branded
+            designNote
+            productionCost
+            cargoBudget
+            assemblyBudget
+            monthlyFee
+            isExtraProductRequest
+            referenceImages {
+              type
+              path
+              url
+              __typename
+            }
+            designImages {
+              type
+              path
+              url
+              __typename
+            }
+            printImages {
+              type
+              path
+              url
+              __typename
+            }
+            applicationImages {
+              type
+              path
+              url
+              __typename
+            }
+            ExtraProducts {
+              items {
+                id
+                extraProductId
+                requestId
+                extraProduct {
+                  id
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                request {
+                  id
+                  clientprofileID
+                  storeID
+                  requestNumber
+                  status
+                  quantity
+                  width
+                  height
+                  branded
+                  designNote
+                  productionCost
+                  cargoBudget
+                  assemblyBudget
+                  monthlyFee
+                  isExtraProductRequest
+                  createdAt
+                  updatedAt
+                  requestBrandId
+                  requestProductId
+                  requestApplicationAreaId
+                  requestMaterialId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            requestBrandId
+            requestProductId
+            requestApplicationAreaId
+            requestMaterialId
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       requestBrandId
       requestProductId
+      requestApplicationAreaId
       requestMaterialId
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetRequestExtraProductQueryVariables,
+  APITypes.GetRequestExtraProductQuery
+>;
+export const listRequestExtraProducts = /* GraphQL */ `query ListRequestExtraProducts(
+  $filter: ModelRequestExtraProductFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listRequestExtraProducts(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      extraProductId
+      requestId
+      extraProduct {
+        id
+        isActive
+        name
+        image {
+          type
+          path
+          url
+          __typename
+        }
+        requests {
+          items {
+            id
+            extraProductId
+            requestId
+            extraProduct {
+              id
+              isActive
+              name
+              image {
+                type
+                path
+                url
+                __typename
+              }
+              requests {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            request {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
+                createdAt
+                updatedAt
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestApplicationAreaId
+              requestMaterialId
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      request {
+        id
+        clientprofileID
+        storeID
+        requestNumber
+        ClientProfile {
+          id
+          isActive
+          UserProfiles {
+            items {
+              id
+              cognitoID
+              clientprofileID
+              isActive
+              firstName
+              lastName
+              email
+              role
+              permissions
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Brands {
+            items {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Requests {
+            items {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
+                createdAt
+                updatedAt
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestApplicationAreaId
+              requestMaterialId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
+          createdAt
+          updatedAt
+          __typename
+        }
+        Store {
+          id
+          cityID
+          districtID
+          areaID
+          name
+          address
+          Requests {
+            items {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
+                createdAt
+                updatedAt
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestApplicationAreaId
+              requestMaterialId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          phones
+          email
+          notes
+          created_by
+          updated_by
+          Area {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          District {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          City {
+            id
+            isActive
+            Districts {
+              items {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        status
+        Brand {
+          id
+          Products {
+            items {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          clientprofileID
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        requestDetails {
+          applicationArea
+          material
+          branded
+          quantity
+          width
+          height
+          designNote
+          __typename
+        }
+        Product {
+          id
+          brandID
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        ApplicationArea {
+          id
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        Material {
+          id
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        quantity
+        width
+        height
+        branded
+        designNote
+        productionCost
+        cargoBudget
+        assemblyBudget
+        monthlyFee
+        isExtraProductRequest
+        referenceImages {
+          type
+          path
+          url
+          __typename
+        }
+        designImages {
+          type
+          path
+          url
+          __typename
+        }
+        printImages {
+          type
+          path
+          url
+          __typename
+        }
+        applicationImages {
+          type
+          path
+          url
+          __typename
+        }
+        ExtraProducts {
+          items {
+            id
+            extraProductId
+            requestId
+            extraProduct {
+              id
+              isActive
+              name
+              image {
+                type
+                path
+                url
+                __typename
+              }
+              requests {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            request {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
+                createdAt
+                updatedAt
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestApplicationAreaId
+              requestMaterialId
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        requestBrandId
+        requestProductId
+        requestApplicationAreaId
+        requestMaterialId
+        __typename
+      }
+      createdAt
+      updatedAt
       __typename
     }
     nextToken
@@ -18534,6 +30593,2572 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
   }
 }
 ` as GeneratedQuery<
-  APITypes.RequestsByStoreIDQueryVariables,
-  APITypes.RequestsByStoreIDQuery
+  APITypes.ListRequestExtraProductsQueryVariables,
+  APITypes.ListRequestExtraProductsQuery
+>;
+export const requestExtraProductsByExtraProductId = /* GraphQL */ `query RequestExtraProductsByExtraProductId(
+  $extraProductId: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelRequestExtraProductFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  requestExtraProductsByExtraProductId(
+    extraProductId: $extraProductId
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      extraProductId
+      requestId
+      extraProduct {
+        id
+        isActive
+        name
+        image {
+          type
+          path
+          url
+          __typename
+        }
+        requests {
+          items {
+            id
+            extraProductId
+            requestId
+            extraProduct {
+              id
+              isActive
+              name
+              image {
+                type
+                path
+                url
+                __typename
+              }
+              requests {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            request {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
+                createdAt
+                updatedAt
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestApplicationAreaId
+              requestMaterialId
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      request {
+        id
+        clientprofileID
+        storeID
+        requestNumber
+        ClientProfile {
+          id
+          isActive
+          UserProfiles {
+            items {
+              id
+              cognitoID
+              clientprofileID
+              isActive
+              firstName
+              lastName
+              email
+              role
+              permissions
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Brands {
+            items {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Requests {
+            items {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
+                createdAt
+                updatedAt
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestApplicationAreaId
+              requestMaterialId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
+          createdAt
+          updatedAt
+          __typename
+        }
+        Store {
+          id
+          cityID
+          districtID
+          areaID
+          name
+          address
+          Requests {
+            items {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
+                createdAt
+                updatedAt
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestApplicationAreaId
+              requestMaterialId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          phones
+          email
+          notes
+          created_by
+          updated_by
+          Area {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          District {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          City {
+            id
+            isActive
+            Districts {
+              items {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        status
+        Brand {
+          id
+          Products {
+            items {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          clientprofileID
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        requestDetails {
+          applicationArea
+          material
+          branded
+          quantity
+          width
+          height
+          designNote
+          __typename
+        }
+        Product {
+          id
+          brandID
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        ApplicationArea {
+          id
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        Material {
+          id
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        quantity
+        width
+        height
+        branded
+        designNote
+        productionCost
+        cargoBudget
+        assemblyBudget
+        monthlyFee
+        isExtraProductRequest
+        referenceImages {
+          type
+          path
+          url
+          __typename
+        }
+        designImages {
+          type
+          path
+          url
+          __typename
+        }
+        printImages {
+          type
+          path
+          url
+          __typename
+        }
+        applicationImages {
+          type
+          path
+          url
+          __typename
+        }
+        ExtraProducts {
+          items {
+            id
+            extraProductId
+            requestId
+            extraProduct {
+              id
+              isActive
+              name
+              image {
+                type
+                path
+                url
+                __typename
+              }
+              requests {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            request {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
+                createdAt
+                updatedAt
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestApplicationAreaId
+              requestMaterialId
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        requestBrandId
+        requestProductId
+        requestApplicationAreaId
+        requestMaterialId
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.RequestExtraProductsByExtraProductIdQueryVariables,
+  APITypes.RequestExtraProductsByExtraProductIdQuery
+>;
+export const requestExtraProductsByRequestId = /* GraphQL */ `query RequestExtraProductsByRequestId(
+  $requestId: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelRequestExtraProductFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  requestExtraProductsByRequestId(
+    requestId: $requestId
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      extraProductId
+      requestId
+      extraProduct {
+        id
+        isActive
+        name
+        image {
+          type
+          path
+          url
+          __typename
+        }
+        requests {
+          items {
+            id
+            extraProductId
+            requestId
+            extraProduct {
+              id
+              isActive
+              name
+              image {
+                type
+                path
+                url
+                __typename
+              }
+              requests {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            request {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
+                createdAt
+                updatedAt
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestApplicationAreaId
+              requestMaterialId
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      request {
+        id
+        clientprofileID
+        storeID
+        requestNumber
+        ClientProfile {
+          id
+          isActive
+          UserProfiles {
+            items {
+              id
+              cognitoID
+              clientprofileID
+              isActive
+              firstName
+              lastName
+              email
+              role
+              permissions
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Brands {
+            items {
+              id
+              Products {
+                items {
+                  id
+                  brandID
+                  isActive
+                  name
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              clientprofileID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          Requests {
+            items {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
+                createdAt
+                updatedAt
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestApplicationAreaId
+              requestMaterialId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          name
+          rootUserId
+          contactEmail
+          contactPhone
+          address
+          createdAt
+          updatedAt
+          __typename
+        }
+        Store {
+          id
+          cityID
+          districtID
+          areaID
+          name
+          address
+          Requests {
+            items {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
+                createdAt
+                updatedAt
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestApplicationAreaId
+              requestMaterialId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          phones
+          email
+          notes
+          created_by
+          updated_by
+          Area {
+            id
+            districtID
+            isActive
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          District {
+            id
+            cityID
+            isActive
+            Areas {
+              items {
+                id
+                districtID
+                isActive
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          City {
+            id
+            isActive
+            Districts {
+              items {
+                id
+                cityID
+                isActive
+                Areas {
+                  nextToken
+                  __typename
+                }
+                Stores {
+                  nextToken
+                  __typename
+                }
+                name
+                createdBy
+                updatedBy
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            Stores {
+              items {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            name
+            createdBy
+            updatedBy
+            createdAt
+            updatedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        status
+        Brand {
+          id
+          Products {
+            items {
+              id
+              brandID
+              isActive
+              name
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          clientprofileID
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        requestDetails {
+          applicationArea
+          material
+          branded
+          quantity
+          width
+          height
+          designNote
+          __typename
+        }
+        Product {
+          id
+          brandID
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        ApplicationArea {
+          id
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        Material {
+          id
+          isActive
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        quantity
+        width
+        height
+        branded
+        designNote
+        productionCost
+        cargoBudget
+        assemblyBudget
+        monthlyFee
+        isExtraProductRequest
+        referenceImages {
+          type
+          path
+          url
+          __typename
+        }
+        designImages {
+          type
+          path
+          url
+          __typename
+        }
+        printImages {
+          type
+          path
+          url
+          __typename
+        }
+        applicationImages {
+          type
+          path
+          url
+          __typename
+        }
+        ExtraProducts {
+          items {
+            id
+            extraProductId
+            requestId
+            extraProduct {
+              id
+              isActive
+              name
+              image {
+                type
+                path
+                url
+                __typename
+              }
+              requests {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            request {
+              id
+              clientprofileID
+              storeID
+              requestNumber
+              ClientProfile {
+                id
+                isActive
+                UserProfiles {
+                  nextToken
+                  __typename
+                }
+                Brands {
+                  nextToken
+                  __typename
+                }
+                Requests {
+                  nextToken
+                  __typename
+                }
+                name
+                rootUserId
+                contactEmail
+                contactPhone
+                address
+                createdAt
+                updatedAt
+                __typename
+              }
+              Store {
+                id
+                cityID
+                districtID
+                areaID
+                name
+                address
+                Requests {
+                  nextToken
+                  __typename
+                }
+                phones
+                email
+                notes
+                created_by
+                updated_by
+                Area {
+                  id
+                  districtID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                District {
+                  id
+                  cityID
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                City {
+                  id
+                  isActive
+                  name
+                  createdBy
+                  updatedBy
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                createdAt
+                updatedAt
+                __typename
+              }
+              status
+              Brand {
+                id
+                Products {
+                  nextToken
+                  __typename
+                }
+                clientprofileID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              requestDetails {
+                applicationArea
+                material
+                branded
+                quantity
+                width
+                height
+                designNote
+                __typename
+              }
+              Product {
+                id
+                brandID
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              ApplicationArea {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              Material {
+                id
+                isActive
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              width
+              height
+              branded
+              designNote
+              productionCost
+              cargoBudget
+              assemblyBudget
+              monthlyFee
+              isExtraProductRequest
+              referenceImages {
+                type
+                path
+                url
+                __typename
+              }
+              designImages {
+                type
+                path
+                url
+                __typename
+              }
+              printImages {
+                type
+                path
+                url
+                __typename
+              }
+              applicationImages {
+                type
+                path
+                url
+                __typename
+              }
+              ExtraProducts {
+                items {
+                  id
+                  extraProductId
+                  requestId
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              requestBrandId
+              requestProductId
+              requestApplicationAreaId
+              requestMaterialId
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        requestBrandId
+        requestProductId
+        requestApplicationAreaId
+        requestMaterialId
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.RequestExtraProductsByRequestIdQueryVariables,
+  APITypes.RequestExtraProductsByRequestIdQuery
 >;

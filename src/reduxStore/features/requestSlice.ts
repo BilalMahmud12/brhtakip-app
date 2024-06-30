@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Request, RequestStatus } from '@/API';
+import { isValidKey } from '@/utils/helpers';
 
 interface RequestState {
     isFetching: boolean;
@@ -12,17 +13,22 @@ interface RequestState {
         requestBrandId: string;
         requestProductId: string;
         requestMaterialId: string;
-        requestDetails: {
-            applicationArea: string;
-            branded: boolean;
-            quantity: number;
-            width: number;
-            height: number;
-            material: string;
-            designNote: string;
-        }
+        applicationArea: string;
+        branded: boolean;
+        quantity: number;
+        width: number;
+        height: number;
+        designNote: string;
+        isExtraProductRequest?: boolean;
+        productionCost?: number;
+        cargoBudget?: number;
+        assemblyBudget?: number;
+        monthlyFee?: number;
+        referenceImages?: [];
+        designImages?: [];
     },
-    selectedRequests: string[]
+    selectedRequests: string[],
+    [key: string]: any; // Add index signature
 }
 
 const initialState: RequestState = {
@@ -36,15 +42,19 @@ const initialState: RequestState = {
         requestBrandId: '',
         requestProductId: '',
         requestMaterialId: '',
-        requestDetails: {
-            applicationArea: '',
-            branded: false,
-            quantity: 0,
-            width: 0,
-            height: 0,
-            material: '',
-            designNote: '',
-        },
+        applicationArea: '',
+        branded: false,
+        quantity: 0,
+        width: 0,
+        height: 0,
+        designNote: '',
+        isExtraProductRequest: false,
+        productionCost: 0,
+        cargoBudget: 0,
+        assemblyBudget: 0,
+        monthlyFee: 0,
+        referenceImages: [],
+        designImages: [],
     },
     selectedRequests: []
 };
@@ -65,141 +75,25 @@ const requestSlice = createSlice({
         setRequestForm: (state, action: PayloadAction<RequestState['requestForm']>) => {
             state.requestForm = action.payload
         },
-        resetFormValues: (state) => {
-            state.requestForm = {
-                status: '',
-                requestNumber: '',
-                clientprofileID: '',
-                storeID: '',
-                requestBrandId: '',
-                requestProductId: '',
-                requestMaterialId: '',
-                requestDetails: {
-                    applicationArea: '',
-                    branded: false,
-                    quantity: 0,
-                    width: 0,
-                    height: 0,
-                    material: '',
-                    designNote: '',
-                },
+        handleFormChange(state, action: PayloadAction<{ key: string, value: any }>) {
+            const { key, value } = action.payload;
+            
+            if (isValidKey(key, state.requestForm)) {
+                state.requestForm = {
+                    ...state.requestForm,
+                    [key]: value
+                }
+            } else {
+                console.warn(`Invalid key: ${key}`);
             }
         },
-        handleFormChange: (state, action: PayloadAction<{ key: string, value: string }>) => {
-            const { key, value } = action.payload
-            switch (key) {
-                case 'status':
-                    state.requestForm = {
-                        ...state.requestForm,
-                        status: value as RequestStatus,
-                    }
-                    break;
-                case 'requestNumber':
-                    state.requestForm = {
-                        ...state.requestForm,
-                        requestNumber: value,
-                    }
-                    break;
-                case 'clientprofileID':
-                    console.log('clientprofileID', value)
-                    state.requestForm = {
-                        ...state.requestForm,
-                        clientprofileID: value,
-                    }
-                    break;
-                case 'storeID':
-                    state.requestForm = {
-                        ...state.requestForm,
-                        storeID: value as string,
-                    }
-                    break;
-                case 'requestBrandId':
-                    state.requestForm = {
-                        ...state.requestForm,
-                        requestBrandId: value as string,
-                    }
-                    break;
-                case 'requestProductId':
-                    state.requestForm = {
-                        ...state.requestForm,
-                        requestProductId: value as string,
-                    }
-                    break;
-                case 'requestMaterialId':
-                    state.requestForm = {
-                        ...state.requestForm,
-                        requestMaterialId: value,
-                    }
-                    break;
-                case 'requestDetails.applicationArea':
-                    state.requestForm = {
-                        ...state.requestForm,
-                        requestDetails: {
-                            ...state.requestForm.requestDetails,
-                            applicationArea: JSON.stringify({
-                                id: value,
-                            }),
-                        }
-                    }
-                    break;
-                case 'requestDetails.material':
-                    state.requestForm = {
-                        ...state.requestForm,
-                        requestDetails: {
-                            ...state.requestForm.requestDetails,
-                            material: JSON.stringify({
-                                id: value,
-                            }),
-                        }
-                    }
-                    break;
-                case 'requestDetails.branded':
-                    state.requestForm = {
-                        ...state.requestForm,
-                        requestDetails: {
-                            ...state.requestForm.requestDetails,
-                            branded: value === 'true' ? true : false,
-                        }
-                    }
-                    break;
-                case 'requestDetails.quantity':
-                    state.requestForm = {
-                        ...state.requestForm,
-                        requestDetails: {
-                            ...state.requestForm.requestDetails,
-                            quantity: parseInt(value),
-                        }
-                    }
-                    break;
-                case 'requestDetails.width':
-                    state.requestForm = {
-                        ...state.requestForm,
-                        requestDetails: {
-                            ...state.requestForm.requestDetails,
-                            width: parseInt(value),
-                        }
-                    }
-                    break;
-                case 'requestDetails.height':
-                    state.requestForm = {
-                        ...state.requestForm,
-                        requestDetails: {
-                            ...state.requestForm.requestDetails,
-                            height: parseInt(value),
-                        }
-                    }
-                    break;
-                case 'requestDetails.designNote':
-                    state.requestForm = {
-                        ...state.requestForm,
-                        requestDetails: {
-                            ...state.requestForm.requestDetails,
-                            designNote: value,
-                        }
-                    }
-                    break;
-            }
-        }
+        resetFormValues(state) {
+
+           state.requestForm = {
+               ...initialState.requestForm
+           }
+           console.log('resetFormValues', state.requestForm)
+        },
     },
 })
 
