@@ -121,8 +121,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             id='material_name'
                             variant="standard"
                             sx={{ width: '100%' }}
-                            error={!!validationErrors.name}
-                            helperText={validationErrors.name || ''}
+                            error={!!validationErrors?.name}
+                            helperText={validationErrors?.name || ''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
                             }}
@@ -219,7 +219,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                 <div className='p-6 bg-white shadow col-span-3'>
                     <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>
                         <div className='input-group w-full col-span-1 lg:col-span-1'>
-                            <label htmlFor="email" className='block text-xs font-medium mb-1.5'>Email *</label>
+                            <label htmlFor="email" className='block text-xs font-medium mb-1.5'>Email</label>
                             <TextField
                                 id='email'
                                 variant="standard"
@@ -231,7 +231,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             />
                         </div>
                         <div className='input-group w-full col-span-1 lg:col-span-1'>
-                            <label htmlFor="phone" className='block text-xs font-medium mb-1.5'>Phone *</label>
+                            <label htmlFor="phone" className='block text-xs font-medium mb-1.5'>Phone</label>
                             <TextField
                                 id='phone'
                                 variant="standard"

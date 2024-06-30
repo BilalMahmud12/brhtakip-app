@@ -34,9 +34,6 @@ const initialState: StoreFormState = {
         areaID: '',
         name: '',
         address: '',
-        phones: '',
-        email: '',
-        notes: '',
         created_by: '',
         updated_by: '',
     },
@@ -52,6 +49,7 @@ const initialState: StoreFormState = {
 const isValidName = (name: string): boolean => {
     return typeof name === 'string' && name.trim().length >= 3 && name !== '';
 };
+
 
 const storeSlice = createSlice({
     name: 'store',
@@ -73,9 +71,6 @@ const storeSlice = createSlice({
                 areaID: '',
                 name: '',
                 address: '',
-                phones: '',
-                email: '',
-                notes: '',
                 created_by: '',
                 updated_by: '',
             };
@@ -88,6 +83,8 @@ const storeSlice = createSlice({
                     if (isValidName(value as string)) {
                         state.storeForm.name = value as string;
                         state.validationErrors.name = null;
+                    } else {
+                        state.validationErrors.name = 'Bu alan zorunludur ve 3 harften fazla olmalıdır.'
                     }
                     break;
                 case 'cityID':
@@ -124,7 +121,11 @@ const storeSlice = createSlice({
                 if (requiredInputs.includes(key) && !state.storeForm[key]) {
                     state.validationErrors = {
                         ...state.validationErrors,
-                        [key]: key === 'name' ? 'Bu alan zorunludur ve 3 harften fazla olmalıdır' : 'Bu alan zorunludur'
+                        [key]: key === 'name' ? 'Bu alan zorunludur ve 3 harften fazla olmalıdır' : 'Bu alan zorunludur',
+                        [key]: key === 'cityID',
+                        [key]: key === 'areaID',
+                        [key]: key === 'districtID',
+                        [key]: key === 'address' ? 'Bu alan zorunludur' : 'Bu alan zorunludur'
                     };
                 }
             })

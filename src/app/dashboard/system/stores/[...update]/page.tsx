@@ -54,7 +54,6 @@ const UpdateStorePage: React.FC = () => {
 
     const handleCreateStore = async () => {
         dispatch(validateForm());
-
         if (!isValidForm) {
             toast.error('Lütfen formu eksiksiz doldurunuz');
             return;
