@@ -30,10 +30,22 @@ const globalSlice = createSlice({
     }
 })
 
-export const { 
+export const {
     setIsFetching,
     setClientProfiles,
     addClientProfile,
-    removeClientProfile 
+    removeClientProfile
 } = globalSlice.actions
 export default globalSlice.reducer
+
+
+/*
+    id?: string | null,
+
+    isActive?: boolean | null,
+    name?: string | null,
+    rootUserId?: string | null,
+    contactEmail?: string | null,
+    contactPhone?: string | null,
+    address?: string | null,
+*/
