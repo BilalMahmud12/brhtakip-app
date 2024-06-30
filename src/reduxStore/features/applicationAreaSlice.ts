@@ -1,15 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ApplicationArea } from '@/API';
 
+const requiredInputs = ['name'];
+
 interface ApplicationAreaState {
     applicationAreas: ApplicationArea[];
     applicationAreaForm: {
         id?: string;
         name: string;
         isActive: boolean;
+        [key: string]: string | boolean | string[] | undefined;
     }
-    errors: {
-        name?: string;
+    validationErrors: {
+        name?: string | null;
     };
 }
 
@@ -19,7 +22,9 @@ const initialState: ApplicationAreaState = {
         name: '',
         isActive: false,
     },
-    errors: {}
+    validationErrors: {
+        name: null,
+    }
 }
 
 const isValidName = (name: string): boolean => {
@@ -40,7 +45,7 @@ const applicationAreaSlice = createSlice({
 
         setApplicationAreaForm: (state, action: PayloadAction<ApplicationAreaState['applicationAreaForm']>) => {
             state.applicationAreaForm = action.payload
-            state.errors = {};
+            state.validationErrors = {};
         },
 
         resetFormValues: (state) => {
@@ -56,9 +61,9 @@ const applicationAreaSlice = createSlice({
                 case 'name':
                     if (isValidName(value as string)) {
                         state.applicationAreaForm.name = value as string;
-                        delete state.errors.name;
+                        state.validationErrors.name = null;
                     } else {
-                        state.errors.name = 'Uygulama Alan adı zorunludur ve 3 harften fazla olmalıdır';
+                        state.validationErrors.name = 'Uygulama Alan adı zorunludur ve 3 harften fazla olmalıdır';
                     }
                     break;
                 case 'isActive':
@@ -70,6 +75,16 @@ const applicationAreaSlice = createSlice({
                 default:
                     break;
             }
+        },
+        validateForm: (state) => {
+            Object.keys(state.applicationAreaForm).forEach((key) => {
+                if (requiredInputs.includes(key) && !state.applicationAreaForm[key]) {
+                    state.validationErrors = {
+                        ...state.validationErrors,
+                        [key]: key === 'name' ? 'Bu alan zorunludur ve 3 harften fazla olmalıdır' : 'Bu alan zorunludur'
+                    };
+                }
+            })
         }
     }
 });
@@ -80,6 +95,7 @@ export const {
     setApplicationAreaForm,
     resetFormValues,
     handleFormChange,
+    validateForm,
 } = applicationAreaSlice.actions
 
 export default applicationAreaSlice.reducer

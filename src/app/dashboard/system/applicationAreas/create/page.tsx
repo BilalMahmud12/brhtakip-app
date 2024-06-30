@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { useRouter } from 'next-nprogress-bar';
-import { setApplicationAreas, resetFormValues, handleFormChange } from '@/reduxStore/features/applicationAreaSlice';
+import { setApplicationAreas, resetFormValues, validateForm } from '@/reduxStore/features/applicationAreaSlice';
 import * as Repo from '@/repository/index';
 
 import Button from '@mui/material/Button';
@@ -11,33 +11,39 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { ApplicationArea } from '@/API';
+import { toast } from 'sonner';
 
 const CreateApplicationAreaPage: React.FC = () => {
     const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
     const applicationAreaForm = useAppSelector((state: RootState) => state.applicationArea.applicationAreaForm);
-    const errors = useAppSelector((state: RootState) => state.applicationArea.errors);
-
     const applicationAreaRef = useRef(applicationAreaForm);
     applicationAreaRef.current = applicationAreaForm;
 
+    const validationErrors = useAppSelector((state: RootState) => state.applicationArea.validationErrors);
+    const validationErrorsRef = React.useRef(validationErrors);
+    validationErrorsRef.current = validationErrors;
+
+    const isValidForm = Object.values(validationErrorsRef.current).every(value => value === null);
+
     const handleCreateApplicationArea = async () => {
-        if (!errors.name && applicationAreaRef.current.name.trim() !== '') {
-            dispatch(handleFormChange({ key: 'name', value: applicationAreaRef.current.name }));
+        dispatch(validateForm());
+        if (!isValidForm) {
+            toast.error('Lütfen formu eksiksiz doldurunuz.');
+            return;
+        } else {
             try {
                 const createApplicationArea = await Repo.ApplicationAreaRepository.create(applicationAreaRef.current);
-
                 if (createApplicationArea && createApplicationArea.data) {
                     const newApplicationArea = await Repo.ApplicationAreaRepository.getApplicationAreas();
                     dispatch(setApplicationAreas(newApplicationArea as unknown as ApplicationArea[]));
                     dispatch(resetFormValues());
-                    router.back();
+                    toast.success('Uygulama Alanı başarıyla oluşturuldu.');
+                    router.push('/dashboard/system/applicationAreas');
                 }
             } catch (error) {
-                console.log('Failed to create application area', error);
+                console.log('Error', error);
             }
-        } else {
-            dispatch(handleFormChange({ key: 'name', value: applicationAreaRef.current.name }));
         }
     };
 

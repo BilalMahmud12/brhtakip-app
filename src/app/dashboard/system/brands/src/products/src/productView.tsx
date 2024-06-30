@@ -32,8 +32,6 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
     const productFormRef = useRef(productForm);
     productFormRef.current = productForm;
 
-    console.log('brandId', brandId);
-
     const setProductBrandId = () => {
         if (productForm.brandID !== brandId) {
             dispatch(setProductFormValues({
