@@ -3,6 +3,7 @@ export * from './permissions';
 export * from './dataTables';
 export * from './navigation';
 export * from './requestsConfig'
+export * from './mediaUploadManager'
 
 export const globalConstants = {
     appName: 'BRH Takip Sistemi',

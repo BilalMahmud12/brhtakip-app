@@ -16,7 +16,6 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
     images {
       type
       path
-      url
       __typename
     }
     requests {
@@ -31,7 +30,6 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
           images {
             type
             path
-            url
             __typename
           }
           requests {
@@ -46,7 +44,6 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -148,25 +145,21 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -327,25 +320,21 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -471,25 +460,21 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -709,25 +694,21 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -742,7 +723,6 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -844,25 +824,21 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -921,7 +897,6 @@ export const listExtraProducts = /* GraphQL */ `query ListExtraProducts(
       images {
         type
         path
-        url
         __typename
       }
       requests {
@@ -936,7 +911,6 @@ export const listExtraProducts = /* GraphQL */ `query ListExtraProducts(
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -1230,25 +1204,21 @@ export const listExtraProducts = /* GraphQL */ `query ListExtraProducts(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -1735,25 +1705,21 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -2411,25 +2377,21 @@ export const listAreas = /* GraphQL */ `query ListAreas(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -2891,25 +2853,21 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -3314,25 +3272,21 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -3746,25 +3700,21 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -4540,25 +4490,21 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -5138,25 +5084,21 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -5631,25 +5573,21 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -6063,25 +6001,21 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -6888,25 +6822,21 @@ export const listCities = /* GraphQL */ `query ListCities(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -7446,25 +7376,21 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -7650,25 +7576,21 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -8016,25 +7938,21 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -8049,7 +7967,6 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -8211,25 +8128,21 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -8473,25 +8386,21 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -8617,25 +8526,21 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -8855,25 +8760,21 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -8888,7 +8789,6 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -8990,25 +8890,21 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -9263,25 +9159,21 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -9467,25 +9359,21 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -9833,25 +9721,21 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -9866,7 +9750,6 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -10028,25 +9911,21 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -10248,25 +10127,21 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -10824,25 +10699,21 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -11434,25 +11305,21 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -11894,25 +11761,21 @@ export const listStores = /* GraphQL */ `query ListStores(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -12038,25 +11901,21 @@ export const listStores = /* GraphQL */ `query ListStores(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -12276,25 +12135,21 @@ export const listStores = /* GraphQL */ `query ListStores(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -12309,7 +12164,6 @@ export const listStores = /* GraphQL */ `query ListStores(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -12411,25 +12265,21 @@ export const listStores = /* GraphQL */ `query ListStores(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -12571,25 +12421,21 @@ export const listStores = /* GraphQL */ `query ListStores(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -12923,25 +12769,21 @@ export const listStores = /* GraphQL */ `query ListStores(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -13293,25 +13135,21 @@ export const listStores = /* GraphQL */ `query ListStores(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -13639,25 +13477,21 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -13783,25 +13617,21 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -14021,25 +13851,21 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -14054,7 +13880,6 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -14156,25 +13981,21 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -14316,25 +14137,21 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -14668,25 +14485,21 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -15038,25 +14851,21 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -15384,25 +15193,21 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -15528,25 +15333,21 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -15766,25 +15567,21 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -15799,7 +15596,6 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -15901,25 +15697,21 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -16061,25 +15853,21 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -16413,25 +16201,21 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -16783,25 +16567,21 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -17129,25 +16909,21 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -17273,25 +17049,21 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -17511,25 +17283,21 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -17544,7 +17312,6 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -17646,25 +17413,21 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -17806,25 +17569,21 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -18158,25 +17917,21 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -18528,25 +18283,21 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -19080,25 +18831,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -19224,25 +18971,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -19462,25 +19205,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -19495,7 +19234,6 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -19597,25 +19335,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -19800,25 +19534,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -19944,25 +19674,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -20182,25 +19908,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -20215,7 +19937,6 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -20317,25 +20038,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -20477,25 +20194,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -20829,25 +20542,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -21199,25 +20908,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -21451,25 +21156,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
     referenceImages {
       type
       path
-      url
       __typename
     }
     designImages {
       type
       path
-      url
       __typename
     }
     printImages {
       type
       path
-      url
       __typename
     }
     applicationImages {
       type
       path
-      url
       __typename
     }
     ExtraProducts {
@@ -21484,7 +21185,6 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
           images {
             type
             path
-            url
             __typename
           }
           requests {
@@ -21499,7 +21199,6 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -21601,25 +21300,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -21780,25 +21475,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -21924,25 +21615,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -22162,25 +21849,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -22195,7 +21878,6 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -22297,25 +21979,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -22667,25 +22345,21 @@ export const listRequests = /* GraphQL */ `query ListRequests(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -23003,25 +22677,21 @@ export const listRequests = /* GraphQL */ `query ListRequests(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -23576,25 +23246,21 @@ export const listRequests = /* GraphQL */ `query ListRequests(
       referenceImages {
         type
         path
-        url
         __typename
       }
       designImages {
         type
         path
-        url
         __typename
       }
       printImages {
         type
         path
-        url
         __typename
       }
       applicationImages {
         type
         path
-        url
         __typename
       }
       ExtraProducts {
@@ -23609,7 +23275,6 @@ export const listRequests = /* GraphQL */ `query ListRequests(
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -23903,25 +23568,21 @@ export const listRequests = /* GraphQL */ `query ListRequests(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -24309,25 +23970,21 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -24645,25 +24302,21 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -25218,25 +24871,21 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
       referenceImages {
         type
         path
-        url
         __typename
       }
       designImages {
         type
         path
-        url
         __typename
       }
       printImages {
         type
         path
-        url
         __typename
       }
       applicationImages {
         type
         path
-        url
         __typename
       }
       ExtraProducts {
@@ -25251,7 +24900,6 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -25545,25 +25193,21 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -25951,25 +25595,21 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -26287,25 +25927,21 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -26860,25 +26496,21 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
       referenceImages {
         type
         path
-        url
         __typename
       }
       designImages {
         type
         path
-        url
         __typename
       }
       printImages {
         type
         path
-        url
         __typename
       }
       applicationImages {
         type
         path
-        url
         __typename
       }
       ExtraProducts {
@@ -26893,7 +26525,6 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -27187,25 +26818,21 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -27295,7 +26922,6 @@ export const getRequestExtraProduct = /* GraphQL */ `query GetRequestExtraProduc
       images {
         type
         path
-        url
         __typename
       }
       requests {
@@ -27310,7 +26936,6 @@ export const getRequestExtraProduct = /* GraphQL */ `query GetRequestExtraProduc
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -27604,25 +27229,21 @@ export const getRequestExtraProduct = /* GraphQL */ `query GetRequestExtraProduc
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -27984,25 +27605,21 @@ export const getRequestExtraProduct = /* GraphQL */ `query GetRequestExtraProduc
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -28320,25 +27937,21 @@ export const getRequestExtraProduct = /* GraphQL */ `query GetRequestExtraProduc
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -28893,25 +28506,21 @@ export const getRequestExtraProduct = /* GraphQL */ `query GetRequestExtraProduc
       referenceImages {
         type
         path
-        url
         __typename
       }
       designImages {
         type
         path
-        url
         __typename
       }
       printImages {
         type
         path
-        url
         __typename
       }
       applicationImages {
         type
         path
-        url
         __typename
       }
       ExtraProducts {
@@ -28926,7 +28535,6 @@ export const getRequestExtraProduct = /* GraphQL */ `query GetRequestExtraProduc
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -29220,25 +28828,21 @@ export const getRequestExtraProduct = /* GraphQL */ `query GetRequestExtraProduc
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -29338,7 +28942,6 @@ export const listRequestExtraProducts = /* GraphQL */ `query ListRequestExtraPro
         images {
           type
           path
-          url
           __typename
         }
         requests {
@@ -29353,7 +28956,6 @@ export const listRequestExtraProducts = /* GraphQL */ `query ListRequestExtraPro
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -29515,25 +29117,21 @@ export const listRequestExtraProducts = /* GraphQL */ `query ListRequestExtraPro
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -29763,25 +29361,21 @@ export const listRequestExtraProducts = /* GraphQL */ `query ListRequestExtraPro
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -29967,25 +29561,21 @@ export const listRequestExtraProducts = /* GraphQL */ `query ListRequestExtraPro
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -30333,25 +29923,21 @@ export const listRequestExtraProducts = /* GraphQL */ `query ListRequestExtraPro
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -30366,7 +29952,6 @@ export const listRequestExtraProducts = /* GraphQL */ `query ListRequestExtraPro
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -30528,25 +30113,21 @@ export const listRequestExtraProducts = /* GraphQL */ `query ListRequestExtraPro
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -30621,7 +30202,6 @@ export const requestExtraProductsByExtraProductId = /* GraphQL */ `query Request
         images {
           type
           path
-          url
           __typename
         }
         requests {
@@ -30636,7 +30216,6 @@ export const requestExtraProductsByExtraProductId = /* GraphQL */ `query Request
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -30798,25 +30377,21 @@ export const requestExtraProductsByExtraProductId = /* GraphQL */ `query Request
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -31046,25 +30621,21 @@ export const requestExtraProductsByExtraProductId = /* GraphQL */ `query Request
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -31250,25 +30821,21 @@ export const requestExtraProductsByExtraProductId = /* GraphQL */ `query Request
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -31616,25 +31183,21 @@ export const requestExtraProductsByExtraProductId = /* GraphQL */ `query Request
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -31649,7 +31212,6 @@ export const requestExtraProductsByExtraProductId = /* GraphQL */ `query Request
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -31811,25 +31373,21 @@ export const requestExtraProductsByExtraProductId = /* GraphQL */ `query Request
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -31904,7 +31462,6 @@ export const requestExtraProductsByRequestId = /* GraphQL */ `query RequestExtra
         images {
           type
           path
-          url
           __typename
         }
         requests {
@@ -31919,7 +31476,6 @@ export const requestExtraProductsByRequestId = /* GraphQL */ `query RequestExtra
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -32081,25 +31637,21 @@ export const requestExtraProductsByRequestId = /* GraphQL */ `query RequestExtra
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -32329,25 +31881,21 @@ export const requestExtraProductsByRequestId = /* GraphQL */ `query RequestExtra
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -32533,25 +32081,21 @@ export const requestExtraProductsByRequestId = /* GraphQL */ `query RequestExtra
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -32899,25 +32443,21 @@ export const requestExtraProductsByRequestId = /* GraphQL */ `query RequestExtra
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -32932,7 +32472,6 @@ export const requestExtraProductsByRequestId = /* GraphQL */ `query RequestExtra
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -33094,25 +32633,21 @@ export const requestExtraProductsByRequestId = /* GraphQL */ `query RequestExtra
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {

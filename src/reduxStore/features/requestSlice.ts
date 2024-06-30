@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Request, RequestStatus } from '@/API';
+import { Request } from '@/API';
 import { isValidKey } from '@/utils/helpers';
 
 interface RequestState {
@@ -26,9 +26,11 @@ interface RequestState {
         monthlyFee?: number;
         referenceImages?: [];
         designImages?: [];
+        printImages?: [];
+        applicationImages?: [];
     },
     selectedRequests: string[],
-    [key: string]: any; // Add index signature
+    [key: string]: any;
 }
 
 const initialState: RequestState = {
@@ -55,6 +57,8 @@ const initialState: RequestState = {
         monthlyFee: 0,
         referenceImages: [],
         designImages: [],
+        printImages: [],
+        applicationImages: []
     },
     selectedRequests: []
 };
@@ -88,11 +92,9 @@ const requestSlice = createSlice({
             }
         },
         resetFormValues(state) {
-
            state.requestForm = {
                ...initialState.requestForm
            }
-           console.log('resetFormValues', state.requestForm)
         },
     },
 })

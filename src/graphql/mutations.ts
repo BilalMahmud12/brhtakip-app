@@ -19,7 +19,6 @@ export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
     images {
       type
       path
-      url
       __typename
     }
     requests {
@@ -34,7 +33,6 @@ export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
           images {
             type
             path
-            url
             __typename
           }
           requests {
@@ -49,7 +47,6 @@ export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -151,25 +148,21 @@ export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -330,25 +323,21 @@ export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -474,25 +463,21 @@ export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -712,25 +697,21 @@ export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -745,7 +726,6 @@ export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -847,25 +827,21 @@ export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -922,7 +898,6 @@ export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
     images {
       type
       path
-      url
       __typename
     }
     requests {
@@ -937,7 +912,6 @@ export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
           images {
             type
             path
-            url
             __typename
           }
           requests {
@@ -952,7 +926,6 @@ export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -1054,25 +1027,21 @@ export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -1233,25 +1202,21 @@ export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -1377,25 +1342,21 @@ export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -1615,25 +1576,21 @@ export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -1648,7 +1605,6 @@ export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -1750,25 +1706,21 @@ export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -1825,7 +1777,6 @@ export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
     images {
       type
       path
-      url
       __typename
     }
     requests {
@@ -1840,7 +1791,6 @@ export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
           images {
             type
             path
-            url
             __typename
           }
           requests {
@@ -1855,7 +1805,6 @@ export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -1957,25 +1906,21 @@ export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -2136,25 +2081,21 @@ export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -2280,25 +2221,21 @@ export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -2518,25 +2455,21 @@ export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -2551,7 +2484,6 @@ export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -2653,25 +2585,21 @@ export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -3148,25 +3076,21 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -3925,25 +3849,21 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -4702,25 +4622,21 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -5332,25 +5248,21 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -5764,25 +5676,21 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -6394,25 +6302,21 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -6826,25 +6730,21 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -7456,25 +7356,21 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -7888,25 +7784,21 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -8588,25 +8480,21 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -9020,25 +8908,21 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -9720,25 +9604,21 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -10152,25 +10032,21 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -10852,25 +10728,21 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -11284,25 +11156,21 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -12049,25 +11917,21 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -12253,25 +12117,21 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -12619,25 +12479,21 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -12652,7 +12508,6 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -12814,25 +12669,21 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -13135,25 +12986,21 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -13339,25 +13186,21 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -13705,25 +13548,21 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -13738,7 +13577,6 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -13900,25 +13738,21 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -14221,25 +14055,21 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -14425,25 +14255,21 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -14791,25 +14617,21 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -14824,7 +14646,6 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -14986,25 +14807,21 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -15267,25 +15084,21 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -15471,25 +15284,21 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -15837,25 +15646,21 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -15870,7 +15675,6 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -16032,25 +15836,21 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -16252,25 +16052,21 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -16828,25 +16624,21 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -17438,25 +17230,21 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -17960,25 +17748,21 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -18164,25 +17948,21 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -18530,25 +18310,21 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -18563,7 +18339,6 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -18725,25 +18500,21 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -18945,25 +18716,21 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -19521,25 +19288,21 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -20131,25 +19894,21 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -20653,25 +20412,21 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -20857,25 +20612,21 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -21223,25 +20974,21 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
         referenceImages {
           type
           path
-          url
           __typename
         }
         designImages {
           type
           path
-          url
           __typename
         }
         printImages {
           type
           path
-          url
           __typename
         }
         applicationImages {
           type
           path
-          url
           __typename
         }
         ExtraProducts {
@@ -21256,7 +21003,6 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               images {
                 type
                 path
-                url
                 __typename
               }
               requests {
@@ -21418,25 +21164,21 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -21638,25 +21380,21 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -22214,25 +21952,21 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -22824,25 +22558,21 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               referenceImages {
                 type
                 path
-                url
                 __typename
               }
               designImages {
                 type
                 path
-                url
                 __typename
               }
               printImages {
                 type
                 path
-                url
                 __typename
               }
               applicationImages {
                 type
                 path
-                url
                 __typename
               }
               ExtraProducts {
@@ -23477,25 +23207,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -23621,25 +23347,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -23859,25 +23581,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -23892,7 +23610,6 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -23994,25 +23711,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -24197,25 +23910,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -24341,25 +24050,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -24579,25 +24284,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -24612,7 +24313,6 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -24714,25 +24414,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -24874,25 +24570,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -25226,25 +24918,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -25596,25 +25284,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -25848,25 +25532,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
     referenceImages {
       type
       path
-      url
       __typename
     }
     designImages {
       type
       path
-      url
       __typename
     }
     printImages {
       type
       path
-      url
       __typename
     }
     applicationImages {
       type
       path
-      url
       __typename
     }
     ExtraProducts {
@@ -25881,7 +25561,6 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
           images {
             type
             path
-            url
             __typename
           }
           requests {
@@ -25896,7 +25575,6 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -25998,25 +25676,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -26177,25 +25851,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -26321,25 +25991,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -26559,25 +26225,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -26592,7 +26254,6 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -26694,25 +26355,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -26954,25 +26611,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -27098,25 +26751,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -27336,25 +26985,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -27369,7 +27014,6 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -27471,25 +27115,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -27674,25 +27314,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -27818,25 +27454,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -28056,25 +27688,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -28089,7 +27717,6 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -28191,25 +27818,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -28351,25 +27974,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -28703,25 +28322,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -29073,25 +28688,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -29325,25 +28936,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
     referenceImages {
       type
       path
-      url
       __typename
     }
     designImages {
       type
       path
-      url
       __typename
     }
     printImages {
       type
       path
-      url
       __typename
     }
     applicationImages {
       type
       path
-      url
       __typename
     }
     ExtraProducts {
@@ -29358,7 +28965,6 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
           images {
             type
             path
-            url
             __typename
           }
           requests {
@@ -29373,7 +28979,6 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -29475,25 +29080,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -29654,25 +29255,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -29798,25 +29395,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -30036,25 +29629,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -30069,7 +29658,6 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -30171,25 +29759,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -30431,25 +30015,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -30575,25 +30155,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -30813,25 +30389,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -30846,7 +30418,6 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -30948,25 +30519,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -31151,25 +30718,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -31295,25 +30858,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -31533,25 +31092,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -31566,7 +31121,6 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -31668,25 +31222,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -31828,25 +31378,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -32180,25 +31726,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -32550,25 +32092,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -32802,25 +32340,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
     referenceImages {
       type
       path
-      url
       __typename
     }
     designImages {
       type
       path
-      url
       __typename
     }
     printImages {
       type
       path
-      url
       __typename
     }
     applicationImages {
       type
       path
-      url
       __typename
     }
     ExtraProducts {
@@ -32835,7 +32369,6 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
           images {
             type
             path
-            url
             __typename
           }
           requests {
@@ -32850,7 +32383,6 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -32952,25 +32484,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -33131,25 +32659,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -33275,25 +32799,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -33513,25 +33033,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
           referenceImages {
             type
             path
-            url
             __typename
           }
           designImages {
             type
             path
-            url
             __typename
           }
           printImages {
             type
             path
-            url
             __typename
           }
           applicationImages {
             type
             path
-            url
             __typename
           }
           ExtraProducts {
@@ -33546,7 +33062,6 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 images {
                   type
                   path
-                  url
                   __typename
                 }
                 requests {
@@ -33648,25 +33163,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 referenceImages {
                   type
                   path
-                  url
                   __typename
                 }
                 designImages {
                   type
                   path
-                  url
                   __typename
                 }
                 printImages {
                   type
                   path
-                  url
                   __typename
                 }
                 applicationImages {
                   type
                   path
-                  url
                   __typename
                 }
                 ExtraProducts {
@@ -33731,7 +33242,6 @@ export const createRequestExtraProduct = /* GraphQL */ `mutation CreateRequestEx
       images {
         type
         path
-        url
         __typename
       }
       requests {
@@ -33746,7 +33256,6 @@ export const createRequestExtraProduct = /* GraphQL */ `mutation CreateRequestEx
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -34040,25 +33549,21 @@ export const createRequestExtraProduct = /* GraphQL */ `mutation CreateRequestEx
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -34420,25 +33925,21 @@ export const createRequestExtraProduct = /* GraphQL */ `mutation CreateRequestEx
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -34756,25 +34257,21 @@ export const createRequestExtraProduct = /* GraphQL */ `mutation CreateRequestEx
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -35329,25 +34826,21 @@ export const createRequestExtraProduct = /* GraphQL */ `mutation CreateRequestEx
       referenceImages {
         type
         path
-        url
         __typename
       }
       designImages {
         type
         path
-        url
         __typename
       }
       printImages {
         type
         path
-        url
         __typename
       }
       applicationImages {
         type
         path
-        url
         __typename
       }
       ExtraProducts {
@@ -35362,7 +34855,6 @@ export const createRequestExtraProduct = /* GraphQL */ `mutation CreateRequestEx
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -35656,25 +35148,21 @@ export const createRequestExtraProduct = /* GraphQL */ `mutation CreateRequestEx
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -35768,7 +35256,6 @@ export const updateRequestExtraProduct = /* GraphQL */ `mutation UpdateRequestEx
       images {
         type
         path
-        url
         __typename
       }
       requests {
@@ -35783,7 +35270,6 @@ export const updateRequestExtraProduct = /* GraphQL */ `mutation UpdateRequestEx
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -36077,25 +35563,21 @@ export const updateRequestExtraProduct = /* GraphQL */ `mutation UpdateRequestEx
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -36457,25 +35939,21 @@ export const updateRequestExtraProduct = /* GraphQL */ `mutation UpdateRequestEx
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -36793,25 +36271,21 @@ export const updateRequestExtraProduct = /* GraphQL */ `mutation UpdateRequestEx
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -37366,25 +36840,21 @@ export const updateRequestExtraProduct = /* GraphQL */ `mutation UpdateRequestEx
       referenceImages {
         type
         path
-        url
         __typename
       }
       designImages {
         type
         path
-        url
         __typename
       }
       printImages {
         type
         path
-        url
         __typename
       }
       applicationImages {
         type
         path
-        url
         __typename
       }
       ExtraProducts {
@@ -37399,7 +36869,6 @@ export const updateRequestExtraProduct = /* GraphQL */ `mutation UpdateRequestEx
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -37693,25 +37162,21 @@ export const updateRequestExtraProduct = /* GraphQL */ `mutation UpdateRequestEx
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -37805,7 +37270,6 @@ export const deleteRequestExtraProduct = /* GraphQL */ `mutation DeleteRequestEx
       images {
         type
         path
-        url
         __typename
       }
       requests {
@@ -37820,7 +37284,6 @@ export const deleteRequestExtraProduct = /* GraphQL */ `mutation DeleteRequestEx
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -38114,25 +37577,21 @@ export const deleteRequestExtraProduct = /* GraphQL */ `mutation DeleteRequestEx
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -38494,25 +37953,21 @@ export const deleteRequestExtraProduct = /* GraphQL */ `mutation DeleteRequestEx
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -38830,25 +38285,21 @@ export const deleteRequestExtraProduct = /* GraphQL */ `mutation DeleteRequestEx
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
@@ -39403,25 +38854,21 @@ export const deleteRequestExtraProduct = /* GraphQL */ `mutation DeleteRequestEx
       referenceImages {
         type
         path
-        url
         __typename
       }
       designImages {
         type
         path
-        url
         __typename
       }
       printImages {
         type
         path
-        url
         __typename
       }
       applicationImages {
         type
         path
-        url
         __typename
       }
       ExtraProducts {
@@ -39436,7 +38883,6 @@ export const deleteRequestExtraProduct = /* GraphQL */ `mutation DeleteRequestEx
             images {
               type
               path
-              url
               __typename
             }
             requests {
@@ -39730,25 +39176,21 @@ export const deleteRequestExtraProduct = /* GraphQL */ `mutation DeleteRequestEx
             referenceImages {
               type
               path
-              url
               __typename
             }
             designImages {
               type
               path
-              url
               __typename
             }
             printImages {
               type
               path
-              url
               __typename
             }
             applicationImages {
               type
               path
-              url
               __typename
             }
             ExtraProducts {
