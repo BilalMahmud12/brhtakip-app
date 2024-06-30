@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { Store } from '@/API';
-
+const requiredInputs = ['name', 'cityID', 'districtID', 'areaID', 'address'];
 interface StoreFormState {
     stores: Store[];
     storeForm: {
@@ -15,13 +15,15 @@ interface StoreFormState {
         notes?: string;
         created_by?: string;
         updated_by?: string;
+        [key: string]: string | boolean | string[] | undefined;
     };
-    errors: {
-        name?: string;
-        address?: string;
-        email?: string;
-        phones?: string;
-    };
+    validationErrors: {
+        name?: string | null;
+        cityID?: string | null;
+        districtID?: string | null;
+        areaID?: string | null;
+        address?: string | null;
+    }
 }
 
 const initialState: StoreFormState = {
@@ -38,22 +40,17 @@ const initialState: StoreFormState = {
         created_by: '',
         updated_by: '',
     },
-    errors: {},
+    validationErrors: {
+        name: null,
+        cityID: null,
+        districtID: null,
+        areaID: null,
+        address: null,
+    },
 };
 
-const isValid = (field: string, value: string): boolean => {
-    switch (field) {
-        case 'name':
-            return typeof value === 'string' && value.trim().length >= 3;
-        case 'address':
-            return typeof value === 'string' && value.trim().length >= 3;
-        case 'email':
-            return typeof value === 'string' && /\S+@\S+\.\S+/.test(value);
-        case 'phones':
-            return typeof value === 'string' && /^(\+90|0)?[5-9]\d{9}$/.test(value);
-        default:
-            return true;
-    }
+const isValidName = (name: string): boolean => {
+    return typeof name === 'string' && name.trim().length >= 3 && name !== '';
 };
 
 const storeSlice = createSlice({
@@ -82,51 +79,38 @@ const storeSlice = createSlice({
                 created_by: '',
                 updated_by: '',
             };
-            state.errors = {};
+            state.validationErrors = {};
         },
         handleFormChange: (state, action: PayloadAction<{ key: string, value: string | string[] }>) => {
             const { key, value } = action.payload;
             switch (key) {
+                case 'name':
+                    if (isValidName(value as string)) {
+                        state.storeForm.name = value as string;
+                        state.validationErrors.name = null;
+                    }
+                    break;
                 case 'cityID':
                     state.storeForm.cityID = value as string;
+                    state.validationErrors.cityID = null;
                     break;
                 case 'districtID':
                     state.storeForm.districtID = value as string;
+                    state.validationErrors.districtID = null;
                     break;
                 case 'areaID':
                     state.storeForm.areaID = value as string;
-                    break;
-                case 'name':
-                    if (isValid('name', value as string)) {
-                        state.storeForm.name = value as string;
-                        delete state.errors.name;
-                    } else {
-                        state.errors.name = 'Magaza adı zorunludur ve 3 harften fazla olmalıdır.';
-                    }
+                    state.validationErrors.areaID = null;
                     break;
                 case 'address':
-                    if (isValid('address', value as string)) {
-                        state.storeForm.address = value as string;
-                        delete state.errors.address;
-                    } else {
-                        state.errors.address = 'Adres zorunludur ve 3 harften fazla olmalıdır.';
-                    }
+                    state.storeForm.address = value as string;
+                    state.validationErrors.address = null;
                     break;
                 case 'email':
-                    if (isValid('email', value as string)) {
-                        state.storeForm.email = value as string;
-                        delete state.errors.email;
-                    } else {
-                        state.errors.email = 'Geçerli bir e-posta adresi gereklidir.';
-                    }
+                    state.storeForm.email = value as string;
                     break;
                 case 'phones':
-                    if (isValid('phones', value as string)) {
-                        state.storeForm.phones = value as string;
-                        delete state.errors.phones;
-                    } else {
-                        state.errors.phones = 'Geçerli bir Türk telefon numarası gereklidir.';
-                    }
+                    state.storeForm.phones = value as string;
                     break;
                 case 'notes':
                     state.storeForm.notes = value as string;
@@ -135,6 +119,16 @@ const storeSlice = createSlice({
                     break;
             }
         },
+        validateForm: (state) => {
+            Object.keys(state.storeForm).forEach((key) => {
+                if (requiredInputs.includes(key) && !state.storeForm[key]) {
+                    state.validationErrors = {
+                        ...state.validationErrors,
+                        [key]: key === 'name' ? 'Bu alan zorunludur ve 3 harften fazla olmalıdır' : 'Bu alan zorunludur'
+                    };
+                }
+            })
+        }
     },
 });
 
@@ -144,6 +138,7 @@ export const {
     setStoreForm,
     resetFormValues,
     handleFormChange,
+    validateForm,
 } = storeSlice.actions;
 
 export default storeSlice.reducer;

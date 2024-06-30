@@ -3,8 +3,8 @@ import React, { useEffect, useRef } from 'react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm'
 import { useRouter } from 'next-nprogress-bar';
 import * as Repo from '@/repository/index';
-import { resetFormValues, setStores, setStoreForm, handleFormChange } from '@/reduxStore/features/storeSlice';
-
+import { resetFormValues, setStores, setStoreForm, validateForm } from '@/reduxStore/features/storeSlice';
+import { toast } from 'sonner'
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -19,9 +19,14 @@ const UpdateStorePage: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
     const stores = useAppSelector((state: RootState) => state.store.stores);
     const storeForm = useAppSelector((state: RootState) => state.store.storeForm);
-    const errors = useAppSelector((state: RootState) => state.store.errors);
     const storeFormRef = useRef(storeForm);
     storeFormRef.current = storeForm;
+
+    const validationErrors = useAppSelector((state: RootState) => state.store.validationErrors);
+    const validationErrorsRef = React.useRef(validationErrors);
+    validationErrorsRef.current = validationErrors;
+
+    const isValidForm = Object.values(validationErrorsRef.current).every(value => value === null);
 
     useEffect(() => {
         const storeID = pathName.split('/').pop();
@@ -48,29 +53,24 @@ const UpdateStorePage: React.FC = () => {
     }, [pathName, stores, dispatch]);
 
     const handleCreateStore = async () => {
-        if (
-            !errors.name && storeFormRef.current.name.trim() !== '' &&
-            !errors.address && storeFormRef.current.address?.trim() !== '' &&
-            !errors.email && storeFormRef.current.email?.trim() !== '' &&
-            !errors.phones && storeFormRef.current.phones?.trim() !== ''
-        ) {
+        dispatch(validateForm());
+
+        if (!isValidForm) {
+            toast.error('Lütfen formu eksiksiz doldurunuz');
+            return;
+        } else {
             try {
                 const updateStore = await Repo.StoreRepository.update(storeFormRef.current);
-
                 if (updateStore && updateStore.data) {
-                    const newStore = await Repo.StoreRepository.getAllStores();
-                    dispatch(setStores(newStore as unknown as Store[]))
-                    router.back();
+                    const newStores = await Repo.StoreRepository.getAllStores();
+                    dispatch(setStores(newStores as unknown as Store[]));
                     dispatch(resetFormValues());
+                    toast.success('Mağaza güncellendi');
+                    router.push('/dashboard/system/stores');
                 }
             } catch (error) {
-                console.log('Faield to create store', error);
+                console.log('Error', error);
             }
-        } else {
-            dispatch(handleFormChange({ key: 'name', value: storeFormRef.current.name }));
-            dispatch(handleFormChange({ key: 'address', value: storeFormRef.current.address || '' }));
-            dispatch(handleFormChange({ key: 'email', value: storeFormRef.current.email || '' }));
-            dispatch(handleFormChange({ key: 'phones', value: storeFormRef.current.phones || '' }));
         }
     }
 
@@ -103,7 +103,7 @@ const UpdateStorePage: React.FC = () => {
             <div className='space-y-3'>
                 <CreateOrUpdateForm
                     isCreate={false}
-                    store={storeForm as Store}
+                    store={storeForm as unknown as Store}
                 />
             </div>
         </div>

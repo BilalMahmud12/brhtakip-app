@@ -23,7 +23,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     const dispatch = useAppDispatch<AppDispatch>();
     const storeForm = useAppSelector((state: RootState) => state.store.storeForm);
-    const errors = useAppSelector((state: RootState) => state.store.errors);
+    const validationErrors = useAppSelector((state: RootState) => state.store.validationErrors);
 
     const [citiesList, setCitiesList] = useState<{ id: string, label: string }[]>([]);
     const [districtsList, setDistrictsList] = useState<{ id: string, label: string, cityID: string }[]>([]);
@@ -121,8 +121,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             id='material_name'
                             variant="standard"
                             sx={{ width: '100%' }}
-                            error={!!errors.name}
-                            helperText={errors.name || ''}
+                            error={!!validationErrors.name}
+                            helperText={validationErrors.name || ''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
                             }}
@@ -146,6 +146,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 value={storeForm.cityID}
                                 onChange={handleCitySelection}
                                 label="Şehir *"
+                                error={!!validationErrors.cityID}
                             >
                                 {citiesList.map(city => (
                                     <MenuItem key={city.id} value={city.id}>{city.label}</MenuItem>
@@ -164,6 +165,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 onChange={handleDistrictSelection}
                                 label="İlçe *"
                                 disabled={!selectedCity}
+                                error={!!validationErrors.districtID}
                             >
                                 {getFilteredDistricts(selectedCity).map(district => (
                                     <MenuItem key={district.id} value={district.id}>{district.label}</MenuItem>
@@ -182,6 +184,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 onChange={handleAreaSelection}
                                 label="Mahalle *"
                                 disabled={!selectedDistrict}
+                                error={!!validationErrors.areaID}
                             >
                                 {getFilteredAreas(selectedDistrict).map(area => (
                                     <MenuItem key={area.id} value={area.id}>{area.label}</MenuItem>
@@ -199,8 +202,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 id='material_address'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                error={!!errors.address}
-                                helperText={errors.address || ''}
+                                error={!!validationErrors.address}
+                                helperText={validationErrors.address || ''}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({ key: 'address', value: event.target.value }))
                                 }}
@@ -221,8 +224,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 id='email'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                error={!!errors.email}
-                                helperText={errors.email || ''}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({ key: 'email', value: event.target.value }))
                                 }}
@@ -235,8 +236,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                                 id='phone'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                error={!!errors.phones}
-                                helperText={errors.phones || ''}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({ key: 'phones', value: event.target.value }))
                                 }}
