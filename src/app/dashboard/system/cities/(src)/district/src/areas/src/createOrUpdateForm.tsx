@@ -24,7 +24,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
     const areaForm = useAppSelector((state: RootState) => state.area.areaForm);
-    const errors = useAppSelector((state: RootState) => state.area.errors);
+    const validationErrors = useAppSelector((state: RootState) => state.area.validationErrors);
 
 
     const areaFormRef = React.useRef(areaForm)
@@ -52,8 +52,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             id='area'
                             variant="standard"
                             sx={{ width: '100%' }}
-                            error={!!errors.name}
-                            helperText={errors.name || ''}
+                            error={!!validationErrors.name}
+                            helperText={validationErrors.name || ''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
                             }}

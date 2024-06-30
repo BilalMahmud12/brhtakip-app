@@ -4,9 +4,9 @@ import { Area } from '@/API';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import * as Repo from '@/repository/index';
-import { setAreas, resetFormValues, setAreaForm, handleFormChange } from '@/reduxStore/features/areaSlice';
+import { setAreas, resetFormValues, setAreaForm, handleFormChange, validateForm } from '@/reduxStore/features/areaSlice';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
-
+import { toast } from 'sonner'
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -19,28 +19,33 @@ const UpdateAreaPage: React.FC = () => {
     const router = useRouter();
     const areaForm = useAppSelector((state: RootState) => state.area.areaForm);
     const areas = useAppSelector((state: RootState) => state.area.areas);
-    const errors = useAppSelector((state: RootState) => state.area.errors);
-
     const areaFormRef = useRef(areaForm);
     areaFormRef.current = areaForm;
 
-    const handleUpdateArea = async () => {
-        if (!errors.name && areaFormRef.current.name.trim() !== '') {
-            dispatch(handleFormChange({ key: 'name', value: areaFormRef.current.name }));
-            try {
-                const createArea = await Repo.AreaRepository.update(areaFormRef.current);
+    const validationErrors = useAppSelector((state: RootState) => state.area.validationErrors);
+    const validationErrorsRef = React.useRef(validationErrors);
+    validationErrorsRef.current = validationErrors;
 
-                if (createArea && createArea.data) {
+    const isValidForm = Object.values(validationErrorsRef.current).every(value => value === null);
+
+    const handleUpdateArea = async () => {
+        dispatch(validateForm());
+        if (!isValidForm) {
+            toast.error('Lütfen formu eksiksiz doldurunuz.');
+            return;
+        } else {
+            try {
+                const updateArea = await Repo.AreaRepository.update(areaFormRef.current);
+                if (updateArea && updateArea.data) {
                     const newAreas = await Repo.AreaRepository.getAllAreas();
                     dispatch(setAreas(newAreas as unknown as Area[]));
-                    router.back();
                     dispatch(resetFormValues());
+                    toast.success('Mahalle güncellendi.');
+                    router.back();
                 }
             } catch (error) {
-                console.log('Failed Update District', error);
+                console.log('Error', error);
             }
-        } else {
-            dispatch(handleFormChange({ key: 'name', value: areaFormRef.current.name }));
         }
     };
 
@@ -96,7 +101,7 @@ const UpdateAreaPage: React.FC = () => {
                 <div className='space-y-3'>
                     <CreateOrUpdateForm
                         isCreate={false}
-                        area={areaForm as Area}
+                        area={areaForm as unknown as Area}
                     />
                 </div>
             </div>

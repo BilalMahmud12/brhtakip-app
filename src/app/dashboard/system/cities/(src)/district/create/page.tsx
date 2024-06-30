@@ -2,8 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { useRouter } from 'next-nprogress-bar';
-import { setCities, resetFormValues, setCityForm, handleFormChange } from '@/reduxStore/features/citySlice';
-import { setDistricts } from '@/reduxStore/features/districtSlice';
+import { setDistricts, validateForm, resetFormValues } from '@/reduxStore/features/districtSlice';
 import * as Repo from '@/repository/index';
 
 import Button from '@mui/material/Button';
@@ -12,32 +11,40 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { City, District } from '@/API';
+import { toast } from 'sonner';
 
 const UpdateCity: React.FC = () => {
     const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
     const districtForm = useAppSelector((state: RootState) => state.district.districtForm);
-    const errors = useAppSelector((state: RootState) => state.district.errors);
     const districtformRef = useRef(districtForm);
     districtformRef.current = districtForm;
 
+    const validationErrors = useAppSelector((state: RootState) => state.district.validationErrors);
+    const validationErrorsRef = React.useRef(validationErrors);
+    validationErrorsRef.current = validationErrors;
+
+    const isValidForm = Object.values(validationErrorsRef.current).every(value => value === null);
+
     const handleCreateDistrict = async () => {
-        if (!errors.name && districtformRef.current.name.trim() !== '') {
-            dispatch(handleFormChange({ key: 'name', value: districtformRef.current.name }));
+        dispatch(validateForm());
+
+        if (!isValidForm) {
+            toast.error('Lütfen formu eksiksiz doldurunuz.');
+            return;
+        } else {
             try {
                 const createDistrict = await Repo.DistrictRepository.create(districtformRef.current);
-
                 if (createDistrict && createDistrict.data) {
                     const newDistricts = await Repo.DistrictRepository.getAllDistricts();
                     dispatch(setDistricts(newDistricts as unknown as District[]));
-                    router.back();
                     dispatch(resetFormValues());
+                    toast.success('İlce eklendi.');
+                    router.back();
                 }
             } catch (error) {
-                console.log('Failed Creating District', error);
+                console.log('Error', error);
             }
-        } else {
-            dispatch(handleFormChange({ key: 'name', value: districtformRef.current.name }));
         }
     };
 
