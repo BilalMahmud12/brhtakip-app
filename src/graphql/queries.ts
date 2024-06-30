@@ -13,7 +13,7 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
     id
     isActive
     name
-    image {
+    images {
       type
       path
       url
@@ -28,7 +28,7 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
           id
           isActive
           name
-          image {
+          images {
             type
             path
             url
@@ -43,7 +43,7 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -739,7 +739,7 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -918,7 +918,7 @@ export const listExtraProducts = /* GraphQL */ `query ListExtraProducts(
       id
       isActive
       name
-      image {
+      images {
         type
         path
         url
@@ -933,7 +933,7 @@ export const listExtraProducts = /* GraphQL */ `query ListExtraProducts(
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -8046,7 +8046,7 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -8885,7 +8885,7 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -9863,7 +9863,7 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -12306,7 +12306,7 @@ export const listStores = /* GraphQL */ `query ListStores(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -14051,7 +14051,7 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -15796,7 +15796,7 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -17541,7 +17541,7 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -19492,7 +19492,7 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -20212,7 +20212,7 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -21481,7 +21481,7 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
           id
           isActive
           name
-          image {
+          images {
             type
             path
             url
@@ -21496,7 +21496,7 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -22192,7 +22192,7 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -23606,7 +23606,7 @@ export const listRequests = /* GraphQL */ `query ListRequests(
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -25248,7 +25248,7 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -26890,7 +26890,7 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -27292,7 +27292,7 @@ export const getRequestExtraProduct = /* GraphQL */ `query GetRequestExtraProduc
       id
       isActive
       name
-      image {
+      images {
         type
         path
         url
@@ -27307,7 +27307,7 @@ export const getRequestExtraProduct = /* GraphQL */ `query GetRequestExtraProduc
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -28923,7 +28923,7 @@ export const getRequestExtraProduct = /* GraphQL */ `query GetRequestExtraProduc
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -29335,7 +29335,7 @@ export const listRequestExtraProducts = /* GraphQL */ `query ListRequestExtraPro
         id
         isActive
         name
-        image {
+        images {
           type
           path
           url
@@ -29350,7 +29350,7 @@ export const listRequestExtraProducts = /* GraphQL */ `query ListRequestExtraPro
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -30363,7 +30363,7 @@ export const listRequestExtraProducts = /* GraphQL */ `query ListRequestExtraPro
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -30618,7 +30618,7 @@ export const requestExtraProductsByExtraProductId = /* GraphQL */ `query Request
         id
         isActive
         name
-        image {
+        images {
           type
           path
           url
@@ -30633,7 +30633,7 @@ export const requestExtraProductsByExtraProductId = /* GraphQL */ `query Request
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -31646,7 +31646,7 @@ export const requestExtraProductsByExtraProductId = /* GraphQL */ `query Request
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -31901,7 +31901,7 @@ export const requestExtraProductsByRequestId = /* GraphQL */ `query RequestExtra
         id
         isActive
         name
-        image {
+        images {
           type
           path
           url
@@ -31916,7 +31916,7 @@ export const requestExtraProductsByRequestId = /* GraphQL */ `query RequestExtra
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -32929,7 +32929,7 @@ export const requestExtraProductsByRequestId = /* GraphQL */ `query RequestExtra
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url

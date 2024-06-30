@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { ExtraProduct } from "../API.ts";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
@@ -23,17 +23,17 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type ExtraProductUpdateFormInputValues = {
-    isActive?: string;
+    isActive?: boolean;
     name?: string;
 };
 export declare type ExtraProductUpdateFormValidationValues = {
-    isActive?: ValidationFunction<string>;
+    isActive?: ValidationFunction<boolean>;
     name?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ExtraProductUpdateFormOverridesProps = {
     ExtraProductUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    isActive?: PrimitiveOverrideProps<TextFieldProps>;
+    isActive?: PrimitiveOverrideProps<SwitchFieldProps>;
     name?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ExtraProductUpdateFormProps = React.PropsWithChildren<{

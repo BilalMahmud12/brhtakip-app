@@ -16,7 +16,7 @@ export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
     id
     isActive
     name
-    image {
+    images {
       type
       path
       url
@@ -31,7 +31,7 @@ export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
           id
           isActive
           name
-          image {
+          images {
             type
             path
             url
@@ -46,7 +46,7 @@ export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -742,7 +742,7 @@ export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -919,7 +919,7 @@ export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
     id
     isActive
     name
-    image {
+    images {
       type
       path
       url
@@ -934,7 +934,7 @@ export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
           id
           isActive
           name
-          image {
+          images {
             type
             path
             url
@@ -949,7 +949,7 @@ export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -1645,7 +1645,7 @@ export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -1822,7 +1822,7 @@ export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
     id
     isActive
     name
-    image {
+    images {
       type
       path
       url
@@ -1837,7 +1837,7 @@ export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
           id
           isActive
           name
-          image {
+          images {
             type
             path
             url
@@ -1852,7 +1852,7 @@ export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -2548,7 +2548,7 @@ export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -12649,7 +12649,7 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -13735,7 +13735,7 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -14821,7 +14821,7 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -15867,7 +15867,7 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -18560,7 +18560,7 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -21253,7 +21253,7 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               id
               isActive
               name
-              image {
+              images {
                 type
                 path
                 url
@@ -23889,7 +23889,7 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -24609,7 +24609,7 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -25878,7 +25878,7 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
           id
           isActive
           name
-          image {
+          images {
             type
             path
             url
@@ -25893,7 +25893,7 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -26589,7 +26589,7 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -27366,7 +27366,7 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -28086,7 +28086,7 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -29355,7 +29355,7 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
           id
           isActive
           name
-          image {
+          images {
             type
             path
             url
@@ -29370,7 +29370,7 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -30066,7 +30066,7 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -30843,7 +30843,7 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -31563,7 +31563,7 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -32832,7 +32832,7 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
           id
           isActive
           name
-          image {
+          images {
             type
             path
             url
@@ -32847,7 +32847,7 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -33543,7 +33543,7 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 id
                 isActive
                 name
-                image {
+                images {
                   type
                   path
                   url
@@ -33728,7 +33728,7 @@ export const createRequestExtraProduct = /* GraphQL */ `mutation CreateRequestEx
       id
       isActive
       name
-      image {
+      images {
         type
         path
         url
@@ -33743,7 +33743,7 @@ export const createRequestExtraProduct = /* GraphQL */ `mutation CreateRequestEx
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -35359,7 +35359,7 @@ export const createRequestExtraProduct = /* GraphQL */ `mutation CreateRequestEx
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -35765,7 +35765,7 @@ export const updateRequestExtraProduct = /* GraphQL */ `mutation UpdateRequestEx
       id
       isActive
       name
-      image {
+      images {
         type
         path
         url
@@ -35780,7 +35780,7 @@ export const updateRequestExtraProduct = /* GraphQL */ `mutation UpdateRequestEx
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -37396,7 +37396,7 @@ export const updateRequestExtraProduct = /* GraphQL */ `mutation UpdateRequestEx
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -37802,7 +37802,7 @@ export const deleteRequestExtraProduct = /* GraphQL */ `mutation DeleteRequestEx
       id
       isActive
       name
-      image {
+      images {
         type
         path
         url
@@ -37817,7 +37817,7 @@ export const deleteRequestExtraProduct = /* GraphQL */ `mutation DeleteRequestEx
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url
@@ -39433,7 +39433,7 @@ export const deleteRequestExtraProduct = /* GraphQL */ `mutation DeleteRequestEx
             id
             isActive
             name
-            image {
+            images {
               type
               path
               url

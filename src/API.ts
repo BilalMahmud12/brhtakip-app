@@ -4,9 +4,9 @@
 
 export type CreateExtraProductInput = {
   id?: string | null,
-  isActive?: string | null,
-  name?: string | null,
-  image?: ImageStorageItemInput | null,
+  isActive: boolean,
+  name: string,
+  images?: Array< ImageStorageItemInput | null > | null,
 };
 
 export type ImageStorageItemInput = {
@@ -16,7 +16,7 @@ export type ImageStorageItemInput = {
 };
 
 export type ModelExtraProductConditionInput = {
-  isActive?: ModelStringInput | null,
+  isActive?: ModelBooleanInput | null,
   name?: ModelStringInput | null,
   and?: Array< ModelExtraProductConditionInput | null > | null,
   or?: Array< ModelExtraProductConditionInput | null > | null,
@@ -24,6 +24,27 @@ export type ModelExtraProductConditionInput = {
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
 };
+
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export enum ModelAttributeTypes {
+  binary = "binary",
+  binarySet = "binarySet",
+  bool = "bool",
+  list = "list",
+  map = "map",
+  number = "number",
+  numberSet = "numberSet",
+  string = "string",
+  stringSet = "stringSet",
+  _null = "_null",
+}
+
 
 export type ModelStringInput = {
   ne?: string | null,
@@ -41,20 +62,6 @@ export type ModelStringInput = {
   size?: ModelSizeInput | null,
 };
 
-export enum ModelAttributeTypes {
-  binary = "binary",
-  binarySet = "binarySet",
-  bool = "bool",
-  list = "list",
-  map = "map",
-  number = "number",
-  numberSet = "numberSet",
-  string = "string",
-  stringSet = "stringSet",
-  _null = "_null",
-}
-
-
 export type ModelSizeInput = {
   ne?: number | null,
   eq?: number | null,
@@ -68,9 +75,9 @@ export type ModelSizeInput = {
 export type ExtraProduct = {
   __typename: "ExtraProduct",
   id: string,
-  isActive?: string | null,
-  name?: string | null,
-  image?: ImageStorageItem | null,
+  isActive: boolean,
+  name: string,
+  images?:  Array<ImageStorageItem | null > | null,
   requests?: ModelRequestExtraProductConnection | null,
   createdAt: string,
   updatedAt: string,
@@ -342,9 +349,9 @@ export type Material = {
 
 export type UpdateExtraProductInput = {
   id: string,
-  isActive?: string | null,
+  isActive?: boolean | null,
   name?: string | null,
-  image?: ImageStorageItemInput | null,
+  images?: Array< ImageStorageItemInput | null > | null,
 };
 
 export type DeleteExtraProductInput = {
@@ -365,13 +372,6 @@ export type ModelApplicationAreaConditionInput = {
   not?: ModelApplicationAreaConditionInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
-};
-
-export type ModelBooleanInput = {
-  ne?: boolean | null,
-  eq?: boolean | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
 };
 
 export type UpdateApplicationAreaInput = {
@@ -874,7 +874,7 @@ export type DeleteRequestExtraProductInput = {
 
 export type ModelExtraProductFilterInput = {
   id?: ModelIDInput | null,
-  isActive?: ModelStringInput | null,
+  isActive?: ModelBooleanInput | null,
   name?: ModelStringInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
@@ -1097,7 +1097,7 @@ export type ModelRequestExtraProductFilterInput = {
 
 export type ModelSubscriptionExtraProductFilterInput = {
   id?: ModelSubscriptionIDInput | null,
-  isActive?: ModelSubscriptionStringInput | null,
+  isActive?: ModelSubscriptionBooleanInput | null,
   name?: ModelSubscriptionStringInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
@@ -1118,6 +1118,11 @@ export type ModelSubscriptionIDInput = {
   beginsWith?: string | null,
   in?: Array< string | null > | null,
   notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
 };
 
 export type ModelSubscriptionStringInput = {
@@ -1143,11 +1148,6 @@ export type ModelSubscriptionApplicationAreaFilterInput = {
   updatedAt?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionApplicationAreaFilterInput | null > | null,
   or?: Array< ModelSubscriptionApplicationAreaFilterInput | null > | null,
-};
-
-export type ModelSubscriptionBooleanInput = {
-  ne?: boolean | null,
-  eq?: boolean | null,
 };
 
 export type ModelSubscriptionMaterialFilterInput = {
@@ -1337,14 +1337,14 @@ export type CreateExtraProductMutation = {
   createExtraProduct?:  {
     __typename: "ExtraProduct",
     id: string,
-    isActive?: string | null,
-    name?: string | null,
-    image?:  {
+    isActive: boolean,
+    name: string,
+    images?:  Array< {
       __typename: "ImageStorageItem",
       type?: string | null,
       path?: string | null,
       url?: string | null,
-    } | null,
+    } | null > | null,
     requests?:  {
       __typename: "ModelRequestExtraProductConnection",
       items:  Array< {
@@ -1355,14 +1355,14 @@ export type CreateExtraProductMutation = {
         extraProduct:  {
           __typename: "ExtraProduct",
           id: string,
-          isActive?: string | null,
-          name?: string | null,
-          image?:  {
+          isActive: boolean,
+          name: string,
+          images?:  Array< {
             __typename: "ImageStorageItem",
             type?: string | null,
             path?: string | null,
             url?: string | null,
-          } | null,
+          } | null > | null,
           requests?:  {
             __typename: "ModelRequestExtraProductConnection",
             items:  Array< {
@@ -1373,14 +1373,14 @@ export type CreateExtraProductMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -2069,14 +2069,14 @@ export type CreateExtraProductMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -2239,14 +2239,14 @@ export type UpdateExtraProductMutation = {
   updateExtraProduct?:  {
     __typename: "ExtraProduct",
     id: string,
-    isActive?: string | null,
-    name?: string | null,
-    image?:  {
+    isActive: boolean,
+    name: string,
+    images?:  Array< {
       __typename: "ImageStorageItem",
       type?: string | null,
       path?: string | null,
       url?: string | null,
-    } | null,
+    } | null > | null,
     requests?:  {
       __typename: "ModelRequestExtraProductConnection",
       items:  Array< {
@@ -2257,14 +2257,14 @@ export type UpdateExtraProductMutation = {
         extraProduct:  {
           __typename: "ExtraProduct",
           id: string,
-          isActive?: string | null,
-          name?: string | null,
-          image?:  {
+          isActive: boolean,
+          name: string,
+          images?:  Array< {
             __typename: "ImageStorageItem",
             type?: string | null,
             path?: string | null,
             url?: string | null,
-          } | null,
+          } | null > | null,
           requests?:  {
             __typename: "ModelRequestExtraProductConnection",
             items:  Array< {
@@ -2275,14 +2275,14 @@ export type UpdateExtraProductMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -2971,14 +2971,14 @@ export type UpdateExtraProductMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -3141,14 +3141,14 @@ export type DeleteExtraProductMutation = {
   deleteExtraProduct?:  {
     __typename: "ExtraProduct",
     id: string,
-    isActive?: string | null,
-    name?: string | null,
-    image?:  {
+    isActive: boolean,
+    name: string,
+    images?:  Array< {
       __typename: "ImageStorageItem",
       type?: string | null,
       path?: string | null,
       url?: string | null,
-    } | null,
+    } | null > | null,
     requests?:  {
       __typename: "ModelRequestExtraProductConnection",
       items:  Array< {
@@ -3159,14 +3159,14 @@ export type DeleteExtraProductMutation = {
         extraProduct:  {
           __typename: "ExtraProduct",
           id: string,
-          isActive?: string | null,
-          name?: string | null,
-          image?:  {
+          isActive: boolean,
+          name: string,
+          images?:  Array< {
             __typename: "ImageStorageItem",
             type?: string | null,
             path?: string | null,
             url?: string | null,
-          } | null,
+          } | null > | null,
           requests?:  {
             __typename: "ModelRequestExtraProductConnection",
             items:  Array< {
@@ -3177,14 +3177,14 @@ export type DeleteExtraProductMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -3873,14 +3873,14 @@ export type DeleteExtraProductMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -4494,8 +4494,8 @@ export type CreateAreaMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -5270,8 +5270,8 @@ export type UpdateAreaMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -6046,8 +6046,8 @@ export type DeleteAreaMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -7107,8 +7107,8 @@ export type CreateDistrictMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -8168,8 +8168,8 @@ export type UpdateDistrictMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -9229,8 +9229,8 @@ export type DeleteDistrictMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -10360,8 +10360,8 @@ export type CreateCityMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -11491,8 +11491,8 @@ export type UpdateCityMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -12622,8 +12622,8 @@ export type DeleteCityMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -13954,14 +13954,14 @@ export type CreateClientProfileMutation = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -15039,14 +15039,14 @@ export type UpdateClientProfileMutation = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -16124,14 +16124,14 @@ export type DeleteClientProfileMutation = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -17169,14 +17169,14 @@ export type CreateStoreMutation = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -19861,14 +19861,14 @@ export type UpdateStoreMutation = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -22553,14 +22553,14 @@ export type DeleteStoreMutation = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -25183,14 +25183,14 @@ export type CreateRequestMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -25903,14 +25903,14 @@ export type CreateRequestMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -27169,14 +27169,14 @@ export type CreateRequestMutation = {
         extraProduct:  {
           __typename: "ExtraProduct",
           id: string,
-          isActive?: string | null,
-          name?: string | null,
-          image?:  {
+          isActive: boolean,
+          name: string,
+          images?:  Array< {
             __typename: "ImageStorageItem",
             type?: string | null,
             path?: string | null,
             url?: string | null,
-          } | null,
+          } | null > | null,
           requests?:  {
             __typename: "ModelRequestExtraProductConnection",
             items:  Array< {
@@ -27187,14 +27187,14 @@ export type CreateRequestMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -27883,14 +27883,14 @@ export type CreateRequestMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -28659,14 +28659,14 @@ export type UpdateRequestMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -29379,14 +29379,14 @@ export type UpdateRequestMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -30645,14 +30645,14 @@ export type UpdateRequestMutation = {
         extraProduct:  {
           __typename: "ExtraProduct",
           id: string,
-          isActive?: string | null,
-          name?: string | null,
-          image?:  {
+          isActive: boolean,
+          name: string,
+          images?:  Array< {
             __typename: "ImageStorageItem",
             type?: string | null,
             path?: string | null,
             url?: string | null,
-          } | null,
+          } | null > | null,
           requests?:  {
             __typename: "ModelRequestExtraProductConnection",
             items:  Array< {
@@ -30663,14 +30663,14 @@ export type UpdateRequestMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -31359,14 +31359,14 @@ export type UpdateRequestMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -32135,14 +32135,14 @@ export type DeleteRequestMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -32855,14 +32855,14 @@ export type DeleteRequestMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -34121,14 +34121,14 @@ export type DeleteRequestMutation = {
         extraProduct:  {
           __typename: "ExtraProduct",
           id: string,
-          isActive?: string | null,
-          name?: string | null,
-          image?:  {
+          isActive: boolean,
+          name: string,
+          images?:  Array< {
             __typename: "ImageStorageItem",
             type?: string | null,
             path?: string | null,
             url?: string | null,
-          } | null,
+          } | null > | null,
           requests?:  {
             __typename: "ModelRequestExtraProductConnection",
             items:  Array< {
@@ -34139,14 +34139,14 @@ export type DeleteRequestMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -34835,14 +34835,14 @@ export type DeleteRequestMutation = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -35014,14 +35014,14 @@ export type CreateRequestExtraProductMutation = {
     extraProduct:  {
       __typename: "ExtraProduct",
       id: string,
-      isActive?: string | null,
-      name?: string | null,
-      image?:  {
+      isActive: boolean,
+      name: string,
+      images?:  Array< {
         __typename: "ImageStorageItem",
         type?: string | null,
         path?: string | null,
         url?: string | null,
-      } | null,
+      } | null > | null,
       requests?:  {
         __typename: "ModelRequestExtraProductConnection",
         items:  Array< {
@@ -35032,14 +35032,14 @@ export type CreateRequestExtraProductMutation = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -35050,8 +35050,8 @@ export type CreateRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -35362,8 +35362,8 @@ export type CreateRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -35742,8 +35742,8 @@ export type CreateRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -36078,8 +36078,8 @@ export type CreateRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -36648,14 +36648,14 @@ export type CreateRequestExtraProductMutation = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -36666,8 +36666,8 @@ export type CreateRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -36978,8 +36978,8 @@ export type CreateRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -37050,14 +37050,14 @@ export type UpdateRequestExtraProductMutation = {
     extraProduct:  {
       __typename: "ExtraProduct",
       id: string,
-      isActive?: string | null,
-      name?: string | null,
-      image?:  {
+      isActive: boolean,
+      name: string,
+      images?:  Array< {
         __typename: "ImageStorageItem",
         type?: string | null,
         path?: string | null,
         url?: string | null,
-      } | null,
+      } | null > | null,
       requests?:  {
         __typename: "ModelRequestExtraProductConnection",
         items:  Array< {
@@ -37068,14 +37068,14 @@ export type UpdateRequestExtraProductMutation = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -37086,8 +37086,8 @@ export type UpdateRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -37398,8 +37398,8 @@ export type UpdateRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -37778,8 +37778,8 @@ export type UpdateRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -38114,8 +38114,8 @@ export type UpdateRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -38684,14 +38684,14 @@ export type UpdateRequestExtraProductMutation = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -38702,8 +38702,8 @@ export type UpdateRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -39014,8 +39014,8 @@ export type UpdateRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -39086,14 +39086,14 @@ export type DeleteRequestExtraProductMutation = {
     extraProduct:  {
       __typename: "ExtraProduct",
       id: string,
-      isActive?: string | null,
-      name?: string | null,
-      image?:  {
+      isActive: boolean,
+      name: string,
+      images?:  Array< {
         __typename: "ImageStorageItem",
         type?: string | null,
         path?: string | null,
         url?: string | null,
-      } | null,
+      } | null > | null,
       requests?:  {
         __typename: "ModelRequestExtraProductConnection",
         items:  Array< {
@@ -39104,14 +39104,14 @@ export type DeleteRequestExtraProductMutation = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -39122,8 +39122,8 @@ export type DeleteRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -39434,8 +39434,8 @@ export type DeleteRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -39814,8 +39814,8 @@ export type DeleteRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -40150,8 +40150,8 @@ export type DeleteRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -40720,14 +40720,14 @@ export type DeleteRequestExtraProductMutation = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -40738,8 +40738,8 @@ export type DeleteRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -41050,8 +41050,8 @@ export type DeleteRequestExtraProductMutation = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -41116,14 +41116,14 @@ export type GetExtraProductQuery = {
   getExtraProduct?:  {
     __typename: "ExtraProduct",
     id: string,
-    isActive?: string | null,
-    name?: string | null,
-    image?:  {
+    isActive: boolean,
+    name: string,
+    images?:  Array< {
       __typename: "ImageStorageItem",
       type?: string | null,
       path?: string | null,
       url?: string | null,
-    } | null,
+    } | null > | null,
     requests?:  {
       __typename: "ModelRequestExtraProductConnection",
       items:  Array< {
@@ -41134,14 +41134,14 @@ export type GetExtraProductQuery = {
         extraProduct:  {
           __typename: "ExtraProduct",
           id: string,
-          isActive?: string | null,
-          name?: string | null,
-          image?:  {
+          isActive: boolean,
+          name: string,
+          images?:  Array< {
             __typename: "ImageStorageItem",
             type?: string | null,
             path?: string | null,
             url?: string | null,
-          } | null,
+          } | null > | null,
           requests?:  {
             __typename: "ModelRequestExtraProductConnection",
             items:  Array< {
@@ -41152,14 +41152,14 @@ export type GetExtraProductQuery = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -41848,14 +41848,14 @@ export type GetExtraProductQuery = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -42021,14 +42021,14 @@ export type ListExtraProductsQuery = {
     items:  Array< {
       __typename: "ExtraProduct",
       id: string,
-      isActive?: string | null,
-      name?: string | null,
-      image?:  {
+      isActive: boolean,
+      name: string,
+      images?:  Array< {
         __typename: "ImageStorageItem",
         type?: string | null,
         path?: string | null,
         url?: string | null,
-      } | null,
+      } | null > | null,
       requests?:  {
         __typename: "ModelRequestExtraProductConnection",
         items:  Array< {
@@ -42039,14 +42039,14 @@ export type ListExtraProductsQuery = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -42057,8 +42057,8 @@ export type ListExtraProductsQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -42369,8 +42369,8 @@ export type ListExtraProductsQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -42868,8 +42868,8 @@ export type GetAreaQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -44878,8 +44878,8 @@ export type GetDistrictQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -47188,8 +47188,8 @@ export type GetCityQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -49142,14 +49142,14 @@ export type GetClientProfileQuery = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -49981,14 +49981,14 @@ export type ListClientProfilesQuery = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -50959,14 +50959,14 @@ export type GetStoreQuery = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -53405,14 +53405,14 @@ export type ListStoresQuery = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -55143,14 +55143,14 @@ export type StoresByCityIDQuery = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -56881,14 +56881,14 @@ export type StoresByDistrictIDQuery = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -58619,14 +58619,14 @@ export type StoresByAreaIDQuery = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -60560,14 +60560,14 @@ export type GetRequestQuery = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -61280,14 +61280,14 @@ export type GetRequestQuery = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -62546,14 +62546,14 @@ export type GetRequestQuery = {
         extraProduct:  {
           __typename: "ExtraProduct",
           id: string,
-          isActive?: string | null,
-          name?: string | null,
-          image?:  {
+          isActive: boolean,
+          name: string,
+          images?:  Array< {
             __typename: "ImageStorageItem",
             type?: string | null,
             path?: string | null,
             url?: string | null,
-          } | null,
+          } | null > | null,
           requests?:  {
             __typename: "ModelRequestExtraProductConnection",
             items:  Array< {
@@ -62564,14 +62564,14 @@ export type GetRequestQuery = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -63260,14 +63260,14 @@ export type GetRequestQuery = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -63765,8 +63765,8 @@ export type ListRequestsQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -64101,8 +64101,8 @@ export type ListRequestsQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -64671,14 +64671,14 @@ export type ListRequestsQuery = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -64689,8 +64689,8 @@ export type ListRequestsQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -65001,8 +65001,8 @@ export type ListRequestsQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -65400,8 +65400,8 @@ export type RequestsByClientprofileIDQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -65736,8 +65736,8 @@ export type RequestsByClientprofileIDQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -66306,14 +66306,14 @@ export type RequestsByClientprofileIDQuery = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -66324,8 +66324,8 @@ export type RequestsByClientprofileIDQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -66636,8 +66636,8 @@ export type RequestsByClientprofileIDQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -67035,8 +67035,8 @@ export type RequestsByStoreIDQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -67371,8 +67371,8 @@ export type RequestsByStoreIDQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -67941,14 +67941,14 @@ export type RequestsByStoreIDQuery = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -67959,8 +67959,8 @@ export type RequestsByStoreIDQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -68271,8 +68271,8 @@ export type RequestsByStoreIDQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -68341,14 +68341,14 @@ export type GetRequestExtraProductQuery = {
     extraProduct:  {
       __typename: "ExtraProduct",
       id: string,
-      isActive?: string | null,
-      name?: string | null,
-      image?:  {
+      isActive: boolean,
+      name: string,
+      images?:  Array< {
         __typename: "ImageStorageItem",
         type?: string | null,
         path?: string | null,
         url?: string | null,
-      } | null,
+      } | null > | null,
       requests?:  {
         __typename: "ModelRequestExtraProductConnection",
         items:  Array< {
@@ -68359,14 +68359,14 @@ export type GetRequestExtraProductQuery = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -68377,8 +68377,8 @@ export type GetRequestExtraProductQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -68689,8 +68689,8 @@ export type GetRequestExtraProductQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -69069,8 +69069,8 @@ export type GetRequestExtraProductQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -69405,8 +69405,8 @@ export type GetRequestExtraProductQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -69975,14 +69975,14 @@ export type GetRequestExtraProductQuery = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -69993,8 +69993,8 @@ export type GetRequestExtraProductQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -70305,8 +70305,8 @@ export type GetRequestExtraProductQuery = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -70380,14 +70380,14 @@ export type ListRequestExtraProductsQuery = {
       extraProduct:  {
         __typename: "ExtraProduct",
         id: string,
-        isActive?: string | null,
-        name?: string | null,
-        image?:  {
+        isActive: boolean,
+        name: string,
+        images?:  Array< {
           __typename: "ImageStorageItem",
           type?: string | null,
           path?: string | null,
           url?: string | null,
-        } | null,
+        } | null > | null,
         requests?:  {
           __typename: "ModelRequestExtraProductConnection",
           items:  Array< {
@@ -70398,14 +70398,14 @@ export type ListRequestExtraProductsQuery = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -71411,14 +71411,14 @@ export type ListRequestExtraProductsQuery = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -71656,14 +71656,14 @@ export type RequestExtraProductsByExtraProductIdQuery = {
       extraProduct:  {
         __typename: "ExtraProduct",
         id: string,
-        isActive?: string | null,
-        name?: string | null,
-        image?:  {
+        isActive: boolean,
+        name: string,
+        images?:  Array< {
           __typename: "ImageStorageItem",
           type?: string | null,
           path?: string | null,
           url?: string | null,
-        } | null,
+        } | null > | null,
         requests?:  {
           __typename: "ModelRequestExtraProductConnection",
           items:  Array< {
@@ -71674,14 +71674,14 @@ export type RequestExtraProductsByExtraProductIdQuery = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -72687,14 +72687,14 @@ export type RequestExtraProductsByExtraProductIdQuery = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -72932,14 +72932,14 @@ export type RequestExtraProductsByRequestIdQuery = {
       extraProduct:  {
         __typename: "ExtraProduct",
         id: string,
-        isActive?: string | null,
-        name?: string | null,
-        image?:  {
+        isActive: boolean,
+        name: string,
+        images?:  Array< {
           __typename: "ImageStorageItem",
           type?: string | null,
           path?: string | null,
           url?: string | null,
-        } | null,
+        } | null > | null,
         requests?:  {
           __typename: "ModelRequestExtraProductConnection",
           items:  Array< {
@@ -72950,14 +72950,14 @@ export type RequestExtraProductsByRequestIdQuery = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -73963,14 +73963,14 @@ export type RequestExtraProductsByRequestIdQuery = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -74197,14 +74197,14 @@ export type OnCreateExtraProductSubscription = {
   onCreateExtraProduct?:  {
     __typename: "ExtraProduct",
     id: string,
-    isActive?: string | null,
-    name?: string | null,
-    image?:  {
+    isActive: boolean,
+    name: string,
+    images?:  Array< {
       __typename: "ImageStorageItem",
       type?: string | null,
       path?: string | null,
       url?: string | null,
-    } | null,
+    } | null > | null,
     requests?:  {
       __typename: "ModelRequestExtraProductConnection",
       items:  Array< {
@@ -74215,14 +74215,14 @@ export type OnCreateExtraProductSubscription = {
         extraProduct:  {
           __typename: "ExtraProduct",
           id: string,
-          isActive?: string | null,
-          name?: string | null,
-          image?:  {
+          isActive: boolean,
+          name: string,
+          images?:  Array< {
             __typename: "ImageStorageItem",
             type?: string | null,
             path?: string | null,
             url?: string | null,
-          } | null,
+          } | null > | null,
           requests?:  {
             __typename: "ModelRequestExtraProductConnection",
             items:  Array< {
@@ -74233,14 +74233,14 @@ export type OnCreateExtraProductSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -74929,14 +74929,14 @@ export type OnCreateExtraProductSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -75098,14 +75098,14 @@ export type OnUpdateExtraProductSubscription = {
   onUpdateExtraProduct?:  {
     __typename: "ExtraProduct",
     id: string,
-    isActive?: string | null,
-    name?: string | null,
-    image?:  {
+    isActive: boolean,
+    name: string,
+    images?:  Array< {
       __typename: "ImageStorageItem",
       type?: string | null,
       path?: string | null,
       url?: string | null,
-    } | null,
+    } | null > | null,
     requests?:  {
       __typename: "ModelRequestExtraProductConnection",
       items:  Array< {
@@ -75116,14 +75116,14 @@ export type OnUpdateExtraProductSubscription = {
         extraProduct:  {
           __typename: "ExtraProduct",
           id: string,
-          isActive?: string | null,
-          name?: string | null,
-          image?:  {
+          isActive: boolean,
+          name: string,
+          images?:  Array< {
             __typename: "ImageStorageItem",
             type?: string | null,
             path?: string | null,
             url?: string | null,
-          } | null,
+          } | null > | null,
           requests?:  {
             __typename: "ModelRequestExtraProductConnection",
             items:  Array< {
@@ -75134,14 +75134,14 @@ export type OnUpdateExtraProductSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -75830,14 +75830,14 @@ export type OnUpdateExtraProductSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -75999,14 +75999,14 @@ export type OnDeleteExtraProductSubscription = {
   onDeleteExtraProduct?:  {
     __typename: "ExtraProduct",
     id: string,
-    isActive?: string | null,
-    name?: string | null,
-    image?:  {
+    isActive: boolean,
+    name: string,
+    images?:  Array< {
       __typename: "ImageStorageItem",
       type?: string | null,
       path?: string | null,
       url?: string | null,
-    } | null,
+    } | null > | null,
     requests?:  {
       __typename: "ModelRequestExtraProductConnection",
       items:  Array< {
@@ -76017,14 +76017,14 @@ export type OnDeleteExtraProductSubscription = {
         extraProduct:  {
           __typename: "ExtraProduct",
           id: string,
-          isActive?: string | null,
-          name?: string | null,
-          image?:  {
+          isActive: boolean,
+          name: string,
+          images?:  Array< {
             __typename: "ImageStorageItem",
             type?: string | null,
             path?: string | null,
             url?: string | null,
-          } | null,
+          } | null > | null,
           requests?:  {
             __typename: "ModelRequestExtraProductConnection",
             items:  Array< {
@@ -76035,14 +76035,14 @@ export type OnDeleteExtraProductSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -76731,14 +76731,14 @@ export type OnDeleteExtraProductSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -77342,8 +77342,8 @@ export type OnCreateAreaSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -78117,8 +78117,8 @@ export type OnUpdateAreaSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -78892,8 +78892,8 @@ export type OnDeleteAreaSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -79952,8 +79952,8 @@ export type OnCreateDistrictSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -81012,8 +81012,8 @@ export type OnUpdateDistrictSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -82072,8 +82072,8 @@ export type OnDeleteDistrictSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -83202,8 +83202,8 @@ export type OnCreateCitySubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -84332,8 +84332,8 @@ export type OnUpdateCitySubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -85462,8 +85462,8 @@ export type OnDeleteCitySubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -86793,14 +86793,14 @@ export type OnCreateClientProfileSubscription = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -87877,14 +87877,14 @@ export type OnUpdateClientProfileSubscription = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -88961,14 +88961,14 @@ export type OnDeleteClientProfileSubscription = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -90005,14 +90005,14 @@ export type OnCreateStoreSubscription = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -92696,14 +92696,14 @@ export type OnUpdateStoreSubscription = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -95387,14 +95387,14 @@ export type OnDeleteStoreSubscription = {
             extraProduct:  {
               __typename: "ExtraProduct",
               id: string,
-              isActive?: string | null,
-              name?: string | null,
-              image?:  {
+              isActive: boolean,
+              name: string,
+              images?:  Array< {
                 __typename: "ImageStorageItem",
                 type?: string | null,
                 path?: string | null,
                 url?: string | null,
-              } | null,
+              } | null > | null,
               requests?:  {
                 __typename: "ModelRequestExtraProductConnection",
                 items:  Array< {
@@ -98010,14 +98010,14 @@ export type OnCreateRequestSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -98730,14 +98730,14 @@ export type OnCreateRequestSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -99996,14 +99996,14 @@ export type OnCreateRequestSubscription = {
         extraProduct:  {
           __typename: "ExtraProduct",
           id: string,
-          isActive?: string | null,
-          name?: string | null,
-          image?:  {
+          isActive: boolean,
+          name: string,
+          images?:  Array< {
             __typename: "ImageStorageItem",
             type?: string | null,
             path?: string | null,
             url?: string | null,
-          } | null,
+          } | null > | null,
           requests?:  {
             __typename: "ModelRequestExtraProductConnection",
             items:  Array< {
@@ -100014,14 +100014,14 @@ export type OnCreateRequestSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -100710,14 +100710,14 @@ export type OnCreateRequestSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -101485,14 +101485,14 @@ export type OnUpdateRequestSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -102205,14 +102205,14 @@ export type OnUpdateRequestSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -103471,14 +103471,14 @@ export type OnUpdateRequestSubscription = {
         extraProduct:  {
           __typename: "ExtraProduct",
           id: string,
-          isActive?: string | null,
-          name?: string | null,
-          image?:  {
+          isActive: boolean,
+          name: string,
+          images?:  Array< {
             __typename: "ImageStorageItem",
             type?: string | null,
             path?: string | null,
             url?: string | null,
-          } | null,
+          } | null > | null,
           requests?:  {
             __typename: "ModelRequestExtraProductConnection",
             items:  Array< {
@@ -103489,14 +103489,14 @@ export type OnUpdateRequestSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -104185,14 +104185,14 @@ export type OnUpdateRequestSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -104960,14 +104960,14 @@ export type OnDeleteRequestSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -105680,14 +105680,14 @@ export type OnDeleteRequestSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -106946,14 +106946,14 @@ export type OnDeleteRequestSubscription = {
         extraProduct:  {
           __typename: "ExtraProduct",
           id: string,
-          isActive?: string | null,
-          name?: string | null,
-          image?:  {
+          isActive: boolean,
+          name: string,
+          images?:  Array< {
             __typename: "ImageStorageItem",
             type?: string | null,
             path?: string | null,
             url?: string | null,
-          } | null,
+          } | null > | null,
           requests?:  {
             __typename: "ModelRequestExtraProductConnection",
             items:  Array< {
@@ -106964,14 +106964,14 @@ export type OnDeleteRequestSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -107660,14 +107660,14 @@ export type OnDeleteRequestSubscription = {
               extraProduct:  {
                 __typename: "ExtraProduct",
                 id: string,
-                isActive?: string | null,
-                name?: string | null,
-                image?:  {
+                isActive: boolean,
+                name: string,
+                images?:  Array< {
                   __typename: "ImageStorageItem",
                   type?: string | null,
                   path?: string | null,
                   url?: string | null,
-                } | null,
+                } | null > | null,
                 requests?:  {
                   __typename: "ModelRequestExtraProductConnection",
                   nextToken?: string | null,
@@ -107838,14 +107838,14 @@ export type OnCreateRequestExtraProductSubscription = {
     extraProduct:  {
       __typename: "ExtraProduct",
       id: string,
-      isActive?: string | null,
-      name?: string | null,
-      image?:  {
+      isActive: boolean,
+      name: string,
+      images?:  Array< {
         __typename: "ImageStorageItem",
         type?: string | null,
         path?: string | null,
         url?: string | null,
-      } | null,
+      } | null > | null,
       requests?:  {
         __typename: "ModelRequestExtraProductConnection",
         items:  Array< {
@@ -107856,14 +107856,14 @@ export type OnCreateRequestExtraProductSubscription = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -107874,8 +107874,8 @@ export type OnCreateRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -108186,8 +108186,8 @@ export type OnCreateRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -108566,8 +108566,8 @@ export type OnCreateRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -108902,8 +108902,8 @@ export type OnCreateRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -109472,14 +109472,14 @@ export type OnCreateRequestExtraProductSubscription = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -109490,8 +109490,8 @@ export type OnCreateRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -109802,8 +109802,8 @@ export type OnCreateRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -109873,14 +109873,14 @@ export type OnUpdateRequestExtraProductSubscription = {
     extraProduct:  {
       __typename: "ExtraProduct",
       id: string,
-      isActive?: string | null,
-      name?: string | null,
-      image?:  {
+      isActive: boolean,
+      name: string,
+      images?:  Array< {
         __typename: "ImageStorageItem",
         type?: string | null,
         path?: string | null,
         url?: string | null,
-      } | null,
+      } | null > | null,
       requests?:  {
         __typename: "ModelRequestExtraProductConnection",
         items:  Array< {
@@ -109891,14 +109891,14 @@ export type OnUpdateRequestExtraProductSubscription = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -109909,8 +109909,8 @@ export type OnUpdateRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -110221,8 +110221,8 @@ export type OnUpdateRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -110601,8 +110601,8 @@ export type OnUpdateRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -110937,8 +110937,8 @@ export type OnUpdateRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -111507,14 +111507,14 @@ export type OnUpdateRequestExtraProductSubscription = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -111525,8 +111525,8 @@ export type OnUpdateRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -111837,8 +111837,8 @@ export type OnUpdateRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -111908,14 +111908,14 @@ export type OnDeleteRequestExtraProductSubscription = {
     extraProduct:  {
       __typename: "ExtraProduct",
       id: string,
-      isActive?: string | null,
-      name?: string | null,
-      image?:  {
+      isActive: boolean,
+      name: string,
+      images?:  Array< {
         __typename: "ImageStorageItem",
         type?: string | null,
         path?: string | null,
         url?: string | null,
-      } | null,
+      } | null > | null,
       requests?:  {
         __typename: "ModelRequestExtraProductConnection",
         items:  Array< {
@@ -111926,14 +111926,14 @@ export type OnDeleteRequestExtraProductSubscription = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -111944,8 +111944,8 @@ export type OnDeleteRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -112256,8 +112256,8 @@ export type OnDeleteRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -112636,8 +112636,8 @@ export type OnDeleteRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -112972,8 +112972,8 @@ export type OnDeleteRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -113542,14 +113542,14 @@ export type OnDeleteRequestExtraProductSubscription = {
           extraProduct:  {
             __typename: "ExtraProduct",
             id: string,
-            isActive?: string | null,
-            name?: string | null,
-            image?:  {
+            isActive: boolean,
+            name: string,
+            images?:  Array< {
               __typename: "ImageStorageItem",
               type?: string | null,
               path?: string | null,
               url?: string | null,
-            } | null,
+            } | null > | null,
             requests?:  {
               __typename: "ModelRequestExtraProductConnection",
               items:  Array< {
@@ -113560,8 +113560,8 @@ export type OnDeleteRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
@@ -113872,8 +113872,8 @@ export type OnDeleteRequestExtraProductSubscription = {
                 extraProduct:  {
                   __typename: "ExtraProduct",
                   id: string,
-                  isActive?: string | null,
-                  name?: string | null,
+                  isActive: boolean,
+                  name: string,
                   createdAt: string,
                   updatedAt: string,
                 },
