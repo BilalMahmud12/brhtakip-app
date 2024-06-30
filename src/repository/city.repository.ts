@@ -26,6 +26,10 @@ const getCityById = async (id: string) => {
 }
 
 const create = async (city: any) => {
+    const required = ['name'];
+    if (required.some((key) => !city[key])) {
+        throw new Error('Required fields are missing');
+    }
     try {
         const data = await client.graphql({
             query: createCity,

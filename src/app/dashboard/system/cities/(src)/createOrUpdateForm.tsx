@@ -23,7 +23,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     const dispatch = useAppDispatch<AppDispatch>();
     const cityForm = useAppSelector((state: RootState) => state.city.cityForm);
-    const errors = useAppSelector((state: RootState) => state.city.errors);
+    const validationErrors = useAppSelector((state: RootState) => state.city.validationErrors);
 
     const cityformRef = useRef(cityForm);
     cityformRef.current = cityForm;
@@ -62,8 +62,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             id='material_name'
                             variant="standard"
                             sx={{ width: '100%' }}
-                            error={!!errors.name}
-                            helperText={errors.name || ''}
+                            error={!!validationErrors.name}
+                            helperText={validationErrors.name || ''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
                             }}

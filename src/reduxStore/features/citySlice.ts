@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { City } from '@/API';
 
+const requiredInputs = ['name'];
+
 interface CityFormState {
     cities: City[];
     cityForm: {
@@ -9,9 +11,10 @@ interface CityFormState {
         isActive: boolean;
         createdBy?: string;
         updatedBy?: string;
+        [key: string]: string | boolean | string[] | undefined;
     };
-    errors: {
-        name?: string;
+    validationErrors: {
+        name?: string | null;
     };
 }
 
@@ -23,7 +26,9 @@ const initialState: CityFormState = {
         createdBy: '',
         updatedBy: '',
     },
-    errors: {}
+    validationErrors: {
+        name: null,
+    },
 }
 
 const isValidName = (name: string): boolean => {
@@ -44,7 +49,7 @@ const citySlice = createSlice({
 
         setCityForm: (state, action: PayloadAction<CityFormState['cityForm']>) => {
             state.cityForm = action.payload
-            state.errors = {}
+            state.validationErrors = {}
         },
 
         resetFormValues: (state) => {
@@ -62,9 +67,9 @@ const citySlice = createSlice({
                 case 'name':
                     if (isValidName(value as string)) {
                         state.cityForm.name = value as string;
-                        delete state.errors.name;
+                        state.validationErrors.name = null;
                     } else {
-                        state.errors.name = 'Sehir adı zorunludur ve 3 harften fazla olmalıdır';
+                        state.validationErrors.name = 'Sehir adı zorunludur ve 3 harften fazla olmalıdır';
                     }
                     break;
                 case 'isActive':
@@ -79,6 +84,17 @@ const citySlice = createSlice({
                 default:
                     break;
             }
+        },
+
+        validateForm: (state) => {
+            Object.keys(state.cityForm).forEach((key) => {
+                if (requiredInputs.includes(key) && !state.cityForm[key]) {
+                    state.validationErrors = {
+                        ...state.validationErrors,
+                        [key]: key === 'name' ? 'Bu alan zorunludur ve 3 harften fazla olmalıdır' : 'Bu alan zorunludur'
+                    };
+                }
+            })
         }
     }
 })
@@ -90,6 +106,7 @@ export const {
     setCityForm,
     resetFormValues,
     handleFormChange,
+    validateForm,
 } = citySlice.actions
 
 export default citySlice.reducer

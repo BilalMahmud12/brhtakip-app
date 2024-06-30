@@ -2,10 +2,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import CreateOrUpdateForm from '../(src)/createOrUpdateForm';
 import { useRouter } from 'next-nprogress-bar';
-import { setCities, resetFormValues, setCityForm, handleFormChange } from '@/reduxStore/features/citySlice';
+import { setCities, resetFormValues, setCityForm, validateForm } from '@/reduxStore/features/citySlice';
 import { setDistricts } from '@/reduxStore/features/districtSlice';
 import * as Repo from '@/repository/index';
-
+import { toast } from 'sonner'
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -23,10 +23,15 @@ const UpdateCity: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
     const cityForm = useAppSelector((state: RootState) => state.city.cityForm);
     const cities = useAppSelector((state: RootState) => state.city.cities);
-    const errors = useAppSelector((state: RootState) => state.city.errors);
     const namePath = usePathname();
     const cityformRef = useRef(cityForm);
     cityformRef.current = cityForm;
+
+    const validationErrors = useAppSelector((state: RootState) => state.city.validationErrors);
+    const validationErrorsRef = React.useRef(validationErrors);
+    validationErrorsRef.current = validationErrors;
+
+    const isValidForm = Object.values(validationErrorsRef.current).every(value => value === null);
 
     useEffect(() => {
         const cityId = namePath?.split('/').pop();
@@ -48,22 +53,23 @@ const UpdateCity: React.FC = () => {
     }, [namePath, cities, dispatch]);
 
     async function handleUpdateCity() {
-        if (!errors.name && cityformRef.current.name.trim() !== '') {
-            dispatch(handleFormChange({ key: 'name', value: cityformRef.current.name }));
+        dispatch(validateForm());
+        if (!isValidForm) {
+            toast.error('Lütfen formu eksiksiz doldurunuz');
+            return;
+        } else {
             try {
                 const updateCity = await Repo.CityRepository.update(cityformRef.current);
-                console.log('updated City', updateCity)
                 if (updateCity && updateCity.data) {
-                    const newCity = await Repo.CityRepository.getAllCities();
-                    dispatch(setCities(newCity as unknown as City[]));
-                    router.push('/dashboard/system/cities');
+                    const newCities = await Repo.CityRepository.getAllCities();
+                    dispatch(setCities(newCities as unknown as City[]));
                     dispatch(resetFormValues());
+                    toast.success('Sehir güncellendi');
+                    router.push('/dashboard/system/cities');
                 }
             } catch (error) {
-                console.log('Failed Update City', error)
+                console.log('Error', error);
             }
-        } else {
-            dispatch(handleFormChange({ key: 'name', value: cityformRef.current.name }));
         }
     }
 
@@ -122,7 +128,7 @@ const UpdateCity: React.FC = () => {
                 <div className='space-y-3'>
                     <CreateOrUpdateForm
                         isCreate={false}
-                        city={cityForm as City}
+                        city={cityForm as unknown as City}
                     />
                 </div>
             </div>

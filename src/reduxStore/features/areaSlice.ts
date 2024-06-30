@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { Area } from '@/API';
-// district
+const requiredInputs = ['name'];
 interface AreaFormState {
     areas: Area[];
     areaForm: {
@@ -10,10 +10,11 @@ interface AreaFormState {
         name: string;
         createdBy?: string;
         updatedBy?: string;
+        [key: string]: string | boolean | string[] | undefined;
     }
-    errors: {
-        name?: string;
-    }
+    validationErrors: {
+        name?: string | null;
+    };
 }
 
 const initialState: AreaFormState = {
@@ -24,7 +25,9 @@ const initialState: AreaFormState = {
         createdBy: '',
         updatedBy: '',
     },
-    errors: {}
+    validationErrors: {
+        name: null,
+    }
 }
 
 const isValidName = (name: string): boolean => {
@@ -45,7 +48,7 @@ const areaSlice = createSlice({
 
         setAreaForm: (state, action: PayloadAction<AreaFormState['areaForm']>) => {
             state.areaForm = action.payload
-            state.errors = {}
+            state.validationErrors = {};
         },
 
         resetFormValues: (state) => {
@@ -63,9 +66,9 @@ const areaSlice = createSlice({
                 case 'name':
                     if (isValidName(value as string)) {
                         state.areaForm.name = value as string;
-                        delete state.errors.name;
+                        state.validationErrors.name = null
                     } else {
-                        state.errors.name = 'Alan adı zorunludur ve 3 harften fazla olmalıdır.'
+                        state.validationErrors.name = 'Alan adı zorunludur ve 3 harften fazla olmalıdır.'
                     }
                     break;
                 case 'districtID':
@@ -83,6 +86,17 @@ const areaSlice = createSlice({
                 default:
                     break;
             }
+        },
+
+        validateForm: (state) => {
+            Object.keys(state.areaForm).forEach((key) => {
+                if (requiredInputs.includes(key) && !state.areaForm[key]) {
+                    state.validationErrors = {
+                        ...state.validationErrors,
+                        [key]: key === 'name' ? 'Bu alan zorunludur ve 3 harften fazla olmalıdır' : 'Bu alan zorunludur'
+                    }
+                }
+            })
         }
     }
 })
@@ -93,6 +107,7 @@ export const {
     setAreaForm,
     resetFormValues,
     handleFormChange,
+    validateForm,
 } = areaSlice.actions
 
 export default areaSlice.reducer
