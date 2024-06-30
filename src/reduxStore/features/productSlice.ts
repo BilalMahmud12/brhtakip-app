@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { Product } from '@/API';
 
+const requiredInputs = ['name'];
+
 interface ProductFormState {
     products: Product[];
     productForm: {
@@ -8,9 +10,10 @@ interface ProductFormState {
         name: string;
         brandID?: string;
         isActive: boolean;
+        [key: string]: string | boolean | string[] | undefined;
     }
-    errors: {
-        name?: string;
+    validationErrors: {
+        name?: string | null;
     };
 }
 
@@ -21,7 +24,9 @@ const initialState: ProductFormState = {
         isActive: false,
         brandID: '',
     },
-    errors: {}
+    validationErrors: {
+        name: null,
+    }
 };
 
 const isValidName = (name: string): boolean => {
@@ -42,7 +47,7 @@ const productSlice = createSlice({
 
         setProductFormValues: (state, action: PayloadAction<ProductFormState['productForm']>) => {
             state.productForm = action.payload;
-            state.errors = {};
+            state.validationErrors = {};
         },
 
         handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean | string[] }>) => {
@@ -51,9 +56,9 @@ const productSlice = createSlice({
                 case 'name':
                     if (isValidName(value as string)) {
                         state.productForm.name = value as string;
-                        delete state.errors.name;
+                        state.validationErrors.name = null;
                     } else {
-                        state.errors.name = 'Ürün adı zorunludur ve 3 harften fazla olmalıdır';
+                        state.validationErrors.name = 'Ürün adı zorunludur ve 3 harften fazla olmalıdır';
                     }
                     break;
                 case 'brandID':
@@ -77,6 +82,17 @@ const productSlice = createSlice({
                 brandID: '',
             };
         },
+
+        validateForm: (state) => {
+            Object.keys(state.productForm).forEach((key) => {
+                if (requiredInputs.includes(key) && !state.productForm[key]) {
+                    state.validationErrors = {
+                        ...state.validationErrors,
+                        [key]: key === 'name' ? 'Bu alan zorunludur ve 3 harften fazla olmalıdır' : 'Bu alan zorunludur'
+                    };
+                }
+            })
+        }
     }
 });
 
@@ -86,6 +102,7 @@ export const {
     setProductFormValues,
     handleFormChange,
     resetProductFormValues,
+    validateForm,
 
 } = productSlice.actions;
 

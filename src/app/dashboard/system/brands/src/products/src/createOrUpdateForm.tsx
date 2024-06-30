@@ -29,15 +29,15 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
 
     const dispatch = useAppDispatch<AppDispatch>();
     const productForm = useAppSelector((state: RootState) => state.product.productForm);
-    const errors = useAppSelector((state: RootState) => state.product.errors);
+    const validationErrors = useAppSelector((state: RootState) => state.product.validationErrors);
     const productFormRef = useRef(productForm);
     productFormRef.current = productForm;
 
     const [checked, setChecked] = React.useState(productFormRef.current.isActive as boolean);
 
-    // useEffect(() => {
-    //     setChecked(productFormRef.current.isActive as boolean)
-    // }, [])
+    useEffect(() => {
+        setChecked(productFormRef.current.isActive as boolean)
+    }, [])
 
     useEffect(() => {
         if (!isCreate) {
@@ -70,8 +70,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
                             id='material_name'
                             variant="standard"
                             sx={{ width: '100%' }}
-                            error={!!errors.name}
-                            helperText={errors.name || ''}
+                            error={!!validationErrors.name}
+                            helperText={validationErrors.name || ''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
                             }}

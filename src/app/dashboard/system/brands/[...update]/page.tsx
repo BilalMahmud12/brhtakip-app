@@ -9,8 +9,9 @@ import { Brand, Product } from '@/API';
 import ProductsDataTable from '../src/products/src/productsDataTable';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
-import { setBrands, resetFormValues, setBrandFormValues, handleFormChange } from '@/reduxStore/features/brandSlice';
+import { setBrands, resetFormValues, setBrandFormValues, handleFormChange, validateForm } from '@/reduxStore/features/brandSlice';
 import { setProducts, resetProductFormValues, setProductFormValues } from '@/reduxStore/features/productSlice';
+import { toast } from 'sonner'
 
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
@@ -29,6 +30,12 @@ const UpdateBrand: React.FC = (() => {
 
     const brandformRef = useRef(brandForm);
     brandformRef.current = brandForm;
+
+    const validationErrors = useAppSelector((state: RootState) => state.brand.validationErrors);
+    const validationErrorsRef = React.useRef(validationErrors);
+    validationErrorsRef.current = validationErrors;
+
+    const isValidForm = Object.values(validationErrorsRef.current).every(value => value === null);
 
     useEffect(() => {
         const brandID = pathName.split('/').pop();
@@ -50,22 +57,23 @@ const UpdateBrand: React.FC = (() => {
     }, [pathName, brands, dispatch]);
 
     async function handleUpdateBrand() {
-        if (!errors.name && brandformRef.current.name.trim() !== '') {
+        dispatch(validateForm());
+        if (!isValidForm) {
+            toast.error('Lütfen formu eksiksiz doldurunuz');
+            return;
+        } else {
             try {
                 const updateBrand = await Repo.BrandRepository.update(brandformRef.current);
-
                 if (updateBrand && updateBrand.data) {
+                    const newBrand = await Repo.BrandRepository.getAllBrands();
+                    dispatch(setBrands(newBrand as unknown as Brand[]));
                     dispatch(resetFormValues());
-                    const newBrandList = await Repo.BrandRepository.getAllBrands();
-                    dispatch(setBrands(newBrandList as unknown as Brand[]));
-                    router.replace(`/dashboard/system/brands`);
+                    toast.success('Marka güncellendi');
+                    router.push('/dashboard/system/brands');
                 }
             } catch (error) {
-                console.error('Error updating brand:', error);
+                console.log('Error', error);
             }
-        } else {
-            // If there are errors, ensure the form is updated to display them
-            dispatch(handleFormChange({ key: 'name', value: brandformRef.current.name }));
         }
     }
 
