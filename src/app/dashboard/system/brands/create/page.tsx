@@ -1,11 +1,12 @@
 'use client';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 import * as Repo from '@/repository/index';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
-import { setBrandFormValues, resetFormValues, setBrands, handleFormChange } from '@/reduxStore/features/brandSlice';
+import { setBrandFormValues, resetFormValues, setBrands, handleFormChange, validateForm } from '@/reduxStore/features/brandSlice';
 import { RootState, AppDispatch } from '@/reduxStore/store';
+import {toast} from 'sonner'
 
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
@@ -21,26 +22,38 @@ const CreateBrandPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const router = useRouter();
     const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
-    const errors = useAppSelector((state: RootState) => state.brand.errors);
     const brandFormRef = React.useRef(brandForm);
     brandFormRef.current = brandForm;
+    
+    const validationErrors = useAppSelector((state: RootState) => state.brand.validationErrors);
+    const validationErrorsRef = React.useRef(validationErrors);
+    validationErrorsRef.current = validationErrors;
+
+    const isValidForm = Object.values(validationErrorsRef.current).every(value => value === null);
 
     const handleCreateBrand = async () => {
-        if (!errors.name && brandFormRef.current.name.trim() !== '') {
+        dispatch(validateForm());
+        console.log('isValidForm', isValidForm)
+        console.log('Validation Errors', validationErrorsRef.current)
+        
+        if (!isValidForm) {
+            toast.error('Lütfen formu eksiksiz doldurunuz');
+            return;
+        } else {
+            // remove this console log
+            console.log('Validation Success');
             try {
                 const createBrand = await Repo.BrandRepository.create(brandFormRef.current);
                 if (createBrand && createBrand.data) {
                     const newbrand = await Repo.BrandRepository.getAllBrands();
                     dispatch(setBrands(newbrand as unknown as Brand[]));
                     dispatch(resetFormValues());
+                    toast.success('Marka başarıyla oluşturuldu');
                     router.replace('/dashboard/system/brands');
                 }
             } catch (error) {
                 console.log('Error', error);
             }
-        } else {
-            // If there are errors, ensure the form is updated to display them
-            dispatch(handleFormChange({ key: 'name', value: brandFormRef.current.name }));
         }
     };
 

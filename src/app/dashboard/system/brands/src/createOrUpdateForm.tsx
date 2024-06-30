@@ -22,11 +22,12 @@ interface CreateOrUpdateFormProps {
 const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
     {
         isCreate = true,
-        brand = {} as Brand }
+        brand = {} as Brand
+    }
 ) => {
     const dispatch = useAppDispatch<AppDispatch>();
     const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
-    const errors = useAppSelector((state: RootState) => state.brand.errors);
+    const validationErrors = useAppSelector((state: RootState) => state.brand.validationErrors);
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
     const currentUserProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const brandFormRef = React.useRef(brandForm);
@@ -96,8 +97,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
                             id='name'
                             variant="standard"
                             sx={{ width: '100%' }}
-                            error={!!errors.name}
-                            helperText={errors.name || ''}
+                            error={!!validationErrors?.name}
+                            helperText={validationErrors?.name || ''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 const value = event.target.value;
                                 dispatch(handleFormChange({ key: 'name', value }));

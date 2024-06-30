@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { Brand } from '@/API';
 
+const requiredInputs = ['name', 'clientprofileID'];
+
 interface BrandFormState {
     brands: Brand[];
     brandForm: {
@@ -8,10 +10,12 @@ interface BrandFormState {
         name: string;
         isActive: boolean;
         clientprofileID?: string;
-    };
-    errors: {
-        name?: string;
-    };
+        [key: string]: string | boolean | string[] | undefined;
+    }
+    validationErrors: {
+        name?: string | null;
+        clientprofileID?: string | null;
+    }
 }
 
 const initialState: BrandFormState = {
@@ -21,7 +25,10 @@ const initialState: BrandFormState = {
         clientprofileID: '',
         isActive: false
     },
-    errors: {}
+    validationErrors: {
+        name: null,
+        clientprofileID: null
+    }
 };
 
 const isValidName = (name: string): boolean => {
@@ -35,20 +42,18 @@ const brandSlice = createSlice({
         setBrands: (state, action: PayloadAction<Brand[]>) => {
             state.brands = action.payload;
         },
-
         addBrand: (state, action: PayloadAction<Brand>) => {
             state.brands.push(action.payload);
         },
-
         handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean | string[] }>) => {
             const { key, value } = action.payload;
             switch (key) {
                 case 'name':
                     if (isValidName(value as string)) {
                         state.brandForm.name = value as string;
-                        delete state.errors.name;
+                        state.validationErrors.name = null;
                     } else {
-                        state.errors.name = 'Marka adı zorunludur ve 3 harften fazla olmalıdır';
+                        state.validationErrors.name = 'Marka adı zorunludur ve 3 harften fazla olmalıdır';
                     }
                     break;
                 case 'isActive':
@@ -56,6 +61,7 @@ const brandSlice = createSlice({
                     break;
                 case 'clientprofileID':
                     state.brandForm.clientprofileID = value as string;
+                    state.validationErrors.clientprofileID = null;
                     break;
                 case 'id':
                     state.brandForm.id = value as string;
@@ -70,13 +76,22 @@ const brandSlice = createSlice({
                 clientprofileID: '',
                 isActive: false
             };
-            state.errors = {};
+            state.validationErrors = {};
         },
-
         setBrandFormValues(state, action: PayloadAction<BrandFormState['brandForm']>) {
             state.brandForm = action.payload;
-            state.errors = {};
+            state.validationErrors = {};
         },
+        validateForm: (state) => {
+           Object.keys(state.brandForm).forEach((key) => {
+                if (requiredInputs.includes(key) && !state.brandForm[key]) {
+                     state.validationErrors = {
+                          ...state.validationErrors,
+                         [key]: key === 'name' ? 'Bu alan zorunludur ve 3 harften fazla olmalıdır' : 'Bu alan zorunludur'
+                     };
+                }
+              })
+        }
     }
 });
 
@@ -85,7 +100,8 @@ export const {
     addBrand,
     setBrandFormValues,
     handleFormChange,
-    resetFormValues
+    resetFormValues,
+    validateForm
 } = brandSlice.actions;
 
 export default brandSlice.reducer;
