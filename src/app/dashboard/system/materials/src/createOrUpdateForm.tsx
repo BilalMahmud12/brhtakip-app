@@ -31,7 +31,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
     const materialForm = useAppSelector((state: RootState) => state.material.materialForm);
-    const errors = useAppSelector((state: RootState) => state.material.errors);
+    const validationErrors = useAppSelector((state: RootState) => state.material.validationErrors);
     const materialFormRef = React.useRef(materialForm)
     materialFormRef.current = materialForm
 
@@ -68,8 +68,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             id='material_name'
                             variant="standard"
                             sx={{ width: '100%' }}
-                            error={!!errors.name}
-                            helperText={errors.name || ''}
+                            error={!!validationErrors?.name}
+                            helperText={validationErrors?.name || ''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
                             }}

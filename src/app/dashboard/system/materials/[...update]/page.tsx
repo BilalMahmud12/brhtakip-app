@@ -4,7 +4,7 @@ import { Material } from '@/API';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import * as Repo from '@/repository/index';
-import { setMaterials, resetFormValues, setMaterialForm, handleFormChange } from '@/reduxStore/features/materialSlice';
+import { setMaterials, resetFormValues, setMaterialForm, handleFormChange, validateForm } from '@/reduxStore/features/materialSlice';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 
 
@@ -13,6 +13,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next-nprogress-bar';
+import { toast } from 'sonner'
 
 const UpdateMaterialPage: React.FC = () => {
     const router = useRouter()
@@ -20,9 +21,13 @@ const UpdateMaterialPage: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
     const materialForm = useAppSelector((state: RootState) => state.material.materialForm);
     const materials = useAppSelector((state: RootState) => state.material.materials);
-    const errors = useAppSelector((state: RootState) => state.material.errors);
     const materialformRef = useRef(materialForm);
     materialformRef.current = materialForm;
+
+    const validationErrors = useAppSelector((state: RootState) => state.material.validationErrors);
+    const validationErrorsRef = React.useRef(validationErrors);
+    validationErrorsRef.current = validationErrors;
+    const isValidForm = Object.values(validationErrorsRef.current).every(value => value === null);
 
     useEffect(() => {
         const materialId = pathName.split('/').pop();
@@ -43,25 +48,26 @@ const UpdateMaterialPage: React.FC = () => {
     }, [pathName, materials, dispatch]);
 
     const handleUpdateMaterial = async () => {
-        if (!errors.name && materialformRef.current.name.trim() !== '') {
-            dispatch(handleFormChange({ key: 'name', value: materialformRef.current.name }));
+        dispatch(validateForm());
+        if (!isValidForm) {
+            toast.error('Lütfen formu eksiksiz doldurunuz');
+            return;
+        } else {
             try {
                 const updateMaterial = await Repo.MaterialRepository.update(materialformRef.current);
-
                 if (updateMaterial && updateMaterial.data) {
-                    const newMaterials = await Repo.MaterialRepository.getAllMaterials();
-                    dispatch(setMaterials(newMaterials as unknown as Material[]));
+                    const newMaterial = await Repo.MaterialRepository.getAllMaterials();
+                    dispatch(setMaterials(newMaterial as unknown as Material[]));
                     dispatch(resetFormValues());
-                    router.back();
+                    toast.success('Malzeme güncellendi');
+                    router.push('/dashboard/system/materials');
                 }
             } catch (error) {
                 console.log('Error', error);
             }
-        } else {
-            // If there are errors, ensure the form is updated to display them
-            dispatch(handleFormChange({ key: 'name', value: materialformRef.current.name }));
         }
     };
+
 
     return (
         <div>

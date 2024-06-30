@@ -1,15 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { Material } from '@/API';
 
+const requiredInputs = ['name'];
+
 interface MaterialState {
     materials: Material[];
     materialForm: {
         id?: string;
         name: string;
         isActive: boolean;
+        [key: string]: string | boolean | string[] | undefined;
     }
-    errors: {
-        name?: string;
+    validationErrors: {
+        name?: string | null;
     };
 }
 
@@ -19,7 +22,9 @@ const initialState: MaterialState = {
         name: '',
         isActive: false,
     },
-    errors: {}
+    validationErrors: {
+        name: null,
+    }
 }
 
 const isValidName = (name: string): boolean => {
@@ -40,7 +45,7 @@ const materialSlice = createSlice({
 
         setMaterialForm: (state, action: PayloadAction<MaterialState['materialForm']>) => {
             state.materialForm = action.payload;
-            state.errors = {};
+            state.validationErrors = {};
         },
 
         resetFormValues: (state) => {
@@ -56,9 +61,9 @@ const materialSlice = createSlice({
                 case 'name':
                     if (isValidName(value as string)) {
                         state.materialForm.name = value as string;
-                        delete state.errors.name;
+                        state.validationErrors.name = null;
                     } else {
-                        state.errors.name = 'Malzeme adı zorunludur ve 3 harften fazla olmalıdır';
+                        state.validationErrors.name = 'Malzeme adı zorunludur ve 3 harften fazla olmalıdır';
                     }
                     break;
                 case 'isActive':
@@ -70,6 +75,16 @@ const materialSlice = createSlice({
                 default:
                     break;
             }
+        },
+        validateForm: (state) => {
+            Object.keys(state.materialForm).forEach((key) => {
+                if (requiredInputs.includes(key) && !state.materialForm[key]) {
+                    state.validationErrors = {
+                        ...state.validationErrors,
+                        [key]: key === 'name' ? 'Bu alan zorunludur ve 3 harften fazla olmalıdır' : 'Bu alan zorunludur'
+                    };
+                }
+            })
         }
     },
 })
@@ -80,6 +95,7 @@ export const {
     handleFormChange,
     addMaterial,
     resetFormValues,
+    validateForm,
 } = materialSlice.actions;
 
 export default materialSlice.reducer

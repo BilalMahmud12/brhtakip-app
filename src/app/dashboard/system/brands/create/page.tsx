@@ -6,7 +6,7 @@ import * as Repo from '@/repository/index';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { setBrandFormValues, resetFormValues, setBrands, handleFormChange, validateForm } from '@/reduxStore/features/brandSlice';
 import { RootState, AppDispatch } from '@/reduxStore/store';
-import {toast} from 'sonner'
+import { toast } from 'sonner'
 
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
@@ -24,7 +24,7 @@ const CreateBrandPage: React.FC = () => {
     const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
     const brandFormRef = React.useRef(brandForm);
     brandFormRef.current = brandForm;
-    
+
     const validationErrors = useAppSelector((state: RootState) => state.brand.validationErrors);
     const validationErrorsRef = React.useRef(validationErrors);
     validationErrorsRef.current = validationErrors;
@@ -35,13 +35,11 @@ const CreateBrandPage: React.FC = () => {
         dispatch(validateForm());
         console.log('isValidForm', isValidForm)
         console.log('Validation Errors', validationErrorsRef.current)
-        
+
         if (!isValidForm) {
             toast.error('Lütfen formu eksiksiz doldurunuz');
             return;
         } else {
-            // remove this console log
-            console.log('Validation Success');
             try {
                 const createBrand = await Repo.BrandRepository.create(brandFormRef.current);
                 if (createBrand && createBrand.data) {

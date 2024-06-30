@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { useRouter } from 'next-nprogress-bar';
-import { setMaterials, resetFormValues, handleFormChange } from '@/reduxStore/features/materialSlice';
+import { setMaterials, resetFormValues, handleFormChange, validateForm } from '@/reduxStore/features/materialSlice';
 import * as Repo from '@/repository/index';
 
 import Button from '@mui/material/Button';
@@ -11,35 +11,39 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { Material } from '@/API';
+import { toast } from 'sonner'
 
 
 const CreateMaterialPage: React.FC = () => {
     const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
     const materialForm = useAppSelector((state: RootState) => state.material.materialForm);
-    const errors = useAppSelector((state: RootState) => state.material.errors);
     const materialformRef = useRef(materialForm);
     materialformRef.current = materialForm;
 
+    const validationErrors = useAppSelector((state: RootState) => state.material.validationErrors);
+    const validationErrorsRef = React.useRef(validationErrors);
+    validationErrorsRef.current = validationErrors;
 
+    const isValidForm = Object.values(validationErrorsRef.current).every(value => value === null);
     const handleCreateMaterial = async () => {
-        if (!errors.name && materialformRef.current.name.trim() !== '') {
-            dispatch(handleFormChange({ key: 'name', value: materialformRef.current.name }));
+        dispatch(validateForm());
+        if (!isValidForm) {
+            toast.error('Lütfen formu eksiksiz doldurunuz');
+            return;
+        } else {
             try {
                 const createMaterial = await Repo.MaterialRepository.create(materialformRef.current);
-
                 if (createMaterial && createMaterial.data) {
-                    const newMaterials = await Repo.MaterialRepository.getAllMaterials();
-                    dispatch(setMaterials(newMaterials as unknown as Material[]));
+                    const newMaterial = await Repo.MaterialRepository.getAllMaterials();
+                    dispatch(setMaterials(newMaterial as unknown as Material[]));
                     dispatch(resetFormValues());
-                    router.back();
+                    toast.success('Malzeme başarıyla oluşturuldu');
+                    router.push('/dashboard/system/materials');
                 }
             } catch (error) {
                 console.log('Error', error);
             }
-        } else {
-            // If there are errors, ensure the form is updated to display them
-            dispatch(handleFormChange({ key: 'name', value: materialformRef.current.name }));
         }
     };
 

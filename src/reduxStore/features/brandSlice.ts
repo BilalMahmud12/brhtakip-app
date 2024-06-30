@@ -83,14 +83,14 @@ const brandSlice = createSlice({
             state.validationErrors = {};
         },
         validateForm: (state) => {
-           Object.keys(state.brandForm).forEach((key) => {
+            Object.keys(state.brandForm).forEach((key) => {
                 if (requiredInputs.includes(key) && !state.brandForm[key]) {
-                     state.validationErrors = {
-                          ...state.validationErrors,
-                         [key]: key === 'name' ? 'Bu alan zorunludur ve 3 harften fazla olmalıdır' : 'Bu alan zorunludur'
-                     };
+                    state.validationErrors = {
+                        ...state.validationErrors,
+                        [key]: key === 'name' ? 'Bu alan zorunludur ve 3 harften fazla olmalıdır' : 'Bu alan zorunludur'
+                    };
                 }
-              })
+            })
         }
     }
 });

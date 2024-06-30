@@ -23,10 +23,9 @@ const UpdateBrand: React.FC = (() => {
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
     const dispatch = useAppDispatch<AppDispatch>();
-    const products = useAppSelector((state: RootState) => state.product.products); // Assuming you have products in your Redux store
+    const products = useAppSelector((state: RootState) => state.product.products);
     const brands = useAppSelector((state: RootState) => state.brand.brands);
     const brandForm = useAppSelector((state: RootState) => state.brand.brandForm);
-    const errors = useAppSelector((state: RootState) => state.brand.errors);
 
     const brandformRef = useRef(brandForm);
     brandformRef.current = brandForm;
@@ -123,7 +122,7 @@ const UpdateBrand: React.FC = (() => {
                     {brands.length > 0 && (
                         <CreateOrUpdateForm
                             isCreate={false}
-                            brand={brandForm as Brand}
+                            brand={brandForm as unknown as Brand}
                         />
                     )}
                 </div>
