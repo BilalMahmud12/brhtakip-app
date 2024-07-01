@@ -111,6 +111,7 @@ const FileDisplay: React.FC<FileDisplayProps> = (props) => {
                     startIcon={<CloudDownloadIcon />}
                     disabled={files.length === 0}
                     onClick={handleDownloadAllFiles}
+                    className='w-full sm:w-auto'
                 >
                     Dosyaları İndir ( {files?.length || 0} Dosya )
                 </Button>

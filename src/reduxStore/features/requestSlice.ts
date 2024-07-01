@@ -7,6 +7,23 @@ export type ImageStorage = {
     path: string;
 }
 
+export type DesignRevision = {
+    date: string;
+    note: string;
+    images: string[];
+    owner: {
+        id: string;
+        name: string;
+        role: string;
+    }
+}
+
+export type ExtraProductRequest = {
+    productionId: number;
+    quantity: number;
+    note: string;
+}
+
 interface RequestState {
     isFetching: boolean;
     requests: Request[];
@@ -33,6 +50,9 @@ interface RequestState {
         designImages?: ImageStorage[];
         printImages?: ImageStorage[];
         applicationImages?: ImageStorage[];
+        designRevisions?: DesignRevision[];
+        extraProductRequests?: ExtraProductRequest[];
+        passedRevision?: boolean;
     },
     selectedRequests: string[],
     [key: string]: any;
@@ -65,7 +85,10 @@ const initialState: RequestState = {
         printImages: [],
         applicationImages: []
     },
-    selectedRequests: []
+    selectedRequests: [],
+    designRevisions: [],
+    extraProductRequests: [],
+    passedRevision: false
 };
 
 const requestSlice = createSlice({

@@ -33,7 +33,7 @@ const RequestDesignPhotos: React.FC = () => {
         <React.Fragment>
             <h2 className='text-base font-semibold mb-6'>Tasarım Görseller</h2>
 
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 lg:gap-x-6 gap-y-8 mb-4'>
                 <div className='input-group w-full col-span-1'>
                     <MediaUploadManager
                         basePath='public'
