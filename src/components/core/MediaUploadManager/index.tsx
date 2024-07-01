@@ -30,7 +30,7 @@ const MediaUploadManager: React.FC<MediaUploadManagerProps> = (props) => {
             path={targetPath}
             maxFileCount={50}
             displayText={dictionary['tr']}
-            autoUpload={false}
+            autoUpload={true}
             onUploadSuccess={({ key }) => {
                 setFiles((prevFiles) => {
                     const updatedFiles = {

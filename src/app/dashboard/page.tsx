@@ -16,7 +16,7 @@ function Dashboard() {
                 <div className='text-lg font-medium'>Merhaba {userProfile.firstName}!</div>
             </div>
 
-            <div className='px-4 py-6'>
+            <div className='px-4 pt-3 pb-8'>
                 {/* <Charts /> */}
                 <DashboardView />
             </div>

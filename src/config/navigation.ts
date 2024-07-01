@@ -54,7 +54,7 @@ export const navigation = [
         show_title: true,
         items: [
             { name: 'Kullanıcılar', href: '/dashboard/users', icon: 'FcConferenceCall' },
-            { name: 'Sistem Ayarları', href: '/dashboard/system-settings', icon: 'FcSettings' },
+            // { name: 'Sistem Ayarları', href: '/dashboard/system-settings', icon: 'FcSettings' },
         ]
     }
 ]

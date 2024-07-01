@@ -4,12 +4,6 @@ import MediaUploadManager from '@/components/core/MediaUploadManager';
 import { handleFormChange } from '@/reduxStore/features/requestSlice';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { RootState } from '@/reduxStore/store';
-import IconButton from '@mui/material/IconButton';
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
-import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
-import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
-import { StorageImage } from '@aws-amplify/ui-react-storage';
 import FileDisplay from '@/components/core/fileDisplay';
 
 const RequestDesignPhotos: React.FC = () => {
@@ -37,7 +31,7 @@ const RequestDesignPhotos: React.FC = () => {
 
     return (
         <React.Fragment>
-            <h2 className='text-base font-semibold mb-6'>Tasarım ve Revizeler</h2>
+            <h2 className='text-base font-semibold mb-6'>Tasarım Görseller</h2>
 
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
                 <div className='input-group w-full col-span-1'>
