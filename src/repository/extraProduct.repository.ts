@@ -27,7 +27,7 @@ export const getExtraProductById = async (id: string) => {
 
 export const create = async (extraProduct: any) => {
     try {
-        const { data } = await client.graphql({
+        const data = await client.graphql({
             query: createExtraProduct,
             variables: { input: extraProduct },
         });
@@ -40,7 +40,7 @@ export const create = async (extraProduct: any) => {
 
 export const update = async (extraProduct: any) => {
     try {
-        const { data } = await client.graphql({
+        const data = await client.graphql({
             query: updateExtraProduct,
             variables: { input: extraProduct },
         });

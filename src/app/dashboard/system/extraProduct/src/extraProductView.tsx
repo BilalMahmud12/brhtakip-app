@@ -11,12 +11,26 @@ import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import { ExtraProduct } from '@/API';
 import ExtraProductsDataTable from './extraProductsDataTable';
+import { toast } from 'sonner';
 
 const ExtraProductView: React.FC = () => {
 
     const dispatch = useAppDispatch();
     const router = useRouter();
     const extraProducts = useAppSelector((state: RootState) => state.extraProduct.extraProducts);
+
+    const handleDeleteExtraProduct = async (data: any) => {
+        try {
+            const deleteExtraProduct = await Repo.ExtraProductRepository.default.softDelete(data.originalData.id);
+            if (deleteExtraProduct && deleteExtraProduct.data) {
+                const newExtraProducts = await Repo.ExtraProductRepository.default.getAllExtraProducts();
+                dispatch(setExtraProducts(newExtraProducts as unknown as ExtraProduct[]));
+                toast.success('Ürun Silindi');
+            }
+        } catch (error) {
+            console.log('Failed Delete Extra Product', error)
+        }
+    }
 
     return (
         <div className="mb-8">
@@ -30,7 +44,7 @@ const ExtraProductView: React.FC = () => {
                             <Button
                                 variant="contained"
                                 startIcon={<AddIcon />}
-                            // onClick={() => router.push('/dashboard/system/extraProduct/create')}
+                                onClick={() => router.push('/dashboard/system/extraProduct/create')}
                             >
                                 Ürun Ekle
                             </Button>
@@ -41,7 +55,7 @@ const ExtraProductView: React.FC = () => {
                 <div className='mt-8 bg-white shadow'>
                     <ExtraProductsDataTable
                         dataPayload={extraProducts}
-                    // onDelete={ }
+                        onDelete={handleDeleteExtraProduct}
                     // handleEdit={ }
                     />
                 </div>
