@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { ClientProfile } from '@/API'
 
-const requiredInputs = ['name', 'contactEmail']; // Add 'rootUserId'
+const requiredInputs = ['name', 'contactEmail']; // => Add 'rootUserId' , Add 'rootUserId' in the create function in the repository
 
 interface GlobalState {
     isFetching: boolean;
@@ -88,6 +88,8 @@ const globalSlice = createSlice({
                     if (isValidName(value as string)) {
                         state.clientProfileForm.name = value as string;
                         state.validationErrors.name = null;
+                    } else {
+                        state.validationErrors.name = 'Bu alan zorunludur ve 3 harften fazla olmalıdır'
                     }
                     break
                 case 'isActive':
@@ -100,6 +102,8 @@ const globalSlice = createSlice({
                     if (isValidEmail(value as string)) {
                         state.clientProfileForm.contactEmail = value as string;
                         state.validationErrors.contactEmail = null;
+                    } else {
+                        state.validationErrors.contactEmail = 'example@example.com formatında bir email adresi giriniz'
                     }
                     break
                 case 'contactPhone':
@@ -119,7 +123,7 @@ const globalSlice = createSlice({
                     state.validationErrors = {
                         ...state.validationErrors,
                         [key]: key === 'name' ? 'Bu alan zorunludur ve 3 harften fazla olmalıdır' : 'Bu alan zorunludur',
-                        [key]: key === 'contactEmail' ? 'Bu alan zorunludur' : 'Bu alan zorunludur'
+                        [key]: key === 'contactEmail' ? 'example@example.com formatında bir email adresi giriniz' : 'Bu alan zorunludur'
                     }
                 }
             })

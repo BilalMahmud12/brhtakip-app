@@ -59,6 +59,7 @@ const CreateClientPage: React.FC = () => {
                         startIcon={<ArrowBackIosIcon />}
                         onClick={() => {
                             router.push('/dashboard/clients');
+                            dispatch(validateForm());
                         }}
                     >
                         Firmalara Geri Dön

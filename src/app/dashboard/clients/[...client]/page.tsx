@@ -85,7 +85,10 @@ const UpdateClientPage: React.FC = () => {
                         <Button
                             variant="text"
                             startIcon={<ArrowBackIosIcon />}
-                            onClick={() => router.push('/dashboard/clients')}
+                            onClick={() => {
+                                router.push('/dashboard/clients');
+                                dispatch(resetClientForm());
+                            }}
                         >
                             Firmalara Geri Dön
                         </Button>
