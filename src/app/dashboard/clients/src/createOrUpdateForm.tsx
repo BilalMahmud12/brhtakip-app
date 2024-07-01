@@ -25,7 +25,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
     const dispatch = useAppDispatch<AppDispatch>();
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
     const clientProfileForm = useAppSelector((state: RootState) => state.client.clientProfileForm);
-    // const validationErrors = useAppSelector((state: RootState) => state.client.validationErrors);
+    const validationErrors = useAppSelector((state: RootState) => state.client.validationErrors);
     const clientFormRef = React.useRef(clientProfileForm);
     clientFormRef.current = clientProfileForm;
 
@@ -54,7 +54,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
 
         dispatch(handleFormChange({ key: 'name', value: name as string }))
         dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
-        dispatch(handleFormChange({ key: 'rootUserId', value: rootUserId as string }))
+        // dispatch(handleFormChange({ key: 'rootUserId', value: rootUserId as string }))
         dispatch(handleFormChange({ key: 'contactEmail', value: contactEmail as string }))
         dispatch(handleFormChange({ key: 'contactPhone', value: contactPhone as string }))
         dispatch(handleFormChange({ key: 'address', value: address as string }))
@@ -72,6 +72,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
                                 <TextField
                                     id='client_name'
                                     variant="standard"
+                                    error={!!validationErrors?.name}
+                                    helperText={validationErrors?.name || ''}
                                     sx={{ width: '100%' }}
                                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                         dispatch(handleFormChange({ key: 'name', value: event.target.value }))
@@ -100,6 +102,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
                                     id='contact_email'
                                     variant="standard"
                                     sx={{ width: '100%' }}
+                                    error={!!validationErrors?.contactEmail}
+                                    helperText={validationErrors?.contactEmail || ''}
                                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                         dispatch(handleFormChange({ key: 'contactEmail', value: event.target.value }))
                                     }}

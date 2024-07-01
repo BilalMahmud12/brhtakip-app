@@ -28,6 +28,12 @@ const getClientProfileById = async (id: string) => {
 const create = async (clientProfile: any) => {
     console.log("Client Profile repo create", clientProfile)
 
+    // Add 'rootUserId'
+    const required = ['name', 'contactEmail'];
+    if (required.some((key) => !clientProfile[key])) {
+        throw new Error('Required fields are missing');
+    }
+
     try {
         const data = await client.graphql({
             query: createClientProfile,

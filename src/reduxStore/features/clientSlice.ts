@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { ClientProfile } from '@/API'
 
-const requiredInputs = [];
+const requiredInputs = ['name', 'contactEmail']; // Add 'rootUserId'
 
 interface GlobalState {
     isFetching: boolean;
@@ -11,9 +11,15 @@ interface GlobalState {
         isActive?: boolean,
         name?: string,
         rootUserId?: string,
-        contactEmail?: string | null,
+        contactEmail?: string,
         contactPhone?: string,
         address?: string,
+        [key: string]: string | boolean | string[] | undefined;
+    }
+    validationErrors: {
+        name?: string | null,
+        rootUserId?: string | null,
+        contactEmail?: string | null,
     }
 }
 
@@ -23,10 +29,25 @@ const initialState: GlobalState = {
     clientProfileForm: {
         name: '',
         isActive: false,
-        rootUserId: '',
+        // rootUserId: '',
         contactEmail: '',
+    },
+    validationErrors: {
+        name: null,
+        // rootUserId: null,
+        contactEmail: null,
     }
 }
+
+const isValidName = (name: string): boolean => {
+    return typeof name === 'string' && name.trim().length >= 3 && name !== ''
+}
+
+const isValidEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+};
+
 
 const globalSlice = createSlice({
     name: 'global',
@@ -47,22 +68,27 @@ const globalSlice = createSlice({
 
         setClientProfileForm: (state, action: PayloadAction<GlobalState['clientProfileForm']>) => {
             state.clientProfileForm = action.payload
+            state.validationErrors = {};
         },
 
         resetClientForm: (state) => {
             state.clientProfileForm = {
                 name: '',
                 isActive: false,
-                rootUserId: '',
+                // rootUserId: '',
                 contactEmail: '',
             }
+            state.validationErrors = {};
         },
 
         handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean | string[] }>) => {
             const { key, value } = action.payload
             switch (key) {
                 case 'name':
-                    state.clientProfileForm.name = value as string
+                    if (isValidName(value as string)) {
+                        state.clientProfileForm.name = value as string;
+                        state.validationErrors.name = null;
+                    }
                     break
                 case 'isActive':
                     state.clientProfileForm.isActive = value as boolean
@@ -71,7 +97,10 @@ const globalSlice = createSlice({
                     state.clientProfileForm.rootUserId = value as string
                     break
                 case 'contactEmail':
-                    state.clientProfileForm.contactEmail = value as string
+                    if (isValidEmail(value as string)) {
+                        state.clientProfileForm.contactEmail = value as string;
+                        state.validationErrors.contactEmail = null;
+                    }
                     break
                 case 'contactPhone':
                     state.clientProfileForm.contactPhone = value as string
@@ -82,6 +111,18 @@ const globalSlice = createSlice({
                 default:
                     break
             }
+        },
+
+        validateForm: (state) => {
+            Object.keys(state.clientProfileForm).forEach((key) => {
+                if (requiredInputs.includes(key) && !state.clientProfileForm[key]) {
+                    state.validationErrors = {
+                        ...state.validationErrors,
+                        [key]: key === 'name' ? 'Bu alan zorunludur ve 3 harften fazla olmalıdır' : 'Bu alan zorunludur',
+                        [key]: key === 'contactEmail' ? 'Bu alan zorunludur' : 'Bu alan zorunludur'
+                    }
+                }
+            })
         }
     }
 })
@@ -93,7 +134,9 @@ export const {
     removeClientProfile,
     resetClientForm,
     handleFormChange,
-    setClientProfileForm
+    setClientProfileForm,
+    validateForm
+
 } = globalSlice.actions
 export default globalSlice.reducer
 

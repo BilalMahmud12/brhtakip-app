@@ -21,7 +21,6 @@ const ClientsView = () => {
     const [selectedClients, setSelectedClients] = React.useState<string[]>([]);
 
     const handleDeleteClient = async (data: any) => {
-        console.log('data', data.id);
         try {
             const deleteClient = await Repo.ClientProfileRepository.softDelete(data.id);
             if (deleteClient && deleteClient.data) {

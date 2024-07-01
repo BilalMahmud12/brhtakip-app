@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
-import { setClientProfiles } from '@/reduxStore/features/clientSlice';
+import { setClientProfiles, validateForm } from '@/reduxStore/features/clientSlice';
 
 const CreateClientPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -23,21 +23,30 @@ const CreateClientPage: React.FC = () => {
     const clientFormRef = React.useRef(clientProfileForm);
     clientFormRef.current = clientProfileForm;
 
+    const validationErrors = useAppSelector((state: RootState) => state.client.validationErrors);
+    const validationErrorsRef = React.useRef(validationErrors);
+    validationErrorsRef.current = validationErrors;
 
+    const isValidForm = Object.values(validationErrorsRef.current).every(value => value === null);
     const handleCreateClient = async () => {
-        try {
-            const createClient = await Repo.ClientProfileRepository.create(clientFormRef.current);
-            if (createClient && createClient.data) {
-                const newClientProfiles = await Repo.ClientProfileRepository.getClientProfiles();
-                dispatch(setClientProfiles(newClientProfiles as unknown as ClientProfile[]));
-                toast.success('Firma başarıyla oluşturuldu');
-                router.replace('/dashboard/clients');
+        dispatch(validateForm());
+        if (!isValidForm) {
+            toast.error('Lütfen formu eksiksiz doldurunuz');
+            return;
+        } else {
+            try {
+                const createClient = await Repo.ClientProfileRepository.create(clientFormRef.current);
+                if (createClient && createClient.data) {
+                    const newClientProfiles = await Repo.ClientProfileRepository.getClientProfiles();
+                    dispatch(setClientProfiles(newClientProfiles as unknown as ClientProfile[]));
+                    toast.success('Firma başarıyla oluşturuldu');
+                    router.replace('/dashboard/clients');
+                }
+            } catch (error) {
+                console.log('Error', error);
             }
-        } catch (error) {
-            console.log('Error', error);
         }
     };
-
 
     return (
         <div>
