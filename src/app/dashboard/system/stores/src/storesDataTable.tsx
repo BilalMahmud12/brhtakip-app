@@ -3,7 +3,6 @@ import React from 'react';
 import DataTable from '@/components/core/dataTable';
 import { dataTables } from '@/config/dataTables';
 import getStoresTableData from './getStoresTableData';
-//brand
 interface StoresDataTableProps {
     dataPayload?: any[];
     handleEdit?: (data: any) => void;

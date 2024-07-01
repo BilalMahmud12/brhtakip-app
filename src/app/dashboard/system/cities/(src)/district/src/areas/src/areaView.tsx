@@ -7,7 +7,8 @@ import * as Repo from '@/repository/index';
 import AreasDataTable from './areasDataTable';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 import { Area } from '@/API';
 
 
@@ -29,7 +30,10 @@ const AreaView: React.FC<AreaViewProps> = ({ haveArea, fetchFilteredAreas, filte
 
     const setAreaDistrictId = () => {
         if (areaForm.districtID !== districtId) {
-            dispatch(setAreaForm({ districtID: districtId, isActive: false }));
+            dispatch(setAreaForm({
+                districtID: districtId, isActive: false,
+                name: ''
+            }));
         }
     };
     useEffect(() => {

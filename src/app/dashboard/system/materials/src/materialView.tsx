@@ -8,7 +8,7 @@ import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import type { Material } from '@/API';
 import MaterialsDataTable from './materialsDataTable';
 import * as Repo from '@/repository/index';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';

@@ -3,8 +3,8 @@ import React, { useEffect, useRef } from 'react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm'
 import { useRouter } from 'next-nprogress-bar';
 import * as Repo from '@/repository/index';
-import { resetFormValues, setStores } from '@/reduxStore/features/storeSlice';
-
+import { resetFormValues, setStores, validateForm } from '@/reduxStore/features/storeSlice';
+import { toast } from 'sonner'
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -20,20 +20,33 @@ const CreateStorePage: React.FC = () => {
     const storeFormRef = useRef(storeForm);
     storeFormRef.current = storeForm;
 
-    const handleCreateStore = async () => {
-        try {
-            const createStore = await Repo.StoreRepository.create(storeFormRef.current);
+    const validationErrors = useAppSelector((state: RootState) => state.store.validationErrors);
+    const validationErrorsRef = React.useRef(validationErrors);
+    validationErrorsRef.current = validationErrors;
 
-            if (createStore && createStore.data) {
-                const newStore = await Repo.StoreRepository.getAllStores();
-                dispatch(setStores(newStore as unknown as Store[]))
-                console.log('new created store', newStore);
-                dispatch(resetFormValues());
+    const isValidForm = Object.values(validationErrorsRef.current).every(value => value === null);
+
+    const handleCreateStore = async () => {
+        dispatch(validateForm());
+        if (!isValidForm) {
+            toast.error('Lütfen formu eksiksiz doldurunuz');
+            return;
+        } else {
+            try {
+                const createStore = await Repo.StoreRepository.create(storeFormRef.current);
+                if (createStore && createStore.data) {
+                    const newStores = await Repo.StoreRepository.getAllStores();
+                    dispatch(setStores(newStores as unknown as Store[]));
+                    dispatch(resetFormValues());
+                    toast.success('Mağaza başarıyla oluşturuldu');
+                    router.push('/dashboard/system/stores');
+                }
+            } catch (error) {
+                console.log('Error', error);
             }
-        } catch (error) {
-            console.log('Faield to create store', error);
         }
-    }
+    };
+
 
     return (
         <div>

@@ -2,8 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import { useRouter } from 'next-nprogress-bar';
-import { setCities, resetFormValues, setCityForm } from '@/reduxStore/features/citySlice';
-import { setDistricts } from '@/reduxStore/features/districtSlice';
+import { setDistricts, validateForm, resetFormValues } from '@/reduxStore/features/districtSlice';
 import * as Repo from '@/repository/index';
 
 import Button from '@mui/material/Button';
@@ -12,28 +11,40 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { City, District } from '@/API';
+import { toast } from 'sonner';
 
 const UpdateCity: React.FC = () => {
     const router = useRouter();
-    const [filteredDistricts, setFilteredDistricts] = useState<District[]>([]);
-    const [haveDistricts, setHaveDistricts] = useState<boolean>(false);
-
     const dispatch = useAppDispatch<AppDispatch>();
     const districtForm = useAppSelector((state: RootState) => state.district.districtForm);
-
     const districtformRef = useRef(districtForm);
     districtformRef.current = districtForm;
 
-    const handleCreateDistrict = async () => {
-        try {
-            const createDistrict = await Repo.DistrictRepository.create(districtformRef.current);
+    const validationErrors = useAppSelector((state: RootState) => state.district.validationErrors);
+    const validationErrorsRef = React.useRef(validationErrors);
+    validationErrorsRef.current = validationErrors;
 
-            if (createDistrict && createDistrict.data) {
-                dispatch(resetFormValues());
-                router.back();
+    const isValidForm = Object.values(validationErrorsRef.current).every(value => value === null);
+
+    const handleCreateDistrict = async () => {
+        dispatch(validateForm());
+
+        if (!isValidForm) {
+            toast.error('Lütfen formu eksiksiz doldurunuz.');
+            return;
+        } else {
+            try {
+                const createDistrict = await Repo.DistrictRepository.create(districtformRef.current);
+                if (createDistrict && createDistrict.data) {
+                    const newDistricts = await Repo.DistrictRepository.getAllDistricts();
+                    dispatch(setDistricts(newDistricts as unknown as District[]));
+                    dispatch(resetFormValues());
+                    toast.success('İlce eklendi.');
+                    router.back();
+                }
+            } catch (error) {
+                console.log('Error', error);
             }
-        } catch (error) {
-            console.log('Failed Creating District', error);
         }
     };
 
@@ -49,9 +60,12 @@ const UpdateCity: React.FC = () => {
                             <Button
                                 variant="text"
                                 startIcon={<ArrowBackIosIcon />}
-                                onClick={() => router.push('/dashboard/system/cities')}
+                                onClick={() => {
+                                    router.back();
+                                    dispatch(resetFormValues());
+                                }}
                             >
-                                Şehirlere Geri Dön
+                                Geri Dön
                             </Button>
 
                             <Button

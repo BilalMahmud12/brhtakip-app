@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import * as Repo from '@/repository/index';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 import type { Product } from '@/API';
 import ProductsDataTable from './productsDataTable';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
@@ -13,6 +13,7 @@ import { setProducts, resetProductFormValues, setProductFormValues } from '@/red
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { usePathname } from 'next/navigation';
 
 interface ProductViewProps {
     brandId: any;
@@ -21,13 +22,9 @@ interface ProductViewProps {
     fetchFilteredProducts: any;
 }
 
-
-
 const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filteredProducts, fetchFilteredProducts }) => {
-
     const router = useRouter();
-    const { showDataModal, hideDataModal } = useDataModal();
-
+    const pathName = usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
     const products = useAppSelector((state: RootState) => state.product);
     const productForm = useAppSelector((state: RootState) => state.product.productForm);
@@ -35,17 +32,19 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
     const productFormRef = useRef(productForm);
     productFormRef.current = productForm;
 
-
     const setProductBrandId = () => {
         if (productForm.brandID !== brandId) {
-            dispatch(setProductFormValues({ brandID: brandId }));
+            dispatch(setProductFormValues({
+                brandID: brandId,
+                isActive: false,
+                name: ''
+            }));
         }
     };
 
     useEffect(() => {
         setProductBrandId();
     }, [brandId]);
-
 
 
     const setProductUpdateData = (data: any) => {
@@ -60,15 +59,16 @@ const ProductView: React.FC<ProductViewProps> = (({ haveProduct, brandId, filter
     const handleDeleteProduct = async (data: any) => {
         try {
             const deleteProduct = await Repo.ProductRepository.softDelete(data.originalData.id);
-            fetchFilteredProducts();
+
+            if (deleteProduct && deleteProduct.data) {
+                fetchFilteredProducts();
+            }
+
         } catch (error) {
             console.log('error', error);
         }
     };
 
-    const handleCancelForm = () => {
-        hideDataModal();
-    };
 
     return (
         <div>

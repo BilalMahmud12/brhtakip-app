@@ -5,7 +5,7 @@ import { Input, Label, Autocomplete } from '@aws-amplify/ui-react';
 import type { Product } from '@/API';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
-import { setProducts, resetProductFormValues, setProductFormValues, handleFormChange } from '@/reduxStore/features/productSlice';
+import { handleFormChange } from '@/reduxStore/features/productSlice';
 
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
@@ -20,18 +20,42 @@ interface CreateOrUpdateFormProps {
     product?: Product;
 }
 
-const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
-    const {
+const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
+    {
         isCreate = true,
-        product = {} as Product
-    } = props;
+        product = {} as Product }
+) => {
+
 
     const dispatch = useAppDispatch<AppDispatch>();
     const productForm = useAppSelector((state: RootState) => state.product.productForm);
+    const validationErrors = useAppSelector((state: RootState) => state.product.validationErrors);
     const productFormRef = useRef(productForm);
     productFormRef.current = productForm;
 
     const [checked, setChecked] = React.useState(productFormRef.current.isActive as boolean);
+
+    useEffect(() => {
+        setChecked(productFormRef.current.isActive as boolean)
+    }, [])
+
+    useEffect(() => {
+        if (!isCreate) {
+            loadFormData(product);
+        }
+    }, [product])
+
+
+    const loadFormData = async (product: Product) => {
+        const {
+            name,
+            isActive,
+        } = product
+
+        dispatch(handleFormChange({ key: 'name', value: name as string }))
+        dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
+        // console.log('finished loading form data:', productForm);
+    }
 
     return (
         <div>
@@ -39,7 +63,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>
 
                 <div className='p-6 bg-white shadow col-span-2'>
-                    <h2 className='text-base font-semibold mb-6'>Malzeme Ekle</h2>
 
                     <div className='input-group w-full col-span-1 lg:col-span-1'>
                         <label htmlFor="material_name" className='block text-xs font-medium mb-1.5'>Ürün Adı *</label>
@@ -47,7 +70,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             id='material_name'
                             variant="standard"
                             sx={{ width: '100%' }}
-                            helperText={''}
+                            error={!!validationErrors.name}
+                            helperText={validationErrors.name || ''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
                             }}
@@ -61,10 +85,10 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                         <label htmlFor="brand_state" className='block text-xs font-medium mb-2'>Ürün Durumu</label>
                         <div>
                             <FormControlLabel
-                                label={checked ? 'Aktif' : 'Aktif Değil'}
+                                label={productFormRef.current.isActive as boolean ? 'Aktif' : 'Aktif Değil'}
                                 control={<Switch
                                     color='success'
-                                    checked={checked}
+                                    checked={productFormRef.current.isActive as boolean}
                                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                         setChecked(event.target.checked);
                                         dispatch(handleFormChange({

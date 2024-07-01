@@ -2,7 +2,7 @@ import type { Product } from '@/API'
 import type { DataTableColumn } from '@/components/core/dataTable';
 import { Badge } from '@aws-amplify/ui-react'
 import { Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 import Icon from '@/components/core/icon';
 
 import IconButton from '@mui/material/IconButton';
@@ -31,7 +31,7 @@ export default function getProductsTableData(
                         row[column.key] = (
                             <div className='hover:underline hover:text-blue-700 cursor-pointer'
                                 onClick={() => {
-                                    router.push(`/dashboard/system/brands/src/products/update`);
+                                    router.push(`/dashboard/system/brands/src/products/${product.id}`);
                                     handleEdit(product)
                                 }}
                             >
@@ -68,7 +68,7 @@ export default function getProductsTableData(
                                     size="small"
 
                                     onClick={() => {
-                                        router.push(`/dashboard/system/brands/products/update`);
+                                        router.push(`/dashboard/system/brands/src/products/${product.id}`);
                                         handleEdit(product)
                                     }}
                                 >

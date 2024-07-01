@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import CreateOrUpdateForm from './createOrUpdateForm';
 import { useDataModal } from '@/contexts/DataModalContext';
-import { resetFormValues, setStores } from '@/reduxStore/features/storeSlice';
+import { setStoreForm, resetFormValues, setStores } from '@/reduxStore/features/storeSlice';
 import * as Repo from '@/repository/index';
 import { Store } from '@/API';
 import { useRouter } from 'next/navigation';
@@ -15,7 +15,6 @@ import AddIcon from '@mui/icons-material/Add';
 
 
 const StoreView: React.FC = () => {
-    const { showDataModal, hideDataModal } = useDataModal();
     const dispatch = useAppDispatch<AppDispatch>();
     const router = useRouter();
     const stores = useAppSelector((state: RootState) => state.store.stores);
@@ -35,6 +34,17 @@ const StoreView: React.FC = () => {
             console.log('Failed to delete store', error);
         }
     }
+
+    const setStoreUpdateData = (data: any) => {
+        dispatch(setStoreForm({
+            id: data.id,
+            name: data.name,
+            cityID: '',
+            districtID: '',
+            areaID: ''
+        }));
+    }
+
 
     return (
         <div className="mb-8">
@@ -60,7 +70,7 @@ const StoreView: React.FC = () => {
                 <StoresDataTable
                     dataPayload={stores}
                     onDelete={handleDeleteStore}
-                // handleEdit={ }
+                    handleEdit={setStoreUpdateData}
                 />
             </div>
         </div>

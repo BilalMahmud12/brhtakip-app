@@ -35,7 +35,8 @@ const DistrictView: React.FC<DistrictViewProps> = ({ haveDistricts, fetchFiltere
         if (districtForm.cityID !== cityId) {
             dispatch(setDistrictForm({
                 cityID: cityId,
-                isActive: false
+                isActive: false,
+                name: ''
             }));
         }
     };

@@ -90,5 +90,13 @@ export const dataTables = {
             { label: 'Durum', key: 'status', width: '120' },
             { label: '', key: 'actions', width: '80' },
         ]
+    },
+
+    extraProducts: {
+        columns: [
+            { label: 'Ürün', key: 'name', width: '240' },
+            { label: 'Durum', key: 'status', width: '120' },
+            { label: '', key: 'actions', width: '80' },
+        ]
     }
 }

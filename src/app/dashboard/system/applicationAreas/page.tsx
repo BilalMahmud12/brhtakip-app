@@ -11,20 +11,20 @@ import { setApplicationAreas } from '@/reduxStore/features/applicationAreaSlice'
 
 const ApplicationArea: React.FC = () => {
 
-    const dispatch = useAppDispatch<AppDispatch>();
+    // const dispatch = useAppDispatch<AppDispatch>();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const applicationAreaData = await Repo.ApplicationAreaRepository.getApplicationAreas();
-                dispatch(setApplicationAreas(applicationAreaData as unknown as ApplicationArea[]));
-                console.log('application Area Data', applicationAreaData);
-            } catch (error) {
-                console.error('Failed to fetch brands', error);
-            }
-        };
-        fetchData();
-    }, [dispatch, ApplicationArea])
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const applicationAreaData = await Repo.ApplicationAreaRepository.getApplicationAreas();
+    //             dispatch(setApplicationAreas(applicationAreaData as unknown as ApplicationArea[]));
+    //             console.log('application Area Data', applicationAreaData);
+    //         } catch (error) {
+    //             console.error('Failed to fetch brands', error);
+    //         }
+    //     };
+    //     fetchData();
+    // }, [dispatch, ApplicationArea])
 
     return (
         <div>

@@ -26,6 +26,10 @@ const getMaterialById = async (id: string) => {
 }
 
 const create = async (material: any) => {
+    const required = ['name'];
+    if (required.some((key) => !material[key])) {
+        throw new Error('Required fields are missing');
+    }
     try {
         const data = await client.graphql({
             query: createMaterial,

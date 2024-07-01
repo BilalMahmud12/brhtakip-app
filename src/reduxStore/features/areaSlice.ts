@@ -1,16 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { Area } from '@/API';
-// district
+const requiredInputs = ['name'];
 interface AreaFormState {
     areas: Area[];
     areaForm: {
         id?: string;
         districtID?: string;
-        isActive: boolean;
-        name?: string;
+        isActive?: boolean;
+        name: string;
         createdBy?: string;
         updatedBy?: string;
+        [key: string]: string | boolean | string[] | undefined;
     }
+    validationErrors: {
+        name?: string | null;
+    };
 }
 
 const initialState: AreaFormState = {
@@ -20,7 +24,14 @@ const initialState: AreaFormState = {
         name: '',
         createdBy: '',
         updatedBy: '',
+    },
+    validationErrors: {
+        name: null,
     }
+}
+
+const isValidName = (name: string): boolean => {
+    return typeof name === 'string' && name.trim().length >= 3 && name !== ''
 }
 
 const areaSlice = createSlice({
@@ -37,6 +48,7 @@ const areaSlice = createSlice({
 
         setAreaForm: (state, action: PayloadAction<AreaFormState['areaForm']>) => {
             state.areaForm = action.payload
+            state.validationErrors = {};
         },
 
         resetFormValues: (state) => {
@@ -51,11 +63,16 @@ const areaSlice = createSlice({
         handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean | string[] }>) => {
             const { key, value } = action.payload
             switch (key) {
+                case 'name':
+                    if (isValidName(value as string)) {
+                        state.areaForm.name = value as string;
+                        state.validationErrors.name = null
+                    } else {
+                        state.validationErrors.name = 'Alan adı zorunludur ve 3 harften fazla olmalıdır.'
+                    }
+                    break;
                 case 'districtID':
                     state.areaForm.districtID = value as string
-                    break;
-                case 'name':
-                    state.areaForm.name = value as string
                     break;
                 case 'isActive':
                     state.areaForm.isActive = value as boolean
@@ -69,6 +86,17 @@ const areaSlice = createSlice({
                 default:
                     break;
             }
+        },
+
+        validateForm: (state) => {
+            Object.keys(state.areaForm).forEach((key) => {
+                if (requiredInputs.includes(key) && !state.areaForm[key]) {
+                    state.validationErrors = {
+                        ...state.validationErrors,
+                        [key]: key === 'name' ? 'Bu alan zorunludur ve 3 harften fazla olmalıdır' : 'Bu alan zorunludur'
+                    }
+                }
+            })
         }
     }
 })
@@ -79,6 +107,7 @@ export const {
     setAreaForm,
     resetFormValues,
     handleFormChange,
+    validateForm,
 } = areaSlice.actions
 
 export default areaSlice.reducer

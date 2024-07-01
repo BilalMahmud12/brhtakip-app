@@ -2,10 +2,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import CreateOrUpdateForm from '../(src)/createOrUpdateForm';
 import { useRouter } from 'next-nprogress-bar';
-import { setCities, resetFormValues, setCityForm } from '@/reduxStore/features/citySlice';
+import { setCities, resetFormValues, setCityForm, validateForm } from '@/reduxStore/features/citySlice';
 import { setDistricts } from '@/reduxStore/features/districtSlice';
 import * as Repo from '@/repository/index';
-
+import { toast } from 'sonner'
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { City, District } from '@/API';
 import DistrictView from '../(src)/district/src/districtView';
+import { usePathname } from 'next/navigation';
 
 const UpdateCity: React.FC = () => {
     const router = useRouter();
@@ -20,24 +21,55 @@ const UpdateCity: React.FC = () => {
     const [haveDistricts, setHaveDistricts] = useState<boolean>(false);
 
     const dispatch = useAppDispatch<AppDispatch>();
-    const districts = useAppSelector((state: RootState) => state.district.districts);
-    const districtForm = useAppSelector((state: RootState) => state.district.districtForm);
     const cityForm = useAppSelector((state: RootState) => state.city.cityForm);
-
+    const cities = useAppSelector((state: RootState) => state.city.cities);
+    const namePath = usePathname();
     const cityformRef = useRef(cityForm);
     cityformRef.current = cityForm;
 
+    const validationErrors = useAppSelector((state: RootState) => state.city.validationErrors);
+    const validationErrorsRef = React.useRef(validationErrors);
+    validationErrorsRef.current = validationErrors;
+
+    const isValidForm = Object.values(validationErrorsRef.current).every(value => value === null);
+
+    useEffect(() => {
+        const cityId = namePath?.split('/').pop();
+        const targetCity = cities.find((city) => city.id === cityId);
+
+        if (targetCity) {
+            const { updatedAt, createdAt, Districts, Stores, __typename, ...resetOfCity } = targetCity;
+
+            const updatedCity = {
+                id: resetOfCity.id || '',
+                name: resetOfCity.name || '',
+                isActive: resetOfCity.isActive ?? false,
+                createdBy: resetOfCity.createdBy || '',
+                updatedBy: resetOfCity.updatedBy || '',
+            };
+            cityformRef.current = updatedCity;
+            dispatch(setCityForm(updatedCity));
+        }
+    }, [namePath, cities, dispatch]);
+
     async function handleUpdateCity() {
-        try {
-            const updateCity = await Repo.CityRepository.update(cityformRef.current);
-            if (updateCity && updateCity.data) {
-                const newCity = await Repo.CityRepository.getAllCities();
-                dispatch(setCities(newCity as unknown as City[]));
-                dispatch(resetFormValues());
-                router.replace(`/dashboard/system/cities`);
+        dispatch(validateForm());
+        if (!isValidForm) {
+            toast.error('Lütfen formu eksiksiz doldurunuz');
+            return;
+        } else {
+            try {
+                const updateCity = await Repo.CityRepository.update(cityformRef.current);
+                if (updateCity && updateCity.data) {
+                    const newCities = await Repo.CityRepository.getAllCities();
+                    dispatch(setCities(newCities as unknown as City[]));
+                    dispatch(resetFormValues());
+                    toast.success('Sehir güncellendi');
+                    router.push('/dashboard/system/cities');
+                }
+            } catch (error) {
+                console.log('Error', error);
             }
-        } catch (error) {
-            console.error('Failed updating city:', error);
         }
     }
 
@@ -74,7 +106,10 @@ const UpdateCity: React.FC = () => {
                             <Button
                                 variant="text"
                                 startIcon={<ArrowBackIosIcon />}
-                                onClick={() => router.push('/dashboard/system/cities')}
+                                onClick={() => {
+                                    router.back();
+                                    dispatch(resetFormValues());
+                                }}
                             >
                                 Şehirlere Geri Dön
                             </Button>
@@ -91,7 +126,10 @@ const UpdateCity: React.FC = () => {
                 </div>
 
                 <div className='space-y-3'>
-                    <CreateOrUpdateForm isCreate={false} />
+                    <CreateOrUpdateForm
+                        isCreate={false}
+                        city={cityForm as unknown as City}
+                    />
                 </div>
             </div>
 

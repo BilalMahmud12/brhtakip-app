@@ -12,7 +12,6 @@ import Switch from '@mui/material/Switch';
 interface CreateOrUpdateFormProps {
     isCreate?: boolean;
     applicationArea?: ApplicationArea;
-    handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
@@ -23,23 +22,27 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     const dispatch = useAppDispatch<AppDispatch>();
     const applicationAreaForm = useAppSelector((state: RootState) => state.applicationArea.applicationAreaForm);
-
+    const validationErrors = useAppSelector((state: RootState) => state.applicationArea.validationErrors);
     const applicationAreaRef = useRef(applicationAreaForm);
     applicationAreaRef.current = applicationAreaForm;
 
     const [checked, setChecked] = React.useState(applicationAreaRef.current.isActive as boolean);
 
-    // if (!isCreate) {
-    //     useEffect(() => {
-    //         loadFormData(applicationArea);
-    //     }, []);
-    // }
+    if (!isCreate) {
+        useEffect(() => {
+            loadFormData(applicationArea);
+        }, []);
+    }
 
-    // const loadFormData = async (applicationArea: ApplicationArea) => {
-    //     const { name, isActive } = applicationArea;
-    //     dispatch(handleFormChange({ key: 'name', value: name || '' }));
-    //     dispatch(handleFormChange({ key: 'isActive', value: isActive ? '1' : '0' }));
-    // }
+    const loadFormData = async (applicationArea: ApplicationArea) => {
+        const {
+            name,
+            isActive
+        } = applicationArea;
+
+        dispatch(handleFormChange({ key: 'name', value: name || '' }));
+        dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
+    }
 
     return (
         <div >
@@ -53,7 +56,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             id='material_name'
                             variant="standard"
                             sx={{ width: '100%' }}
-                            helperText={''}
+                            error={!!validationErrors.name}
+                            helperText={validationErrors.name || ''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
                             }}
@@ -67,10 +71,10 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                         <label htmlFor="brand_state" className='block text-xs font-medium mb-2'>Uygulama Alan Durumu</label>
                         <div>
                             <FormControlLabel
-                                label={checked ? 'Aktif' : 'Aktif Değil'}
+                                label={applicationAreaRef.current.isActive as boolean ? 'Aktif' : 'Aktif Değil'}
                                 control={<Switch
                                     color='success'
-                                    checked={checked}
+                                    checked={applicationAreaRef.current.isActive as boolean}
                                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                         setChecked(event.target.checked);
                                         dispatch(handleFormChange({

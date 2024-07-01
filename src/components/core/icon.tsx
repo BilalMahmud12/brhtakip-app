@@ -34,7 +34,8 @@ import {
     FcCloth,
     FcRuler,
     FcFullTrash,
-    FcNext
+    FcNext,
+    FcPlus
 } from 'react-icons/fc';
 import { IoMdRefresh } from "react-icons/io";
 import { GrRefresh } from "react-icons/gr";
@@ -92,7 +93,8 @@ const iconMapping: Record<string, IconComponent> = {
     'FcCopyright': FcCopyright,
     'FcCloth': FcCloth,
     'FcRuler': FcRuler,
-    'FcFullTrash': FcFullTrash
+    'FcFullTrash': FcFullTrash,
+    'FcPlus': FcPlus
 };
 
 const Icon: FC<{ iconName: string, className?: string }> = ({ iconName, className }) => {

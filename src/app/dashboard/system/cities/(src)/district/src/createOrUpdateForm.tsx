@@ -25,7 +25,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     const dispatch = useAppDispatch<AppDispatch>();
     const districtForm = useAppSelector((state: RootState) => state.district.districtForm);
-
+    const validationErrors = useAppSelector((state: RootState) => state.district.validationErrors);
     const districtformRef = useRef(districtForm);
     districtformRef.current = districtForm;
 
@@ -34,6 +34,24 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     React.useEffect(() => {
         setChecked(districtformRef.current.isActive as boolean)
     }, [districtformRef.current.isActive])
+
+
+    useEffect(() => {
+        if (!isCreate) {
+            loadFormData(district);
+        }
+    }, [district]);
+
+
+    const loadFormData = async (district: District) => {
+        const {
+            name,
+            isActive
+        } = district;
+
+        dispatch(handleFormChange({ key: 'name', value: name as string }));
+        dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }));
+    };
 
     return (
         <div >
@@ -48,7 +66,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             id='material_name'
                             variant="standard"
                             sx={{ width: '100%' }}
-                            helperText={''}
+                            error={!!validationErrors.name}
+                            helperText={validationErrors.name || ''}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                 dispatch(handleFormChange({ key: 'name', value: event.target.value }))
                             }}

@@ -26,6 +26,11 @@ const getStoreById = async (id: string) => {
 }
 
 const create = async (store: any) => {
+    console.log("Store repo create", store)
+    const required = ['name', 'cityID', 'areaID', 'districtID', 'address',];
+    if (required.some((key) => !store[key])) {
+        throw new Error('Required fields are missing');
+    }
     try {
         const data = await client.graphql({
             query: createStore,

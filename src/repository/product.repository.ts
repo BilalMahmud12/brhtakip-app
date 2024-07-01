@@ -39,6 +39,11 @@ const getProductById = async (id: string) => {
 }
 
 const create = async (product: any) => {
+    const required = ['name'];
+    if (required.some((key) => !product[key])) {
+        throw new Error('Required fields are missing');
+    }
+    console.log('product repo', product)
     try {
         const data = await client.graphql({
             query: createProduct,

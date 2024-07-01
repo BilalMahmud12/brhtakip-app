@@ -1,16 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { District } from '@/API';
 
+const requiredInputs = ['name'];
 interface DistrictFormState {
     districts: District[];
     districtForm: {
         id?: string;
         cityID?: string;
         isActive?: boolean;
-        name?: string;
+        name: string;
         createdBy?: string;
         updatedBy?: string;
+        [key: string]: string | boolean | string[] | undefined;
     }
+    validationErrors: {
+        name?: string | null;
+    };
 }
 
 const initialState: DistrictFormState = {
@@ -18,7 +23,14 @@ const initialState: DistrictFormState = {
     districtForm: {
         isActive: false,
         name: '',
-    }
+    },
+    validationErrors: {
+        name: null,
+    },
+}
+
+const isValidName = (name: string): boolean => {
+    return typeof name === 'string' && name.trim().length >= 3 && name !== '';
 }
 
 const districtSlice = createSlice({
@@ -35,6 +47,7 @@ const districtSlice = createSlice({
 
         setDistrictForm: (state, action: PayloadAction<DistrictFormState['districtForm']>) => {
             state.districtForm = action.payload
+            state.validationErrors = {}
         },
 
         resetFormValues: (state) => {
@@ -48,23 +61,35 @@ const districtSlice = createSlice({
             const { key, value } = action.payload
             switch (key) {
                 case 'name':
-                    state.districtForm.name = value as string
-                    break;
-                case 'isActive':
-                    state.districtForm.isActive = value as boolean
+                    if (isValidName(value as string)) {
+                        state.districtForm.name = value as string;
+                        state.validationErrors.name = null;
+                    } else {
+                        state.validationErrors.name = 'İlçe adı zorunludur ve 3 harften fazla olmalıdır';
+                    }
                     break;
                 case 'cityID':
                     state.districtForm.cityID = value as string
                     break;
-                // case 'createdBy':
-                //     state.districtForm.createdBy = value as string
-                //     break;
-                // case 'updatedBy':
-                //     state.districtForm.updatedBy = value as string
-                //     break;
+                case 'createdBy':
+                    state.districtForm.createdBy = value as string
+                    break;
+                case 'updatedBy':
+                    state.districtForm.updatedBy = value as string
+                    break;
                 default:
                     break;
             }
+        },
+        validateForm: (state) => {
+            Object.keys(state.districtForm).forEach((key) => {
+                if (requiredInputs.includes(key) && !state.districtForm[key]) {
+                    state.validationErrors = {
+                        ...state.validationErrors,
+                        [key]: key === 'name' ? 'Bu alan zorunludur ve 3 harften fazla olmalıdır' : 'Bu alan zorunludur'
+                    }
+                }
+            })
         }
     }
 })
@@ -75,6 +100,7 @@ export const {
     setDistrictForm,
     resetFormValues,
     handleFormChange,
+    validateForm,
 } = districtSlice.actions
 
 export default districtSlice.reducer

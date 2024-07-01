@@ -27,6 +27,10 @@ const getDistrictById = async (id: string) => {
 }
 
 const create = async (district: any) => {
+    const required = ['name'];
+    if (required.some((key) => !district[key])) {
+        throw new Error('Required fields are missing');
+    }
     try {
         const data = await client.graphql({
             query: createDistrict,

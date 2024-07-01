@@ -4,7 +4,8 @@ import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import * as Repo from '@/repository/index';
 import BrandsDataTable from './brandsDataTable';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 import { setBrandFormValues, setBrands } from '@/reduxStore/features/brandSlice';
 
 import Button from '@mui/material/Button';

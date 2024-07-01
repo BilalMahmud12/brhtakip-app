@@ -26,6 +26,10 @@ const getApplicationAreaById = async (id: string) => {
 }
 
 const create = async (applicationArea: any) => {
+    const required = ['name'];
+    if (required.some((key) => !applicationArea[key])) {
+        throw new Error('Required fields are missing');
+    }
     try {
         const data = await client.graphql({
             query: createApplicationArea,

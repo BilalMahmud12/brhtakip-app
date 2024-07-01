@@ -26,7 +26,11 @@ const getBrandById = async (id: string) => {
 }
 
 const create = async (brand: any) => {
-
+    const required = ['name', 'clientprofileID'];
+    if (required.some((key) => !brand[key])) {
+        throw new Error('Required fields are missing');
+    }
+    
     try {
         const data = await client.graphql({
             query: createBrand,

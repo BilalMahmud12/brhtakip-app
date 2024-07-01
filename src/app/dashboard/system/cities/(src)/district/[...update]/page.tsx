@@ -7,36 +7,72 @@ import type { Area, District } from '@/API';
 import AreaView from "../src/areas/src/areaView";
 import { setAreas } from "@/reduxStore/features/areaSlice";
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
-import { setDistricts } from "@/reduxStore/features/districtSlice";
-import { useRouter } from "next/navigation";
+import { resetFormValues, setDistricts, setDistrictForm, validateForm } from "@/reduxStore/features/districtSlice";
+import { useRouter } from 'next-nprogress-bar';
 
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { usePathname } from "next/navigation";
+import { toast } from "sonner";
 
 const UpdateDistrict: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
     const router = useRouter();
+    const pathName = usePathname();
     const districtForm = useAppSelector((state: RootState) => state.district.districtForm);
-    const areaForm = useAppSelector((state: RootState) => state.area.areaForm);
-
-    const [filteredAreas, setFilteredAreas] = useState<Area[]>([]);
-    const [haveArea, setHaveArea] = useState<boolean>(false);
+    const districts = useAppSelector((state: RootState) => state.district.districts);
 
     const districtformRef = useRef(districtForm);
     districtformRef.current = districtForm;
 
-    const handleUpdateDistrict = async () => {
-        try {
-            const updateDistrict = await Repo.DistrictRepository.update(districtformRef.current);
+    const [filteredAreas, setFilteredAreas] = useState<Area[]>([]);
+    const [haveArea, setHaveArea] = useState<boolean>(false);
 
-            if (updateDistrict && updateDistrict.data) {
-                const newDistrict = await Repo.DistrictRepository.getAllDistricts();
-                dispatch(setDistricts(newDistrict as unknown as District[]));
-                router.back();
+    const validationErrors = useAppSelector((state: RootState) => state.district.validationErrors);
+    const validationErrorsRef = React.useRef(validationErrors);
+    validationErrorsRef.current = validationErrors;
+
+    const isValidForm = Object.values(validationErrorsRef.current).every(value => value === null);
+
+    useEffect(() => {
+        const districtId = pathName.split('/').pop();
+        const targetDistrict = districts.find(district => district.id === districtId);
+
+        if (targetDistrict) {
+            const { updatedAt, createdAt, __typename, Areas, Stores, ...restOfTheDistrict } = targetDistrict;
+
+            const updatedDistrict = {
+                id: restOfTheDistrict.id || '',
+                name: restOfTheDistrict.name || '',
+                isActive: restOfTheDistrict.isActive ?? false,
+                cityID: restOfTheDistrict.cityID || '',
+            };
+
+            districtformRef.current = updatedDistrict;
+            dispatch(setDistrictForm(districtformRef.current));
+        }
+    }, [districts, pathName]);
+
+
+    const handleUpdateDistrict = async () => {
+        dispatch(validateForm());
+
+        if (!isValidForm) {
+            toast.error('Lütfen formu eksiksiz doldurunuz.');
+            return;
+        } else {
+            try {
+                const updateDistrict = await Repo.DistrictRepository.update(districtformRef.current);
+                if (updateDistrict && updateDistrict.data) {
+                    const newDistricts = await Repo.DistrictRepository.getAllDistricts();
+                    dispatch(setDistricts(newDistricts as unknown as District[]));
+                    toast.success('İlçe güncellendi.');
+                    router.back();
+                }
+            } catch (error) {
+                console.log('Error', error);
             }
-        } catch (error) {
-            console.log('Failed Update District', error);
         }
     };
 
@@ -72,9 +108,12 @@ const UpdateDistrict: React.FC = () => {
                             <Button
                                 variant="text"
                                 startIcon={<ArrowBackIosIcon />}
-                                onClick={() => router.push('/dashboard/system/cities')}
+                                onClick={() => {
+                                    router.back();
+                                    dispatch(resetFormValues());
+                                }}
                             >
-                                Şehirlere Geri Dön
+                                Geri Dön
                             </Button>
                             <Button
                                 variant="contained"
@@ -87,7 +126,7 @@ const UpdateDistrict: React.FC = () => {
                     </div>
                 </div>
                 <div className='space-y-3'>
-                    <CreateOrUpdateForm isCreate={false} />
+                    <CreateOrUpdateForm isCreate={false} district={districtForm as unknown as District} />
                 </div>
             </div>
             <AreaView

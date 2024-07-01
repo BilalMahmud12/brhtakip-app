@@ -1,28 +1,23 @@
 'use client'
 import React, { useEffect, useRef } from "react";
-import { useDataModal } from '@/contexts/DataModalContext';
-import type { City, District } from '@/API';
+import type { City } from '@/API';
 import * as Repo from '@/repository/index';
-
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { setCities, resetFormValues, setCityForm } from '@/reduxStore/features/citySlice';
 import CitiesDataTable from "./citiesDataTable";
-import CreateOrUpdateForm from "./createOrUpdateForm";
 
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next-nprogress-bar';
 
 const CityView: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
     const cities = useAppSelector((state: RootState) => state.city.cities);
     const cityForm = useAppSelector((state: RootState) => state.city.cityForm);
     const router = useRouter()
-
     const cityformRef = useRef(cityForm);
     cityformRef.current = cityForm;
-
 
     const setCityUpdateData = (data: any) => {
         dispatch(setCityForm({
@@ -44,7 +39,6 @@ const CityView: React.FC = () => {
             console.log('Failed Delete City', error)
         }
     }
-
 
     return (
         <div className="mb-8">

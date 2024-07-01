@@ -5,10 +5,10 @@ import type { Request, RequestStatus } from '@/API';
 
 const getAllRequests = async () => {
     try {
-        const { data } = await client.graphql({ 
+        const { data } = await client.graphql({
             query: listRequests,
-            variables: { 
-                limit: 5 
+            variables: {
+                limit: 5
             },
         });
         return data.listRequests.items
@@ -34,14 +34,14 @@ const getRequestsByStatus = async (status: string, clientId: string | undefined 
     try {
         const { data } = await client.graphql({
             query: listRequests,
-            variables: { 
-                filter: { 
-                    status: { 
-                        eq: status as RequestStatus 
+            variables: {
+                filter: {
+                    status: {
+                        eq: status as RequestStatus
                     },
                     ...(clientId && { clientprofileID: { eq: clientId } })
                 },
-                limit: 100 
+                limit: 100
             },
         });
 
@@ -56,8 +56,8 @@ const create = async (request: any) => {
     try {
         const data = await client.graphql({
             query: createRequest,
-            variables: { 
-                input: { ...request } 
+            variables: {
+                input: { ...request }
             },
         });
 
