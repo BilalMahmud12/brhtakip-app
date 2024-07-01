@@ -11,6 +11,7 @@ export * as ApplicationAreaRepository from './applicationArea.repository'
 export * as AreaRepository from './area.repository'
 export * as DistrictRepository from './district.repository'
 export * as CityRepository from './city.repository'
+export * as ExtraProductRepository from './extraProduct.repository'
 
 
 export const client = generateClient()

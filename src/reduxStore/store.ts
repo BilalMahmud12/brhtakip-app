@@ -11,7 +11,7 @@ import storeReducer from './features/storeSlice'
 import cityReducer from './features/citySlice'
 import districtReducer from './features/districtSlice'
 import areaReducer from './features/areaSlice'
-import extraProductReducer from './features/extraProduct'
+import extraProductReducer from './features/extraProductSlice'
 
 
 export const makeStore = () => {

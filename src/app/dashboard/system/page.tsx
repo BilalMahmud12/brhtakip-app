@@ -28,6 +28,11 @@ const requestNavigation = [
         label: 'Şehirler',
         icon: <Icon iconName='FcFinePrint' className='' />
     },
+    {
+        href: '/dashboard/system/extraProduct',
+        label: 'Ekstra Ürünler',
+        icon: <Icon iconName='FcPlus' className='' />
+    },
 ]
 
 const SystemPage: React.FC = () => {
