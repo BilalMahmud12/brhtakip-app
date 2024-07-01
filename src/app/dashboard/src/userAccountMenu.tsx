@@ -9,12 +9,14 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import { deepOrange, blue } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
+import { signOut } from "aws-amplify/auth"
+import { toast } from 'sonner';
+import { useRouter } from 'next-nprogress-bar';
 
 const UserAccountMenu: React.FC = () => {
+    const router = useRouter();
     const user = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -24,6 +26,12 @@ const UserAccountMenu: React.FC = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const handleLogOut = async () => {
+        toast.success('Güvenli Çıkış yapıldı, görüşmek üzere!');
+        await signOut()
+        router.push('/login')
+    }
 
     return (
         <React.Fragment>
@@ -82,7 +90,7 @@ const UserAccountMenu: React.FC = () => {
                 </MenuItem>
                 <Divider />
                 
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={handleLogOut}>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>

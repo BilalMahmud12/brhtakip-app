@@ -9,6 +9,8 @@ import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import { Button, IconButton, gridClasses } from '@mui/material';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import { StorageImage } from '@aws-amplify/ui-react-storage';
+import { downloadData } from 'aws-amplify/storage'
+import JSZip from 'jszip';
 
 interface FileDisplayProps {
     targetPath: string; 
@@ -37,12 +39,56 @@ const FileDisplay: React.FC<FileDisplayProps> = (props) => {
         }));
     }
 
-    const handleDownloadSingleFile = () => {
-        console.log('Download files');
+    const handleDownloadSingleFile = async (path: string) => {
+        console.log('Downloading file:', path);
+        try {
+            const { body, eTag } = await downloadData({
+                path
+            }).result;
+
+            const result = body as unknown as Blob;
+            const blob = new Blob([result], { type: eTag });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = path.split('/').pop() || 'download';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            console.log('Succeed: ', {body, eTag});
+        } catch (error) {
+            console.error('Error: ', error);
+        }
     }
 
-    const handleDownloadAllFiles = () => {
+    const handleDownloadAllFiles = async () => {
         console.log('Download all files');
+        const zip = new JSZip();
+
+        for (const file of files) {
+            try {
+                const { body, eTag } = await downloadData({ path: file.path }).result;
+                const result = body as unknown as Blob;
+                
+                const blob = new Blob([result], { type: eTag });
+                zip.file(file.path.split('/').pop() || 'download', blob);
+            } catch (error) {
+                console.error(`Error downloading file ${file.path}:`, error);
+            }
+        }
+
+        zip.generateAsync({ type: 'blob' })
+            .then((content) => {
+                const url = window.URL.createObjectURL(content);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${targetPath}.zip`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            });
     }
 
     return (
@@ -76,7 +122,7 @@ const FileDisplay: React.FC<FileDisplayProps> = (props) => {
                                 size="medium" 
                                 color="inherit" 
                                 sx={{ background: '#ffffff50' }}
-                                onClick={handleDownloadSingleFile}
+                                onClick={() => handleDownloadSingleFile(files[index].path)}
                             >
                                 <DownloadForOfflineIcon fontSize="inherit" />
                             </IconButton>
