@@ -61,28 +61,34 @@ const CreateOrUpdateForm: React.FC<{ isCreate: boolean }> = ({ isCreate }) => {
 
 
                     {!isCreate && (
-                        <div className='p-6 bg-white shadow col-span-2'>
-                            <RequestDesignPhotos />
-                        </div>
+                        <></>
                     )}
 
+                    <div className='p-6 bg-white shadow col-span-2'>
+                        <RequestDesignPhotos />
+                    </div>
+
                     {(requestForm?.designImages?.length ?? 0) > 0 && (
-                        <div className='p-6 bg-white shadow col-span-2'>
-                            <RequestDesignRevisions />
-                        </div>
+                      <></>  
                     )}
+
+                    <div className='p-6 bg-white shadow col-span-2'>
+                        <RequestDesignRevisions />
+                    </div>
                     
                     {requestForm.passedRevision && (
                         <>
-                            <div className='p-6 bg-white shadow col-span-2'>
-                                <RequestPrintPhotos />
-                            </div>
-
-                            <div className='p-6 bg-white shadow col-span-2'>
-                                <RequestApplicationPhotos />
-                            </div>
+                            
                         </>
                     )}
+
+                    <div className='p-6 bg-white shadow col-span-2'>
+                        <RequestPrintPhotos />
+                    </div>
+
+                    <div className='p-6 bg-white shadow col-span-2'>
+                        <RequestApplicationPhotos />
+                    </div>
                 </div>
             </div>
         </React.Fragment>
