@@ -12,30 +12,31 @@ import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
+import { setClientProfiles } from '@/reduxStore/features/clientSlice';
 
 const CreateClientPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const router = useRouter();
 
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
-    // const clientForm = useAppSelector((state: RootState) => state.client.clientForm);
-    // const clientFormRef = React.useRef(clientForm);
-    // clientFormRef.current = clientForm;
+    const clientProfileForm = useAppSelector((state: RootState) => state.client.clientProfileForm);
+    const clientFormRef = React.useRef(clientProfileForm);
+    clientFormRef.current = clientProfileForm;
 
 
-    // const handleCreateClient = async () => {
-    //     try {
-    //         const createClient = await Repo.ClientProfileRepository.create(clientFormRef.current);
-    //         if (createClient && createClient.data) {
-    //             const newClient = await Repo.ClientProfileRepository.getCities();
-    //             dispatch(setClientProfiles(newClient as unknown as ClientProfile[]));
-    //             toast.success('Firma başarıyla oluşturuldu');
-    //             router.replace('/dashboard/clients');
-    //         }
-    //     } catch (error) {
-    //         console.log('Error', error);
-    //     }
-    // };
+    const handleCreateClient = async () => {
+        try {
+            const createClient = await Repo.ClientProfileRepository.create(clientFormRef.current);
+            if (createClient && createClient.data) {
+                const newClientProfiles = await Repo.ClientProfileRepository.getClientProfiles();
+                dispatch(setClientProfiles(newClientProfiles as unknown as ClientProfile[]));
+                toast.success('Firma başarıyla oluşturuldu');
+                router.replace('/dashboard/clients');
+            }
+        } catch (error) {
+            console.log('Error', error);
+        }
+    };
 
 
     return (
@@ -57,7 +58,7 @@ const CreateClientPage: React.FC = () => {
                     <Button
                         variant="contained"
                         startIcon={<SaveIcon />}
-                    // onClick={handleCreateClient}
+                        onClick={handleCreateClient}
                     >
                         Kaydı Et
                     </Button>
