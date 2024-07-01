@@ -12,8 +12,8 @@ function Dashboard() {
     return (
         <>
             <title>Panel Girişi - BRH Takip</title>
-            <div className='px-4 py-6'>
-                <div>Merhaba {userProfile.firstName}!</div>
+            <div className='px-4 py-1'>
+                <div className='text-lg font-medium'>Merhaba {userProfile.firstName}!</div>
             </div>
 
             <div className='px-4 py-6'>
