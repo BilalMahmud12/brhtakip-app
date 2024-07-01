@@ -2,6 +2,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Request } from '@/API';
 import { isValidKey } from '@/utils/helpers';
 
+export type ImageStorage = {
+    type: string;
+    path: string;
+}
+
 interface RequestState {
     isFetching: boolean;
     requests: Request[];
@@ -24,10 +29,10 @@ interface RequestState {
         cargoBudget?: number;
         assemblyBudget?: number;
         monthlyFee?: number;
-        referenceImages?: [];
-        designImages?: [];
-        printImages?: [];
-        applicationImages?: [];
+        referenceImages?: ImageStorage[];
+        designImages?: ImageStorage[];
+        printImages?: ImageStorage[];
+        applicationImages?: ImageStorage[];
     },
     selectedRequests: string[],
     [key: string]: any;

@@ -4,8 +4,14 @@ import * as Repo from '@/repository/index';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { handleFormChange } from '@/reduxStore/features/requestSlice';
-import { TextField } from '@mui/material';
+import { IconButton, TextField } from '@mui/material';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SimCardDownloadIcon from '@mui/icons-material/SimCardDownload';
+import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import MediaUploadManager from '@/components/core/MediaUploadManager';
+import FileDisplay from '@/components/core/fileDisplay';
 
 import { StorageImage } from '@aws-amplify/ui-react-storage';
 import { getUrl } from 'aws-amplify/storage'
@@ -17,51 +23,46 @@ const RequestReferencePhotos: React.FC = () => {
     requestFormRef.current = requestForm;
     console.log('requestForm', requestFormRef.current);
 
-    const onUploadSuccess = (files: { [key: string]: { status: string } }) => {
-        const referenceImages = requestFormRef.current.referenceImages || [];
+    interface ReferenceImage {
+        type: string;
+        path: string;
+    }
 
-        const newFiles = Object.keys(files).map((key) => ({
+    const onUploadSuccess = (files: { [key: string]: { status: string } }) => {
+        const referenceImages: ReferenceImage[] = requestFormRef.current.referenceImages || [];
+
+        const newFiles: ReferenceImage[] = Object.keys(files).map((key) => ({
             type: 'references',
             path: key,
-        }))
+        }));
+
+        const existingPaths = new Set(referenceImages.map((image) => image.path));
+        const uniqueNewFiles = newFiles.filter((file) => !existingPaths.has(file.path));
 
         dispatch(handleFormChange({
             key: 'referenceImages',
-            value: [...referenceImages, ...newFiles]
+            value: [...referenceImages, ...uniqueNewFiles]
         }));
     }
 
+
     return (
         <React.Fragment>
-            <h2 className='text-base font-semibold mb-6'>Tasarım Notu ve Referans Fotoğrafları</h2>
+            <h2 className='text-base font-semibold mb-6'>Referans Görseller</h2>
 
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
-                <div className='input-group w-full col-span-2'>
-                    <label htmlFor="designNote" className='block text-xs font-medium mb-1.5'>Tasarım Notu</label>
-                    <TextField
-                        id='designNote'
-                        variant="standard"
-                        sx={{ width: '100%' }}
-                        helperText={''}
-                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                            dispatch(handleFormChange({
-                                key: 'designNote',
-                                value: event.target.value
-                            }))
-                        }}
-                        multiline={true}
-                        rows={4}
-                    />
-                </div>
-
-
-                <div className='input-group w-full col-span-2'>
-                    <label htmlFor="referencePhotos" className='block text-xs font-medium mb-1.5'>Referans Fotoğrafları</label>
-                    
+                <div className='input-group w-full col-span-2 lg:col-span-1'>
                     <MediaUploadManager
                         basePath='public'
                         uploadPath={`requests/${requestFormRef.current.requestNumber}/references`}
                         handleOnUploadSuccess={(files: { [key: string]: { status: string } }) => onUploadSuccess(files)}
+                    />
+                </div>
+
+                <div className='input-group w-full col-span-2 lg:col-span-1'>
+                    <FileDisplay
+                        targetPath='referenceImages'
+                        files={requestFormRef.current.referenceImages || []}
                     />
                 </div>
             </div>

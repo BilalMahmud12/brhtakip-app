@@ -9,7 +9,9 @@ import RequestStore from './requestStore';
 import RequestDetails from './requestDetails';
 import RequestFinance from './requestFinance';
 import RequestExtraProducts from './requestExtraProducts';
+import RequestDesignNote from './requestDesignNote';
 import RequestReferencePhotos from './requestReferencePhotos';
+import RequestDesignPhotos from './requestDesignPhotos';
 
 const CreateOrUpdateForm: React.FC<{ isCreate: boolean }> = ({ isCreate }) => {
     const dispatch = useAppDispatch<AppDispatch>();
@@ -47,7 +49,15 @@ const CreateOrUpdateForm: React.FC<{ isCreate: boolean }> = ({ isCreate }) => {
                     </div>
 
                     <div className='p-6 bg-white shadow col-span-2'>
+                        <RequestDesignNote />
+                    </div>
+
+                    <div className='p-6 bg-white shadow col-span-2'>
                         <RequestReferencePhotos />
+                    </div>
+
+                    <div className='p-6 bg-white shadow col-span-2'>
+                        <RequestDesignPhotos />
                     </div>
                 </div>
             </div>
