@@ -11,6 +11,7 @@ import storeReducer from './features/storeSlice'
 import cityReducer from './features/citySlice'
 import districtReducer from './features/districtSlice'
 import areaReducer from './features/areaSlice'
+import extraProductReducer from './features/extraProduct'
 
 
 export const makeStore = () => {
@@ -27,7 +28,8 @@ export const makeStore = () => {
             store: storeReducer,
             city: cityReducer,
             district: districtReducer,
-            area: areaReducer
+            area: areaReducer,
+            extraProduct: extraProductReducer
         }
     })
 }
