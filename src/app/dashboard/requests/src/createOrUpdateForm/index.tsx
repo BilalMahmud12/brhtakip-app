@@ -59,9 +59,12 @@ const CreateOrUpdateForm: React.FC<{ isCreate: boolean }> = ({ isCreate }) => {
                         <RequestReferencePhotos />
                     </div>
 
-                    <div className='p-6 bg-white shadow col-span-2'>
-                        <RequestDesignPhotos />
-                    </div>
+
+                    {!isCreate && (
+                        <div className='p-6 bg-white shadow col-span-2'>
+                            <RequestDesignPhotos />
+                        </div>
+                    )}
 
                     {(requestForm?.designImages?.length ?? 0) > 0 && (
                         <div className='p-6 bg-white shadow col-span-2'>

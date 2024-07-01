@@ -67,8 +67,8 @@ const RequestDetails: React.FC = () => {
                     <AutoComplete<Option>
                         id="applicationArea"
                         options={applicationAreasList}
-                        value={requestFormRef.current.applicationArea}
-                        handleOnChange={(option) => handleSelectChange('applicationArea', option)}
+                        value={requestFormRef.current.ApplicationArea}
+                        handleOnChange={(option) => handleSelectChange('ApplicationArea', option)}
                     />
                 </div>
 

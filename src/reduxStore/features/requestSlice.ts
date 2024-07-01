@@ -35,7 +35,7 @@ interface RequestState {
         requestBrandId: string;
         requestProductId: string;
         requestMaterialId: string;
-        applicationArea: string;
+        ApplicationArea: string;
         branded: boolean;
         quantity: number;
         width: number;
@@ -69,7 +69,7 @@ const initialState: RequestState = {
         requestBrandId: '',
         requestProductId: '',
         requestMaterialId: '',
-        applicationArea: '',
+        ApplicationArea: '',
         branded: false,
         quantity: 0,
         width: 0,

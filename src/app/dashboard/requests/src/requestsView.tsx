@@ -12,7 +12,7 @@ import { Button, TextField, MenuItem } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import SyncIcon from '@mui/icons-material/Sync';
 import SendIcon from '@mui/icons-material/Send';
-import RequestsDataTable from './requestsDataTable';
+import RequestsDataTable from './tableView/requestsDataTable';
 import { toast } from 'sonner';
 
 import type { Request, RequestStatus } from '@/API';

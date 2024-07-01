@@ -33,6 +33,7 @@ const RequestSettings: React.FC = () => {
                         disabled
                     />
                 </div>
+                <div></div>
 
                 <div className='input-group w-full col-span-2 lg:col-span-1'>
                     <label htmlFor="isExtraProductRequest" className='block text-xs font-medium mb-1.5'>EK Ürün Talebi</label>
