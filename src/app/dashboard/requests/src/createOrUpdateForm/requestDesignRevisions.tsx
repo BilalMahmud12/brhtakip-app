@@ -4,10 +4,10 @@ import React from 'react';
 import { handleFormChange } from '@/reduxStore/features/requestSlice';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { RootState } from '@/reduxStore/store';
-import Switch from '@mui/material/Switch';
 import { TextField } from '@mui/material';
 
-const RequestDesignNote: React.FC = () => {
+
+const RequestDesignRevisions: React.FC = () => {
     const dispatch = useAppDispatch();
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
     const requestFormRef = React.useRef(requestForm);
@@ -15,24 +15,21 @@ const RequestDesignNote: React.FC = () => {
 
     return (
         <React.Fragment>
-            <div className='flex items-center justify-between'>
-                <h2 className='text-base font-semibold mb-6'>Tasarım Notu</h2>
-            </div>
-            
+            <h2 className='text-base font-semibold mb-6'>Tasarım Revizyonları</h2>
 
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
                 <div className='input-group w-full col-span-2'>
-                    <label htmlFor="designNote" className='block text-xs font-medium mb-1.5'>
-                        Tasarım ile ilgili Notlarınızı:
+                    <label htmlFor="designRevisions" className='block text-xs font-medium mb-1.5'>
+                        Tasarım Revizyonları:
                     </label>
                     <TextField
-                        id='designNote'
+                        id='designRevisions'
                         variant="standard"
                         sx={{ width: '100%' }}
                         helperText={''}
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                             dispatch(handleFormChange({
-                                key: 'designNote',
+                                key: 'designRevisions',
                                 value: event.target.value
                             }))
                         }}
@@ -45,4 +42,4 @@ const RequestDesignNote: React.FC = () => {
     );
 }
 
-export default RequestDesignNote;
+export default RequestDesignRevisions;

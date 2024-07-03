@@ -12,6 +12,9 @@ import RequestExtraProducts from './requestExtraProducts';
 import RequestDesignNote from './requestDesignNote';
 import RequestReferencePhotos from './requestReferencePhotos';
 import RequestDesignPhotos from './requestDesignPhotos';
+import RequestDesignRevisions from './requestDesignRevisions';
+import RequestPrintPhotos from './requestPrintPhotos';
+import RequestApplicationPhotos from './requestApplicationPhotos';
 
 const CreateOrUpdateForm: React.FC<{ isCreate: boolean }> = ({ isCreate }) => {
     const dispatch = useAppDispatch<AppDispatch>();
@@ -56,8 +59,35 @@ const CreateOrUpdateForm: React.FC<{ isCreate: boolean }> = ({ isCreate }) => {
                         <RequestReferencePhotos />
                     </div>
 
+
+                    {!isCreate && (
+                        <></>
+                    )}
+
                     <div className='p-6 bg-white shadow col-span-2'>
                         <RequestDesignPhotos />
+                    </div>
+
+                    {(requestForm?.designImages?.length ?? 0) > 0 && (
+                      <></>  
+                    )}
+
+                    <div className='p-6 bg-white shadow col-span-2'>
+                        <RequestDesignRevisions />
+                    </div>
+                    
+                    {requestForm.passedRevision && (
+                        <>
+                            
+                        </>
+                    )}
+
+                    <div className='p-6 bg-white shadow col-span-2'>
+                        <RequestPrintPhotos />
+                    </div>
+
+                    <div className='p-6 bg-white shadow col-span-2'>
+                        <RequestApplicationPhotos />
                     </div>
                 </div>
             </div>
