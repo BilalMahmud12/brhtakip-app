@@ -27,6 +27,21 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     const [checked, setChecked] = React.useState(extraProductFormRef.current.isActive as boolean);
 
+    useEffect(() => {
+        if (!isCreate) {
+            loadFormData(extraProduct);
+        }
+    }, [extraProduct])
+    const loadFormData = async (extraProduct: ExtraProduct) => {
+        const {
+            name,
+            isActive,
+        } = extraProduct
+
+        dispatch(handleFormChange({ key: 'name', value: name as string }))
+        dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
+    }
+
     return (
         <div >
             <div className='my-2 pt-5' />
@@ -35,9 +50,9 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                 <div className='p-6 bg-white shadow col-span-2'>
 
                     <div className='input-group w-full col-span-1 lg:col-span-1'>
-                        <label htmlFor="material_name" className='block text-xs font-medium mb-1.5'>Ürun Adı *</label>
+                        <label htmlFor="extra_product_name" className='block text-xs font-medium mb-1.5'>Ürun Adı *</label>
                         <TextField
-                            id='material_name'
+                            id='extra_product_name'
                             variant="standard"
                             sx={{ width: '100%' }}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,10 +68,10 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                         <label htmlFor="brand_state" className='block text-xs font-medium mb-2'>Ürun Durumu</label>
                         <div>
                             <FormControlLabel
-                                label={checked ? 'Aktif' : 'Aktif Değil'}
+                                label={extraProductFormRef.current.isActive as boolean ? 'Aktif' : 'Aktif Değil'}
                                 control={<Switch
                                     color='success'
-                                    checked={checked}
+                                    checked={extraProductFormRef.current.isActive as boolean}
                                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                         setChecked(event.target.checked);
                                         dispatch(handleFormChange({

@@ -4,10 +4,10 @@ import type { ExtraProduct } from '@/API';
 interface ExtraProductState {
     extraProducts: ExtraProduct[];
     extraProductsForm: {
+        id?: string;
         name?: string;
         isActive?: boolean;
         images?: [];
-        [key: string]: any;
     }
 }
 
