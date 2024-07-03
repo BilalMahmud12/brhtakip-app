@@ -25,7 +25,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     const extraProductFormRef = useRef(extraProductsForm);
     extraProductFormRef.current = extraProductsForm;
 
-    const [checked, setChecked] = React.useState(extraProductFormRef.current.isActive as boolean);
+    const [checked, setChecked] = useState(extraProductFormRef.current.isActive as boolean);
 
     useEffect(() => {
         if (!isCreate) {

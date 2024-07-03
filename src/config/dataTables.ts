@@ -95,7 +95,7 @@ export const dataTables = {
     extraProducts: {
         columns: [
             { label: 'Ürün', key: 'name', width: '240' },
-            { label: 'Durum', key: 'status', width: '120' },
+            { label: 'Durum', key: 'isActive', width: '120' },
             { label: '', key: 'actions', width: '80' },
         ]
     }
