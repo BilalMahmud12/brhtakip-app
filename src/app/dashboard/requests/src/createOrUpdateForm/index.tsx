@@ -35,15 +35,19 @@ const CreateOrUpdateForm: React.FC<{ isCreate: boolean }> = ({ isCreate }) => {
                         <RequestStore />
                     </div>
 
-                    <div className='p-6 bg-white shadow col-span-2 sm:col-span-1'>
-                        <RequestBrandAndProduct />
-                    </div>
+                    {!requestFormRef.current.isExtraProductRequest && (
+                        <>
+                            <div className='p-6 bg-white shadow col-span-2 sm:col-span-1'>
+                                <RequestBrandAndProduct />
+                            </div>
 
-                    <div className='p-6 bg-white shadow col-span-2 sm:col-span-1'>
-                        <RequestDetails />
-                    </div>
-
-                    <div className='p-6 bg-white shadow col-span-2 sm:col-span-1'>
+                            <div className='p-6 bg-white shadow col-span-2 sm:col-span-1'>
+                                <RequestDetails />
+                            </div>
+                        </>
+                    )}
+                    
+                    <div className='p-6 bg-white shadow col-span-2'>
                         <RequestExtraProducts />
                     </div>
 
@@ -51,44 +55,47 @@ const CreateOrUpdateForm: React.FC<{ isCreate: boolean }> = ({ isCreate }) => {
                         <RequestFinance />
                     </div>
 
-                    <div className='p-6 bg-white shadow col-span-2'>
-                        <RequestDesignNote />
-                    </div>
+                    {!requestFormRef.current.isExtraProductRequest && (
+                        <>
+                            <div className='p-6 bg-white shadow col-span-2 sm:col-span-1'>
+                                <RequestDesignNote />
+                            </div>
+                        </>
+                    )}
 
                     <div className='p-6 bg-white shadow col-span-2'>
                         <RequestReferencePhotos />
                     </div>
 
-
                     {!isCreate && (
-                        <></>
-                    )}
-
-                    <div className='p-6 bg-white shadow col-span-2'>
-                        <RequestDesignPhotos />
-                    </div>
-
-                    {(requestForm?.designImages?.length ?? 0) > 0 && (
-                      <></>  
-                    )}
-
-                    <div className='p-6 bg-white shadow col-span-2'>
-                        <RequestDesignRevisions />
-                    </div>
-                    
-                    {requestForm.passedRevision && (
                         <>
-                            
+                            <div className='p-6 bg-white shadow col-span-2'>
+                                <RequestDesignPhotos />
+                            </div>
                         </>
                     )}
 
-                    <div className='p-6 bg-white shadow col-span-2'>
-                        <RequestPrintPhotos />
-                    </div>
+                    {((requestForm?.designImages?.length ?? 0) > 0 && !requestFormRef.current.isExtraProductRequest) && (
+                      <>
+                            <div className='p-6 bg-white shadow col-span-2'>
+                                <RequestDesignRevisions />
+                            </div>
+                      </>  
+                    )}
 
-                    <div className='p-6 bg-white shadow col-span-2'>
-                        <RequestApplicationPhotos />
-                    </div>
+                    {requestForm.passedRevision && (
+                        <>
+                            {!requestFormRef.current.isExtraProductRequest && (
+                                <div className='p-6 bg-white shadow col-span-2'>
+                                    <RequestPrintPhotos />
+                                </div>
+                            )}
+                            
+                            <div className='p-6 bg-white shadow col-span-2'>
+                                <RequestApplicationPhotos />
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
         </React.Fragment>

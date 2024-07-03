@@ -264,7 +264,7 @@ const RequestsView: React.FC = () => {
                     <div className='max-w-[calc(100vw-48px)] sm:max-w-full'>
                         <RequestsDataTable
                             dataPayload={requests}
-                            handleEdit={(row) => { console.log('Edit', row) }}
+                            handleEdit={(row) => { router.push(`/dashboard/requests/${row.id}`) }}
                             handleDelete={handleDelete}
                             handleSelect={(data) => dispatch(setSelectedRequests(data))}
                             isLoading={isFetchingRef.current}

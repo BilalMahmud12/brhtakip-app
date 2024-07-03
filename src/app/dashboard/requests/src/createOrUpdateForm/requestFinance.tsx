@@ -1,14 +1,17 @@
 'use client'
 import React from 'react';
-import * as Repo from '@/repository/index';
-import { useAppDispatch } from '@/reduxStore/hooks';
-import { AppDispatch } from '@/reduxStore/store';
+import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
 import { handleFormChange } from '@/reduxStore/features/requestSlice';
 import { TextField } from '@mui/material';
 
 
 const RequestFinance: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
+    const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
+    const requestFormRef = React.useRef(requestForm);
+    requestFormRef.current = requestForm;
+
     return (
         <React.Fragment>
             <h2 className='text-base font-semibold mb-6'>Finans Bilgileri</h2>
@@ -22,12 +25,12 @@ const RequestFinance: React.FC = () => {
                         sx={{ width: '100%' }}
                         helperText={''}
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                            console.log('Production Cost:', event.target.value);
                             dispatch(handleFormChange({
                                 key: 'productionCost',
-                                value: event.target.value
+                                value: parseFloat(event.target.value).toFixed(2).toString()
                             }))
                         }}
+                        value={requestFormRef.current.productionCost}
                         placeholder={'00.00'}
                         type='number'
                         inputProps={{
@@ -47,9 +50,10 @@ const RequestFinance: React.FC = () => {
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                             dispatch(handleFormChange({
                                 key: 'cargoBudget',
-                                value: event.target.value
+                                value: parseFloat(event.target.value).toFixed(2).toString()
                             }))
                         }}
+                        value={requestFormRef.current.cargoBudget}
                         placeholder={'00.00'}
                         type='number'
                         inputProps={{
@@ -69,9 +73,10 @@ const RequestFinance: React.FC = () => {
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                             dispatch(handleFormChange({
                                 key: 'assemblyBudget',
-                                value: event.target.value
+                                value: parseFloat(event.target.value).toFixed(2).toString()
                             }))
                         }}
+                        value={requestFormRef.current.assemblyBudget}
                         placeholder={'00.00'}
                         type='number'
                         inputProps={{
@@ -91,9 +96,10 @@ const RequestFinance: React.FC = () => {
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                             dispatch(handleFormChange({
                                 key: 'monthlyFee',
-                                value: event.target.value
+                                value: parseFloat(event.target.value).toFixed(2).toString()
                             }))
                         }}
+                        value={requestFormRef.current.monthlyFee}
                         placeholder={'00.00'}
                         type='number'
                         inputProps={{

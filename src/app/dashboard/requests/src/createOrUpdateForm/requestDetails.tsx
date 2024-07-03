@@ -63,17 +63,17 @@ const RequestDetails: React.FC = () => {
                 
 
                 <div className='input-group w-full col-span-2 lg:col-span-1'>
-                    <label htmlFor="applicationArea" className='block text-xs font-medium mb-1.5'>Uygulama Alanı *</label>
+                    <label htmlFor="requestApplicationAreaId" className='block text-xs font-medium text-zinc-500 mb-1.5'>Uygulama Alanı *</label>
                     <AutoComplete<Option>
-                        id="applicationArea"
+                        id="requestApplicationAreaId"
                         options={applicationAreasList}
-                        value={requestFormRef.current.ApplicationArea}
-                        handleOnChange={(option) => handleSelectChange('ApplicationArea', option)}
+                        value={requestFormRef.current.requestApplicationAreaId}
+                        handleOnChange={(option) => handleSelectChange('requestApplicationAreaId', option)}
                     />
                 </div>
 
                 <div className='input-group w-full col-span-2 lg:col-span-1'>
-                    <label htmlFor="material" className='block text-xs font-medium mb-1.5'>Malzeme *</label>
+                    <label htmlFor="material" className='block text-xs font-medium text-zinc-500 mb-1.5'>Malzeme *</label>
                     <AutoComplete<Option>
                         id="material"
                         options={materialsList}
@@ -83,7 +83,7 @@ const RequestDetails: React.FC = () => {
                 </div>
 
                 <div className='input-group w-full col-span-3 lg:col-span-1'>
-                    <label htmlFor="branded" className='block text-xs font-medium mb-1.5'>Markalı *</label>
+                    <label htmlFor="branded" className='block text-xs font-medium text-zinc-500 mb-1.5'>Markalı *</label>
 
                     <TextField
                         select
@@ -94,7 +94,7 @@ const RequestDetails: React.FC = () => {
                         onChange={(e) => dispatch(handleFormChange({ key: 'branded', value: e.target.value === 'Evet' ? true : false}))}
                         sx={{ 
                             width: '100%',  
-                            '.MuiSelect-standard': { height: '26px', }
+                            '& .MuiSelect-standard': { height: '26px', }
                         }}
                         size='small'
                     >
@@ -104,7 +104,7 @@ const RequestDetails: React.FC = () => {
                 </div>
 
                 <div className='input-group w-full col-span-2 lg:col-span-1'>
-                    <label htmlFor="quantity" className='block text-xs font-medium mb-1.5'>Adet *</label>
+                    <label htmlFor="quantity" className='block text-xs font-medium text-zinc-500 mb-1.5'>Adet *</label>
                     <TextField
                         id='quantity'
                         variant="standard"
@@ -122,7 +122,7 @@ const RequestDetails: React.FC = () => {
                 </div>
 
                 <div className='input-group w-full col-span-2 lg:col-span-1'>
-                    <label htmlFor="width" className='block text-xs font-medium mb-1.5'>En *</label>
+                    <label htmlFor="width" className='block text-xs font-medium text-zinc-500 mb-1.5'>En *</label>
                     <TextField
                         id='width'
                         variant="standard"
@@ -140,7 +140,7 @@ const RequestDetails: React.FC = () => {
                 </div>
 
                 <div className='input-group w-full col-span-2 lg:col-span-1'>
-                    <label htmlFor="height" className='block text-xs font-medium mb-1.5'>Boy *</label>
+                    <label htmlFor="height" className='block text-xs font-medium text-zinc-500 mb-1.5'>Boy *</label>
                     <TextField
                         id='height'
                         variant="standard"

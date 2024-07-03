@@ -64,7 +64,7 @@ const RequestStore: React.FC = () => {
 
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
                 <div className='input-group w-full col-span-2'>
-                    <label htmlFor="storeName" className='block text-xs font-medium mb-1.5'>Mağaza Adı</label>
+                    <label htmlFor="storeName" className='block text-xs font-medium text-zinc-500 mb-1.5'>Mağaza Adı</label>
 
                     <AutoComplete<StoreOption>
                         id='storeName'

@@ -3,7 +3,7 @@ import { createExtraProduct, updateExtraProduct, deleteExtraProduct } from '@/gr
 import type { ExtraProduct } from '@/API';
 import { client } from '@/repository';
 
-const getAllExtraProducts = async () => {
+export const getAllExtraProducts = async () => {
     try {
         const { data } = await client.graphql({ query: listExtraProducts });
         return data.listExtraProducts.items;
@@ -11,6 +11,7 @@ const getAllExtraProducts = async () => {
         console.error(error);
     }
 }
+
 export const getExtraProductById = async (id: string) => {
     try {
         const { data } = await client.graphql({
@@ -51,7 +52,7 @@ export const update = async (extraProduct: any) => {
     }
 }
 
-const softDelete = async (id: string) => {
+export const softDelete = async (id: string) => {
     try {
         const data = await client.graphql({
             query: deleteExtraProduct,
@@ -64,10 +65,4 @@ const softDelete = async (id: string) => {
     }
 }
 
-export default {
-    getAllExtraProducts,
-    getExtraProductById,
-    create,
-    update,
-    softDelete
-}
+

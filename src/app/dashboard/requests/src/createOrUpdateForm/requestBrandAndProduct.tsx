@@ -123,7 +123,7 @@ const RequestBrandAndProduct: React.FC = () => {
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
                 {clientprofileID === 'BRH_ADMIN' && (
                     <div className='input-group w-full col-span-2'>
-                        <label htmlFor="clientName" className='block text-xs font-medium mb-1.5'>Firma</label>
+                        <label htmlFor="clientName" className='block text-xs font-medium text-zinc-500 mb-1.5'>Firma</label>
                         <AutoComplete
                             id="clientName"
                             options={getClientOptions()}
@@ -143,7 +143,7 @@ const RequestBrandAndProduct: React.FC = () => {
                 )}
 
                 <div className='input-group w-full col-span-2 lg:col-span-1'>
-                    <label htmlFor="brandName" className='block text-xs font-medium mb-1.5'>Marka</label>
+                    <label htmlFor="brandName" className='block text-xs font-medium text-zinc-500 mb-1.5'>Marka</label>
                     <AutoComplete
                         id="brandName"
                         options={brandOptionsList}
@@ -162,7 +162,7 @@ const RequestBrandAndProduct: React.FC = () => {
                 </div>
 
                 <div className='input-group w-full col-span-2 lg:col-span-1'>
-                    <label htmlFor="productName" className='block text-xs font-medium mb-1.5'>Ürün</label>
+                    <label htmlFor="productName" className='block text-xs font-medium text-zinc-500 mb-1.5'>Ürün</label>
                     <AutoComplete
                         id="productName"
                         options={productOptionsList}

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useRouter } from "next-nprogress-bar";
 import { Authenticator, useAuthenticator, Loader } from '@aws-amplify/ui-react';
 import Logo from "@/components/core/logo";
+import Image from 'next/image';
 import { useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch } from '@/reduxStore/store';
 import { loadUserData } from "@/services/userService";
@@ -36,7 +37,16 @@ export default function Login() {
             {user ? (
                 <div className='relative z-50 max-w-xl mx-auto px-8 py-10 bg-white rounded-2xl'>
                     <div className="flex items-center justify-center mb-4">
-                        <Logo />
+                        <div className="flex items-center justify-center mb-5">
+                            <Image
+                                src="./logo.svg"
+                                alt="Logo"
+                                width={200}
+                                height={90}
+                                className='cursor-pointer mr-8 w-[200px] h-[90px]'
+                                priority
+                            />
+                        </div>
                     </div>
                     <div className='text-center text-sm mb-4'>Lütfen bekleyiniz, Panele yönlendiriliyor...</div>
                     <div className='flex items-center'>
@@ -49,8 +59,15 @@ export default function Login() {
             ) : (
                 <div className="relative z-50 max-w-xl mx-auto px-8 py-10 bg-white rounded-2xl">
                     <div>
-                        <div className="flex items-center mb-5">
-                            <Logo />
+                        <div className="flex items-center justify-center mb-5">
+                                <Image
+                                    src="./logo.svg"
+                                    alt="Logo"
+                                    width={200}
+                                    height={90}
+                                    className='cursor-pointer mr-8 w-[200px] h-[90px]'
+                                    priority
+                                />
                         </div>
 
                         <div className='mb-6 h-[340px]'>
@@ -67,7 +84,7 @@ export default function Login() {
                                 Bu hizmete erişerek Kullanım Koşullarımızı kabul etmiş olursunuz ve Gizlilik Politikamızı kabul ettiğinizi beyan etmiş olursunuz. Daha fazla bilgi için web sitemizi ziyaret edin: www.brhreklam.com
                             </p>
 
-                            <p className='text-gray-500'>
+                            <p className='text-gray-500 hidden'>
                                 Destek veya sorularınız için lütfen bize ulaşın:
                                 <br />
                                 E-posta: support@brhreklam.com

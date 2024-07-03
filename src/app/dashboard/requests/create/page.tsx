@@ -5,7 +5,7 @@ import RequestCreateView from './src/requestCreateView';
 const CreateRequest: React.FC = () => {
     return (
         <div>
-            <title>Talepler Oluştur - BRH Takip</title>
+            <title>Talep Oluştur - BRH Takip</title>
 
             <RequestCreateView />
         </div>

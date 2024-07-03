@@ -44,8 +44,9 @@ export const navigation = [
         show_title: true,
         items: [
             { name: 'Talepler', href: '/dashboard/requests', icon: 'FcViewDetails' },
-            { name: 'Sistem Tanıtmaları', href: '/dashboard/system', icon: 'FcFolder' },
+            { name: 'Mağazalar', href: '/dashboard/system/stores', icon: 'FcShop' },
             { name: 'Müşteri Profilleri', href: '/dashboard/clients', icon: 'FcBriefcase' },
+            { name: 'Sistem Tanıtmaları', href: '/dashboard/system', icon: 'FcFolder' },
         ]
     },
     {
