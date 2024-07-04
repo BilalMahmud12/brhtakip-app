@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     const dispatch = useAppDispatch();
     useEffect(() => {
         const fetchExtraProducts = async () => {
-            const extraProducts = await Repo.ExtraProductRepository.default.getAllExtraProducts();
+            const extraProducts = await Repo.ExtraProductRepository.getAllExtraProducts();
             dispatch(setExtraProducts(extraProducts as unknown as ExtraProduct[]));
             console.log('extraProducts', extraProducts);
         }

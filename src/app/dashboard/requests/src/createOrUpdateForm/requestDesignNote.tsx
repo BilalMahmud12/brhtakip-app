@@ -22,7 +22,7 @@ const RequestDesignNote: React.FC = () => {
 
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
                 <div className='input-group w-full col-span-2'>
-                    <label htmlFor="designNote" className='block text-xs font-medium mb-1.5'>
+                    <label htmlFor="designNote" className='block text-xs font-medium text-zinc-500 mb-1'>
                         Tasarım ile ilgili Notlarınızı:
                     </label>
                     <TextField
@@ -36,8 +36,9 @@ const RequestDesignNote: React.FC = () => {
                                 value: event.target.value
                             }))
                         }}
+                        value={requestFormRef.current.designNote}
                         multiline={true}
-                        rows={4}
+                        rows={5}
                     />
                 </div>
             </div>

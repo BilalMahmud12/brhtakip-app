@@ -1,3 +1,11 @@
+type RequestExtraProduct {
+  id: ID
+  name: String
+  image: String
+  quantity: String
+  note: String
+}
+
 type ImageStorageItem {
   type: String
   path: String
@@ -8,7 +16,6 @@ type ExtraProduct @model @auth(rules: [{allow: public}]) {
   isActive: Boolean!
   name: String!
   images: [ImageStorageItem]
-  requests: [Request] @manyToMany(relationName: "RequestExtraProduct")
 }
 
 enum Roles {
@@ -166,6 +173,6 @@ type Request @model @auth(rules: [{allow: public}]) {
   designImages: [ImageStorageItem]
   printImages: [ImageStorageItem]
   applicationImages: [ImageStorageItem]
-  ExtraProducts: [ExtraProduct] @manyToMany(relationName: "RequestExtraProduct")
+  extraProducts: [RequestExtraProduct]
 }
  

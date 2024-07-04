@@ -11,7 +11,8 @@ const getAllExtraProducts = async () => {
         console.error(error);
     }
 }
-export const getExtraProductById = async (id: string) => {
+
+const getExtraProductById = async (id: string) => {
     try {
         const { data } = await client.graphql({
             query: getExtraProduct,
@@ -24,8 +25,7 @@ export const getExtraProductById = async (id: string) => {
     }
 }
 
-
-export const create = async (extraProduct: any) => {
+const create = async (extraProduct: any) => {
     try {
         const data = await client.graphql({
             query: createExtraProduct,
@@ -38,7 +38,7 @@ export const create = async (extraProduct: any) => {
     }
 }
 
-export const update = async (extraProduct: any) => {
+const update = async (extraProduct: any) => {
     try {
         const data = await client.graphql({
             query: updateExtraProduct,
@@ -64,10 +64,12 @@ const softDelete = async (id: string) => {
     }
 }
 
-export default {
+export {
     getAllExtraProducts,
     getExtraProductById,
     create,
     update,
-    softDelete
+    softDelete,
 }
+
+

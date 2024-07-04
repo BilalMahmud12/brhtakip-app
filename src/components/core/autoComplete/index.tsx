@@ -1,7 +1,7 @@
 import React from 'react';
 import { Autocomplete, AutocompleteChangeReason, TextField } from '@mui/material';
 
-type Option = {
+export type Option = {
     label: string;
     value: string;
 };
@@ -61,6 +61,14 @@ const AutoComplete = <T extends Option>(props: AutoCompleteProps<T>) => {
                     size='small'
                 />
             )}
+            sx={{ 
+                '& .MuiSelect-select': {
+                    height: '26px !important'
+                },
+                '& .MuiInputBase-input': {
+                    height: '26px !important'
+                }
+            }}
             renderOption={renderOption}
             disabled={disabled}
             loading={isLoading}

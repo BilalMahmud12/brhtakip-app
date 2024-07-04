@@ -44,7 +44,7 @@ const RequestApplicationPhotos: React.FC = () => {
 
                 <div className='input-group w-full col-span-2 lg:col-span-1'>
                     <FileDisplay
-                        targetPath='designImages'
+                        targetPath='applicationImages'
                         files={requestFormRef.current.applicationImages || []}
                     />
                 </div>

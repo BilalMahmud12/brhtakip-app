@@ -194,7 +194,7 @@ export default function RootLayout({
                         onClick={handleDrawerOpen}
                         edge="start"
                         sx={{
-                            marginRight: 4,
+                            marginRight: 2,
                             ...(open && { display: 'none' }),
                         }}
                     >
@@ -204,19 +204,17 @@ export default function RootLayout({
                     <Image
                         src="/logo.svg"
                         alt="Logo"
-                        width={120}
-                        height={30}
-                        className='cursor-pointer mr-12 w-[120px] h-[30px]'
+                        width={130}
+                        height={70}
+                        className='cursor-pointer w-[130px] h-[70px]'
                         onClick={() => router.push('/dashboard')}
                         priority 
                     />
 
-                    <Divider orientation="vertical" flexItem />
-
                     <div className='hidden sm:block'>
                         <div className=''>
                             <span className='flex flex-col ml-6'>
-                                <span className='text-sm text-gray-800 font-medium flex items-center space-x-2'>
+                                <span className='text-sm text-gray-800 font-medium flex items-center space-x-2 mb-1'>
                                     <span className='block w-2 h-2 rounded-full bg-green-600'></span>
                                     <span>{currentClientProfileRef.current.name} </span>
                                 </span>
@@ -229,7 +227,7 @@ export default function RootLayout({
                     </div>
 
                     <div className='ml-auto flex items-center justify-end space-x-3'>
-                        <UserNotificationMenu />
+                        {/* <UserNotificationMenu /> */}
                         <UserAccountMenu /> 
                     </div>
                 </Toolbar>
@@ -312,7 +310,7 @@ export default function RootLayout({
                 </List>
             </Drawer>
 
-            <Box component="main" sx={{ flexGrow: 1, p: 3, background: '#f4f4f5', marginTop: '54px', minHeight: 'calc(100vh - 54px)' }}>
+            <Box component="main" sx={{ flexGrow: 1, p: 3, background: '#f4f4f5', marginTop: '71px', minHeight: 'calc(100vh - 71px)' }}>
                 {children}
             </Box>
         </Box>

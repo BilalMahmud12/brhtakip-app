@@ -19,9 +19,11 @@ export type DesignRevision = {
 }
 
 export type ExtraProductRequest = {
-    productionId: number;
+    id: string;
+    name?: string;
     quantity: number;
-    note: string;
+    image?: string;
+    note?: string;
 }
 
 interface RequestState {
@@ -35,7 +37,7 @@ interface RequestState {
         requestBrandId: string;
         requestProductId: string;
         requestMaterialId: string;
-        ApplicationArea: string;
+        requestApplicationAreaId: string;
         branded: boolean;
         quantity: number;
         width: number;
@@ -51,7 +53,7 @@ interface RequestState {
         printImages?: ImageStorage[];
         applicationImages?: ImageStorage[];
         designRevisions?: DesignRevision[];
-        extraProductRequests?: ExtraProductRequest[];
+        extraProducts?: ExtraProductRequest[];
         passedRevision?: boolean;
     },
     selectedRequests: string[],
@@ -69,7 +71,7 @@ const initialState: RequestState = {
         requestBrandId: '',
         requestProductId: '',
         requestMaterialId: '',
-        ApplicationArea: '',
+        requestApplicationAreaId: '',
         branded: false,
         quantity: 0,
         width: 0,
@@ -83,11 +85,11 @@ const initialState: RequestState = {
         referenceImages: [],
         designImages: [],
         printImages: [],
-        applicationImages: []
+        applicationImages: [],
+        designRevisions: [],
+        extraProducts: [],
     },
     selectedRequests: [],
-    designRevisions: [],
-    extraProductRequests: [],
     passedRevision: false
 };
 
