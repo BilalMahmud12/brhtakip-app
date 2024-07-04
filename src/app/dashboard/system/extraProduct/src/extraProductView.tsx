@@ -21,9 +21,9 @@ const ExtraProductView: React.FC = () => {
 
     const handleDeleteExtraProduct = async (data: any) => {
         try {
-            const deleteExtraProduct = await Repo.ExtraProductRepository.default.softDelete(data.originalData.id);
+            const deleteExtraProduct = await Repo.ExtraProductRepository.softDelete(data.originalData.id);
             if (deleteExtraProduct && deleteExtraProduct.data) {
-                const newExtraProducts = await Repo.ExtraProductRepository.default.getAllExtraProducts();
+                const newExtraProducts = await Repo.ExtraProductRepository.getAllExtraProducts();
                 dispatch(setExtraProducts(newExtraProducts as unknown as ExtraProduct[]));
                 toast.success('Ürun Silindi');
             }

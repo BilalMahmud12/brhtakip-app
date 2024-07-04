@@ -26,7 +26,7 @@ const CreateExtraProductPage: React.FC = () => {
         try {
             const createExtraProduct = await Repo.ExtraProductRepository.create(extraProductsFormRef.current);
             if (createExtraProduct) {
-                const newExtraProducts = await Repo.ExtraProductRepository.default.getAllExtraProducts();
+                const newExtraProducts = await Repo.ExtraProductRepository.getAllExtraProducts();
                 dispatch(setExtraProducts(newExtraProducts as unknown as ExtraProduct[]));
                 toast.success('Ürun Eklendi');
                 router.push('/dashboard/system/extraProduct');
