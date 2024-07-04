@@ -14,7 +14,7 @@ import { toast } from 'sonner';
 import JSZip from 'jszip';
 
 interface FileDisplayProps {
-    targetPath: string; 
+    targetPath: string;
     files: ImageStorage[];
     options?: {
         gridClasses?: string;
@@ -23,7 +23,7 @@ interface FileDisplayProps {
 
 const FileDisplay: React.FC<FileDisplayProps> = (props) => {
     const {
-        targetPath = '', 
+        targetPath = '',
         files = [],
         options = {
             gridClasses: 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4',
@@ -66,7 +66,7 @@ const FileDisplay: React.FC<FileDisplayProps> = (props) => {
             a.click();
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
-            console.log('Succeed: ', {body, eTag});
+            console.log('Succeed: ', { body, eTag });
         } catch (error) {
             console.error('Error: ', error);
         }
@@ -80,7 +80,7 @@ const FileDisplay: React.FC<FileDisplayProps> = (props) => {
             try {
                 const { body, eTag } = await downloadData({ path: file.path }).result;
                 const result = body as unknown as Blob;
-                
+
                 const blob = new Blob([result], { type: eTag });
                 zip.file(file.path.split('/').pop() || 'download', blob);
             } catch (error) {
@@ -134,20 +134,20 @@ const FileDisplay: React.FC<FileDisplayProps> = (props) => {
                             />
 
                             <div className='flex space-x-3 items-start text-white text-5xl absolute z-20 bottom-3 left-[50%] transform -translate-x-1/2'>
-                                <IconButton 
-                                    aria-label="download" 
-                                    size="medium" 
-                                    color="inherit" 
+                                <IconButton
+                                    aria-label="download"
+                                    size="medium"
+                                    color="inherit"
                                     sx={{ background: '#ffffff50' }}
                                     onClick={() => handleDownloadSingleFile(files[index].path)}
                                 >
                                     <DownloadForOfflineIcon fontSize="inherit" />
                                 </IconButton>
 
-                                <IconButton 
-                                    aria-label="delete" 
-                                    size="medium" 
-                                    color="inherit" 
+                                <IconButton
+                                    aria-label="delete"
+                                    size="medium"
+                                    color="inherit"
                                     sx={{ background: '#ffffff50' }}
                                     onClick={() => onDelete(image)}
                                 >

@@ -5,7 +5,8 @@ import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { handleFormChange } from '@/reduxStore/features/extraProductSlice';
 
-import AutoComplete from '@/components/core/autoComplete';
+import MediaUploadManager from '@/components/core/MediaUploadManager';
+import FileDisplay from '@/components/core/fileDisplay';
 import TextField from '@mui/material/TextField';
 import { FormControlLabel } from '@mui/material';
 import Switch from '@mui/material/Switch';
@@ -40,6 +41,23 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
         dispatch(handleFormChange({ key: 'name', value: name as string }))
         dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
+    }
+
+    const onUploadSuccess = (files: { [key: string]: { status: string } }) => {
+        const images = extraProductFormRef.current.images || [];
+
+        const newFiles = Object.keys(files).map((key) => ({
+            type: 'designs',
+            path: key,
+        }))
+
+        dispatch(handleFormChange({
+            key: 'designImages',
+            value: [...images, ...newFiles]
+        }));
+
+        console.log('designImages', images);
+
     }
 
     return (
@@ -84,8 +102,33 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             />
                         </div>
                     </div>
+
+                    <div className='my-2 pt-5' />
+
+                    <React.Fragment>
+                        <h2 className='text-base font-semibold mb-6'>Görseller</h2>
+
+                        <div className='grid grid-cols-1 lg:grid-cols-2 lg:gap-x-6 gap-y-8 mb-4'>
+                            <div className='input-group w-full col-span-1'>
+                                {/* <MediaUploadManager
+                                    basePath='public'
+                                    uploadPath={`requests/${requestFormRef.current.requestNumber}/references`}
+                                    handleOnUploadSuccess={(files: { [key: string]: { status: string } }) => onUploadSuccess(files)}
+                                /> */}
+                            </div>
+
+                            <div className='input-group w-full col-span-2 lg:col-span-1'>
+                                <FileDisplay
+                                    targetPath='designImages'
+                                    files={extraProductFormRef.current.images || []}
+                                />
+                            </div>
+                        </div>
+                    </React.Fragment>
+
                 </div>
             </div>
+
         </div>
     );
 }
