@@ -39,23 +39,23 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                         <RequestSettings isCreate={isCreate} />
                     </div>
 
-                    <div className='p-6 bg-white shadow col-span-2 sm:col-span-1'>
+                    <div className='p-6 bg-white shadow col-span-2 lg:col-span-1'>
                         <RequestStore />
                     </div>
 
                     {!requestFormRef.current.isExtraProductRequest && (
                         <>
-                            <div className='p-6 bg-white shadow col-span-2 sm:col-span-1'>
+                            <div className='p-6 bg-white shadow col-span-2 lg:col-span-1'>
                                 <RequestBrandAndProduct />
                             </div>
 
-                            <div className='p-6 bg-white shadow col-span-2 sm:col-span-1'>
+                            <div className='p-6 bg-white shadow col-span-2 lg:col-span-1'>
                                 <RequestDetails />
                             </div>
                         </>
                     )}
 
-                    <div className='p-6 bg-white shadow col-span-2 sm:col-span-1'>
+                    <div className='p-6 bg-white shadow col-span-2 lg:col-span-1'>
                         <RequestFinance />
                     </div>
                     
@@ -111,3 +111,89 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 }
 
 export default CreateOrUpdateForm
+
+/**
+ * Request Status to sections mapping:
+ * PENDING_CLIENT_APPROVAL => 
+ * - RequestSettings
+ * - RequestStore
+ * - RequestBrandAndProduct
+ * - RequestDetails
+ * - RequestExtraProducts
+ * - RequestDesignNote
+ * - RequestReferencePhotos
+ * 
+ * 
+ * PENDING_APPROVAL => 
+ * - RequestSettings
+ * - RequestStore
+ * - RequestBrandAndProduct
+ * - RequestDetails
+ * - RequestFinance // needs revision
+ * - RequestExtraProducts
+ * - RequestDesignNote
+ * - RequestReferencePhotos
+ * 
+ * IN_DESIGN =>
+ * - RequestSettings
+ * - RequestStore // read only
+ * - RequestBrandAndProduct // read only
+ * - RequestDetails // read only
+ * - RequestFinance 
+ * - RequestDesignNote
+ * - RequestReferencePhotos
+ * - RequestDesignPhotos
+ * - RequestDesignRevisions
+ * 
+ * IN_PRESS =>
+ * - RequestSettings
+ * - RequestStore // read only
+ * - RequestBrandAndProduct // read only
+ * - RequestDetails // read only
+ * - RequestFinance
+ * - RequestDesignNote // read only
+ * - RequestReferencePhotos // read only
+ * - RequestDesignPhotos // read only
+ * - RequestDesignRevisions // read only
+ * - RequestPrintPhotos
+ * 
+ * IN_APPLICATION =>
+ * - RequestSettings
+ * - RequestStore // read only
+ * - RequestBrandAndProduct // read only
+ * - RequestDetails // read only
+ * - RequestFinance
+ * - RequestDesignNote // read only
+ * - RequestReferencePhotos // read only
+ * - RequestDesignPhotos // read only
+ * - RequestDesignRevisions // read only
+ * - RequestPrintPhotos // read only
+ * - RequestApplicationPhotos
+ * 
+ * COMPLETED =>
+ * - RequestSettings
+ * - RequestStore // read only
+ * - RequestBrandAndProduct // read only
+ * - RequestDetails // read only
+ * - RequestFinance // read only
+ * - RequestDesignNote // read only
+ * - RequestReferencePhotos // read only
+ * - RequestDesignPhotos // read only
+ * - RequestDesignRevisions // read only
+ * - RequestPrintPhotos // read only
+ * - RequestApplicationPhotos // read only
+ * 
+ * CANCELLED =>
+ * - RequestSettings
+ * - RequestStore // read only
+ * - RequestBrandAndProduct // read only
+ * - RequestDetails // read only
+ * - RequestFinance // read only
+ * - RequestDesignNote // read only
+ * - RequestReferencePhotos // read only
+ * - RequestDesignPhotos // read only
+ * - RequestDesignRevisions // read only
+ * - RequestPrintPhotos // read only
+ * - RequestApplicationPhotos // read only
+ * 
+ */

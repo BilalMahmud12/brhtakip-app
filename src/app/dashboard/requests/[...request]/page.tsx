@@ -21,7 +21,6 @@ const UpdateRequest: React.FC = () => {
 
     const requestFormRef = useRef(requestForm);
     requestFormRef.current = requestForm;
-    console.log('requestFormRef.current', requestFormRef.current);
 
     const loadRequest = async () => {
         const requestID = pathname.split('/').pop();
@@ -32,7 +31,7 @@ const UpdateRequest: React.FC = () => {
             const cleanRequest = removeRelationshipProperties(
                 removeSchemaTypeName(request)
             );
-            
+
             cleanRequest.productionCost = cleanRequest.productionCost?.toFixed(2).toString();
             cleanRequest.cargoBudget = cleanRequest.cargoBudget?.toFixed(2).toString();
             cleanRequest.assemblyBudget = cleanRequest.assemblyBudget?.toFixed(2).toString();

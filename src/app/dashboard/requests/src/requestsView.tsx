@@ -5,7 +5,7 @@ import { useRouter } from "next-nprogress-bar";
 import { usePathname } from 'next/navigation'
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
-import { setRequests, resetFormValues, setIsFetching, setSelectedRequests } from '@/reduxStore/features/requestSlice';
+import { setRequests, setIsFetching, setSelectedRequests, resetFormValues } from '@/reduxStore/features/requestSlice';
 import { statusMap, requestStatusOptions, requestActionOptions } from '@/config';
 import { findKeyByValue } from '@/utils/helpers';
 import { Button, TextField, MenuItem } from '@mui/material';
@@ -28,13 +28,11 @@ const RequestsView: React.FC = () => {
     const pathname = usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
 
-    const userProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
+    //const userProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const currentPageTitle = useAppSelector((state: RootState) => state.global.currentPageTitle);
 
     const requests = useAppSelector((state: RootState) => state.request.requests);
     const selectedRequests = useAppSelector((state: RootState) => state.request.selectedRequests);
-
-    console.log('requests', requests)
 
     const isFetching = useAppSelector((state: RootState) => state.request.isFetching);
     const isFetchingRef = useRef(isFetching);
