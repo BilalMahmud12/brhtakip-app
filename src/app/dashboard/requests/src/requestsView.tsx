@@ -5,7 +5,7 @@ import { useRouter } from "next-nprogress-bar";
 import { usePathname } from 'next/navigation'
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
-import { setRequests, resetFormValues, setIsFetching, setSelectedRequests } from '@/reduxStore/features/requestSlice';
+import { setRequests, setIsFetching, setSelectedRequests, resetFormValues } from '@/reduxStore/features/requestSlice';
 import { statusMap, requestStatusOptions, requestActionOptions } from '@/config';
 import { findKeyByValue } from '@/utils/helpers';
 import { Button, TextField, MenuItem } from '@mui/material';
@@ -28,7 +28,7 @@ const RequestsView: React.FC = () => {
     const pathname = usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
 
-    const userProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
+    //const userProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const currentPageTitle = useAppSelector((state: RootState) => state.global.currentPageTitle);
 
     const requests = useAppSelector((state: RootState) => state.request.requests);
@@ -121,33 +121,9 @@ const RequestsView: React.FC = () => {
         }
     }
 
-    const handleCreateRequest = async () => {
-        console.log('Request Form', requestForm)
-        try {
-            const createRequest = await Repo.RequestRepository.create(requestFormRef.current)
-
-            if (createRequest && createRequest.data) {
-                dispatch(setRequests([]))
-                toast.success(`${createRequest.data.createRequest.requestNumber} numaralı talep oluşturuldu.`);
-                dispatch(setIsFetching(true))
-
-                const newRequests = await Repo.RequestRepository.getRequestsByStatus(`${getCurrentRequestStatus(pathname)}`);
-
-                const sortedRequests = (newRequests as unknown as Request[]).sort((a, b) => {
-                    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-                });
-
-                dispatch(setRequests(sortedRequests))
-                dispatch(resetFormValues())
-                dispatch(setIsFetching(false))
-            }
-        } catch (error) {
-            console.log('Error')
-        }
-    }
-
-    const handleUpdateRequest = (data: any) => {
-        console.log('Update Request', data)
+    const handleOnEdit = (row: any) => {
+        console.log('Edit', row)
+        router.push(`/dashboard/requests/${row.id}`)
     }
 
     const handleDelete = (data: any) => {
@@ -200,7 +176,7 @@ const RequestsView: React.FC = () => {
 
                             <Button 
                                 variant="contained" 
-                                endIcon={<SyncIcon />} 
+                                startIcon={<SyncIcon />} 
                                 onClick={handleStatusChange}
                                 disabled={selectedStatus === getCurrentRequestStatus(pathname)}
                                 sx={{ height: '40px' }}
@@ -231,7 +207,7 @@ const RequestsView: React.FC = () => {
 
                             <Button
                                 variant="contained"
-                                endIcon={<SendIcon />}
+                                startIcon={<SendIcon />}
                                 onClick={handleStatusActionRequest}
                                 sx={{ height: '40px' }}
                                 disabled={!selectedRequests.length}
@@ -264,7 +240,7 @@ const RequestsView: React.FC = () => {
                     <div className='max-w-[calc(100vw-48px)] sm:max-w-full'>
                         <RequestsDataTable
                             dataPayload={requests}
-                            handleEdit={(row) => { router.push(`/dashboard/requests/${row.id}`) }}
+                            handleEdit={(row) => handleOnEdit(row)}
                             handleDelete={handleDelete}
                             handleSelect={(data) => dispatch(setSelectedRequests(data))}
                             isLoading={isFetchingRef.current}

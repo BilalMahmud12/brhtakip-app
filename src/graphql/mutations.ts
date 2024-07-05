@@ -21,6 +21,8 @@ export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
       path
       __typename
     }
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -43,6 +45,8 @@ export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
       path
       __typename
     }
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -65,6 +69,8 @@ export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
       path
       __typename
     }
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -82,6 +88,8 @@ export const createApplicationArea = /* GraphQL */ `mutation CreateApplicationAr
     id
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -99,6 +107,8 @@ export const updateApplicationArea = /* GraphQL */ `mutation UpdateApplicationAr
     id
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -116,6 +126,8 @@ export const deleteApplicationArea = /* GraphQL */ `mutation DeleteApplicationAr
     id
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -133,6 +145,8 @@ export const createMaterial = /* GraphQL */ `mutation CreateMaterial(
     id
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -150,6 +164,8 @@ export const updateMaterial = /* GraphQL */ `mutation UpdateMaterial(
     id
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -167,6 +183,8 @@ export const deleteMaterial = /* GraphQL */ `mutation DeleteMaterial(
     id
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -190,6 +208,8 @@ export const createUserProfile = /* GraphQL */ `mutation CreateUserProfile(
     email
     role
     permissions
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -213,6 +233,8 @@ export const updateUserProfile = /* GraphQL */ `mutation UpdateUserProfile(
     email
     role
     permissions
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -236,6 +258,8 @@ export const deleteUserProfile = /* GraphQL */ `mutation DeleteUserProfile(
     email
     role
     permissions
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -281,6 +305,8 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -294,6 +320,8 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -318,6 +346,9 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -334,6 +365,8 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -362,6 +395,9 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -443,6 +479,8 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -453,6 +491,8 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -472,6 +512,8 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -480,6 +522,8 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -488,6 +532,8 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -530,6 +576,15 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -575,6 +630,9 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -721,6 +779,9 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -881,6 +942,9 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -1018,6 +1082,8 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1031,6 +1097,8 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1055,6 +1123,9 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -1071,6 +1142,8 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1099,6 +1172,9 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -1180,6 +1256,8 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1190,6 +1268,8 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1209,6 +1289,8 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1217,6 +1299,8 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1225,6 +1309,8 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1267,6 +1353,15 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -1312,6 +1407,9 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -1458,6 +1556,9 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -1618,6 +1719,9 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -1755,6 +1859,8 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1768,6 +1874,8 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1792,6 +1900,9 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -1808,6 +1919,8 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1836,6 +1949,9 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -1917,6 +2033,8 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1927,6 +2045,8 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1946,6 +2066,8 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1954,6 +2076,8 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1962,6 +2086,8 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -2004,6 +2130,15 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -2049,6 +2184,9 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -2195,6 +2333,9 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -2355,6 +2496,9 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -2491,6 +2635,8 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2517,6 +2663,8 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2536,6 +2684,8 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2544,6 +2694,8 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2552,6 +2704,8 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2594,6 +2748,15 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -2777,6 +2940,8 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2790,6 +2955,8 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2814,6 +2981,9 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -2830,6 +3000,8 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -2858,6 +3030,9 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -2939,6 +3114,8 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2949,6 +3126,8 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -2968,6 +3147,8 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -2976,6 +3157,8 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -2984,6 +3167,8 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -3026,6 +3211,15 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -3071,6 +3265,9 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -3217,6 +3414,9 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -3377,6 +3577,9 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -3513,6 +3716,8 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3539,6 +3744,8 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3558,6 +3765,8 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3566,6 +3775,8 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3574,6 +3785,8 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3616,6 +3829,15 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -3799,6 +4021,8 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3812,6 +4036,8 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3836,6 +4062,9 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -3852,6 +4081,8 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -3880,6 +4111,9 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -3961,6 +4195,8 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3971,6 +4207,8 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -3990,6 +4228,8 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -3998,6 +4238,8 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -4006,6 +4248,8 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -4048,6 +4292,15 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -4093,6 +4346,9 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -4239,6 +4495,9 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -4399,6 +4658,9 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -4535,6 +4797,8 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4561,6 +4825,8 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4580,6 +4846,8 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4588,6 +4856,8 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4596,6 +4866,8 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4638,6 +4910,15 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -4821,6 +5102,8 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4834,6 +5117,8 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4858,6 +5143,9 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -4874,6 +5162,8 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -4902,6 +5192,9 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -4983,6 +5276,8 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4993,6 +5288,8 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -5012,6 +5309,8 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -5020,6 +5319,8 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -5028,6 +5329,8 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -5070,6 +5373,15 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -5115,6 +5427,9 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -5261,6 +5576,9 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -5421,6 +5739,9 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -5627,6 +5948,8 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -5653,6 +5976,8 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -5672,6 +5997,8 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -5680,6 +6007,8 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -5688,6 +6017,8 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -5730,6 +6061,15 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -5913,6 +6253,8 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -5926,6 +6268,8 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -5950,6 +6294,9 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -5966,6 +6313,8 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -5994,6 +6343,9 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -6075,6 +6427,8 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6085,6 +6439,8 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -6104,6 +6460,8 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -6112,6 +6470,8 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -6120,6 +6480,8 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -6162,6 +6524,15 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -6207,6 +6578,9 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -6353,6 +6727,9 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -6513,6 +6890,9 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -6719,6 +7099,8 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6745,6 +7127,8 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6764,6 +7148,8 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6772,6 +7158,8 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6780,6 +7168,8 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6822,6 +7212,15 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -7005,6 +7404,8 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7018,6 +7419,8 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7042,6 +7445,9 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -7058,6 +7464,8 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -7086,6 +7494,9 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -7167,6 +7578,8 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7177,6 +7590,8 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -7196,6 +7611,8 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -7204,6 +7621,8 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -7212,6 +7631,8 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -7254,6 +7675,15 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -7299,6 +7729,9 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -7445,6 +7878,9 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -7605,6 +8041,9 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -7811,6 +8250,8 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7837,6 +8278,8 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7856,6 +8299,8 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7864,6 +8309,8 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7872,6 +8319,8 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7914,6 +8363,15 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -8097,6 +8555,8 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -8110,6 +8570,8 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -8134,6 +8596,9 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -8150,6 +8615,8 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -8178,6 +8645,9 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -8259,6 +8729,8 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -8269,6 +8741,8 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -8288,6 +8762,8 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -8296,6 +8772,8 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -8304,6 +8782,8 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -8346,6 +8826,15 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -8391,6 +8880,9 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -8537,6 +9029,9 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -8697,6 +9192,9 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -8816,6 +9314,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
         email
         role
         permissions
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -8832,6 +9332,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -8842,6 +9344,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
         clientprofileID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -8869,6 +9373,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
               email
               role
               permissions
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -8885,6 +9391,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -8895,6 +9403,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -8928,6 +9438,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -8994,6 +9506,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9013,6 +9527,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9021,6 +9537,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9029,6 +9547,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9071,6 +9591,15 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -9087,6 +9616,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
           contactEmail
           contactPhone
           address
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -9124,6 +9655,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9190,6 +9723,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9209,6 +9744,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9217,6 +9754,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9225,6 +9764,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9267,6 +9808,15 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -9538,6 +10088,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -9548,6 +10100,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -9567,6 +10121,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -9575,6 +10131,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -9583,6 +10141,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -9625,6 +10185,15 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
           note
           __typename
         }
+        passedRevision
+        designRevisions {
+          revision
+          image
+          by
+          __typename
+        }
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         requestBrandId
@@ -9641,6 +10210,8 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
     contactEmail
     contactPhone
     address
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -9668,6 +10239,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
         email
         role
         permissions
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -9684,6 +10257,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -9694,6 +10269,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
         clientprofileID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -9721,6 +10298,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
               email
               role
               permissions
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -9737,6 +10316,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -9747,6 +10328,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -9780,6 +10363,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9846,6 +10431,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9865,6 +10452,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9873,6 +10462,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9881,6 +10472,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9923,6 +10516,15 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -9939,6 +10541,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
           contactEmail
           contactPhone
           address
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -9976,6 +10580,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10042,6 +10648,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10061,6 +10669,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10069,6 +10679,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10077,6 +10689,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10119,6 +10733,15 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -10390,6 +11013,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -10400,6 +11025,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -10419,6 +11046,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -10427,6 +11056,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -10435,6 +11066,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -10477,6 +11110,15 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
           note
           __typename
         }
+        passedRevision
+        designRevisions {
+          revision
+          image
+          by
+          __typename
+        }
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         requestBrandId
@@ -10493,6 +11135,8 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
     contactEmail
     contactPhone
     address
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -10520,6 +11164,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
         email
         role
         permissions
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -10536,6 +11182,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -10546,6 +11194,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
         clientprofileID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -10573,6 +11223,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
               email
               role
               permissions
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -10589,6 +11241,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -10599,6 +11253,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -10632,6 +11288,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10698,6 +11356,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10717,6 +11377,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10725,6 +11387,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10733,6 +11397,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10775,6 +11441,15 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -10791,6 +11466,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
           contactEmail
           contactPhone
           address
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -10828,6 +11505,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10894,6 +11573,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10913,6 +11594,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10921,6 +11604,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10929,6 +11614,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10971,6 +11658,15 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -11242,6 +11938,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -11252,6 +11950,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -11271,6 +11971,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -11279,6 +11981,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -11287,6 +11991,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -11329,6 +12035,15 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
           note
           __typename
         }
+        passedRevision
+        designRevisions {
+          revision
+          image
+          by
+          __typename
+        }
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         requestBrandId
@@ -11345,6 +12060,8 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
     contactEmail
     contactPhone
     address
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -11385,6 +12102,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               email
               role
               permissions
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -11401,6 +12120,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11411,6 +12132,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -11444,6 +12167,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11510,6 +12235,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11529,6 +12256,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11537,6 +12266,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11545,6 +12276,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11587,6 +12320,15 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -11603,6 +12345,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
           contactEmail
           contactPhone
           address
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -11640,6 +12384,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11706,6 +12452,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11725,6 +12473,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11733,6 +12483,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11741,6 +12493,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11783,6 +12537,15 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -12054,6 +12817,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -12064,6 +12829,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -12083,6 +12850,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -12091,6 +12860,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -12099,6 +12870,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -12141,6 +12914,15 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
           note
           __typename
         }
+        passedRevision
+        designRevisions {
+          revision
+          image
+          by
+          __typename
+        }
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         requestBrandId
@@ -12195,6 +12977,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12261,6 +13045,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12280,6 +13066,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12288,6 +13076,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12296,6 +13086,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12338,6 +13130,15 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -12644,6 +13445,9 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -12763,6 +13567,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12829,6 +13635,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12848,6 +13656,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12856,6 +13666,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12864,6 +13676,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12906,6 +13720,15 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -13246,6 +14069,9 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -13365,6 +14191,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13431,6 +14259,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13450,6 +14280,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13458,6 +14290,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13466,6 +14300,8 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13508,6 +14344,15 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -13820,6 +14665,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               email
               role
               permissions
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -13836,6 +14683,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13846,6 +14695,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -13879,6 +14730,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13945,6 +14798,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13964,6 +14819,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13972,6 +14829,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13980,6 +14839,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14022,6 +14883,15 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -14038,6 +14908,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
           contactEmail
           contactPhone
           address
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -14075,6 +14947,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14141,6 +15015,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14160,6 +15036,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14168,6 +15046,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14176,6 +15056,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14218,6 +15100,15 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -14489,6 +15380,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -14499,6 +15392,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -14518,6 +15413,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -14526,6 +15423,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -14534,6 +15433,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -14576,6 +15477,15 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
           note
           __typename
         }
+        passedRevision
+        designRevisions {
+          revision
+          image
+          by
+          __typename
+        }
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         requestBrandId
@@ -14630,6 +15540,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14696,6 +15608,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14715,6 +15629,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14723,6 +15639,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14731,6 +15649,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14773,6 +15693,15 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -15079,6 +16008,9 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -15198,6 +16130,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15264,6 +16198,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15283,6 +16219,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15291,6 +16229,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15299,6 +16239,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15341,6 +16283,15 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -15681,6 +16632,9 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -15800,6 +16754,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15866,6 +16822,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15885,6 +16843,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15893,6 +16853,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15901,6 +16863,8 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15943,6 +16907,15 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -16255,6 +17228,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               email
               role
               permissions
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -16271,6 +17246,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16281,6 +17258,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -16314,6 +17293,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16380,6 +17361,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16399,6 +17382,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16407,6 +17392,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16415,6 +17402,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16457,6 +17446,15 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -16473,6 +17471,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
           contactEmail
           contactPhone
           address
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -16510,6 +17510,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16576,6 +17578,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16595,6 +17599,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16603,6 +17609,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16611,6 +17619,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16653,6 +17663,15 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -16924,6 +17943,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -16934,6 +17955,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -16953,6 +17976,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -16961,6 +17986,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -16969,6 +17996,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -17011,6 +18040,15 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
           note
           __typename
         }
+        passedRevision
+        designRevisions {
+          revision
+          image
+          by
+          __typename
+        }
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         requestBrandId
@@ -17065,6 +18103,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17131,6 +18171,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17150,6 +18192,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17158,6 +18202,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17166,6 +18212,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17208,6 +18256,15 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -17514,6 +18571,9 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -17633,6 +18693,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17699,6 +18761,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17718,6 +18782,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17726,6 +18792,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17734,6 +18802,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17776,6 +18846,15 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -18116,6 +19195,9 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -18235,6 +19317,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -18301,6 +19385,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -18320,6 +19406,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -18328,6 +19416,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -18336,6 +19426,8 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -18378,6 +19470,15 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -18668,6 +19769,8 @@ export const createProduct = /* GraphQL */ `mutation CreateProduct(
     brandID
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -18686,6 +19789,8 @@ export const updateProduct = /* GraphQL */ `mutation UpdateProduct(
     brandID
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -18704,6 +19809,8 @@ export const deleteProduct = /* GraphQL */ `mutation DeleteProduct(
     brandID
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -18725,6 +19832,8 @@ export const createBrand = /* GraphQL */ `mutation CreateBrand(
         brandID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -18735,6 +19844,8 @@ export const createBrand = /* GraphQL */ `mutation CreateBrand(
     clientprofileID
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -18756,6 +19867,8 @@ export const updateBrand = /* GraphQL */ `mutation UpdateBrand(
         brandID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -18766,6 +19879,8 @@ export const updateBrand = /* GraphQL */ `mutation UpdateBrand(
     clientprofileID
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -18787,6 +19902,8 @@ export const deleteBrand = /* GraphQL */ `mutation DeleteBrand(
         brandID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -18797,6 +19914,8 @@ export const deleteBrand = /* GraphQL */ `mutation DeleteBrand(
     clientprofileID
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -18829,6 +19948,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
           email
           role
           permissions
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -18845,6 +19966,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -18855,6 +19978,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -18882,6 +20007,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -18899,6 +20026,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -18920,6 +20049,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18946,6 +20077,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18965,6 +20098,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18973,6 +20108,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18981,6 +20118,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19023,6 +20162,15 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -19039,6 +20187,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19064,6 +20214,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19090,6 +20242,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19109,6 +20263,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19117,6 +20273,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19125,6 +20283,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19167,6 +20327,15 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -19318,6 +20487,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -19328,6 +20499,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19347,6 +20520,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19355,6 +20530,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19363,6 +20540,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19405,6 +20584,15 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -19421,6 +20609,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
       contactEmail
       contactPhone
       address
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -19452,6 +20642,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -19469,6 +20661,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -19490,6 +20684,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19516,6 +20712,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19535,6 +20733,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19543,6 +20743,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19551,6 +20753,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19593,6 +20797,15 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -19609,6 +20822,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19634,6 +20849,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19660,6 +20877,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19679,6 +20898,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19687,6 +20908,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19695,6 +20918,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19737,6 +20962,15 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -19888,6 +21122,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -19898,6 +21134,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19917,6 +21155,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19925,6 +21165,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19933,6 +21175,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19975,6 +21219,15 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -20017,6 +21270,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20043,6 +21298,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20062,6 +21319,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20070,6 +21329,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20078,6 +21339,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20120,6 +21383,15 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -20369,6 +21641,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20395,6 +21669,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20414,6 +21690,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20422,6 +21700,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20430,6 +21710,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20472,6 +21754,15 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -20739,6 +22030,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20765,6 +22058,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20784,6 +22079,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20792,6 +22089,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20800,6 +22099,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20842,6 +22143,15 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -21007,6 +22317,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -21017,6 +22329,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
       clientprofileID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -21036,6 +22350,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
       brandID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -21044,6 +22360,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -21052,6 +22370,8 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -21094,6 +22414,15 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
       note
       __typename
     }
+    passedRevision
+    designRevisions {
+      revision
+      image
+      by
+      __typename
+    }
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     requestBrandId
@@ -21130,6 +22459,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
           email
           role
           permissions
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -21146,6 +22477,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -21156,6 +22489,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -21183,6 +22518,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -21200,6 +22537,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -21221,6 +22560,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21247,6 +22588,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21266,6 +22609,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21274,6 +22619,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21282,6 +22629,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21324,6 +22673,15 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -21340,6 +22698,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -21365,6 +22725,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21391,6 +22753,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21410,6 +22774,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21418,6 +22784,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21426,6 +22794,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21468,6 +22838,15 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -21619,6 +22998,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -21629,6 +23010,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -21648,6 +23031,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -21656,6 +23041,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -21664,6 +23051,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -21706,6 +23095,15 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -21722,6 +23120,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
       contactEmail
       contactPhone
       address
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -21753,6 +23153,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -21770,6 +23172,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -21791,6 +23195,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21817,6 +23223,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21836,6 +23244,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21844,6 +23254,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21852,6 +23264,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21894,6 +23308,15 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -21910,6 +23333,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -21935,6 +23360,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21961,6 +23388,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21980,6 +23409,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21988,6 +23419,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21996,6 +23429,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22038,6 +23473,15 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -22189,6 +23633,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -22199,6 +23645,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -22218,6 +23666,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -22226,6 +23676,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -22234,6 +23686,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -22276,6 +23730,15 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -22318,6 +23781,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22344,6 +23809,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22363,6 +23830,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22371,6 +23840,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22379,6 +23850,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22421,6 +23894,15 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -22670,6 +24152,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22696,6 +24180,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22715,6 +24201,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22723,6 +24211,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22731,6 +24221,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22773,6 +24265,15 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -23040,6 +24541,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23066,6 +24569,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23085,6 +24590,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23093,6 +24600,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23101,6 +24610,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23143,6 +24654,15 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -23308,6 +24828,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -23318,6 +24840,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
       clientprofileID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -23337,6 +24861,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
       brandID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -23345,6 +24871,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -23353,6 +24881,8 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -23395,6 +24925,15 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
       note
       __typename
     }
+    passedRevision
+    designRevisions {
+      revision
+      image
+      by
+      __typename
+    }
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     requestBrandId
@@ -23431,6 +24970,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
           email
           role
           permissions
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -23447,6 +24988,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -23457,6 +25000,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -23484,6 +25029,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -23501,6 +25048,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -23522,6 +25071,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23548,6 +25099,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23567,6 +25120,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23575,6 +25130,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23583,6 +25140,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23625,6 +25184,15 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -23641,6 +25209,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -23666,6 +25236,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23692,6 +25264,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23711,6 +25285,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23719,6 +25295,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23727,6 +25305,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23769,6 +25349,15 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -23920,6 +25509,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -23930,6 +25521,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -23949,6 +25542,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -23957,6 +25552,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -23965,6 +25562,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -24007,6 +25606,15 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -24023,6 +25631,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
       contactEmail
       contactPhone
       address
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -24054,6 +25664,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -24071,6 +25683,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -24092,6 +25706,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24118,6 +25734,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24137,6 +25755,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24145,6 +25765,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24153,6 +25775,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24195,6 +25819,15 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -24211,6 +25844,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -24236,6 +25871,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24262,6 +25899,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24281,6 +25920,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24289,6 +25930,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24297,6 +25940,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24339,6 +25984,15 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -24490,6 +26144,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -24500,6 +26156,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -24519,6 +26177,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -24527,6 +26187,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -24535,6 +26197,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -24577,6 +26241,15 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -24619,6 +26292,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24645,6 +26320,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24664,6 +26341,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24672,6 +26351,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24680,6 +26361,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24722,6 +26405,15 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -24971,6 +26663,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24997,6 +26691,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -25016,6 +26712,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -25024,6 +26722,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -25032,6 +26732,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -25074,6 +26776,15 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -25341,6 +27052,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -25367,6 +27080,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -25386,6 +27101,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -25394,6 +27111,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -25402,6 +27121,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -25444,6 +27165,15 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -25609,6 +27339,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -25619,6 +27351,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
       clientprofileID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -25638,6 +27372,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
       brandID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -25646,6 +27382,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -25654,6 +27392,8 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -25696,6 +27436,15 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
       note
       __typename
     }
+    passedRevision
+    designRevisions {
+      revision
+      image
+      by
+      __typename
+    }
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     requestBrandId

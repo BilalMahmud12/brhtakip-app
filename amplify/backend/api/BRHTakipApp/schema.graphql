@@ -1,3 +1,9 @@
+type DesignRevision {
+  revision: String
+  image: String
+  by: String
+}
+
 type RequestExtraProduct {
   id: ID
   name: String
@@ -16,6 +22,8 @@ type ExtraProduct @model @auth(rules: [{allow: public}]) {
   isActive: Boolean!
   name: String!
   images: [ImageStorageItem]
+  createdBy: String
+  updatedBy: String
 }
 
 enum Roles {
@@ -29,6 +37,8 @@ type ApplicationArea @model @auth(rules: [{allow: public}]) {
   id: ID!
   isActive: Boolean!
   name: String
+  createdBy: String
+  updatedBy: String
 }
 
 type RequestItem {
@@ -55,6 +65,8 @@ type Material @model @auth(rules: [{allow: public}]) {
   id: ID!
   isActive: Boolean!
   name: String!
+  createdBy: String
+  updatedBy: String
 }
 
 type UserProfile @model @auth(rules: [{allow: public}]) {
@@ -67,6 +79,8 @@ type UserProfile @model @auth(rules: [{allow: public}]) {
   email: AWSEmail
   role: Roles
   permissions: [String]
+  createdBy: String
+  updatedBy: String
 }
 
 type Area @model @auth(rules: [{allow: public}]) {
@@ -111,6 +125,8 @@ type ClientProfile @model @auth(rules: [{allow: public}]) {
   contactEmail: AWSEmail
   contactPhone: String
   address: String
+  createdBy: String
+  updatedBy: String
 }
 
 type Store @model @auth(rules: [{allow: public}]) {
@@ -136,6 +152,8 @@ type Product @model @auth(rules: [{allow: public}]) {
   brandID: ID! @index(name: "byBrand")
   isActive: Boolean
   name: String
+  createdBy: String
+  updatedBy: String
 }
 
 type Brand @model @auth(rules: [{allow: public}]) {
@@ -144,6 +162,8 @@ type Brand @model @auth(rules: [{allow: public}]) {
   clientprofileID: ID! @index(name: "byClientProfile")
   isActive: Boolean
   name: String
+  createdBy: String
+  updatedBy: String
 }
 
 type Request @model @auth(rules: [{allow: public}]) {
@@ -174,5 +194,9 @@ type Request @model @auth(rules: [{allow: public}]) {
   printImages: [ImageStorageItem]
   applicationImages: [ImageStorageItem]
   extraProducts: [RequestExtraProduct]
+  passedRevision: Boolean
+  designRevisions: [DesignRevision]
+  createdBy: String
+  updatedBy: String
 }
  

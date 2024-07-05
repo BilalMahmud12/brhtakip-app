@@ -40,6 +40,9 @@ const RequestUpdateView: React.FC = () => {
             else if (key === 'quantity') {
                 cleanForm[key] = parseInt(currentValue)
             }
+            else if (key === 'createdAt' || key === 'updatedAt') {
+                delete cleanForm[key];
+            }
             else {
                 cleanForm[key] = currentValue;
             }
@@ -48,15 +51,14 @@ const RequestUpdateView: React.FC = () => {
         console.log('cleanForm', cleanForm);
 
         try {
-            toast.info('Lütfen Bekleyiniz Talepinizi oluşturuluyor...');
-            const response = await Repo.RequestRepository.create(cleanForm);
+            toast.info('Lütfen Bekleyiniz Talepinizi güncelleniyor!');
+            const response = await Repo.RequestRepository.update({ id: cleanForm.id, ...cleanForm });
 
             if (response) {
-                toast.success('Talep başarıyla oluşturuldu.');
-                dispatch(resetFormValues());
-                router.push('/dashboard/requests');
+                toast.success('Talep başarıyla güncellendi.');
             }
         } catch (error) {
+            toast.error('Talep güncellenirken bir hata oluştu.');
             console.log('error', error);
         }
     }
@@ -80,6 +82,7 @@ const RequestUpdateView: React.FC = () => {
                     <div>
                         <CreateOrUpdateForm
                             isCreate={false}
+                            onSave={handleSave}
                         />
                     </div>
                 </div>

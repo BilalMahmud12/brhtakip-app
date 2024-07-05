@@ -30,6 +30,7 @@ interface RequestState {
     isFetching: boolean;
     requests: Request[];
     requestForm: {
+        id?: string;
         status: string;
         requestNumber: string;
         clientprofileID: string;
@@ -57,6 +58,19 @@ interface RequestState {
         passedRevision?: boolean;
     },
     selectedRequests: string[],
+    validationErrors: {
+        requestNumber?: string|null;
+        status?: string | null
+        clientprofileID?: string | null
+        storeID?: string | null
+        requestBrandId?: string | null
+        requestProductId?: string | null
+        requestApplicationAreaId?: string | null
+        quantity?: string | null
+        width?: string | null
+        height?: string | null
+        referenceImages?: string | null
+    }
     [key: string]: any;
 }
 
@@ -64,6 +78,7 @@ const initialState: RequestState = {
     isFetching: false,
     requests: [],
     requestForm: {
+        id: '',
         status: '',
         requestNumber: '',
         clientprofileID: '',
@@ -88,9 +103,10 @@ const initialState: RequestState = {
         applicationImages: [],
         designRevisions: [],
         extraProducts: [],
+        passedRevision: false
     },
     selectedRequests: [],
-    passedRevision: false
+    validationErrors: {},
 };
 
 const requestSlice = createSlice({

@@ -36,3 +36,35 @@ export const filterEmptyValues = (obj: any) => {
     });
     return newObj;
 };
+
+export const removeSchemaTypeName = (input: any): any => {
+    if (Array.isArray(input)) {
+        return input.map(removeSchemaTypeName);
+    } else if (input !== null && typeof input === 'object') {
+        const newObj: any = {};
+        for (const key in input) {
+            if (key !== '__typename') {
+                newObj[key] = removeSchemaTypeName(input[key]);
+            }
+        }
+        return newObj;
+    } else {
+        return input;
+    }
+}
+
+export const removeRelationshipProperties = (input: any): any => {
+    if (Array.isArray(input)) {
+        return input.map(removeRelationshipProperties);
+    } else if (input !== null && typeof input === 'object') {
+        const newObj: any = {};
+        for (const key in input) {
+            if (key[0] !== key[0].toUpperCase()) {
+                newObj[key] = removeRelationshipProperties(input[key]);
+            }
+        }
+        return newObj;
+    } else {
+        return input;
+    }
+}

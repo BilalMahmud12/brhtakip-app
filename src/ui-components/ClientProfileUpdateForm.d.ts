@@ -29,6 +29,8 @@ export declare type ClientProfileUpdateFormInputValues = {
     contactEmail?: string;
     contactPhone?: string;
     address?: string;
+    createdBy?: string;
+    updatedBy?: string;
 };
 export declare type ClientProfileUpdateFormValidationValues = {
     isActive?: ValidationFunction<boolean>;
@@ -37,6 +39,8 @@ export declare type ClientProfileUpdateFormValidationValues = {
     contactEmail?: ValidationFunction<string>;
     contactPhone?: ValidationFunction<string>;
     address?: ValidationFunction<string>;
+    createdBy?: ValidationFunction<string>;
+    updatedBy?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ClientProfileUpdateFormOverridesProps = {
@@ -47,6 +51,8 @@ export declare type ClientProfileUpdateFormOverridesProps = {
     contactEmail?: PrimitiveOverrideProps<TextFieldProps>;
     contactPhone?: PrimitiveOverrideProps<TextFieldProps>;
     address?: PrimitiveOverrideProps<TextFieldProps>;
+    createdBy?: PrimitiveOverrideProps<TextFieldProps>;
+    updatedBy?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ClientProfileUpdateFormProps = React.PropsWithChildren<{
     overrides?: ClientProfileUpdateFormOverridesProps | undefined | null;

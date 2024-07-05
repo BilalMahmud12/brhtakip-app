@@ -20,6 +20,8 @@ export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraPro
       path
       __typename
     }
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -41,6 +43,8 @@ export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraPro
       path
       __typename
     }
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -62,6 +66,8 @@ export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraPro
       path
       __typename
     }
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -78,6 +84,8 @@ export const onCreateApplicationArea = /* GraphQL */ `subscription OnCreateAppli
     id
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -94,6 +102,8 @@ export const onUpdateApplicationArea = /* GraphQL */ `subscription OnUpdateAppli
     id
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -110,6 +120,8 @@ export const onDeleteApplicationArea = /* GraphQL */ `subscription OnDeleteAppli
     id
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -124,6 +136,8 @@ export const onCreateMaterial = /* GraphQL */ `subscription OnCreateMaterial($fi
     id
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -138,6 +152,8 @@ export const onUpdateMaterial = /* GraphQL */ `subscription OnUpdateMaterial($fi
     id
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -152,6 +168,8 @@ export const onDeleteMaterial = /* GraphQL */ `subscription OnDeleteMaterial($fi
     id
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -174,6 +192,8 @@ export const onCreateUserProfile = /* GraphQL */ `subscription OnCreateUserProfi
     email
     role
     permissions
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -196,6 +216,8 @@ export const onUpdateUserProfile = /* GraphQL */ `subscription OnUpdateUserProfi
     email
     role
     permissions
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -218,6 +240,8 @@ export const onDeleteUserProfile = /* GraphQL */ `subscription OnDeleteUserProfi
     email
     role
     permissions
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -260,6 +284,8 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -273,6 +299,8 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -297,6 +325,9 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -313,6 +344,8 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -341,6 +374,9 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -422,6 +458,8 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -432,6 +470,8 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -451,6 +491,8 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -459,6 +501,8 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -467,6 +511,8 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -509,6 +555,15 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -554,6 +609,9 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -700,6 +758,9 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -860,6 +921,9 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -994,6 +1058,8 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1007,6 +1073,8 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1031,6 +1099,9 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -1047,6 +1118,8 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1075,6 +1148,9 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -1156,6 +1232,8 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1166,6 +1244,8 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1185,6 +1265,8 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1193,6 +1275,8 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1201,6 +1285,8 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1243,6 +1329,15 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -1288,6 +1383,9 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -1434,6 +1532,9 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -1594,6 +1695,9 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -1728,6 +1832,8 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1741,6 +1847,8 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1765,6 +1873,9 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -1781,6 +1892,8 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1809,6 +1922,9 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -1890,6 +2006,8 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1900,6 +2018,8 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1919,6 +2039,8 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1927,6 +2049,8 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1935,6 +2059,8 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -1977,6 +2103,15 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -2022,6 +2157,9 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -2168,6 +2306,9 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -2328,6 +2469,9 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -2461,6 +2605,8 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2487,6 +2633,8 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2506,6 +2654,8 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2514,6 +2664,8 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2522,6 +2674,8 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2564,6 +2718,15 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -2747,6 +2910,8 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2760,6 +2925,8 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2784,6 +2951,9 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -2800,6 +2970,8 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -2828,6 +3000,9 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -2909,6 +3084,8 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2919,6 +3096,8 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -2938,6 +3117,8 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -2946,6 +3127,8 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -2954,6 +3137,8 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -2996,6 +3181,15 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -3041,6 +3235,9 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -3187,6 +3384,9 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -3347,6 +3547,9 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -3480,6 +3683,8 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3506,6 +3711,8 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3525,6 +3732,8 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3533,6 +3742,8 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3541,6 +3752,8 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3583,6 +3796,15 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -3766,6 +3988,8 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3779,6 +4003,8 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3803,6 +4029,9 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -3819,6 +4048,8 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -3847,6 +4078,9 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -3928,6 +4162,8 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -3938,6 +4174,8 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -3957,6 +4195,8 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -3965,6 +4205,8 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -3973,6 +4215,8 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -4015,6 +4259,15 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -4060,6 +4313,9 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -4206,6 +4462,9 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -4366,6 +4625,9 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -4499,6 +4761,8 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4525,6 +4789,8 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4544,6 +4810,8 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4552,6 +4820,8 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4560,6 +4830,8 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4602,6 +4874,15 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -4785,6 +5066,8 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4798,6 +5081,8 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4822,6 +5107,9 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -4838,6 +5126,8 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -4866,6 +5156,9 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -4947,6 +5240,8 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4957,6 +5252,8 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -4976,6 +5273,8 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -4984,6 +5283,8 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -4992,6 +5293,8 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -5034,6 +5337,15 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -5079,6 +5391,9 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -5225,6 +5540,9 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -5385,6 +5703,9 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -5588,6 +5909,8 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -5614,6 +5937,8 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -5633,6 +5958,8 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -5641,6 +5968,8 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -5649,6 +5978,8 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -5691,6 +6022,15 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -5874,6 +6214,8 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -5887,6 +6229,8 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -5911,6 +6255,9 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -5927,6 +6274,8 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -5955,6 +6304,9 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -6036,6 +6388,8 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6046,6 +6400,8 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -6065,6 +6421,8 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -6073,6 +6431,8 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -6081,6 +6441,8 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -6123,6 +6485,15 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -6168,6 +6539,9 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -6314,6 +6688,9 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -6474,6 +6851,9 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -6677,6 +7057,8 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6703,6 +7085,8 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6722,6 +7106,8 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6730,6 +7116,8 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6738,6 +7126,8 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6780,6 +7170,15 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -6963,6 +7362,8 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6976,6 +7377,8 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7000,6 +7403,9 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -7016,6 +7422,8 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -7044,6 +7452,9 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -7125,6 +7536,8 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7135,6 +7548,8 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -7154,6 +7569,8 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -7162,6 +7579,8 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -7170,6 +7589,8 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -7212,6 +7633,15 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -7257,6 +7687,9 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -7403,6 +7836,9 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -7563,6 +7999,9 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -7766,6 +8205,8 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7792,6 +8233,8 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7811,6 +8254,8 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7819,6 +8264,8 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7827,6 +8274,8 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7869,6 +8318,15 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -8052,6 +8510,8 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -8065,6 +8525,8 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -8089,6 +8551,9 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -8105,6 +8570,8 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -8133,6 +8600,9 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -8214,6 +8684,8 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -8224,6 +8696,8 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -8243,6 +8717,8 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -8251,6 +8727,8 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -8259,6 +8737,8 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -8301,6 +8781,15 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -8346,6 +8835,9 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -8492,6 +8984,9 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -8652,6 +9147,9 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -8770,6 +9268,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
         email
         role
         permissions
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -8786,6 +9286,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -8796,6 +9298,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
         clientprofileID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -8823,6 +9327,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
               email
               role
               permissions
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -8839,6 +9345,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -8849,6 +9357,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -8882,6 +9392,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -8948,6 +9460,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -8967,6 +9481,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -8975,6 +9491,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -8983,6 +9501,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9025,6 +9545,15 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -9041,6 +9570,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
           contactEmail
           contactPhone
           address
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -9078,6 +9609,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9144,6 +9677,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9163,6 +9698,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9171,6 +9708,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9179,6 +9718,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9221,6 +9762,15 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -9492,6 +10042,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -9502,6 +10054,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -9521,6 +10075,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -9529,6 +10085,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -9537,6 +10095,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -9579,6 +10139,15 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
           note
           __typename
         }
+        passedRevision
+        designRevisions {
+          revision
+          image
+          by
+          __typename
+        }
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         requestBrandId
@@ -9595,6 +10164,8 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
     contactEmail
     contactPhone
     address
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -9621,6 +10192,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
         email
         role
         permissions
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -9637,6 +10210,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -9647,6 +10222,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
         clientprofileID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -9674,6 +10251,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
               email
               role
               permissions
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -9690,6 +10269,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -9700,6 +10281,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -9733,6 +10316,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9799,6 +10384,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9818,6 +10405,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9826,6 +10415,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9834,6 +10425,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9876,6 +10469,15 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -9892,6 +10494,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
           contactEmail
           contactPhone
           address
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -9929,6 +10533,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9995,6 +10601,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10014,6 +10622,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10022,6 +10632,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10030,6 +10642,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10072,6 +10686,15 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -10343,6 +10966,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -10353,6 +10978,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -10372,6 +10999,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -10380,6 +11009,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -10388,6 +11019,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -10430,6 +11063,15 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
           note
           __typename
         }
+        passedRevision
+        designRevisions {
+          revision
+          image
+          by
+          __typename
+        }
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         requestBrandId
@@ -10446,6 +11088,8 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
     contactEmail
     contactPhone
     address
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -10472,6 +11116,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
         email
         role
         permissions
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -10488,6 +11134,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -10498,6 +11146,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
         clientprofileID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -10525,6 +11175,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
               email
               role
               permissions
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -10541,6 +11193,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -10551,6 +11205,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -10584,6 +11240,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10650,6 +11308,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10669,6 +11329,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10677,6 +11339,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10685,6 +11349,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10727,6 +11393,15 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -10743,6 +11418,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
           contactEmail
           contactPhone
           address
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -10780,6 +11457,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10846,6 +11525,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10865,6 +11546,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10873,6 +11556,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10881,6 +11566,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10923,6 +11610,15 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -11194,6 +11890,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -11204,6 +11902,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -11223,6 +11923,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -11231,6 +11933,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -11239,6 +11943,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -11281,6 +11987,15 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
           note
           __typename
         }
+        passedRevision
+        designRevisions {
+          revision
+          image
+          by
+          __typename
+        }
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         requestBrandId
@@ -11297,6 +12012,8 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
     contactEmail
     contactPhone
     address
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -11334,6 +12051,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               email
               role
               permissions
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -11350,6 +12069,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11360,6 +12081,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -11393,6 +12116,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11459,6 +12184,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11478,6 +12205,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11486,6 +12215,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11494,6 +12225,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11536,6 +12269,15 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -11552,6 +12294,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
           contactEmail
           contactPhone
           address
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -11589,6 +12333,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11655,6 +12401,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11674,6 +12422,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11682,6 +12432,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11690,6 +12442,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11732,6 +12486,15 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -12003,6 +12766,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -12013,6 +12778,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -12032,6 +12799,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -12040,6 +12809,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -12048,6 +12819,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -12090,6 +12863,15 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
           note
           __typename
         }
+        passedRevision
+        designRevisions {
+          revision
+          image
+          by
+          __typename
+        }
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         requestBrandId
@@ -12144,6 +12926,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12210,6 +12994,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12229,6 +13015,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12237,6 +13025,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12245,6 +13035,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12287,6 +13079,15 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -12593,6 +13394,9 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -12712,6 +13516,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12778,6 +13584,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12797,6 +13605,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12805,6 +13615,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12813,6 +13625,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12855,6 +13669,15 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -13195,6 +14018,9 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -13314,6 +14140,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13380,6 +14208,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13399,6 +14229,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13407,6 +14239,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13415,6 +14249,8 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13457,6 +14293,15 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -13766,6 +14611,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               email
               role
               permissions
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -13782,6 +14629,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13792,6 +14641,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -13825,6 +14676,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13891,6 +14744,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13910,6 +14765,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13918,6 +14775,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13926,6 +14785,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13968,6 +14829,15 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -13984,6 +14854,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
           contactEmail
           contactPhone
           address
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -14021,6 +14893,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14087,6 +14961,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14106,6 +14982,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14114,6 +14992,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14122,6 +15002,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14164,6 +15046,15 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -14435,6 +15326,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -14445,6 +15338,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -14464,6 +15359,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -14472,6 +15369,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -14480,6 +15379,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -14522,6 +15423,15 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
           note
           __typename
         }
+        passedRevision
+        designRevisions {
+          revision
+          image
+          by
+          __typename
+        }
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         requestBrandId
@@ -14576,6 +15486,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14642,6 +15554,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14661,6 +15575,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14669,6 +15585,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14677,6 +15595,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14719,6 +15639,15 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -15025,6 +15954,9 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -15144,6 +16076,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15210,6 +16144,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15229,6 +16165,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15237,6 +16175,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15245,6 +16185,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15287,6 +16229,15 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -15627,6 +16578,9 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -15746,6 +16700,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15812,6 +16768,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15831,6 +16789,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15839,6 +16799,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15847,6 +16809,8 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -15889,6 +16853,15 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -16198,6 +17171,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               email
               role
               permissions
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -16214,6 +17189,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16224,6 +17201,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -16257,6 +17236,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16323,6 +17304,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16342,6 +17325,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16350,6 +17335,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16358,6 +17345,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16400,6 +17389,15 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -16416,6 +17414,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
           contactEmail
           contactPhone
           address
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -16453,6 +17453,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16519,6 +17521,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16538,6 +17542,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16546,6 +17552,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16554,6 +17562,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16596,6 +17606,15 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -16867,6 +17886,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -16877,6 +17898,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -16896,6 +17919,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -16904,6 +17929,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -16912,6 +17939,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -16954,6 +17983,15 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
           note
           __typename
         }
+        passedRevision
+        designRevisions {
+          revision
+          image
+          by
+          __typename
+        }
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         requestBrandId
@@ -17008,6 +18046,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17074,6 +18114,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17093,6 +18135,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17101,6 +18145,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17109,6 +18155,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17151,6 +18199,15 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -17457,6 +18514,9 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -17576,6 +18636,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17642,6 +18704,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17661,6 +18725,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17669,6 +18735,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17677,6 +18745,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17719,6 +18789,15 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -18059,6 +19138,9 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -18178,6 +19260,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -18244,6 +19328,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -18263,6 +19349,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -18271,6 +19359,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -18279,6 +19369,8 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -18321,6 +19413,15 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -18608,6 +19709,8 @@ export const onCreateProduct = /* GraphQL */ `subscription OnCreateProduct($filt
     brandID
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -18623,6 +19726,8 @@ export const onUpdateProduct = /* GraphQL */ `subscription OnUpdateProduct($filt
     brandID
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -18638,6 +19743,8 @@ export const onDeleteProduct = /* GraphQL */ `subscription OnDeleteProduct($filt
     brandID
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -18656,6 +19763,8 @@ export const onCreateBrand = /* GraphQL */ `subscription OnCreateBrand($filter: 
         brandID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -18666,6 +19775,8 @@ export const onCreateBrand = /* GraphQL */ `subscription OnCreateBrand($filter: 
     clientprofileID
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -18684,6 +19795,8 @@ export const onUpdateBrand = /* GraphQL */ `subscription OnUpdateBrand($filter: 
         brandID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -18694,6 +19807,8 @@ export const onUpdateBrand = /* GraphQL */ `subscription OnUpdateBrand($filter: 
     clientprofileID
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -18712,6 +19827,8 @@ export const onDeleteBrand = /* GraphQL */ `subscription OnDeleteBrand($filter: 
         brandID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -18722,6 +19839,8 @@ export const onDeleteBrand = /* GraphQL */ `subscription OnDeleteBrand($filter: 
     clientprofileID
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -18751,6 +19870,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
           email
           role
           permissions
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -18767,6 +19888,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -18777,6 +19900,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -18804,6 +19929,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -18821,6 +19948,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -18842,6 +19971,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18868,6 +19999,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18887,6 +20020,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18895,6 +20030,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18903,6 +20040,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18945,6 +20084,15 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -18961,6 +20109,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -18986,6 +20136,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19012,6 +20164,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19031,6 +20185,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19039,6 +20195,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19047,6 +20205,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19089,6 +20249,15 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -19240,6 +20409,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -19250,6 +20421,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19269,6 +20442,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19277,6 +20452,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19285,6 +20462,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19327,6 +20506,15 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -19343,6 +20531,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
       contactEmail
       contactPhone
       address
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -19374,6 +20564,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -19391,6 +20583,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -19412,6 +20606,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19438,6 +20634,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19457,6 +20655,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19465,6 +20665,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19473,6 +20675,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19515,6 +20719,15 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -19531,6 +20744,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19556,6 +20771,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19582,6 +20799,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19601,6 +20820,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19609,6 +20830,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19617,6 +20840,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19659,6 +20884,15 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -19810,6 +21044,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -19820,6 +21056,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19839,6 +21077,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19847,6 +21087,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19855,6 +21097,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19897,6 +21141,15 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -19939,6 +21192,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19965,6 +21220,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19984,6 +21241,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19992,6 +21251,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20000,6 +21261,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20042,6 +21305,15 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -20291,6 +21563,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20317,6 +21591,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20336,6 +21612,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20344,6 +21622,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20352,6 +21632,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20394,6 +21676,15 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -20661,6 +21952,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20687,6 +21980,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20706,6 +22001,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20714,6 +22011,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20722,6 +22021,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20764,6 +22065,15 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -20929,6 +22239,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -20939,6 +22251,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
       clientprofileID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -20958,6 +22272,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
       brandID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -20966,6 +22282,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -20974,6 +22292,8 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -21016,6 +22336,15 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
       note
       __typename
     }
+    passedRevision
+    designRevisions {
+      revision
+      image
+      by
+      __typename
+    }
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     requestBrandId
@@ -21049,6 +22378,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
           email
           role
           permissions
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -21065,6 +22396,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -21075,6 +22408,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -21102,6 +22437,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -21119,6 +22456,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -21140,6 +22479,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21166,6 +22507,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21185,6 +22528,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21193,6 +22538,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21201,6 +22548,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21243,6 +22592,15 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -21259,6 +22617,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -21284,6 +22644,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21310,6 +22672,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21329,6 +22693,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21337,6 +22703,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21345,6 +22713,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21387,6 +22757,15 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -21538,6 +22917,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -21548,6 +22929,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -21567,6 +22950,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -21575,6 +22960,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -21583,6 +22970,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -21625,6 +23014,15 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -21641,6 +23039,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
       contactEmail
       contactPhone
       address
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -21672,6 +23072,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -21689,6 +23091,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -21710,6 +23114,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21736,6 +23142,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21755,6 +23163,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21763,6 +23173,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21771,6 +23183,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21813,6 +23227,15 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -21829,6 +23252,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -21854,6 +23279,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21880,6 +23307,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21899,6 +23328,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21907,6 +23338,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21915,6 +23348,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21957,6 +23392,15 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -22108,6 +23552,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -22118,6 +23564,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -22137,6 +23585,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -22145,6 +23595,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -22153,6 +23605,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -22195,6 +23649,15 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -22237,6 +23700,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22263,6 +23728,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22282,6 +23749,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22290,6 +23759,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22298,6 +23769,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22340,6 +23813,15 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -22589,6 +24071,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22615,6 +24099,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22634,6 +24120,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22642,6 +24130,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22650,6 +24140,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22692,6 +24184,15 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -22959,6 +24460,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -22985,6 +24488,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23004,6 +24509,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23012,6 +24519,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23020,6 +24529,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23062,6 +24573,15 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -23227,6 +24747,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -23237,6 +24759,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
       clientprofileID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -23256,6 +24780,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
       brandID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -23264,6 +24790,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -23272,6 +24800,8 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -23314,6 +24844,15 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
       note
       __typename
     }
+    passedRevision
+    designRevisions {
+      revision
+      image
+      by
+      __typename
+    }
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     requestBrandId
@@ -23347,6 +24886,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
           email
           role
           permissions
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -23363,6 +24904,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -23373,6 +24916,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -23400,6 +24945,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -23417,6 +24964,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -23438,6 +24987,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23464,6 +25015,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23483,6 +25036,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23491,6 +25046,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23499,6 +25056,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23541,6 +25100,15 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -23557,6 +25125,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -23582,6 +25152,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23608,6 +25180,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23627,6 +25201,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23635,6 +25211,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23643,6 +25221,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -23685,6 +25265,15 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -23836,6 +25425,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -23846,6 +25437,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -23865,6 +25458,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -23873,6 +25468,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -23881,6 +25478,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -23923,6 +25522,15 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -23939,6 +25547,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
       contactEmail
       contactPhone
       address
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -23970,6 +25580,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -23987,6 +25599,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -24008,6 +25622,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24034,6 +25650,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24053,6 +25671,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24061,6 +25681,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24069,6 +25691,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24111,6 +25735,15 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -24127,6 +25760,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -24152,6 +25787,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24178,6 +25815,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24197,6 +25836,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24205,6 +25846,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24213,6 +25856,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24255,6 +25900,15 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -24406,6 +26060,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -24416,6 +26072,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -24435,6 +26093,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -24443,6 +26103,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -24451,6 +26113,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -24493,6 +26157,15 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -24535,6 +26208,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24561,6 +26236,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24580,6 +26257,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24588,6 +26267,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24596,6 +26277,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24638,6 +26321,15 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -24887,6 +26579,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24913,6 +26607,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24932,6 +26628,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24940,6 +26638,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24948,6 +26648,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -24990,6 +26692,15 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -25257,6 +26968,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -25283,6 +26996,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -25302,6 +27017,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -25310,6 +27027,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -25318,6 +27037,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -25360,6 +27081,15 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -25525,6 +27255,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -25535,6 +27267,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
       clientprofileID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -25554,6 +27288,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
       brandID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -25562,6 +27298,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -25570,6 +27308,8 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -25612,6 +27352,15 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
       note
       __typename
     }
+    passedRevision
+    designRevisions {
+      revision
+      image
+      by
+      __typename
+    }
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     requestBrandId

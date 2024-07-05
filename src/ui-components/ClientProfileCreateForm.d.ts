@@ -28,6 +28,8 @@ export declare type ClientProfileCreateFormInputValues = {
     contactEmail?: string;
     contactPhone?: string;
     address?: string;
+    createdBy?: string;
+    updatedBy?: string;
 };
 export declare type ClientProfileCreateFormValidationValues = {
     isActive?: ValidationFunction<boolean>;
@@ -36,6 +38,8 @@ export declare type ClientProfileCreateFormValidationValues = {
     contactEmail?: ValidationFunction<string>;
     contactPhone?: ValidationFunction<string>;
     address?: ValidationFunction<string>;
+    createdBy?: ValidationFunction<string>;
+    updatedBy?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ClientProfileCreateFormOverridesProps = {
@@ -46,6 +50,8 @@ export declare type ClientProfileCreateFormOverridesProps = {
     contactEmail?: PrimitiveOverrideProps<TextFieldProps>;
     contactPhone?: PrimitiveOverrideProps<TextFieldProps>;
     address?: PrimitiveOverrideProps<TextFieldProps>;
+    createdBy?: PrimitiveOverrideProps<TextFieldProps>;
+    updatedBy?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ClientProfileCreateFormProps = React.PropsWithChildren<{
     overrides?: ClientProfileCreateFormOverridesProps | undefined | null;

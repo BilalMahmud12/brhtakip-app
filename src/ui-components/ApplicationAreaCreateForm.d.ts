@@ -24,16 +24,22 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type ApplicationAreaCreateFormInputValues = {
     isActive?: boolean;
     name?: string;
+    createdBy?: string;
+    updatedBy?: string;
 };
 export declare type ApplicationAreaCreateFormValidationValues = {
     isActive?: ValidationFunction<boolean>;
     name?: ValidationFunction<string>;
+    createdBy?: ValidationFunction<string>;
+    updatedBy?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ApplicationAreaCreateFormOverridesProps = {
     ApplicationAreaCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
     isActive?: PrimitiveOverrideProps<SwitchFieldProps>;
     name?: PrimitiveOverrideProps<TextFieldProps>;
+    createdBy?: PrimitiveOverrideProps<TextFieldProps>;
+    updatedBy?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ApplicationAreaCreateFormProps = React.PropsWithChildren<{
     overrides?: ApplicationAreaCreateFormOverridesProps | undefined | null;

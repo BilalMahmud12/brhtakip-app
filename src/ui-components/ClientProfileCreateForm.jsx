@@ -35,6 +35,8 @@ export default function ClientProfileCreateForm(props) {
     contactEmail: "",
     contactPhone: "",
     address: "",
+    createdBy: "",
+    updatedBy: "",
   };
   const [isActive, setIsActive] = React.useState(initialValues.isActive);
   const [name, setName] = React.useState(initialValues.name);
@@ -46,6 +48,8 @@ export default function ClientProfileCreateForm(props) {
     initialValues.contactPhone
   );
   const [address, setAddress] = React.useState(initialValues.address);
+  const [createdBy, setCreatedBy] = React.useState(initialValues.createdBy);
+  const [updatedBy, setUpdatedBy] = React.useState(initialValues.updatedBy);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setIsActive(initialValues.isActive);
@@ -54,6 +58,8 @@ export default function ClientProfileCreateForm(props) {
     setContactEmail(initialValues.contactEmail);
     setContactPhone(initialValues.contactPhone);
     setAddress(initialValues.address);
+    setCreatedBy(initialValues.createdBy);
+    setUpdatedBy(initialValues.updatedBy);
     setErrors({});
   };
   const validations = {
@@ -63,6 +69,8 @@ export default function ClientProfileCreateForm(props) {
     contactEmail: [{ type: "Email" }],
     contactPhone: [],
     address: [],
+    createdBy: [],
+    updatedBy: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -96,6 +104,8 @@ export default function ClientProfileCreateForm(props) {
           contactEmail,
           contactPhone,
           address,
+          createdBy,
+          updatedBy,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -164,6 +174,8 @@ export default function ClientProfileCreateForm(props) {
               contactEmail,
               contactPhone,
               address,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             value = result?.isActive ?? value;
@@ -193,6 +205,8 @@ export default function ClientProfileCreateForm(props) {
               contactEmail,
               contactPhone,
               address,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -222,6 +236,8 @@ export default function ClientProfileCreateForm(props) {
               contactEmail,
               contactPhone,
               address,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             value = result?.rootUserId ?? value;
@@ -251,6 +267,8 @@ export default function ClientProfileCreateForm(props) {
               contactEmail: value,
               contactPhone,
               address,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             value = result?.contactEmail ?? value;
@@ -280,6 +298,8 @@ export default function ClientProfileCreateForm(props) {
               contactEmail,
               contactPhone: value,
               address,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             value = result?.contactPhone ?? value;
@@ -309,6 +329,8 @@ export default function ClientProfileCreateForm(props) {
               contactEmail,
               contactPhone,
               address: value,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             value = result?.address ?? value;
@@ -322,6 +344,68 @@ export default function ClientProfileCreateForm(props) {
         errorMessage={errors.address?.errorMessage}
         hasError={errors.address?.hasError}
         {...getOverrideProps(overrides, "address")}
+      ></TextField>
+      <TextField
+        label="Created by"
+        isRequired={false}
+        isReadOnly={false}
+        value={createdBy}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              isActive,
+              name,
+              rootUserId,
+              contactEmail,
+              contactPhone,
+              address,
+              createdBy: value,
+              updatedBy,
+            };
+            const result = onChange(modelFields);
+            value = result?.createdBy ?? value;
+          }
+          if (errors.createdBy?.hasError) {
+            runValidationTasks("createdBy", value);
+          }
+          setCreatedBy(value);
+        }}
+        onBlur={() => runValidationTasks("createdBy", createdBy)}
+        errorMessage={errors.createdBy?.errorMessage}
+        hasError={errors.createdBy?.hasError}
+        {...getOverrideProps(overrides, "createdBy")}
+      ></TextField>
+      <TextField
+        label="Updated by"
+        isRequired={false}
+        isReadOnly={false}
+        value={updatedBy}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              isActive,
+              name,
+              rootUserId,
+              contactEmail,
+              contactPhone,
+              address,
+              createdBy,
+              updatedBy: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.updatedBy ?? value;
+          }
+          if (errors.updatedBy?.hasError) {
+            runValidationTasks("updatedBy", value);
+          }
+          setUpdatedBy(value);
+        }}
+        onBlur={() => runValidationTasks("updatedBy", updatedBy)}
+        errorMessage={errors.updatedBy?.errorMessage}
+        hasError={errors.updatedBy?.hasError}
+        {...getOverrideProps(overrides, "updatedBy")}
       ></TextField>
       <Flex
         justifyContent="space-between"
