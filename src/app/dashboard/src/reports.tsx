@@ -5,7 +5,6 @@ import { AppDispatch, RootState } from '@/reduxStore/store';
 import EastIcon from '@mui/icons-material/East';
 import Icon from '@/components/core/icon';
 import Link from 'next/link';
-import { count } from 'console';
 
 const reportTiles = [
     {
@@ -22,7 +21,7 @@ const reportTiles = [
 
     },
     {
-        href: '/dashboard/requests/in-print',
+        href: '/dashboard/requests/in-press',
         label: 'Baskıdaki Talepler',
         icon: <Icon iconName='FcPrint' className='text-9xl' />,
         count: 0
@@ -54,7 +53,7 @@ const Reports: React.FC = () => {
                     </div>
 
                     <div className='flex items-center justify-end'>
-                        <Link href={tile.href} className='flex items-center space-x-1 text-zinc-600 hover:text-zinc-800 transition-all ease-in-out duration-300'>
+                        <Link href={tile.href} className='flex items-center space-x-1 text-zinc-600 hover:text-[#1976d3] transition-all ease-in-out duration-300'>
                             <span className='text-xs font-medium block'>İncele</span>
                             <span className='block'>
                                 <EastIcon fontSize='inherit' />
