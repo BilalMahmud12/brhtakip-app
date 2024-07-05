@@ -1,12 +1,12 @@
 'use client'
-import React, { use, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import * as Repo from '@/repository/index'
 import type { ExtraProduct } from '@/API';
 import { useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch } from '@/reduxStore/store';
 import { setExtraProducts } from '@/reduxStore/features/extraProductSlice'
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function ExtraProductLayout({ children }: { children: React.ReactNode }) {
     const dispatch = useAppDispatch();
     useEffect(() => {
         const fetchExtraProducts = async () => {

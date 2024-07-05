@@ -1,13 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { ExtraProduct } from '@/API';
 
+export type ImageStorage = {
+    type: string;
+    path: string;
+}
 interface ExtraProductState {
     extraProducts: ExtraProduct[];
     extraProductsForm: {
         id?: string;
         name?: string;
         isActive?: boolean;
-        images?: [];
+        images?: ImageStorage[];
     }
 }
 
@@ -39,7 +43,7 @@ const extraProductSlice = createSlice({
             };
         },
 
-        handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean | [] }>) => {
+        handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean | string[] }>) => {
             const { key, value } = action.payload;
             switch (key) {
                 case 'name':

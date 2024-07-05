@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { useRouter } from 'next-nprogress-bar';
 
 export default function getClientsTableData(
     data: ClientProfile[],
@@ -14,13 +15,24 @@ export default function getClientsTableData(
     handleDelete: (data: any) => void,
     handleSelect: (data: any) => void
 ) {
+    const router = useRouter()
     return data.map((client) => {
         const row: { [key: string]: any } = {};
 
         columns.forEach((column) => {
             switch (column.key) {
                 case 'name':
-                    row[column.key] = client.name
+                    row[column.key] = (
+                        <div
+                            className='hover:underline hover:text-blue-700 cursor-pointer'
+                            onClick={() => {
+                                router.push(`/dashboard/system/clients/${client.id}`);
+                                handleEdit(client)
+                            }}
+                        >
+                            {client.name}
+                        </div>
+                    );
                     break;
                 case 'users':
                     row[column.key] = (

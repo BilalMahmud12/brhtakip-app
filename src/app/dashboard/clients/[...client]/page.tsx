@@ -31,9 +31,10 @@ const UpdateClientPage: React.FC = () => {
     const isValidForm = Object.values(validationErrorsRef.current).every(value => value === null);
 
     useEffect(() => {
-        const clientProfileId = pathName?.split('/').pop();
-        const targetClientProfile = clientProfiles.find(clientProfile => clientProfile.id === clientProfileId);
+        const clientProfileId = pathName.split('/').pop();
+        console.log('clientProfileId', clientProfileId)
 
+        const targetClientProfile = clientProfiles.find(clientProfile => clientProfile.id === clientProfileId);
         console.log('targetClientProfile', targetClientProfile)
 
         if (targetClientProfile) {
@@ -51,7 +52,7 @@ const UpdateClientPage: React.FC = () => {
             clientFormRef.current = updatedClientProfile;
             dispatch(setClientProfileForm(updatedClientProfile));
         }
-    }, [pathName, dispatch])
+    }, [pathName, clientProfiles, dispatch])
 
     async function handleUpdateClient() {
         dispatch(validateForm());

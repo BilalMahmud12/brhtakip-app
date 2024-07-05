@@ -47,16 +47,16 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         const images = extraProductFormRef.current.images || [];
 
         const newFiles = Object.keys(files).map((key) => ({
-            type: 'designs',
+            type: 'images',
             path: key,
         }))
 
-        dispatch(handleFormChange({
-            key: 'designImages',
-            value: [...images, ...newFiles]
-        }));
+        // dispatch(handleFormChange({
+        //     key: 'images',
+        //     value: [...images, ...newFiles]
+        // }));
 
-        console.log('designImages', images);
+        console.log('images', images);
 
     }
 
