@@ -1,7 +1,6 @@
 'use client'
-import React, { use, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import * as Repo from '@/repository/index';
-import { useRequestService } from '@/hooks/useRequestService';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { handleFormChange } from '@/reduxStore/features/requestSlice';
@@ -15,8 +14,7 @@ type Option = {
 
 const RequestBrandAndProduct: React.FC = () => {
     const pathname = usePathname();
-    const { getClientOptions } = useRequestService();
-
+    
     const dispatch = useAppDispatch<AppDispatch>();
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
     const currentUser = useAppSelector((state: RootState) => state.global.currentUserProfile);
@@ -32,16 +30,27 @@ const RequestBrandAndProduct: React.FC = () => {
     const [selectedBrand, setSelectedBrand] = React.useState<Option | null>(null);
     const [selectedProduct, setSelectedProduct] = React.useState<Option | null>(null);
 
+    const getClientOptions = () => {
+        return clientProfiles?.map((client) => {
+            return { value: client.id, label: client.name || '' }
+        }) || [];
+    }
+
     useEffect(() => {
         setSelectedClient(null);
         setSelectedBrand(null);
         setSelectedProduct(null);
     }, [pathname]);
 
-    useEffect(() => {
-        // Initialize form values for update
+    useEffect(() => {    
         const initializeFormValues = async () => {
+            setSelectedClient(null);
+            setSelectedBrand(null);
+            setSelectedProduct(null);
+
             const client = clientProfiles.find(client => client.id === requestFormRef.current.clientprofileID);
+            setSelectedClient(client ? { value: client.id, label: client.name || 'Unknown Client' } : null);
+
             const brandOptions = client ? getBrandsList(client.id) : [];
             setBrandOptionsList(brandOptions);
 
@@ -51,12 +60,14 @@ const RequestBrandAndProduct: React.FC = () => {
             const productOptions = selectedBrandOption ? await getProductsList(selectedBrandOption.value) : [];
             setProductOptionsList(productOptions);
 
-            setSelectedClient(client ? { value: client.id, label: client.name || 'Unknown Client' } : null);
-            setSelectedProduct(productOptions.find(option => option.value === requestFormRef.current.requestProductId) || null);
+
+            if (productOptions.length > 0 && requestFormRef.current.requestProductId) {
+                setSelectedProduct(productOptions.find(option => option.value === requestFormRef.current.requestProductId) || null);
+            }
         };
 
         initializeFormValues();
-    }, [clientProfiles]);
+    }, [clientProfiles, requestFormRef.current.requestBrandId, requestFormRef.current.requestProductId]);
 
     const getBrandsList = (clientID: string): Option[] => {
         return clientProfiles

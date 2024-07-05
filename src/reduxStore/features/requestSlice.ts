@@ -57,6 +57,19 @@ interface RequestState {
         passedRevision?: boolean;
     },
     selectedRequests: string[],
+    validationErrors: {
+        requestNumber?: string|null;
+        status?: string | null
+        clientprofileID?: string | null
+        storeID?: string | null
+        requestBrandId?: string | null
+        requestProductId?: string | null
+        requestApplicationAreaId?: string | null
+        quantity?: string | null
+        width?: string | null
+        height?: string | null
+        referenceImages?: string | null
+    }
     [key: string]: any;
 }
 
@@ -88,9 +101,10 @@ const initialState: RequestState = {
         applicationImages: [],
         designRevisions: [],
         extraProducts: [],
+        passedRevision: false
     },
     selectedRequests: [],
-    passedRevision: false
+    validationErrors: {},
 };
 
 const requestSlice = createSlice({

@@ -51,7 +51,6 @@ const UpdateRequest: React.FC = () => {
             dispatch(handleFormChange({ key: 'applicationImages', value: request.applicationImages }));
             dispatch(handleFormChange({ key: 'extraProducts', value: request.extraProducts }));
         }
- 
     }
 
     useEffect(() => {

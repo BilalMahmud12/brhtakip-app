@@ -121,6 +121,11 @@ const RequestsView: React.FC = () => {
         }
     }
 
+    const handleOnEdit = (row: any) => {
+        console.log('Edit', row)
+        router.push(`/dashboard/requests/${row.id}`)
+    }
+
     const handleCreateRequest = async () => {
         console.log('Request Form', requestForm)
         try {
@@ -200,7 +205,7 @@ const RequestsView: React.FC = () => {
 
                             <Button 
                                 variant="contained" 
-                                endIcon={<SyncIcon />} 
+                                startIcon={<SyncIcon />} 
                                 onClick={handleStatusChange}
                                 disabled={selectedStatus === getCurrentRequestStatus(pathname)}
                                 sx={{ height: '40px' }}
@@ -231,7 +236,7 @@ const RequestsView: React.FC = () => {
 
                             <Button
                                 variant="contained"
-                                endIcon={<SendIcon />}
+                                startIcon={<SendIcon />}
                                 onClick={handleStatusActionRequest}
                                 sx={{ height: '40px' }}
                                 disabled={!selectedRequests.length}
@@ -264,7 +269,7 @@ const RequestsView: React.FC = () => {
                     <div className='max-w-[calc(100vw-48px)] sm:max-w-full'>
                         <RequestsDataTable
                             dataPayload={requests}
-                            handleEdit={(row) => { router.push(`/dashboard/requests/${row.id}`) }}
+                            handleEdit={(row) => handleOnEdit(row)}
                             handleDelete={handleDelete}
                             handleSelect={(data) => dispatch(setSelectedRequests(data))}
                             isLoading={isFetchingRef.current}
