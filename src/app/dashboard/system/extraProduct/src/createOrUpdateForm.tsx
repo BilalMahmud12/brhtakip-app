@@ -51,10 +51,10 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
             path: key,
         }))
 
-        // dispatch(handleFormChange({
-        //     key: 'images',
-        //     value: [...images, ...newFiles]
-        // }));
+        dispatch(handleFormChange({
+            key: 'images',
+            value: [...images, ...newFiles]
+        }));
 
         console.log('images', images);
 
@@ -110,11 +110,11 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
                         <div className='grid grid-cols-1 lg:grid-cols-2 lg:gap-x-6 gap-y-8 mb-4'>
                             <div className='input-group w-full col-span-1'>
-                                {/* <MediaUploadManager
+                                <MediaUploadManager
                                     basePath='public'
-                                    uploadPath={`requests/${requestFormRef.current.requestNumber}/references`}
+                                    uploadPath={`extraProducts/${extraProductFormRef.current.name}`}
                                     handleOnUploadSuccess={(files: { [key: string]: { status: string } }) => onUploadSuccess(files)}
-                                /> */}
+                                />
                             </div>
 
                             <div className='input-group w-full col-span-2 lg:col-span-1'>
