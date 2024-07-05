@@ -126,35 +126,6 @@ const RequestsView: React.FC = () => {
         router.push(`/dashboard/requests/${row.id}`)
     }
 
-    const handleCreateRequest = async () => {
-        console.log('Request Form', requestForm)
-        try {
-            const createRequest = await Repo.RequestRepository.create(requestFormRef.current)
-
-            if (createRequest && createRequest.data) {
-                dispatch(setRequests([]))
-                toast.success(`${createRequest.data.createRequest.requestNumber} numaralı talep oluşturuldu.`);
-                dispatch(setIsFetching(true))
-
-                const newRequests = await Repo.RequestRepository.getRequestsByStatus(`${getCurrentRequestStatus(pathname)}`);
-
-                const sortedRequests = (newRequests as unknown as Request[]).sort((a, b) => {
-                    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-                });
-
-                dispatch(setRequests(sortedRequests))
-                dispatch(resetFormValues())
-                dispatch(setIsFetching(false))
-            }
-        } catch (error) {
-            console.log('Error')
-        }
-    }
-
-    const handleUpdateRequest = (data: any) => {
-        console.log('Update Request', data)
-    }
-
     const handleDelete = (data: any) => {
         console.log('Delete', data)
     }

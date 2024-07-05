@@ -30,6 +30,7 @@ interface RequestState {
     isFetching: boolean;
     requests: Request[];
     requestForm: {
+        id?: string;
         status: string;
         requestNumber: string;
         clientprofileID: string;
@@ -77,6 +78,7 @@ const initialState: RequestState = {
     isFetching: false,
     requests: [],
     requestForm: {
+        id: '',
         status: '',
         requestNumber: '',
         clientprofileID: '',

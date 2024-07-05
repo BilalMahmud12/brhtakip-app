@@ -27,6 +27,7 @@ const UpdateRequest: React.FC = () => {
         const request: Request | undefined = requests.find((request: Request) => request.id === requestID);
 
         if (request) {
+            dispatch(handleFormChange({ key: 'id', value: requestID }));
             dispatch(handleFormChange({ key: 'requestNumber', value: request.requestNumber }));
             dispatch(handleFormChange({ key: 'status', value: request.status }));
             dispatch(handleFormChange({ key: 'storeID', value: request.storeID }));

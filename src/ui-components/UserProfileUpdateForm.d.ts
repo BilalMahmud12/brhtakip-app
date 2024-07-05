@@ -30,6 +30,8 @@ export declare type UserProfileUpdateFormInputValues = {
     email?: string;
     role?: string;
     permissions?: string[];
+    createdBy?: string;
+    updatedBy?: string;
 };
 export declare type UserProfileUpdateFormValidationValues = {
     cognitoID?: ValidationFunction<string>;
@@ -39,6 +41,8 @@ export declare type UserProfileUpdateFormValidationValues = {
     email?: ValidationFunction<string>;
     role?: ValidationFunction<string>;
     permissions?: ValidationFunction<string>;
+    createdBy?: ValidationFunction<string>;
+    updatedBy?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type UserProfileUpdateFormOverridesProps = {
@@ -50,6 +54,8 @@ export declare type UserProfileUpdateFormOverridesProps = {
     email?: PrimitiveOverrideProps<TextFieldProps>;
     role?: PrimitiveOverrideProps<SelectFieldProps>;
     permissions?: PrimitiveOverrideProps<TextFieldProps>;
+    createdBy?: PrimitiveOverrideProps<TextFieldProps>;
+    updatedBy?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type UserProfileUpdateFormProps = React.PropsWithChildren<{
     overrides?: UserProfileUpdateFormOverridesProps | undefined | null;

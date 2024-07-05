@@ -11,6 +11,7 @@ import CreateOrUpdateForm from '../../src/createOrUpdateForm/index';
 import { filterEmptyValues } from '@/utils/helpers';
 import { useRouter } from 'next-nprogress-bar';
 import { toast } from 'sonner';
+import { CreateRequestInput } from '@/API';
 
 const decimalFields = [
     'assemblyBudget', 
@@ -57,7 +58,17 @@ const RequestCreateView: React.FC = () => {
         
         try {
             toast.info('Lütfen Bekleyiniz Talepinizi oluşturuluyor...');
-            const response = await Repo.RequestRepository.create(cleanForm);
+            const { clientprofileID, storeID, requestNumber, status, ...rest } = cleanForm;
+
+            const createRequestInput: CreateRequestInput = {
+              clientprofileID,
+              storeID,
+              requestNumber,
+              status,
+              ...rest
+            };
+            
+            const response = await Repo.RequestRepository.create(createRequestInput);
 
             if (response) {
                 toast.success('Talep başarıyla oluşturuldu.');

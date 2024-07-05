@@ -6,7 +6,8 @@ import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { RootState } from '@/reduxStore/store';
 import FileDisplay from '@/components/core/fileDisplay';
 
-const RequestDesignPhotos: React.FC = () => {
+
+const RequestDesignPhotos: React.FC<{ onSave: () => void }> = ({ onSave = () => {} }) => {
     const dispatch = useAppDispatch();
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
     const requestFormRef = React.useRef(requestForm);
@@ -27,6 +28,7 @@ const RequestDesignPhotos: React.FC = () => {
 
         console.log('designImages', designImages);
 
+        onSave();
     }
 
     return (
@@ -40,7 +42,7 @@ const RequestDesignPhotos: React.FC = () => {
                 <div className='input-group w-full col-span-1'>
                     <MediaUploadManager
                         basePath='public'
-                        uploadPath={`requests/${requestFormRef.current.requestNumber}/references`}
+                        uploadPath={`requests/${requestFormRef.current.requestNumber}/designImages`}
                         handleOnUploadSuccess={(files: { [key: string]: { status: string } }) => onUploadSuccess(files)}
                     />
                 </div>

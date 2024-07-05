@@ -36,7 +36,7 @@ const RequestDesignNote: React.FC = () => {
                         value={requestFormRef.current.designNote}
                         placeholder='Örnek: Tasarımın renkleri daha canlı olabilir.'
                         multiline={true}
-                        rows={5}
+                        rows={3}
                     />
                 </div>
             </div>

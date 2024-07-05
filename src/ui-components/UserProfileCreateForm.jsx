@@ -198,6 +198,8 @@ export default function UserProfileCreateForm(props) {
     email: "",
     role: "",
     permissions: [],
+    createdBy: "",
+    updatedBy: "",
   };
   const [cognitoID, setCognitoID] = React.useState(initialValues.cognitoID);
   const [isActive, setIsActive] = React.useState(initialValues.isActive);
@@ -208,6 +210,8 @@ export default function UserProfileCreateForm(props) {
   const [permissions, setPermissions] = React.useState(
     initialValues.permissions
   );
+  const [createdBy, setCreatedBy] = React.useState(initialValues.createdBy);
+  const [updatedBy, setUpdatedBy] = React.useState(initialValues.updatedBy);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setCognitoID(initialValues.cognitoID);
@@ -218,6 +222,8 @@ export default function UserProfileCreateForm(props) {
     setRole(initialValues.role);
     setPermissions(initialValues.permissions);
     setCurrentPermissionsValue("");
+    setCreatedBy(initialValues.createdBy);
+    setUpdatedBy(initialValues.updatedBy);
     setErrors({});
   };
   const [currentPermissionsValue, setCurrentPermissionsValue] =
@@ -231,6 +237,8 @@ export default function UserProfileCreateForm(props) {
     email: [{ type: "Email" }],
     role: [],
     permissions: [],
+    createdBy: [],
+    updatedBy: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -265,6 +273,8 @@ export default function UserProfileCreateForm(props) {
           email,
           role,
           permissions,
+          createdBy,
+          updatedBy,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -334,6 +344,8 @@ export default function UserProfileCreateForm(props) {
               email,
               role,
               permissions,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             value = result?.cognitoID ?? value;
@@ -364,6 +376,8 @@ export default function UserProfileCreateForm(props) {
               email,
               role,
               permissions,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             value = result?.isActive ?? value;
@@ -394,6 +408,8 @@ export default function UserProfileCreateForm(props) {
               email,
               role,
               permissions,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             value = result?.firstName ?? value;
@@ -424,6 +440,8 @@ export default function UserProfileCreateForm(props) {
               email,
               role,
               permissions,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             value = result?.lastName ?? value;
@@ -454,6 +472,8 @@ export default function UserProfileCreateForm(props) {
               email: value,
               role,
               permissions,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             value = result?.email ?? value;
@@ -484,6 +504,8 @@ export default function UserProfileCreateForm(props) {
               email,
               role: value,
               permissions,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             value = result?.role ?? value;
@@ -531,6 +553,8 @@ export default function UserProfileCreateForm(props) {
               email,
               role,
               permissions: values,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             values = result?.permissions ?? values;
@@ -572,6 +596,70 @@ export default function UserProfileCreateForm(props) {
           {...getOverrideProps(overrides, "permissions")}
         ></TextField>
       </ArrayField>
+      <TextField
+        label="Created by"
+        isRequired={false}
+        isReadOnly={false}
+        value={createdBy}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              cognitoID,
+              isActive,
+              firstName,
+              lastName,
+              email,
+              role,
+              permissions,
+              createdBy: value,
+              updatedBy,
+            };
+            const result = onChange(modelFields);
+            value = result?.createdBy ?? value;
+          }
+          if (errors.createdBy?.hasError) {
+            runValidationTasks("createdBy", value);
+          }
+          setCreatedBy(value);
+        }}
+        onBlur={() => runValidationTasks("createdBy", createdBy)}
+        errorMessage={errors.createdBy?.errorMessage}
+        hasError={errors.createdBy?.hasError}
+        {...getOverrideProps(overrides, "createdBy")}
+      ></TextField>
+      <TextField
+        label="Updated by"
+        isRequired={false}
+        isReadOnly={false}
+        value={updatedBy}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              cognitoID,
+              isActive,
+              firstName,
+              lastName,
+              email,
+              role,
+              permissions,
+              createdBy,
+              updatedBy: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.updatedBy ?? value;
+          }
+          if (errors.updatedBy?.hasError) {
+            runValidationTasks("updatedBy", value);
+          }
+          setUpdatedBy(value);
+        }}
+        onBlur={() => runValidationTasks("updatedBy", updatedBy)}
+        errorMessage={errors.updatedBy?.errorMessage}
+        hasError={errors.updatedBy?.hasError}
+        {...getOverrideProps(overrides, "updatedBy")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

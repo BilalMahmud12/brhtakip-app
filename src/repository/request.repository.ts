@@ -1,7 +1,7 @@
 import { listRequests, getRequest } from '@/graphql/queries';
 import { createRequest, updateRequest, deleteRequest } from '@/graphql/mutations';
 import { client } from '@/repository';
-import type { Request, RequestStatus } from '@/API';
+import type { CreateRequestInput, RequestStatus, UpdateRequestInput } from '@/API';
 
 const getAllRequests = async () => {
     try {
@@ -51,7 +51,7 @@ const getRequestsByStatus = async (status: string, clientId: string | undefined 
     }
 }
 
-const create = async (request: any) => {
+const create = async (request: CreateRequestInput) => {
     console.log("Request repo create", request)
     try {
         const data = await client.graphql({
@@ -67,7 +67,7 @@ const create = async (request: any) => {
     }
 }
 
-const update = async (request: Request) => {
+const update = async (request: UpdateRequestInput) => {
     try {
         const data = await client.graphql({
             query: updateRequest,

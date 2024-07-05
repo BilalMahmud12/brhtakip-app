@@ -33,9 +33,13 @@ export default function MaterialUpdateForm(props) {
   const initialValues = {
     isActive: false,
     name: "",
+    createdBy: "",
+    updatedBy: "",
   };
   const [isActive, setIsActive] = React.useState(initialValues.isActive);
   const [name, setName] = React.useState(initialValues.name);
+  const [createdBy, setCreatedBy] = React.useState(initialValues.createdBy);
+  const [updatedBy, setUpdatedBy] = React.useState(initialValues.updatedBy);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = materialRecord
@@ -43,6 +47,8 @@ export default function MaterialUpdateForm(props) {
       : initialValues;
     setIsActive(cleanValues.isActive);
     setName(cleanValues.name);
+    setCreatedBy(cleanValues.createdBy);
+    setUpdatedBy(cleanValues.updatedBy);
     setErrors({});
   };
   const [materialRecord, setMaterialRecord] = React.useState(materialModelProp);
@@ -64,6 +70,8 @@ export default function MaterialUpdateForm(props) {
   const validations = {
     isActive: [{ type: "Required" }],
     name: [{ type: "Required" }],
+    createdBy: [],
+    updatedBy: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -93,6 +101,8 @@ export default function MaterialUpdateForm(props) {
         let modelFields = {
           isActive,
           name,
+          createdBy: createdBy ?? null,
+          updatedBy: updatedBy ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -155,6 +165,8 @@ export default function MaterialUpdateForm(props) {
             const modelFields = {
               isActive: value,
               name,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             value = result?.isActive ?? value;
@@ -180,6 +192,8 @@ export default function MaterialUpdateForm(props) {
             const modelFields = {
               isActive,
               name: value,
+              createdBy,
+              updatedBy,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -193,6 +207,60 @@ export default function MaterialUpdateForm(props) {
         errorMessage={errors.name?.errorMessage}
         hasError={errors.name?.hasError}
         {...getOverrideProps(overrides, "name")}
+      ></TextField>
+      <TextField
+        label="Created by"
+        isRequired={false}
+        isReadOnly={false}
+        value={createdBy}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              isActive,
+              name,
+              createdBy: value,
+              updatedBy,
+            };
+            const result = onChange(modelFields);
+            value = result?.createdBy ?? value;
+          }
+          if (errors.createdBy?.hasError) {
+            runValidationTasks("createdBy", value);
+          }
+          setCreatedBy(value);
+        }}
+        onBlur={() => runValidationTasks("createdBy", createdBy)}
+        errorMessage={errors.createdBy?.errorMessage}
+        hasError={errors.createdBy?.hasError}
+        {...getOverrideProps(overrides, "createdBy")}
+      ></TextField>
+      <TextField
+        label="Updated by"
+        isRequired={false}
+        isReadOnly={false}
+        value={updatedBy}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              isActive,
+              name,
+              createdBy,
+              updatedBy: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.updatedBy ?? value;
+          }
+          if (errors.updatedBy?.hasError) {
+            runValidationTasks("updatedBy", value);
+          }
+          setUpdatedBy(value);
+        }}
+        onBlur={() => runValidationTasks("updatedBy", updatedBy)}
+        errorMessage={errors.updatedBy?.errorMessage}
+        hasError={errors.updatedBy?.hasError}
+        {...getOverrideProps(overrides, "updatedBy")}
       ></TextField>
       <Flex
         justifyContent="space-between"

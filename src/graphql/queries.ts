@@ -18,6 +18,8 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
       path
       __typename
     }
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -42,6 +44,8 @@ export const listExtraProducts = /* GraphQL */ `query ListExtraProducts(
         path
         __typename
       }
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -59,6 +63,8 @@ export const getApplicationArea = /* GraphQL */ `query GetApplicationArea($id: I
     id
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -78,6 +84,8 @@ export const listApplicationAreas = /* GraphQL */ `query ListApplicationAreas(
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -95,6 +103,8 @@ export const getMaterial = /* GraphQL */ `query GetMaterial($id: ID!) {
     id
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -114,6 +124,8 @@ export const listMaterials = /* GraphQL */ `query ListMaterials(
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -137,6 +149,8 @@ export const getUserProfile = /* GraphQL */ `query GetUserProfile($id: ID!) {
     email
     role
     permissions
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -162,6 +176,8 @@ export const listUserProfiles = /* GraphQL */ `query ListUserProfiles(
       email
       role
       permissions
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -198,6 +214,8 @@ export const userProfilesByClientprofileID = /* GraphQL */ `query UserProfilesBy
       email
       role
       permissions
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -243,6 +261,8 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -256,6 +276,8 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -280,6 +302,9 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -296,6 +321,8 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -324,6 +351,9 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -405,6 +435,8 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -415,6 +447,8 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -434,6 +468,8 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -442,6 +478,8 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -450,6 +488,8 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -492,6 +532,15 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -537,6 +586,9 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -683,6 +735,9 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -843,6 +898,9 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -985,6 +1043,8 @@ export const listAreas = /* GraphQL */ `query ListAreas(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -1051,6 +1111,8 @@ export const listAreas = /* GraphQL */ `query ListAreas(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -1070,6 +1132,8 @@ export const listAreas = /* GraphQL */ `query ListAreas(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -1078,6 +1142,8 @@ export const listAreas = /* GraphQL */ `query ListAreas(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -1086,6 +1152,8 @@ export const listAreas = /* GraphQL */ `query ListAreas(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -1128,6 +1196,15 @@ export const listAreas = /* GraphQL */ `query ListAreas(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -1457,6 +1534,8 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -1523,6 +1602,8 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -1542,6 +1623,8 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -1550,6 +1633,8 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -1558,6 +1643,8 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -1600,6 +1687,15 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -1912,6 +2008,8 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1938,6 +2036,8 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1957,6 +2057,8 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1965,6 +2067,8 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -1973,6 +2077,8 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2015,6 +2121,15 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -2198,6 +2313,8 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2211,6 +2328,8 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2235,6 +2354,9 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -2251,6 +2373,8 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -2279,6 +2403,9 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -2360,6 +2487,8 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -2370,6 +2499,8 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -2389,6 +2520,8 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -2397,6 +2530,8 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -2405,6 +2540,8 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -2447,6 +2584,15 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -2492,6 +2638,9 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -2638,6 +2787,9 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -2798,6 +2950,9 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -2939,6 +3094,9 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -3058,6 +3216,8 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -3124,6 +3284,8 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -3143,6 +3305,8 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -3151,6 +3315,8 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -3159,6 +3325,8 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -3201,6 +3369,15 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -3529,6 +3706,9 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -3648,6 +3828,8 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -3714,6 +3896,8 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -3733,6 +3917,8 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -3741,6 +3927,8 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -3749,6 +3937,8 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -3791,6 +3981,15 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -4173,6 +4372,8 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4199,6 +4400,8 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4218,6 +4421,8 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4226,6 +4431,8 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4234,6 +4441,8 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4276,6 +4485,15 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -4459,6 +4677,8 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4472,6 +4692,8 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4496,6 +4718,9 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -4512,6 +4737,8 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -4540,6 +4767,9 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -4621,6 +4851,8 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -4631,6 +4863,8 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -4650,6 +4884,8 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -4658,6 +4894,8 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -4666,6 +4904,8 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -4708,6 +4948,15 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -4753,6 +5002,9 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -4899,6 +5151,9 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -5059,6 +5314,9 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -5231,6 +5489,9 @@ export const listCities = /* GraphQL */ `query ListCities(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -5350,6 +5611,8 @@ export const listCities = /* GraphQL */ `query ListCities(
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -5416,6 +5679,8 @@ export const listCities = /* GraphQL */ `query ListCities(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -5435,6 +5700,8 @@ export const listCities = /* GraphQL */ `query ListCities(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -5443,6 +5710,8 @@ export const listCities = /* GraphQL */ `query ListCities(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -5451,6 +5720,8 @@ export const listCities = /* GraphQL */ `query ListCities(
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -5493,6 +5764,15 @@ export const listCities = /* GraphQL */ `query ListCities(
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -5788,6 +6068,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
         email
         role
         permissions
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -5804,6 +6086,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -5814,6 +6098,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
         clientprofileID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -5841,6 +6127,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
               email
               role
               permissions
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -5857,6 +6145,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -5867,6 +6157,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -5900,6 +6192,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -5966,6 +6260,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -5985,6 +6281,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -5993,6 +6291,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -6001,6 +6301,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -6043,6 +6345,15 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -6059,6 +6370,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
           contactEmail
           contactPhone
           address
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -6096,6 +6409,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -6162,6 +6477,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -6181,6 +6498,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -6189,6 +6508,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -6197,6 +6518,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -6239,6 +6562,15 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -6510,6 +6842,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -6520,6 +6854,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -6539,6 +6875,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -6547,6 +6885,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -6555,6 +6895,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -6597,6 +6939,15 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
           note
           __typename
         }
+        passedRevision
+        designRevisions {
+          revision
+          image
+          by
+          __typename
+        }
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         requestBrandId
@@ -6613,6 +6964,8 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
     contactEmail
     contactPhone
     address
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -6642,6 +6995,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
           email
           role
           permissions
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -6658,6 +7013,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -6668,6 +7025,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -6695,6 +7054,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -6712,6 +7073,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -6733,6 +7096,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6759,6 +7124,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6778,6 +7145,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6786,6 +7155,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6794,6 +7165,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6836,6 +7209,15 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -6852,6 +7234,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -6877,6 +7261,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6903,6 +7289,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6922,6 +7310,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6930,6 +7320,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6938,6 +7330,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -6980,6 +7374,15 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -7131,6 +7534,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -7141,6 +7546,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -7160,6 +7567,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -7168,6 +7577,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -7176,6 +7587,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -7218,6 +7631,15 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -7234,6 +7656,8 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
       contactEmail
       contactPhone
       address
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -7274,6 +7698,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               email
               role
               permissions
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -7290,6 +7716,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -7300,6 +7728,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -7333,6 +7763,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -7399,6 +7831,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -7418,6 +7852,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -7426,6 +7862,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -7434,6 +7872,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -7476,6 +7916,15 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -7492,6 +7941,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
           contactEmail
           contactPhone
           address
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -7529,6 +7980,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -7595,6 +8048,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -7614,6 +8069,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -7622,6 +8079,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -7630,6 +8089,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -7672,6 +8133,15 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -7943,6 +8413,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -7953,6 +8425,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -7972,6 +8446,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -7980,6 +8456,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -7988,6 +8466,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
           id
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -8030,6 +8510,15 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
           note
           __typename
         }
+        passedRevision
+        designRevisions {
+          revision
+          image
+          by
+          __typename
+        }
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         requestBrandId
@@ -8084,6 +8573,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -8150,6 +8641,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -8169,6 +8662,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -8177,6 +8672,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -8185,6 +8682,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -8227,6 +8726,15 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -8533,6 +9041,9 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -8652,6 +9163,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -8718,6 +9231,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -8737,6 +9252,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -8745,6 +9262,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -8753,6 +9272,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -8795,6 +9316,15 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -9135,6 +9665,9 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -9254,6 +9787,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 contactEmail
                 contactPhone
                 address
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9320,6 +9855,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9339,6 +9876,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9347,6 +9886,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9355,6 +9896,8 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 id
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9397,6 +9940,15 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
                 note
                 __typename
               }
+              passedRevision
+              designRevisions {
+                revision
+                image
+                by
+                __typename
+              }
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               requestBrandId
@@ -9708,6 +10260,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9725,6 +10279,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -9746,6 +10302,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -9772,6 +10330,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -9791,6 +10351,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -9799,6 +10361,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -9807,6 +10371,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -9849,6 +10415,15 @@ export const listStores = /* GraphQL */ `query ListStores(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -9865,6 +10440,8 @@ export const listStores = /* GraphQL */ `query ListStores(
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -9890,6 +10467,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -9916,6 +10495,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -9935,6 +10516,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -9943,6 +10526,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -9951,6 +10536,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -9993,6 +10580,15 @@ export const listStores = /* GraphQL */ `query ListStores(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -10144,6 +10740,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -10154,6 +10752,8 @@ export const listStores = /* GraphQL */ `query ListStores(
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -10173,6 +10773,8 @@ export const listStores = /* GraphQL */ `query ListStores(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -10181,6 +10783,8 @@ export const listStores = /* GraphQL */ `query ListStores(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -10189,6 +10793,8 @@ export const listStores = /* GraphQL */ `query ListStores(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -10231,6 +10837,15 @@ export const listStores = /* GraphQL */ `query ListStores(
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -10273,6 +10888,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -10299,6 +10916,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -10318,6 +10937,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -10326,6 +10947,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -10334,6 +10957,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -10376,6 +11001,15 @@ export const listStores = /* GraphQL */ `query ListStores(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -10625,6 +11259,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -10651,6 +11287,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -10670,6 +11308,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -10678,6 +11318,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -10686,6 +11328,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -10728,6 +11372,15 @@ export const listStores = /* GraphQL */ `query ListStores(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -10995,6 +11648,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11021,6 +11676,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11040,6 +11697,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11048,6 +11707,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11056,6 +11717,8 @@ export const listStores = /* GraphQL */ `query ListStores(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11098,6 +11761,15 @@ export const listStores = /* GraphQL */ `query ListStores(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -11303,6 +11975,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11320,6 +11994,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11341,6 +12017,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11367,6 +12045,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11386,6 +12066,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11394,6 +12076,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11402,6 +12086,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11444,6 +12130,15 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -11460,6 +12155,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -11485,6 +12182,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11511,6 +12210,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11530,6 +12231,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11538,6 +12241,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11546,6 +12251,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11588,6 +12295,15 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -11739,6 +12455,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -11749,6 +12467,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -11768,6 +12488,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -11776,6 +12498,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -11784,6 +12508,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -11826,6 +12552,15 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -11868,6 +12603,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11894,6 +12631,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11913,6 +12652,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11921,6 +12662,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11929,6 +12672,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -11971,6 +12716,15 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -12220,6 +12974,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -12246,6 +13002,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -12265,6 +13023,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -12273,6 +13033,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -12281,6 +13043,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -12323,6 +13087,15 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -12590,6 +13363,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -12616,6 +13391,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -12635,6 +13412,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -12643,6 +13422,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -12651,6 +13432,8 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -12693,6 +13476,15 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -12898,6 +13690,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12915,6 +13709,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -12936,6 +13732,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -12962,6 +13760,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -12981,6 +13781,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -12989,6 +13791,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -12997,6 +13801,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13039,6 +13845,15 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -13055,6 +13870,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -13080,6 +13897,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13106,6 +13925,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13125,6 +13946,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13133,6 +13956,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13141,6 +13966,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13183,6 +14010,15 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -13334,6 +14170,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -13344,6 +14182,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -13363,6 +14203,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -13371,6 +14213,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -13379,6 +14223,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -13421,6 +14267,15 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -13463,6 +14318,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13489,6 +14346,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13508,6 +14367,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13516,6 +14377,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13524,6 +14387,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13566,6 +14431,15 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -13815,6 +14689,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13841,6 +14717,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13860,6 +14738,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13868,6 +14748,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13876,6 +14758,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -13918,6 +14802,15 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -14185,6 +15078,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -14211,6 +15106,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -14230,6 +15127,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -14238,6 +15137,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -14246,6 +15147,8 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -14288,6 +15191,15 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -14493,6 +15405,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14510,6 +15424,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14531,6 +15447,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -14557,6 +15475,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -14576,6 +15496,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -14584,6 +15506,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -14592,6 +15516,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -14634,6 +15560,15 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -14650,6 +15585,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -14675,6 +15612,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -14701,6 +15640,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -14720,6 +15661,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -14728,6 +15671,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -14736,6 +15681,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -14778,6 +15725,15 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -14929,6 +15885,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -14939,6 +15897,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -14958,6 +15918,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -14966,6 +15928,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -14974,6 +15938,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -15016,6 +15982,15 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -15058,6 +16033,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -15084,6 +16061,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -15103,6 +16082,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -15111,6 +16092,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -15119,6 +16102,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -15161,6 +16146,15 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -15410,6 +16404,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -15436,6 +16432,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -15455,6 +16453,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -15463,6 +16463,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -15471,6 +16473,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -15513,6 +16517,15 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -15780,6 +16793,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -15806,6 +16821,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -15825,6 +16842,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -15833,6 +16852,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -15841,6 +16862,8 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -15883,6 +16906,15 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -16053,6 +17085,8 @@ export const getProduct = /* GraphQL */ `query GetProduct($id: ID!) {
     brandID
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -16073,6 +17107,8 @@ export const listProducts = /* GraphQL */ `query ListProducts(
       brandID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -16104,6 +17140,8 @@ export const productsByBrandID = /* GraphQL */ `query ProductsByBrandID(
       brandID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -16125,6 +17163,8 @@ export const getBrand = /* GraphQL */ `query GetBrand($id: ID!) {
         brandID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -16135,6 +17175,8 @@ export const getBrand = /* GraphQL */ `query GetBrand($id: ID!) {
     clientprofileID
     isActive
     name
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     __typename
@@ -16155,6 +17197,8 @@ export const listBrands = /* GraphQL */ `query ListBrands(
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -16165,6 +17209,8 @@ export const listBrands = /* GraphQL */ `query ListBrands(
       clientprofileID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -16199,6 +17245,8 @@ export const brandsByClientprofileID = /* GraphQL */ `query BrandsByClientprofil
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -16209,6 +17257,8 @@ export const brandsByClientprofileID = /* GraphQL */ `query BrandsByClientprofil
       clientprofileID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -16241,6 +17291,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
           email
           role
           permissions
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -16257,6 +17309,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -16267,6 +17321,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
           clientprofileID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -16294,6 +17350,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16311,6 +17369,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16332,6 +17392,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16358,6 +17420,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16377,6 +17441,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16385,6 +17451,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16393,6 +17461,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16435,6 +17505,15 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -16451,6 +17530,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -16476,6 +17557,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16502,6 +17585,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16521,6 +17606,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16529,6 +17616,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16537,6 +17626,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16579,6 +17670,15 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -16730,6 +17830,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16740,6 +17842,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -16759,6 +17863,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -16767,6 +17873,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -16775,6 +17883,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -16817,6 +17927,15 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -16833,6 +17952,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
       contactEmail
       contactPhone
       address
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -16864,6 +17985,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 email
                 role
                 permissions
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16881,6 +18004,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 clientprofileID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -16902,6 +18027,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16928,6 +18055,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16947,6 +18076,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16955,6 +18086,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -16963,6 +18096,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17005,6 +18140,15 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -17021,6 +18165,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             contactEmail
             contactPhone
             address
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -17046,6 +18192,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17072,6 +18220,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17091,6 +18241,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17099,6 +18251,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17107,6 +18261,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17149,6 +18305,15 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -17300,6 +18465,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -17310,6 +18477,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -17329,6 +18498,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -17337,6 +18508,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -17345,6 +18518,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             id
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -17387,6 +18562,15 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
             note
             __typename
           }
+          passedRevision
+          designRevisions {
+            revision
+            image
+            by
+            __typename
+          }
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           requestBrandId
@@ -17429,6 +18613,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17455,6 +18641,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17474,6 +18662,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17482,6 +18672,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17490,6 +18682,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17532,6 +18726,15 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -17781,6 +18984,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17807,6 +19012,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17826,6 +19033,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17834,6 +19043,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17842,6 +19053,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -17884,6 +19097,15 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -18151,6 +19373,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   contactEmail
                   contactPhone
                   address
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18177,6 +19401,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18196,6 +19422,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18204,6 +19432,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18212,6 +19442,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   id
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18254,6 +19486,15 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                   note
                   __typename
                 }
+                passedRevision
+                designRevisions {
+                  revision
+                  image
+                  by
+                  __typename
+                }
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 requestBrandId
@@ -18419,6 +19660,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
           brandID
           isActive
           name
+          createdBy
+          updatedBy
           createdAt
           updatedAt
           __typename
@@ -18429,6 +19672,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
       clientprofileID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -18448,6 +19693,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
       brandID
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -18456,6 +19703,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -18464,6 +19713,8 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
       id
       isActive
       name
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       __typename
@@ -18506,6 +19757,15 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
       note
       __typename
     }
+    passedRevision
+    designRevisions {
+      revision
+      image
+      by
+      __typename
+    }
+    createdBy
+    updatedBy
     createdAt
     updatedAt
     requestBrandId
@@ -18544,6 +19804,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
             email
             role
             permissions
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -18560,6 +19822,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -18570,6 +19834,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -18597,6 +19863,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18610,6 +19878,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18634,6 +19904,9 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -18650,6 +19923,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -18678,6 +19953,9 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -18759,6 +20037,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18769,6 +20049,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -18788,6 +20070,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -18796,6 +20080,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -18804,6 +20090,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -18846,6 +20134,15 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -18862,6 +20159,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
         contactEmail
         contactPhone
         address
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -18893,6 +20192,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18906,6 +20207,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -18930,6 +20233,9 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -18946,6 +20252,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -18974,6 +20282,9 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -19055,6 +20366,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19065,6 +20378,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -19084,6 +20399,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -19092,6 +20409,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -19100,6 +20419,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -19142,6 +20463,15 @@ export const listRequests = /* GraphQL */ `query ListRequests(
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -19187,6 +20517,9 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -19333,6 +20666,9 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -19493,6 +20829,9 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -19588,6 +20927,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19598,6 +20939,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
         clientprofileID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -19617,6 +20960,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
         brandID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -19625,6 +20970,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
         id
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -19633,6 +20980,8 @@ export const listRequests = /* GraphQL */ `query ListRequests(
         id
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -19675,6 +21024,15 @@ export const listRequests = /* GraphQL */ `query ListRequests(
         note
         __typename
       }
+      passedRevision
+      designRevisions {
+        revision
+        image
+        by
+        __typename
+      }
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       requestBrandId
@@ -19724,6 +21082,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
             email
             role
             permissions
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19740,6 +21100,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -19750,6 +21112,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -19777,6 +21141,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19790,6 +21156,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19814,6 +21182,9 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -19830,6 +21201,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -19858,6 +21231,9 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -19939,6 +21315,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -19949,6 +21327,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -19968,6 +21348,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -19976,6 +21358,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -19984,6 +21368,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -20026,6 +21412,15 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -20042,6 +21437,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
         contactEmail
         contactPhone
         address
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -20073,6 +21470,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20086,6 +21485,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20110,6 +21511,9 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -20126,6 +21530,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -20154,6 +21560,9 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -20235,6 +21644,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20245,6 +21656,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -20264,6 +21677,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -20272,6 +21687,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -20280,6 +21697,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -20322,6 +21741,15 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -20367,6 +21795,9 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -20513,6 +21944,9 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -20673,6 +22107,9 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -20768,6 +22205,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -20778,6 +22217,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
         clientprofileID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -20797,6 +22238,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
         brandID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -20805,6 +22248,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
         id
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -20813,6 +22258,8 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
         id
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -20855,6 +22302,15 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
         note
         __typename
       }
+      passedRevision
+      designRevisions {
+        revision
+        image
+        by
+        __typename
+      }
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       requestBrandId
@@ -20904,6 +22360,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
             email
             role
             permissions
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -20920,6 +22378,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                 brandID
                 isActive
                 name
+                createdBy
+                updatedBy
                 createdAt
                 updatedAt
                 __typename
@@ -20930,6 +22390,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
             clientprofileID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -20957,6 +22419,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20970,6 +22434,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -20994,6 +22460,9 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -21010,6 +22479,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -21038,6 +22509,9 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -21119,6 +22593,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21129,6 +22605,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -21148,6 +22626,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -21156,6 +22636,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -21164,6 +22646,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -21206,6 +22690,15 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -21222,6 +22715,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
         contactEmail
         contactPhone
         address
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -21253,6 +22748,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   email
                   role
                   permissions
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21266,6 +22763,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   clientprofileID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21290,6 +22789,9 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -21306,6 +22808,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               contactEmail
               contactPhone
               address
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -21334,6 +22838,9 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -21415,6 +22922,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   brandID
                   isActive
                   name
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   __typename
@@ -21425,6 +22934,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               clientprofileID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -21444,6 +22955,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               brandID
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -21452,6 +22965,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -21460,6 +22975,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               id
               isActive
               name
+              createdBy
+              updatedBy
               createdAt
               updatedAt
               __typename
@@ -21502,6 +23019,15 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
               note
               __typename
             }
+            passedRevision
+            designRevisions {
+              revision
+              image
+              by
+              __typename
+            }
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             requestBrandId
@@ -21547,6 +23073,9 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -21693,6 +23222,9 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -21853,6 +23385,9 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   assemblyBudget
                   monthlyFee
                   isExtraProductRequest
+                  passedRevision
+                  createdBy
+                  updatedBy
                   createdAt
                   updatedAt
                   requestBrandId
@@ -21948,6 +23483,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
             brandID
             isActive
             name
+            createdBy
+            updatedBy
             createdAt
             updatedAt
             __typename
@@ -21958,6 +23495,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
         clientprofileID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -21977,6 +23516,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
         brandID
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -21985,6 +23526,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
         id
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -21993,6 +23536,8 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
         id
         isActive
         name
+        createdBy
+        updatedBy
         createdAt
         updatedAt
         __typename
@@ -22035,6 +23580,15 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
         note
         __typename
       }
+      passedRevision
+      designRevisions {
+        revision
+        image
+        by
+        __typename
+      }
+      createdBy
+      updatedBy
       createdAt
       updatedAt
       requestBrandId
