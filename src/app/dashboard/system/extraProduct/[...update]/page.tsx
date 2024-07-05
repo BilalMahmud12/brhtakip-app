@@ -29,7 +29,7 @@ const CreateExtraProductPage: React.FC = () => {
         const targetExtraProduct = extraProducts.find(extraProduct => extraProduct.id === extraProductId);
 
         if (targetExtraProduct) {
-            const { updatedAt, createdAt, __typename, requests, ...restOfTheExtraProduct } = targetExtraProduct;
+            const { updatedAt, createdAt, __typename, ...restOfTheExtraProduct } = targetExtraProduct;
 
             const updatedExtraProduct = {
                 id: restOfTheExtraProduct.id || '',
@@ -45,7 +45,7 @@ const CreateExtraProductPage: React.FC = () => {
         try {
             const updateExtraProduct = await Repo.ExtraProductRepository.update(extraProductsFormRef.current);
             if (updateExtraProduct && updateExtraProduct.data) {
-                const newExtraProducts = await Repo.ExtraProductRepository.default.getAllExtraProducts();
+                const newExtraProducts = await Repo.ExtraProductRepository.getAllExtraProducts();
                 dispatch(setExtraProducts(newExtraProducts as unknown as ExtraProduct[]));
                 toast.success('Ürun Güncellendi');
                 router.push('/dashboard/system/extraProduct');
