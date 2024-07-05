@@ -34,6 +34,8 @@ const RequestsView: React.FC = () => {
     const requests = useAppSelector((state: RootState) => state.request.requests);
     const selectedRequests = useAppSelector((state: RootState) => state.request.selectedRequests);
 
+    console.log('requests', requests)
+
     const isFetching = useAppSelector((state: RootState) => state.request.isFetching);
     const isFetchingRef = useRef(isFetching);
     isFetchingRef.current = isFetching;

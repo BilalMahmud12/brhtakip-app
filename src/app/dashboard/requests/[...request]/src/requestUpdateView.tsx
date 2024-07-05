@@ -40,6 +40,9 @@ const RequestUpdateView: React.FC = () => {
             else if (key === 'quantity') {
                 cleanForm[key] = parseInt(currentValue)
             }
+            else if (key === 'createdAt' || key === 'updatedAt') {
+                delete cleanForm[key];
+            }
             else {
                 cleanForm[key] = currentValue;
             }
