@@ -48,7 +48,10 @@ const RequestReferencePhotos: React.FC = () => {
 
     return (
         <React.Fragment>
-            <h2 className='text-base font-semibold mb-6'>Referans Görseller</h2>
+            <div className='mb-6'>
+                <h2 className='text-base font-semibold mb-0.5'>Alan Fotoğrafları</h2>
+                <span className='block text-sm text-zinc-400'>Uygulama Yapılacak Alan Fotoğrafları</span>
+            </div>
 
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
                 <div className='input-group w-full col-span-2 lg:col-span-1'>

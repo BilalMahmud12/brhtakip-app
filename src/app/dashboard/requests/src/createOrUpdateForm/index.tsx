@@ -28,7 +28,7 @@ const CreateOrUpdateForm: React.FC<{ isCreate: boolean }> = ({ isCreate }) => {
             <div className='h-full'>
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>
                     <div className='p-6 bg-white shadow col-span-2 sm:col-span-1'>
-                        <RequestSettings />
+                        <RequestSettings isCreate={isCreate} />
                     </div>
 
                     <div className='p-6 bg-white shadow col-span-2 sm:col-span-1'>
