@@ -4,7 +4,7 @@ import * as Repo from '@/repository/index'
 import type { Store } from '@/API';
 import { useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch } from '@/reduxStore/store';
-import { setStores } from '@/reduxStore/features/storeSlice'
+import { setStores, setFetching } from '@/reduxStore/features/storeSlice'
 
 export default function StoreLayout(
     { children }: { children: React.ReactNode }
@@ -12,10 +12,16 @@ export default function StoreLayout(
     const dispatch = useAppDispatch<AppDispatch>();
     useEffect(() => {
         const fetchData = async () => {
+            dispatch(setFetching(true));
             try {
                 const storeData = await Repo.StoreRepository.getAllStores();
-                dispatch(setStores(storeData as unknown as Store[]));
-                console.log('store data', storeData);
+
+                if (storeData) {
+                    dispatch(setStores(storeData as unknown as Store[]));
+                    console.log('store data', storeData);
+                }
+
+                dispatch(setFetching(false));
             } catch (error) {
                 console.error('Failed to fetch store', error);
             }

@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { Store } from '@/API';
 const requiredInputs = ['name', 'cityID', 'districtID', 'areaID', 'address'];
 interface StoreFormState {
+    isFetching: boolean;
     stores: Store[];
     storeForm: {
         id?: string;
@@ -27,6 +28,7 @@ interface StoreFormState {
 }
 
 const initialState: StoreFormState = {
+    isFetching: false,
     stores: [],
     storeForm: {
         cityID: '',
@@ -55,6 +57,9 @@ const storeSlice = createSlice({
     name: 'store',
     initialState,
     reducers: {
+        setFetching: (state, action: PayloadAction<boolean>) => {
+            state.isFetching = action.payload;
+        },
         setStores: (state, action: PayloadAction<Store[]>) => {
             state.stores = action.payload;
         },
@@ -134,6 +139,7 @@ const storeSlice = createSlice({
 });
 
 export const {
+    setFetching,
     setStores,
     addStore,
     setStoreForm,
