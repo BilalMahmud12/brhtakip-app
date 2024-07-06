@@ -15,7 +15,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { usePathname } from 'next/navigation';
 
-const CreateExtraProductPage: React.FC = () => {
+const UpdateExtraProductPage: React.FC = () => {
     const pathName = usePathname();
     const dispatch = useDispatch<AppDispatch>();
     const router = useRouter();
@@ -41,6 +41,7 @@ const CreateExtraProductPage: React.FC = () => {
             dispatch(setExtraProductsForm(updatedExtraProduct));
         }
     }, [dispatch, extraProducts, pathName]);
+
     const handleUpdateExtraProduct = async () => {
         try {
             const updateExtraProduct = await Repo.ExtraProductRepository.update(extraProductsFormRef.current);
@@ -87,4 +88,4 @@ const CreateExtraProductPage: React.FC = () => {
     );
 }
 
-export default CreateExtraProductPage
+export default UpdateExtraProductPage

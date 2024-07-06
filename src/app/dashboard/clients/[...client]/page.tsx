@@ -32,10 +32,7 @@ const UpdateClientPage: React.FC = () => {
 
     useEffect(() => {
         const clientProfileId = pathName.split('/').pop();
-        console.log('clientProfileId', clientProfileId)
-
         const targetClientProfile = clientProfiles.find(clientProfile => clientProfile.id === clientProfileId);
-        console.log('targetClientProfile', targetClientProfile)
 
         if (targetClientProfile) {
             const { updatedAt, createdAt, __typename, UserProfiles, Brands, Requests, ...restOfTheClientProfile } = targetClientProfile;
@@ -44,7 +41,6 @@ const UpdateClientPage: React.FC = () => {
                 id: restOfTheClientProfile.id || '',
                 name: restOfTheClientProfile.name || '',
                 isActive: restOfTheClientProfile.isActive ?? false,
-                rootUserId: restOfTheClientProfile.rootUserId || '',
                 contactEmail: restOfTheClientProfile.contactEmail || '',
                 contactPhone: restOfTheClientProfile.contactPhone || '',
                 address: restOfTheClientProfile.address || '',

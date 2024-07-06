@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useRef } from 'react'
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import Button from '@mui/material/Button';
@@ -16,10 +16,11 @@ const ClientsView = () => {
     const router = useRouter()
     const dispatch = useAppDispatch<AppDispatch>();
     const clients = useAppSelector((state: RootState) => state.client.clientProfiles);
-
-
     const [selectedClients, setSelectedClients] = React.useState<string[]>([]);
 
+    const isFetching = useAppSelector((state: RootState) => state.client.isFetching);
+    const isFetchingRef = useRef(isFetching);
+    isFetchingRef.current = isFetching;
     const handleDeleteClient = async (data: any) => {
         try {
             const deleteClient = await Repo.ClientProfileRepository.softDelete(data.id);
@@ -71,6 +72,7 @@ const ClientsView = () => {
                     handleEdit={(data) => { router.push(`/dashboard/clients/${data.id}`) }}
                     handleDelete={(data) => handleDeleteClient(data)}
                     handleSelect={(data) => { setSelectedClients(data) }}
+                    isLoading={isFetchingRef.current}
                 />
             </div>
         </React.Fragment>

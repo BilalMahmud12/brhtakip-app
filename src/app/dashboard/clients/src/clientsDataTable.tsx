@@ -9,6 +9,7 @@ interface ClientsDataTableProps {
     handleEdit?: (data: any) => void;
     handleDelete?: (data: any) => void;
     handleSelect?: (data: any) => void;
+    isLoading?: boolean;
 }
 
 const ClientsDataTable: React.FC<ClientsDataTableProps> = (props) => {
@@ -17,6 +18,7 @@ const ClientsDataTable: React.FC<ClientsDataTableProps> = (props) => {
         handleEdit = () => { },
         handleDelete = () => { },
         handleSelect = () => { },
+        isLoading = false,
     } = props;
 
     const { clients } = dataTables;
@@ -26,7 +28,8 @@ const ClientsDataTable: React.FC<ClientsDataTableProps> = (props) => {
         clients.columns,
         handleEdit,
         handleDelete,
-        handleSelect
+        handleSelect,
+        isLoading
     );
 
     return (
@@ -37,6 +40,7 @@ const ClientsDataTable: React.FC<ClientsDataTableProps> = (props) => {
                 onEditRow={handleEdit}
                 onDeleteRow={handleDelete}
                 onRowSelect={handleSelect}
+                loading={isLoading}
             />
         </div>
     )

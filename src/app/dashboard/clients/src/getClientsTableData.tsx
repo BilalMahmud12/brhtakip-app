@@ -13,7 +13,8 @@ export default function getClientsTableData(
     columns: any[],
     handleEdit: (data: any) => void,
     handleDelete: (data: any) => void,
-    handleSelect: (data: any) => void
+    handleSelect: (data: any) => void,
+    isLoading: boolean
 ) {
     const router = useRouter()
     return data.map((client) => {

@@ -28,20 +28,20 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
 
     const [checked, setChecked] = useState(extraProductFormRef.current.isActive as boolean);
 
-    useEffect(() => {
-        if (!isCreate) {
-            loadFormData(extraProduct);
-        }
-    }, [extraProduct])
-    const loadFormData = async (extraProduct: ExtraProduct) => {
-        const {
-            name,
-            isActive,
-        } = extraProduct
+    // useEffect(() => {
+    //     if (!isCreate) {
+    //         loadFormData(extraProduct);
+    //     }
+    // }, [extraProduct])
+    // const loadFormData = async (extraProduct: ExtraProduct) => {
+    //     const {
+    //         name,
+    //         isActive,
+    //     } = extraProduct
 
-        dispatch(handleFormChange({ key: 'name', value: name as string }))
-        dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
-    }
+    //     dispatch(handleFormChange({ key: 'name', value: name as string }))
+    //     dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
+    // }
 
     const onUploadSuccess = (files: { [key: string]: { status: string } }) => {
         const images = extraProductFormRef.current.images || [];
@@ -59,6 +59,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         console.log('images', images);
 
     }
+
+    const sanitizedExtraProductName = extraProductFormRef.current.name?.replace(/\s+/g, '_') || '';
 
     return (
         <div >
@@ -112,14 +114,14 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                             <div className='input-group w-full col-span-1'>
                                 <MediaUploadManager
                                     basePath='public'
-                                    uploadPath={`extraProducts/${extraProductFormRef.current.name}`}
+                                    uploadPath={`extraProducts/${sanitizedExtraProductName}`}
                                     handleOnUploadSuccess={(files: { [key: string]: { status: string } }) => onUploadSuccess(files)}
                                 />
                             </div>
 
                             <div className='input-group w-full col-span-2 lg:col-span-1'>
                                 <FileDisplay
-                                    targetPath='designImages'
+                                    targetPath='Images'
                                     files={extraProductFormRef.current.images || []}
                                 />
                             </div>

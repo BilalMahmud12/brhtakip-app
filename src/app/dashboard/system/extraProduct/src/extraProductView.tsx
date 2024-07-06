@@ -36,6 +36,7 @@ const ExtraProductView: React.FC = () => {
             id: data.id,
             name: data.name,
             isActive: data.isActive,
+            images: data.images,
         }));
     };
 
