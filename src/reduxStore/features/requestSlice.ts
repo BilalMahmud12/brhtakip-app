@@ -8,10 +8,10 @@ export type ImageStorage = {
 }
 
 export type DesignRevision = {
-    date: string;
-    note: string;
-    images: string[];
-    owner: {
+    date?: string;
+    note?: string;
+    images?: string[];
+    owner?: {
         id: string;
         name: string;
         role: string;
@@ -24,6 +24,17 @@ export type ExtraProductRequest = {
     quantity: number;
     image?: string;
     note?: string;
+}
+
+export type designRevisionsRequest = {
+    date?: string;
+    note?: string;
+    images?: string[];
+    owner?: {
+        id: string;
+        name: string;
+        role: string;
+    }
 }
 
 interface RequestState {
@@ -70,7 +81,9 @@ interface RequestState {
         width?: string | null
         height?: string | null
         referenceImages?: string | null
-    }
+    },
+    imagesDrawerOpen: boolean;
+    selectedRevisionImages: string[];
     [key: string]: any;
 }
 
@@ -107,6 +120,8 @@ const initialState: RequestState = {
     },
     selectedRequests: [],
     validationErrors: {},
+    imagesDrawerOpen: false,
+    selectedRevisionImages: []
 };
 
 const requestSlice = createSlice({
@@ -142,6 +157,12 @@ const requestSlice = createSlice({
                ...initialState.requestForm
            }
         },
+        setImageDrawerOpen(state, action: PayloadAction<boolean>) {
+            state.imagesDrawerOpen = action.payload;
+        },
+        setSelectedRevisionImages(state, action: PayloadAction<string[]>) {
+            state.selectedRevisionImages = action.payload;
+        }
     },
 })
 
@@ -151,6 +172,8 @@ export const {
     setSelectedRequests,
     setRequestForm,
     resetFormValues,
-    handleFormChange
+    handleFormChange,
+    setImageDrawerOpen,
+    setSelectedRevisionImages
 } = requestSlice.actions
 export default requestSlice.reducer

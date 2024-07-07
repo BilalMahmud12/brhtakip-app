@@ -14,8 +14,9 @@ export const getExtraProduct = /* GraphQL */ `query GetExtraProduct($id: ID!) {
     isActive
     name
     images {
-      type
+      id
       path
+      type
       __typename
     }
     createdBy
@@ -40,8 +41,9 @@ export const listExtraProducts = /* GraphQL */ `query ListExtraProducts(
       isActive
       name
       images {
-        type
+        id
         path
+        type
         __typename
       }
       createdBy
@@ -149,6 +151,7 @@ export const getUserProfile = /* GraphQL */ `query GetUserProfile($id: ID!) {
     email
     role
     permissions
+    profilePhoto
     createdBy
     updatedBy
     createdAt
@@ -176,6 +179,7 @@ export const listUserProfiles = /* GraphQL */ `query ListUserProfiles(
       email
       role
       permissions
+      profilePhoto
       createdBy
       updatedBy
       createdAt
@@ -214,6 +218,7 @@ export const userProfilesByClientprofileID = /* GraphQL */ `query UserProfilesBy
       email
       role
       permissions
+      profilePhoto
       createdBy
       updatedBy
       createdAt
@@ -261,6 +266,7 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -505,23 +511,27 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -534,9 +544,21 @@ export const getArea = /* GraphQL */ `query GetArea($id: ID!) {
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -1169,23 +1191,27 @@ export const listAreas = /* GraphQL */ `query ListAreas(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -1198,9 +1224,21 @@ export const listAreas = /* GraphQL */ `query ListAreas(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -1660,23 +1698,27 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -1689,9 +1731,21 @@ export const areasByDistrictID = /* GraphQL */ `query AreasByDistrictID(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -2094,23 +2148,27 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -2123,9 +2181,9 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -2313,6 +2371,7 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -2557,23 +2616,27 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -2586,9 +2649,21 @@ export const getDistrict = /* GraphQL */ `query GetDistrict($id: ID!) {
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -3342,23 +3417,27 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -3371,9 +3450,21 @@ export const listDistricts = /* GraphQL */ `query ListDistricts(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -3954,23 +4045,27 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -3983,9 +4078,21 @@ export const districtsByCityID = /* GraphQL */ `query DistrictsByCityID(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -4458,23 +4565,27 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -4487,9 +4598,9 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -4677,6 +4788,7 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -4921,23 +5033,27 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -4950,9 +5066,21 @@ export const getCity = /* GraphQL */ `query GetCity($id: ID!) {
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -5737,23 +5865,27 @@ export const listCities = /* GraphQL */ `query ListCities(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -5766,9 +5898,21 @@ export const listCities = /* GraphQL */ `query ListCities(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -6068,6 +6212,7 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
         email
         role
         permissions
+        profilePhoto
         createdBy
         updatedBy
         createdAt
@@ -6127,6 +6272,7 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
               email
               role
               permissions
+              profilePhoto
               createdBy
               updatedBy
               createdAt
@@ -6318,23 +6464,27 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -6347,9 +6497,21 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -6535,23 +6697,27 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -6564,9 +6730,21 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -6912,23 +7090,27 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
         monthlyFee
         isExtraProductRequest
         referenceImages {
-          type
+          id
           path
+          type
           __typename
         }
         designImages {
-          type
+          id
           path
+          type
           __typename
         }
         printImages {
-          type
+          id
           path
+          type
           __typename
         }
         applicationImages {
-          type
+          id
           path
+          type
           __typename
         }
         extraProducts {
@@ -6941,9 +7123,21 @@ export const getClientProfile = /* GraphQL */ `query GetClientProfile($id: ID!) 
         }
         passedRevision
         designRevisions {
-          revision
-          image
-          by
+          note
+          images {
+            id
+            path
+            type
+            __typename
+          }
+          owner {
+            id
+            name
+            role
+            __typename
+          }
+          createdAt
+          updatedAt
           __typename
         }
         createdBy
@@ -6995,6 +7189,7 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
           email
           role
           permissions
+          profilePhoto
           createdBy
           updatedBy
           createdAt
@@ -7054,6 +7249,7 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -7182,23 +7378,27 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -7211,9 +7411,9 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -7347,23 +7547,27 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -7376,9 +7580,9 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -7604,23 +7808,27 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -7633,9 +7841,21 @@ export const listClientProfiles = /* GraphQL */ `query ListClientProfiles(
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -7698,6 +7918,7 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               email
               role
               permissions
+              profilePhoto
               createdBy
               updatedBy
               createdAt
@@ -7889,23 +8110,27 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -7918,9 +8143,21 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -8106,23 +8343,27 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -8135,9 +8376,21 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -8483,23 +8736,27 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
         monthlyFee
         isExtraProductRequest
         referenceImages {
-          type
+          id
           path
+          type
           __typename
         }
         designImages {
-          type
+          id
           path
+          type
           __typename
         }
         printImages {
-          type
+          id
           path
+          type
           __typename
         }
         applicationImages {
-          type
+          id
           path
+          type
           __typename
         }
         extraProducts {
@@ -8512,9 +8769,21 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
         }
         passedRevision
         designRevisions {
-          revision
-          image
-          by
+          note
+          images {
+            id
+            path
+            type
+            __typename
+          }
+          owner {
+            id
+            name
+            role
+            __typename
+          }
+          createdAt
+          updatedAt
           __typename
         }
         createdBy
@@ -8699,23 +8968,27 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -8728,9 +9001,21 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -9289,23 +9574,27 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -9318,9 +9607,21 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -9913,23 +10214,27 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -9942,9 +10247,21 @@ export const getStore = /* GraphQL */ `query GetStore($id: ID!) {
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -10260,6 +10577,7 @@ export const listStores = /* GraphQL */ `query ListStores(
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -10388,23 +10706,27 @@ export const listStores = /* GraphQL */ `query ListStores(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -10417,9 +10739,9 @@ export const listStores = /* GraphQL */ `query ListStores(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -10553,23 +10875,27 @@ export const listStores = /* GraphQL */ `query ListStores(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -10582,9 +10908,9 @@ export const listStores = /* GraphQL */ `query ListStores(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -10810,23 +11136,27 @@ export const listStores = /* GraphQL */ `query ListStores(
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -10839,9 +11169,21 @@ export const listStores = /* GraphQL */ `query ListStores(
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -10974,23 +11316,27 @@ export const listStores = /* GraphQL */ `query ListStores(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -11003,9 +11349,9 @@ export const listStores = /* GraphQL */ `query ListStores(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -11345,23 +11691,27 @@ export const listStores = /* GraphQL */ `query ListStores(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -11374,9 +11724,9 @@ export const listStores = /* GraphQL */ `query ListStores(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -11734,23 +12084,27 @@ export const listStores = /* GraphQL */ `query ListStores(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -11763,9 +12117,9 @@ export const listStores = /* GraphQL */ `query ListStores(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -11975,6 +12329,7 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -12103,23 +12458,27 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -12132,9 +12491,9 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -12268,23 +12627,27 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -12297,9 +12660,9 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -12525,23 +12888,27 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -12554,9 +12921,21 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -12689,23 +13068,27 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -12718,9 +13101,9 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -13060,23 +13443,27 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -13089,9 +13476,9 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -13449,23 +13836,27 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -13478,9 +13869,9 @@ export const storesByCityID = /* GraphQL */ `query StoresByCityID(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -13690,6 +14081,7 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -13818,23 +14210,27 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -13847,9 +14243,9 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -13983,23 +14379,27 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -14012,9 +14412,9 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -14240,23 +14640,27 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -14269,9 +14673,21 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -14404,23 +14820,27 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -14433,9 +14853,9 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -14775,23 +15195,27 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -14804,9 +15228,9 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -15164,23 +15588,27 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -15193,9 +15621,9 @@ export const storesByDistrictID = /* GraphQL */ `query StoresByDistrictID(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -15405,6 +15833,7 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -15533,23 +15962,27 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -15562,9 +15995,9 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -15698,23 +16131,27 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -15727,9 +16164,9 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -15955,23 +16392,27 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -15984,9 +16425,21 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -16119,23 +16572,27 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -16148,9 +16605,9 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -16490,23 +16947,27 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -16519,9 +16980,9 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -16879,23 +17340,27 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -16908,9 +17373,9 @@ export const storesByAreaID = /* GraphQL */ `query StoresByAreaID(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -17291,6 +17756,7 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
           email
           role
           permissions
+          profilePhoto
           createdBy
           updatedBy
           createdAt
@@ -17350,6 +17816,7 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -17478,23 +17945,27 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -17507,9 +17978,9 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -17643,23 +18114,27 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -17672,9 +18147,9 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -17900,23 +18375,27 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -17929,9 +18408,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -17985,6 +18476,7 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -18113,23 +18605,27 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -18142,9 +18638,9 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -18278,23 +18774,27 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -18307,9 +18807,9 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -18535,23 +19035,27 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -18564,9 +19068,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -18699,23 +19215,27 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -18728,9 +19248,9 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -19070,23 +19590,27 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -19099,9 +19623,9 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -19459,23 +19983,27 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -19488,9 +20016,9 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -19730,23 +20258,27 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
     monthlyFee
     isExtraProductRequest
     referenceImages {
-      type
+      id
       path
+      type
       __typename
     }
     designImages {
-      type
+      id
       path
+      type
       __typename
     }
     printImages {
-      type
+      id
       path
+      type
       __typename
     }
     applicationImages {
-      type
+      id
       path
+      type
       __typename
     }
     extraProducts {
@@ -19759,9 +20291,21 @@ export const getRequest = /* GraphQL */ `query GetRequest($id: ID!) {
     }
     passedRevision
     designRevisions {
-      revision
-      image
-      by
+      note
+      images {
+        id
+        path
+        type
+        __typename
+      }
+      owner {
+        id
+        name
+        role
+        __typename
+      }
+      createdAt
+      updatedAt
       __typename
     }
     createdBy
@@ -19804,6 +20348,7 @@ export const listRequests = /* GraphQL */ `query ListRequests(
             email
             role
             permissions
+            profilePhoto
             createdBy
             updatedBy
             createdAt
@@ -19863,6 +20408,7 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -20107,23 +20653,27 @@ export const listRequests = /* GraphQL */ `query ListRequests(
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -20136,9 +20686,21 @@ export const listRequests = /* GraphQL */ `query ListRequests(
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -20192,6 +20754,7 @@ export const listRequests = /* GraphQL */ `query ListRequests(
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -20436,23 +20999,27 @@ export const listRequests = /* GraphQL */ `query ListRequests(
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -20465,9 +21032,21 @@ export const listRequests = /* GraphQL */ `query ListRequests(
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -20997,23 +21576,27 @@ export const listRequests = /* GraphQL */ `query ListRequests(
       monthlyFee
       isExtraProductRequest
       referenceImages {
-        type
+        id
         path
+        type
         __typename
       }
       designImages {
-        type
+        id
         path
+        type
         __typename
       }
       printImages {
-        type
+        id
         path
+        type
         __typename
       }
       applicationImages {
-        type
+        id
         path
+        type
         __typename
       }
       extraProducts {
@@ -21026,9 +21609,21 @@ export const listRequests = /* GraphQL */ `query ListRequests(
       }
       passedRevision
       designRevisions {
-        revision
-        image
-        by
+        note
+        images {
+          id
+          path
+          type
+          __typename
+        }
+        owner {
+          id
+          name
+          role
+          __typename
+        }
+        createdAt
+        updatedAt
         __typename
       }
       createdBy
@@ -21082,6 +21677,7 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
             email
             role
             permissions
+            profilePhoto
             createdBy
             updatedBy
             createdAt
@@ -21141,6 +21737,7 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -21385,23 +21982,27 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -21414,9 +22015,21 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -21470,6 +22083,7 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -21714,23 +22328,27 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -21743,9 +22361,21 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -22275,23 +22905,27 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
       monthlyFee
       isExtraProductRequest
       referenceImages {
-        type
+        id
         path
+        type
         __typename
       }
       designImages {
-        type
+        id
         path
+        type
         __typename
       }
       printImages {
-        type
+        id
         path
+        type
         __typename
       }
       applicationImages {
-        type
+        id
         path
+        type
         __typename
       }
       extraProducts {
@@ -22304,9 +22938,21 @@ export const requestsByClientprofileID = /* GraphQL */ `query RequestsByClientpr
       }
       passedRevision
       designRevisions {
-        revision
-        image
-        by
+        note
+        images {
+          id
+          path
+          type
+          __typename
+        }
+        owner {
+          id
+          name
+          role
+          __typename
+        }
+        createdAt
+        updatedAt
         __typename
       }
       createdBy
@@ -22360,6 +23006,7 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
             email
             role
             permissions
+            profilePhoto
             createdBy
             updatedBy
             createdAt
@@ -22419,6 +23066,7 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -22663,23 +23311,27 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -22692,9 +23344,21 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -22748,6 +23412,7 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -22992,23 +23657,27 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -23021,9 +23690,21 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -23553,23 +24234,27 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
       monthlyFee
       isExtraProductRequest
       referenceImages {
-        type
+        id
         path
+        type
         __typename
       }
       designImages {
-        type
+        id
         path
+        type
         __typename
       }
       printImages {
-        type
+        id
         path
+        type
         __typename
       }
       applicationImages {
-        type
+        id
         path
+        type
         __typename
       }
       extraProducts {
@@ -23582,9 +24267,21 @@ export const requestsByStoreID = /* GraphQL */ `query RequestsByStoreID(
       }
       passedRevision
       designRevisions {
-        revision
-        image
-        by
+        note
+        images {
+          id
+          path
+          type
+          __typename
+        }
+        owner {
+          id
+          name
+          role
+          __typename
+        }
+        createdAt
+        updatedAt
         __typename
       }
       createdBy

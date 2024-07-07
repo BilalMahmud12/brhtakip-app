@@ -19,8 +19,8 @@ export type RequestExtraProductInput = {
 const RequestExtraProducts: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
     const requestExtraProducts = useAppSelector((state: RootState) => state.request.requestForm.extraProducts);
-    const [allExtraProducts, setAllExtraProducts] = useState<Array<any>>([]); // All extra products fetched from API
-    const [extraProductsOptions, setExtraProductsOptions] = useState<Option[]>([]); // Options for the AutoComplete component
+    const [allExtraProducts, setAllExtraProducts] = useState<Array<any>>([]); 
+    const [extraProductsOptions, setExtraProductsOptions] = useState<Option[]>([]);
 
     const [localExtraProducts, setLocalExtraProducts] = useState<ExtraProductRequest[]>(requestExtraProducts || []);
 

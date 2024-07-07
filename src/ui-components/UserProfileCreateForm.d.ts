@@ -29,6 +29,7 @@ export declare type UserProfileCreateFormInputValues = {
     email?: string;
     role?: string;
     permissions?: string[];
+    profilePhoto?: string;
     createdBy?: string;
     updatedBy?: string;
 };
@@ -40,6 +41,7 @@ export declare type UserProfileCreateFormValidationValues = {
     email?: ValidationFunction<string>;
     role?: ValidationFunction<string>;
     permissions?: ValidationFunction<string>;
+    profilePhoto?: ValidationFunction<string>;
     createdBy?: ValidationFunction<string>;
     updatedBy?: ValidationFunction<string>;
 };
@@ -53,6 +55,7 @@ export declare type UserProfileCreateFormOverridesProps = {
     email?: PrimitiveOverrideProps<TextFieldProps>;
     role?: PrimitiveOverrideProps<SelectFieldProps>;
     permissions?: PrimitiveOverrideProps<TextFieldProps>;
+    profilePhoto?: PrimitiveOverrideProps<TextFieldProps>;
     createdBy?: PrimitiveOverrideProps<TextFieldProps>;
     updatedBy?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;

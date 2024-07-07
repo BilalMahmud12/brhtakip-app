@@ -16,8 +16,9 @@ export const onCreateExtraProduct = /* GraphQL */ `subscription OnCreateExtraPro
     isActive
     name
     images {
-      type
+      id
       path
+      type
       __typename
     }
     createdBy
@@ -39,8 +40,9 @@ export const onUpdateExtraProduct = /* GraphQL */ `subscription OnUpdateExtraPro
     isActive
     name
     images {
-      type
+      id
       path
+      type
       __typename
     }
     createdBy
@@ -62,8 +64,9 @@ export const onDeleteExtraProduct = /* GraphQL */ `subscription OnDeleteExtraPro
     isActive
     name
     images {
-      type
+      id
       path
+      type
       __typename
     }
     createdBy
@@ -192,6 +195,7 @@ export const onCreateUserProfile = /* GraphQL */ `subscription OnCreateUserProfi
     email
     role
     permissions
+    profilePhoto
     createdBy
     updatedBy
     createdAt
@@ -216,6 +220,7 @@ export const onUpdateUserProfile = /* GraphQL */ `subscription OnUpdateUserProfi
     email
     role
     permissions
+    profilePhoto
     createdBy
     updatedBy
     createdAt
@@ -240,6 +245,7 @@ export const onDeleteUserProfile = /* GraphQL */ `subscription OnDeleteUserProfi
     email
     role
     permissions
+    profilePhoto
     createdBy
     updatedBy
     createdAt
@@ -284,6 +290,7 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -528,23 +535,27 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -557,9 +568,21 @@ export const onCreateArea = /* GraphQL */ `subscription OnCreateArea($filter: Mo
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -1058,6 +1081,7 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -1302,23 +1326,27 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -1331,9 +1359,21 @@ export const onUpdateArea = /* GraphQL */ `subscription OnUpdateArea($filter: Mo
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -1832,6 +1872,7 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -2076,23 +2117,27 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -2105,9 +2150,21 @@ export const onDeleteArea = /* GraphQL */ `subscription OnDeleteArea($filter: Mo
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -2691,23 +2748,27 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -2720,9 +2781,9 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -2910,6 +2971,7 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -3154,23 +3216,27 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -3183,9 +3249,21 @@ export const onCreateDistrict = /* GraphQL */ `subscription OnCreateDistrict($fi
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -3769,23 +3847,27 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -3798,9 +3880,9 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -3988,6 +4070,7 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -4232,23 +4315,27 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -4261,9 +4348,21 @@ export const onUpdateDistrict = /* GraphQL */ `subscription OnUpdateDistrict($fi
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -4847,23 +4946,27 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -4876,9 +4979,9 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -5066,6 +5169,7 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -5310,23 +5414,27 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -5339,9 +5447,21 @@ export const onDeleteDistrict = /* GraphQL */ `subscription OnDeleteDistrict($fi
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -5995,23 +6115,27 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -6024,9 +6148,9 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -6214,6 +6338,7 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -6458,23 +6583,27 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -6487,9 +6616,21 @@ export const onCreateCity = /* GraphQL */ `subscription OnCreateCity($filter: Mo
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -7143,23 +7284,27 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -7172,9 +7317,9 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -7362,6 +7507,7 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -7606,23 +7752,27 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -7635,9 +7785,21 @@ export const onUpdateCity = /* GraphQL */ `subscription OnUpdateCity($filter: Mo
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -8291,23 +8453,27 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -8320,9 +8486,9 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -8510,6 +8676,7 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -8754,23 +8921,27 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -8783,9 +8954,21 @@ export const onDeleteCity = /* GraphQL */ `subscription OnDeleteCity($filter: Mo
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -9268,6 +9451,7 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
         email
         role
         permissions
+        profilePhoto
         createdBy
         updatedBy
         createdAt
@@ -9327,6 +9511,7 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
               email
               role
               permissions
+              profilePhoto
               createdBy
               updatedBy
               createdAt
@@ -9518,23 +9703,27 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -9547,9 +9736,21 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -9735,23 +9936,27 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -9764,9 +9969,21 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -10112,23 +10329,27 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
         monthlyFee
         isExtraProductRequest
         referenceImages {
-          type
+          id
           path
+          type
           __typename
         }
         designImages {
-          type
+          id
           path
+          type
           __typename
         }
         printImages {
-          type
+          id
           path
+          type
           __typename
         }
         applicationImages {
-          type
+          id
           path
+          type
           __typename
         }
         extraProducts {
@@ -10141,9 +10362,21 @@ export const onCreateClientProfile = /* GraphQL */ `subscription OnCreateClientP
         }
         passedRevision
         designRevisions {
-          revision
-          image
-          by
+          note
+          images {
+            id
+            path
+            type
+            __typename
+          }
+          owner {
+            id
+            name
+            role
+            __typename
+          }
+          createdAt
+          updatedAt
           __typename
         }
         createdBy
@@ -10192,6 +10425,7 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
         email
         role
         permissions
+        profilePhoto
         createdBy
         updatedBy
         createdAt
@@ -10251,6 +10485,7 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
               email
               role
               permissions
+              profilePhoto
               createdBy
               updatedBy
               createdAt
@@ -10442,23 +10677,27 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -10471,9 +10710,21 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -10659,23 +10910,27 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -10688,9 +10943,21 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -11036,23 +11303,27 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
         monthlyFee
         isExtraProductRequest
         referenceImages {
-          type
+          id
           path
+          type
           __typename
         }
         designImages {
-          type
+          id
           path
+          type
           __typename
         }
         printImages {
-          type
+          id
           path
+          type
           __typename
         }
         applicationImages {
-          type
+          id
           path
+          type
           __typename
         }
         extraProducts {
@@ -11065,9 +11336,21 @@ export const onUpdateClientProfile = /* GraphQL */ `subscription OnUpdateClientP
         }
         passedRevision
         designRevisions {
-          revision
-          image
-          by
+          note
+          images {
+            id
+            path
+            type
+            __typename
+          }
+          owner {
+            id
+            name
+            role
+            __typename
+          }
+          createdAt
+          updatedAt
           __typename
         }
         createdBy
@@ -11116,6 +11399,7 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
         email
         role
         permissions
+        profilePhoto
         createdBy
         updatedBy
         createdAt
@@ -11175,6 +11459,7 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
               email
               role
               permissions
+              profilePhoto
               createdBy
               updatedBy
               createdAt
@@ -11366,23 +11651,27 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -11395,9 +11684,21 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -11583,23 +11884,27 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -11612,9 +11917,21 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -11960,23 +12277,27 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
         monthlyFee
         isExtraProductRequest
         referenceImages {
-          type
+          id
           path
+          type
           __typename
         }
         designImages {
-          type
+          id
           path
+          type
           __typename
         }
         printImages {
-          type
+          id
           path
+          type
           __typename
         }
         applicationImages {
-          type
+          id
           path
+          type
           __typename
         }
         extraProducts {
@@ -11989,9 +12310,21 @@ export const onDeleteClientProfile = /* GraphQL */ `subscription OnDeleteClientP
         }
         passedRevision
         designRevisions {
-          revision
-          image
-          by
+          note
+          images {
+            id
+            path
+            type
+            __typename
+          }
+          owner {
+            id
+            name
+            role
+            __typename
+          }
+          createdAt
+          updatedAt
           __typename
         }
         createdBy
@@ -12051,6 +12384,7 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               email
               role
               permissions
+              profilePhoto
               createdBy
               updatedBy
               createdAt
@@ -12242,23 +12576,27 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -12271,9 +12609,21 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -12459,23 +12809,27 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -12488,9 +12842,21 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -12836,23 +13202,27 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
         monthlyFee
         isExtraProductRequest
         referenceImages {
-          type
+          id
           path
+          type
           __typename
         }
         designImages {
-          type
+          id
           path
+          type
           __typename
         }
         printImages {
-          type
+          id
           path
+          type
           __typename
         }
         applicationImages {
-          type
+          id
           path
+          type
           __typename
         }
         extraProducts {
@@ -12865,9 +13235,21 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
         }
         passedRevision
         designRevisions {
-          revision
-          image
-          by
+          note
+          images {
+            id
+            path
+            type
+            __typename
+          }
+          owner {
+            id
+            name
+            role
+            __typename
+          }
+          createdAt
+          updatedAt
           __typename
         }
         createdBy
@@ -13052,23 +13434,27 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -13081,9 +13467,21 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -13642,23 +14040,27 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -13671,9 +14073,21 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -14266,23 +14680,27 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -14295,9 +14713,21 @@ export const onCreateStore = /* GraphQL */ `subscription OnCreateStore($filter: 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -14611,6 +15041,7 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               email
               role
               permissions
+              profilePhoto
               createdBy
               updatedBy
               createdAt
@@ -14802,23 +15233,27 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -14831,9 +15266,21 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -15019,23 +15466,27 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -15048,9 +15499,21 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -15396,23 +15859,27 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
         monthlyFee
         isExtraProductRequest
         referenceImages {
-          type
+          id
           path
+          type
           __typename
         }
         designImages {
-          type
+          id
           path
+          type
           __typename
         }
         printImages {
-          type
+          id
           path
+          type
           __typename
         }
         applicationImages {
-          type
+          id
           path
+          type
           __typename
         }
         extraProducts {
@@ -15425,9 +15892,21 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
         }
         passedRevision
         designRevisions {
-          revision
-          image
-          by
+          note
+          images {
+            id
+            path
+            type
+            __typename
+          }
+          owner {
+            id
+            name
+            role
+            __typename
+          }
+          createdAt
+          updatedAt
           __typename
         }
         createdBy
@@ -15612,23 +16091,27 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -15641,9 +16124,21 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -16202,23 +16697,27 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -16231,9 +16730,21 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -16826,23 +17337,27 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -16855,9 +17370,21 @@ export const onUpdateStore = /* GraphQL */ `subscription OnUpdateStore($filter: 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -17171,6 +17698,7 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               email
               role
               permissions
+              profilePhoto
               createdBy
               updatedBy
               createdAt
@@ -17362,23 +17890,27 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -17391,9 +17923,21 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -17579,23 +18123,27 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -17608,9 +18156,21 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -17956,23 +18516,27 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
         monthlyFee
         isExtraProductRequest
         referenceImages {
-          type
+          id
           path
+          type
           __typename
         }
         designImages {
-          type
+          id
           path
+          type
           __typename
         }
         printImages {
-          type
+          id
           path
+          type
           __typename
         }
         applicationImages {
-          type
+          id
           path
+          type
           __typename
         }
         extraProducts {
@@ -17985,9 +18549,21 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
         }
         passedRevision
         designRevisions {
-          revision
-          image
-          by
+          note
+          images {
+            id
+            path
+            type
+            __typename
+          }
+          owner {
+            id
+            name
+            role
+            __typename
+          }
+          createdAt
+          updatedAt
           __typename
         }
         createdBy
@@ -18172,23 +18748,27 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -18201,9 +18781,21 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -18762,23 +19354,27 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -18791,9 +19387,21 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -19386,23 +19994,27 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -19415,9 +20027,21 @@ export const onDeleteStore = /* GraphQL */ `subscription OnDeleteStore($filter: 
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -19870,6 +20494,7 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
           email
           role
           permissions
+          profilePhoto
           createdBy
           updatedBy
           createdAt
@@ -19929,6 +20554,7 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -20057,23 +20683,27 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -20086,9 +20716,9 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -20222,23 +20852,27 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -20251,9 +20885,9 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -20479,23 +21113,27 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -20508,9 +21146,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -20564,6 +21214,7 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -20692,23 +21343,27 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -20721,9 +21376,9 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -20857,23 +21512,27 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -20886,9 +21545,9 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -21114,23 +21773,27 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -21143,9 +21806,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -21278,23 +21953,27 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -21307,9 +21986,9 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -21649,23 +22328,27 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -21678,9 +22361,9 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -22038,23 +22721,27 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -22067,9 +22754,9 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -22309,23 +22996,27 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
     monthlyFee
     isExtraProductRequest
     referenceImages {
-      type
+      id
       path
+      type
       __typename
     }
     designImages {
-      type
+      id
       path
+      type
       __typename
     }
     printImages {
-      type
+      id
       path
+      type
       __typename
     }
     applicationImages {
-      type
+      id
       path
+      type
       __typename
     }
     extraProducts {
@@ -22338,9 +23029,21 @@ export const onCreateRequest = /* GraphQL */ `subscription OnCreateRequest($filt
     }
     passedRevision
     designRevisions {
-      revision
-      image
-      by
+      note
+      images {
+        id
+        path
+        type
+        __typename
+      }
+      owner {
+        id
+        name
+        role
+        __typename
+      }
+      createdAt
+      updatedAt
       __typename
     }
     createdBy
@@ -22378,6 +23081,7 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
           email
           role
           permissions
+          profilePhoto
           createdBy
           updatedBy
           createdAt
@@ -22437,6 +23141,7 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -22565,23 +23270,27 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -22594,9 +23303,9 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -22730,23 +23439,27 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -22759,9 +23472,9 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -22987,23 +23700,27 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -23016,9 +23733,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -23072,6 +23801,7 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -23200,23 +23930,27 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -23229,9 +23963,9 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -23365,23 +24099,27 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -23394,9 +24132,9 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -23622,23 +24360,27 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -23651,9 +24393,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -23786,23 +24540,27 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -23815,9 +24573,9 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -24157,23 +24915,27 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -24186,9 +24948,9 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -24546,23 +25308,27 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -24575,9 +25341,9 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -24817,23 +25583,27 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
     monthlyFee
     isExtraProductRequest
     referenceImages {
-      type
+      id
       path
+      type
       __typename
     }
     designImages {
-      type
+      id
       path
+      type
       __typename
     }
     printImages {
-      type
+      id
       path
+      type
       __typename
     }
     applicationImages {
-      type
+      id
       path
+      type
       __typename
     }
     extraProducts {
@@ -24846,9 +25616,21 @@ export const onUpdateRequest = /* GraphQL */ `subscription OnUpdateRequest($filt
     }
     passedRevision
     designRevisions {
-      revision
-      image
-      by
+      note
+      images {
+        id
+        path
+        type
+        __typename
+      }
+      owner {
+        id
+        name
+        role
+        __typename
+      }
+      createdAt
+      updatedAt
       __typename
     }
     createdBy
@@ -24886,6 +25668,7 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
           email
           role
           permissions
+          profilePhoto
           createdBy
           updatedBy
           createdAt
@@ -24945,6 +25728,7 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -25073,23 +25857,27 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -25102,9 +25890,9 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -25238,23 +26026,27 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -25267,9 +26059,9 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -25495,23 +26287,27 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -25524,9 +26320,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -25580,6 +26388,7 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -25708,23 +26517,27 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -25737,9 +26550,9 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -25873,23 +26686,27 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -25902,9 +26719,9 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -26130,23 +26947,27 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -26159,9 +26980,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -26294,23 +27127,27 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -26323,9 +27160,9 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -26665,23 +27502,27 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -26694,9 +27535,9 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -27054,23 +27895,27 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -27083,9 +27928,9 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -27325,23 +28170,27 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
     monthlyFee
     isExtraProductRequest
     referenceImages {
-      type
+      id
       path
+      type
       __typename
     }
     designImages {
-      type
+      id
       path
+      type
       __typename
     }
     printImages {
-      type
+      id
       path
+      type
       __typename
     }
     applicationImages {
-      type
+      id
       path
+      type
       __typename
     }
     extraProducts {
@@ -27354,9 +28203,21 @@ export const onDeleteRequest = /* GraphQL */ `subscription OnDeleteRequest($filt
     }
     passedRevision
     designRevisions {
-      revision
-      image
-      by
+      note
+      images {
+        id
+        path
+        type
+        __typename
+      }
+      owner {
+        id
+        name
+        role
+        __typename
+      }
+      createdAt
+      updatedAt
       __typename
     }
     createdBy
