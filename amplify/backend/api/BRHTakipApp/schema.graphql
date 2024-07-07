@@ -1,7 +1,15 @@
+type RevisionOwner {
+  id: ID!
+  name: String!
+  role: String!
+}
+
 type DesignRevision {
-  revision: String
-  image: String
-  by: String
+  note: String
+  images: [ImageStorageItem]
+  owner: RevisionOwner
+  createdAt: String
+  updatedAt: String
 }
 
 type RequestExtraProduct {
@@ -13,8 +21,9 @@ type RequestExtraProduct {
 }
 
 type ImageStorageItem {
-  type: String
+  id: ID
   path: String
+  type: String
 }
 
 type ExtraProduct @model @auth(rules: [{allow: public}]) {
@@ -79,6 +88,7 @@ type UserProfile @model @auth(rules: [{allow: public}]) {
   email: AWSEmail
   role: Roles
   permissions: [String]
+  profilePhoto: String
   createdBy: String
   updatedBy: String
 }

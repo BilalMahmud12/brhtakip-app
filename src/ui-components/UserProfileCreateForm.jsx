@@ -198,6 +198,7 @@ export default function UserProfileCreateForm(props) {
     email: "",
     role: "",
     permissions: [],
+    profilePhoto: "",
     createdBy: "",
     updatedBy: "",
   };
@@ -209,6 +210,9 @@ export default function UserProfileCreateForm(props) {
   const [role, setRole] = React.useState(initialValues.role);
   const [permissions, setPermissions] = React.useState(
     initialValues.permissions
+  );
+  const [profilePhoto, setProfilePhoto] = React.useState(
+    initialValues.profilePhoto
   );
   const [createdBy, setCreatedBy] = React.useState(initialValues.createdBy);
   const [updatedBy, setUpdatedBy] = React.useState(initialValues.updatedBy);
@@ -222,6 +226,7 @@ export default function UserProfileCreateForm(props) {
     setRole(initialValues.role);
     setPermissions(initialValues.permissions);
     setCurrentPermissionsValue("");
+    setProfilePhoto(initialValues.profilePhoto);
     setCreatedBy(initialValues.createdBy);
     setUpdatedBy(initialValues.updatedBy);
     setErrors({});
@@ -237,6 +242,7 @@ export default function UserProfileCreateForm(props) {
     email: [{ type: "Email" }],
     role: [],
     permissions: [],
+    profilePhoto: [],
     createdBy: [],
     updatedBy: [],
   };
@@ -273,6 +279,7 @@ export default function UserProfileCreateForm(props) {
           email,
           role,
           permissions,
+          profilePhoto,
           createdBy,
           updatedBy,
         };
@@ -344,6 +351,7 @@ export default function UserProfileCreateForm(props) {
               email,
               role,
               permissions,
+              profilePhoto,
               createdBy,
               updatedBy,
             };
@@ -376,6 +384,7 @@ export default function UserProfileCreateForm(props) {
               email,
               role,
               permissions,
+              profilePhoto,
               createdBy,
               updatedBy,
             };
@@ -408,6 +417,7 @@ export default function UserProfileCreateForm(props) {
               email,
               role,
               permissions,
+              profilePhoto,
               createdBy,
               updatedBy,
             };
@@ -440,6 +450,7 @@ export default function UserProfileCreateForm(props) {
               email,
               role,
               permissions,
+              profilePhoto,
               createdBy,
               updatedBy,
             };
@@ -472,6 +483,7 @@ export default function UserProfileCreateForm(props) {
               email: value,
               role,
               permissions,
+              profilePhoto,
               createdBy,
               updatedBy,
             };
@@ -504,6 +516,7 @@ export default function UserProfileCreateForm(props) {
               email,
               role: value,
               permissions,
+              profilePhoto,
               createdBy,
               updatedBy,
             };
@@ -553,6 +566,7 @@ export default function UserProfileCreateForm(props) {
               email,
               role,
               permissions: values,
+              profilePhoto,
               createdBy,
               updatedBy,
             };
@@ -597,6 +611,39 @@ export default function UserProfileCreateForm(props) {
         ></TextField>
       </ArrayField>
       <TextField
+        label="Profile photo"
+        isRequired={false}
+        isReadOnly={false}
+        value={profilePhoto}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              cognitoID,
+              isActive,
+              firstName,
+              lastName,
+              email,
+              role,
+              permissions,
+              profilePhoto: value,
+              createdBy,
+              updatedBy,
+            };
+            const result = onChange(modelFields);
+            value = result?.profilePhoto ?? value;
+          }
+          if (errors.profilePhoto?.hasError) {
+            runValidationTasks("profilePhoto", value);
+          }
+          setProfilePhoto(value);
+        }}
+        onBlur={() => runValidationTasks("profilePhoto", profilePhoto)}
+        errorMessage={errors.profilePhoto?.errorMessage}
+        hasError={errors.profilePhoto?.hasError}
+        {...getOverrideProps(overrides, "profilePhoto")}
+      ></TextField>
+      <TextField
         label="Created by"
         isRequired={false}
         isReadOnly={false}
@@ -612,6 +659,7 @@ export default function UserProfileCreateForm(props) {
               email,
               role,
               permissions,
+              profilePhoto,
               createdBy: value,
               updatedBy,
             };
@@ -644,6 +692,7 @@ export default function UserProfileCreateForm(props) {
               email,
               role,
               permissions,
+              profilePhoto,
               createdBy,
               updatedBy: value,
             };

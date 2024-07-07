@@ -10,6 +10,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import { filterEmptyValues } from '@/utils/helpers';
 import { useRouter } from 'next-nprogress-bar';
 import { toast } from 'sonner';
+import ImagesDrawer from './imagesDrawer';
 
 const decimalFields = [
     'assemblyBudget',

@@ -17,8 +17,9 @@ export const createExtraProduct = /* GraphQL */ `mutation CreateExtraProduct(
     isActive
     name
     images {
-      type
+      id
       path
+      type
       __typename
     }
     createdBy
@@ -41,8 +42,9 @@ export const updateExtraProduct = /* GraphQL */ `mutation UpdateExtraProduct(
     isActive
     name
     images {
-      type
+      id
       path
+      type
       __typename
     }
     createdBy
@@ -65,8 +67,9 @@ export const deleteExtraProduct = /* GraphQL */ `mutation DeleteExtraProduct(
     isActive
     name
     images {
-      type
+      id
       path
+      type
       __typename
     }
     createdBy
@@ -208,6 +211,7 @@ export const createUserProfile = /* GraphQL */ `mutation CreateUserProfile(
     email
     role
     permissions
+    profilePhoto
     createdBy
     updatedBy
     createdAt
@@ -233,6 +237,7 @@ export const updateUserProfile = /* GraphQL */ `mutation UpdateUserProfile(
     email
     role
     permissions
+    profilePhoto
     createdBy
     updatedBy
     createdAt
@@ -258,6 +263,7 @@ export const deleteUserProfile = /* GraphQL */ `mutation DeleteUserProfile(
     email
     role
     permissions
+    profilePhoto
     createdBy
     updatedBy
     createdAt
@@ -305,6 +311,7 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -549,23 +556,27 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -578,9 +589,21 @@ export const createArea = /* GraphQL */ `mutation CreateArea(
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -1082,6 +1105,7 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -1326,23 +1350,27 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -1355,9 +1383,21 @@ export const updateArea = /* GraphQL */ `mutation UpdateArea(
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -1859,6 +1899,7 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -2103,23 +2144,27 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -2132,9 +2177,21 @@ export const deleteArea = /* GraphQL */ `mutation DeleteArea(
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -2721,23 +2778,27 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -2750,9 +2811,9 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -2940,6 +3001,7 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -3184,23 +3246,27 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -3213,9 +3279,21 @@ export const createDistrict = /* GraphQL */ `mutation CreateDistrict(
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -3802,23 +3880,27 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -3831,9 +3913,9 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -4021,6 +4103,7 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -4265,23 +4348,27 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -4294,9 +4381,21 @@ export const updateDistrict = /* GraphQL */ `mutation UpdateDistrict(
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -4883,23 +4982,27 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -4912,9 +5015,9 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -5102,6 +5205,7 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -5346,23 +5450,27 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -5375,9 +5483,21 @@ export const deleteDistrict = /* GraphQL */ `mutation DeleteDistrict(
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -6034,23 +6154,27 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -6063,9 +6187,9 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -6253,6 +6377,7 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -6497,23 +6622,27 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -6526,9 +6655,21 @@ export const createCity = /* GraphQL */ `mutation CreateCity(
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -7185,23 +7326,27 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -7214,9 +7359,9 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -7404,6 +7549,7 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -7648,23 +7794,27 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -7677,9 +7827,21 @@ export const updateCity = /* GraphQL */ `mutation UpdateCity(
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -8336,23 +8498,27 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -8365,9 +8531,9 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -8555,6 +8721,7 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
                   email
                   role
                   permissions
+                  profilePhoto
                   createdBy
                   updatedBy
                   createdAt
@@ -8799,23 +8966,27 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
             monthlyFee
             isExtraProductRequest
             referenceImages {
-              type
+              id
               path
+              type
               __typename
             }
             designImages {
-              type
+              id
               path
+              type
               __typename
             }
             printImages {
-              type
+              id
               path
+              type
               __typename
             }
             applicationImages {
-              type
+              id
               path
+              type
               __typename
             }
             extraProducts {
@@ -8828,9 +8999,21 @@ export const deleteCity = /* GraphQL */ `mutation DeleteCity(
             }
             passedRevision
             designRevisions {
-              revision
-              image
-              by
+              note
+              images {
+                id
+                path
+                type
+                __typename
+              }
+              owner {
+                id
+                name
+                role
+                __typename
+              }
+              createdAt
+              updatedAt
               __typename
             }
             createdBy
@@ -9314,6 +9497,7 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
         email
         role
         permissions
+        profilePhoto
         createdBy
         updatedBy
         createdAt
@@ -9373,6 +9557,7 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
               email
               role
               permissions
+              profilePhoto
               createdBy
               updatedBy
               createdAt
@@ -9564,23 +9749,27 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -9593,9 +9782,21 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -9781,23 +9982,27 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -9810,9 +10015,21 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -10158,23 +10375,27 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
         monthlyFee
         isExtraProductRequest
         referenceImages {
-          type
+          id
           path
+          type
           __typename
         }
         designImages {
-          type
+          id
           path
+          type
           __typename
         }
         printImages {
-          type
+          id
           path
+          type
           __typename
         }
         applicationImages {
-          type
+          id
           path
+          type
           __typename
         }
         extraProducts {
@@ -10187,9 +10408,21 @@ export const createClientProfile = /* GraphQL */ `mutation CreateClientProfile(
         }
         passedRevision
         designRevisions {
-          revision
-          image
-          by
+          note
+          images {
+            id
+            path
+            type
+            __typename
+          }
+          owner {
+            id
+            name
+            role
+            __typename
+          }
+          createdAt
+          updatedAt
           __typename
         }
         createdBy
@@ -10239,6 +10472,7 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
         email
         role
         permissions
+        profilePhoto
         createdBy
         updatedBy
         createdAt
@@ -10298,6 +10532,7 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
               email
               role
               permissions
+              profilePhoto
               createdBy
               updatedBy
               createdAt
@@ -10489,23 +10724,27 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -10518,9 +10757,21 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -10706,23 +10957,27 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -10735,9 +10990,21 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -11083,23 +11350,27 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
         monthlyFee
         isExtraProductRequest
         referenceImages {
-          type
+          id
           path
+          type
           __typename
         }
         designImages {
-          type
+          id
           path
+          type
           __typename
         }
         printImages {
-          type
+          id
           path
+          type
           __typename
         }
         applicationImages {
-          type
+          id
           path
+          type
           __typename
         }
         extraProducts {
@@ -11112,9 +11383,21 @@ export const updateClientProfile = /* GraphQL */ `mutation UpdateClientProfile(
         }
         passedRevision
         designRevisions {
-          revision
-          image
-          by
+          note
+          images {
+            id
+            path
+            type
+            __typename
+          }
+          owner {
+            id
+            name
+            role
+            __typename
+          }
+          createdAt
+          updatedAt
           __typename
         }
         createdBy
@@ -11164,6 +11447,7 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
         email
         role
         permissions
+        profilePhoto
         createdBy
         updatedBy
         createdAt
@@ -11223,6 +11507,7 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
               email
               role
               permissions
+              profilePhoto
               createdBy
               updatedBy
               createdAt
@@ -11414,23 +11699,27 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -11443,9 +11732,21 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -11631,23 +11932,27 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -11660,9 +11965,21 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -12008,23 +12325,27 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
         monthlyFee
         isExtraProductRequest
         referenceImages {
-          type
+          id
           path
+          type
           __typename
         }
         designImages {
-          type
+          id
           path
+          type
           __typename
         }
         printImages {
-          type
+          id
           path
+          type
           __typename
         }
         applicationImages {
-          type
+          id
           path
+          type
           __typename
         }
         extraProducts {
@@ -12037,9 +12358,21 @@ export const deleteClientProfile = /* GraphQL */ `mutation DeleteClientProfile(
         }
         passedRevision
         designRevisions {
-          revision
-          image
-          by
+          note
+          images {
+            id
+            path
+            type
+            __typename
+          }
+          owner {
+            id
+            name
+            role
+            __typename
+          }
+          createdAt
+          updatedAt
           __typename
         }
         createdBy
@@ -12102,6 +12435,7 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               email
               role
               permissions
+              profilePhoto
               createdBy
               updatedBy
               createdAt
@@ -12293,23 +12627,27 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -12322,9 +12660,21 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -12510,23 +12860,27 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -12539,9 +12893,21 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -12887,23 +13253,27 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
         monthlyFee
         isExtraProductRequest
         referenceImages {
-          type
+          id
           path
+          type
           __typename
         }
         designImages {
-          type
+          id
           path
+          type
           __typename
         }
         printImages {
-          type
+          id
           path
+          type
           __typename
         }
         applicationImages {
-          type
+          id
           path
+          type
           __typename
         }
         extraProducts {
@@ -12916,9 +13286,21 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
         }
         passedRevision
         designRevisions {
-          revision
-          image
-          by
+          note
+          images {
+            id
+            path
+            type
+            __typename
+          }
+          owner {
+            id
+            name
+            role
+            __typename
+          }
+          createdAt
+          updatedAt
           __typename
         }
         createdBy
@@ -13103,23 +13485,27 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -13132,9 +13518,21 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -13693,23 +14091,27 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -13722,9 +14124,21 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -14317,23 +14731,27 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -14346,9 +14764,21 @@ export const createStore = /* GraphQL */ `mutation CreateStore(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -14665,6 +15095,7 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               email
               role
               permissions
+              profilePhoto
               createdBy
               updatedBy
               createdAt
@@ -14856,23 +15287,27 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -14885,9 +15320,21 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -15073,23 +15520,27 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -15102,9 +15553,21 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -15450,23 +15913,27 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
         monthlyFee
         isExtraProductRequest
         referenceImages {
-          type
+          id
           path
+          type
           __typename
         }
         designImages {
-          type
+          id
           path
+          type
           __typename
         }
         printImages {
-          type
+          id
           path
+          type
           __typename
         }
         applicationImages {
-          type
+          id
           path
+          type
           __typename
         }
         extraProducts {
@@ -15479,9 +15946,21 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
         }
         passedRevision
         designRevisions {
-          revision
-          image
-          by
+          note
+          images {
+            id
+            path
+            type
+            __typename
+          }
+          owner {
+            id
+            name
+            role
+            __typename
+          }
+          createdAt
+          updatedAt
           __typename
         }
         createdBy
@@ -15666,23 +16145,27 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -15695,9 +16178,21 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -16256,23 +16751,27 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -16285,9 +16784,21 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -16880,23 +17391,27 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -16909,9 +17424,21 @@ export const updateStore = /* GraphQL */ `mutation UpdateStore(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -17228,6 +17755,7 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               email
               role
               permissions
+              profilePhoto
               createdBy
               updatedBy
               createdAt
@@ -17419,23 +17947,27 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -17448,9 +17980,21 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -17636,23 +18180,27 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -17665,9 +18213,21 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -18013,23 +18573,27 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
         monthlyFee
         isExtraProductRequest
         referenceImages {
-          type
+          id
           path
+          type
           __typename
         }
         designImages {
-          type
+          id
           path
+          type
           __typename
         }
         printImages {
-          type
+          id
           path
+          type
           __typename
         }
         applicationImages {
-          type
+          id
           path
+          type
           __typename
         }
         extraProducts {
@@ -18042,9 +18606,21 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
         }
         passedRevision
         designRevisions {
-          revision
-          image
-          by
+          note
+          images {
+            id
+            path
+            type
+            __typename
+          }
+          owner {
+            id
+            name
+            role
+            __typename
+          }
+          createdAt
+          updatedAt
           __typename
         }
         createdBy
@@ -18229,23 +18805,27 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -18258,9 +18838,21 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -18819,23 +19411,27 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -18848,9 +19444,21 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -19443,23 +20051,27 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               monthlyFee
               isExtraProductRequest
               referenceImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               designImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               printImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               applicationImages {
-                type
+                id
                 path
+                type
                 __typename
               }
               extraProducts {
@@ -19472,9 +20084,21 @@ export const deleteStore = /* GraphQL */ `mutation DeleteStore(
               }
               passedRevision
               designRevisions {
-                revision
-                image
-                by
+                note
+                images {
+                  id
+                  path
+                  type
+                  __typename
+                }
+                owner {
+                  id
+                  name
+                  role
+                  __typename
+                }
+                createdAt
+                updatedAt
                 __typename
               }
               createdBy
@@ -19948,6 +20572,7 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
           email
           role
           permissions
+          profilePhoto
           createdBy
           updatedBy
           createdAt
@@ -20007,6 +20632,7 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -20135,23 +20761,27 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -20164,9 +20794,9 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -20300,23 +20930,27 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -20329,9 +20963,9 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -20557,23 +21191,27 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -20586,9 +21224,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -20642,6 +21292,7 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -20770,23 +21421,27 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -20799,9 +21454,9 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -20935,23 +21590,27 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -20964,9 +21623,9 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -21192,23 +21851,27 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -21221,9 +21884,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -21356,23 +22031,27 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -21385,9 +22064,9 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -21727,23 +22406,27 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -21756,9 +22439,9 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -22116,23 +22799,27 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -22145,9 +22832,9 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -22387,23 +23074,27 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
     monthlyFee
     isExtraProductRequest
     referenceImages {
-      type
+      id
       path
+      type
       __typename
     }
     designImages {
-      type
+      id
       path
+      type
       __typename
     }
     printImages {
-      type
+      id
       path
+      type
       __typename
     }
     applicationImages {
-      type
+      id
       path
+      type
       __typename
     }
     extraProducts {
@@ -22416,9 +23107,21 @@ export const createRequest = /* GraphQL */ `mutation CreateRequest(
     }
     passedRevision
     designRevisions {
-      revision
-      image
-      by
+      note
+      images {
+        id
+        path
+        type
+        __typename
+      }
+      owner {
+        id
+        name
+        role
+        __typename
+      }
+      createdAt
+      updatedAt
       __typename
     }
     createdBy
@@ -22459,6 +23162,7 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
           email
           role
           permissions
+          profilePhoto
           createdBy
           updatedBy
           createdAt
@@ -22518,6 +23222,7 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -22646,23 +23351,27 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -22675,9 +23384,9 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -22811,23 +23520,27 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -22840,9 +23553,9 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -23068,23 +23781,27 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -23097,9 +23814,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -23153,6 +23882,7 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -23281,23 +24011,27 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -23310,9 +24044,9 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -23446,23 +24180,27 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -23475,9 +24213,9 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -23703,23 +24441,27 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -23732,9 +24474,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -23867,23 +24621,27 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -23896,9 +24654,9 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -24238,23 +24996,27 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -24267,9 +25029,9 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -24627,23 +25389,27 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -24656,9 +25422,9 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -24898,23 +25664,27 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
     monthlyFee
     isExtraProductRequest
     referenceImages {
-      type
+      id
       path
+      type
       __typename
     }
     designImages {
-      type
+      id
       path
+      type
       __typename
     }
     printImages {
-      type
+      id
       path
+      type
       __typename
     }
     applicationImages {
-      type
+      id
       path
+      type
       __typename
     }
     extraProducts {
@@ -24927,9 +25697,21 @@ export const updateRequest = /* GraphQL */ `mutation UpdateRequest(
     }
     passedRevision
     designRevisions {
-      revision
-      image
-      by
+      note
+      images {
+        id
+        path
+        type
+        __typename
+      }
+      owner {
+        id
+        name
+        role
+        __typename
+      }
+      createdAt
+      updatedAt
       __typename
     }
     createdBy
@@ -24970,6 +25752,7 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
           email
           role
           permissions
+          profilePhoto
           createdBy
           updatedBy
           createdAt
@@ -25029,6 +25812,7 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -25157,23 +25941,27 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -25186,9 +25974,9 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -25322,23 +26110,27 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -25351,9 +26143,9 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -25579,23 +26371,27 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -25608,9 +26404,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -25664,6 +26472,7 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 email
                 role
                 permissions
+                profilePhoto
                 createdBy
                 updatedBy
                 createdAt
@@ -25792,23 +26601,27 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -25821,9 +26634,9 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -25957,23 +26770,27 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -25986,9 +26803,9 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -26214,23 +27031,27 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
           monthlyFee
           isExtraProductRequest
           referenceImages {
-            type
+            id
             path
+            type
             __typename
           }
           designImages {
-            type
+            id
             path
+            type
             __typename
           }
           printImages {
-            type
+            id
             path
+            type
             __typename
           }
           applicationImages {
-            type
+            id
             path
+            type
             __typename
           }
           extraProducts {
@@ -26243,9 +27064,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
           }
           passedRevision
           designRevisions {
-            revision
-            image
-            by
+            note
+            images {
+              id
+              path
+              type
+              __typename
+            }
+            owner {
+              id
+              name
+              role
+              __typename
+            }
+            createdAt
+            updatedAt
             __typename
           }
           createdBy
@@ -26378,23 +27211,27 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -26407,9 +27244,9 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -26749,23 +27586,27 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -26778,9 +27619,9 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -27138,23 +27979,27 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 monthlyFee
                 isExtraProductRequest
                 referenceImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 designImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 printImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 applicationImages {
-                  type
+                  id
                   path
+                  type
                   __typename
                 }
                 extraProducts {
@@ -27167,9 +28012,9 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
                 }
                 passedRevision
                 designRevisions {
-                  revision
-                  image
-                  by
+                  note
+                  createdAt
+                  updatedAt
                   __typename
                 }
                 createdBy
@@ -27409,23 +28254,27 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
     monthlyFee
     isExtraProductRequest
     referenceImages {
-      type
+      id
       path
+      type
       __typename
     }
     designImages {
-      type
+      id
       path
+      type
       __typename
     }
     printImages {
-      type
+      id
       path
+      type
       __typename
     }
     applicationImages {
-      type
+      id
       path
+      type
       __typename
     }
     extraProducts {
@@ -27438,9 +28287,21 @@ export const deleteRequest = /* GraphQL */ `mutation DeleteRequest(
     }
     passedRevision
     designRevisions {
-      revision
-      image
-      by
+      note
+      images {
+        id
+        path
+        type
+        __typename
+      }
+      owner {
+        id
+        name
+        role
+        __typename
+      }
+      createdAt
+      updatedAt
       __typename
     }
     createdBy

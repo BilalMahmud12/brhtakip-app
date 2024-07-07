@@ -15,7 +15,7 @@ const getAllUsers = async () => {
         const { data } = await client.graphql({ 
             query: listUserProfiles,
             variables: { 
-                limit: 5 
+                limit: 100
             },
         });
         return data.listUserProfiles.items;
