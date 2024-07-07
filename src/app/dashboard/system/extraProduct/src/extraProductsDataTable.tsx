@@ -4,7 +4,6 @@ import DataTable from '@/components/core/dataTable';
 import { dataTables } from '@/config/dataTables';
 import getExtraProductsTableData from './getExtraProductsTableData';
 
-// brand
 interface ExtraProductsTableProps {
     dataPayload?: any[];
     handleEdit?: (data: any) => void;

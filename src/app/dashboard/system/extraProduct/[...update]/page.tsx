@@ -13,22 +13,42 @@ import { useAppSelector } from '@/reduxStore/hooks';
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { usePathname } from 'next/navigation';
 
-const CreateExtraProductPage: React.FC = () => {
-
+const UpdateExtraProductPage: React.FC = () => {
+    const pathName = usePathname();
     const dispatch = useDispatch<AppDispatch>();
     const router = useRouter();
-
+    const extraProducts = useAppSelector((state: RootState) => state.extraProduct.extraProducts);
     const extraProductsForm = useAppSelector((state: RootState) => state.extraProduct.extraProductsForm);
     const extraProductsFormRef = React.useRef(extraProductsForm);
     extraProductsFormRef.current = extraProductsForm;
-    const handleCreateExtraProduct = async () => {
+
+    useEffect(() => {
+        const extraProductId = pathName?.split('/').pop();
+        const targetExtraProduct = extraProducts.find(extraProduct => extraProduct.id === extraProductId);
+
+        if (targetExtraProduct) {
+            const { updatedAt, createdAt, __typename, ...restOfTheExtraProduct } = targetExtraProduct;
+
+            const updatedExtraProduct = {
+                id: restOfTheExtraProduct.id || '',
+                name: restOfTheExtraProduct.name || '',
+                isActive: restOfTheExtraProduct.isActive || false,
+            };
+
+            extraProductsFormRef.current = updatedExtraProduct;
+            dispatch(setExtraProductsForm(updatedExtraProduct));
+        }
+    }, [dispatch, extraProducts, pathName]);
+
+    const handleUpdateExtraProduct = async () => {
         try {
-            const createExtraProduct = await Repo.ExtraProductRepository.create(extraProductsFormRef.current);
-            if (createExtraProduct) {
+            const updateExtraProduct = await Repo.ExtraProductRepository.update(extraProductsFormRef.current);
+            if (updateExtraProduct && updateExtraProduct.data) {
                 const newExtraProducts = await Repo.ExtraProductRepository.getAllExtraProducts();
                 dispatch(setExtraProducts(newExtraProducts as unknown as ExtraProduct[]));
-                toast.success('Ürun Eklendi');
+                toast.success('Ürun Güncellendi');
                 router.push('/dashboard/system/extraProduct');
                 dispatch(resetFormValues());
             }
@@ -39,7 +59,7 @@ const CreateExtraProductPage: React.FC = () => {
 
     return (
         <div>
-            <title>Extra Ürun Ekle - BRH Takip</title>
+            <title>Extra Ürun Güncelle - BRH Takip</title>
 
             <div className='h-full col-span-2'>
                 <div className='flex items-center justify-between'>
@@ -54,7 +74,7 @@ const CreateExtraProductPage: React.FC = () => {
                     <Button
                         variant="contained"
                         startIcon={<SaveIcon />}
-                        onClick={handleCreateExtraProduct}
+                        onClick={handleUpdateExtraProduct}
                     >
                         Kaydı Et
                     </Button>
@@ -62,10 +82,10 @@ const CreateExtraProductPage: React.FC = () => {
             </div>
 
             <div className='space-y-3'>
-                <CreateOrUpdateForm isCreate={true} />
+                <CreateOrUpdateForm isCreate={false} extraProduct={extraProductsForm as unknown as ExtraProduct} />
             </div>
         </div>
     );
 }
 
-export default CreateExtraProductPage
+export default UpdateExtraProductPage

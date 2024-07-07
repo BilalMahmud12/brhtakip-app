@@ -31,6 +31,14 @@ const ExtraProductView: React.FC = () => {
             console.log('Failed Delete Extra Product', error)
         }
     }
+    const setExtraProductUpdateData = (data: any) => {
+        dispatch(setExtraProductsForm({
+            id: data.id,
+            name: data.name,
+            isActive: data.isActive,
+            images: data.images,
+        }));
+    };
 
     return (
         <div className="mb-8">
@@ -56,7 +64,7 @@ const ExtraProductView: React.FC = () => {
                     <ExtraProductsDataTable
                         dataPayload={extraProducts}
                         onDelete={handleDeleteExtraProduct}
-                    // handleEdit={ }
+                        handleEdit={setExtraProductUpdateData}
                     />
                 </div>
             </div>

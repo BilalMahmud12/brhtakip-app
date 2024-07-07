@@ -8,6 +8,7 @@ interface StoresDataTableProps {
     handleEdit?: (data: any) => void;
     onDelete?: (data: any) => void;
     handleSelect?: (data: any) => void;
+    isLoading?: boolean;
 }
 
 const StoresDataTable: React.FC<StoresDataTableProps> = (props) => {
@@ -16,6 +17,7 @@ const StoresDataTable: React.FC<StoresDataTableProps> = (props) => {
         handleEdit = () => { },
         onDelete = () => { },
         handleSelect = () => { },
+        isLoading = false
     } = props;
 
     const { stores } = dataTables;
@@ -26,6 +28,7 @@ const StoresDataTable: React.FC<StoresDataTableProps> = (props) => {
         handleEdit,
         onDelete,
         handleSelect,
+        isLoading
     );
 
 
@@ -36,6 +39,7 @@ const StoresDataTable: React.FC<StoresDataTableProps> = (props) => {
                 data={tableData}
                 onEditRow={(data) => handleEdit(data)}
                 onDeleteRow={(data) => onDelete(data)}
+                loading={isLoading}
             />
         </div>
     );

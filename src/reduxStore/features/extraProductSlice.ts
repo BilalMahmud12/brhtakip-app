@@ -1,13 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { ExtraProduct } from '@/API';
+import { isValidKey } from '@/utils/helpers';
 
+export type ImageStorage = {
+    type: string;
+    path: string;
+}
 interface ExtraProductState {
     extraProducts: ExtraProduct[];
     extraProductsForm: {
+        id?: string;
         name?: string;
         isActive?: boolean;
-        images?: [];
-        [key: string]: any;
+        images?: ImageStorage[];
     }
 }
 
@@ -39,22 +44,18 @@ const extraProductSlice = createSlice({
             };
         },
 
-        handleFormChange: (state, action: PayloadAction<{ key: string, value: string | boolean | [] }>) => {
+        handleFormChange(state, action: PayloadAction<{ key: string, value: any }>) {
             const { key, value } = action.payload;
-            switch (key) {
-                case 'name':
-                    state.extraProductsForm.name = value as string;
-                    break;
-                case 'isActive':
-                    state.extraProductsForm.isActive = value as boolean;
-                    break;
-                case 'images':
-                    state.extraProductsForm.images = value as [];
-                    break;
-                default:
-                    break;
+
+            if (isValidKey(key, state.extraProductsForm)) {
+                state.extraProductsForm = {
+                    ...state.extraProductsForm,
+                    [key]: value
+                }
+            } else {
+                console.warn(`Invalid key: ${key}`);
             }
-        }
+        },
     },
 });
 

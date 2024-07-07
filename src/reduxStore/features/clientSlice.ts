@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { ClientProfile } from '@/API'
 
-const requiredInputs = ['name', 'contactEmail']; // => Add 'rootUserId' , Add 'rootUserId' in the create function in the repository
+const requiredInputs = ['name', 'contactEmail'];
 
 interface GlobalState {
     isFetching: boolean;
@@ -10,7 +10,6 @@ interface GlobalState {
         id?: string,
         isActive?: boolean,
         name?: string,
-        rootUserId?: string,
         contactEmail?: string,
         contactPhone?: string,
         address?: string,
@@ -29,12 +28,10 @@ const initialState: GlobalState = {
     clientProfileForm: {
         name: '',
         isActive: false,
-        // rootUserId: '',
         contactEmail: '',
     },
     validationErrors: {
         name: null,
-        // rootUserId: null,
         contactEmail: null,
     }
 }
@@ -75,7 +72,6 @@ const globalSlice = createSlice({
             state.clientProfileForm = {
                 name: '',
                 isActive: false,
-                // rootUserId: '',
                 contactEmail: '',
             }
             state.validationErrors = {};
@@ -94,9 +90,6 @@ const globalSlice = createSlice({
                     break
                 case 'isActive':
                     state.clientProfileForm.isActive = value as boolean
-                    break
-                case 'rootUserId':
-                    state.clientProfileForm.rootUserId = value as string
                     break
                 case 'contactEmail':
                     if (isValidEmail(value as string)) {
@@ -143,15 +136,3 @@ export const {
 
 } = globalSlice.actions
 export default globalSlice.reducer
-
-
-/*
-    id?: string | null,
-
-    isActive?: boolean | null,
-    name?: string | null,
-    rootUserId?: string | null,
-    contactEmail?: string | null,
-    contactPhone?: string | null,
-    address?: string | null,
-*/

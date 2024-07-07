@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import type { ClientProfile } from '@/API';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
-import { handleFormChange } from '@/reduxStore/features/clientSlice';
+import { handleFormChange, setIsFetching } from '@/reduxStore/features/clientSlice';
 
 import AutoComplete from '@/components/core/autoComplete';
 import TextField from '@mui/material/TextField';
@@ -36,29 +36,29 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
     }, [])
 
 
-    useEffect(() => {
-        if (!isCreate) {
-            loadFormData(clientProfile);
-        }
-    }, [clientProfile])
+    // useEffect(() => {
+    //     if (!isCreate) {
+    //         loadFormData(clientProfile);
+    //     }
+    // }, [clientProfile])
 
-    const loadFormData = async (clientProfile: ClientProfile) => {
-        const {
-            name,
-            isActive,
-            rootUserId,
-            contactEmail,
-            contactPhone,
-            address,
-        } = clientProfile
+    // const loadFormData = async (clientProfile: ClientProfile) => {
+    //     const {
+    //         name,
+    //         isActive,
+    //         rootUserId,
+    //         contactEmail,
+    //         contactPhone,
+    //         address,
+    //     } = clientProfile
 
-        dispatch(handleFormChange({ key: 'name', value: name as string }))
-        dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
-        // dispatch(handleFormChange({ key: 'rootUserId', value: rootUserId as string }))
-        dispatch(handleFormChange({ key: 'contactEmail', value: contactEmail as string }))
-        dispatch(handleFormChange({ key: 'contactPhone', value: contactPhone as string }))
-        dispatch(handleFormChange({ key: 'address', value: address as string }))
-    }
+    //     dispatch(handleFormChange({ key: 'name', value: name as string }))
+    //     dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
+    //     // dispatch(handleFormChange({ key: 'rootUserId', value: rootUserId as string }))
+    //     dispatch(handleFormChange({ key: 'contactEmail', value: contactEmail as string }))
+    //     dispatch(handleFormChange({ key: 'contactPhone', value: contactPhone as string }))
+    //     dispatch(handleFormChange({ key: 'address', value: address as string }))
+    // }
 
     return (
         <div className='h-full'>
@@ -81,21 +81,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
                                     defaultValue={!isCreate ? clientFormRef.current.name : ''}
                                 />
                             </div>
-                            <div className='flex-1'>
-                                <label htmlFor="root_user_id" className='block text-xs font-medium mb-1.5'>Root Kullanıcı ID *</label>
-                                <TextField
-                                    id='root_user_id'
-                                    variant="standard"
-                                    sx={{ width: '100%' }}
-                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                                        dispatch(handleFormChange({ key: 'rootUserId', value: event.target.value }))
-                                    }}
-                                    defaultValue={!isCreate ? clientFormRef.current.rootUserId : ''}
-                                />
-                            </div>
-                        </div>
-                        <div className='my-2 pt-5' />
-                        <div className='flex flex-col lg:flex-row lg:space-x-6 mt-4'>
+
                             <div className='flex-1 mb-4 lg:mb-0'>
                                 <label htmlFor="contact_email" className='block text-xs font-medium mb-1.5'>İletişim E-postası *</label>
                                 <TextField
@@ -110,6 +96,9 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
                                     defaultValue={!isCreate ? clientFormRef.current.contactEmail : ''}
                                 />
                             </div>
+                        </div>
+                        <div className='my-2 pt-5' />
+                        <div className='flex flex-col lg:flex-row lg:space-x-6 mt-4'>
                             <div className='flex-1'>
                                 <label htmlFor="contact_phone" className='block text-xs font-medium mb-1.5'>İletişim Telefonu</label>
                                 <TextField
@@ -122,9 +111,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
                                     defaultValue={!isCreate ? clientFormRef.current.contactPhone : ''}
                                 />
                             </div>
-                        </div>
-                        <div className='my-2 pt-5' />
-                        <div className='flex flex-col lg:flex-row lg:space-x-6 mt-4'>
+
                             <div className='flex-1 mb-4 lg:mb-0'>
                                 <label htmlFor="address" className='block text-xs font-medium mb-1.5'>Adres</label>
                                 <TextField
@@ -137,6 +124,9 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
                                     defaultValue={!isCreate ? clientFormRef.current.address : ''}
                                 />
                             </div>
+                        </div>
+                        <div className='my-2 pt-5' />
+                        <div className='flex flex-col lg:flex-row lg:space-x-6 mt-4'>
                             <div className='flex-1'>
                                 <label htmlFor="brand_state" className='block text-xs font-medium mb-2'>Firma Durumu</label>
                                 <FormControlLabel

@@ -15,14 +15,17 @@ import AddIcon from '@mui/icons-material/Add';
 
 
 const StoreView: React.FC = () => {
-    const dispatch = useAppDispatch<AppDispatch>();
     const router = useRouter();
+
+    const dispatch = useAppDispatch<AppDispatch>();
     const stores = useAppSelector((state: RootState) => state.store.stores);
     const storeForm = useAppSelector((state: RootState) => state.store.storeForm);
-
     const storeFormRef = useRef(storeForm);
     storeFormRef.current = storeForm;
 
+    const isFetching = useAppSelector((state: RootState) => state.store.isFetching);
+    const isFetchingRef = useRef(isFetching);
+    isFetchingRef.current = isFetching;
     const handleDeleteStore = async (data: any) => {
         try {
             const deleteStore = await Repo.StoreRepository.softDelete(data.originalData.id);
@@ -71,6 +74,7 @@ const StoreView: React.FC = () => {
                     dataPayload={stores}
                     onDelete={handleDeleteStore}
                     handleEdit={setStoreUpdateData}
+                    isLoading={isFetchingRef.current}
                 />
             </div>
         </div>
