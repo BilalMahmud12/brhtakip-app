@@ -27,7 +27,7 @@ const UpdateExtraProductPage: React.FC = () => {
     useEffect(() => {
         const extraProductId = pathName?.split('/').pop();
         const targetExtraProduct = extraProducts.find(extraProduct => extraProduct.id === extraProductId);
-
+        console.log('targetExtraProduct', targetExtraProduct);
         if (targetExtraProduct) {
             const { updatedAt, createdAt, __typename, ...restOfTheExtraProduct } = targetExtraProduct;
 

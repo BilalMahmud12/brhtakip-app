@@ -33,13 +33,17 @@ const UserAccountMenu: React.FC = () => {
         router.push('/login')
     }
 
+    const navToUserPage = async () => {
+        router.push('/dashboard/user-profile')
+    }
+
     return (
         <React.Fragment>
             <Tooltip title="Account settings">
                 <IconButton
                     onClick={handleClick}
                     size="small"
-                    sx={{  }}
+                    sx={{}}
                     aria-controls={open ? 'account-menu' : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? 'true' : undefined}
@@ -85,12 +89,12 @@ const UserAccountMenu: React.FC = () => {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 sx={{ minWidth: '220px' }}
             >
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={navToUserPage}>
                     <Avatar sx={{ width: 24, height: 24 }} /> Benim Hesabım
                 </MenuItem>
                 <Divider />
-                
-                <MenuItem onClick={handleLogOut}>
+
+                <MenuItem onClick={handleLogOut} >
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>

@@ -39,6 +39,9 @@ const userSlice = createSlice({
         handleFormChange: (state, action: PayloadAction<{ key: keyof UserProfileForm, value: string | boolean | string[] }>) => {
             const { key, value } = action.payload
             switch (key) {
+                case 'id':
+                    state.userForm.id = value as string
+                    break
                 case 'isActive':
                     console.log('isActive', value)
                     state.userForm.isActive = value as boolean
@@ -71,20 +74,20 @@ const userSlice = createSlice({
                     break
             }
         },
-        setUserForm (state, action: PayloadAction<UserProfileForm>) {
+        setUserForm(state, action: PayloadAction<UserProfileForm>) {
             state.userForm = action.payload
         },
-        resetUserForm (state) {
+        resetUserForm(state) {
             state.userForm = initialState.userForm
         }
     }
 })
 
-export const { 
+export const {
     setIsFetching,
     setUsers,
     handleFormChange,
     setUserForm,
-    resetUserForm 
+    resetUserForm
 } = userSlice.actions
 export default userSlice.reducer

@@ -1,7 +1,7 @@
 import { listUserProfiles, getUserProfile } from '@/graphql/queries';
-import { createUserProfile } from '@/graphql/mutations';
+import { createUserProfile, updateUserProfile } from '@/graphql/mutations';
 import { client } from '@/repository';
-import { signUp } from 'aws-amplify/auth';
+import { signUp, updatePassword, UpdatePasswordInput } from 'aws-amplify/auth';
 
 type SignUpParameters = {
     username: string;
@@ -12,10 +12,10 @@ type SignUpParameters = {
 
 const getAllUsers = async () => {
     try {
-        const { data } = await client.graphql({ 
+        const { data } = await client.graphql({
             query: listUserProfiles,
-            variables: { 
-                limit: 5 
+            variables: {
+                limit: 100
             },
         });
         return data.listUserProfiles.items;
@@ -28,7 +28,7 @@ const getUserProfileById = async (id: string) => {
     try {
         const { data } = await client.graphql({
             query: listUserProfiles,
-            variables: { 
+            variables: {
                 filter: { cognitoID: { eq: id } }
             },
         });
@@ -52,6 +52,20 @@ const create = async (user: any) => {
     }
 }
 
+const update = async (user: any) => {
+    console.log("user update repository", user)
+    try {
+        const { data } = await client.graphql({
+            query: updateUserProfile,
+            variables: { input: user },
+        });
+
+        return data.updateUserProfile;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 const signUserUp = async (
     {
         username,
@@ -67,7 +81,7 @@ const signUserUp = async (
             options: {
                 userAttributes: {
                     email,
-                    name 
+                    name
                 }
                 // optional
                 // autoSignIn: true // or SignInOptions e.g { authFlowType: "USER_SRP_AUTH" }
@@ -84,10 +98,19 @@ const signUserUp = async (
     }
 }
 
+const UpdatePassword = async ({ oldPassword, newPassword }: UpdatePasswordInput) => {
+    try {
+        await updatePassword({ oldPassword, newPassword });
+    } catch (err) {
+        console.log(err);
+    }
+}
 
 export {
     getAllUsers,
     getUserProfileById,
     create,
-    signUserUp
+    signUserUp,
+    update,
+    UpdatePassword
 }
