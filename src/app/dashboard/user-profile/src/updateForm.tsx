@@ -8,6 +8,7 @@ import Avatar from '@mui/material/Avatar';
 import PasswordForm from './passwordForm';
 import { Button } from '@mui/material';
 import { UserProfile } from '@/API';
+import UserProfilePhoto from './userProfilePhoto';
 
 const UpdateForm: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
@@ -34,13 +35,7 @@ const UpdateForm: React.FC = () => {
         <div>
             <form>
                 <div className='h-full p-6 bg-white shadow'>
-                    <div className='flex flex-col items-center mb-4'>
-                        <Avatar
-                            alt={currentUserProfile?.firstName || 'User Profile'}
-                            sx={{ width: 100, height: 100 }}
-                        />
-                        <p className='mt-2 text-center text-s font-medium'>{currentUserProfile?.email}</p>
-                    </div>
+                    <UserProfilePhoto />
 
                     <div className='my-2 pt-3' />
 
