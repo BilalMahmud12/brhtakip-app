@@ -15,3 +15,7 @@ export * as ExtraProductRepository from './extraProduct.repository'
 
 
 export const client = generateClient()
+
+export function UpdatePassword(arg0: { oldPassword: string; newPassword: string | undefined; }) {
+    throw new Error('Function not implemented.');
+}
