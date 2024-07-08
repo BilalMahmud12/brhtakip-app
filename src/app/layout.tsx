@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
+import { Authenticator, useAuthenticator, View } from '@aws-amplify/ui-react';
 import ConfigureAmplifyClientSide from '@/utils/ConfigureAmplify'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import { StyledRoot } from './StyledRoot';
@@ -20,36 +20,40 @@ export default function RootLayout({
 
   return (
     <Authenticator.Provider>
-      <html lang="tr">
-        <StoreProvider>
-              <body>
-                <ConfigureAmplifyClientSide />
-                <ProgressBar
-                  height="3px"
-                  color="#1976d2"
-                  options={{ showSpinner: false }}
-                  shallowRouting
-                />
+      
+        <html lang="tr">
+          <StoreProvider>
+                <body>
+                  <View>
+                    <ConfigureAmplifyClientSide />
+                    <ProgressBar
+                      height="3px"
+                      color="#1976d2"
+                      options={{ showSpinner: false }}
+                      shallowRouting
+                    />
 
-                <AppRouterCacheProvider>
-                    <DataModalProvider>
+                    <AppRouterCacheProvider>
+                        <DataModalProvider>
 
-                      <StyledRoot>
-                        {children}
-                      </StyledRoot>
+                          <StyledRoot>
+                            {children}
+                          </StyledRoot>
 
-                      <DataModal />
+                          <DataModal />
 
-                      <Toaster 
-                        position="top-right"
-                        expand={true} 
-                        richColors 
-                      />
-                    </DataModalProvider>
-                </AppRouterCacheProvider>
-              </body>
-        </StoreProvider>
-      </html>
+                          <Toaster 
+                            position="top-right"
+                            expand={true} 
+                            richColors 
+                          />
+                        </DataModalProvider>
+                    </AppRouterCacheProvider>
+                  </View>
+                </body>
+          </StoreProvider>
+        </html>
+      
     </Authenticator.Provider>
   );
 }

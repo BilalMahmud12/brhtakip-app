@@ -2,11 +2,13 @@
   "resourceName": "s3brhtakipstorage9c050d2c",
   "bucketName": "brhtakip-storage-9c050d2c",
   "policyUUID": "0760d991",
-  "storageAccess": "auth",
-  "guestAccess": [],
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
   "authAccess": [
-    "CREATE_AND_UPDATE",
     "READ",
+    "CREATE_AND_UPDATE",
     "DELETE"
   ]
 }
