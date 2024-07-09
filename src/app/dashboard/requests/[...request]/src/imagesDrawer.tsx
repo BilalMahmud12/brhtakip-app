@@ -5,11 +5,11 @@ import { RootState } from '@/reduxStore/store';
 import { setImageDrawerOpen, setSelectedRevisionImages } from '@/reduxStore/features/requestSlice';
 import Drawer from '@mui/material/Drawer';
 import { StorageImage } from '@aws-amplify/ui-react-storage';
-import type { ImageStorage } from '@/reduxStore/features/requestSlice';
+import type { ImageStorageItemInput } from '@/API';
 import { Button } from '@mui/material';
 
 const ImagesDrawer: React.FC<{
-    images: ImageStorage[];
+    images: ImageStorageItemInput[];
 }> = ({
     images = []
 }) => {
@@ -68,12 +68,12 @@ const ImagesDrawer: React.FC<{
                             {images.map((image, index) => (
                                 <div
                                     key={index}
-                                    className={`relative w-full h-full min-h-[200px] max-h-[200px] cursor-pointer ${selectedImages.includes(image.path) ? 'border-4 border-blue-500 rounded-xl' : ''}`}
-                                    onClick={() => toggleImageSelection(image.path)}
+                                    className={`relative w-full h-full min-h-[200px] max-h-[200px] cursor-pointer ${selectedImages.includes(image.path as string) ? 'border-4 border-blue-500 rounded-xl' : ''}`}
+                                    onClick={() => toggleImageSelection(image.path as string)}
                                 >
                                     <span className='absolute z-10 w-full h-full rounded-lg bg-black/40'></span>
                                     <StorageImage
-                                        path={image.path}
+                                        path={image.path as string}
                                         alt='reference-image'
                                         className='w-full h-full object-cover rounded-lg overflow-hidden'
                                     />
