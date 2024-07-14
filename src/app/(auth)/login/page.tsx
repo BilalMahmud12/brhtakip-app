@@ -30,8 +30,10 @@ export default function Login() {
             }
             
             const { isSignedIn, nextStep } = await signIn({ username, password });
-            console.log('isSignedIn', isSignedIn);
-            console.log('nextStep', nextStep);
+
+            if (nextStep) {
+                console.log('nextStep', nextStep);
+            }
 
             if (isSignedIn) {
                 setSuccess(true);

@@ -8,20 +8,25 @@ import Alert from '@mui/material/Alert';
 import Link from 'next/link';
 
 interface AuthenticationFormProps {
-    onSubmit: (authData: { email: string, password: string }) => void;
+    codeConfirm?: boolean;
     isLoading?: boolean;
     error?: boolean;
     success?: boolean;
+    onSubmit: (authData: { email: string, password: string }) => void;
+    onCodeSubmit?: (data: { email: string }) => void;
 }
 
-const AuthenticationForm: React.FC<AuthenticationFormProps> = ({ 
-    onSubmit = () => {}, 
+const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
+    codeConfirm = false, 
     isLoading = false,
     success = false,
-    error = false 
+    error = false, 
+    onSubmit = () => {},
+    onCodeSubmit = () => {} 
 }) => {
     const [email, setEmail] = React.useState<string>('');
     const [password, setPassword] = React.useState<string>('');
+    const [code, setCode] = React.useState<string>('');
 
     const [emailError, setEmailError] = React.useState<boolean>(false);
     const [passwordError, setPasswordError] = React.useState<boolean>(false);
