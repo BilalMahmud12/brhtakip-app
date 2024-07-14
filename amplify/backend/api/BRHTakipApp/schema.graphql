@@ -192,7 +192,7 @@ type Request @model @auth(rules: [{allow: public}]) {
   quantity: Int
   width: Float
   height: Float
-  branded: String
+  branded: Boolean
   designNote: String
   productionCost: Float
   cargoBudget: Float

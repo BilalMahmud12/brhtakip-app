@@ -2,25 +2,13 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { RootState } from '@/reduxStore/store';
-import { handleFormChange, DesignRevision, setImageDrawerOpen } from '@/reduxStore/features/requestSlice';
+import { handleFormChange, setImageDrawerOpen } from '@/reduxStore/features/requestSlice';
 import { TextField, IconButton, Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import ImagesDrawer from '../../[...request]/src/imagesDrawer';
-
-import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
-import TimelineDot from '@mui/lab/TimelineDot';
-import FastfoodIcon from '@mui/icons-material/Fastfood';
-import LaptopMacIcon from '@mui/icons-material/LaptopMac';
-import HotelIcon from '@mui/icons-material/Hotel';
-import RepeatIcon from '@mui/icons-material/Repeat';
-import Typography from '@mui/material/Typography';
+import { DesignRevisionInput } from '@/API';
 
 
 const RequestDesignRevisions: React.FC = () => {
@@ -41,7 +29,7 @@ const RequestDesignRevisions: React.FC = () => {
     
     console.log('selectedRevisionImages:', selectedRevisionImages);
 
-    const [localRevisions, setLocalRevisions] = React.useState<DesignRevision[]>([]);
+    const [localRevisions, setLocalRevisions] = React.useState<DesignRevisionInput[]>([]);
     
     const handleAddRevision = () => {
         setLocalRevisions([...localRevisions, { note: '' }]);
@@ -115,7 +103,7 @@ const RequestDesignRevisions: React.FC = () => {
                                             <div className='grid grid-cols-3 gap-4'>
                                                 {revision.images.map((image, idx) => (
                                                     <div key={idx} className='bg-zinc-200 rounded-md p-2'>
-                                                        <img src={image} alt='' className='w-full h-full' />
+                                                        <img src={image as string} alt='' className='w-full h-full' />
                                                     </div>
                                                 ))}
                                             </div>

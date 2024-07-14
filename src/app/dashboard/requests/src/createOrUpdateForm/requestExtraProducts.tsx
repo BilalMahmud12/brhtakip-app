@@ -2,19 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
-import { handleFormChange, ExtraProductRequest } from '@/reduxStore/features/requestSlice';
+import { handleFormChange } from '@/reduxStore/features/requestSlice';
 import AutoComplete, { Option } from '@/components/core/autoComplete';
 import { TextField, IconButton, Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import * as Repo from '@/repository/index';
+import { RequestExtraProductInput  } from '@/API';
 
-export type RequestExtraProductInput = {
-    id?: string | null,
-    name?: string | null,
-    image?: string | null,
-    quantity?: string | null,
-};
 
 const RequestExtraProducts: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
@@ -22,7 +17,7 @@ const RequestExtraProducts: React.FC = () => {
     const [allExtraProducts, setAllExtraProducts] = useState<Array<any>>([]); 
     const [extraProductsOptions, setExtraProductsOptions] = useState<Option[]>([]);
 
-    const [localExtraProducts, setLocalExtraProducts] = useState<ExtraProductRequest[]>(requestExtraProducts || []);
+    const [localExtraProducts, setLocalExtraProducts] = useState<RequestExtraProductInput[]>(requestExtraProducts || []);
 
     useEffect(() => {
         const fetchExtraProducts = async () => {
@@ -46,7 +41,7 @@ const RequestExtraProducts: React.FC = () => {
     }, [requestExtraProducts]);
 
     const handleAddProduct = () => {
-        setLocalExtraProducts([...localExtraProducts, { id: '', quantity: 0 }]);
+        setLocalExtraProducts([...localExtraProducts, { id: '', quantity: '0' }]);
     };
 
     const handleRemoveProduct = (index: number) => {

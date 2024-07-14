@@ -1,10 +1,10 @@
 'use client'
 import React from 'react';
-import MediaUploadManager from '@/components/core/MediaUploadManager';
-import { handleFormChange } from '@/reduxStore/features/requestSlice';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { RootState } from '@/reduxStore/store';
-import FileDisplay from '@/components/core/fileDisplay';
+import { handleFormChange } from '@/reduxStore/features/requestSlice';
+import MediaManager from '@/components/core/MediaManager';
+import type { ImageStorageItemInput } from '@/API';
 
 
 const RequestDesignPhotos: React.FC<{ onSave: () => void }> = ({ onSave = () => {} }) => {
@@ -13,22 +13,28 @@ const RequestDesignPhotos: React.FC<{ onSave: () => void }> = ({ onSave = () => 
     const requestFormRef = React.useRef(requestForm);
     requestFormRef.current = requestForm;
 
-    const onUploadSuccess = (files: { [key: string]: { status: string } }) => {
-        const designImages = requestFormRef.current.designImages || [];
+    const onUploadSuccess = (files: ImageStorageItemInput[]) => {
+        console.log('files:', files);
 
-        const newFiles = Object.keys(files).map((key) => ({
-            type: 'designs',
-            path: key,
-        }))
+        const designImages: ImageStorageItemInput[] = requestFormRef.current.designImages || [];
+        const existingPaths = new Set(designImages.map((image) => image.id));
+        const uniqueNewFiles = files.filter((file) => !existingPaths.has(file.id ? file.id : file.path));
 
         dispatch(handleFormChange({
             key: 'designImages',
-            value: [...designImages, ...newFiles]
+            value: [...designImages, ...uniqueNewFiles]
         }));
 
-        console.log('designImages', designImages);
-
         onSave();
+    }
+
+    const onDelete = (file: ImageStorageItemInput) => {
+        const designImages: ImageStorageItemInput[] = requestFormRef.current.designImages || [];
+        const newFiles = designImages.filter((image) => image.id !== file.id);
+        dispatch(handleFormChange({
+            key: 'designImages',
+            value: newFiles
+        }));
     }
 
     return (
@@ -37,22 +43,16 @@ const RequestDesignPhotos: React.FC<{ onSave: () => void }> = ({ onSave = () => 
                 <h2 className='text-base font-semibold mb-0.5'>Baskı Datası</h2>
                 <span className='block text-sm text-zinc-400'>Tasarımlar ve Baskı Bilgileri</span>
             </div>
-            
-            <div className='grid grid-cols-1 lg:grid-cols-2 lg:gap-x-6 gap-y-8 mb-4'>
-                <div className='input-group w-full col-span-1'>
-                    <MediaUploadManager
-                        basePath='public'
-                        uploadPath={`requests/${requestFormRef.current.requestNumber}/designImages`}
-                        handleOnUploadSuccess={(files: { [key: string]: { status: string } }) => onUploadSuccess(files)}
-                    />
-                </div>
 
-                <div className='input-group w-full col-span-2 lg:col-span-1'>
-                    <FileDisplay
-                        targetPath='designImages'
-                        files={requestFormRef.current.designImages || []}
-                    />
-                </div>
+            <div className='mb-4'>
+                <MediaManager
+                    uploadPath={`requests/${requestFormRef.current.requestNumber}/designImages`}
+                    downloadFolderName={`${requestFormRef.current.requestNumber}/baskı_datası`}
+                    initialFiles={requestFormRef.current.designImages || []}
+                    handleOnUploadSuccess={(files: ImageStorageItemInput[]) => onUploadSuccess(files)}
+                    handleOnDelete={(file: ImageStorageItemInput) => onDelete(file)}
+                    type='designImages'
+                />
             </div>
         </React.Fragment>
     );

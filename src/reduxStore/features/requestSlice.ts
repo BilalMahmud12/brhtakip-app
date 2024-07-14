@@ -1,73 +1,42 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Request } from '@/API';
 import { isValidKey } from '@/utils/helpers';
+import type { Request, RequestStatus, RequestExtraProductInput, DesignRevisionInput, ImageStorageItemInput, RevisionOwnerInput } from '@/API';
 
-export type ImageStorage = {
-    type: string;
-    path: string;
-}
 
-export type DesignRevision = {
-    date?: string;
-    note?: string;
-    images?: string[];
-    owner?: {
-        id: string;
-        name: string;
-        role: string;
-    }
-}
-
-export type ExtraProductRequest = {
+export type RequestForm = {
     id: string;
-    name?: string;
+    status: RequestStatus;
+    requestNumber: string;
+    clientprofileID: string;
+    storeID: string;
+    requestBrandId: string;
+    requestProductId: string;
+    requestMaterialId: string;
+    requestApplicationAreaId: string;
+    branded: boolean;
     quantity: number;
-    image?: string;
-    note?: string;
+    width: number;
+    height: number;
+    designNote: string;
+    isExtraProductRequest?: boolean;
+    productionCost?: number;
+    cargoBudget?: number;
+    assemblyBudget?: number;
+    monthlyFee?: number;
+    referenceImages?: ImageStorageItemInput[];
+    designImages?: ImageStorageItemInput[];
+    printImages?: ImageStorageItemInput[];
+    applicationImages?: ImageStorageItemInput[];
+    designRevisions?: DesignRevisionInput[];
+    extraProducts?: RequestExtraProductInput[];
+    passedRevision?: boolean;
+    [key: string]: string | number | boolean | ImageStorageItemInput[] | DesignRevisionInput[] | RequestExtraProductInput[]|undefined;
 }
 
-export type designRevisionsRequest = {
-    date?: string;
-    note?: string;
-    images?: string[];
-    owner?: {
-        id: string;
-        name: string;
-        role: string;
-    }
-}
-
-interface RequestState {
+export interface RequestState {
     isFetching: boolean;
     requests: Request[];
-    requestForm: {
-        id?: string;
-        status: string;
-        requestNumber: string;
-        clientprofileID: string;
-        storeID: string;
-        requestBrandId: string;
-        requestProductId: string;
-        requestMaterialId: string;
-        requestApplicationAreaId: string;
-        branded: boolean;
-        quantity: number;
-        width: number;
-        height: number;
-        designNote: string;
-        isExtraProductRequest?: boolean;
-        productionCost?: number;
-        cargoBudget?: number;
-        assemblyBudget?: number;
-        monthlyFee?: number;
-        referenceImages?: ImageStorage[];
-        designImages?: ImageStorage[];
-        printImages?: ImageStorage[];
-        applicationImages?: ImageStorage[];
-        designRevisions?: DesignRevision[];
-        extraProducts?: ExtraProductRequest[];
-        passedRevision?: boolean;
-    },
+    requestForm: RequestForm,
     selectedRequests: string[],
     validationErrors: {
         requestNumber?: string|null;
@@ -92,7 +61,7 @@ const initialState: RequestState = {
     requests: [],
     requestForm: {
         id: '',
-        status: '',
+        status: '' as RequestStatus,
         requestNumber: '',
         clientprofileID: '',
         storeID: '',

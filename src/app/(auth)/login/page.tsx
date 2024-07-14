@@ -1,100 +1,72 @@
 'use client'
-import { useEffect } from "react";
+import React from "react";
 import { useRouter } from "next-nprogress-bar";
-import { Authenticator, useAuthenticator, Loader } from '@aws-amplify/ui-react';
-import Logo from "@/components/core/logo";
-import Image from 'next/image';
+import { useAuthenticator } from '@aws-amplify/ui-react';
+import { signIn, type SignInInput } from 'aws-amplify/auth';
+
 import { useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch } from '@/reduxStore/store';
 import { loadUserData } from "@/services/userService";
+import AuthenticationForm from '../src/authenticationForm';
+import { toast } from 'sonner';
 
 const DASHBOARD_URL: string = '/dashboard';
 
 export default function Login() {
     const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
+
+    const [loading , setLoading] = React.useState<boolean>(false);
+    const [error, setError] = React.useState<boolean>(false);
+    const [success, setSuccess] = React.useState<boolean>(false);
     const { user } = useAuthenticator((context) => [context.user]);
-    
-    useEffect(() => {
-        if (user) {
-            const loadUser = async () => {
+
+    async function handleSignIn({ username, password }: SignInInput) {
+        setLoading(true);
+        try {
+            if (user) {
+                router.push(DASHBOARD_URL);
+                return true;
+            }
+            
+            const { isSignedIn, nextStep } = await signIn({ username, password });
+
+            if (nextStep) {
+                console.log('nextStep', nextStep);
+            }
+
+            if (isSignedIn) {
+                setSuccess(true);
+                setError(false);
                 const success = await loadUserData(dispatch);
                 if (success) {
-                    setTimeout(() => {
-                        router.push(DASHBOARD_URL)
-                    }, 2500);
+                    router.push(DASHBOARD_URL);
                 } else {
-                    // Handle error (e.g., show error message or log out user)
+                    setLoading(false);
+                    toast.error('Kullanıcı bilgileri yüklenirken bir hata oluştu. Lütfen tekrar deneyin.');
                 }
-            };
-            loadUser();
+            }
+
+            setLoading(false);
+            return isSignedIn;
+
+        } catch (error) {
+            setLoading(false);
+            setError(true);
+            console.log('error signing in', error);
         }
-    }, [user, dispatch, router])
+    }
 
     return (
         <>
-            <title>Panel Girişi - BRH Takip</title>
-            {user ? (
-                <div className='relative z-50 max-w-xl mx-auto px-8 py-10 bg-white rounded-2xl'>
-                    <div className="flex items-center justify-center mb-4">
-                        <div className="flex items-center justify-center mb-5">
-                            <Image
-                                src="./logo.svg"
-                                alt="Logo"
-                                width={200}
-                                height={90}
-                                className='cursor-pointer mr-8 w-[200px] h-[90px]'
-                                priority
-                            />
-                        </div>
-                    </div>
-                    <div className='text-center text-sm mb-4'>Lütfen bekleyiniz, Panele yönlendiriliyor...</div>
-                    <div className='flex items-center'>
-                        <Loader
-                                size="small"
-                            variation="linear"
-                        />
-                    </div>
-                </div>
-            ) : (
-                <div className="relative z-50 max-w-xl mx-auto px-8 py-10 bg-white rounded-2xl">
-                    <div>
-                        <div className="flex items-center justify-center mb-5">
-                                <Image
-                                    src="./logo.svg"
-                                    alt="Logo"
-                                    width={200}
-                                    height={90}
-                                    className='cursor-pointer mr-8 w-[200px] h-[90px]'
-                                    priority
-                                />
-                        </div>
-
-                        <div className='mb-6 h-[340px]'>
-                            <Authenticator hideSignUp />
-                        </div>
-
-                        <div className='text-xs text-center px-6'>
-                            <p className='text-red-500'>
-                                © 2024 BRH Reklam. Tüm hakları saklıdır. İzinsiz erişim veya kullanım yasaktır. Bu uygulama BRH Reklam ve yetkili temsilcileri tarafından işletilmektedir.
-                            </p>
-                            <br />
-
-                            <p className='text-gray-500 hidden'>
-                                Bu hizmete erişerek Kullanım Koşullarımızı kabul etmiş olursunuz ve Gizlilik Politikamızı kabul ettiğinizi beyan etmiş olursunuz. Daha fazla bilgi için web sitemizi ziyaret edin: www.brhreklam.com
-                            </p>
-
-                            <p className='text-gray-500 hidden'>
-                                Destek veya sorularınız için lütfen bize ulaşın:
-                                <br />
-                                E-posta: support@brhreklam.com
-                                <br />
-                                Telefon: +90 216 324 28 80
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            )}
+            <title>Giriş Yap - BRH Takip</title>
+            
+            <AuthenticationForm
+                onSubmit={(authData) => handleSignIn({ username: authData.email, password: authData.password })}
+                isLoading={loading}
+                success={success}
+                error={error}
+            />
         </>
     )
 }

@@ -3,7 +3,6 @@ import React from 'react';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { handleFormChange } from '@/reduxStore/features/requestSlice';
-import type { ImageStorage } from '@/reduxStore/features/requestSlice';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import { Button, IconButton } from '@mui/material';
@@ -13,9 +12,11 @@ import { downloadData, remove } from 'aws-amplify/storage'
 import { toast } from 'sonner';
 import JSZip from 'jszip';
 
+import type { ImageStorageItemInput } from '@/API';
+
 interface FileDisplayProps {
     targetPath: string;
-    files: ImageStorage[];
+    files: ImageStorageItemInput[];
     options?: {
         gridClasses?: string;
     }
@@ -32,10 +33,10 @@ const FileDisplay: React.FC<FileDisplayProps> = (props) => {
 
     const dispatch = useAppDispatch<AppDispatch>();
 
-    const onDelete = async (file: ImageStorage) => {
+    const onDelete = async (file: ImageStorageItemInput) => {
         console.log('Deleting file:', file.path);
         try {
-            await remove({ path: file.path });
+            await remove({ path: file.path as string });
             toast.success('Dosya başarıyla silindi.');
             console.log('file deleted successfully.');
         } catch (error) {
@@ -78,11 +79,11 @@ const FileDisplay: React.FC<FileDisplayProps> = (props) => {
 
         for (const file of files) {
             try {
-                const { body, eTag } = await downloadData({ path: file.path }).result;
+                const { body, eTag } = await downloadData({ path: file.path as string }).result;
                 const result = body as unknown as Blob;
 
                 const blob = new Blob([result], { type: eTag });
-                zip.file(file.path.split('/').pop() || 'download', blob);
+                zip.file((file.path as string).split('/').pop() || 'download', blob);
             } catch (error) {
                 console.error(`Error downloading file ${file.path}:`, error);
             }
@@ -139,7 +140,7 @@ const FileDisplay: React.FC<FileDisplayProps> = (props) => {
                                     size="medium"
                                     color="inherit"
                                     sx={{ background: '#ffffff50' }}
-                                    onClick={() => handleDownloadSingleFile(files[index].path)}
+                                    onClick={() => handleDownloadSingleFile(files[index].path as string)}
                                 >
                                     <DownloadForOfflineIcon fontSize="inherit" />
                                 </IconButton>

@@ -26,10 +26,19 @@ export async function middleware(request: NextRequest) {
         if (url.pathname === '/login' || url.pathname === '/') {
             url.pathname = '/dashboard'; // Redirect to dashboard
             return NextResponse.redirect(url);
-        }
+        } 
     } else {
         // If not authenticated, redirect to login, except when already on the login page
+        
         if (!url.pathname.startsWith('/login')) {
+            if (
+                url.pathname === '/logo.svg'
+                || url.pathname === '/password-reset'
+                || url.pathname === '/code-confirm'
+            ) {
+                return NextResponse.next();
+            }
+            
             url.pathname = '/login';
             return NextResponse.redirect(url);
         }
