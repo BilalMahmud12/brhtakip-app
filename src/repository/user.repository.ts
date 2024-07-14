@@ -41,6 +41,7 @@ const getUserProfileById = async (id: string) => {
 }
 
 const create = async (user: any) => {
+    console.log("user create repository", user)
     try {
         const { data } = await client.graphql({
             query: createUserProfile,

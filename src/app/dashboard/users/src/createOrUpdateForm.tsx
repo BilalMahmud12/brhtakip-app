@@ -1,4 +1,4 @@
-import React, { use } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { handleFormChange, resetUserForm } from '@/reduxStore/features/userSlice';
@@ -15,43 +15,61 @@ import { roles } from '@/config/roles';
 import PermissionSelection from '../create/src/PermissionSelection';
 import type { Permission } from '@/config/index';
 import { useRouter } from 'next-nprogress-bar';
+import * as Repo from '@/repository/index';
 
 interface CreateOrUpdateFormProps {
     isCreate?: boolean
     onSubmitted?: () => void
 }
+type RoleOption = {
+    label: string;
+    value: string;
+};
+
+type ClientOption = {
+    label: string;
+    value: string;
+};
 
 const getRoleOptions = (currentUser: any) => {
-    return Object.values(roles).map((role) => {
-        let label = ''
-        switch (role) {
-            case roles.ADMIN:
-                label = 'Sistem Yöneticisi'
-                break
-            case roles.CLIENT_ADMIN:
-                label = 'Kurumsal Yöneticisi'
-                break
-            case roles.EDITOR:
-                label = 'Sistem Editörü'
-                break
-            case roles.CLIENT_EDITOR:
-                label = 'Kurumsal Editörü'
-                break
-            default:
-                label = ''
-        }
-        return { value: role, label }
-    })
-    .filter((role) => {
-        if (currentUser.clientprofileID === 'BRH_ADMIN') {
-            return currentUser.role === roles.EDITOR ? role.value !== roles.ADMIN : role
-        } else {
-            return currentUser.role === roles.CLIENT_EDITOR ? 
-                (role.value !== roles.CLIENT_ADMIN || role.value !== roles.ADMIN || role.value !== roles.EDITOR)
-                : role
-        }
-    })
-}
+    const roles = {
+        ADMIN: 'ADMIN',
+        CLIENT_ADMIN: 'CLIENT_ADMIN',
+        EDITOR: 'EDITOR',
+        CLIENT_EDITOR: 'CLIENT_EDITOR',
+    };
+
+    return Object.values(roles)
+        .map((role) => {
+            let label = '';
+            switch (role) {
+                case roles.ADMIN:
+                    label = 'Sistem Yöneticisi';
+                    break;
+                case roles.CLIENT_ADMIN:
+                    label = 'Kurumsal Yöneticisi';
+                    break;
+                case roles.EDITOR:
+                    label = 'Sistem Editörü';
+                    break;
+                case roles.CLIENT_EDITOR:
+                    label = 'Kurumsal Editörü';
+                    break;
+                default:
+                    label = '';
+            }
+            return { value: role, label };
+        })
+        .filter((role) => {
+            if (currentUser.clientprofileID === 'BRH_ADMIN') {
+                return currentUser.role === roles.EDITOR ? role.value !== roles.ADMIN : true;
+            } else {
+                return currentUser.role === roles.CLIENT_EDITOR
+                    ? role.value !== roles.CLIENT_ADMIN && role.value !== roles.ADMIN && role.value !== roles.EDITOR
+                    : true;
+            }
+        });
+};
 
 const getClientOptions = (clientProfiles: any[]) => {
     return clientProfiles.map((client) => {
@@ -59,14 +77,14 @@ const getClientOptions = (clientProfiles: any[]) => {
     })
 }
 
-const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({ 
+const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
     isCreate = false,
-    onSubmitted = () => {} 
+    onSubmitted = () => { }
 }) => {
     const router = useRouter()
     const dispatch = useAppDispatch<AppDispatch>()
-    const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles)
     const currentUser = useAppSelector((state: RootState) => state.global.currentUserProfile)
+    const getClientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles)
     const { clientprofileID } = currentUser
     const userForm = useAppSelector((state: RootState) => state.user.userForm)
     const userFormRef = React.useRef(userForm)
@@ -76,12 +94,47 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
 
     const [checked, setChecked] = React.useState(userFormRef.current.isActive as boolean);
     const [selectedPermissions, setSelectedPermissions] = React.useState<Permission[]>([]);
+    const [roleOptions, setRoleOptions] = useState<RoleOption[]>([]);
+    const [selectedRole, setSelectedRole] = useState<RoleOption | null>(null);
+
+    const [clientProfileOptions, setClientProfileOptions] = useState<ClientOption[]>([]);
+    const [selectedClientProfile, setSelectedClientProfile] = useState<ClientOption | null>(null);
+
+    useEffect(() => {
+        setSelectedRole(null);
+        const getAndSetRoleOptions = async () => {
+            const roles = getRoleOptions(currentUser);
+            setRoleOptions(roles);
+            const currentRole = roles.find((role) => role.value === userForm.role) || null;
+            setSelectedRole(currentRole);
+        };
+        getAndSetRoleOptions();
+    }, [currentUser, userForm.role]);
+
+
+    ///////////////////////////////////////////////////
+
+    useEffect(() => {
+        setSelectedClientProfile(null);
+        const getAndSetClientProfileOptions = async () => {
+            const clientProfiles = await Repo.ClientProfileRepository.getClientProfiles();
+            const clientProfileOptions = clientProfiles?.map(clientProfile => ({
+                value: clientProfile.id,
+                label: clientProfile.name || ""
+            })) || [];
+            setClientProfileOptions(clientProfileOptions);
+
+            const currentClientProfile = clientProfileOptions.find(clientProfile => clientProfile.value === userForm.clientprofileID) || null;
+            setSelectedClientProfile(currentClientProfile);
+        };
+
+        getAndSetClientProfileOptions();
+    }, [userForm.clientprofileID]);
 
     const getRoleSelectedValue = (role: string) => {
         return getRoleOptions(currentUser).find((option) => option.value === role)?.label as string || ''
     }
 
-    
     React.useEffect(() => {
         setChecked(userFormRef.current.isActive as boolean)
         setSelectedPermissions(userFormRef.current.permissions as Permission[] || [])
@@ -92,9 +145,9 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
     }, [selectedPermissions])
 
     React.useEffect(() => {
-        dispatch(handleFormChange({ 
-            key: 'clientprofileID', 
-            value: [roles.ADMIN, roles.EDITOR].includes(userFormRef.current.role as string)  ? 'BRH_ADMIN' : userFormRef.current.clientprofileID as string
+        dispatch(handleFormChange({
+            key: 'clientprofileID',
+            value: [roles.ADMIN, roles.EDITOR].includes(userFormRef.current.role as string) ? 'BRH_ADMIN' : userFormRef.current.clientprofileID as string
         }))
 
         if (userFormRef.current.role === roles.ADMIN) {
@@ -109,9 +162,9 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>
                 <div className='h-full col-span-2'>
                     <div className='flex items-center justify-between'>
-                        <Button 
-                            variant="text" 
-                            startIcon={<ArrowBackIosIcon />} 
+                        <Button
+                            variant="text"
+                            startIcon={<ArrowBackIosIcon />}
                             onClick={() => router.push('/dashboard/users')}
                             disableElevation
                             color='inherit'
@@ -156,8 +209,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                             <label htmlFor="role" className='block text-xs font-medium mb-1.5'>Rol *</label>
                             <AutoComplete
                                 id="role"
-                                options={[...getRoleOptions(currentUser)]}
-                                value={getRoleSelectedValue(userFormRef.current.role as string)}
+                                options={roleOptions}
+                                value={selectedRole ? selectedRole.value : ''}
                                 handleOnChange={(option) => {
                                     if (typeof option !== 'string') {
                                         dispatch(handleFormChange({ key: 'role', value: option?.value as string || '' }))
@@ -183,8 +236,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                 <label htmlFor="client_name" className='block text-xs font-medium mb-1.5'>Firma</label>
                                 <AutoComplete
                                     id="client_name"
-                                    options={getClientOptions(clientProfiles)}
-                                    value={clientProfiles.find((client) => client.id === userFormRef.current.clientprofileID)?.name as string || ''}
+                                    options={clientProfileOptions}
+                                    value={selectedClientProfile ? selectedClientProfile.value : ''}
                                     handleOnChange={(option) => {
                                         console.log('option', option)
                                         if (typeof option !== 'string') {
@@ -194,7 +247,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                 />
                             </div>
                         )}
-                        
+
                         <div className='input-group w-full col-span-2 lg:col-span-1'>
                             <label htmlFor="firstName" className='block text-xs font-medium mb-1.5'>Adı *</label>
                             <TextField

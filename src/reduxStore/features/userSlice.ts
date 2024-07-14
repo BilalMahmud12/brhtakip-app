@@ -44,7 +44,6 @@ const userSlice = createSlice({
                     state.userForm.id = value as string
                     break
                 case 'isActive':
-                    console.log('isActive', value)
                     state.userForm.isActive = value as boolean
                     break
                 case 'clientprofileID':

@@ -24,7 +24,7 @@ const UserCreatePage: React.FC = () => {
                 toast.error('Şifreler eşleşmiyor')
                 return
             }
-            
+
             const cognitoUser = await Repo.UserRepository.signUserUp({
                 username: userProfile.email as string,
                 password: password as string,
@@ -40,8 +40,8 @@ const UserCreatePage: React.FC = () => {
             }
 
             userProfile.cognitoID = cognitoUser.userId
-            
-            const { id, ...cleanedUserProfile} = userProfile
+
+            const { id, ...cleanedUserProfile } = userProfile
             const response = await Repo.UserRepository.create(cleanedUserProfile)
 
             console.log(response)
