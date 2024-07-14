@@ -16,10 +16,12 @@ import PermissionSelection from '../create/src/PermissionSelection';
 import type { Permission } from '@/config/index';
 import { useRouter } from 'next-nprogress-bar';
 import * as Repo from '@/repository/index';
+import type { UserProfile } from '@/API';
 
 interface CreateOrUpdateFormProps {
     isCreate?: boolean
     onSubmitted?: () => void
+    userProfile?: UserProfile;
 }
 type RoleOption = {
     label: string;
@@ -79,12 +81,14 @@ const getClientOptions = (clientProfiles: any[]) => {
 
 const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
     isCreate = false,
-    onSubmitted = () => { }
+    onSubmitted = () => { },
+    userProfile = {} as UserProfile
 }) => {
     const router = useRouter()
     const dispatch = useAppDispatch<AppDispatch>()
     const currentUser = useAppSelector((state: RootState) => state.global.currentUserProfile)
     const getClientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles)
+    const validationErrors = useAppSelector((state: RootState) => state.user.validationErrors);
     const { clientprofileID } = currentUser
     const userForm = useAppSelector((state: RootState) => state.user.userForm)
     const userFormRef = React.useRef(userForm)
@@ -156,6 +160,28 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
             setSelectedPermissions(userFormRef.current.permissions as Permission[] || [])
         }
     }, [userFormRef.current.role])
+
+    // useEffect(() => {
+    //     if (!isCreate) {
+    //         loadFormData(userProfile);
+    //     }
+    // }, [userProfile])
+
+    // const loadFormData = async (userProfile: UserProfile) => {
+    //     const {
+    //         firstName,
+    //         lastName,
+    //         isActive,
+    //         role,
+    //         email,
+    //     } = userProfile
+
+    //     dispatch(handleFormChange({ key: 'lastName', value: lastName as string }))
+    //     dispatch(handleFormChange({ key: 'firstName', value: firstName as string }))
+    //     dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
+    //     dispatch(handleFormChange({ key: 'role', value: role as string }))
+    //     dispatch(handleFormChange({ key: 'email', value: email as string }))
+    // }
 
     return (
         <div className='h-full'>
@@ -254,7 +280,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                 id='firstName'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                helperText={''}
+                                error={!!validationErrors.firstName}
+                                helperText={validationErrors.firstName || ''}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({
                                         key: 'firstName',
@@ -272,7 +299,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                 id='lastName'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                helperText={''}
+                                error={!!validationErrors.firstName}
+                                helperText={validationErrors.firstName || ''}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({
                                         key: 'lastName',
