@@ -2,6 +2,7 @@ import { listUserProfiles, getUserProfile } from '@/graphql/queries';
 import { createUserProfile, updateUserProfile } from '@/graphql/mutations';
 import { client } from '@/repository';
 import { signUp, updatePassword, UpdatePasswordInput } from 'aws-amplify/auth';
+import { uploadData } from 'aws-amplify/storage';
 
 type SignUpParameters = {
     username: string;
@@ -106,11 +107,35 @@ const UpdatePassword = async ({ oldPassword, newPassword }: UpdatePasswordInput)
     }
 }
 
+const uploadProfilePhoto = async (userId: string, file: File, onProgress: (progress: number) => void): Promise<string> => {
+    try {
+        const result = await uploadData({
+            path: `public/users/${userId}/${file.name}`,
+            data: file,
+            options: {
+                contentType: file.type,
+                onProgress: ({ transferredBytes, totalBytes }) => {
+                    if (totalBytes) {
+                        const progress = Math.round((transferredBytes / totalBytes) * 100);
+                        onProgress(progress);
+                    }
+                }
+            }
+        }).result;
+
+        return result.path;
+    } catch (error) {
+        console.error('Error uploading profile photo:', error);
+        throw error;
+    }
+};
+
 export {
     getAllUsers,
     getUserProfileById,
     create,
     signUserUp,
     update,
-    UpdatePassword
+    UpdatePassword,
+    uploadProfilePhoto
 }

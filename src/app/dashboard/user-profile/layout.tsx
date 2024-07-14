@@ -10,6 +10,7 @@ import { UserProfile } from '@/API';
 export default function UserProfileLayout({ children }: { children: React.ReactNode }) {
     const dispatch = useAppDispatch<AppDispatch>();
     const currentUserProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
+    console.log('current user profile', currentUserProfile);
     return (
         <>
             {children}

@@ -23,6 +23,7 @@ const initialState: UserState = {
         lastName: '',
         email: '',
         role: null,
+        profilePhoto: '',
     }
 }
 
@@ -69,6 +70,9 @@ const userSlice = createSlice({
                     break
                 case 'permissions':
                     state.userForm.permissions = value as string[]
+                    break
+                case 'profilePhoto':
+                    state.userForm.profilePhoto = value as string
                     break
                 default:
                     break
