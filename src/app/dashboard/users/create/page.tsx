@@ -2,21 +2,26 @@
 import React from 'react'
 import { permissions } from '@/config/index';
 import withAuthorization from '../../../withAuthorization';
-import { useAppSelector } from '@/reduxStore/hooks';
-import { RootState } from '@/reduxStore/store';
+import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
+import { AppDispatch, RootState } from '@/reduxStore/store';
 import CreateOrUpdateForm from '../src/createOrUpdateForm'
 import * as Repo from '@/repository'
 import { toast } from 'sonner';
 import { useRouter } from 'next-nprogress-bar';
+import { validateForm } from '@/reduxStore/features/userSlice';
 
 
 const UserCreatePage: React.FC = () => {
     const router = useRouter()
+    const dispatch = useAppDispatch<AppDispatch>();
     const userForm = useAppSelector((state: RootState) => state.user.userForm)
     const userFormRef = React.useRef(userForm)
     userFormRef.current = userForm
 
+    const isValidForm = Object.values(userFormRef.current).every(value => value === null);
+
     const handleOnSubmit = async () => {
+        dispatch(validateForm())
         console.log('submit', userFormRef.current)
         try {
             const { password, confirmPassword, ...userProfile } = userFormRef.current
@@ -24,24 +29,28 @@ const UserCreatePage: React.FC = () => {
                 toast.error('Şifreler eşleşmiyor')
                 return
             }
-            
-            const cognitoUser = await Repo.UserRepository.signUserUp({
-                username: userProfile.email as string,
-                password: password as string,
-                email: userProfile.email as string,
-                name: `${userProfile.firstName} ${userProfile.lastName}`
-            })
 
-            console.log(cognitoUser)
+            if (!isValidForm) {
+                toast.error('Lütfen formu eksiksiz doldurunuz');
+                return;
+            } else {
+                const cognitoUser = await Repo.UserRepository.signUserUp({
+                    username: userProfile.email as string,
+                    password: password as string,
+                    email: userProfile.email as string,
+                    name: `${userProfile.firstName} ${userProfile.lastName}`
+                })
+                console.log(cognitoUser)
 
-            if (!cognitoUser?.userId) {
-                toast.error('Kullanıcı oluşturulurken bir hata oluştu')
-                return
+                if (!cognitoUser?.userId) {
+                    toast.error('Kullanıcı oluşturulurken bir hata oluştu')
+                    return
+                }
+
+                userProfile.cognitoID = cognitoUser.userId
             }
 
-            userProfile.cognitoID = cognitoUser.userId
-            
-            const { id, ...cleanedUserProfile} = userProfile
+            const { id, ...cleanedUserProfile } = userProfile
             const response = await Repo.UserRepository.create(cleanedUserProfile)
 
             console.log(response)

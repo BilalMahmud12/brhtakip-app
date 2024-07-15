@@ -2,6 +2,7 @@ import { listUserProfiles, getUserProfile } from '@/graphql/queries';
 import { createUserProfile, updateUserProfile } from '@/graphql/mutations';
 import { client } from '@/repository';
 import { signUp, updatePassword, UpdatePasswordInput } from 'aws-amplify/auth';
+import { uploadData } from 'aws-amplify/storage';
 
 type SignUpParameters = {
     username: string;
@@ -53,7 +54,7 @@ const create = async (user: any) => {
 }
 
 const update = async (user: any) => {
-    console.log("user update repository", user)
+    console.log("user update repo", user)
     try {
         const { data } = await client.graphql({
             query: updateUserProfile,
@@ -74,6 +75,10 @@ const signUserUp = async (
         name
     }: SignUpParameters
 ) => {
+    // const required = ['firstName', 'lastName', 'email'];
+    // if (required.some((key) => !User[key])) {
+    //     throw new Error('Required fields are missing');
+    // }
     try {
         const { isSignUpComplete, userId, nextStep } = await signUp({
             username,
@@ -106,11 +111,35 @@ const UpdatePassword = async ({ oldPassword, newPassword }: UpdatePasswordInput)
     }
 }
 
+const uploadProfilePhoto = async (userId: string, file: File, onProgress: (progress: number) => void): Promise<string> => {
+    try {
+        const result = await uploadData({
+            path: `public/users/${userId}/${file.name}`,
+            data: file,
+            options: {
+                contentType: file.type,
+                onProgress: ({ transferredBytes, totalBytes }) => {
+                    if (totalBytes) {
+                        const progress = Math.round((transferredBytes / totalBytes) * 100);
+                        onProgress(progress);
+                    }
+                }
+            }
+        }).result;
+
+        return result.path;
+    } catch (error) {
+        console.error('Error uploading profile photo:', error);
+        throw error;
+    }
+};
+
 export {
     getAllUsers,
     getUserProfileById,
     create,
     signUserUp,
     update,
-    UpdatePassword
+    UpdatePassword,
+    uploadProfilePhoto
 }
