@@ -53,26 +53,26 @@ const UpdateUser: React.FC = () => {
         try {
             const { password, confirmPassword, ...userProfile } = userFormRef.current;
 
-            // const updateUser = await Repo.UserRepository.update(userFormRef.current);
-            // if (updateUser) {
-            //     toast.success('Kullanıcı bilgileri güncellendi');
+            const updateUser = await Repo.UserRepository.update(userFormRef.current);
+            if (updateUser) {
+                toast.success('Kullanıcı bilgileri güncellendi');
+                router.push('/dashboard/users');
+            }
+
+
+            // if (!cognitoUser?.userId) {
+            //     toast.error('Failed to create user');
+            //     return;
+            // }
+
+            // userProfile.cognitoID = cognitoUser.userId;
+            // const response = await Repo.UserRepository.create(userProfile);
+
+            // if (response?.id) {
+            //     toast.success('User created successfully');
             //     router.push('/dashboard/users');
             // }
 
-            /*
-            if (!cognitoUser?.userId) {
-                toast.error('Failed to create user');
-                return;
-            }
-
-            userProfile.cognitoID = cognitoUser.userId;
-            const response = await Repo.UserRepository.create(userProfile);
-
-            if (response?.id) {
-                toast.success('User created successfully');
-                router.push('/dashboard/users');
-            }
-            */
 
             // handleUpdatePassword();
         } catch (error) {

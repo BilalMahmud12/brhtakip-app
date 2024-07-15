@@ -235,6 +235,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                             <label htmlFor="role" className='block text-xs font-medium mb-1.5'>Rol *</label>
                             <AutoComplete
                                 id="role"
+                                error={!!validationErrors.role}
+                                helperText={validationErrors.role || ''}
                                 options={roleOptions}
                                 value={selectedRole ? selectedRole.value : ''}
                                 handleOnChange={(option) => {
@@ -323,14 +325,14 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                 id='email'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                helperText={''}
+                                error={!!validationErrors.email}
+                                helperText={validationErrors.email || ''}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({
                                         key: 'email',
                                         value: event.target.value
                                     }))
                                 }}
-                                value={userFormRef.current.email}
                                 autoComplete='email'
                             />
                         </div>
@@ -340,7 +342,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                 id='password'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                helperText={''}
+                                error={!!validationErrors.password}
+                                helperText={validationErrors.password || ''}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({
                                         key: 'password',
@@ -358,7 +361,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                 id='confirmPassword'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                helperText={''}
+                                error={!!validationErrors.confirmPassword}
+                                helperText={validationErrors.confirmPassword || ''}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({
                                         key: 'confirmPassword',
