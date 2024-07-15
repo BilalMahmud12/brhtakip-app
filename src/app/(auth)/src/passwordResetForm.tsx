@@ -86,7 +86,6 @@ const PasswordResetForm: React.FC<PasswordResetFormProps> = (props) => {
                         onChange={(e) => handleFormChange('email', e.target.value)}
                         error={emailError}
                         helperText={emailError ? 'Lütfen geçerli bir e-posta adresi giriniz.' : ''}
-
                     />
 
                     <div>

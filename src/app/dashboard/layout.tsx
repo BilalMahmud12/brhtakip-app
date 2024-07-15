@@ -241,13 +241,16 @@ export default function RootLayout({
                 </DrawerHeader>
 
                 {navigation.map((navGroup, index) => (
-                    <div key={`${navGroup.section_name}-${index}`}>
-                        {/* {navGroup.show_title && (
-                            <div className='text-gray-400 font-medium text-xs px-4 pt-2'>{navGroup.section_title}</div>
-                        )} */}
-                        
+                    <div key={`${navGroup.section_name}-${index}`}> 
                         <List>
-                            {navGroup.items.map((item, index) => (
+                            {navGroup.items
+                                .filter((item) => {
+                                    if (item.name === 'Müşteri Profilleri' && currentUserProfileRef.current.clientprofileID !== 'BRH_ADMIN') {
+                                        return false;
+                                    }
+                                    return true;
+                                })
+                                .map((item, index) => (
                                 <ListItem key={`${item.name}-${index}`} sx={{ display: 'block' }} disablePadding>
                                     <Tooltip title={item.name} placement="right" arrow>
                                         <ListItemButton

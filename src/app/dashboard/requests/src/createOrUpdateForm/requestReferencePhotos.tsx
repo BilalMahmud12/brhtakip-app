@@ -12,7 +12,10 @@ const RequestReferencePhotos: React.FC = () => {
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
     const requestFormRef = React.useRef(requestForm);
     requestFormRef.current = requestForm;
-    console.log('requestForm', requestFormRef.current);
+
+    const uploadPath = `requests/${requestFormRef.current.requestNumber}/references`;
+    const downloadFolderName = `${requestFormRef.current.requestNumber}/alan_fotoğrafları`;
+    const type = 'references';
 
     const onUploadSuccess = (files: ImageStorageItemInput[]) => {
         console.log('files:', files);
@@ -44,12 +47,12 @@ const RequestReferencePhotos: React.FC = () => {
 
             <div className='mb-4'>
                 <MediaManager
-                    uploadPath={`requests/${requestFormRef.current.requestNumber}/references`}
-                    downloadFolderName={`${requestFormRef.current.requestNumber}/alan_fotoğrafları`}
-                    initialFiles={requestFormRef.current.referenceImages || []}
+                    uploadPath={uploadPath}
+                    downloadFolderName={downloadFolderName}
+                    initialFiles={requestFormRef.current.referenceImages}
                     handleOnUploadSuccess={(files: ImageStorageItemInput[]) => onUploadSuccess(files)}
                     handleOnDelete={(file: ImageStorageItemInput) => onDelete(file)}
-                    type='references'
+                    type={type}
                 />
             </div>
         </React.Fragment>

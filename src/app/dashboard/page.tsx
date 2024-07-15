@@ -21,4 +21,4 @@ function Dashboard() {
     );
 }
 
-export default withAuthorization([permissions.VIEW_DASHBOARD])(Dashboard);
+export default Dashboard;
