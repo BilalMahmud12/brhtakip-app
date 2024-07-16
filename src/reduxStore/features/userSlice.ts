@@ -19,8 +19,8 @@ interface UserState {
         lastName?: string | null;
         email?: string | null;
         role?: string | null;
-        password?: string | null;  // Include password error state
-        confirmPassword?: string | null;  // Include confirmPassword error state
+        password?: string | null;
+        confirmPassword?: string | null;
     },
 }
 
