@@ -3,8 +3,13 @@ import React from 'react'
 import { dashboardNavigavtion } from '@/config/index';
 import Icon from '@/components/core/icon';
 import Link from 'next/link';
+import { useAppSelector } from '@/reduxStore/hooks';
+import { RootState } from '@/reduxStore/store';
 
 export default function DashboardView() {
+    const currentUserProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
+    const currentUserProfileRef = React.useRef(currentUserProfile);
+    
     return (
         <div>
             {dashboardNavigavtion.map((navGroup, index) => (
@@ -12,7 +17,14 @@ export default function DashboardView() {
                     <div className='text-sm font-medium text-zinc-400'>{navGroup.section_title}</div>
                     <div className='mt-2'>
                         <div className='grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8'>
-                            {navGroup.items.map((link, index) => (
+                            {navGroup.items
+                                .filter((item) => {
+                                    if (item.name === 'Müşteri Profilleri' && currentUserProfileRef.current.clientprofileID !== 'BRH_ADMIN') {
+                                        return false;
+                                    }
+                                    return true;
+                                })
+                                .map((link, index) => (
                                 <Link
                                     href={link.href}
                                     key={index}

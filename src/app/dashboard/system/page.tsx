@@ -4,6 +4,16 @@ import Link from 'next/link';
 
 const requestNavigation = [
     {
+        href: '/dashboard/system/stores',
+        label: 'Mağazalar',
+        icon: <Icon iconName='FcShop' className='' />
+    },
+    {
+        href: '/dashboard/system/applicationAreas',
+        label: 'Uygulama Alanları',
+        icon: <Icon iconName='FcRuler' className='' />
+    },
+    {
         href: '/dashboard/system/brands',
         label: 'Markalar',
         icon: <Icon iconName='FcCopyright' className='' />
@@ -14,23 +24,13 @@ const requestNavigation = [
         icon: <Icon iconName='FcCloth' className='' />
     },
     {
-        href: '/dashboard/system/applicationAreas',
-        label: 'Uygulama Alanları',
-        icon: <Icon iconName='FcRuler' className='' />
-    },
-    {
-        href: '/dashboard/system/stores',
-        label: 'Mağazalar',
-        icon: <Icon iconName='FcFinePrint' className='' />
-    },
-    {
         href: '/dashboard/system/cities',
         label: 'Şehirler',
-        icon: <Icon iconName='FcFinePrint' className='' />
+        icon: <Icon iconName='FcInTransit' className='' />
     },
     {
         href: '/dashboard/system/extraProduct',
-        label: 'Ekstra Ürünler',
+        label: 'Ek Ürünler',
         icon: <Icon iconName='FcPlus' className='' />
     },
 ]
@@ -50,7 +50,7 @@ const SystemPage: React.FC = () => {
                         className='col-span-1 bg-white shadow flex items-center justify-start'
                     >
                         <span className='flex items-center w-full'>
-                            <span className='mx-6 px-4 py-4 border-r border-gray-100 text-3xl'>{nav.icon}</span>
+                            <span className='px-4 py-4 border-r border-gray-100 text-3xl'>{nav.icon}</span>
                             <span className='px-4 py-4 text-sm text-center font-semibold'>{nav.label}</span>
                         </span>
 
