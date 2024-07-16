@@ -41,6 +41,10 @@ const getUserProfileById = async (id: string) => {
 }
 
 const create = async (user: any) => {
+    const required = ['firstName', 'lastName', 'email', 'role', 'password', 'confirmPassword'];
+    if (required.some((key) => !user[key])) {
+        throw new Error('Required fields are missing');
+    }
     try {
         const { data } = await client.graphql({
             query: createUserProfile,
@@ -75,10 +79,6 @@ const signUserUp = async (
         name
     }: SignUpParameters
 ) => {
-    // const required = ['firstName', 'lastName', 'email'];
-    // if (required.some((key) => !User[key])) {
-    //     throw new Error('Required fields are missing');
-    // }
     try {
         const { isSignUpComplete, userId, nextStep } = await signUp({
             username,

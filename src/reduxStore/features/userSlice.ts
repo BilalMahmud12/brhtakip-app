@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { UserProfile as UserProfileType, Roles } from '@/API';
 
-const requiredInputs = ['firstName', 'lastName', 'email', 'role'];
+const requiredInputs = ['firstName', 'lastName', 'email', 'role', 'password', 'confirmPassword'];  // Include password fields in required inputs
+
 type UserProfile = Omit<UserProfileType, '__typename' | 'createdAt' | 'updatedAt'>
 interface UserProfileForm extends UserProfile {
     password?: string;
@@ -18,7 +19,8 @@ interface UserState {
         lastName?: string | null;
         email?: string | null;
         role?: string | null;
-        address?: string | null;
+        password?: string | null;
+        confirmPassword?: string | null;
     },
 }
 
@@ -32,6 +34,8 @@ const initialState: UserState = {
         lastName: '',
         email: '',
         role: null,
+        password: '',
+        confirmPassword: '',
         profilePhoto: '',
     },
     validationErrors: {
@@ -39,14 +43,30 @@ const initialState: UserState = {
         lastName: null,
         email: null,
         role: null,
-        address: null,
+        password: null,
+        confirmPassword: null,
     },
 }
-
 
 const isValidEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+};
+
+const isStrongPassword = (password: string): boolean => {
+    if (password.length < 8) {
+        return false;
+    }
+
+    if (!/[A-Z]/.test(password)) {
+        return false;
+    }
+
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+        return false;
+    }
+
+    return true;
 };
 
 const userSlice = createSlice({
@@ -68,9 +88,6 @@ const userSlice = createSlice({
                 case 'isActive':
                     state.userForm.isActive = value as boolean
                     break
-                case 'clientprofileID':
-                    state.userForm.clientprofileID = value as string
-                    break
                 case 'firstName':
                     state.userForm.firstName = value as string
                     state.validationErrors.firstName = null
@@ -81,17 +98,19 @@ const userSlice = createSlice({
                     break
                 case 'email':
                     if (isValidEmail(value as string)) {
-                        state.userForm.name = value as string;
+                        state.userForm.email = value as string;
                         state.validationErrors.email = null;
                     } else {
-                        state.validationErrors.email = 'example@example.com formatında bir email adresi giriniz.'
+                        state.validationErrors.email = 'Geçerli bir email adresi giriniz';
                     }
                     break;
                 case 'password':
-                    state.userForm.password = value as string
+                    state.userForm.password = value as string;
+                    state.validationErrors.password = null;
                     break
                 case 'confirmPassword':
-                    state.userForm.confirmPassword = value as string
+                    state.userForm.confirmPassword = value as string;
+                    state.validationErrors.confirmPassword = null;
                     break
                 case 'role':
                     state.userForm.role = value as Roles
@@ -115,18 +134,27 @@ const userSlice = createSlice({
         },
 
         validateForm: (state) => {
+            const { password, confirmPassword } = state.userForm;
             Object.keys(state.userForm).forEach((key) => {
                 if (requiredInputs.includes(key) && !state.userForm[key]) {
-                    state.validationErrors = {
-                        ...state.validationErrors,
-                        [key]: key === 'firstName' ? 'Bu alan zorunludur' : 'Bu alan zorunludur',
-                        [key]: key === 'lastName' ? 'Bu alan zorunludur' : 'Bu alan zorunludur',
-                    };
+                    state.validationErrors[key as keyof UserState['validationErrors']] = 'Bu alan zorunludur';
                 }
-            })
+            });
+
+            // Validate password
+            if (password && !isStrongPassword(password)) {
+                state.validationErrors.password = 'Şifreniz en az 8 karakter uzunluğunda olmalıdır en az 1 büyük harf ve 1 özel karakter içermelidir.';
+            }
+
+            // Validate confirmPassword
+            if (password !== confirmPassword) {
+                state.validationErrors.confirmPassword = 'Şifreler eşleşmiyor';
+            } else {
+                state.validationErrors.confirmPassword = null;
+            }
         }
     }
-})
+});
 
 export const {
     setIsFetching,
@@ -135,5 +163,6 @@ export const {
     setUserForm,
     resetUserForm,
     validateForm
-} = userSlice.actions
-export default userSlice.reducer
+} = userSlice.actions;
+
+export default userSlice.reducer;

@@ -16,6 +16,8 @@ interface AutoCompleteProps<T extends Option> {
     renderOption?: (props: any, option: T) => React.ReactNode;
     disabled?: boolean;
     isLoading?: boolean;
+    error?: boolean;
+    helperText?: string;
 }
 
 const AutoComplete = <T extends Option>(props: AutoCompleteProps<T>) => {
@@ -27,7 +29,9 @@ const AutoComplete = <T extends Option>(props: AutoCompleteProps<T>) => {
         disabled = false,
         isLoading = false,
         handleOnChange,
-        renderOption
+        renderOption,
+        error = false,
+        helperText = '',
     } = props;
 
     const [currentValue, setCurrentValue] = React.useState<T | null>(options.find(option => option.value === props.value) || null);
@@ -59,9 +63,11 @@ const AutoComplete = <T extends Option>(props: AutoCompleteProps<T>) => {
                     label={label}
                     variant={variant}
                     size='small'
+                    error={error}
+                    helperText={helperText}
                 />
             )}
-            sx={{ 
+            sx={{
                 '& .MuiSelect-select': {
                     height: '26px !important'
                 },
