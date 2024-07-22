@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
-import { permissions } from '@/config/index';
-import WithAuthorization from '@/app/WithAuthorization';
+//import { permissions } from '@/config/index';
+//import WithAuthorization from '@/app/WithAuthorization';
 import RequestsView from './src/requestsView';
 import type { Request } from '@/API';
 

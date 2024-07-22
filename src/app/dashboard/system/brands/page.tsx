@@ -6,8 +6,8 @@ import { AppDispatch, RootState } from '@/reduxStore/store';
 import { setBrands } from '@/reduxStore/features/brandSlice';
 import type { Brand } from '@/API';
 import BrandsView from './src/brandView';
-import { permissions } from '@/config/index';
-import WithAuthorization from '@/app/WithAuthorization';
+//import { permissions } from '@/config/index';
+//import WithAuthorization from '@/app/WithAuthorization';
 
 
 const Brand: React.FC = () => {
