@@ -4,7 +4,7 @@ import * as Repo from '@/repository'
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { resetUserForm, setIsFetching, setUsers } from '@/reduxStore/features/userSlice';
-import UsersDataTable from "./UsersDataTable";
+import UsersDataTable from "./usersDataTable";
 import { Button, TextField, MenuItem, IconButton } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';

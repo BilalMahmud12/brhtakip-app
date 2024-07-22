@@ -2,7 +2,7 @@
 import React from 'react'
 //import { permissions } from '@/config/index';
 //import WithAuthorization from '../../withAuthorization';
-import UsersView from './src/UsersView'
+import UsersView from './src/usersView'
 
 const UsersPage: React.FC = () => {
     return (

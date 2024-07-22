@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { RootState, AppDispatch } from '@/reduxStore/store';
 import { setValidationErrors, resetUserForm, resetValidationErrors, setUserForm, setUsers } from '@/reduxStore/features/userSlice';
-import CreateOrUpdateForm from '../src/CreateOrUpdateForm';
+import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import validateUserFormInputs from '../src/validateUserFormInputs';
 import { toast } from 'sonner';
 

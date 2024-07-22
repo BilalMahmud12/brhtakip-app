@@ -5,7 +5,7 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { setValidationErrors, resetUserForm, resetValidationErrors, setUsers } from '@/reduxStore/features/userSlice';
-import CreateOrUpdateForm from '../src/CreateOrUpdateForm';
+import CreateOrUpdateForm from '../src/createOrUpdateForm';
 import * as Repo from '@/repository';
 import { toast } from 'sonner';
 import { useRouter } from 'next-nprogress-bar';

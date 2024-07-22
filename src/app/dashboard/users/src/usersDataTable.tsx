@@ -2,7 +2,7 @@
 import React from 'react'
 import DataTable from '@/components/core/dataTable'
 import { dataTables } from '@/config/dataTables';
-import GetUsresTableData from './GetUsersTableData';
+import GetUsresTableData from './getUsersTableData';
 
 interface UsersDataTableProps {
     dataPayload: any[];
