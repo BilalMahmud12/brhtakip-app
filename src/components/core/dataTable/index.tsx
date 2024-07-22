@@ -33,9 +33,8 @@ const DataTable: React.FC<DataTableProps> = (props) => {
         columns,
         data,
         onRowSelect = () => { },
-        onEditRow = () => { },
-        onDeleteRow = () => { },
-        styles = {},
+        //onEditRow = () => { },
+        //onDeleteRow = () => { },
         loading = false,
     } = props;
 
@@ -65,7 +64,7 @@ const DataTable: React.FC<DataTableProps> = (props) => {
                     },
                 }}
                 rowSelectionModel={rowSelectionModel}
-                onRowSelectionModelChange={(newRowSelectionModel, details) => {
+                onRowSelectionModelChange={(newRowSelectionModel) => {
                     onRowSelect(newRowSelectionModel as string[]);
                     setRowSelectionModel(newRowSelectionModel);
                 }}

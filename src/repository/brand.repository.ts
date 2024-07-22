@@ -1,6 +1,5 @@
 import { getBrand, listBrands } from '@/graphql/queries';
 import { createBrand, updateBrand, deleteBrand } from '@/graphql/mutations';
-import type { Brand } from '@/API';
 import { client } from '@/repository';
 
 const getAllBrands = async () => {

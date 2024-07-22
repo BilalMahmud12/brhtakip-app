@@ -5,7 +5,6 @@ import { useRouter } from 'next-nprogress-bar';
 import type { Product } from '@/API';
 import ProductsDataTable from './productsDataTable';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
-import { useDataModal } from '@/contexts/DataModalContext';
 
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';

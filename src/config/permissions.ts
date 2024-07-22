@@ -1,6 +1,5 @@
 export const permissions = {
     ALL_PERMISSIONS: 'ALL_PERMISSIONS',
-    VIEW_DASHBOARD: 'VIEW_DASHBOARD',
     VIEW_REQUESTS: 'VIEW_REQUESTS',
     VIEW_BRANDS: 'VIEW_BRANDS',
     VIEW_CLIENTS: 'VIEW_CLIENTS',
@@ -25,18 +24,28 @@ export const abstractPermissionsTurkish = {
 };
 
 export const features = [
+    'Users',
     'Requests',
+    'Stores',
     'Brands',
     'Products',
-    'Stores',
-    'Users',
+    'Materials',
+    'ApplicationAreas',
+    'Cities',
+    'Districts',
+    'Areas',
 ] as const;
 
 export const featuresTurkish = {
     Requests: 'Talepler',
+    Stores: 'Mağazalar',
     Brands: 'Markalar',
     Products: 'Ürünler',
-    Stores: 'Mağazalar',
+    Materials: 'Malzemeler',
+    ApplicationAreas: 'Uygulama Alanları',
+    Cities: 'Şehirler',
+    Districts: 'İlçeler',
+    Areas: 'Mahalleler',
     Users: 'Sistem Kullanıcılar',
 };
 

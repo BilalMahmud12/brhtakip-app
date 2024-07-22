@@ -1,7 +1,5 @@
 'use client'
 import React from 'react';
-import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
-import { AppDispatch, RootState } from '@/reduxStore/store';
 import EastIcon from '@mui/icons-material/East';
 import Icon from '@/components/core/icon';
 import Link from 'next/link';
@@ -34,11 +32,7 @@ const reportTiles = [
     }
 ]
 
-
 const Reports: React.FC = () => {
-    const dispatch = useAppDispatch<AppDispatch>();
-    const currentClientProfile = useAppSelector((state: RootState) => state.global.currentClientProfile);
-
     return (
         <div className='grid grid-cols-1 lg:grid-cols-4 gap-6'>
             {reportTiles.map((tile, index) => (

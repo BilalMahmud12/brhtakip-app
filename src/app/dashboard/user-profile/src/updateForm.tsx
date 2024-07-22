@@ -4,10 +4,6 @@ import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { handleFormChange } from '@/reduxStore/features/userSlice';
 import TextField from '@mui/material/TextField';
-import Avatar from '@mui/material/Avatar';
-import PasswordForm from './passwordForm';
-import { Button } from '@mui/material';
-import { UserProfile } from '@/API';
 import UserProfilePhoto from './userProfilePhoto';
 
 const UpdateForm: React.FC = () => {

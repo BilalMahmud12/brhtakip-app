@@ -1,16 +1,12 @@
 'use client'
 import React, { useEffect, useRef } from 'react';
 import type { District } from '@/API';
-import { Input, Label, Autocomplete } from '@aws-amplify/ui-react';
-
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { RootState, AppDispatch } from '@/reduxStore/store';
 import { handleFormChange } from '@/reduxStore/features/districtSlice';
-
 import TextField from '@mui/material/TextField';
 import { FormControlLabel } from '@mui/material';
 import Switch from '@mui/material/Switch';
-import { isAction } from '@reduxjs/toolkit';
 
 interface CreateOrUpdateFormProps {
     isCreate?: boolean;

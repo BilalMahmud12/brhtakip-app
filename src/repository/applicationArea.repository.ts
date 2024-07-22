@@ -1,7 +1,6 @@
 import { listApplicationAreas, getApplicationArea } from '@/graphql/queries'
 import { createApplicationArea, updateApplicationArea, deleteApplicationArea } from '@/graphql/mutations'
 import { client } from '@/repository';
-import type { ApplicationArea } from '@/API';
 
 const getApplicationAreas = async () => {
     try {

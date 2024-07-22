@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import CreateOrUpdateForm from '../src/createOrUpdateForm'
 import { useRouter } from 'next-nprogress-bar';
 import * as Repo from '@/repository/index';
@@ -15,7 +15,6 @@ import { Store } from '@/API';
 const CreateStorePage: React.FC = () => {
     const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
-    const stores = useAppSelector((state: RootState) => state.store.stores);
     const storeForm = useAppSelector((state: RootState) => state.store.storeForm);
     const storeFormRef = useRef(storeForm);
     storeFormRef.current = storeForm;

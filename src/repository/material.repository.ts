@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { listMaterials, getMaterial } from '@/graphql/queries';
 import { createMaterial, updateMaterial, deleteMaterial } from '@/graphql/mutations';
 import { client } from '@/repository';
-import type { Material } from '@/API';
+
 
 const getAllMaterials = async () => {
     try {

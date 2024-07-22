@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { useDataModal } from '@/contexts/DataModalContext';
 import ApplicationAreaDataTable from './applicationAreasDataTable';
 import type { ApplicationArea } from '@/API';
 import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';

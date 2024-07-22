@@ -1,7 +1,9 @@
-import { listUserProfiles, getUserProfile } from '@/graphql/queries';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { CognitoIdentityProviderClient, AdminDeleteUserCommand } from '@aws-sdk/client-cognito-identity-provider';
+import { listUserProfiles } from '@/graphql/queries';
 import { createUserProfile, updateUserProfile } from '@/graphql/mutations';
 import { client } from '@/repository';
-import { signUp, updatePassword, UpdatePasswordInput } from 'aws-amplify/auth';
+import { signUp, updatePassword as updateCognitoPassword, UpdatePasswordInput } from 'aws-amplify/auth';
 import { uploadData } from 'aws-amplify/storage';
 
 type SignUpParameters = {
@@ -11,6 +13,8 @@ type SignUpParameters = {
     name: string;
 };
 
+const sdkClient = new CognitoIdentityProviderClient({ region: 'us-east-1' });
+
 const getAllUsers = async () => {
     try {
         const { data } = await client.graphql({
@@ -19,6 +23,22 @@ const getAllUsers = async () => {
                 limit: 100
             },
         });
+        return data.listUserProfiles.items;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+const getUsersByClient = async (clientID: string) => {
+    try {
+        const { data } = await client.graphql({
+            query: listUserProfiles,
+            variables: {
+                limit: 100,
+                filter: { clientprofileID: { eq: clientID } }
+            }
+        });
+
         return data.listUserProfiles.items;
     } catch (error) {
         console.error(error);
@@ -41,7 +61,7 @@ const getUserProfileById = async (id: string) => {
 }
 
 const create = async (user: any) => {
-    const required = ['firstName', 'lastName', 'email', 'role', 'password', 'confirmPassword'];
+    const required = ['firstName', 'lastName', 'email', 'role'];
     if (required.some((key) => !user[key])) {
         throw new Error('Required fields are missing');
     }
@@ -58,7 +78,6 @@ const create = async (user: any) => {
 }
 
 const update = async (user: any) => {
-    console.log("user update repo", user)
     try {
         const { data } = await client.graphql({
             query: updateUserProfile,
@@ -68,46 +87,6 @@ const update = async (user: any) => {
         return data.updateUserProfile;
     } catch (error) {
         console.error(error);
-    }
-}
-
-const signUserUp = async (
-    {
-        username,
-        password,
-        email,
-        name
-    }: SignUpParameters
-) => {
-    try {
-        const { isSignUpComplete, userId, nextStep } = await signUp({
-            username,
-            password,
-            options: {
-                userAttributes: {
-                    email,
-                    name
-                }
-                // optional
-                // autoSignIn: true // or SignInOptions e.g { authFlowType: "USER_SRP_AUTH" }
-            }
-        });
-
-        return {
-            isSignUpComplete,
-            userId,
-            nextStep
-        }
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-const UpdatePassword = async ({ oldPassword, newPassword }: UpdatePasswordInput) => {
-    try {
-        await updatePassword({ oldPassword, newPassword });
-    } catch (err) {
-        console.log(err);
     }
 }
 
@@ -134,12 +113,56 @@ const uploadProfilePhoto = async (userId: string, file: File, onProgress: (progr
     }
 };
 
+const createCognitoAccount = async (data: SignUpParameters) => {
+    const { username, password, email, name } = data;
+    try {
+        const { isSignUpComplete, userId, nextStep } = await signUp({
+            username,
+            password,
+            options: {
+                userAttributes: {
+                    email,
+                    name
+                }
+            }
+        })
+
+        return { isSignUpComplete, userId, nextStep };
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+const updatePassword = async ({ oldPassword, newPassword }: UpdatePasswordInput) => {
+    try {
+        await updateCognitoPassword({ oldPassword, newPassword });
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+const deleteCognitoAccount = async (username: string) => {
+    const command = new AdminDeleteUserCommand({
+        UserPoolId: 'us-east-1_4G7b8y1h5',
+        Username: username
+    });
+
+    try {
+        const result = await sdkClient.send(command);
+        console.log('result', result);
+    } catch (error) {
+        console.error('error', error);
+    }
+}
+
 export {
     getAllUsers,
+    getUsersByClient,
     getUserProfileById,
     create,
-    signUserUp,
     update,
-    UpdatePassword,
-    uploadProfilePhoto
+    updatePassword,
+    uploadProfilePhoto,
+    createCognitoAccount,
+    deleteCognitoAccount
 }

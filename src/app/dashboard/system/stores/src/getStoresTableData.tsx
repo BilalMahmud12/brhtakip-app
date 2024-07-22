@@ -1,15 +1,12 @@
 'use client'
 import { useRouter } from 'next-nprogress-bar';
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
-import { Badge } from '@aws-amplify/ui-react'
-import Icon from '@/components/core/icon';
 import type { Store } from '@/API'
 import type { DataTableColumn } from '@/components/core/dataTable';
 
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-//Brand
+
 export default function getStoresTableData(
     data: Store[],
     columns: any,

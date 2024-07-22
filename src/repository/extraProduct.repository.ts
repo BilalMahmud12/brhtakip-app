@@ -1,6 +1,5 @@
 import { getExtraProduct, listExtraProducts } from '@/graphql/queries';
 import { createExtraProduct, updateExtraProduct, deleteExtraProduct } from '@/graphql/mutations';
-import type { ExtraProduct } from '@/API';
 import { client } from '@/repository';
 
 const getAllExtraProducts = async () => {

@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { listProducts, getProduct } from '@/graphql/queries';
 import { createProduct, updateProduct, deleteProduct } from '@/graphql/mutations';
 import { client } from '@/repository';
-import type { Product } from '@/API';
 
 
 const getAllProducts = async () => {

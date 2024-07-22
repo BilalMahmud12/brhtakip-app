@@ -1,11 +1,9 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { ClientProfile } from '@/API';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
-import { handleFormChange, setIsFetching } from '@/reduxStore/features/clientSlice';
-
-import AutoComplete from '@/components/core/autoComplete';
+import { handleFormChange } from '@/reduxStore/features/clientSlice';
 import TextField from '@mui/material/TextField';
 import { FormControlLabel } from '@mui/material';
 import Switch from '@mui/material/Switch';
@@ -18,18 +16,17 @@ interface CreateOrUpdateFormProps {
 const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (
     {
         isCreate = true,
-        clientProfile = {} as ClientProfile
+        //clientProfile = {} as ClientProfile
     }
 ) => {
 
     const dispatch = useAppDispatch<AppDispatch>();
-    const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles);
     const clientProfileForm = useAppSelector((state: RootState) => state.client.clientProfileForm);
     const validationErrors = useAppSelector((state: RootState) => state.client.validationErrors);
     const clientFormRef = React.useRef(clientProfileForm);
     clientFormRef.current = clientProfileForm;
 
-    const [checked, setChecked] = useState(clientFormRef.current.isActive as boolean);
+    const [, setChecked] = useState(clientFormRef.current.isActive as boolean);
 
     useEffect(() => {
         setChecked(clientFormRef.current.isActive as boolean)

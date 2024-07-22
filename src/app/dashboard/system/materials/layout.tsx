@@ -9,14 +9,13 @@ import { setMaterials } from '@/reduxStore/features/materialSlice'
 export default function MaterialLayout(
     { children }: { children: React.ReactNode }
 ) {
-
     const dispatch = useAppDispatch<AppDispatch>();
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const materialData = await Repo.MaterialRepository.getAllMaterials();
                 dispatch(setMaterials(materialData as unknown as Material[]));
-                console.log('material data', materialData);
             } catch (error) {
                 console.error('Failed to fetch materials', error);
             }

@@ -1,12 +1,25 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { UserProfile as UserProfileType, Roles } from '@/API';
+import type { UserProfile as OriginalUserProfile, Roles } from '@/API';
+import { isValidKey } from '@/utils/helpers';
 
-const requiredInputs = ['firstName', 'lastName', 'email', 'role', 'password', 'confirmPassword'];  // Include password fields in required inputs
+type UserProfile = Omit<OriginalUserProfile, '__typename' | 'createdAt' | 'updatedAt'>
 
-type UserProfile = Omit<UserProfileType, '__typename' | 'createdAt' | 'updatedAt'>
-interface UserProfileForm extends UserProfile {
-    password?: string;
-    confirmPassword?: string;
+export interface UserProfileForm extends UserProfile {
+    password?: string | null
+    confirmPassword?: string | null
+    [key: string]: any;
+}
+
+export interface UserFormInputValidationErrors {
+    clientprofileID?: string | null;
+    firstName?: string | null;
+    lastName?: string | null;
+    email?: string | null;
+    role?: string | null;
+    permissions?: string | null;
+    password?: string | null;
+    confirmPassword?: string | null;
     [key: string]: any;
 }
 
@@ -14,14 +27,7 @@ interface UserState {
     isFetching: boolean;
     users: UserProfile[];
     userForm: UserProfileForm;
-    validationErrors: {
-        firstName?: string | null;
-        lastName?: string | null;
-        email?: string | null;
-        role?: string | null;
-        password?: string | null;
-        confirmPassword?: string | null;
-    },
+    validationErrors: UserFormInputValidationErrors,
 }
 
 const initialState: UserState = {
@@ -29,45 +35,29 @@ const initialState: UserState = {
     users: [],
     userForm: {
         id: '',
+        cognitoID: '',
+        clientprofileID: '',
         isActive: false,
         firstName: '',
         lastName: '',
         email: '',
-        role: null,
-        password: '',
-        confirmPassword: '',
-        profilePhoto: '',
+        role: '' as Roles,
+        permissions: [],
+        password: null,
+        confirmPassword: null,
+        profilePhoto: null,
     },
     validationErrors: {
+        clientprofileID: null,
         firstName: null,
         lastName: null,
         email: null,
         role: null,
+        permissions: null,
         password: null,
         confirmPassword: null,
     },
 }
-
-const isValidEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-};
-
-const isStrongPassword = (password: string): boolean => {
-    if (password.length < 8) {
-        return false;
-    }
-
-    if (!/[A-Z]/.test(password)) {
-        return false;
-    }
-
-    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-        return false;
-    }
-
-    return true;
-};
 
 const userSlice = createSlice({
     name: 'user',
@@ -79,51 +69,16 @@ const userSlice = createSlice({
         setUsers: (state, action: PayloadAction<UserProfile[]>) => {
             state.users = action.payload
         },
-        handleFormChange: (state, action: PayloadAction<{ key: keyof UserProfileForm, value: string | boolean | string[] }>) => {
-            const { key, value } = action.payload
-            switch (key) {
-                case 'id':
-                    state.userForm.id = value as string
-                    break
-                case 'isActive':
-                    state.userForm.isActive = value as boolean
-                    break
-                case 'firstName':
-                    state.userForm.firstName = value as string
-                    state.validationErrors.firstName = null
-                    break
-                case 'lastName':
-                    state.userForm.lastName = value as string
-                    state.validationErrors.lastName = null
-                    break
-                case 'email':
-                    if (isValidEmail(value as string)) {
-                        state.userForm.email = value as string;
-                        state.validationErrors.email = null;
-                    } else {
-                        state.validationErrors.email = 'Geçerli bir email adresi giriniz';
-                    }
-                    break;
-                case 'password':
-                    state.userForm.password = value as string;
-                    state.validationErrors.password = null;
-                    break
-                case 'confirmPassword':
-                    state.userForm.confirmPassword = value as string;
-                    state.validationErrors.confirmPassword = null;
-                    break
-                case 'role':
-                    state.userForm.role = value as Roles
-                    state.validationErrors.role = null
-                    break
-                case 'permissions':
-                    state.userForm.permissions = value as string[]
-                    break
-                case 'profilePhoto':
-                    state.userForm.profilePhoto = value as string
-                    break
-                default:
-                    break
+        handleFormChange(state, action: PayloadAction<{ key: string, value: any }>) {
+            const { key, value } = action.payload;
+
+            if (isValidKey(key, state.userForm)) {
+                state.userForm = {
+                    ...state.userForm,
+                    [key]: value
+                }
+            } else {
+                console.warn(`Invalid key: ${key}`);
             }
         },
         setUserForm(state, action: PayloadAction<UserProfileForm>) {
@@ -132,26 +87,11 @@ const userSlice = createSlice({
         resetUserForm(state) {
             state.userForm = initialState.userForm
         },
-
-        validateForm: (state) => {
-            const { password, confirmPassword } = state.userForm;
-            Object.keys(state.userForm).forEach((key) => {
-                if (requiredInputs.includes(key) && !state.userForm[key]) {
-                    state.validationErrors[key as keyof UserState['validationErrors']] = 'Bu alan zorunludur';
-                }
-            });
-
-            // Validate password
-            if (password && !isStrongPassword(password)) {
-                state.validationErrors.password = 'Şifreniz en az 8 karakter uzunluğunda olmalıdır en az 1 büyük harf ve 1 özel karakter içermelidir.';
-            }
-
-            // Validate confirmPassword
-            if (password !== confirmPassword) {
-                state.validationErrors.confirmPassword = 'Şifreler eşleşmiyor';
-            } else {
-                state.validationErrors.confirmPassword = null;
-            }
+        setValidationErrors: (state, action: PayloadAction<UserFormInputValidationErrors>) => {
+            state.validationErrors = action.payload
+        },
+        resetValidationErrors: (state) => {
+            state.validationErrors = initialState.validationErrors
         }
     }
 });
@@ -162,7 +102,8 @@ export const {
     handleFormChange,
     setUserForm,
     resetUserForm,
-    validateForm
+    setValidationErrors,
+    resetValidationErrors
 } = userSlice.actions;
 
 export default userSlice.reducer;

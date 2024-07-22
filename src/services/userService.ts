@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as Repo from '@/repository/index';
 import { AppDispatch } from '@/reduxStore/store';
 import { getCurrentUserId } from './authService';

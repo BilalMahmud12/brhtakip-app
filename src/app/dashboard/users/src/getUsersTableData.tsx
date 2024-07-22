@@ -1,7 +1,6 @@
 import type { UserProfile } from '@/API'
 import { formateDate } from '@/utils/helpers';
 import Chip from '@mui/material/Chip';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -29,7 +28,7 @@ const getRoleLabel = (userRole: string) => {
     return label
 }
 
-export default function getUsresTableData(
+export default function GetUsresTableData(
     data: UserProfile[],
     columns: any[],
     handleEdit: (data: any) => void,

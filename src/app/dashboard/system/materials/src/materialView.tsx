@@ -1,10 +1,8 @@
 'use client'
-import React, { useEffect, useRef } from 'react';
-import { useDataModal } from '@/contexts/DataModalContext';
+import React, { useRef } from 'react';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
-import { setMaterials, resetFormValues, setMaterialForm } from '@/reduxStore/features/materialSlice';
-import CreateOrUpdateForm from '../src/createOrUpdateForm';
+import { setMaterials, setMaterialForm } from '@/reduxStore/features/materialSlice';
 import type { Material } from '@/API';
 import MaterialsDataTable from './materialsDataTable';
 import * as Repo from '@/repository/index';

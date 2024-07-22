@@ -1,124 +1,123 @@
-import React, { use, useEffect, useState } from 'react'
+'use client'
+import React from 'react'
+import * as Repo from '@/repository/index';
+import { useRouter } from 'next-nprogress-bar';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import { handleFormChange, resetUserForm } from '@/reduxStore/features/userSlice';
-import { FormControlLabel } from '@mui/material';
-import AutoComplete from '@/components/core/autoComplete';
-import TextField from '@mui/material/TextField';
-import Switch from '@mui/material/Switch';
-import Stack from '@mui/material/Stack';
-import Alert from '@mui/material/Alert';
-import Button from '@mui/material/Button';
-import SaveIcon from '@mui/icons-material/Save';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { roles } from '@/config/roles';
+import getRoleSelectOptions from './getRoleSelectOptions';
 import PermissionSelection from '../create/src/PermissionSelection';
+import AutoComplete from '@/components/core/autoComplete';
+import LoadingButton from '@mui/lab/LoadingButton';
+import { FormControlLabel, Switch, TextField } from '@mui/material';
+import Button from '@mui/material/Button';
+import DoneIcon from '@mui/icons-material/Done';
+import ClearIcon from '@mui/icons-material/Clear';
+import Alert from '@mui/material/Alert';
+import { roles } from '@/config/roles';
 import type { Permission } from '@/config/index';
-import { useRouter } from 'next-nprogress-bar';
-import * as Repo from '@/repository/index';
 import type { UserProfile } from '@/API';
+import { toast } from 'sonner';
 
 interface CreateOrUpdateFormProps {
     isCreate?: boolean
+    isFetching?: boolean
     onSubmitted?: () => void
-    userProfile?: UserProfile;
-}
-type RoleOption = {
-    label: string;
-    value: string;
-};
-
-type ClientOption = {
-    label: string;
-    value: string;
-};
-
-const getRoleOptions = (currentUser: any) => {
-    const roles = {
-        ADMIN: 'ADMIN',
-        CLIENT_ADMIN: 'CLIENT_ADMIN',
-        EDITOR: 'EDITOR',
-        CLIENT_EDITOR: 'CLIENT_EDITOR',
-    };
-
-    return Object.values(roles)
-        .map((role) => {
-            let label = '';
-            switch (role) {
-                case roles.ADMIN:
-                    label = 'Sistem Yöneticisi';
-                    break;
-                case roles.CLIENT_ADMIN:
-                    label = 'Kurumsal Yöneticisi';
-                    break;
-                case roles.EDITOR:
-                    label = 'Sistem Editörü';
-                    break;
-                case roles.CLIENT_EDITOR:
-                    label = 'Kurumsal Editörü';
-                    break;
-                default:
-                    label = '';
-            }
-            return { value: role, label };
-        })
-        .filter((role) => {
-            if (currentUser.clientprofileID === 'BRH_ADMIN') {
-                return currentUser.role === roles.EDITOR ? role.value !== roles.ADMIN : true;
-            } else {
-                return currentUser.role === roles.CLIENT_EDITOR
-                    ? role.value !== roles.CLIENT_ADMIN && role.value !== roles.ADMIN && role.value !== roles.EDITOR
-                    : true;
-            }
-        });
-};
-
-const getClientOptions = (clientProfiles: any[]) => {
-    return clientProfiles.map((client) => {
-        return { value: client.id, label: client.name }
-    })
 }
 
-const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
-    isCreate = false,
-    onSubmitted = () => { },
-    userProfile = {} as UserProfile
-}) => {
+type RoleSelectOption = {
+    label: string;
+    value: string;
+}
+
+type ClientSelectOption = {
+    label: string;
+    value: string;
+}
+
+
+const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
+    const {
+        isCreate = false,
+        isFetching = false,
+        onSubmitted = () => { },
+    } = props
+
     const router = useRouter()
     const dispatch = useAppDispatch<AppDispatch>()
     const currentUser = useAppSelector((state: RootState) => state.global.currentUserProfile)
-    const getClientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles)
-    const validationErrors = useAppSelector((state: RootState) => state.user.validationErrors);
-    const { clientprofileID } = currentUser
+
     const userForm = useAppSelector((state: RootState) => state.user.userForm)
     const userFormRef = React.useRef(userForm)
     userFormRef.current = userForm
-
     console.log('userFormRef', userFormRef.current)
 
-    const [checked, setChecked] = React.useState(userFormRef.current.isActive as boolean);
-    const [selectedPermissions, setSelectedPermissions] = React.useState<Permission[]>([]);
-    const [roleOptions, setRoleOptions] = useState<RoleOption[]>([]);
-    const [selectedRole, setSelectedRole] = useState<RoleOption | null>(null);
+    const validationErrors = useAppSelector((state: RootState) => state.user.validationErrors)
+    const validationErrorsRef = React.useRef(validationErrors)
+    validationErrorsRef.current = validationErrors
 
-    const [clientProfileOptions, setClientProfileOptions] = useState<ClientOption[]>([]);
-    const [selectedClientProfile, setSelectedClientProfile] = useState<ClientOption | null>(null);
+    const [_, setChecked] = React.useState(userFormRef.current.isActive as boolean)
+    const [roleSelectOptions, setRoleSelectOptions] = React.useState<RoleSelectOption[]>([])
+    const [selectedRole, setSelectedRole] = React.useState<RoleSelectOption | null>(null)
 
-    useEffect(() => {
+    const [clientProfileOptions, setClientProfileOptions] = React.useState<ClientSelectOption[]>([])
+    const [selectedClientProfile, setSelectedClientProfile] = React.useState<ClientSelectOption | null>(null)
+    const [selectedPermissions, setSelectedPermissions] = React.useState<Permission[]>([])
+
+    const handleOnRoleSelect = (option: RoleSelectOption, reason: string) => {
+        setSelectedRole(reason === 'clear' ? null : option)
+        dispatch(handleFormChange({ key: 'role', value: option?.value as string }))
+        
+        if (option?.value === roles.ADMIN) {
+            setSelectedPermissions(['ALL_PERMISSIONS'] as unknown as Permission[])
+        } else {
+            setSelectedPermissions([])
+        }
+
+        if (option?.value === roles.ADMIN || option?.value === roles.EDITOR) {
+            dispatch(handleFormChange({ key: 'clientprofileID', value: 'BRH_ADMIN' }))
+        } else {
+            dispatch(handleFormChange({ key: 'clientprofileID', value: '' }))
+        }
+    }
+
+    const handleOnClientProfileSelect = (option: ClientSelectOption) => {
+        setSelectedClientProfile(option)
+        dispatch(handleFormChange({ key: 'clientprofileID', value: option?.value as string }))
+    }
+
+    const handleOnPermissionSelect = (permissions: Permission[]) => {
+        setSelectedPermissions(permissions)
+        dispatch(handleFormChange({ key: 'permissions', value: permissions }))
+    }
+
+    const handleOnCancel = () => {
+        toast.info('İşlem iptal edildi')
+        dispatch(resetUserForm())
+        router.push('/dashboard/users')
+    }
+
+    React.useEffect(() => {
+        setChecked(userFormRef.current.isActive as boolean)
+        //setSelectedPermissions(userFormRef.current.permissions as Permission[])
+    }, [])
+
+    React.useEffect(() => {
+        console.log('useEffect selectedPermissions 2 start', selectedPermissions)
         setSelectedRole(null);
         const getAndSetRoleOptions = async () => {
-            const roles = getRoleOptions(currentUser);
-            setRoleOptions(roles);
+            const roles = getRoleSelectOptions(currentUser as UserProfile);
+            setRoleSelectOptions(roles);
             const currentRole = roles.find((role) => role.value === userForm.role) || null;
             setSelectedRole(currentRole);
         };
         getAndSetRoleOptions();
-    }, [currentUser, userForm.role]);
 
+        console.log('useEffect selectedPermissions 2 end', selectedPermissions)
+    }, [currentUser, userFormRef.current.role])
 
-    ///////////////////////////////////////////////////
-
-    useEffect(() => {
+    React.useEffect(() => {
+        console.log('useEffect selectedPermissions 3 start', selectedPermissions)
         setSelectedClientProfile(null);
         const getAndSetClientProfileOptions = async () => {
             const clientProfiles = await Repo.ClientProfileRepository.getClientProfiles();
@@ -130,148 +129,123 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
 
             const currentClientProfile = clientProfileOptions.find(clientProfile => clientProfile.value === userForm.clientprofileID) || null;
             setSelectedClientProfile(currentClientProfile);
+            console.log('selectedPermissions', selectedPermissions)
         };
 
         getAndSetClientProfileOptions();
-    }, [userForm.clientprofileID]);
-
-    const getRoleSelectedValue = (role: string) => {
-        return getRoleOptions(currentUser).find((option) => option.value === role)?.label as string || ''
-    }
+        console.log('useEffect selectedPermissions 3 end', selectedPermissions)
+    }, [userFormRef.current.clientprofileID])
 
     React.useEffect(() => {
-        setChecked(userFormRef.current.isActive as boolean)
-        setSelectedPermissions(userFormRef.current.permissions as Permission[] || [])
-    }, [])
-
-    React.useEffect(() => {
-        dispatch(handleFormChange({ key: 'permissions', value: selectedPermissions }))
-    }, [selectedPermissions])
-
-    React.useEffect(() => {
-        dispatch(handleFormChange({
-            key: 'clientprofileID',
-            value: [roles.ADMIN, roles.EDITOR].includes(userFormRef.current.role as string) ? 'BRH_ADMIN' : userFormRef.current.clientprofileID as string
-        }))
-
-        if (userFormRef.current.role === roles.ADMIN) {
-            setSelectedPermissions(['ALL_PERMISSIONS'] as unknown as Permission[])
-        } else {
-            setSelectedPermissions(userFormRef.current.permissions as Permission[] || [])
+        console.log('useEffect selectedPermissions 4 start', selectedPermissions)
+        if (!isCreate) {
+            setSelectedPermissions(userFormRef.current.permissions as Permission[])
         }
-    }, [userFormRef.current.role])
-
-    // useEffect(() => {
-    //     if (!isCreate) {
-    //         loadFormData(userProfile);
-    //     }
-    // }, [userProfile])
-
-    // const loadFormData = async (userProfile: UserProfile) => {
-    //     const {
-    //         firstName,
-    //         lastName,
-    //         isActive,
-    //         role,
-    //         email,
-    //     } = userProfile
-
-    //     dispatch(handleFormChange({ key: 'lastName', value: lastName as string }))
-    //     dispatch(handleFormChange({ key: 'firstName', value: firstName as string }))
-    //     dispatch(handleFormChange({ key: 'isActive', value: isActive as boolean }))
-    //     dispatch(handleFormChange({ key: 'role', value: role as string }))
-    //     dispatch(handleFormChange({ key: 'email', value: email as string }))
-    // }
+        //setSelectedPermissions(userFormRef.current.permissions as Permission[])
+        console.log('useEffect selectedPermissions 4 end', selectedPermissions)
+    }, [userFormRef.current])
 
     return (
-        <div className='h-full'>
+        <React.Fragment>
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6'>
-                <div className='h-full col-span-2'>
+                <div className='p-6 bg-white shadow col-span-2'>
                     <div className='flex items-center justify-between'>
-                        <Button
-                            variant="text"
-                            startIcon={<ArrowBackIosIcon />}
-                            onClick={() => router.push('/dashboard/users')}
-                            disableElevation
-                            color='inherit'
-                        >
-                            Kullanıcılara Geri Dön
-                        </Button>
+                        <div>
+                            <h1 className='text-lg font-bold'>{isCreate ? 'Kullanıcı Oluştur' : 'Kullanıcı Düzenle'}</h1>
+                        </div>
 
-                        <Button variant="contained" startIcon={<SaveIcon />} onClick={onSubmitted} disableElevation>
-                            Kaydı Et
-                        </Button>
+                        <div className='flex items-center justify-end space-x-3'>
+                            <Button
+                                variant="contained"
+                                color='secondary'
+                                size='small'
+                                endIcon={<ClearIcon />}
+                                onClick={() => handleOnCancel()}
+                            >
+                                Vazgeç
+                            </Button>
+
+                            <LoadingButton
+                                variant="contained"
+                                color='primary'
+                                size='small'
+                                endIcon={<DoneIcon />}
+                                onClick={onSubmitted}
+                                loading={isFetching}
+                                sx={{
+                                    fontWeight: 400,
+                                    backgroundColor: 'black',
+                                    '&:hover': {
+                                        backgroundColor: '#333',
+                                    }
+                                }}
+                            >
+                                Kaydı Et
+                            </LoadingButton>
+                        </div>
                     </div>
                 </div>
 
+                {/** Hesap Durumu ve Rol */}
                 <div className='p-6 bg-white shadow col-span-2'>
                     <h2 className='text-base font-semibold mb-6'>Hesap Durumu ve Rol</h2>
 
                     <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
                         <div className='input-group w-full'>
                             <label htmlFor="client_name" className='block text-xs font-medium mb-2'>Hesap Durumu</label>
+
                             <div>
                                 <FormControlLabel
                                     label={userFormRef.current.isActive as boolean ? 'Aktif' : 'Aktif Değil'}
-                                    control={<Switch
-                                        color='success'
-                                        checked={userFormRef.current.isActive as boolean}
-                                        onChange={
-                                            (event: React.ChangeEvent<HTMLInputElement>) => {
-                                                setChecked(event.target.checked)
-                                                dispatch(handleFormChange({
-                                                    key: 'isActive',
-                                                    value: event.target.checked
-                                                }))
+                                    control={
+                                        <Switch
+                                            color='success'
+                                            checked={isCreate ? true : userFormRef.current.isActive as boolean}
+                                            onChange={
+                                                (event: React.ChangeEvent<HTMLInputElement>) => {
+                                                    setChecked(event.target.checked)
+                                                    dispatch(handleFormChange({
+                                                        key: 'isActive',
+                                                        value: event.target.checked
+                                                    }))
+                                                }
                                             }
-                                        }
-
-                                    />}
+                                        />
+                                    }
                                     sx={{ '.MuiFormControlLabel-label': { fontSize: '0.90rem', fontWeight: '500' } }}
                                 />
                             </div>
                         </div>
+
                         <div className='input-group w-full'>
                             <label htmlFor="role" className='block text-xs font-medium mb-1.5'>Rol *</label>
                             <AutoComplete
                                 id="role"
-                                error={!!validationErrors.role}
-                                helperText={validationErrors.role || ''}
-                                options={roleOptions}
+                                options={roleSelectOptions}
                                 value={selectedRole ? selectedRole.value : ''}
-                                handleOnChange={(option) => {
-                                    if (typeof option !== 'string') {
-                                        dispatch(handleFormChange({ key: 'role', value: option?.value as string || '' }))
-                                    }
-                                }}
+                                handleOnChange={handleOnRoleSelect}
+                                error={validationErrorsRef.current.role ? true : false}
+                                helperText={validationErrorsRef.current.role || ''}
                             />
                         </div>
                     </div>
                 </div>
 
+                {/** Kullanıcı Bilgileri */}
                 <div className='p-6 bg-white shadow h-full col-span-2 lg:col-span-1'>
                     <h2 className='text-base font-semibold mb-6'>Kullanıcı Bilgileri</h2>
 
-                    <Stack spacing={2} sx={{ mt: 2, mb: 3, display: 'none' }} >
-                        <Alert severity="info">
-                            Kullanıcı bilgilerini girerek yeni bir kullanıcı oluşturabilirsiniz.
-                        </Alert>
-                    </Stack>
-
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
-                        {(clientprofileID === 'BRH_ADMIN' && [roles.CLIENT_ADMIN, roles.CLIENT_EDITOR].includes(userFormRef.current.role as string)) && (
+                        {(currentUser.clientprofileID === 'BRH_ADMIN' && [roles.CLIENT_ADMIN, roles.CLIENT_EDITOR].includes(userFormRef.current.role as string)) && (
                             <div className='input-group w-full col-span-2'>
                                 <label htmlFor="client_name" className='block text-xs font-medium mb-1.5'>Firma</label>
                                 <AutoComplete
                                     id="client_name"
                                     options={clientProfileOptions}
                                     value={selectedClientProfile ? selectedClientProfile.value : ''}
-                                    handleOnChange={(option) => {
-                                        console.log('option', option)
-                                        if (typeof option !== 'string') {
-                                            dispatch(handleFormChange({ key: 'clientprofileID', value: option?.value as string || '' }))
-                                        }
-                                    }}
+                                    handleOnChange={handleOnClientProfileSelect}
+                                    error={validationErrorsRef.current.clientprofileID ? true : false}
+                                    helperText={validationErrorsRef.current.clientprofileID || ''}
                                 />
                             </div>
                         )}
@@ -282,8 +256,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                 id='firstName'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                error={!!validationErrors.firstName}
-                                helperText={validationErrors.firstName || ''}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({
                                         key: 'firstName',
@@ -291,7 +263,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                     }))
                                 }}
                                 value={userFormRef.current.firstName}
-                                required
+                                error={validationErrorsRef.current.firstName ? true : false}
+                                helperText={validationErrorsRef.current.firstName || ''}
                             />
                         </div>
 
@@ -301,8 +274,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                 id='lastName'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                error={!!validationErrors.firstName}
-                                helperText={validationErrors.firstName || ''}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({
                                         key: 'lastName',
@@ -310,13 +281,16 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                     }))
                                 }}
                                 value={userFormRef.current.lastName}
+                                error={validationErrorsRef.current.lastName ? true : false}
+                                helperText={validationErrorsRef.current.lastName || ''}
                             />
                         </div>
                     </div>
                 </div>
 
+                {/** Hesap Giriş Bilgileri */}
                 <div className='p-6 bg-white shadow mb-6 h-full col-span-2 lg:col-span-1'>
-                    <h2 className='text-base font-semibold mb-6'>Giriş Bilgileri</h2>
+                    <h2 className='text-base font-semibold mb-6'>Hesap Giriş Bilgileri</h2>
 
                     <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8 mb-4'>
                         <div className='input-group w-full sm:col-span-2'>
@@ -325,8 +299,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                 id='email'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                error={!!validationErrors.email}
-                                helperText={validationErrors.email || ''}
+                                value={userFormRef.current.email}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({
                                         key: 'email',
@@ -334,16 +307,18 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                     }))
                                 }}
                                 autoComplete='email'
+                                error={validationErrorsRef.current.email ? true : false}
+                                helperText={validationErrorsRef.current.email || ''}
+                                disabled={!isCreate}
                             />
                         </div>
+
                         <div className='input-group w-full'>
                             <label htmlFor="password" className='block text-xs font-medium mb-1.5'>Şifre *</label>
                             <TextField
                                 id='password'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                error={!!validationErrors.password}
-                                helperText={validationErrors.password || ''}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({
                                         key: 'password',
@@ -352,6 +327,8 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                 }}
                                 type='password'
                                 autoComplete='new-password'
+                                error={validationErrorsRef.current.password ? true : false}
+                                helperText={validationErrorsRef.current.password || ''}
                             />
                         </div>
 
@@ -361,8 +338,6 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                 id='confirmPassword'
                                 variant="standard"
                                 sx={{ width: '100%' }}
-                                error={!!validationErrors.confirmPassword}
-                                helperText={validationErrors.confirmPassword || ''}
                                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                     dispatch(handleFormChange({
                                         key: 'confirmPassword',
@@ -371,11 +346,14 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                                 }}
                                 type='password'
                                 autoComplete='new-password'
+                                error={validationErrorsRef.current.confirmPassword ? true : false}
+                                helperText={validationErrorsRef.current.confirmPassword || ''}
                             />
                         </div>
                     </div>
                 </div>
 
+                {/** İzinler */}
                 <div className='p-6 bg-white shadow h-full col-span-2'>
                     <h2 className='text-base font-semibold mb-6'>İzinler</h2>
 
@@ -384,9 +362,15 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                             <div className='p-6 bg-zinc-100'>
                                 <PermissionSelection
                                     selectedPermissions={selectedPermissions}
-                                    handleSelectedPermissions={setSelectedPermissions}
+                                    handleSelectedPermissions={handleOnPermissionSelect}
                                 />
                             </div>
+
+                            {validationErrorsRef.current.permissions && (
+                                <Alert severity="error" className='mt-4'>
+                                    {validationErrorsRef.current.permissions}
+                                </Alert>
+                            )}
                         </div>
                     ) : (
                         <Alert severity="info">
@@ -394,37 +378,41 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = ({
                         </Alert>
                     )}
                 </div>
+
+                <div className='p-6 bg-white shadow col-span-2'>
+                    <div className='flex items-center justify-end space-x-3'>
+                        <Button
+                            variant="contained"
+                            color='secondary'
+                            size='small'
+                            endIcon={<ClearIcon />}
+                            onClick={() => handleOnCancel()}
+                        >
+                            Vazgeç
+                        </Button>
+
+                        <LoadingButton
+                            variant="contained"
+                            color='primary'
+                            size='small'
+                            endIcon={<DoneIcon />}
+                            onClick={onSubmitted}
+                            loading={isFetching}
+                            sx={{
+                                fontWeight: 400,
+                                backgroundColor: 'black',
+                                '&:hover': {
+                                    backgroundColor: '#333',
+                                }
+                            }}
+                        >
+                            Kaydı Et
+                        </LoadingButton>
+                    </div>
+                </div>
             </div>
-        </div>
+        </React.Fragment>
     )
 }
 
 export default CreateOrUpdateForm
-
-
-
-/** 
- * User Profile Field Groups
- * Client Profile: Client Profile
- * Status: Active, Inactive
- * Info: First Name, Last Name, Email, Password, Confirm Password
- * Role & Permissions: Role, Permissions
- * 
- * who will see User Create page?
- * * Admin
- * * Editor
- * * Client Admin
- * * Client User
- * 
- * Admin Side:
- * * Available roles to assign:
- * * Available Features: 
- * 
- * Client Side:;
- * * Available roles to assign:
- * * Available Features:
- * 
- * Load the client select form before the page or whenever
-*/
-
-

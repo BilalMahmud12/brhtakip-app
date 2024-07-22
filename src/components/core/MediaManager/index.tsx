@@ -73,7 +73,7 @@ const MediaManager: React.FC<MediaManagerProps> = (props) => {
         const newPreviews = [...previews];
         newPreviews.splice(index, 1);
         setPreviews(newPreviews);
-        setSelectedFiles(selectedFiles.filter((file, i) => i !== index));
+        setSelectedFiles(selectedFiles.filter((_, i) => i !== index));
     }
 
     const handleUpload = async () => {
@@ -227,7 +227,7 @@ const MediaManager: React.FC<MediaManagerProps> = (props) => {
                         color="primary"
                         size="small"
                         startIcon={<CloudDownloadIcon />}
-                        disabled={files.length === 0}
+                        disabled={files?.length === 0 || false}
                         onClick={handleDownloadAllFiles}
                         className='w-full sm:w-auto'
                     >

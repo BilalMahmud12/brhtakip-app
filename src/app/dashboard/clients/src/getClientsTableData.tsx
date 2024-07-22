@@ -1,7 +1,4 @@
 import type { ClientProfile } from '@/API'
-import { formateDate } from '@/utils/helpers';
-import Chip from '@mui/material/Chip';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';

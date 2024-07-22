@@ -31,7 +31,6 @@ import Icon from '@/components/core/icon';
 import { useRouter } from 'next-nprogress-bar';
 import Image from 'next/image';
 import UserAccountMenu from './src/userAccountMenu';
-import UserNotificationMenu from './src/userNotificationMenu';
 import { signOut } from "aws-amplify/auth"
 import { toast } from 'sonner';
 
@@ -162,7 +161,6 @@ export default function RootLayout({
 
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
 
     const handleLogOut = async () => {
         toast.success('Güvenli Çıkış yapıldı, görüşmek üzere!');
@@ -245,10 +243,11 @@ export default function RootLayout({
                         <List>
                             {navGroup.items
                                 .filter((item) => {
-                                    if (item.name === 'Müşteri Profilleri' && currentUserProfileRef.current.clientprofileID !== 'BRH_ADMIN') {
+                                    if (item.href === '/dashboard/clients' && currentUserProfileRef.current.clientprofileID !== 'BRH_ADMIN') {
                                         return false;
                                     }
-                                    return true;
+
+                                    return true
                                 })
                                 .map((item, index) => (
                                 <ListItem key={`${item.name}-${index}`} sx={{ display: 'block' }} disablePadding>
@@ -284,7 +283,7 @@ export default function RootLayout({
                 ))}
 
                 <List>
-                    {['Logout'].map((text, index) => (
+                    {['Logout'].map((text) => (
                         <ListItem key={text} disablePadding sx={{ display: 'block' }}>
                             <Tooltip title="Güvenli Çıkış" placement="right" arrow>
                                 <ListItemButton

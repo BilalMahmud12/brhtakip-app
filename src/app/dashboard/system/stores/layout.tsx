@@ -27,7 +27,8 @@ export default function StoreLayout(
             }
         }
         fetchData();
-    })
+    }, [])
+    
     return (
         <div>
             {children}

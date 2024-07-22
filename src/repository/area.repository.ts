@@ -1,7 +1,6 @@
 import { listAreas, getArea } from '@/graphql/queries';
 import { createArea, updateArea, deleteArea } from '@/graphql/mutations';
 import { client } from '@/repository';
-import type { Area } from '@/API';
 
 const getAllAreas = async () => {
     try {

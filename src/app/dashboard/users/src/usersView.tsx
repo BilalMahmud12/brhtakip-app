@@ -1,117 +1,184 @@
 'use client'
 import React from "react";
+import * as Repo from '@/repository'
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
-import { resetUserForm } from '@/reduxStore/features/userSlice';
-import UsersDataTable from "./usersDataTable";
-import { useDataModal } from '@/contexts/DataModalContext';
-import Button from '@mui/material/Button';
+import { resetUserForm, setIsFetching, setUsers } from '@/reduxStore/features/userSlice';
+import UsersDataTable from "./UsersDataTable";
+import { Button, TextField, MenuItem, IconButton } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import CheckIcon from '@mui/icons-material/Check';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import CloseIcon from '@mui/icons-material/Close';
 import DeleteIcon from '@mui/icons-material/Delete';
+import SyncIcon from '@mui/icons-material/Sync';
 import { useRouter } from "next-nprogress-bar";
-import AutoComplete from "@/components/core/autoComplete";
+import Alert from '@mui/material/Alert';
 
-const getClientOptions = (clientProfiles: any[]) => {
-    return clientProfiles.map((client) => {
-        return { value: client.id, label: client.name }
-    })
+import type { ClientProfile } from '@/API';
+
+const getClientOptions = (clientProfiles: ClientProfile[]) => {
+    const options = [{ value: 'BRH_ADMIN', label: 'BRH Takip Ekibi' }]
+    const clientOptions =  clientProfiles
+            .filter((client) => client.name !== null && client.name !== undefined)
+            .map((client) => {
+                return { value: client.id, label: client.name }
+            }) as { value: string, label: string }[]
+    
+    return options.concat(clientOptions)
 }
 
 const UsersView: React.FC = () => {
     const router = useRouter()
     const dispatch = useAppDispatch<AppDispatch>();
     const users = useAppSelector((state: RootState) => state.user.users);
-    const [selectedUsers, setSelectedUsers] = React.useState<string[]>([]);
-    const [showFilter, setShowFilter] = React.useState<boolean>(false)
-
+    const isFetching = useAppSelector((state: RootState) => state.user.isFetching);
     const clientProfiles = useAppSelector((state: RootState) => state.client.clientProfiles)
+    const [selectedUsers, setSelectedUsers] = React.useState<string[]>([]);
+    const [selectedClient, setSelectedClient] = React.useState<string>('BRH_ADMIN')
+    const [showTip, setShowTip] = React.useState<boolean>(false);
 
     React.useEffect(() => {
-        return () => {
-            dispatch(resetUserForm());
+        dispatch(resetUserForm())
+    })
+
+    /*
+    const handleSelectClient = (client: string) => {
+        console.log('selected client', client)
+        setSelectedClient(client)
+    }*/
+
+    const handleLoadUsers = async (client: string) => {
+        try {
+            dispatch(setIsFetching(true));
+            const users = await Repo.UserRepository.getUsersByClient(client);
+
+            if (users) {
+                dispatch(setUsers(users));
+            }
+
+            dispatch(setIsFetching(false));
+        } catch (error) {
+            console.error(error)
         }
-    }, [])
+    }
 
     return (
         <>
             <div className="mb-8">
                 <div className="mb-4 space-y-5">
-                    <div className='flex items-center justify-between'>
-                        <div className='flex items-center space-x-3'>
-                            <h1 className='text-2xl font-semibold'>Kullanıcılar</h1>
-                        </div>
+                    <div className=''>
+                        <div className='flex items-center justify-between'>
+                            <div className='flex items-center space-x-3'>
+                                <h1 className='text-lg font-semibold'>Sistem Kullanıcıları</h1>
+                            </div>
 
-                        <div className="flex items-center space-x-3">
-                            <Button
-                                variant="contained"
-                                color="inherit"
-                                startIcon={<FilterAltIcon />}
-                                onClick={() => setShowFilter(!showFilter)}
-                                sx={{ backgroundColor: '#fff' }}
-                                disableElevation
-                            >
-                                Filtre
-                            </Button>
+                            <div className="flex items-center space-x-3">
+                                {selectedUsers.length > 0 && (
+                                    <Button
+                                        variant="contained"
+                                        color="error"
+                                        size='small'
+                                        startIcon={<DeleteIcon />}
+                                        onClick={() => console.log('delete', selectedUsers)}
+                                    >
+                                        Seçildikleri Sil
+                                    </Button>
+                                )}
 
-                            {selectedUsers.length > 0 && (
                                 <Button
                                     variant="contained"
-                                    color="error"
-                                    startIcon={<DeleteIcon />}
-                                    onClick={() => console.log('delete', selectedUsers)}
-                                    disableElevation
+                                    size='small'
+                                    startIcon={<AddIcon />}
+                                    onClick={() => router.push('/dashboard/users/create')}
+                                    sx={{
+                                        fontWeight: 500,
+                                        textTransform: 'none',
+                                        backgroundColor: 'black',
+                                        '&:hover': {
+                                            backgroundColor: '#333',
+                                        }
+                                    }}
                                 >
-                                    Seçildikleri Sil
+                                    Kullanıcı Ekle
                                 </Button>
-                            )}
-
-                            <Button
-                                variant="contained"
-                                startIcon={<AddIcon />}
-                                onClick={() => router.push('/dashboard/users/create')}
-                                disableElevation
-                            >
-                                Kullanıcı Ekle
-                            </Button>
+                            </div>
                         </div>
                     </div>
 
-                    {showFilter && (
-                        <div className="p-6 bg-white shadow">
-                            <h2 className='text-base font-semibold mb-6'>Filtreler</h2>
-
-                            <div className='grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-8 mb-4'>
-                                <div className='input-group w-full'>
-                                    <label htmlFor="client_name" className='block text-xs font-medium mb-1.5'>Firma</label>
-                                    <AutoComplete
-                                        id="client_name"
-                                        options={getClientOptions(clientProfiles)}
-                                        value={''}
-                                        handleOnChange={(option) => {
-                                            console.log('option', option)
-                                            if (typeof option !== 'string') {
-                                                
-                                            }
-                                        }}
-                                    />
+                    {showTip && (
+                        <div>
+                            <div className="shadow relative" >
+                                <div className="absolute z-20 top-2 right-2">
+                                    <IconButton aria-label="close" onClick={() => setShowTip(false)}>
+                                        <CloseIcon />
+                                    </IconButton>
                                 </div>
-                            </div>
-
-                            <div className="flex items-center justify-end space-x-3">
-                                <Button
-                                    variant="contained"
-                                    color="inherit"
-                                    startIcon={<CheckIcon />}
-                                    onClick={() => router.push('/dashboard/users/create')}
-                                    disableElevation
-                                >
-                                    Uygula
-                                </Button>
+                                <Alert severity="warning" icon={<LightbulbIcon  />}>
+                                    <div className="relative w-full">
+                                        <div className="font-medium mb-2 mt-0.5">
+                                            Bu özellik, BRH Takip sistemine yeni kullanıcılar eklemenizi ve mevcut kullanıcıların yetkilerini yönetmenizi sağlar. Kullanıcıları oluştururken veya düzenlerken dikkat edilmesi gerekenler:
+                                        </div>
+                                        <ol className="space-y-1">
+                                            <li>- Kullanıcılara belirli yetkiler tanımlayarak sistemdeki erişim ve işlem yapma haklarını belirleyebilirsiniz. Her kullanıcı rolüne göre farklı yetkiler atanabilir.</li>
+                                            <li>- Kullanıcıların aktif veya pasif olduğunu belirleyebilirsiniz. Aktif olmayan kullanıcılar sisteme erişemez.</li>
+                                            <li>- Mevcut kullanıcıların bilgilerini düzenleyebilir veya gerekirse silebilirsiniz. Düzenlemek veya silmek için ilgili kullanıcı satırındaki kalem (düzenle) veya çöp kutusu (sil) ikonuna tıklayabilirsiniz.</li>
+                                        </ol>
+                                    </div>
+                                </Alert>
                             </div>
                         </div>
                     )}
+
+                    <div>
+                        <div className='flex items-center space-x-3'>
+                            <div className='input-group w-[317px] bg-white'>
+                                <TextField
+                                    select
+                                    id="request_status"
+                                    defaultValue={selectedClient}
+                                    value={getClientOptions(clientProfiles).find(option => option.value === selectedClient)?.value as string}
+                                    onChange={(e) => setSelectedClient(e.target.value as string)}
+                                    sx={{ 
+                                        width: '100%',
+                                        '& .MuiSelect-select': {
+                                            padding: '3px 14px',
+                                            fontSize: '14px',
+                                            fontWeight: 500,
+                                            color: 'black',
+                                            backgroundColor: 'white',
+                                            border: '1px solid #ccc',
+                                            borderRadius: '4px',
+                                        },
+                                    }}
+                                    size='small'
+                                >
+                                    {getClientOptions(clientProfiles).map((option) => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                            <span>{option.label}</span>
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </div>
+
+                            <Button
+                                variant="contained"
+                                size='small'
+                                endIcon={<SyncIcon />}
+                                onClick={() => handleLoadUsers(selectedClient)}
+                                sx={{ 
+                                    width: '90px',
+                                    fontWeight: 400,
+                                    textTransform: 'none',
+                                    backgroundColor: 'black',
+                                    '&:hover': {
+                                        backgroundColor: '#333',
+                                    } 
+                                }}
+                            >
+                                Yükle
+                            </Button>
+                        </div>
+                    </div>
                 </div>
 
                 <UsersDataTable
@@ -119,6 +186,7 @@ const UsersView: React.FC = () => {
                     handleEdit={(data) => { router.push(`/dashboard/users/${data.id}`) }}
                     handleDelete={(data) => { console.log('delete', data) }}
                     handleSelect={(data) => { setSelectedUsers(data) }}
+                    isLoading={isFetching}
                  />
             </div>
         </>

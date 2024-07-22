@@ -1,20 +1,18 @@
 'use client'
-import React, { useEffect } from 'react'
-import { permissions } from '@/config/index';
-import withAuthorization from '../../withAuthorization';
+import React from 'react'
+import { usePathname } from 'next/navigation';
 import * as Repo from '@/repository'
 import { useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch } from '@/reduxStore/store';
 import { setUsers, setIsFetching } from '@/reduxStore/features/userSlice';
-import UsersView from './src/usersView'
 
-export default function UserLayout({ children }: { children: React.ReactNode }) {
+export default function UsersLayout({ children }: { children: React.ReactNode }) {
+    const pathname = usePathname();
     const dispatch = useAppDispatch<AppDispatch>();
-
-    // TODO - Fetch users according to current user's role and client Profile
+    
     const fetchAndSetUsers = async () => {
         dispatch(setIsFetching(true));
-        const users = await Repo.UserRepository.getAllUsers();
+        const users = await Repo.UserRepository.getUsersByClient('BRH_ADMIN');
 
         if (users) {
             dispatch(setUsers(users));
@@ -23,12 +21,13 @@ export default function UserLayout({ children }: { children: React.ReactNode }) 
         dispatch(setIsFetching(false));
     }
 
-    useEffect(() => {
+    React.useEffect(() => {
         fetchAndSetUsers();
-    }, [])
+    }, [pathname]);
+
     return (
-        <div className=''>
+        <React.Fragment>
             {children}
-        </div>
+        </React.Fragment>
     )
 }

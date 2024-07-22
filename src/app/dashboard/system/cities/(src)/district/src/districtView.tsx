@@ -1,13 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import React, { useEffect, useRef } from 'react';
-import { useDataModal } from '@/contexts/DataModalContext';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
 import type { District } from '@/API';
 import * as Repo from '@/repository/index';
 import DistrictsDataTable from './districtsDataTable';
-import CreateOrUpdateForm from './createOrUpdateForm';
-import { setDistricts, resetFormValues, setDistrictForm } from '@/reduxStore/features/districtSlice';
+import { setDistricts, setDistrictForm } from '@/reduxStore/features/districtSlice';
 
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
@@ -46,6 +45,7 @@ const DistrictView: React.FC<DistrictViewProps> = ({ haveDistricts, fetchFiltere
     }, [cityId]);
 
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const setDistrictUpdateData = (data: any) => {
         dispatch(setDistrictForm({
             id: data.id,
@@ -55,6 +55,7 @@ const DistrictView: React.FC<DistrictViewProps> = ({ haveDistricts, fetchFiltere
         }));
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleDeleteDistrict = async (data: any) => {
         try {
             const deleteProduct = await Repo.DistrictRepository.softDelete(data.originalData.id);

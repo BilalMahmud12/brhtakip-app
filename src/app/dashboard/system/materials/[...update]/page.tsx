@@ -6,8 +6,6 @@ import { AppDispatch, RootState } from '@/reduxStore/store';
 import * as Repo from '@/repository/index';
 import { setMaterials, resetFormValues, setMaterialForm, handleFormChange, validateForm } from '@/reduxStore/features/materialSlice';
 import CreateOrUpdateForm from '../src/createOrUpdateForm';
-
-
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -45,7 +43,7 @@ const UpdateMaterialPage: React.FC = () => {
             materialformRef.current = updatedMaterial;
             dispatch(setMaterialForm(updatedMaterial));
         }
-    }, [pathName, materials, dispatch]);
+    }, [pathName, materials]);
 
     const handleUpdateMaterial = async () => {
         dispatch(validateForm());

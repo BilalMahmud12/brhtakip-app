@@ -35,7 +35,7 @@ const AutoComplete = <T extends Option>(props: AutoCompleteProps<T>) => {
     } = props;
 
     const [currentValue, setCurrentValue] = React.useState<T | null>(options.find(option => option.value === props.value) || null);
-    const [inputValue, setInputValue] = React.useState('');
+    const [, setInputValue] = React.useState('');
 
     React.useEffect(() => {
         const option = options.find(option => option.value === props.value) || null;

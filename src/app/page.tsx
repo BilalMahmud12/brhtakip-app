@@ -1,9 +1,6 @@
-
-
-
+'use client'
 
 function App() {
-
   return (
     <></>
   );

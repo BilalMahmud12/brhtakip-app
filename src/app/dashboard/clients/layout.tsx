@@ -3,7 +3,6 @@ import React, { useEffect } from 'react'
 import * as Repo from '@/repository/index'
 import type { ClientProfile } from '@/API';
 import { useAppDispatch } from '@/reduxStore/hooks';
-import { AppDispatch } from '@/reduxStore/store';
 import { setClientProfiles, setIsFetching } from '@/reduxStore/features/clientSlice'
 
 export default function ClientProfileLayout({ children }: { children: React.ReactNode }) {
@@ -25,7 +24,7 @@ export default function ClientProfileLayout({ children }: { children: React.Reac
             dispatch(setIsFetching(false));
         }
         fetchData();
-    }, [dispatch])
+    }, [])
 
     return (
         <div>

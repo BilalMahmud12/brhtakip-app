@@ -2,13 +2,14 @@
 import React from 'react'
 import DataTable from '@/components/core/dataTable'
 import { dataTables } from '@/config/dataTables';
-import getUsresTableData from './getUsersTableData';
+import GetUsresTableData from './GetUsersTableData';
 
 interface UsersDataTableProps {
     dataPayload: any[];
     handleEdit?: (data: any) => void;
     handleDelete?: (data: any) => void;
     handleSelect?: (data: any) => void;
+    isLoading?: boolean;
 }
 
 const UsersDataTable: React.FC<UsersDataTableProps> = (props) => {
@@ -17,11 +18,12 @@ const UsersDataTable: React.FC<UsersDataTableProps> = (props) => {
         handleEdit = () => { },
         handleDelete = () => { },
         handleSelect = () => { },
+        isLoading = false
     } = props;
 
     const { users } = dataTables;
 
-    const usersTableData = getUsresTableData(
+    const usersTableData = GetUsresTableData(
         dataPayload,
         users.columns,
         handleEdit,
@@ -37,6 +39,7 @@ const UsersDataTable: React.FC<UsersDataTableProps> = (props) => {
                 onEditRow={handleEdit}
                 onDeleteRow={handleDelete}
                 onRowSelect={handleSelect}
+                loading={isLoading}
             />
         </div>
     );

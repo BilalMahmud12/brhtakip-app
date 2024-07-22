@@ -1,17 +1,9 @@
 'use client'
 import React, { useEffect } from 'react';
 import type { Material } from '@/API';
-import { Input, Label, Autocomplete } from '@aws-amplify/ui-react';
-import { useRouter } from 'next-nprogress-bar';
-
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { RootState, AppDispatch } from '@/reduxStore/store';
 import { handleFormChange } from '@/reduxStore/features/materialSlice';
-
-import Button from '@mui/material/Button';
-import SaveIcon from '@mui/icons-material/Save';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import AutoComplete from '@/components/core/autoComplete';
 import TextField from '@mui/material/TextField';
 import { FormControlLabel } from '@mui/material';
 import Switch from '@mui/material/Switch';
@@ -28,14 +20,14 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
         material = {} as Material,
     } = props;
 
-    const router = useRouter();
+    //const router = useRouter();
     const dispatch = useAppDispatch<AppDispatch>();
     const materialForm = useAppSelector((state: RootState) => state.material.materialForm);
     const validationErrors = useAppSelector((state: RootState) => state.material.validationErrors);
     const materialFormRef = React.useRef(materialForm)
     materialFormRef.current = materialForm
 
-    const [checked, setChecked] = React.useState(materialFormRef.current.isActive as boolean);
+    const [, setChecked] = React.useState(materialFormRef.current.isActive as boolean);
 
 
     useEffect(() => {

@@ -1,7 +1,6 @@
 import { listCities, getCity } from '@/graphql/queries';
 import { createCity, updateCity, deleteCity } from '@/graphql/mutations';
 import { client } from '@/repository';
-import type { City } from '@/API';
 
 const getAllCities = async () => {
     try {

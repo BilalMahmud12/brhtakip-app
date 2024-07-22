@@ -1,7 +1,6 @@
 import { client } from '.';
 import { listDistricts, getDistrict } from '@/graphql/queries'
 import { createDistrict, updateDistrict, deleteDistrict } from '@/graphql/mutations'
-import type { District } from '@/API'
 
 
 const getAllDistricts = async () => {

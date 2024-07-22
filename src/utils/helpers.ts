@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const formateDate = (dateString: string): string => {
     const date = new Date(dateString);

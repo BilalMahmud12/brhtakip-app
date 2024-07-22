@@ -9,7 +9,8 @@ import { RootState } from '@/reduxStore/store';
 export default function DashboardView() {
     const currentUserProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const currentUserProfileRef = React.useRef(currentUserProfile);
-    
+    currentUserProfileRef.current = currentUserProfile;
+
     return (
         <div>
             {dashboardNavigavtion.map((navGroup, index) => (
@@ -18,11 +19,12 @@ export default function DashboardView() {
                     <div className='mt-2'>
                         <div className='grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8'>
                             {navGroup.items
-                                .filter((item) => {
-                                    if (item.name === 'Müşteri Profilleri' && currentUserProfileRef.current.clientprofileID !== 'BRH_ADMIN') {
+                                .filter(item => {
+                                    if (item.href === '/dashboard/clients' && currentUserProfileRef.current.clientprofileID !== 'BRH_ADMIN') {
                                         return false;
                                     }
-                                    return true;
+
+                                    return true
                                 })
                                 .map((link, index) => (
                                 <Link

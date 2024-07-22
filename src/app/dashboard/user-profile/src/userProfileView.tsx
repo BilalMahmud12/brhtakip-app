@@ -1,10 +1,8 @@
 'use client'
-import React, { useEffect, useRef } from 'react';
-import { permissions } from '@/config/index';
+import React, { useRef } from 'react';
 import * as Repo from '@/repository';
-import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
-import { AppDispatch, RootState } from '@/reduxStore/store';
-import { setUsers, setIsFetching } from '@/reduxStore/features/userSlice';
+import { useAppSelector } from '@/reduxStore/hooks';
+import { RootState } from '@/reduxStore/store';
 import UpdateForm from './updateForm';
 import { useRouter } from 'next-nprogress-bar';
 import Button from '@mui/material/Button';
@@ -14,7 +12,6 @@ import PasswordForm from './passwordForm';
 
 const UserProfileView: React.FC = () => {
     const router = useRouter();
-    const dispatch = useAppDispatch<AppDispatch>();
     const userForm = useAppSelector((state: RootState) => state.user.userForm);
     const userFormRef = useRef(userForm);
     userFormRef.current = userForm;
@@ -42,7 +39,10 @@ const UserProfileView: React.FC = () => {
         }
 
         try {
-            await Repo.UpdatePassword({ oldPassword: '', newPassword: password });
+            Repo.UserRepository.updatePassword({
+                oldPassword: '',
+                newPassword: password as string,
+            });
             toast.success('Password updated successfully');
         } catch (error) {
             console.error('Failed to update password', error);

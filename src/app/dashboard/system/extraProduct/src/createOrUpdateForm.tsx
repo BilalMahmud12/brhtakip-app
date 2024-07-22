@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import type { ExtraProduct } from '@/API';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
@@ -18,14 +19,14 @@ interface CreateOrUpdateFormProps {
 
 const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
     const {
-        isCreate = true,
-        extraProduct = {} as ExtraProduct,
+        isCreate = true
     } = props;
     const dispatch = useAppDispatch<AppDispatch>();
     const extraProductsForm = useAppSelector((state: RootState) => state.extraProduct.extraProductsForm);
     const extraProductFormRef = useRef(extraProductsForm);
     extraProductFormRef.current = extraProductsForm;
 
+    // eslint-disable-next-line unused-imports/no-unused-vars
     const [checked, setChecked] = useState(extraProductFormRef.current.isActive as boolean);
 
     // useEffect(() => {

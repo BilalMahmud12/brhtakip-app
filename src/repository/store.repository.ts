@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { listStores, getStore } from '@/graphql/queries';
 import { createStore, updateStore, deleteStore } from '@/graphql/mutations';
 import { client } from '@/repository';
-import type { Store } from '@/API';
 
 const getAllStores = async () => {
     try {

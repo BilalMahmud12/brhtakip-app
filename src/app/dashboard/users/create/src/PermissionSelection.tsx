@@ -1,10 +1,10 @@
 import React from 'react';
-import { Box, Checkbox, FormControl, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
-import { features, abstractPermissions, abstractPermissionsTurkish, featuresTurkish, Permission, Feature, AbstractPermission } from '@/config/index';
+import { Box, Checkbox, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import { features, abstractPermissions, featuresTurkish, Permission, Feature, AbstractPermission } from '@/config/index';
 
 interface PermissionSelectionProps {
     selectedPermissions: Permission[];
-    handleSelectedPermissions: React.Dispatch<React.SetStateAction<Permission[]>>;
+    handleSelectedPermissions: (updatedPermissions: Permission[]) => void;
 }
 
 const PermissionSelection: React.FC<PermissionSelectionProps> = ({
@@ -13,13 +13,11 @@ const PermissionSelection: React.FC<PermissionSelectionProps> = ({
 }) => {
     const handleCheckboxChange = (feature: Feature, action: AbstractPermission) => {
         const permission: Permission = `${action}_${feature.toUpperCase()}` as Permission;
-        handleSelectedPermissions((prevPermissions) => {
-            if (prevPermissions.includes(permission)) {
-                return prevPermissions.filter((perm) => perm !== permission);
-            } else {
-                return [...prevPermissions, permission];
-            }
-        });
+        const updatedPermissions = selectedPermissions.includes(permission)
+            ? selectedPermissions.filter((perm) => perm !== permission)
+            : [...selectedPermissions, permission];
+
+        handleSelectedPermissions(updatedPermissions);
     };
 
     return (
