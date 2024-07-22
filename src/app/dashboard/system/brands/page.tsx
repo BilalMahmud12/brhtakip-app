@@ -7,7 +7,7 @@ import { setBrands } from '@/reduxStore/features/brandSlice';
 import type { Brand } from '@/API';
 import BrandsView from './src/brandView';
 import { permissions } from '@/config/index';
-import withAuthorization from '@/app/withAuthorization';
+import WithAuthorization from '@/app/WithAuthorization';
 
 
 const Brand: React.FC = () => {
@@ -35,5 +35,8 @@ const Brand: React.FC = () => {
     );
 };
 
-export default withAuthorization([permissions.VIEW_BRANDS])(Brand);
+
+export default Brand;
+
+//export default withAuthorization([permissions.VIEW_BRANDS])(Brand);
 
