@@ -12,6 +12,7 @@ import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import PermMediaIcon from '@mui/icons-material/PermMedia';
 import AddIcon from '@mui/icons-material/Add';
+import * as styles from '@/components/styles';
 import { v4 as uuid } from 'uuid';
 import { toast } from 'sonner';
 import Image from 'next/image';
@@ -196,6 +197,7 @@ const MediaManager: React.FC<MediaManagerProps> = (props) => {
                                 component="label"
                                 variant="contained"
                                 startIcon={<AddIcon />}
+                                sx={styles.buttonComponentStyles}
                             >
                                 Dosyalar Ekle
                                 <VisuallyHiddenInput
@@ -215,6 +217,7 @@ const MediaManager: React.FC<MediaManagerProps> = (props) => {
                                 startIcon={
                                     <CloudUploadIcon color='inherit' />
                                 }
+                                sx={styles.buttonComponentStyles}
                             >
                                 Yükle
                             </Button>
@@ -230,6 +233,7 @@ const MediaManager: React.FC<MediaManagerProps> = (props) => {
                         disabled={files?.length === 0 || false}
                         onClick={handleDownloadAllFiles}
                         className='w-full sm:w-auto'
+                        sx={styles.buttonComponentStyles}
                     >
                         Dosyaları İndir ( {files?.length || 0} Dosya )
                     </Button>

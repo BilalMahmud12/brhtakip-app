@@ -121,13 +121,23 @@ export default function RootLayout({
     const currentUserProfile = useAppSelector((state: RootState) => state.global.currentUserProfile);
     const currentUserProfileRef = useRef(currentUserProfile);
 
-
     const currentClientProfile = useAppSelector((state: RootState) => state.global.currentClientProfile);
     const currentClientProfileRef = useRef(currentClientProfile);
     currentClientProfileRef.current = currentClientProfile;
 
-
     const BRHAdminProfileId = globalConstants.clientProfileId;
+
+    const navigationItems = navigation.map((navGroup) => {
+        navGroup.items = navGroup.items.map((item, index) => {
+            let updatedItem = item
+            if (navGroup.section_name === 'yonet' && index === 0) {
+                updatedItem.href = currentUserProfileRef.current.clientprofileID !== BRHAdminProfileId ? '/dashboard/requests/pending-client-approval' : '/dashboard/requests';
+            }
+           
+            return updatedItem
+        })
+        return navGroup
+    })
 
     const fetchClientsData = async () => {
         const clientsData = await Repo.ClientProfileRepository.getClientProfiles();
@@ -209,21 +219,7 @@ export default function RootLayout({
                         priority 
                     />
 
-                    <div className='hidden sm:block'>
-                        <div className=''>
-                            <span className='flex flex-col ml-6'>
-                                <span className='text-sm text-gray-800 font-medium flex items-center space-x-2 mb-1'>
-                                    <span className='block w-2 h-2 rounded-full bg-green-600'></span>
-                                    <span>{currentClientProfileRef.current.name} </span>
-                                </span>
-                                <span className='flex items-center space-x-2'>
-                                    <span className='block w-6 h-[2px] bg-gray-800'></span>
-                                    <span className='text-xs text-gray-600 font-medium'>{currentUserProfile?.firstName} {currentUserProfile?.lastName}</span>
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-
+                
                     <div className='ml-auto flex items-center justify-end space-x-3'>
                         {/* <UserNotificationMenu /> */}
                         <UserAccountMenu /> 
@@ -238,7 +234,7 @@ export default function RootLayout({
                     </IconButton>
                 </DrawerHeader>
 
-                {navigation.map((navGroup, index) => (
+                {navigationItems.map((navGroup, index) => (
                     <div key={`${navGroup.section_name}-${index}`}> 
                         <List>
                             {navGroup.items
@@ -314,6 +310,20 @@ export default function RootLayout({
 
             <Box component="main" sx={{ flexGrow: 1, p: 3, background: '#f4f4f5', marginTop: '71px', minHeight: 'calc(100vh - 71px)' }}>
                 {children}
+                <div className='fixed bottom-0 left-0 px-6 py-1.5 bg-white w-full border-t border-zinc-200'>
+                    <div className='flex items-center justify-between ml-[64px]'>
+                        <span className='text-xs text-gray-800 font-medium flex items-center space-x-2'>
+                            <span className='block w-2 h-2 rounded-full bg-green-600'></span>
+                            <span>Kullanıcı:</span>
+                            <span className='font-normal'>{currentUserProfile?.firstName} {currentUserProfile?.lastName}</span>
+                        </span>
+
+                        <span className='text-xs text-gray-800 font-medium flex items-center space-x-2'>
+                            <span>Kurumsal Hesabı:</span>
+                            <span className='font-normal'>{currentClientProfileRef.current.name}</span>
+                        </span>
+                    </div>
+                </div>
             </Box>
         </Box>
     );

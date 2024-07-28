@@ -54,7 +54,10 @@ export default function getRequestsTableData(
                     case 'requestNumber':
                         row[column.key] = (
                             <div className='h-full flex items-center'>
-                                <span className={`bg-yellow-100 border-yellow-300 block px-3 py-1 rounded-sm border w-full text-xs text-gray-800 font-bold font-mono hover:underline hover:text-blue-700 hover:cursor-pointer`}>
+                                <span
+                                    onClick={() => handleEdit(request)}
+                                    className={`bg-yellow-100 border-yellow-300 block px-3 py-1 rounded-sm border w-full text-xs text-gray-800 font-bold font-mono hover:underline hover:text-blue-700 hover:cursor-pointer`}
+                                >
                                     {request.requestNumber}
                                 </span>
                             </div>

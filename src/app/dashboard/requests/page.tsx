@@ -9,7 +9,6 @@ const Request: React.FC = () => {
     return (
         <div>
             <title>Onay Bekleyen Talepler - BRH Takip</title>
-
             <RequestsView />
         </div>
     );

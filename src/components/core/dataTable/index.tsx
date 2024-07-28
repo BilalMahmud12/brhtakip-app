@@ -75,6 +75,11 @@ const DataTable: React.FC<DataTableProps> = (props) => {
                 disableColumnResize
                 autoHeight
                 loading={loading}
+                sx={{ 
+                    ...props.styles,
+                    border: 'none !important',
+                    boxShadow: 'none !important' 
+                }}
             />
         </div>
     );

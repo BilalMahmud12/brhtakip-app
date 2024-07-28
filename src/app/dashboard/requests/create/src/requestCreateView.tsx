@@ -12,6 +12,7 @@ import { filterEmptyValues } from '@/utils/helpers';
 import { useRouter } from 'next-nprogress-bar';
 import { toast } from 'sonner';
 import { CreateRequestInput } from '@/API';
+import * as styles from '@/components/styles';
 
 const decimalFields = [
     'assemblyBudget', 
@@ -85,13 +86,19 @@ const RequestCreateView: React.FC = () => {
         <div>
             <div className="mb-8">
                 <div className="mb-4 space-y-5">
-                    <div className='flex items-center justify-between'>
+                    <div className='p-4 bg-white shadow flex items-center justify-between'>
                         <div className='flex items-center space-x-3'>
-                            <h1 className='text-2xl font-semibold'>Talep Oluştur</h1>
+                            <h1 className='text-lg font-semibold'>Talep Oluştur</h1>
                         </div>
 
                         <div className="flex items-center space-x-3">
-                            <Button onClick={() => handleSave()} variant="contained" startIcon={<SaveIcon />} disableElevation>
+                            <Button 
+                                variant="contained"
+                                size='small' 
+                                startIcon={<SaveIcon />} 
+                                onClick={() => handleSave()} 
+                                sx={styles.buttonComponentStyles}
+                            >
                                 Kaydı Et
                             </Button>
                         </div>

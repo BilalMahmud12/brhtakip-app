@@ -2,7 +2,7 @@
 export const dataTables = {
     requests: {
         columns: [
-            { label: '', key: 'actions', width: '30', sortable: false, disableColumnMenu: true },
+            //{ label: '', key: 'actions', width: '30', sortable: false, disableColumnMenu: true },
             { label: 'Talep Numarası', key: 'requestNumber', width: '150', sortable: false },
             { label: 'Mağaza', key: 'store', width: '450', sortable: false },
             { label: 'Marka', key: 'brand', width: '300', sortable: false },

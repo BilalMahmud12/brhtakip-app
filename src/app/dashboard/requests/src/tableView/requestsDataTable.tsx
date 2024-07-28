@@ -10,6 +10,7 @@ interface RequestsDataTableProps {
     handleDelete?: (data: any) => void;
     handleSelect?: (data: any) => void;
     isLoading?: boolean;
+    styles?: { [key: string]: string };
 }
 
 const RequestsDataTable: React.FC<RequestsDataTableProps> = (props) => {
@@ -19,6 +20,7 @@ const RequestsDataTable: React.FC<RequestsDataTableProps> = (props) => {
         handleDelete = () => {},
         handleSelect = () => {},
         isLoading = false,
+        styles = {}
     } = props;
 
     const { requests } = dataTables
@@ -40,6 +42,7 @@ const RequestsDataTable: React.FC<RequestsDataTableProps> = (props) => {
                 onDeleteRow={(data) => console.log('onDeleteRow', data)}
                 onRowSelect={(data) => handleSelect(data)}
                 loading={isLoading}
+                styles={styles}
             />
         </div>
     );

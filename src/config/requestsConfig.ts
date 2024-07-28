@@ -1,4 +1,5 @@
 export const statusMap: { [key: string]: string } = {
+    'pending-client-approval': 'PENDING_CLIENT_APPROVAL',
     'pending-approval': 'PENDING_APPROVAL',
     'in-design': 'IN_DESIGN',
     'in-press': 'IN_PRESS',
@@ -13,6 +14,7 @@ export const requestStatus= (pathname: string): string => {
 };
 
 export const requestStatusOptions: { [key: string]: string } = {
+    'PENDING_CLIENT_APPROVAL': 'Yöneticinin Onayı Bekleyen',
     'PENDING_APPROVAL': 'Onayı Bekleyen',
     'IN_DESIGN': 'Tasarıma Bekleyen',
     'IN_PRESS': 'Baskı Bekleyen',
@@ -31,10 +33,11 @@ export const requestStatusColors: { [key: string]: string } = {
 }
 
 export const requestActionOptions: { [key: string]: string } = {
+    'PENDING_CLIENT_APPROVAL': 'Yöneticinin Onay Bekleyenlere geri Aktar',
+    'PENDING_APPROVAL': 'Onay Bekleyenlere geri Aktar',
     'IN_DESIGN': 'Onayla ve Tasarıma Aktar',
     'IN_PRESS': 'Tasarıma Onay ve Baskıya Aktar',
     'IN_APPLICATION': 'Uygulamaya Gönder',
-    'PENDING_APPROVAL': 'Onay Bekleyenlere geri Aktar',
     'COMPLETED': 'Tamamlananlara Aktar',
     'CANCELLED': 'İptal Et',
 }
