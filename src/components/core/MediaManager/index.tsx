@@ -273,7 +273,7 @@ const MediaManager: React.FC<MediaManagerProps> = (props) => {
 
             <div className='bg-zinc-100 rounded-lg p-4 mb-4'>
                 <div>
-                    {files.length === 0 && (
+                    {files?.length === 0 && (
                         <div className='text-sm text-center text-gray-400 w-full flex items-center justify-center space-x-2'>
                             <span>
                                 <PermMediaIcon fontSize="medium" />
