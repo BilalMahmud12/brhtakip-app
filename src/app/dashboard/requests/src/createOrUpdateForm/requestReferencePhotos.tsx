@@ -20,8 +20,8 @@ const RequestReferencePhotos: React.FC = () => {
     const onUploadSuccess = (files: ImageStorageItemInput[]) => {
         console.log('files:', files);
         const referenceImages: ImageStorageItemInput[] = requestFormRef.current.referenceImages || [];
-        const existingPaths = new Set(referenceImages.map((image) => image.id));
-        const uniqueNewFiles = files.filter((file) => !existingPaths.has(file.id ? file.id : file.path));
+        const existingPaths = new Set(referenceImages?.map((image) => image.id));
+        const uniqueNewFiles = files?.filter((file) => !existingPaths?.has(file.id ? file.id : file.path)) || [];
 
         dispatch(handleFormChange({
             key: 'referenceImages',
@@ -31,7 +31,7 @@ const RequestReferencePhotos: React.FC = () => {
 
     const onDelete = (file: ImageStorageItemInput) => {
         const referenceImages: ImageStorageItemInput[] = requestFormRef.current.referenceImages || [];
-        const newFiles = referenceImages.filter((image) => image.id !== file.id);
+        const newFiles = referenceImages?.filter((image) => image.id !== file.id) || [];
         dispatch(handleFormChange({
             key: 'referenceImages',
             value: newFiles

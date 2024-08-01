@@ -74,7 +74,7 @@ const MediaManager: React.FC<MediaManagerProps> = (props) => {
         const newPreviews = [...previews];
         newPreviews.splice(index, 1);
         setPreviews(newPreviews);
-        setSelectedFiles(selectedFiles.filter((_, i) => i !== index));
+        setSelectedFiles(selectedFiles?.filter((_, i) => i !== index));
     }
 
     const handleUpload = async () => {
@@ -123,7 +123,7 @@ const MediaManager: React.FC<MediaManagerProps> = (props) => {
                 console.log('File deleted:', result);
                 handleOnDelete(file);
                 toast.success('Dosya başarıyla silindi');
-                const newFiles = files.filter((image) => image.id !== file.id);
+                const newFiles = files?.filter((image) => image.id !== file.id);
                 console.log('newFiles:', newFiles);
                 setFiles(newFiles);
             }

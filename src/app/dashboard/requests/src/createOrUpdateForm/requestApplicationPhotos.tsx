@@ -15,10 +15,10 @@ const RequestApplicationPhotos: React.FC = () => {
     const onUploadSuccess = (files: { [key: string]: { status: string } }) => {
         const applicationImages = requestFormRef.current.applicationImages || [];
 
-        const newFiles = Object.keys(files).map((key) => ({
+        const newFiles = Object.keys(files)?.map((key) => ({
             type: 'application',
             path: key,
-        }))
+        })) || [];
 
         dispatch(handleFormChange({
             key: 'applicationImages',
