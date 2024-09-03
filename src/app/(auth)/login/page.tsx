@@ -1,8 +1,9 @@
 'use client'
+
 import React from "react";
 import { useRouter } from "next-nprogress-bar";
 import { useAuthenticator } from '@aws-amplify/ui-react';
-import { signIn, type SignInInput } from 'aws-amplify/auth';
+import { signIn, type SignInInput, confirmSignUp, type ConfirmSignUpInput } from 'aws-amplify/auth';
 
 import { useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch } from '@/reduxStore/store';
@@ -17,6 +18,7 @@ export default function Login() {
     const dispatch = useAppDispatch<AppDispatch>();
 
     const [loading , setLoading] = React.useState<boolean>(false);
+    const [showCodeInput, setShowCodeInput] = React.useState<boolean>(false);
     const [error, setError] = React.useState<boolean>(false);
     const [success, setSuccess] = React.useState<boolean>(false);
     const { user } = useAuthenticator((context) => [context.user]);
@@ -33,7 +35,20 @@ export default function Login() {
 
             if (nextStep) {
                 console.log('nextStep', nextStep);
+                const { signInStep } = nextStep
+                switch (signInStep) {
+                    case 'RESET_PASSWORD':
+                        router.push(`/password-reset`); 
+                        break;
+                    case 'CONFIRM_SIGN_UP':
+                        console.log('CONFIRM_SIGN_UP', signInStep)
+                        setShowCodeInput(true);
+                        break;
+                    default:
+                        break
+                }
             }
+
 
             if (isSignedIn) {
                 setSuccess(true);
@@ -57,12 +72,29 @@ export default function Login() {
         }
     }
 
+    async function handleSignInCodeConfirm({ username, confirmationCode }: ConfirmSignUpInput) {
+        try {
+            setLoading(true);
+            const { isSignUpComplete, nextStep } = await confirmSignUp({
+                username,
+                confirmationCode
+            });
+
+            setLoading(false);
+        } catch (error) {
+            console.log('error confirming sign up', error);
+        }
+       
+    }
+
     return (
         <>
             <title>Giriş Yap - BRH Takip</title>
             
             <AuthenticationForm
                 onSubmit={(authData) => handleSignIn({ username: authData.email, password: authData.password })}
+                onCodeSubmit={(data) => handleSignInCodeConfirm({ username: data.email, confirmationCode: data.code })}
+                codeConfirm={showCodeInput}
                 isLoading={loading}
                 success={success}
                 error={error}
