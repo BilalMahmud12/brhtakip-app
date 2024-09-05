@@ -80,9 +80,25 @@ export default function Login() {
                 confirmationCode
             });
 
+            console.log('nextStep', nextStep)
+
+            if (isSignUpComplete) {
+                setSuccess(true);
+                setError(false);
+                const success = await loadUserData(dispatch);
+                if (success) {
+                    router.push(DASHBOARD_URL);
+                } else {
+                    setLoading(false);
+                    toast.error('Kullanıcı bilgileri yüklenirken bir hata oluştu. Lütfen tekrar deneyin.');
+                }
+            }
+
             setLoading(false);
         } catch (error) {
             console.log('error confirming sign up', error);
+            toast.error('Doğrulama kodu geçersiz. Lütfen tekrar deneyin.');
+            setLoading(false);
         }
        
     }

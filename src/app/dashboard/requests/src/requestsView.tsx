@@ -216,7 +216,6 @@ const RequestsView: React.FC = () => {
                             </div>
 
 
-                            {(selectedStatus === 'PENDING_CLIENT_APPROVAL' && userProfile.role === 'CLIENT_ADMIN') && (
                                 <div className='flex items-center space-x-3'>
                                     <div className='input-group w-[217px] lg:w-[300px] bg-white'>
                                         <TextField
@@ -251,7 +250,9 @@ const RequestsView: React.FC = () => {
                                         Aktar
                                     </Button>
                                 </div>
-                            )}
+                            {/* {(selectedStatus !== 'PENDING_CLIENT_APPROVAL' && userProfile.role === 'CLIENT_ADMIN') && (
+                                <div></div>
+                            )} */}
                         </div>
                         <div className='max-w-[calc(100vw-48px)] sm:max-w-full bg-white'>
                             <RequestsDataTable
