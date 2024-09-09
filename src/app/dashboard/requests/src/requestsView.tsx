@@ -1,5 +1,6 @@
 'use client'
 import React, { useRef } from 'react';
+import Portal from '@mui/material';
 import * as Repo from '@/repository/index';
 import { useRouter } from "next-nprogress-bar";
 import { usePathname } from 'next/navigation'
@@ -155,7 +156,6 @@ const RequestsView: React.FC = () => {
                         <div className='flex items-center justify-between'>
                             <div className='flex flex-col items-start'>
                                 <h1 className='text-lg font-semibold'>{currentPageTitle} </h1>
-                                
                             </div>
 
                             <div className="flex items-center space-x-3">
@@ -214,7 +214,6 @@ const RequestsView: React.FC = () => {
                                     Yükle
                                 </Button>
                             </div>
-
 
                                 <div className='flex items-center space-x-3'>
                                     <div className='input-group w-[217px] lg:w-[300px] bg-white'>

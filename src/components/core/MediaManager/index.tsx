@@ -199,7 +199,7 @@ const MediaManager: React.FC<MediaManagerProps> = (props) => {
                                 startIcon={<AddIcon />}
                                 sx={styles.buttonComponentStyles}
                             >
-                                Dosyalar Ekle
+                                <span>Dosyalar Ekle</span>
                                 <VisuallyHiddenInput
                                     multiple
                                     type="file"

@@ -15,7 +15,7 @@ const RequestDesignNote: React.FC = () => {
 
     return (
         <React.Fragment>
-            <div className='mb-6'>
+            <div className='mb-12'>
                 <h2 className='text-base font-semibold mb-0.5'>Tasarım Notu</h2>
                 <span className='block text-sm text-zinc-400'>Tasarım ile ilgili Notlarınızı</span>
             </div>

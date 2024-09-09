@@ -7,7 +7,7 @@ import MediaManager from '@/components/core/MediaManager';
 import type { ImageStorageItemInput } from '@/API';
 
 
-const RequestReferencePhotos: React.FC = () => {
+const RequestReferenceImages: React.FC = () => {
     const dispatch = useAppDispatch<AppDispatch>();
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
     const requestFormRef = React.useRef(requestForm);
@@ -49,7 +49,7 @@ const RequestReferencePhotos: React.FC = () => {
                 <MediaManager
                     uploadPath={uploadPath}
                     downloadFolderName={downloadFolderName}
-                    initialFiles={requestFormRef.current.referenceImages}
+                    initialFiles={requestFormRef.current.referenceImages || []}
                     handleOnUploadSuccess={(files: ImageStorageItemInput[]) => onUploadSuccess(files)}
                     handleOnDelete={(file: ImageStorageItemInput) => onDelete(file)}
                     type={type}
@@ -59,4 +59,4 @@ const RequestReferencePhotos: React.FC = () => {
     )
 }
 
-export default RequestReferencePhotos
+export default RequestReferenceImages

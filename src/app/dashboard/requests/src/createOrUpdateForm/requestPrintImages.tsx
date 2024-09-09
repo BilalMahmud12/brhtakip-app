@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '@/reduxStore/hooks';
 import { RootState } from '@/reduxStore/store';
 import FileDisplay from '@/components/core/fileDisplay';
 
-const RequestPrintPhotos: React.FC = () => {
+const RequestPrintImages: React.FC = () => {
     const dispatch = useAppDispatch();
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
     const requestFormRef = React.useRef(requestForm);
@@ -53,4 +53,4 @@ const RequestPrintPhotos: React.FC = () => {
     );
 }
 
-export default RequestPrintPhotos;
+export default RequestPrintImages;

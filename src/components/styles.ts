@@ -7,13 +7,13 @@ export const selectComponentStyles = {
         color: 'black',
         //backgroundColor: '#fef9c324',
         border: '1px solid #ccc',
-        borderRadius: '0px',
+        borderRadius: '5px',
     },
     '& .MuiInputBase-root': {
-        borderRadius: '0px',
+        borderRadius: '5px',
     },
     '& .MuiMenu-list': {
-        borderRadius: '0px',
+        borderRadius: '5px',
     }
     
 }
@@ -22,7 +22,7 @@ export const buttonComponentStyles = {
     fontWeight: 500,
     textTransform: 'none',
     backgroundColor: 'black',
-    borderRadius: '0px',
+    borderRadius: '5px',
     '&:hover': {
         backgroundColor: '#333',
     }

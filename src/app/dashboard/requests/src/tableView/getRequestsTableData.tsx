@@ -56,7 +56,8 @@ export default function getRequestsTableData(
                             <div className='h-full flex items-center'>
                                 <span
                                     onClick={() => handleEdit(request)}
-                                    className={`bg-yellow-100 border-yellow-300 block px-3 py-1 rounded-sm border w-full text-xs text-gray-800 font-bold font-mono hover:underline hover:text-blue-700 hover:cursor-pointer`}
+                                    //className={`bg-yellow-100 border-yellow-300 block px-3 py-1 rounded-md border w-full text-xs text-yellow-800 font-semibold hover:underline hover:text-blue-700 hover:cursor-pointer`}
+                                    className='font-medium hover:cursor-pointer'
                                 >
                                     {request.requestNumber}
                                 </span>
@@ -75,11 +76,29 @@ export default function getRequestsTableData(
                         break;
 
                     case 'brand':
-                        row[column.key] = `${request.Brand?.name} - ${request.Product?.name}`;
+                        row[column.key] = (
+                            <span className='flex items-center space-x-2'>
+                                <span>— </span>
+                                <span className='font-medium'>{request.Brand?.name}</span>
+                                <span className='px-2 py-0.5 bg-orange-50 border border-orange-300 rounded-md text-xs font-medium text-orange-700'>{request.Product?.name}</span>
+                            </span>
+                        ) 
                         break;
 
                     case 'store':
-                        row[column.key] = `${request.Store?.name} - ${request.Store?.District?.name} - ${request.Store?.Area?.name}`
+                        row[column.key] = (
+                            <span className='flex items-center space-x-2'>
+                                <Icon iconName={'FCShop'} className='text-lg' />
+                                
+                                <span className=' font-medium mb-0.5'>{request.Store?.name}</span>
+                                <span>— </span>
+                                <span className=' items-center space-x-2'>
+                                    
+                                    <span>{request.Store?.District?.name},</span>
+                                    <span>{request.Store?.Area?.name}</span>
+                                </span>
+                            </span>
+                        )
                         break;
 
                     case 'createdAt':

@@ -9,6 +9,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import * as Repo from '@/repository/index';
 import { RequestExtraProductInput  } from '@/API';
+import * as styles from '@/components/styles';
 
 
 const RequestExtraProducts: React.FC = () => {
@@ -71,13 +72,14 @@ const RequestExtraProducts: React.FC = () => {
 
     return (
         <React.Fragment>
-            <h2 className='text-base font-semibold mb-6'>Ek Ürünleri</h2>
+            <h2 className='text-base font-semibold mb-12'>Ek Ürünleri</h2>
             <div className='space-y-3'>
                 <div className='flex items-center justify-start'>
                     <Button 
                         variant="contained" 
                         size='small'
                         startIcon={<AddIcon />}
+                        sx={styles.buttonComponentStyles}
                         onClick={handleAddProduct}
                     >
                         Ek Ürün Ekle

@@ -9,10 +9,10 @@ import RequestDetails from './requestDetails';
 import RequestFinance from './requestFinance';
 import RequestExtraProducts from './requestExtraProducts';
 import RequestDesignNote from './requestDesignNote';
-import RequestReferencePhotos from './requestReferencePhotos';
-import RequestDesignPhotos from './requestDesignPhotos';
+import RequestReferenceImages from './requestReferenceImages';
+import RequestDesignImages from './requestDesignImages';
 import RequestDesignRevisions from './requestDesignRevisions';
-import RequestPrintPhotos from './requestPrintPhotos';
+import RequestPrintImages from './requestPrintImages';
 import RequestApplicationPhotos from './requestApplicationPhotos';
 import Drawer from '@mui/material/Drawer'
 
@@ -73,13 +73,13 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                     )}
 
                     <div className='p-6 bg-white shadow col-span-2'>
-                        <RequestReferencePhotos />
+                        <RequestReferenceImages />
                     </div>
 
                     {!isCreate && (
                         <>
                             <div className='p-6 bg-white shadow col-span-2'>
-                                <RequestDesignPhotos onSave={() => {}} />
+                                <RequestDesignImages onSave={() => {}} />
                             </div>
                         </>
                     )}
@@ -96,7 +96,7 @@ const CreateOrUpdateForm: React.FC<CreateOrUpdateFormProps> = (props) => {
                         <>
                             {!requestFormRef.current.isExtraProductRequest && (
                                 <div className='p-6 bg-white shadow col-span-2'>
-                                    <RequestPrintPhotos />
+                                    <RequestPrintImages />
                                 </div>
                             )}
                             

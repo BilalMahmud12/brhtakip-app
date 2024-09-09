@@ -17,7 +17,7 @@ const RequestDetails: React.FC = () => {
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
     const requestFormRef = React.useRef(requestForm);
     requestFormRef.current = requestForm;
-    console.log('requestForm', requestFormRef.current);
+    //console.log('requestForm', requestFormRef.current);
 
     const [materialsList, setMaterialsList] = useState<Option[]>([]);
     const [applicationAreasList, setApplicationAreasList] = useState<Option[]>([]);

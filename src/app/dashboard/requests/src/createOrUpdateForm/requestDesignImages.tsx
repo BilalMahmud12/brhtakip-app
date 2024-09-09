@@ -7,7 +7,7 @@ import MediaManager from '@/components/core/MediaManager';
 import type { ImageStorageItemInput } from '@/API';
 
 
-const RequestDesignPhotos: React.FC<{ onSave: () => void }> = ({ onSave = () => {} }) => {
+const RequestDesignImages: React.FC<{ onSave: () => void }> = ({ onSave = () => {} }) => {
     const dispatch = useAppDispatch();
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
     const requestFormRef = React.useRef(requestForm);
@@ -58,4 +58,4 @@ const RequestDesignPhotos: React.FC<{ onSave: () => void }> = ({ onSave = () => 
     );
 }
 
-export default RequestDesignPhotos;
+export default RequestDesignImages;

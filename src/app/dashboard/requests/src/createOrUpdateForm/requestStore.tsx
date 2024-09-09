@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import * as Repo from '@/repository/index';
 import { useAppSelector, useAppDispatch } from '@/reduxStore/hooks';
 import { AppDispatch, RootState } from '@/reduxStore/store';
@@ -20,27 +20,52 @@ const RequestStore: React.FC = () => {
     const requestForm = useAppSelector((state: RootState) => state.request.requestForm);
 
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [storeOptions, setStoreOptions] = useState<StoreOption[]>([]);
+    const [stores, setStores] = useState<StoreOption[]>([]);
     const [selectedStore, setSelectedStore] = useState<StoreOption | null>(null);
 
+    const storeOptions = useMemo(() => {
+        return stores || [];
+    }, [stores]);
+
     useEffect(() => {
-        setIsLoading(true);
-        setSelectedStore(null);
+        let isMounted = true;  // To ensure we only set state if the component is still mounted
+
         const getAndSetStoreOptions = async () => {
-            const stores = await Repo.StoreRepository.getAllStores();
-            const storeOptions = stores?.map(store => ({
-                value: store.id,
-                label: store.name,
-                address: store.address
-            })) || [];
-            setStoreOptions(storeOptions);
-            const currentStore = storeOptions.find(store => store.value === requestForm.storeID) || null;
-            setSelectedStore(currentStore);
-            setIsLoading(false);
-        }
+            try {
+                setIsLoading(true); // Start loading
+                const fetchedStores = await Repo.StoreRepository.getAllStores();
+
+                const storeOptions = fetchedStores?.map(store => ({
+                    value: store.id,
+                    label: store.name,
+                    address: store.address
+                })) || [];
+
+                if (isMounted) {
+                    setStores(storeOptions);
+
+                    // Set the store based on requestForm.storeID after stores have been updated
+                    const currentStore = storeOptions.find(store => store.value === requestForm.storeID) || null;
+
+                    console.log('Fetched and selected currentStore:', currentStore);
+                    setSelectedStore(currentStore);
+                }
+            } catch (error) {
+                console.error("Error fetching stores:", error);
+            } finally {
+                if (isMounted) {
+                    setIsLoading(false);  // End loading
+                }
+            }
+        };
 
         getAndSetStoreOptions();
-        
+
+        // Cleanup to avoid setting state on unmounted component
+        return () => {
+            isMounted = false;
+        };
+
     }, [requestForm.storeID]);
 
     const handleStoreChange = (option: StoreOption | null, reason: AutocompleteChangeReason) => {
@@ -66,7 +91,7 @@ const RequestStore: React.FC = () => {
 
     return (
         <React.Fragment>
-            <h2 className='text-base font-semibold mb-6'>Mağaza Bilgileri</h2>
+            <h2 className='text-base font-semibold mb-12'>Mağaza Bilgileri</h2>
 
             <div className='relative'>
                 {isLoading && (

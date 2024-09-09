@@ -26,15 +26,10 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
 }) => {
     const [email, setEmail] = React.useState<string>('');
     const [password, setPassword] = React.useState<string>('');
-
-    
     const [code, setCode] = React.useState<string>('');
-
     const [emailError, setEmailError] = React.useState<boolean>(false);
     const [passwordError, setPasswordError] = React.useState<boolean>(false);
     const [codeError, setCodeError] = React.useState<boolean>(false);
-
-
 
     const handleFormChange = (key: string, value: string) => {
         switch (key) {
@@ -87,6 +82,24 @@ const AuthenticationForm: React.FC<AuthenticationFormProps> = ({
             code: code
         });
     }
+
+    React.useEffect(() => {
+        const handleEnterKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Enter') {
+                if (codeConfirm) {
+                    handleCodeSubmit();
+                } else {
+                    handleSubmit();
+                }
+            }
+        };
+
+        document.addEventListener('keydown', handleEnterKeyDown)
+
+        return () => {
+            document.removeEventListener('keydown', handleEnterKeyDown)
+        }
+    }, [email, password, code])
     
     return (
         <React.Fragment>
